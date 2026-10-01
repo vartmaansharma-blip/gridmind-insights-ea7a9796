@@ -341,7 +341,7 @@ function buildAlerts(f: Factory, rows: MonthRow[], baselineSec: number, avgRate:
       }
       if (p.costPerKwh > 0 && r.costPerKwh / p.costPerKwh - 1 > 0.04) {
         out.push({ id: `rate-${r.month}`, severity: "info", month: r.month, title: "Effective ₹/kWh increased",
-          detail: `${inr(p.costPerKwh * 100 / 100)}→ ₹${r.costPerKwh.toFixed(2)}/kWh. Check tariff revision or demand charges.`,
+          detail: `₹${p.costPerKwh.toFixed(2)} → ₹${r.costPerKwh.toFixed(2)}/kWh. Check tariff revision or demand charges.`,
           impactInr: (r.costPerKwh - p.costPerKwh) * r.kwh });
       }
     }
