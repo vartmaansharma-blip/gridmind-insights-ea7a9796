@@ -1,24 +1,48 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useEnergy } from "@/lib/energy/store";
+import { inrCompact, num, pct } from "@/lib/energy/format";
+import { Delta, DemoBadge, EmptyState, Kpi, PageHeader, Panel, QualityPill } from "@/components/gm/bits";
+import { FindingFlow, FindingHeader } from "@/components/gm/finding";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Overview — GridMind Factory Energy Intelligence" },
+      { name: "description", content: "Monthly electricity cost, demand, energy per unit and estimated savings for your factory." },
+      { property: "og:title", content: "Overview — GridMind" },
+      { property: "og:description", content: "See where your factory loses money on electricity." },
+    ],
+  }),
+  component: Overview,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Overview() {
+  const { active, analysis: a } = useEnergy();
+  if (!active || !a?.hasData || !a.latest) return <EmptyState />;
+  const l = a.latest, p = a.prev;
+  const d = (x: number, y?: number) => (y ? x / y - 1 : 0);
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <PageHeader eyebrow="Overview" title={active.name} desc={active.location}
+        actions={<>{active.isDemo && <DemoBadge />}<QualityPill q={a.quality} /></>} />
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <Kpi label="Estimated savings opportunity" tone="accent" value={`${inrCompact(a.totalSavingAnnual)}/yr`} sub={`${a.opportunities.length} actions identified · estimated`} />
+        <Kpi label="Electricity cost (latest)" value={inrCompact(l.cost)} sub={<Delta v={d(l.cost, p?.cost)} />} />
+        <Kpi label="Consumption" value={`${num(l.kwh)} kWh`} sub={<Delta v={d(l.kwh, p?.kwh)} />} />
+        <Kpi label="Peak demand" value={`${num(l.peakKva)} kVA`} sub={`${pct(l.utilization)} of ${num(active.contractDemandKva)} kVA contract`} />
+        <Kpi label="Production" value={num(l.production)} sub={<Delta v={d(l.production, p?.production)} invert />} />
+        <Kpi label={`Energy per ${active.productUnit}`} value={`${l.sec.toFixed(2)} kWh`} sub={`Benchmark ${a.baselineSec.toFixed(2)} (best months)`} tone={l.sec > a.baselineSec * 1.05 ? "bad" : "good"} />
+      </div>
+      <Panel className="mt-6" title="Top findings" desc="Ranked by expected annual saving. All figures are engineering estimates."
+        actions={<Button variant="outline" size="sm" asChild><Link to="/opportunities">All <ArrowRight /></Link></Button>}>
+        <div className="grid gap-5">
+          {a.opportunities.slice(0, 3).map((o, i) => (
+            <div key={o.id}><FindingHeader o={o} rank={i + 1} /><FindingFlow o={o} /></div>
+          ))}
+        </div>
+      </Panel>
+    </>
   );
 }
