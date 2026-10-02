@@ -1,0 +1,32 @@
+{
+  "schema_version": "gridmind-opportunity-v1",
+  "purpose": "Canonical structure for an economically meaningful factory opportunity and its evidence-to-outcome lifecycle.",
+  "states": ["DETECTED","INVESTIGATING","CONFIRMED","REJECTED","ACTIONED","RESOLVED","VERIFIED"],
+  "evidence_status": ["OBSERVED","ESTIMATED","HYPOTHESIS","RECOMMENDED","VERIFIED","UNKNOWN"],
+  "financial_states": ["OBSERVED","ESTIMATED","POTENTIAL","EXPECTED","VERIFIED"],
+  "required_fields": {
+    "identity": ["opportunity_id","factory_id","created_at","schema_version"],
+    "scope": ["system_or_process","asset_ids"],
+    "observation": ["metric","observed_value","unit","time_window"],
+    "reference": ["reference_type","reference_id","reference_confidence"],
+    "context": ["production_context","operating_context"],
+    "quality": ["data_quality_status","quality_flags"],
+    "evidence": ["evidence_items","evidence_level","missing_evidence"],
+    "uncertainty": ["measurement_uncertainty","reference_uncertainty","significance_assessment"],
+    "economics": ["financial_state","estimated_or_observed_impact","currency","calculation_version","lineage"],
+    "reasoning": ["possible_explanations","alternative_explanations"],
+    "action": ["recommended_check","recommended_action","required_personnel"],
+    "lifecycle": ["state","state_history"],
+    "verification": ["intervention_id","verification_status","verification_method"]
+  },
+  "rules": [
+    "Missing data is not zero.",
+    "Unknown is a valid output.",
+    "A deviation is not automatically a fault.",
+    "A hypothesis is not an observed fact.",
+    "A potential saving is not verified saving.",
+    "Every important financial number must have traceable inputs and a versioned calculation.",
+    "Diagnostics must be suppressed when evidence quality or required context is insufficient.",
+    "Physical electrical/mechanical intervention remains subject to qualified personnel and site safety procedures."
+  ]
+}
