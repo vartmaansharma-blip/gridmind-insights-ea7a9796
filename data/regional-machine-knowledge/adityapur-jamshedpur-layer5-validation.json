@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0.0",
+  "layer": "L5",
+  "title": "Adityapur-Jamshedpur Machine Knowledge — Validation, Intervention & Verified Savings",
+  "rule": "L5 is the release gate for validated machine intelligence and verified savings. No result becomes Verified without traceable pre/post evidence and appropriate normalization.",
+  "validation_levels": [
+    "L0_CATALOGUE",
+    "L1_ENGINEERING",
+    "L2_MEASUREMENT",
+    "L3_PERFORMANCE_REFERENCE",
+    "L4_DIAGNOSTIC",
+    "L5_VALIDATED"
+  ],
+  "validation_gate": {
+    "identity": [
+      "asset identity verified",
+      "machine type confirmed",
+      "component/sensor mapping verified"
+    ],
+    "measurement": [
+      "required measurements present",
+      "source identity verified",
+      "units valid",
+      "timestamps valid",
+      "quality acceptable",
+      "calibration status acceptable"
+    ],
+    "reference": [
+      "comparable operating context established",
+      "reference contamination checks passed",
+      "uncertainty assessed",
+      "reference version recorded"
+    ],
+    "diagnostic": [
+      "minimum evidence satisfied",
+      "diagnostic rule version recorded",
+      "alternative explanations considered",
+      "suppression conditions clear"
+    ],
+    "field_validation": [
+      "technician/customer finding recorded when physical inspection is required",
+      "intervention linked to asset and finding",
+      "post-intervention data collected"
+    ],
+    "release_blockers": [
+      "critical data-quality failure",
+      "unresolved asset identity",
+      "missing required measurement",
+      "invalid calibration",
+      "insufficient context",
+      "unsupported causal claim",
+      "untraceable financial output"
+    ]
+  },
+  "intervention": {
+    "lifecycle": [
+      "PROPOSED",
+      "APPROVED",
+      "SCHEDULED",
+      "IN_PROGRESS",
+      "COMPLETED",
+      "CANCELLED"
+    ],
+    "required_fields": [
+      "asset_id",
+      "finding_id",
+      "timestamp",
+      "action",
+      "reason",
+      "responsible_actor",
+      "parts_or_configuration_when_relevant",
+      "pre_state",
+      "post_state"
+    ],
+    "safety": "Electrical, mechanical, thermal and other physical interventions require qualified personnel and site safety procedures. GridMind provides evidence and workflow support, not autonomous safety-critical control."
+  },
+  "measurement_and_verification": {
+    "sequence": [
+      "BASELINE",
+      "INTERVENTION",
+      "POST_INTERVENTION",
+      "NORMALIZE",
+      "COMPARE",
+      "VERIFY_OR_REJECT"
+    ],
+    "normalization": [
+      "production_quantity",
+      "product_or_SKU",
+      "operating_state",
+      "load",
+      "runtime",
+      "ambient_or_process_conditions_when_relevant",
+      "maintenance_or_tooling_state",
+      "tariff_when_cost_is_reported"
+    ],
+    "verification_rule": "Compare like-for-like or explicitly normalized operating conditions. Raw before/after totals are insufficient when production or operating conditions materially differ.",
+    "savings_states": [
+      "OBSERVED",
+      "ESTIMATED",
+      "POTENTIAL",
+      "EXPECTED",
+      "VERIFIED"
+    ],
+    "verified_requirements": [
+      "documented intervention",
+      "valid pre-intervention reference",
+      "valid post-intervention measurements",
+      "production/context normalization",
+      "uncertainty/significance check",
+      "calculation lineage",
+      "verification timestamp",
+      "versioned method"
+    ]
+  },
+  "financial_lineage": {
+    "required": [
+      "energy_or_resource_measurements",
+      "production_context",
+      "reference",
+      "tariff_or_cost_basis",
+      "formula",
+      "assumptions",
+      "adjustments",
+      "uncertainty",
+      "calculation_version",
+      "source_timestamps"
+    ],
+    "example_structure": "Result -> formula -> inputs -> source measurements -> reference -> context -> assumptions -> calculation version"
+  },
+  "learning_loop": {
+    "record": [
+      "hypothesis",
+      "actual_cause_when_known",
+      "action",
+      "pre_state",
+      "post_state",
+      "verified_outcome",
+      "technician_feedback",
+      "confidence"
+    ],
+    "use": "Validated intervention outcomes may improve future references, diagnostic rules and prioritization only after provenance and quality checks.",
+    "guardrails": [
+      "do not train from rejected or contaminated outcomes",
+      "retain provenance",
+      "version rule/model changes",
+      "never silently rewrite historical results"
+    ]
+  },
+  "auditability": {
+    "events": [
+      "diagnostic_created",
+      "diagnostic_confirmed",
+      "diagnostic_rejected",
+      "intervention_created",
+      "intervention_completed",
+      "verification_started",
+      "verification_completed",
+      "verification_rejected",
+      "configuration_changed"
+    ],
+    "immutability": "Historical verified results retain their original inputs, versions and calculation lineage; later configuration changes create new versions."
+  },
+  "failure_behavior": {
+    "principle": "Fail closed rather than confidently infer.",
+    "examples": [
+      "missing data -> suppress",
+      "stale data -> suppress",
+      "calibration invalid -> suppress",
+      "context mismatch -> reference uncertain",
+      "conflicting measurements -> investigate measurement integrity",
+      "insufficient post-intervention data -> not verified"
+    ]
+  },
+  "pilot_acceptance": {
+    "required": [
+      "real factory ingestion",
+      "asset association",
+      "measurement quality",
+      "diagnostic evidence",
+      "action workflow",
+      "intervention capture",
+      "M&V",
+      "installer usability",
+      "security/tenant isolation"
+    ],
+    "success_condition": "A machine-specific intelligence workflow is promoted only when its evidence chain and field validation pass the configured gate."
+  },
+  "regional_machine_count": 49,
+  "status": "L5_VALIDATION_FOUNDATION"
+}
