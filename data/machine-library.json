@@ -1,0 +1,396 @@
+{
+  "schema_version": "gridmind-machine-library-v1",
+  "status": "canonical-build-reference",
+  "note": "Machine types are canonical templates. Sensor requirements are evidence-driven; existing digital data should be used before retrofit sensing. Synthetic/demo data must never be represented as live observations.",
+  "machines": [
+    {
+      "id": "cnc-turning-center",
+      "name": "CNC Turning Center",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "machine_state",
+        "production_cycle_or_output"
+      ],
+      "recommended": [
+        "vibration",
+        "temperature",
+        "spindle_speed"
+      ],
+      "conditional": [
+        "pressure",
+        "coolant_flow"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "vibration_anomaly",
+        "spindle_thermal_anomaly",
+        "cycle_energy_anomaly"
+      ]
+    },
+    {
+      "id": "cnc-vmc-machining-center",
+      "name": "CNC/VMC Machining Center",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "machine_state",
+        "production_cycle_or_output"
+      ],
+      "recommended": [
+        "vibration",
+        "temperature",
+        "spindle_speed"
+      ],
+      "conditional": [
+        "coolant_flow",
+        "pressure"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "vibration_anomaly",
+        "spindle_thermal_anomaly",
+        "cycle_energy_anomaly"
+      ]
+    },
+    {
+      "id": "mechanical-power-press",
+      "name": "Mechanical/Power Press",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "machine_state",
+        "cycle_count"
+      ],
+      "recommended": [
+        "load_or_force",
+        "vibration",
+        "temperature"
+      ],
+      "conditional": [
+        "speed"
+      ],
+      "diagnostics": [
+        "press_load_anomaly",
+        "cycle_energy_anomaly",
+        "idle_energy",
+        "vibration_anomaly"
+      ]
+    },
+    {
+      "id": "hydraulic-press",
+      "name": "Hydraulic Press",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "machine_state",
+        "cycle_count"
+      ],
+      "recommended": [
+        "hydraulic_pressure",
+        "oil_temperature",
+        "vibration"
+      ],
+      "conditional": [
+        "flow"
+      ],
+      "diagnostics": [
+        "hydraulic_efficiency_deterioration",
+        "press_load_anomaly",
+        "idle_energy",
+        "thermal_anomaly"
+      ]
+    },
+    {
+      "id": "forging-press-hammer",
+      "name": "Forging Press/Hammer",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy",
+        "machine_state",
+        "cycle_or_batch_output"
+      ],
+      "recommended": [
+        "vibration",
+        "temperature",
+        "load_or_force"
+      ],
+      "conditional": [
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "vibration_anomaly",
+        "load_anomaly",
+        "thermal_anomaly"
+      ]
+    },
+    {
+      "id": "induction-furnace-furnace",
+      "name": "Induction Furnace/Furnace",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "machine_state",
+        "batch_output"
+      ],
+      "recommended": [
+        "temperature",
+        "process_time"
+      ],
+      "conditional": [
+        "water_flow",
+        "cooling_temperature"
+      ],
+      "diagnostics": [
+        "furnace_thermal_efficiency",
+        "energy_per_batch",
+        "cooling_flow_anomaly"
+      ]
+    },
+    {
+      "id": "welding-cell",
+      "name": "MIG/TIG/Spot Welding Cell",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy",
+        "machine_state",
+        "cycle_count"
+      ],
+      "recommended": [
+        "weld_current",
+        "weld_voltage",
+        "temperature"
+      ],
+      "conditional": [
+        "gas_flow"
+      ],
+      "diagnostics": [
+        "welding_energy_per_cycle",
+        "idle_energy",
+        "process_anomaly"
+      ]
+    },
+    {
+      "id": "air-compressor",
+      "name": "Air Compressor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "pressure",
+        "operating_state"
+      ],
+      "recommended": [
+        "flow",
+        "temperature",
+        "runtime"
+      ],
+      "conditional": [
+        "vibration"
+      ],
+      "diagnostics": [
+        "compressed_air_leakage",
+        "compressor_unload_cycling_loss",
+        "compressor_thermal_deterioration",
+        "energy_per_volume"
+      ]
+    },
+    {
+      "id": "cooling-tower-chiller",
+      "name": "Cooling Tower/Chiller",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "operating_state",
+        "supply_return_temperature"
+      ],
+      "recommended": [
+        "flow",
+        "ambient_temperature"
+      ],
+      "conditional": [
+        "pressure",
+        "vibration"
+      ],
+      "diagnostics": [
+        "cooling_efficiency_deterioration",
+        "cooling_water_flow_anomaly",
+        "energy_intensity"
+      ]
+    },
+    {
+      "id": "pump",
+      "name": "Pump",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "operating_state",
+        "flow"
+      ],
+      "recommended": [
+        "pressure_or_head",
+        "temperature"
+      ],
+      "conditional": [
+        "vibration"
+      ],
+      "diagnostics": [
+        "pump_performance_deterioration",
+        "pump_cavitation_indicator",
+        "energy_intensity",
+        "flow_anomaly"
+      ]
+    },
+    {
+      "id": "hvac-ahu",
+      "name": "HVAC/AHU",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "operating_state",
+        "supply_return_temperature"
+      ],
+      "recommended": [
+        "airflow",
+        "filter_pressure_drop",
+        "ambient_temperature"
+      ],
+      "conditional": [
+        "humidity"
+      ],
+      "diagnostics": [
+        "ahu_filter_restriction",
+        "fan_performance_deterioration",
+        "energy_intensity"
+      ]
+    },
+    {
+      "id": "transformer",
+      "name": "Transformer",
+      "integration": [
+        "retrofit_electrical",
+        "existing_digital"
+      ],
+      "required": [
+        "voltage",
+        "current",
+        "power",
+        "phase_information"
+      ],
+      "recommended": [
+        "temperature",
+        "power_factor"
+      ],
+      "conditional": [
+        "harmonics"
+      ],
+      "diagnostics": [
+        "transformer_overload_thermal_stress",
+        "phase_imbalance",
+        "power_quality_anomaly"
+      ]
+    },
+    {
+      "id": "dg-generator",
+      "name": "DG Generator",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "runtime",
+        "fuel_or_fuel_rate"
+      ],
+      "recommended": [
+        "voltage",
+        "current",
+        "frequency",
+        "temperature"
+      ],
+      "conditional": [
+        "exhaust_parameters"
+      ],
+      "diagnostics": [
+        "dg_fuel_efficiency",
+        "load_profile_anomaly",
+        "thermal_anomaly"
+      ]
+    },
+    {
+      "id": "material-handling-conveyor",
+      "name": "Material Handling/Conveyor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power",
+        "runtime_or_state",
+        "throughput_or_cycle"
+      ],
+      "recommended": [
+        "speed",
+        "vibration",
+        "temperature"
+      ],
+      "conditional": [
+        "belt_tension_or_load"
+      ],
+      "diagnostics": [
+        "energy_per_throughput",
+        "idle_energy",
+        "vibration_anomaly",
+        "load_anomaly"
+      ]
+    }
+  ]
+}
