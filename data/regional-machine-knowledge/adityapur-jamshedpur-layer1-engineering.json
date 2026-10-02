@@ -1,0 +1,2896 @@
+{
+  "schema_version": "1.0.0",
+  "layer": "L1",
+  "title": "Adityapur-Jamshedpur Machine Knowledge — Engineering Identity Layer",
+  "rule": "L1 establishes machine identity and engineering/process context only. It does not authorize diagnostics, fault claims, or verified savings.",
+  "machine_count": 49,
+  "records": [
+    {
+      "machine_id": "forging.electric_screw_press",
+      "machine_type": "Electric Screw Press",
+      "industry": "Forging",
+      "primary_process": "Closed-die forging",
+      "identity": {
+        "archetype_id": "forging.electric_screw_press",
+        "canonical_name": "Electric Screw Press",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform closed-die forging operations in forging.",
+        "major_components": [
+          "ram",
+          "screw/flywheel drive",
+          "motor",
+          "clutch/brake",
+          "die set",
+          "frame"
+        ],
+        "key_operating_variables": [
+          "stroke",
+          "force/tonnage",
+          "ram speed",
+          "energy/cycle",
+          "cycle time",
+          "billet temperature"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "forging.gravity_drop_hammer",
+      "machine_type": "Gravity Drop Hammer",
+      "industry": "Forging",
+      "primary_process": "Open/closed-die forging",
+      "identity": {
+        "archetype_id": "forging.gravity_drop_hammer",
+        "canonical_name": "Gravity Drop Hammer",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform open/closed-die forging operations in forging.",
+        "major_components": [
+          "ram",
+          "guides",
+          "hammer head",
+          "anvil",
+          "die",
+          "drive/lift mechanism"
+        ],
+        "key_operating_variables": [
+          "blow energy",
+          "stroke",
+          "blow rate",
+          "die temperature",
+          "billet temperature",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "forging.downstroke_screw_press",
+      "machine_type": "Down-Stroke Screw Press",
+      "industry": "Forging",
+      "primary_process": "Closed-die forging",
+      "identity": {
+        "archetype_id": "forging.downstroke_screw_press",
+        "canonical_name": "Down-Stroke Screw Press",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform closed-die forging operations in forging.",
+        "major_components": [
+          "screw",
+          "ram",
+          "drive",
+          "flywheel",
+          "clutch/brake",
+          "die",
+          "frame"
+        ],
+        "key_operating_variables": [
+          "force",
+          "stroke",
+          "ram speed",
+          "energy/cycle",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "forging.upstroke_screw_press",
+      "machine_type": "Up-Stroke Screw Press",
+      "industry": "Forging",
+      "primary_process": "Closed-die forging",
+      "identity": {
+        "archetype_id": "forging.upstroke_screw_press",
+        "canonical_name": "Up-Stroke Screw Press",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform closed-die forging operations in forging.",
+        "major_components": [
+          "screw",
+          "lower-moving ram",
+          "drive",
+          "flywheel",
+          "die",
+          "frame"
+        ],
+        "key_operating_variables": [
+          "force",
+          "stroke",
+          "ram speed",
+          "energy/cycle",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "forming.mechanical_power_press",
+      "machine_type": "Mechanical Power Press",
+      "industry": "Trimming/forming",
+      "primary_process": "Trimming, blanking, forming",
+      "identity": {
+        "archetype_id": "forming.mechanical_power_press",
+        "canonical_name": "Mechanical Power Press",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform trimming, blanking, forming operations in trimming/forming.",
+        "major_components": [
+          "motor",
+          "flywheel",
+          "clutch/brake",
+          "crank/eccentric",
+          "slide",
+          "die",
+          "bolster"
+        ],
+        "key_operating_variables": [
+          "stroke",
+          "strokes/min",
+          "load",
+          "motor power",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heating.induction_billet_heater",
+      "machine_type": "Induction Billet Heater",
+      "industry": "Forging",
+      "primary_process": "Billet heating",
+      "identity": {
+        "archetype_id": "heating.induction_billet_heater",
+        "canonical_name": "Induction Billet Heater",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform billet heating operations in forging.",
+        "major_components": [
+          "power supply",
+          "induction coil",
+          "cooling circuit",
+          "billet handling",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "power",
+          "frequency",
+          "billet temperature",
+          "heating time",
+          "flow",
+          "cooling temperature"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heating.oil_fired_furnace",
+      "machine_type": "Oil-Fired Heating Furnace",
+      "industry": "Forging/heat treatment",
+      "primary_process": "Batch/continuous heating",
+      "identity": {
+        "archetype_id": "heating.oil_fired_furnace",
+        "canonical_name": "Oil-Fired Heating Furnace",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform batch/continuous heating operations in forging/heat treatment.",
+        "major_components": [
+          "burner",
+          "chamber",
+          "fuel train",
+          "refractory",
+          "fans",
+          "controls",
+          "exhaust"
+        ],
+        "key_operating_variables": [
+          "zone temperature",
+          "fuel flow",
+          "O2 where available",
+          "furnace pressure",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "surface.shot_blasting_machine",
+      "machine_type": "Shot Blasting Machine",
+      "industry": "Forging",
+      "primary_process": "Surface cleaning",
+      "identity": {
+        "archetype_id": "surface.shot_blasting_machine",
+        "canonical_name": "Shot Blasting Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform surface cleaning operations in forging.",
+        "major_components": [
+          "turbine/wheel",
+          "abrasive circuit",
+          "cabinet",
+          "separator",
+          "dust collector",
+          "conveyor"
+        ],
+        "key_operating_variables": [
+          "motor power",
+          "wheel speed",
+          "blast time",
+          "abrasive flow",
+          "dust differential pressure"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "forming.ring_rolling_machine",
+      "machine_type": "Ring Rolling Machine",
+      "industry": "Forging",
+      "primary_process": "Ring rolling",
+      "identity": {
+        "archetype_id": "forming.ring_rolling_machine",
+        "canonical_name": "Ring Rolling Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform ring rolling operations in forging.",
+        "major_components": [
+          "drive rolls",
+          "mandrel",
+          "axial rolls",
+          "hydraulics",
+          "frame",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "roll speed",
+          "radial force",
+          "axial force",
+          "ring diameter",
+          "temperature",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "cutting.circular_saw",
+      "machine_type": "Circular Saw Machine",
+      "industry": "Cutting",
+      "primary_process": "Bar/billet cutting",
+      "identity": {
+        "archetype_id": "cutting.circular_saw",
+        "canonical_name": "Circular Saw Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform bar/billet cutting operations in cutting.",
+        "major_components": [
+          "saw motor",
+          "blade",
+          "vice",
+          "feed mechanism",
+          "coolant",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "motor power",
+          "spindle speed",
+          "feed rate",
+          "cutting time",
+          "coolant flow"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "cutting.bandsaw",
+      "machine_type": "Band Saw Machine",
+      "industry": "Cutting",
+      "primary_process": "Bar/stock cutting",
+      "identity": {
+        "archetype_id": "cutting.bandsaw",
+        "canonical_name": "Band Saw Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform bar/stock cutting operations in cutting.",
+        "major_components": [
+          "band wheel",
+          "blade",
+          "drive",
+          "hydraulic feed",
+          "vice",
+          "coolant"
+        ],
+        "key_operating_variables": [
+          "blade speed",
+          "feed force/rate",
+          "motor power",
+          "cutting time",
+          "coolant flow"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.cnc_turning_center",
+      "machine_type": "CNC Turning Centre",
+      "industry": "Machining",
+      "primary_process": "Turning",
+      "identity": {
+        "archetype_id": "machining.cnc_turning_center",
+        "canonical_name": "CNC Turning Centre",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform turning operations in machining.",
+        "major_components": [
+          "spindle",
+          "chuck",
+          "turret",
+          "axis drives",
+          "tooling",
+          "coolant",
+          "CNC control"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "feed",
+          "cutting load",
+          "power",
+          "cycle time",
+          "coolant flow",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.vertical_machining_center",
+      "machine_type": "Vertical Machining Centre",
+      "industry": "Machining",
+      "primary_process": "Milling/drilling",
+      "identity": {
+        "archetype_id": "machining.vertical_machining_center",
+        "canonical_name": "Vertical Machining Centre",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform milling/drilling operations in machining.",
+        "major_components": [
+          "spindle",
+          "X/Y/Z axes",
+          "tool changer",
+          "table",
+          "coolant",
+          "CNC control"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "feed",
+          "axis load",
+          "power",
+          "cycle time",
+          "coolant flow",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.horizontal_machining_center",
+      "machine_type": "Horizontal Machining Centre",
+      "industry": "Machining",
+      "primary_process": "Multi-axis machining",
+      "identity": {
+        "archetype_id": "machining.horizontal_machining_center",
+        "canonical_name": "Horizontal Machining Centre",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform multi-axis machining operations in machining.",
+        "major_components": [
+          "horizontal spindle",
+          "pallet",
+          "axes",
+          "tool changer",
+          "coolant",
+          "CNC control"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "load",
+          "power",
+          "cycle time",
+          "coolant flow",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.grinding_machine",
+      "machine_type": "Grinding Machine",
+      "industry": "Machining",
+      "primary_process": "Grinding/finishing",
+      "identity": {
+        "archetype_id": "machining.grinding_machine",
+        "canonical_name": "Grinding Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform grinding/finishing operations in machining.",
+        "major_components": [
+          "grinding wheel",
+          "spindle",
+          "workholding",
+          "table",
+          "coolant",
+          "dressing system"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "power",
+          "wheel condition",
+          "feed",
+          "coolant flow",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.conventional_lathe",
+      "machine_type": "Conventional Lathe",
+      "industry": "Machining",
+      "primary_process": "Turning",
+      "identity": {
+        "archetype_id": "machining.conventional_lathe",
+        "canonical_name": "Conventional Lathe",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform turning operations in machining.",
+        "major_components": [
+          "headstock",
+          "spindle",
+          "chuck",
+          "carriage",
+          "leadscrew",
+          "tailstock",
+          "drive"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "motor power",
+          "feed",
+          "cutting time",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.column_drilling_machine",
+      "machine_type": "Column Drilling Machine",
+      "industry": "Machining",
+      "primary_process": "Drilling",
+      "identity": {
+        "archetype_id": "machining.column_drilling_machine",
+        "canonical_name": "Column Drilling Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform drilling operations in machining.",
+        "major_components": [
+          "spindle",
+          "motor",
+          "quill",
+          "column",
+          "table",
+          "feed mechanism"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "power",
+          "feed",
+          "drilling time",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.centering_facing_machine",
+      "machine_type": "Centering & Facing Machine",
+      "industry": "Machining",
+      "primary_process": "End preparation",
+      "identity": {
+        "archetype_id": "machining.centering_facing_machine",
+        "canonical_name": "Centering & Facing Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform end preparation operations in machining.",
+        "major_components": [
+          "spindle",
+          "cutting tools",
+          "slides",
+          "fixture",
+          "drive"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "power",
+          "feed",
+          "cycle time",
+          "cutting load"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.gear_cutting_machine",
+      "machine_type": "Gear Cutting Machine",
+      "industry": "Automotive driveline",
+      "primary_process": "Gear generation",
+      "identity": {
+        "archetype_id": "machining.gear_cutting_machine",
+        "canonical_name": "Gear Cutting Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform gear generation operations in automotive driveline.",
+        "major_components": [
+          "spindle",
+          "cutter/hob",
+          "work spindle",
+          "indexing",
+          "axes",
+          "drive"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "feed",
+          "cutting load",
+          "power",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.broaching_machine",
+      "machine_type": "Broaching Machine",
+      "industry": "Automotive driveline",
+      "primary_process": "Spline/profile broaching",
+      "identity": {
+        "archetype_id": "machining.broaching_machine",
+        "canonical_name": "Broaching Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform spline/profile broaching operations in automotive driveline.",
+        "major_components": [
+          "ram/pull head",
+          "broach tool",
+          "fixture",
+          "hydraulics/drive",
+          "lubrication"
+        ],
+        "key_operating_variables": [
+          "pull force",
+          "stroke",
+          "speed",
+          "cycle time",
+          "hydraulic pressure"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.shaving_machine",
+      "machine_type": "Gear Shaving Machine",
+      "industry": "Automotive driveline",
+      "primary_process": "Gear finishing",
+      "identity": {
+        "archetype_id": "machining.shaving_machine",
+        "canonical_name": "Gear Shaving Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform gear finishing operations in automotive driveline.",
+        "major_components": [
+          "shaving cutter",
+          "work spindle",
+          "slides",
+          "coolant",
+          "drive"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "feed",
+          "power",
+          "cycle time",
+          "coolant flow"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.shaping_machine",
+      "machine_type": "Gear/Component Shaping Machine",
+      "industry": "Automotive driveline",
+      "primary_process": "Gear/component shaping",
+      "identity": {
+        "archetype_id": "machining.shaping_machine",
+        "canonical_name": "Gear/Component Shaping Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform gear/component shaping operations in automotive driveline.",
+        "major_components": [
+          "reciprocating cutter head",
+          "work spindle",
+          "indexing",
+          "drive"
+        ],
+        "key_operating_variables": [
+          "stroke rate",
+          "spindle speed",
+          "cutting load",
+          "power",
+          "cycle time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.box_normalizing_furnace",
+      "machine_type": "Box-Type Normalizing Furnace",
+      "industry": "Heat treatment",
+      "primary_process": "Normalizing",
+      "identity": {
+        "archetype_id": "heat_treatment.box_normalizing_furnace",
+        "canonical_name": "Box-Type Normalizing Furnace",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform normalizing operations in heat treatment.",
+        "major_components": [
+          "chamber",
+          "burners/heaters",
+          "circulation",
+          "thermocouples",
+          "controls",
+          "refractory"
+        ],
+        "key_operating_variables": [
+          "temperature profile",
+          "soak time",
+          "ramp rate",
+          "fuel/power",
+          "furnace pressure"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.pit_furnace",
+      "machine_type": "Pit Furnace",
+      "industry": "Heat treatment",
+      "primary_process": "Batch heat treatment",
+      "identity": {
+        "archetype_id": "heat_treatment.pit_furnace",
+        "canonical_name": "Pit Furnace",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform batch heat treatment operations in heat treatment.",
+        "major_components": [
+          "chamber",
+          "heating elements/burners",
+          "load fixture",
+          "thermocouples",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "temperature",
+          "soak time",
+          "heating rate",
+          "power/fuel",
+          "load mass"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.continuous_furnace",
+      "machine_type": "Continuous Heat Treatment Furnace",
+      "industry": "Heat treatment",
+      "primary_process": "Continuous treatment",
+      "identity": {
+        "archetype_id": "heat_treatment.continuous_furnace",
+        "canonical_name": "Continuous Heat Treatment Furnace",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform continuous treatment operations in heat treatment.",
+        "major_components": [
+          "heating zones",
+          "conveyor/pusher",
+          "burners/elements",
+          "atmosphere",
+          "cooling",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "zone temperatures",
+          "line speed",
+          "residence time",
+          "fuel/power",
+          "atmosphere"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.isothermal_annealing",
+      "machine_type": "Isothermal Annealing System",
+      "industry": "Heat treatment",
+      "primary_process": "Annealing",
+      "identity": {
+        "archetype_id": "heat_treatment.isothermal_annealing",
+        "canonical_name": "Isothermal Annealing System",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform annealing operations in heat treatment.",
+        "major_components": [
+          "furnace",
+          "controlled cooling/holding section",
+          "atmosphere",
+          "thermocouples"
+        ],
+        "key_operating_variables": [
+          "temperature",
+          "hold time",
+          "cooling rate",
+          "atmosphere",
+          "energy"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.sealed_quench",
+      "machine_type": "Sealed Quench System",
+      "industry": "Heat treatment",
+      "primary_process": "Hardening/quenching",
+      "identity": {
+        "archetype_id": "heat_treatment.sealed_quench",
+        "canonical_name": "Sealed Quench System",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform hardening/quenching operations in heat treatment.",
+        "major_components": [
+          "heating chamber",
+          "quench tank",
+          "agitation",
+          "atmosphere system",
+          "transfer"
+        ],
+        "key_operating_variables": [
+          "temperature",
+          "soak time",
+          "quench temperature",
+          "agitation",
+          "atmosphere"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.plug_quench",
+      "machine_type": "Plug Quenching System",
+      "industry": "Heat treatment",
+      "primary_process": "Quenching",
+      "identity": {
+        "archetype_id": "heat_treatment.plug_quench",
+        "canonical_name": "Plug Quenching System",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform quenching operations in heat treatment.",
+        "major_components": [
+          "heating/transfer system",
+          "quench fixture",
+          "coolant circuit",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "part temperature",
+          "quench temperature",
+          "flow/agitation",
+          "transfer time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "heat_treatment.induction_hardening",
+      "machine_type": "Induction Hardening System",
+      "industry": "Heat treatment",
+      "primary_process": "Surface hardening",
+      "identity": {
+        "archetype_id": "heat_treatment.induction_hardening",
+        "canonical_name": "Induction Hardening System",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform surface hardening operations in heat treatment.",
+        "major_components": [
+          "power supply",
+          "induction coil",
+          "scanning/rotation mechanism",
+          "quench system",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "power",
+          "frequency",
+          "current",
+          "heating time",
+          "part speed",
+          "quench flow/temp"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "tooling.cnc_die_machining",
+      "machine_type": "CNC Die-Machining Centre",
+      "industry": "Tool & die",
+      "primary_process": "Die machining",
+      "identity": {
+        "archetype_id": "tooling.cnc_die_machining",
+        "canonical_name": "CNC Die-Machining Centre",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform die machining operations in tool & die.",
+        "major_components": [
+          "spindle",
+          "axes",
+          "tool changer",
+          "fixture",
+          "coolant",
+          "CNC control"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "axis load",
+          "power",
+          "feed",
+          "cycle time",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "tooling.edm_machine",
+      "machine_type": "EDM Machine",
+      "industry": "Tool & die",
+      "primary_process": "Electrical-discharge machining",
+      "identity": {
+        "archetype_id": "tooling.edm_machine",
+        "canonical_name": "EDM Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform electrical-discharge machining operations in tool & die.",
+        "major_components": [
+          "power supply",
+          "electrode/workpiece system",
+          "dielectric tank",
+          "servo",
+          "flushing"
+        ],
+        "key_operating_variables": [
+          "pulse current",
+          "voltage",
+          "pulse timing",
+          "dielectric condition",
+          "machining time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "tooling.wire_edm",
+      "machine_type": "Wire EDM Machine",
+      "industry": "Tool & die",
+      "primary_process": "Wire electrical-discharge machining",
+      "identity": {
+        "archetype_id": "tooling.wire_edm",
+        "canonical_name": "Wire EDM Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform wire electrical-discharge machining operations in tool & die.",
+        "major_components": [
+          "wire drive",
+          "power supply",
+          "work tank",
+          "guides",
+          "dielectric system",
+          "axes"
+        ],
+        "key_operating_variables": [
+          "wire speed",
+          "current",
+          "voltage",
+          "flushing flow",
+          "axis speed",
+          "machining time"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "material_handling.scrap_baling_machine",
+      "machine_type": "Scrap Baling Machine",
+      "industry": "Metal processing",
+      "primary_process": "Scrap compaction",
+      "identity": {
+        "archetype_id": "material_handling.scrap_baling_machine",
+        "canonical_name": "Scrap Baling Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform scrap compaction operations in metal processing.",
+        "major_components": [
+          "hydraulic power unit",
+          "cylinder",
+          "chamber",
+          "ram",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "hydraulic pressure",
+          "cycle time",
+          "motor power",
+          "oil temperature"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "testing.magnaflux_crack_detection",
+      "machine_type": "Magnetic Particle Inspection Machine",
+      "industry": "Quality/testing",
+      "primary_process": "NDT",
+      "identity": {
+        "archetype_id": "testing.magnaflux_crack_detection",
+        "canonical_name": "Magnetic Particle Inspection Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform ndt operations in quality/testing.",
+        "major_components": [
+          "magnetizing circuit",
+          "coils/yoke",
+          "bath/applicator",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "magnetizing current/field",
+          "cycle time",
+          "bath condition"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "testing.brinnell_hardness_tester",
+      "machine_type": "Brinell Hardness Testing Machine",
+      "industry": "Quality/metrology",
+      "primary_process": "Hardness testing",
+      "identity": {
+        "archetype_id": "testing.brinnell_hardness_tester",
+        "canonical_name": "Brinell Hardness Testing Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform hardness testing operations in quality/metrology.",
+        "major_components": [
+          "indenter",
+          "load mechanism",
+          "specimen stage",
+          "optics/sensor"
+        ],
+        "key_operating_variables": [
+          "test force",
+          "dwell time",
+          "indentation size",
+          "calibration status"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "testing.spectrometer",
+      "machine_type": "Material Spectrometer",
+      "industry": "Quality/metallurgy",
+      "primary_process": "Material composition",
+      "identity": {
+        "archetype_id": "testing.spectrometer",
+        "canonical_name": "Material Spectrometer",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform material composition operations in quality/metallurgy.",
+        "major_components": [
+          "excitation source",
+          "optical system",
+          "detector",
+          "sample stand",
+          "gas where required"
+        ],
+        "key_operating_variables": [
+          "excitation parameters",
+          "spectrum",
+          "measurement time",
+          "calibration state"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "testing.surface_roughness_tester",
+      "machine_type": "Surface Roughness Tester",
+      "industry": "Quality/metrology",
+      "primary_process": "Surface measurement",
+      "identity": {
+        "archetype_id": "testing.surface_roughness_tester",
+        "canonical_name": "Surface Roughness Tester",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform surface measurement operations in quality/metrology.",
+        "major_components": [
+          "stylus/probe",
+          "drive",
+          "detector",
+          "processor"
+        ],
+        "key_operating_variables": [
+          "traverse speed",
+          "cutoff length",
+          "measurement range",
+          "calibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "automotive.welding_cell",
+      "machine_type": "Welding Cell",
+      "industry": "Automotive fabrication",
+      "primary_process": "MIG/TIG/spot joining",
+      "identity": {
+        "archetype_id": "automotive.welding_cell",
+        "canonical_name": "Welding Cell",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform mig/tig/spot joining operations in automotive fabrication.",
+        "major_components": [
+          "power source",
+          "torch/electrode system",
+          "fixture",
+          "robot/positioner where used",
+          "shielding gas",
+          "extraction"
+        ],
+        "key_operating_variables": [
+          "welding current",
+          "voltage",
+          "wire feed or pulse parameters",
+          "cycle time",
+          "gas flow"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "utilities.air_compressor",
+      "machine_type": "Industrial Air Compressor",
+      "industry": "Plant utility",
+      "primary_process": "Compressed-air generation",
+      "identity": {
+        "archetype_id": "utilities.air_compressor",
+        "canonical_name": "Industrial Air Compressor",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform compressed-air generation operations in plant utility.",
+        "major_components": [
+          "compressor element",
+          "motor",
+          "separator",
+          "cooler",
+          "controls",
+          "dryer interface"
+        ],
+        "key_operating_variables": [
+          "power",
+          "pressure",
+          "flow",
+          "temperature",
+          "runtime",
+          "load/unload state"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "utilities.industrial_pump",
+      "machine_type": "Industrial Pump",
+      "industry": "Plant utility",
+      "primary_process": "Water/process circulation",
+      "identity": {
+        "archetype_id": "utilities.industrial_pump",
+        "canonical_name": "Industrial Pump",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform water/process circulation operations in plant utility.",
+        "major_components": [
+          "pump",
+          "motor",
+          "impeller/rotor",
+          "seals",
+          "bearings",
+          "suction/discharge piping"
+        ],
+        "key_operating_variables": [
+          "flow",
+          "pressure/head",
+          "power",
+          "speed",
+          "temperature",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "utilities.transformer",
+      "machine_type": "Plant Transformer",
+      "industry": "Electrical infrastructure",
+      "primary_process": "Voltage transformation",
+      "identity": {
+        "archetype_id": "utilities.transformer",
+        "canonical_name": "Plant Transformer",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform voltage transformation operations in electrical infrastructure.",
+        "major_components": [
+          "core",
+          "windings",
+          "bushings",
+          "tap changer where fitted",
+          "cooling system"
+        ],
+        "key_operating_variables": [
+          "voltage",
+          "current",
+          "load",
+          "winding/oil temperature",
+          "power factor",
+          "harmonics where measured"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "utilities.dg_generator",
+      "machine_type": "Diesel Generator",
+      "industry": "Plant utility",
+      "primary_process": "Backup generation",
+      "identity": {
+        "archetype_id": "utilities.dg_generator",
+        "canonical_name": "Diesel Generator",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform backup generation operations in plant utility.",
+        "major_components": [
+          "diesel engine",
+          "alternator",
+          "fuel system",
+          "cooling",
+          "exhaust",
+          "governor",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "electrical output",
+          "fuel rate",
+          "load",
+          "speed",
+          "coolant temperature",
+          "runtime"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "material_handling.overhead_crane",
+      "machine_type": "Overhead Crane",
+      "industry": "Material handling",
+      "primary_process": "Lifting/transport",
+      "identity": {
+        "archetype_id": "material_handling.overhead_crane",
+        "canonical_name": "Overhead Crane",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform lifting/transport operations in material handling.",
+        "major_components": [
+          "bridge",
+          "trolley",
+          "hoist",
+          "motor",
+          "gearbox",
+          "brakes",
+          "ropes/chain",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "load",
+          "motor current/power",
+          "speed",
+          "duty cycles",
+          "brake status",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.conventional_milling_machine",
+      "machine_type": "Conventional Milling Machine",
+      "industry": "General engineering",
+      "primary_process": "Milling",
+      "identity": {
+        "archetype_id": "machining.conventional_milling_machine",
+        "canonical_name": "Conventional Milling Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform milling operations in general engineering.",
+        "major_components": [
+          "spindle",
+          "table",
+          "feed drives",
+          "motor",
+          "tooling",
+          "workholding"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "power",
+          "feed",
+          "cutting time",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "forming.hydraulic_press",
+      "machine_type": "Hydraulic Press",
+      "industry": "Metal fabrication",
+      "primary_process": "Forming/pressing",
+      "identity": {
+        "archetype_id": "forming.hydraulic_press",
+        "canonical_name": "Hydraulic Press",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform forming/pressing operations in metal fabrication.",
+        "major_components": [
+          "pump",
+          "hydraulic power unit",
+          "cylinders",
+          "valves",
+          "frame",
+          "tooling"
+        ],
+        "key_operating_variables": [
+          "pressure",
+          "flow",
+          "force",
+          "cycle time",
+          "oil temperature",
+          "motor power"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "fabrication.press_brake",
+      "machine_type": "Press Brake",
+      "industry": "Metal fabrication",
+      "primary_process": "Sheet bending",
+      "identity": {
+        "archetype_id": "fabrication.press_brake",
+        "canonical_name": "Press Brake",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform sheet bending operations in metal fabrication.",
+        "major_components": [
+          "ram",
+          "hydraulic/electric drive",
+          "back gauge",
+          "tooling",
+          "frame",
+          "controls"
+        ],
+        "key_operating_variables": [
+          "force/pressure",
+          "stroke",
+          "cycle time",
+          "motor power",
+          "position accuracy"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "fabrication.shearing_machine",
+      "machine_type": "Shearing Machine",
+      "industry": "Metal fabrication",
+      "primary_process": "Sheet cutting",
+      "identity": {
+        "archetype_id": "fabrication.shearing_machine",
+        "canonical_name": "Shearing Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform sheet cutting operations in metal fabrication.",
+        "major_components": [
+          "blade",
+          "drive",
+          "frame",
+          "hold-down",
+          "back gauge",
+          "hydraulic/electric system"
+        ],
+        "key_operating_variables": [
+          "cut force/pressure",
+          "stroke rate",
+          "cycle time",
+          "motor power"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.cnc_grinding",
+      "machine_type": "CNC Grinding Machine",
+      "industry": "Precision engineering",
+      "primary_process": "Precision grinding",
+      "identity": {
+        "archetype_id": "machining.cnc_grinding",
+        "canonical_name": "CNC Grinding Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform precision grinding operations in precision engineering.",
+        "major_components": [
+          "wheel spindle",
+          "axes",
+          "work spindle",
+          "dressing",
+          "coolant",
+          "CNC"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "wheel power",
+          "feed",
+          "dressing cycle",
+          "coolant flow",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    },
+    {
+      "machine_id": "machining.industrial_drill",
+      "machine_type": "Industrial Drilling Machine",
+      "industry": "General engineering",
+      "primary_process": "Drilling",
+      "identity": {
+        "archetype_id": "machining.industrial_drill",
+        "canonical_name": "Industrial Drilling Machine",
+        "regional_scope": "Adityapur-Jamshedpur",
+        "variant_status": "archetype_not_manufacturer_specific"
+      },
+      "engineering_model": {
+        "purpose": "Perform drilling operations in general engineering.",
+        "major_components": [
+          "spindle",
+          "motor",
+          "feed mechanism",
+          "table",
+          "tooling"
+        ],
+        "key_operating_variables": [
+          "spindle speed",
+          "power",
+          "feed",
+          "cycle time",
+          "vibration"
+        ],
+        "operating_states": [
+          "OFF",
+          "IDLE",
+          "STARTUP",
+          "RUNNING",
+          "LOAD",
+          "STOPPING",
+          "MAINTENANCE"
+        ],
+        "critical_context": [
+          "product/SKU",
+          "material or workpiece",
+          "machine configuration",
+          "operator/process recipe",
+          "shift",
+          "maintenance state"
+        ]
+      },
+      "regional_evidence": {
+        "status": "regional_relevance",
+        "direct_presence": "See regional evidence dataset; exact site-level presence must be confirmed before asset creation.",
+        "source_classes": [
+          "named regional manufacturer/factory documentation",
+          "regional industry association",
+          "government/industry cluster documentation"
+        ]
+      },
+      "completeness": "L1",
+      "next_layer": "L2 measurement model",
+      "diagnostic_enablement": "BLOCKED"
+    }
+  ]
+}
