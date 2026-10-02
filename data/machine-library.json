@@ -1,7 +1,7 @@
 {
   "schema_version": "gridmind-machine-library-v1",
   "status": "canonical-build-reference",
-  "note": "Machine types are canonical templates. Sensor requirements are evidence-driven; existing digital data should be used before retrofit sensing. Synthetic/demo data must never be represented as live observations.",
+  "note": "Machine types are canonical templates. Sensor requirements are evidence-driven; existing digital data should be used before retrofit sensing. Synthetic/demo data must never be represented as live observations. Expanded taxonomy is intentionally broad; each template must be refined with machine-specific evidence requirements before enabling machine-specific diagnostics.",
   "machines": [
     {
       "id": "cnc-turning-center",
@@ -390,6 +390,2586 @@
         "idle_energy",
         "vibration_anomaly",
         "load_anomaly"
+      ]
+    },
+    {
+      "id": "robotic-assembly-cell",
+      "name": "Robotic Assembly Cell",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "industrial-robot",
+      "name": "Industrial Robot",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "arc-welding-cell",
+      "name": "Arc Welding Cell",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "spot-welding-cell",
+      "name": "Spot Welding Cell",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "laser-cutting-machine",
+      "name": "Laser Cutting Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "plasma-cutting-machine",
+      "name": "Plasma Cutting Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "waterjet-cutting-machine",
+      "name": "Waterjet Cutting Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "press-brake",
+      "name": "Press Brake",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "punching-machine",
+      "name": "Punching Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "shearing-machine",
+      "name": "Shearing Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "rolling-machine",
+      "name": "Rolling Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "tube-pipe-bending-machine",
+      "name": "Tube/Pipe Bending Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "grinding-machine",
+      "name": "Grinding Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "surface-grinder",
+      "name": "Surface Grinder",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "cylindrical-grinder",
+      "name": "Cylindrical Grinder",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "sawing-machine",
+      "name": "Sawing Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "drilling-machine",
+      "name": "Drilling Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "milling-machine",
+      "name": "Milling Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "lathe-machine",
+      "name": "Conventional Lathe",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "broaching-machine",
+      "name": "Broaching Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "edm-machine",
+      "name": "EDM Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "wire-edm-machine",
+      "name": "Wire EDM Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "die-casting-machine",
+      "name": "Die Casting Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "injection-molding-machine",
+      "name": "Injection Molding Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "extruder",
+      "name": "Extruder",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "blow-molding-machine",
+      "name": "Blow Molding Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "plastic-granulator",
+      "name": "Plastic Granulator",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "industrial-mixer",
+      "name": "Industrial Mixer",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "industrial-kneader",
+      "name": "Industrial Kneader",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "centrifuge",
+      "name": "Centrifuge",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "industrial-fan-blower",
+      "name": "Industrial Fan/Blower",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "vacuum-pump",
+      "name": "Vacuum Pump",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "boiler",
+      "name": "Industrial Boiler",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "steam-turbine",
+      "name": "Steam Turbine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "heat-exchanger",
+      "name": "Heat Exchanger",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "cooling-system-pump",
+      "name": "Cooling-Water Pump",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "refrigeration-compressor",
+      "name": "Refrigeration Compressor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "chiller-pump",
+      "name": "Chiller Pump",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "air-dryer",
+      "name": "Compressed-Air Dryer",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "air-receiver",
+      "name": "Air Receiver",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "dust-collector",
+      "name": "Dust Collector",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "bag-filter-system",
+      "name": "Bag Filter System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "scrubber",
+      "name": "Industrial Scrubber",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "ro-water-treatment",
+      "name": "RO Water Treatment System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "water-treatment-plant",
+      "name": "Water Treatment Plant",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "effluent-treatment-plant",
+      "name": "Effluent Treatment Plant",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "wastewater-pump",
+      "name": "Wastewater Pump",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "conveyor-belt",
+      "name": "Belt Conveyor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "roller-conveyor",
+      "name": "Roller Conveyor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "screw-conveyor",
+      "name": "Screw Conveyor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "bucket-elevator",
+      "name": "Bucket Elevator",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "overhead-crane",
+      "name": "Overhead Crane",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "electric-hoist",
+      "name": "Electric Hoist",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "automated-storage-retrieval",
+      "name": "Automated Storage & Retrieval System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "packaging-machine",
+      "name": "Packaging Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "filling-machine",
+      "name": "Filling Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "sealing-machine",
+      "name": "Sealing Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "labeling-machine",
+      "name": "Labeling Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "cartoning-machine",
+      "name": "Cartoning Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "wrapping-machine",
+      "name": "Wrapping Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "printing-machine",
+      "name": "Industrial Printing Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "paper-machine",
+      "name": "Paper Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "textile-spinning-machine",
+      "name": "Textile Spinning Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "textile-loom",
+      "name": "Textile Loom",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "textile-dyeing-machine",
+      "name": "Textile Dyeing Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "food-processing-line",
+      "name": "Food Processing Line",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "baking-oven",
+      "name": "Industrial Baking Oven",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "pasteurizer",
+      "name": "Pasteurizer",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "homogenizer",
+      "name": "Homogenizer",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "industrial-refrigeration",
+      "name": "Industrial Refrigeration System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "solar-production-machine",
+      "name": "Solar Production Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "battery-formation-system",
+      "name": "Battery Formation System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "battery-cycling-system",
+      "name": "Battery Cycling System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "battery-coating-machine",
+      "name": "Battery Coating Machine",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "semiconductor-process-tool",
+      "name": "Semiconductor Process Tool",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "cleanroom-hvac",
+      "name": "Cleanroom HVAC System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "ups-system",
+      "name": "Industrial UPS System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "power-factor-correction",
+      "name": "Power Factor Correction System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "switchgear",
+      "name": "Electrical Switchgear",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "motor-control-center",
+      "name": "Motor Control Center",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "vfd-drive-system",
+      "name": "Variable-Frequency Drive System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "servo-drive-system",
+      "name": "Servo Drive System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "industrial-motor",
+      "name": "Industrial Motor",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "diesel-generator",
+      "name": "Diesel Generator",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "solar-pv-inverter",
+      "name": "Solar PV Inverter",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
+      ]
+    },
+    {
+      "id": "energy-storage-system",
+      "name": "Industrial Energy Storage System",
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "operating_state",
+        "power_or_energy"
+      ],
+      "recommended": [
+        "temperature",
+        "runtime",
+        "production_or_throughput"
+      ],
+      "conditional": [
+        "vibration",
+        "pressure",
+        "flow",
+        "speed"
+      ],
+      "diagnostics": [
+        "energy_intensity",
+        "idle_energy",
+        "performance_deviation",
+        "data_quality_anomaly"
       ]
     }
   ]
