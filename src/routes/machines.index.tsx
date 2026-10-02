@@ -18,7 +18,7 @@ export const MODE_LABEL: Record<string, string> = {
 };
 export const label = (s?: string | null) => (s ? MODE_LABEL[s] ?? s.replace(/_/g, " ") : "—");
 
-export const Route = createFileRoute("/machines")({
+export const Route = createFileRoute("/machines/")({
   head: () => ({
     meta: [
       { title: "Machines — GridMind" },

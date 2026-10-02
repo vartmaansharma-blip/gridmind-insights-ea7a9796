@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowLeft } from "lucide-react";
-import { machineQuery, label, Status } from "./machines";
+import { machineQuery, label, Status } from "./machines.index";
 import { EvidenceTag, SyntheticBadge } from "@/components/gm/evidence";
 import { inrCompact } from "@/lib/energy/format";
 import { cn } from "@/lib/utils";

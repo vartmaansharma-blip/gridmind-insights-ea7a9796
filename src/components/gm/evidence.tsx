@@ -5,7 +5,7 @@ export const EVIDENCE = [
   { k: "estimated", label: "Estimated", desc: "Calculated from bills, nameplate data or assumptions.", tone: "bg-warning-soft text-warning border-warning/40" },
   { k: "hypothesis", label: "Hypothesis", desc: "Possible cause inferred by rules; needs confirmation.", tone: "bg-muted text-muted-foreground border-border" },
   { k: "recommended", label: "Recommended", desc: "Suggested action; not yet carried out.", tone: "bg-cta/15 text-foreground border-cta/50" },
-  { k: "verified", label: "Verified", desc: "Saving confirmed with before/after measured data.", tone: "bg-success text-success-foreground border-success" },
+  { k: "verified", label: "Verified", desc: "Saving confirmed with before/after measured data.", tone: "bg-success text-background border-success" },
 ] as const;
 
 export type EvidenceKind = (typeof EVIDENCE)[number]["k"];
