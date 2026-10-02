@@ -1,0 +1,234 @@
+{
+  "schema_version": "1.0.0",
+  "layer": "L3",
+  "title": "Adityapur-Jamshedpur Performance Reference & Expected Operating Envelope",
+  "rule": "L3 defines how GridMind establishes comparable performance references. It never assumes first-period data is healthy.",
+  "reference_model": {
+    "operational_baseline": "Observed behaviour under a defined operating context; descriptive, not a health claim.",
+    "intervention_baseline": "Comparable pre-intervention period reserved for measurement and verification.",
+    "reference_inputs": [
+      "manufacturer specifications as constraints",
+      "engineering relationships",
+      "historical comparable operation",
+      "fleet/comparable-asset evidence",
+      "production and operating context"
+    ],
+    "reference_selection": "Select comparable periods/states after excluding known abnormal, maintenance, startup, shutdown, changeover and contaminated periods.",
+    "reference_confidence": [
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "UNCERTAIN"
+    ],
+    "envelope_states": [
+      "WITHIN_EXPECTED_ENVELOPE",
+      "OUTSIDE_EXPECTED_ENVELOPE",
+      "INSUFFICIENT_EVIDENCE",
+      "REFERENCE_UNCERTAIN",
+      "POTENTIAL_DEGRADATION"
+    ],
+    "contamination_rules": [
+      "exclude missing or invalid measurements",
+      "exclude maintenance and known fault periods",
+      "exclude materially different product/process conditions",
+      "exclude sensor calibration-invalid periods",
+      "exclude unverified asset identity changes"
+    ],
+    "unknown_policy": "If evidence cannot support an expected envelope, return INSUFFICIENT_EVIDENCE or REFERENCE_UNCERTAIN."
+  },
+  "universal_dimensions": [
+    "energy_per_cycle",
+    "energy_per_unit",
+    "power_by_operating_state",
+    "cycle_time",
+    "throughput",
+    "load_normalized_performance",
+    "temperature_response",
+    "pressure_flow_relationship",
+    "vibration_condition",
+    "process_quality"
+  ],
+  "machine_families": {
+    "forging": {
+      "reference_variables": [
+        "material",
+        "billet temperature",
+        "die/tooling",
+        "force/load",
+        "stroke/blow rate",
+        "cycle time",
+        "energy/cycle"
+      ],
+      "constraints": [
+        "machine rated capacity",
+        "process recipe limits",
+        "tooling limits"
+      ],
+      "envelope_method": "Compare like product/material/process states; normalize energy and cycle metrics to load and production where supported."
+    },
+    "machining": {
+      "reference_variables": [
+        "part/SKU",
+        "material",
+        "tooling",
+        "spindle speed",
+        "feed",
+        "depth/cut conditions",
+        "cycle time",
+        "power",
+        "coolant state"
+      ],
+      "constraints": [
+        "machine rated power",
+        "spindle limits",
+        "axis/load limits",
+        "process recipe"
+      ],
+      "envelope_method": "Compare like machining operations and operating states; do not infer tool or bearing health from energy alone."
+    },
+    "thermal": {
+      "reference_variables": [
+        "product/load",
+        "starting temperature",
+        "setpoint",
+        "zone temperature",
+        "residence time",
+        "fuel/electric input",
+        "ambient conditions"
+      ],
+      "constraints": [
+        "rated temperature",
+        "process specification",
+        "furnace capacity"
+      ],
+      "envelope_method": "Normalize thermal input to comparable load and process recipe; separate startup, soak, production and shutdown states."
+    },
+    "rotating": {
+      "reference_variables": [
+        "speed",
+        "load",
+        "flow/head where applicable",
+        "power",
+        "bearing temperature",
+        "vibration"
+      ],
+      "constraints": [
+        "rated speed",
+        "rated load",
+        "manufacturer limits"
+      ],
+      "envelope_method": "Compare at comparable speed/load/process conditions; vibration reference requires defined measurement location and acquisition quality."
+    },
+    "hydraulic": {
+      "reference_variables": [
+        "pressure",
+        "flow",
+        "load",
+        "cycle time",
+        "oil temperature",
+        "power"
+      ],
+      "constraints": [
+        "rated pressure",
+        "flow",
+        "temperature",
+        "component limits"
+      ],
+      "envelope_method": "Use pressure-flow-load relationships under comparable operating states; do not infer leakage without sufficient evidence."
+    },
+    "electrical": {
+      "reference_variables": [
+        "voltage",
+        "current",
+        "power",
+        "power factor",
+        "load",
+        "temperature",
+        "harmonics when measured"
+      ],
+      "constraints": [
+        "nameplate ratings",
+        "protection limits",
+        "thermal limits"
+      ],
+      "envelope_method": "Normalize electrical behaviour to loading and operating state; distinguish supply anomaly from asset anomaly."
+    },
+    "utilities": {
+      "reference_variables": [
+        "output",
+        "input power",
+        "runtime",
+        "load",
+        "pressure/flow where relevant",
+        "temperature"
+      ],
+      "constraints": [
+        "rated capacity",
+        "operating limits"
+      ],
+      "envelope_method": "Use efficiency/output relationships at comparable load; avoid absolute efficiency claims without adequate measurement."
+    },
+    "material_handling": {
+      "reference_variables": [
+        "load",
+        "travel/hoist speed",
+        "duty cycles",
+        "motor power/current",
+        "runtime"
+      ],
+      "constraints": [
+        "rated load",
+        "speed",
+        "duty classification"
+      ],
+      "envelope_method": "Compare equivalent duty cycles and loads; safety-critical conclusions require qualified inspection."
+    },
+    "metrology": {
+      "reference_variables": [
+        "measurement result",
+        "reference standard",
+        "instrument status",
+        "environment where relevant"
+      ],
+      "constraints": [
+        "instrument specification",
+        "applicable measurement procedure"
+      ],
+      "envelope_method": "Performance reference is measurement-system validity, not machine health."
+    }
+  },
+  "uncertainty": {
+    "principle": "A deviation is meaningful only when it exceeds relevant measurement and model uncertainty.",
+    "required_fields": [
+      "measurement_uncertainty",
+      "reference_uncertainty",
+      "combined_uncertainty_when_available",
+      "confidence",
+      "significance_threshold"
+    ],
+    "policy": "Do not create a degradation finding when observed deviation is indistinguishable from known uncertainty."
+  },
+  "change_detection": [
+    "new machine or asset identity",
+    "machine relocation",
+    "material process change",
+    "new product/SKU",
+    "recipe change",
+    "major maintenance",
+    "tooling change",
+    "tariff change",
+    "operating-hours change",
+    "new energy source such as solar",
+    "machine retirement"
+  ],
+  "gating": [
+    "L3 does not authorize fault diagnosis.",
+    "Expected envelope requires comparable operating context.",
+    "First 30 days are not automatically healthy.",
+    "Specifications constrain permissible operation but do not prove actual health.",
+    "Diagnostics remain blocked until L4 evidence requirements are satisfied.",
+    "Verified savings remain blocked until intervention measurement and M&V requirements are satisfied."
+  ],
+  "regional_machine_count": 49,
+  "status": "L3_FOUNDATION"
+}
