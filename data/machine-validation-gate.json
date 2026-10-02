@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "promotion_rule": "Candidate → reviewed → validated only when the record is a genuinely distinct machine archetype and meets the required completeness level.",
+  "checks": [
+    "distinct_machine_archetype",
+    "industry_and_process_membership_verified",
+    "operating_principle_verified",
+    "component_model_verified",
+    "measurement_requirements_verified",
+    "sensor_selection_verified",
+    "placement_zone_verified",
+    "sampling_requirements_verified",
+    "accuracy_requirements_verified",
+    "calibration_method_verified",
+    "commissioning_checks_verified",
+    "data_quality_rules_verified",
+    "operating_context_verified",
+    "performance_reference_defined",
+    "failure_modes_evidence_backed",
+    "diagnostics_evidence_backed",
+    "diagnostic_suppression_defined",
+    "recommended_actions_defined",
+    "validation_step_defined",
+    "safety_constraints_defined",
+    "source_references_present",
+    "versioned_review_record_present"
+  ],
+  "release_blockers": [
+    "duplicate_or_variant_disguised_as_new_machine",
+    "unsupported_machine_specific_diagnostic",
+    "unsupported_threshold",
+    "unsafe_installation_instruction",
+    "missing_calibration_or_verification_requirement",
+    "missing_data_quality_gate",
+    "missing_suppression_condition",
+    "untraceable_financial_calculation"
+  ]
+}
