@@ -2,7 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
-import { AlertTriangle, BadgeIndianRupee, Factory as FactoryIcon, LayoutDashboard, Lightbulb, Play, Plus, Zap } from "lucide-react";
+import { AlertTriangle, BadgeIndianRupee, Cpu, Factory as FactoryIcon, LayoutDashboard, Lightbulb, Play, Plus, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -17,6 +17,7 @@ const NAV = [
   { to: "/opportunities", label: "Opportunities", icon: Lightbulb },
   { to: "/alerts", label: "Alerts", icon: AlertTriangle },
   { to: "/savings", label: "Savings", icon: BadgeIndianRupee },
+  { to: "/machines", label: "Machines", icon: Cpu },
   { to: "/factory", label: "Factory data", icon: FactoryIcon },
 ] as const;
 
