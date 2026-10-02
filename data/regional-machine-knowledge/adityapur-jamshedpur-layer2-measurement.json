@@ -99,6 +99,8 @@
     "calibration_or_verification_status_known"
   ],
   "calibration_policy": "Record method, reference, tolerance, date, result, next due date and responsible actor. Select accuracy and calibration requirements from the instrument, manufacturer, applicable standard and application risk.",
-  "regional_machine_count": 48,
-  "diagnostic_enablement": "BLOCKED_UNTIL_L4"
+  "regional_machine_count": 49,
+  "diagnostic_enablement": "BLOCKED_UNTIL_L4",
+  "status": "L2_FOUNDATION",
+  "correction_note": "Regional machine count corrected from 48 to 49; Layer 1 is the canonical machine inventory."
 }
