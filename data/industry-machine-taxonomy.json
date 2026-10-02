@@ -1,0 +1,770 @@
+{
+  "schema_version": "gridmind-industry-machine-taxonomy-v1",
+  "purpose": "Industry-to-machine ontology for GridMind. Industry membership describes typical equipment; it does not assert that a specific factory owns every listed machine.",
+  "design_principles": [
+    "Separate industry taxonomy from machine knowledge.",
+    "A machine can belong to many industries.",
+    "Distinguish core production machines from shared utilities and infrastructure.",
+    "Use industry context to select likely machines, then verify actual installed assets.",
+    "Do not enable diagnostics merely because an industry-machine relationship exists."
+  ],
+  "industries": [
+    {
+      "id": "automotive",
+      "name": "Automotive & Auto Components",
+      "process_stages": [
+        "stamping",
+        "machining",
+        "welding",
+        "painting",
+        "assembly",
+        "testing"
+      ],
+      "machines": [
+        "mechanical-power-press",
+        "press-brake",
+        "cnc-turning-center",
+        "cnc-vmc-machining-center",
+        "grinding-machine",
+        "industrial-robot",
+        "robotic-assembly-cell",
+        "spot-welding-cell",
+        "arc-welding-cell",
+        "conveyor-belt",
+        "overhead-crane",
+        "industrial-compressor",
+        "industrial-pump",
+        "industrial-fan-blower"
+      ]
+    },
+    {
+      "id": "aerospace",
+      "name": "Aerospace & Defense Manufacturing",
+      "process_stages": [
+        "machining",
+        "forming",
+        "composites",
+        "assembly",
+        "surface treatment",
+        "testing"
+      ],
+      "machines": [
+        "cnc-vmc-machining-center",
+        "cnc-turning-center",
+        "grinding-machine",
+        "edm-machine",
+        "laser-cutting-machine",
+        "industrial-robot",
+        "autoclave",
+        "industrial-oven",
+        "vacuum-pump",
+        "air-compressor",
+        "cleanroom-hvac",
+        "overhead-crane"
+      ]
+    },
+    {
+      "id": "electronics",
+      "name": "Electronics & Electrical Equipment",
+      "process_stages": [
+        "pcb assembly",
+        "component placement",
+        "soldering",
+        "inspection",
+        "testing",
+        "assembly"
+      ],
+      "machines": [
+        "pick-and-place-machine",
+        "reflow-oven",
+        "wave-soldering-machine",
+        "screen-printer",
+        "pcb-router",
+        "industrial-robot",
+        "conveyor-belt",
+        "cleanroom-hvac",
+        "air-compressor",
+        "chiller-pump",
+        "ups-system"
+      ]
+    },
+    {
+      "id": "semiconductor",
+      "name": "Semiconductor Manufacturing",
+      "process_stages": [
+        "wafer preparation",
+        "deposition",
+        "lithography",
+        "etch",
+        "cleaning",
+        "metrology",
+        "packaging"
+      ],
+      "machines": [
+        "semiconductor-process-tool",
+        "cleanroom-hvac",
+        "chiller-pump",
+        "vacuum-pump",
+        "industrial-pump",
+        "ro-water-treatment",
+        "ups-system",
+        "industrial-compressor",
+        "industrial-robot"
+      ]
+    },
+    {
+      "id": "battery",
+      "name": "Battery Manufacturing",
+      "process_stages": [
+        "mixing",
+        "coating",
+        "drying",
+        "calendering",
+        "slitting",
+        "cell assembly",
+        "formation",
+        "testing"
+      ],
+      "machines": [
+        "industrial-mixer",
+        "coating-machine",
+        "industrial-oven",
+        "rolling-machine",
+        "slitting-machine",
+        "battery-coating-machine",
+        "battery-formation-system",
+        "battery-cycling-system",
+        "cleanroom-hvac",
+        "vacuum-pump",
+        "chiller-pump",
+        "air-compressor"
+      ]
+    },
+    {
+      "id": "steel",
+      "name": "Steel & Primary Metals",
+      "process_stages": [
+        "raw-material handling",
+        "melting",
+        "casting",
+        "rolling",
+        "finishing"
+      ],
+      "machines": [
+        "induction-furnace-furnace",
+        "electric-arc-furnace",
+        "continuous-casting-machine",
+        "rolling-machine",
+        "overhead-crane",
+        "dust-collector",
+        "industrial-fan-blower",
+        "industrial-pump",
+        "transformer",
+        "switchgear"
+      ]
+    },
+    {
+      "id": "foundry",
+      "name": "Foundry & Casting",
+      "process_stages": [
+        "melting",
+        "molding",
+        "core making",
+        "pouring",
+        "shakeout",
+        "finishing"
+      ],
+      "machines": [
+        "induction-furnace-furnace",
+        "foundry-molding-machine",
+        "industrial-mixer",
+        "industrial-robot",
+        "overhead-crane",
+        "dust-collector",
+        "shot-blasting-machine",
+        "grinding-machine",
+        "industrial-fan-blower"
+      ]
+    },
+    {
+      "id": "metal-fabrication",
+      "name": "Metal Fabrication & Precision Engineering",
+      "process_stages": [
+        "cutting",
+        "bending",
+        "punching",
+        "machining",
+        "welding",
+        "finishing"
+      ],
+      "machines": [
+        "laser-cutting-machine",
+        "plasma-cutting-machine",
+        "press-brake",
+        "punching-machine",
+        "shearing-machine",
+        "cnc-vmc-machining-center",
+        "cnc-turning-center",
+        "arc-welding-cell",
+        "grinding-machine"
+      ]
+    },
+    {
+      "id": "forging",
+      "name": "Forging & Heat Treatment",
+      "process_stages": [
+        "heating",
+        "forging",
+        "trimming",
+        "heat treatment",
+        "finishing"
+      ],
+      "machines": [
+        "forging-press-hammer",
+        "mechanical-power-press",
+        "industrial-oven",
+        "heat-treatment-furnace",
+        "shot-blasting-machine",
+        "grinding-machine",
+        "overhead-crane"
+      ]
+    },
+    {
+      "id": "plastics",
+      "name": "Plastics & Rubber",
+      "process_stages": [
+        "compounding",
+        "molding",
+        "extrusion",
+        "blowing",
+        "trimming",
+        "recycling"
+      ],
+      "machines": [
+        "injection-molding-machine",
+        "extruder",
+        "blow-molding-machine",
+        "plastic-granulator",
+        "industrial-mixer",
+        "industrial-kneader",
+        "industrial-chiller",
+        "industrial-compressor",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "tyres",
+      "name": "Tyres & Rubber Products",
+      "process_stages": [
+        "mixing",
+        "calendering",
+        "extrusion",
+        "component preparation",
+        "building",
+        "curing",
+        "inspection"
+      ],
+      "machines": [
+        "industrial-mixer",
+        "industrial-kneader",
+        "rolling-machine",
+        "extruder",
+        "tire-building-machine",
+        "curing-press",
+        "industrial-oven",
+        "industrial-compressor",
+        "industrial-chiller"
+      ]
+    },
+    {
+      "id": "pharmaceuticals",
+      "name": "Pharmaceuticals",
+      "process_stages": [
+        "dispensing",
+        "granulation",
+        "blending",
+        "compression",
+        "coating",
+        "sterile processing",
+        "packaging"
+      ],
+      "machines": [
+        "industrial-mixer",
+        "granulator",
+        "tablet-press",
+        "coating-machine",
+        "fluid-bed-dryer",
+        "autoclave",
+        "cleanroom-hvac",
+        "industrial-compressor",
+        "vacuum-pump",
+        "packaging-machine",
+        "filling-machine"
+      ]
+    },
+    {
+      "id": "chemicals",
+      "name": "Chemicals & Specialty Chemicals",
+      "process_stages": [
+        "raw-material handling",
+        "reaction",
+        "mixing",
+        "separation",
+        "distillation",
+        "drying",
+        "storage"
+      ],
+      "machines": [
+        "reactor",
+        "industrial-mixer",
+        "centrifuge",
+        "distillation-column",
+        "heat-exchanger",
+        "industrial-pump",
+        "vacuum-pump",
+        "industrial-compressor",
+        "industrial-chiller",
+        "tank-farm-pump"
+      ]
+    },
+    {
+      "id": "food-beverage",
+      "name": "Food & Beverage",
+      "process_stages": [
+        "processing",
+        "mixing",
+        "cooking",
+        "cooling",
+        "filling",
+        "packaging",
+        "cold storage"
+      ],
+      "machines": [
+        "industrial-mixer",
+        "pasteurizer",
+        "homogenizer",
+        "baking-oven",
+        "food-processing-line",
+        "filling-machine",
+        "sealing-machine",
+        "packaging-machine",
+        "industrial-refrigeration",
+        "industrial-chiller",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "dairy",
+      "name": "Dairy Processing",
+      "process_stages": [
+        "milk reception",
+        "pasteurization",
+        "homogenization",
+        "separation",
+        "fermentation",
+        "filling",
+        "cold storage"
+      ],
+      "machines": [
+        "pasteurizer",
+        "homogenizer",
+        "centrifuge",
+        "industrial-pump",
+        "industrial-chiller",
+        "industrial-refrigeration",
+        "filling-machine",
+        "packaging-machine",
+        "cleanroom-hvac"
+      ]
+    },
+    {
+      "id": "bakery",
+      "name": "Bakery & Confectionery",
+      "process_stages": [
+        "mixing",
+        "proofing",
+        "baking",
+        "cooling",
+        "decoration",
+        "packaging"
+      ],
+      "machines": [
+        "industrial-mixer",
+        "industrial-kneader",
+        "baking-oven",
+        "conveyor-belt",
+        "cooling-system-pump",
+        "packaging-machine",
+        "cartoning-machine",
+        "wrapping-machine"
+      ]
+    },
+    {
+      "id": "textile",
+      "name": "Textiles & Apparel",
+      "process_stages": [
+        "fiber preparation",
+        "spinning",
+        "weaving",
+        "knitting",
+        "dyeing",
+        "finishing",
+        "garmenting"
+      ],
+      "machines": [
+        "textile-spinning-machine",
+        "textile-loom",
+        "textile-dyeing-machine",
+        "stenter-machine",
+        "textile-finishing-machine",
+        "sewing-machine-industrial",
+        "compressor",
+        "industrial-boiler",
+        "industrial-pump"
+      ]
+    },
+    {
+      "id": "pulp-paper",
+      "name": "Pulp, Paper & Tissue",
+      "process_stages": [
+        "pulping",
+        "stock preparation",
+        "forming",
+        "pressing",
+        "drying",
+        "calendering",
+        "converting"
+      ],
+      "machines": [
+        "paper-machine",
+        "industrial-mixer",
+        "centrifuge",
+        "industrial-pump",
+        "industrial-boiler",
+        "heat-exchanger",
+        "rolling-machine",
+        "slitter-rewinder",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "printing",
+      "name": "Printing & Converting",
+      "process_stages": [
+        "prepress",
+        "printing",
+        "drying",
+        "coating",
+        "slitting",
+        "folding",
+        "binding"
+      ],
+      "machines": [
+        "printing-machine",
+        "coating-machine",
+        "slitter-rewinder",
+        "folder-gluer",
+        "die-cutter",
+        "industrial-oven",
+        "compressor",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "packaging",
+      "name": "Packaging",
+      "process_stages": [
+        "forming",
+        "filling",
+        "sealing",
+        "labeling",
+        "cartoning",
+        "palletizing"
+      ],
+      "machines": [
+        "packaging-machine",
+        "filling-machine",
+        "sealing-machine",
+        "labeling-machine",
+        "cartoning-machine",
+        "wrapping-machine",
+        "industrial-robot",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "glass",
+      "name": "Glass & Ceramics",
+      "process_stages": [
+        "batch preparation",
+        "melting",
+        "forming",
+        "annealing",
+        "cutting",
+        "finishing"
+      ],
+      "machines": [
+        "industrial-mixer",
+        "glass-furnace",
+        "annealing-oven",
+        "laser-cutting-machine",
+        "grinding-machine",
+        "conveyor-belt",
+        "industrial-compressor",
+        "industrial-pump"
+      ]
+    },
+    {
+      "id": "cement",
+      "name": "Cement & Building Materials",
+      "process_stages": [
+        "crushing",
+        "grinding",
+        "mixing",
+        "calcination",
+        "clinker handling",
+        "packing"
+      ],
+      "machines": [
+        "crusher",
+        "ball-mill",
+        "vertical-roller-mill",
+        "rotary-kiln",
+        "industrial-fan-blower",
+        "industrial-pump",
+        "dust-collector",
+        "packaging-machine",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "mining",
+      "name": "Mining & Minerals",
+      "process_stages": [
+        "extraction",
+        "crushing",
+        "screening",
+        "conveying",
+        "milling",
+        "separation"
+      ],
+      "machines": [
+        "crusher",
+        "screening-machine",
+        "conveyor-belt",
+        "ball-mill",
+        "flotation-cell",
+        "industrial-pump",
+        "overhead-crane",
+        "dust-collector"
+      ]
+    },
+    {
+      "id": "oil-gas",
+      "name": "Oil & Gas / Petrochemicals",
+      "process_stages": [
+        "separation",
+        "compression",
+        "pumping",
+        "refining",
+        "storage",
+        "loading"
+      ],
+      "machines": [
+        "compressor",
+        "centrifuge",
+        "distillation-column",
+        "heat-exchanger",
+        "industrial-pump",
+        "tank-farm-pump",
+        "flare-system",
+        "cooling-tower-chiller",
+        "switchgear"
+      ]
+    },
+    {
+      "id": "power-generation",
+      "name": "Power Generation",
+      "process_stages": [
+        "fuel handling",
+        "generation",
+        "cooling",
+        "water treatment",
+        "electrical distribution"
+      ],
+      "machines": [
+        "steam-turbine",
+        "gas-turbine",
+        "diesel-generator",
+        "boiler",
+        "heat-exchanger",
+        "cooling-tower-chiller",
+        "industrial-pump",
+        "transformer",
+        "switchgear",
+        "ups-system"
+      ]
+    },
+    {
+      "id": "renewables",
+      "name": "Solar, Wind & Renewable Energy Equipment",
+      "process_stages": [
+        "cell/module manufacturing",
+        "inverter systems",
+        "assembly",
+        "testing"
+      ],
+      "machines": [
+        "solar-production-machine",
+        "battery-cycling-system",
+        "solar-pv-inverter",
+        "industrial-robot",
+        "cleanroom-hvac",
+        "industrial-compressor",
+        "test-bench"
+      ]
+    },
+    {
+      "id": "water",
+      "name": "Water & Wastewater Treatment",
+      "process_stages": [
+        "screening",
+        "coagulation",
+        "filtration",
+        "biological treatment",
+        "sludge handling",
+        "disinfection"
+      ],
+      "machines": [
+        "ro-water-treatment",
+        "water-treatment-plant",
+        "effluent-treatment-plant",
+        "wastewater-pump",
+        "industrial-pump",
+        "centrifuge",
+        "industrial-blower",
+        "sludge-dewatering-machine"
+      ]
+    },
+    {
+      "id": "wood",
+      "name": "Wood, Furniture & Panels",
+      "process_stages": [
+        "cutting",
+        "sawing",
+        "routing",
+        "pressing",
+        "finishing",
+        "assembly"
+      ],
+      "machines": [
+        "sawing-machine",
+        "cnc-vmc-machining-center",
+        "press-brake",
+        "industrial-mixer",
+        "panel-press",
+        "sanding-machine",
+        "dust-collector",
+        "conveyor-belt"
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "Consumer Goods & Home Products",
+      "process_stages": [
+        "forming",
+        "machining",
+        "assembly",
+        "surface finishing",
+        "packaging"
+      ],
+      "machines": [
+        "injection-molding-machine",
+        "cnc-vmc-machining-center",
+        "industrial-robot",
+        "robotic-assembly-cell",
+        "conveyor-belt",
+        "packaging-machine",
+        "industrial-compressor"
+      ]
+    },
+    {
+      "id": "medical",
+      "name": "Medical Devices",
+      "process_stages": [
+        "precision machining",
+        "molding",
+        "clean assembly",
+        "sterilization",
+        "inspection",
+        "packaging"
+      ],
+      "machines": [
+        "cnc-vmc-machining-center",
+        "cnc-turning-center",
+        "injection-molding-machine",
+        "industrial-robot",
+        "cleanroom-hvac",
+        "autoclave",
+        "packaging-machine",
+        "filling-machine"
+      ]
+    },
+    {
+      "id": "marine",
+      "name": "Marine & Shipbuilding",
+      "process_stages": [
+        "cutting",
+        "forming",
+        "welding",
+        "machining",
+        "assembly",
+        "painting"
+      ],
+      "machines": [
+        "plasma-cutting-machine",
+        "laser-cutting-machine",
+        "rolling-machine",
+        "arc-welding-cell",
+        "cnc-vmc-machining-center",
+        "overhead-crane",
+        "industrial-compressor",
+        "painting-booth"
+      ]
+    }
+  ],
+  "shared_factory_infrastructure": [
+    "transformer",
+    "switchgear",
+    "motor-control-center",
+    "power-factor-correction",
+    "ups-system",
+    "industrial-compressor",
+    "air-dryer",
+    "air-receiver",
+    "industrial-pump",
+    "cooling-tower-chiller",
+    "industrial-fan-blower",
+    "dust-collector",
+    "ro-water-treatment",
+    "industrial-refrigeration",
+    "overhead-crane",
+    "conveyor-belt"
+  ],
+  "future_verticals": [
+    "agriculture-processing",
+    "fertilizer",
+    "sugar",
+    "edible-oils",
+    "breweries",
+    "biotech",
+    "cosmetics",
+    "leather-footwear",
+    "construction-equipment",
+    "railway",
+    "defence",
+    "space",
+    "hydrogen",
+    "data-centers"
+  ]
+}
