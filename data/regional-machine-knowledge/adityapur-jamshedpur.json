@@ -1,0 +1,1794 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "adityapur-jamshedpur-regional-machine-knowledge-v1",
+  "region": {
+    "country": "India",
+    "state": "Jharkhand",
+    "industrial_cluster": "Adityapur-Jamshedpur",
+    "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+  },
+  "purpose": "Regional machine-knowledge seed set for GridMind. Directly evidenced equipment is separated from process-derived archetypes. This dataset must not be interpreted as a claim that every listed machine exists at every factory.",
+  "evidence_policy": {
+    "direct": "Equipment/process explicitly documented by a named factory or authoritative regional source.",
+    "inferred": "Machine archetype inferred from a documented manufacturing process or regional industry concentration; requires site-level confirmation before machine-specific diagnostics.",
+    "diagnostic_rule": "No machine-specific diagnostic may be enabled solely from inferred regional presence."
+  },
+  "sources": [
+    {
+      "id": "ASIA-AUTO",
+      "title": "Adityapur Small Industries Association automotive components directory",
+      "url": "https://asiajamshedpur.com/single-category/automotive-components-and-assemblies/",
+      "evidence": "Regional automotive-component manufacturing concentration and named enterprises."
+    },
+    {
+      "id": "DCSME-JSR",
+      "title": "DC MSME Jamshedpur industrial cluster/status report",
+      "url": "https://www.dcmsme.gov.in/tcsp/Program%20Overview/Jamshedpur_Draft.pdf",
+      "evidence": "Regional concentration in automotive, metal fabrication, general engineering, foundry/casting, stamping, rubber/plastic, electrical machinery and related sectors."
+    },
+    {
+      "id": "EMPIRE-INFRA",
+      "title": "Empire Auto Adityapur infrastructure",
+      "url": "https://empireauto.co.in/infrastructure",
+      "evidence": "Named equipment and capacities at an Adityapur forging/manufacturing plant."
+    },
+    {
+      "id": "EMPIRE-FORGING",
+      "title": "Empire Auto forging equipment",
+      "url": "https://empireauto.co.in/infrastructure/forging",
+      "evidence": "Electric screw press, gravity drop hammers, screw presses, trimming presses, induction billet heater, oil-fired furnace and shot blasting."
+    },
+    {
+      "id": "EMPIRE-MACHINING",
+      "title": "Empire Auto machining equipment",
+      "url": "https://empireauto.co.in/infrastructure/machining",
+      "evidence": "CNC turning, VMC, bandsaw, grinding, conventional lathes, column drilling, centering/facing."
+    },
+    {
+      "id": "EMPIRE-HEAT",
+      "title": "Empire Auto heat-treatment equipment",
+      "url": "https://empireauto.co.in/infrastructure/heat_treatment",
+      "evidence": "Box normalizing furnace and pit furnaces."
+    },
+    {
+      "id": "RKFL-PLANTS",
+      "title": "Ramkrishna Forgings plant locations and divisions",
+      "url": "https://ramkrishnaforgings.com/contact-us/",
+      "evidence": "Plants in Gamharia/Jamshedpur and Adityapur; CNC division identified at Plant III & IV."
+    },
+    {
+      "id": "RKFL-PROCESS",
+      "title": "Ramkrishna Forgings manufacturing processes and facilities",
+      "url": "https://ramkrishnaforgings.com/Ramkrishna-Forging-Forgings-Placement-Document.pdf",
+      "evidence": "Hammer/upset forging, heat treatment, shot blasting, CNC machining, gear cutting, HMC/VMC, broaching, shaving, shaping, annealing, quenching, induction hardening, ring rolling and drilling."
+    },
+    {
+      "id": "RKFL-ISO",
+      "title": "Ramkrishna Forgings Plant III & IV ISO certificate",
+      "url": "https://ramkrishnaforgings.com/wp-content/uploads/2024/05/ISO-9001-Plant-34.pdf",
+      "evidence": "Open/closed-die forgings and finished machined components at Adityapur Plant III & IV."
+    },
+    {
+      "id": "TATA-JSR",
+      "title": "Tata Motors Jamshedpur manufacturing-unit information",
+      "url": "https://testtrucks.tatamotors.com/manufacturing-unit",
+      "evidence": "Jamshedpur engine, axle and automotive component manufacturing context."
+    }
+  ],
+  "machine_archetypes": [
+    {
+      "machine_id": "forging.electric_screw_press",
+      "machine_type": "Electric Screw Press",
+      "industry": "Forging",
+      "process": "Closed-die forging",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "1000 T documented at Empire Auto Adityapur",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "forging.gravity_drop_hammer",
+      "machine_type": "Gravity Drop Hammer",
+      "industry": "Forging",
+      "process": "Open/closed-die forging",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "1.5 T and 2 T documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "forging.downstroke_screw_press",
+      "machine_type": "Down-Stroke Screw Press",
+      "industry": "Forging",
+      "process": "Forging",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "300 T documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "forging.upstroke_screw_press",
+      "machine_type": "Up-Stroke Screw Press",
+      "industry": "Forging",
+      "process": "Forging",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "200 T documented on forging page; infrastructure page lists 250 T",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "forming.mechanical_power_press",
+      "machine_type": "Mechanical Power Press",
+      "industry": "Forging/Stamping",
+      "process": "Trimming/forming",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "Multiple capacities documented for trimming",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heating.induction_billet_heater",
+      "machine_type": "Induction Billet Heater",
+      "industry": "Forging",
+      "process": "Billet heating",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "450 kW Megatherm documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heating.oil_fired_furnace",
+      "machine_type": "Oil-Fired Heating Furnace",
+      "industry": "Forging/Heat Treatment",
+      "process": "Heating",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "Documented at Empire Auto",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "surface.shot_blasting_machine",
+      "machine_type": "Shot Blasting Machine",
+      "industry": "Forging",
+      "process": "Surface cleaning/finishing",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-FORGING",
+      "evidence_note": "7 cu ft documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "forming.ring_rolling_machine",
+      "machine_type": "Ring Rolling Machine",
+      "industry": "Forging",
+      "process": "Ring rolling",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-INFRA",
+      "evidence_note": "80–250 diameter range documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "cutting.circular_saw",
+      "machine_type": "Circular Saw Machine",
+      "industry": "Forging/Machining",
+      "process": "Billet/bar cutting",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-INFRA",
+      "evidence_note": "Up to 125 mm rounds documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "cutting.bandsaw",
+      "machine_type": "Band Saw Machine",
+      "industry": "Forging/Machining",
+      "process": "Stock cutting",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "300–1200 mm equipment documented across infrastructure pages",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.cnc_turning_center",
+      "machine_type": "CNC Turning Centre",
+      "industry": "Machining",
+      "process": "Turning",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "8 machines documented on machining page; 12 on broader infrastructure page",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.vertical_machining_center",
+      "machine_type": "Vertical Machining Centre",
+      "industry": "Machining/Tool & Die",
+      "process": "Milling",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "BFW VMCs documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.horizontal_machining_center",
+      "machine_type": "Horizontal Machining Centre",
+      "industry": "Machining",
+      "process": "Multi-axis machining",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "HMCs documented at Jamshedpur plants",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.grinding_machine",
+      "machine_type": "Grinding Machine",
+      "industry": "Machining",
+      "process": "Grinding/finishing",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "Grinding machines documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.conventional_lathe",
+      "machine_type": "Conventional Lathe",
+      "industry": "Machining",
+      "process": "Turning",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "6-inch and 8-inch lathes documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.column_drilling_machine",
+      "machine_type": "Column Drilling Machine",
+      "industry": "Machining",
+      "process": "Drilling",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "2-inch machine documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.centering_facing_machine",
+      "machine_type": "Centering & Facing Machine",
+      "industry": "Machining",
+      "process": "End preparation",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.gear_cutting_machine",
+      "machine_type": "Gear Cutting Machine",
+      "industry": "Automotive Driveline",
+      "process": "Gear manufacturing",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Documented at Jamshedpur Plant III",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.broaching_machine",
+      "machine_type": "Broaching Machine",
+      "industry": "Automotive Driveline",
+      "process": "Spline/profile machining",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.shaving_machine",
+      "machine_type": "Gear Shaving Machine",
+      "industry": "Automotive Driveline",
+      "process": "Gear finishing",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.shaping_machine",
+      "machine_type": "Gear/Component Shaping Machine",
+      "industry": "Automotive Driveline",
+      "process": "Gear/component shaping",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.box_normalizing_furnace",
+      "machine_type": "Box-Type Normalizing Furnace",
+      "industry": "Heat Treatment",
+      "process": "Normalizing",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-HEAT",
+      "evidence_note": "Pusher system documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.pit_furnace",
+      "machine_type": "Pit Furnace",
+      "industry": "Heat Treatment",
+      "process": "Heat treatment",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-HEAT",
+      "evidence_note": "Two pit furnaces documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.continuous_furnace",
+      "machine_type": "Continuous Heat Treatment Furnace",
+      "industry": "Heat Treatment",
+      "process": "Continuous treatment",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-INFRA",
+      "evidence_note": "500 kg/hour documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.isothermal_annealing",
+      "machine_type": "Isothermal Annealing Furnace/System",
+      "industry": "Heat Treatment",
+      "process": "Annealing",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Process documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.sealed_quench",
+      "machine_type": "Sealed Quench System",
+      "industry": "Heat Treatment",
+      "process": "Quenching",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Process documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.plug_quench",
+      "machine_type": "Plug Quenching System",
+      "industry": "Heat Treatment",
+      "process": "Quenching",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Process documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "heat_treatment.induction_hardening",
+      "machine_type": "Induction Hardening System",
+      "industry": "Heat Treatment",
+      "process": "Surface hardening",
+      "evidence_class": "direct",
+      "source_id": "RKFL-PROCESS",
+      "evidence_note": "Process documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "tooling.cnc_die_machining",
+      "machine_type": "CNC Die-Machining Centre",
+      "industry": "Tool & Die",
+      "process": "Die machining",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-INFRA",
+      "evidence_note": "CNC VMCs used for in-house die manufacturing",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "tooling.edm_machine",
+      "machine_type": "EDM Machine",
+      "industry": "Tool & Die",
+      "process": "Die machining",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-DIE",
+      "evidence_note": "High-precision CNC, EDM and wire-cut machines documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "tooling.wire_edm",
+      "machine_type": "Wire EDM Machine",
+      "industry": "Tool & Die",
+      "process": "Precision die machining",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-DIE",
+      "evidence_note": "Wire-cut equipment documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "material_handling.scrap_baling_machine",
+      "machine_type": "Scrap Baling Machine",
+      "industry": "Metal Processing",
+      "process": "Scrap compaction",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-MACHINING",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "testing.magnaflux_crack_detection",
+      "machine_type": "Magnetic Particle/Magnaflux Crack Detection Machine",
+      "industry": "Quality/Testing",
+      "process": "Non-destructive testing",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-QA",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "testing.brinnell_hardness_tester",
+      "machine_type": "Brinell Hardness Testing Machine",
+      "industry": "Quality/Metallurgy",
+      "process": "Hardness testing",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-QA",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "testing.spectrometer",
+      "machine_type": "Material Spectrometer",
+      "industry": "Quality/Metallurgy",
+      "process": "Chemical composition testing",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-QA",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "testing.surface_roughness_tester",
+      "machine_type": "Surface Roughness Tester",
+      "industry": "Quality/Metrology",
+      "process": "Surface measurement",
+      "evidence_class": "direct",
+      "source_id": "EMPIRE-QA",
+      "evidence_note": "Documented",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "automotive.welding_cell",
+      "machine_type": "Automated/Manual Welding Cell",
+      "industry": "Automotive Components",
+      "process": "Joining/fabrication",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Regional metal fabrication/general engineering evidence; exact equipment requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "utilities.air_compressor",
+      "machine_type": "Industrial Air Compressor",
+      "industry": "Cross-industry utility",
+      "process": "Compressed air",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Common industrial utility; regional source establishes broad engineering/manufacturing concentration, not a specific named compressor",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "utilities.industrial_pump",
+      "machine_type": "Industrial Pump",
+      "industry": "Cross-industry utility",
+      "process": "Water/cooling/process circulation",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Utility archetype; requires site-level confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "utilities.transformer",
+      "machine_type": "Plant Transformer",
+      "industry": "Cross-industry utility",
+      "process": "Electrical distribution",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Electrical machinery is a documented regional concentration; exact transformer presence requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "utilities.dg_generator",
+      "machine_type": "Diesel Generator",
+      "industry": "Cross-industry utility",
+      "process": "Backup generation",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Industrial utility archetype; requires site-level confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "material_handling.overhead_crane",
+      "machine_type": "Overhead Crane",
+      "industry": "Forging/Heavy Engineering",
+      "process": "Material handling",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Heavy/general engineering cluster supports relevance; exact installation requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.conventional_milling_machine",
+      "machine_type": "Conventional Milling Machine",
+      "industry": "General Engineering/Tooling",
+      "process": "Milling",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "General engineering/tooling cluster; exact equipment requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "forming.hydraulic_press",
+      "machine_type": "Hydraulic Press",
+      "industry": "Metal Fabrication/General Engineering",
+      "process": "Forming",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Process-derived regional archetype; not directly evidenced in sources above",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "fabrication.press_brake",
+      "machine_type": "Press Brake",
+      "industry": "Metal Fabrication",
+      "process": "Sheet-metal bending",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Metal fabrication concentration; exact machine requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "fabrication.shearing_machine",
+      "machine_type": "Shearing Machine",
+      "industry": "Metal Fabrication",
+      "process": "Sheet cutting",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Metal fabrication concentration; exact machine requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.cnc_grinding",
+      "machine_type": "CNC Grinding Machine",
+      "industry": "Precision Engineering",
+      "process": "Grinding",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "Precision engineering/machining cluster; exact equipment requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    },
+    {
+      "machine_id": "machining.industrial_drill",
+      "machine_type": "Industrial Drilling Machine",
+      "industry": "General Engineering",
+      "process": "Drilling",
+      "evidence_class": "inferred",
+      "source_id": "DCSME-JSR",
+      "evidence_note": "General engineering cluster; exact machine requires site confirmation",
+      "completeness": "L1",
+      "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+      "measurement_model": {
+        "required_to_define": [
+          "power_or_energy_where_economically_relevant",
+          "operating_state",
+          "runtime",
+          "production_or_cycle_context"
+        ],
+        "condition_measurements": [
+          "temperature",
+          "vibration",
+          "pressure_or_flow_where_process_relevant"
+        ],
+        "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+      },
+      "evidence_requirements": [
+        "asset_identity",
+        "machine_model_and_configuration",
+        "operating_state",
+        "production_context",
+        "trusted_measurement_source",
+        "data_quality_pass"
+      ],
+      "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures."
+    }
+  ],
+  "regional_process_families": [
+    {
+      "family": "Automotive components",
+      "evidence": "direct regional concentration",
+      "source_id": "ASIA-AUTO"
+    },
+    {
+      "family": "Forging and forged components",
+      "evidence": "direct",
+      "source_id": "RKFL-ISO"
+    },
+    {
+      "family": "CNC machining and driveline machining",
+      "evidence": "direct",
+      "source_id": "RKFL-PROCESS"
+    },
+    {
+      "family": "Heat treatment",
+      "evidence": "direct",
+      "source_id": "RKFL-PROCESS"
+    },
+    {
+      "family": "Metal fabrication and general engineering",
+      "evidence": "direct regional concentration",
+      "source_id": "DCSME-JSR"
+    },
+    {
+      "family": "Foundry and casting",
+      "evidence": "direct regional concentration",
+      "source_id": "DCSME-JSR"
+    },
+    {
+      "family": "Stamping",
+      "evidence": "direct regional concentration",
+      "source_id": "DCSME-JSR"
+    },
+    {
+      "family": "Rubber/plastic",
+      "evidence": "direct regional concentration",
+      "source_id": "DCSME-JSR"
+    },
+    {
+      "family": "Electrical machinery",
+      "evidence": "direct regional concentration",
+      "source_id": "DCSME-JSR"
+    }
+  ],
+  "promotion_plan": "Regional records begin at L1. Promote to L2-L5 only after machine-specific engineering, measurement, placement, calibration, diagnostics, provenance and validation checks pass the GridMind machine-validation-gate."
+}
