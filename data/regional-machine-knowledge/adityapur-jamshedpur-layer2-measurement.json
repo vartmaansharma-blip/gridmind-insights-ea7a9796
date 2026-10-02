@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "layer": "L2",
+  "title": "Adityapur-Jamshedpur Machine Knowledge — Measurement Layer",
+  "principles": [
+    "Prefer trusted controller, PLC, drive or industrial-protocol data before retrofit sensing.",
+    "Select measurements from the engineering question; never install a fixed sensor bundle by default.",
+    "Every measurement carries source identity, unit, timestamp, quality status and operating context.",
+    "Do not invent accuracy, calibration intervals or health thresholds.",
+    "Diagnostics remain blocked until the machine-specific evidence gate is satisfied."
+  ],
+  "profiles": {
+    "machining": [
+      "electrical_power",
+      "spindle_speed",
+      "cycle_time",
+      "coolant_flow",
+      "vibration"
+    ],
+    "forming": [
+      "force_or_load",
+      "electrical_power",
+      "cycle_time"
+    ],
+    "thermal": [
+      "process_temperature",
+      "energy_input",
+      "cycle_or_residence_time"
+    ],
+    "rotating": [
+      "vibration",
+      "speed",
+      "temperature"
+    ],
+    "hydraulic": [
+      "pressure",
+      "flow",
+      "oil_temperature"
+    ],
+    "electrical": [
+      "voltage",
+      "current",
+      "power",
+      "temperature"
+    ],
+    "induction": [
+      "power",
+      "frequency",
+      "workpiece_temperature",
+      "cooling_flow"
+    ],
+    "welding": [
+      "welding_current",
+      "welding_voltage",
+      "cycle_time",
+      "shielding_gas_flow"
+    ],
+    "material_handling": [
+      "load",
+      "motor_power",
+      "speed"
+    ],
+    "generator": [
+      "electrical_output",
+      "fuel_flow",
+      "engine_speed",
+      "coolant_temperature"
+    ],
+    "metrology": [
+      "measurement_result",
+      "instrument_status"
+    ],
+    "ndt": [
+      "inspection_result",
+      "test_parameters"
+    ]
+  },
+  "measurement_schema": [
+    "metric",
+    "purpose",
+    "source_priority",
+    "device_class",
+    "placement_zone",
+    "units",
+    "sampling_or_event_rate",
+    "aggregation",
+    "quality_rules",
+    "calibration_requirements",
+    "operating_context",
+    "evidence_status"
+  ],
+  "quality_gates": [
+    "source_identity_verified",
+    "unit_validated",
+    "timestamp_synchronized",
+    "range_and_plausibility_checked",
+    "stale_missing_duplicate_out_of_order_handled",
+    "operating_context_attached",
+    "calibration_or_verification_status_known"
+  ],
+  "calibration_policy": "Record method, reference, tolerance, date, result, next due date and responsible actor. Select accuracy and calibration requirements from the instrument, manufacturer, applicable standard and application risk.",
+  "regional_machine_count": 48,
+  "diagnostic_enablement": "BLOCKED_UNTIL_L4"
+}
