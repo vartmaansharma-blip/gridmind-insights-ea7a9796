@@ -1,0 +1,24 @@
+{
+  "target": 1000,
+  "recommended_allocation": {
+    "rotating_equipment": 100,
+    "electric_motors_drives": 80,
+    "pumps_compressors": 90,
+    "fans_blower_vacuum": 60,
+    "machine_tools": 100,
+    "forming_forging_casting": 80,
+    "welding_cutting_joining": 50,
+    "thermal_process_equipment": 80,
+    "process_equipment": 90,
+    "plastics_rubber": 45,
+    "food_dairy": 45,
+    "pharma_chemical": 60,
+    "textile_paper_printing": 45,
+    "packaging_material_handling": 55,
+    "electrical_infrastructure": 55,
+    "water_waste_environmental": 35,
+    "renewables_energy_storage": 35,
+    "semiconductor_electronics": 30
+  },
+  "note": "Counts are planning allocations, not claims that these are the only possible classifications. Each entry must be a distinct archetype before promotion."
+}
