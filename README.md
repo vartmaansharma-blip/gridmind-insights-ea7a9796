@@ -1,63 +1,86 @@
 # GridMind Insights
 
-Build the first working MVP of a product called GridMind Factory Energy Intelligence.
+> **Intelligence for energy-intensive physical infrastructure.**
 
-Purpose: help industrial factories understand where they are losing money on electricity and identify actionable savings opportunities. This is a software-first MVP; do NOT build hardware integrations yet.
+GridMind Insights is an industrial intelligence platform designed to help factories understand energy performance, machine behaviour, operational losses, and improvement opportunities.
 
-Build a polished, premium B2B industrial dashboard, not a generic SaaS template. The product should feel credible to factory owners/plant managers.
+## Production
 
-Core workflow:
-1. Add/select a factory.
-2. Enter or import sample factory data manually for MVP: monthly electricity consumption, electricity cost, peak demand, contract demand, production volume, operating hours, and major equipment.
-3. Analyze the data.
-4. Show the most important findings as Problem → likely cause → estimated ₹ impact → recommended action → expected saving.
-5. Show savings verification with baseline, intervention, post-intervention and verified savings.
+**Live production application:** https://gridmind-insights.lovable.app
 
-Pages/sections:
-- Overview dashboard: monthly electricity cost, consumption, peak demand, production, energy/unit, estimated savings opportunity.
-- Energy: monthly consumption/cost trends and demand trend.
-- Opportunities: ranked actionable opportunities with rupee impact, confidence, status, and details.
-- Alerts: abnormal consumption / demand patterns.
-- Savings: before/after verification.
-- Factory profile/data input.
+The production application provides the current deployed GridMind experience.
 
-Use realistic demo data for a fictional Adityapur auto-component factory so the product is immediately understandable. Clearly label demo data as demo data; never imply it is a real customer's data.
+## What GridMind does
 
-Important product principles:
-- No meaningless charts.
-- Every major insight must connect to money, capacity, reliability, or action.
-- Use Indian rupee formatting.
-- Make the main CTA obvious: Add Factory / Run Analysis.
-- Include a guided empty-state for when no real data is connected.
-- Include a simple data quality indicator.
-- Make calculations deterministic and transparent.
-- Do not claim actual savings unless marked as estimated/demo.
-- Responsive mobile-first design.
-- Premium industrial aesthetic: restrained, modern, high trust, subtle motion, excellent typography, rounded cards but not childish, strong hierarchy.
+GridMind follows an evidence-first workflow:
 
-For the first MVP, prioritize working functionality over visual excess. Seed the demo factory with enough data to make the dashboard useful. Include a simple analysis engine in the frontend or local state that calculates energy/unit, cost trends, demand utilization, and opportunity estimates from entered data. Structure the code so real CSV/meter integrations can be added later.
+**DATA → BASELINE → DETECT → EXPLAIN → QUANTIFY → RECOMMEND → VERIFY → LEARN**
 
-Do not add payment, authentication, hardware, or external integrations yet. This is the validation MVP.
+It is designed to help industrial teams answer:
 
-This project was built with [Lovable](https://lovable.dev).
+- Where is the factory losing money or usable capacity?
+- What changed in energy or machine performance?
+- What evidence supports the finding?
+- What may be causing the abnormal behaviour?
+- What action should be investigated or taken?
+- What improvement was actually achieved after an intervention?
 
-**Live app**: https://gridmind-insights.lovable.app
+## Core capabilities
 
-## Build with Lovable
+- Factory energy intelligence
+- Machine and asset intelligence
+- Machine passports and retrofit assessment
+- Energy, demand and production analysis
+- Data-quality monitoring
+- Diagnostic rules and anomaly detection
+- Opportunity identification and financial impact analysis
+- Intervention tracking
+- Savings measurement and verification
+- Synthetic factory/data scenarios for development and testing
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/12d7acd4-2c00-472a-9b77-af92553ef7dc).
+## Evidence model
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+GridMind distinguishes between:
+
+- **Observed** — directly supported by supplied measurements
+- **Estimated** — calculated from available data
+- **Hypothesis** — a possible explanation requiring validation
+- **Recommended** — a proposed next action
+- **Verified** — supported by post-intervention evidence
+
+Synthetic/demo data must not be presented as real factory measurements or verified customer savings.
+
+## Product architecture
+
+The platform is being developed around a factory-to-asset intelligence model:
+
+**Factory → Systems/Areas → Machines → Sensors → Measurements → Findings → Opportunities → Interventions → Verification**
+
+For legacy industrial equipment, the intended approach is a retrofit sensing layer and gateway rather than requiring every machine to have native digital connectivity.
+
+## Safety and reliability principles
+
+GridMind is designed to:
+
+- fail closed when evidence is insufficient
+- distinguish sensor/data problems from machine problems
+- reject invalid, stale, duplicate or impossible measurements
+- avoid unsupported financial claims
+- preserve calculation and diagnostic traceability
+- keep initial OT integrations read-only
+- verify savings rather than assuming them
+
+## Current status
+
+The repository contains the current GridMind application and its supporting product architecture. Development is ongoing toward a production-ready industrial intelligence platform.
+
+## Repository
+
+GitHub: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+The project should be treated as an industrial intelligence product rather than a generic analytics dashboard. Changes should preserve the evidence hierarchy, data-quality safeguards, deterministic calculations, and separation between synthetic/demo data and real measured data.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+The project is developed with [Lovable](https://lovable.dev).
+
