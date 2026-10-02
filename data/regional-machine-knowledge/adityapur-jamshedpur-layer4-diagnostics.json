@@ -1,0 +1,197 @@
+{
+  "schema_version": "1.0.0",
+  "layer": "L4",
+  "title": "Adityapur-Jamshedpur Machine Knowledge — Diagnostic Evidence Foundation",
+  "rule": "L4 defines diagnostic questions and evidence gates. A diagnostic may only become active when its required evidence, quality and context conditions are satisfied.",
+  "diagnostic_state_machine": [
+    "DETECTED",
+    "INVESTIGATING",
+    "CONFIRMED",
+    "REJECTED",
+    "ACTIONED",
+    "RESOLVED",
+    "VERIFIED"
+  ],
+  "evidence_levels": [
+    "DIRECT",
+    "STRONG_INDIRECT",
+    "WEAK_INDIRECT",
+    "INSUFFICIENT"
+  ],
+  "universal_gates": [
+    "asset_identity_verified",
+    "measurement_quality_acceptable",
+    "operating_context_available",
+    "reference_confidence_acceptable",
+    "minimum_observation_window_met",
+    "uncertainty_checked",
+    "no_known_contaminating_event"
+  ],
+  "suppression_states": [
+    "INSUFFICIENT_DATA",
+    "STALE_DATA",
+    "CALIBRATION_REQUIRED",
+    "CONTEXT_MISSING",
+    "REFERENCE_UNCERTAIN",
+    "MEASUREMENT_CONFLICT",
+    "MAINTENANCE_ACTIVE"
+  ],
+  "diagnostic_families": {
+    "energy": {
+      "question": "Is the asset consuming materially more energy than comparable operation?",
+      "evidence": [
+        "energy",
+        "production_or_cycle_count",
+        "operating_state",
+        "comparable_reference"
+      ],
+      "rule": "Flag only when normalized deviation exceeds the configured significance threshold and is larger than relevant uncertainty."
+    },
+    "rotating_condition": {
+      "question": "Has rotating-equipment behaviour changed materially?",
+      "evidence": [
+        "vibration_at_defined_location",
+        "speed_or_load",
+        "temperature_when_relevant",
+        "comparable_reference"
+      ],
+      "rule": "A vibration anomaly is an observation requiring investigation; it is not automatically a bearing, alignment or lubrication diagnosis."
+    },
+    "pump": {
+      "question": "Has hydraulic performance changed?",
+      "evidence": [
+        "flow",
+        "pressure_or_head",
+        "power",
+        "speed_or_load"
+      ],
+      "rule": "Require a comparable operating point before interpreting efficiency or performance deterioration."
+    },
+    "compressed_air": {
+      "question": "Is compressed-air generation or demand behaving abnormally?",
+      "evidence": [
+        "compressor_power",
+        "discharge_pressure",
+        "flow_when_available",
+        "load_unload_state",
+        "runtime"
+      ],
+      "rule": "Leakage remains a hypothesis unless demand-side or system-level evidence supports it."
+    },
+    "thermal": {
+      "question": "Has thermal process efficiency or stability changed?",
+      "evidence": [
+        "process_temperature",
+        "energy_or_fuel_input",
+        "load",
+        "cycle_or_residence_time"
+      ],
+      "rule": "Separate startup, soak, production and shutdown states before comparison."
+    },
+    "forming": {
+      "question": "Has forming behaviour changed for comparable work?",
+      "evidence": [
+        "force_or_pressure",
+        "cycle_time",
+        "power",
+        "product_or_recipe_context"
+      ],
+      "rule": "Do not infer tooling failure from power or force alone."
+    },
+    "machining": {
+      "question": "Has machining energy or cycle behaviour changed under comparable cutting conditions?",
+      "evidence": [
+        "power",
+        "cycle_time",
+        "spindle_speed",
+        "feed_or_recipe_context",
+        "product_or_tooling_context"
+      ],
+      "rule": "Energy deviation alone cannot identify tool wear, spindle condition or mechanical fault."
+    },
+    "electrical": {
+      "question": "Has electrical loading or power quality changed materially?",
+      "evidence": [
+        "voltage",
+        "current",
+        "power",
+        "power_factor_when_relevant",
+        "load_context"
+      ],
+      "rule": "Distinguish supply-side abnormalities from asset-side abnormalities before attribution."
+    },
+    "generator": {
+      "question": "Has generation efficiency or output behaviour changed?",
+      "evidence": [
+        "electrical_output",
+        "fuel_flow",
+        "load",
+        "runtime",
+        "engine_state"
+      ],
+      "rule": "Require comparable load conditions before efficiency comparison."
+    },
+    "material_handling": {
+      "question": "Has lifting/transport energy or duty behaviour changed?",
+      "evidence": [
+        "load",
+        "power_or_current",
+        "speed",
+        "duty_cycle"
+      ],
+      "rule": "Safety-critical mechanical conclusions require qualified inspection."
+    },
+    "measurement_integrity": {
+      "question": "Can the measurement itself be trusted?",
+      "evidence": [
+        "source_identity",
+        "timestamp",
+        "unit",
+        "range",
+        "calibration_status",
+        "continuity"
+      ],
+      "rule": "Measurement-integrity findings take precedence over machine-performance conclusions."
+    }
+  },
+  "action_policy": {
+    "format": [
+      "observation",
+      "evidence",
+      "estimated_impact",
+      "possible_causes",
+      "recommended_check",
+      "required_personnel",
+      "verification_measurement"
+    ],
+    "safety": "Physical electrical/mechanical intervention must follow site procedures and qualified personnel requirements.",
+    "confidence": "Recommendations must not be phrased as confirmed failure unless evidence directly supports the conclusion."
+  },
+  "threshold_policy": {
+    "principle": "Thresholds are diagnostic-specific and versioned.",
+    "default_behavior": "No universal percentage threshold authorizes a machine fault. Use reference deviation, uncertainty, repeatability, context and diagnostic-specific evidence.",
+    "versioning": [
+      "rule_version",
+      "reference_version",
+      "calculation_version",
+      "measurement_schema_version"
+    ]
+  },
+  "financial_linkage": {
+    "allowed": "Observed or estimated economic impact may be calculated from traceable inputs.",
+    "blocked": "Potential or verified savings cannot be presented as verified without intervention and M&V evidence.",
+    "required_lineage": [
+      "source_measurements",
+      "reference",
+      "production_context",
+      "tariff",
+      "formula",
+      "assumptions",
+      "calculation_version",
+      "timestamp"
+    ]
+  },
+  "regional_machine_count": 49,
+  "status": "L4_FOUNDATION",
+  "diagnostic_enablement": "MACHINE_SPECIFIC_DIAGNOSTICS_REQUIRE_MACHINE_LEVEL_VALIDATION"
+}
