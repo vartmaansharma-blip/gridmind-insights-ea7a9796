@@ -30,4 +30,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-\n# Environment files\n.env\n.env.*\n!.env.example\n
+
+# Environment files
+.env
+.env.*
+!.env.example
