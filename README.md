@@ -74,6 +74,8 @@ GridMind is designed to:
 
 The repository contains the current GridMind application and its supporting product architecture. Development is ongoing toward a production-ready industrial intelligence platform.
 
+Repository quality gates now run automatically on `main`, `develop`, and pull requests targeting either branch. The required automated gate is TypeScript typecheck → ESLint → production build. See [`docs/release-gate.md`](docs/release-gate.md) for the release standard.
+
 ## Repository
 
 GitHub: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
