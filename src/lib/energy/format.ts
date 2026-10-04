@@ -1,7 +1,7 @@
-const inrFmt = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 0 });
+const inrFmt = new Intl.NumberFormat("en-IN", { maximumFractionDigits: 2 });
 
 export function inr(n: number) {
-  return `₹${inrFmt.format(Math.round(n))}`;
+  return `₹${inrFmt.format(n)}`;
 }
 
 export function inrCompact(n: number) {
