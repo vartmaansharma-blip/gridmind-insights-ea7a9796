@@ -20,6 +20,11 @@ export function PageHeader({ eyebrow, title, desc, actions }: { eyebrow: string;
   );
 }
 
+export function ProcessRail({ active = 0 }: { active?: number }) {
+  const steps = ["Factory", "System", "Asset", "Sensor", "Measurement", "Finding", "Action", "Outcome"];
+  return <ol className="mb-6 flex overflow-x-auto border-y border-border py-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">{steps.map((step, i) => <li key={step} className={cn("flex min-w-max items-center", i <= active && "text-foreground")}><span className={cn("mr-2 size-1.5 rounded-full bg-border", i <= active && "bg-cta")} />{step}{i < steps.length - 1 && <span className="mx-3 text-border">/</span>}</li>)}</ol>;
+}
+
 export function DemoBadge({ className }: { className?: string }) {
   return (
     <span className={cn("inline-flex items-center gap-1 rounded-full border border-warning/40 bg-warning-soft px-2 py-0.5 text-[11px] font-semibold text-warning", className)}>
