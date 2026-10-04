@@ -3,6 +3,7 @@ import { useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { AlertTriangle, BadgeIndianRupee, Cpu, Factory as FactoryIcon, LayoutDashboard, Lightbulb, Play, Plus, Zap } from "lucide-react";
+import gridMindMark from "@/assets/gridmind-mark.png";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -13,26 +14,21 @@ import { inrCompact } from "@/lib/energy/format";
 
 const NAV = [
   { to: "/", label: "Overview", icon: LayoutDashboard },
+  { to: "/factory", label: "Factory / Data", icon: FactoryIcon },
   { to: "/energy", label: "Energy", icon: Zap },
+  { to: "/machines", label: "Machines", icon: Cpu },
   { to: "/opportunities", label: "Opportunities", icon: Lightbulb },
   { to: "/alerts", label: "Alerts", icon: AlertTriangle },
   { to: "/savings", label: "Savings", icon: BadgeIndianRupee },
-  { to: "/machines", label: "Machines", icon: Cpu },
-  { to: "/factory", label: "Factory data", icon: FactoryIcon },
 ] as const;
 
 function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <div className="grid size-8 grid-cols-2 gap-0.5 rounded-md bg-cta p-1.5">
-        <span className="rounded-[2px] bg-cta-foreground" />
-        <span className="rounded-[2px] bg-cta-foreground/40" />
-        <span className="rounded-[2px] bg-cta-foreground/40" />
-        <span className="rounded-[2px] bg-cta-foreground" />
-      </div>
+      <img src={gridMindMark} alt="" width={256} height={256} className="size-9 object-contain" />
       <div className="leading-tight">
         <div className="text-sm font-semibold">GridMind</div>
-        <div className="text-[10px] uppercase tracking-[0.14em] opacity-60">Factory Energy Intelligence</div>
+        <div className="text-[9px] uppercase tracking-[0.14em] opacity-60">Infrastructure intelligence</div>
       </div>
     </div>
   );
@@ -104,7 +100,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen lg:pl-64">
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col bg-rail p-4 text-rail-foreground lg:flex">
+      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-sidebar-border bg-rail p-4 text-rail-foreground lg:flex">
         <Logo />
         <nav className="mt-8 grid gap-0.5">
           {NAV.map((n) => (
@@ -115,13 +111,14 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Link>
           ))}
         </nav>
-        <div className="mt-auto rounded-lg border border-sidebar-border p-3 text-xs text-rail-muted">
-          Validation MVP. All savings are engineering estimates until verified with metered data.
+        <div className="mt-auto border-t border-sidebar-border pt-4 text-xs text-rail-muted">
+          <div className="mb-1 font-semibold text-rail-foreground">Factory Performance Intelligence</div>
+          Estimates remain potential until a measured baseline and post-intervention comparison are accepted.
         </div>
       </aside>
 
       <header className="sticky top-0 z-20 border-b border-border bg-background/85 backdrop-blur">
-        <div className="flex items-center gap-2 px-4 py-3 sm:px-6">
+        <div className="flex min-h-16 items-center gap-2 px-4 py-3 sm:px-6">
           <div className="lg:hidden"><Logo /></div>
           <div className="ml-auto flex items-center gap-2 lg:ml-0 lg:flex-1">
             <Select value={active?.id ?? ""} onValueChange={setActive}>
@@ -136,16 +133,20 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Button variant="outline" className="hidden sm:inline-flex" onClick={() => setAddOpen(true)}><Plus /> Add factory</Button>
           </div>
           <Button variant="cta" onClick={onRun} className="hidden sm:inline-flex"><Play /> Run analysis</Button>
+          <div className="hidden border-l border-border pl-3 text-[10px] text-muted-foreground xl:block">
+            <div className="font-semibold text-foreground">{analysis?.quality.grade ?? "No data"} quality · {analysis?.quality.score ?? 0}/100</div>
+            <div>{active?.lastAnalyzedAt ? `Analysed ${new Date(active.lastAnalyzedAt).toLocaleString()}` : "Analysis not yet recorded"}</div>
+          </div>
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-4 pb-28 pt-6 sm:px-6 lg:pb-12">{children}</main>
+      <main className="mx-auto max-w-[1440px] px-4 pb-28 pt-6 sm:px-6 lg:pb-12 lg:pt-8">{children}</main>
 
       <Button variant="cta" onClick={onRun} className="fixed bottom-20 right-4 z-30 rounded-full sm:hidden"><Play /> Run analysis</Button>
-      <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-6 border-t border-sidebar-border bg-rail lg:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-30 flex overflow-x-auto border-t border-sidebar-border bg-rail lg:hidden">
         {NAV.map((n) => (
           <Link key={n.to} to={n.to} activeOptions={{ exact: n.to === "/" }}
-            className="flex flex-col items-center gap-1 py-2.5 text-[10px] text-rail-muted"
+            className="flex min-w-[74px] flex-1 flex-col items-center gap-1 py-2.5 text-[10px] text-rail-muted"
             activeProps={{ className: "!text-cta" }}>
             <n.icon className="size-5" /> <span className="truncate">{n.label.split(" ")[0]}</span>
           </Link>

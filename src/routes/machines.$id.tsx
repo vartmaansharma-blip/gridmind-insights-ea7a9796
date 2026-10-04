@@ -21,7 +21,7 @@ export const Route = createFileRoute("/machines/$id")({
     const d = await context.queryClient.ensureQueryData(machineQuery);
     if (!d.assets.some((a) => String(a.id) === params.id)) throw notFound();
   },
-  errorComponent: ({ error }) => <p className="text-sm text-danger">Could not load machine: {error.message}</p>,
+  errorComponent: ({ error }) => <p className="text-sm text-danger">Could not load machine: {error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p className="text-sm">Machine not found. <Link to="/machines" className="underline">Back to machines</Link></p>,
   component: Passport,
 });
@@ -42,7 +42,8 @@ const yn = (b?: boolean | null) => (b ? "Yes" : "No");
 function Passport() {
   const { id } = Route.useParams();
   const { data } = useSuspenseQuery(machineQuery);
-  const a = data.assets.find((x) => String(x.id) === id)!;
+  const a = data.assets.find((x) => String(x.id) === id);
+  if (!a) return null;
   const t = data.types.find((x) => x.id === a.machine_type_id);
   const p = data.profiles.find((x) => x.asset_id === a.id);
   const sensors = data.sensors.filter((x) => x.asset_id === a.id);
@@ -99,7 +100,7 @@ function Passport() {
                     <td>{s.unit}</td>
                     <td>{s.required ? "Yes" : "—"}</td>
                     <td className="capitalize">{s.source_type}</td>
-                    <td><span className={cn("rounded px-1.5 py-px text-[10px] font-semibold uppercase", s.available ? "bg-success-soft text-success" : "bg-muted text-muted-foreground")}>{s.available ? "Live" : s.installation_status?.replace(/_/g, " ")}</span></td>
+                    <td><span className={cn("rounded px-1.5 py-px text-[10px] font-semibold uppercase", s.available ? "bg-success-soft text-success" : "bg-muted text-muted-foreground")}>{s.available ? "Available" : s.installation_status?.replace(/_/g, " ")}</span></td>
                   </tr>
                 ))}
               </tbody>
@@ -162,6 +163,7 @@ function Passport() {
           ))}
         </Section>
       </div>
+      <div className="mt-4"><Section title="Next evidence action" tag={<EvidenceTag k="recommended" />}><p className="text-sm">{req.some((s) => !s.available) ? `Close the required measurement gap before enabling diagnostics: ${req.filter((s) => !s.available).map((s) => s.metric_name).join(", ")}.` : ranges ? "Review the calibrated fingerprint against current operating conditions before interpreting any deviation." : `Collect ${cal?.baseline_window_days ?? 30} days under annotated normal operating conditions to establish a fingerprint.`}</p><p className="mt-2 text-xs text-muted-foreground">This is an evidence-gathering recommendation, not an instruction to control equipment.</p></Section></div>
     </>
   );
 }

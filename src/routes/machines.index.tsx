@@ -30,7 +30,7 @@ export const Route = createFileRoute("/machines/")({
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(machineQuery),
-  errorComponent: ({ error }) => <p className="text-sm text-danger">Could not load machines: {error.message}</p>,
+  errorComponent: ({ error }) => <p className="text-sm text-danger">Could not load machines: {error instanceof Error ? error.message : String(error)}</p>,
   notFoundComponent: () => <p>Not found</p>,
   component: MachinesPage,
 });

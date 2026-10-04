@@ -1,8 +1,9 @@
-import type { Opportunity } from "@/lib/energy/types";
+import type { IntelligenceOpportunity } from "@/lib/energy/intelligence";
 import { inrCompact } from "@/lib/energy/format";
-import { ConfidenceDots, EstimatedTag } from "./bits";
+import { ConfidenceDots } from "./bits";
+import { EvidenceTag } from "./evidence";
 
-export function FindingFlow({ o }: { o: Opportunity }) {
+export function FindingFlow({ o }: { o: IntelligenceOpportunity }) {
   const cells = [
     { k: "Problem", v: o.problem },
     { k: "Likely cause", v: o.cause },
@@ -22,12 +23,13 @@ export function FindingFlow({ o }: { o: Opportunity }) {
   );
 }
 
-export function FindingHeader({ o, rank }: { o: Opportunity; rank: number }) {
+export function FindingHeader({ o, rank }: { o: IntelligenceOpportunity; rank: number }) {
   return (
     <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1">
       <span className="num text-xs text-muted-foreground">#{String(rank).padStart(2, "0")}</span>
       <h3 className="font-semibold">{o.title}</h3>
-      <EstimatedTag />
+      <EvidenceTag k={o.evidenceState} />
+      <span className="text-xs text-muted-foreground">{o.opportunityClass} · {o.system}</span>
       <span className="ml-auto"><ConfidenceDots c={o.confidence} /></span>
     </div>
   );
