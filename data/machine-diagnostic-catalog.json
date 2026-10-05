@@ -1,0 +1,1937 @@
+{
+  "schema_version": "1.0",
+  "purpose": "Canonical seed specification for machine-level diagnostic knowledge. This file is not field-validated truth.",
+  "rules": {
+    "llm": "proposes; GridMind validates",
+    "evidence": "weak evidence must never silently become strong evidence",
+    "economics": "financial values require explicit lineage and approved tariff/input data",
+    "unknown": "diagnosis_unavailable is a valid outcome",
+    "safety": "no autonomous safety-critical control"
+  },
+  "machine_count": 14,
+  "diagnostic_count": 42,
+  "diagnostics": [
+    {
+      "machine_type_id": 1,
+      "machine_type_key": "cnc_turning_center",
+      "diagnostic_key": "energy_intensity",
+      "display_name": "Excess energy per produced unit",
+      "objective": "Excess energy per produced unit.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "cycle_time_s",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition kWh/unit on production regime and cycle context.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 1,
+      "machine_type_key": "cnc_turning_center",
+      "diagnostic_key": "idle_energy",
+      "display_name": "Avoidable idle energy",
+      "objective": "Avoidable idle energy.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "runtime_hours",
+          "operating_state",
+          "production_count"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Partition energy by state against an accepted idle reference.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 1,
+      "machine_type_key": "cnc_turning_center",
+      "diagnostic_key": "cycle_drift",
+      "display_name": "Production-cycle deterioration",
+      "objective": "Production-cycle deterioration.",
+      "evidence_contract": {
+        "required": [
+          "cycle_time_s",
+          "production_count",
+          "spindle_rpm",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare conditioned cycle-time distribution with reference.",
+      "economic_method": "capacity_value only if customer economics are supplied",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 2,
+      "machine_type_key": "cnc_vmc",
+      "diagnostic_key": "energy_intensity",
+      "display_name": "Excess energy per produced unit",
+      "objective": "Excess energy per produced unit.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "cycle_time_s",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition kWh/unit on production and program context.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 2,
+      "machine_type_key": "cnc_vmc",
+      "diagnostic_key": "idle_energy",
+      "display_name": "Avoidable idle energy",
+      "objective": "Avoidable idle energy.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "operating_state",
+          "runtime_hours"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare non-cutting energy with accepted setup/idle reference.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 2,
+      "machine_type_key": "cnc_vmc",
+      "diagnostic_key": "cycle_drift",
+      "display_name": "Cycle-time deterioration",
+      "objective": "Cycle-time deterioration.",
+      "evidence_contract": {
+        "required": [
+          "cycle_time_s",
+          "production_count",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare conditioned cycle time with reference.",
+      "economic_method": "capacity_value only if customer economics are supplied",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 3,
+      "machine_type_key": "mechanical_power_press",
+      "diagnostic_key": "energy_intensity",
+      "display_name": "Excess energy per formed part",
+      "objective": "Excess energy per formed part.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "stroke_rate_spm",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition energy per part on stroke rate and operating state.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 3,
+      "machine_type_key": "mechanical_power_press",
+      "diagnostic_key": "idle_running",
+      "display_name": "Non-productive press running",
+      "objective": "Non-productive press running.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "operating_state",
+          "stroke_rate_spm"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Identify running energy without corresponding output beyond approved setup allowance.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 3,
+      "machine_type_key": "mechanical_power_press",
+      "diagnostic_key": "stroke_anomaly",
+      "display_name": "Stroke-rate deviation",
+      "objective": "Stroke-rate deviation.",
+      "evidence_contract": {
+        "required": [
+          "stroke_rate_spm",
+          "production_count",
+          "cycle_time_s",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare stroke-rate distribution under comparable production conditions.",
+      "economic_method": "capacity exposure only with customer value model",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 4,
+      "machine_type_key": "hydraulic_press",
+      "diagnostic_key": "hydraulic_efficiency",
+      "display_name": "Hydraulic energy inefficiency",
+      "objective": "Hydraulic energy inefficiency.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "pressure_bar",
+          "production_count",
+          "cycle_time_s"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare electrical input for comparable hydraulic duty.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 4,
+      "machine_type_key": "hydraulic_press",
+      "diagnostic_key": "pressure_anomaly",
+      "display_name": "Pressure behavior deviation",
+      "objective": "Pressure behavior deviation.",
+      "evidence_contract": {
+        "required": [
+          "pressure_bar",
+          "operating_state",
+          "production_count"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare pressure against a state/recipe-specific envelope.",
+      "economic_method": "economic impact only when linked to energy, scrap, or downtime",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 4,
+      "machine_type_key": "hydraulic_press",
+      "diagnostic_key": "overheating",
+      "display_name": "Hydraulic thermal deterioration",
+      "objective": "Hydraulic thermal deterioration.",
+      "evidence_contract": {
+        "required": [
+          "oil_temperature_c",
+          "power_kw",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Detect persistent oil-temperature elevation under comparable load.",
+      "economic_method": "maintenance/downtime exposure, not automatic savings",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 5,
+      "machine_type_key": "forging_press_hammer",
+      "diagnostic_key": "energy_intensity",
+      "display_name": "Excess resource per forged unit",
+      "objective": "Excess resource per forged unit.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "cycle_time_s",
+          "temperature_c"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition resource use on production and thermal regime.",
+      "economic_method": "excess_energy_cost",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 5,
+      "machine_type_key": "forging_press_hammer",
+      "diagnostic_key": "thermal_anomaly",
+      "display_name": "Process-temperature deviation",
+      "objective": "Process-temperature deviation.",
+      "evidence_contract": {
+        "required": [
+          "temperature_c",
+          "operating_state",
+          "production_count"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare process temperature with recipe/state envelope.",
+      "economic_method": "quality/energy exposure only with supporting evidence",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 5,
+      "machine_type_key": "forging_press_hammer",
+      "diagnostic_key": "cycle_anomaly",
+      "display_name": "Forging cycle deterioration",
+      "objective": "Forging cycle deterioration.",
+      "evidence_contract": {
+        "required": [
+          "cycle_time_s",
+          "production_count",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare conditioned cycle-time distribution with reference.",
+      "economic_method": "capacity exposure if customer economics are supplied",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 6,
+      "machine_type_key": "induction_furnace",
+      "diagnostic_key": "thermal_efficiency",
+      "display_name": "Excess energy per batch/unit",
+      "objective": "Excess energy per batch/unit.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "temperature_c",
+          "production_count",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition energy on recipe, batch, temperature and output.",
+      "economic_method": "excess_energy_cost",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 6,
+      "machine_type_key": "induction_furnace",
+      "diagnostic_key": "temperature_deviation",
+      "display_name": "Temperature-control deviation",
+      "objective": "Temperature-control deviation.",
+      "evidence_contract": {
+        "required": [
+          "temperature_c",
+          "operating_state",
+          "production_count"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare temperature trajectory with recipe-specific envelope.",
+      "economic_method": "quality/energy exposure only with supporting evidence",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 6,
+      "machine_type_key": "induction_furnace",
+      "diagnostic_key": "excess_idle_energy",
+      "display_name": "Avoidable thermal idle energy",
+      "objective": "Avoidable thermal idle energy.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "operating_state",
+          "temperature_c",
+          "runtime_hours"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Quantify idle energy above approved hold/reference windows.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 7,
+      "machine_type_key": "welding_cell",
+      "diagnostic_key": "energy_per_weld",
+      "display_name": "Excess energy per weld/unit",
+      "objective": "Excess energy per weld/unit.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "cycle_time_s",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition energy per weld on program and cycle context.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 7,
+      "machine_type_key": "welding_cell",
+      "diagnostic_key": "cycle_anomaly",
+      "display_name": "Weld-cycle deterioration",
+      "objective": "Weld-cycle deterioration.",
+      "evidence_contract": {
+        "required": [
+          "cycle_time_s",
+          "production_count",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare conditioned cycle-time distribution with reference.",
+      "economic_method": "capacity exposure if customer economics are supplied",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 7,
+      "machine_type_key": "welding_cell",
+      "diagnostic_key": "electrical_anomaly",
+      "display_name": "Welding electrical behavior deviation",
+      "objective": "Welding electrical behavior deviation.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "current_a",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare electrical input by welding program and state.",
+      "economic_method": "economic impact only when tied to excess energy or downtime",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 8,
+      "machine_type_key": "air_compressor",
+      "diagnostic_key": "specific_power",
+      "display_name": "Compressed-air specific power deterioration",
+      "objective": "Compressed-air specific power deterioration.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "air_flow_nm3_h",
+          "discharge_pressure_bar",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare kW or kWh/Nm3 at comparable pressure and demand.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 8,
+      "machine_type_key": "air_compressor",
+      "diagnostic_key": "unload_loss",
+      "display_name": "Excess unloaded energy",
+      "objective": "Excess unloaded energy.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "load_state",
+          "air_flow_nm3_h",
+          "runtime_hours"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare unloaded power and duration with accepted reference.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 8,
+      "machine_type_key": "air_compressor",
+      "diagnostic_key": "pressure_excess",
+      "display_name": "Excess supply pressure",
+      "objective": "Excess supply pressure.",
+      "evidence_contract": {
+        "required": [
+          "discharge_pressure_bar",
+          "air_flow_nm3_h",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare delivered pressure with validated downstream requirement.",
+      "economic_method": "potential energy exposure; quantify only with pressure-energy evidence",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 9,
+      "machine_type_key": "cooling_system",
+      "diagnostic_key": "cooling_efficiency",
+      "display_name": "Cooling performance deterioration",
+      "objective": "Cooling performance deterioration.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "supply_temperature_c",
+          "return_temperature_c",
+          "flow_lpm",
+          "ambient_temperature_c"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare energy per useful cooling output under comparable conditions.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 9,
+      "machine_type_key": "cooling_system",
+      "diagnostic_key": "flow_anomaly",
+      "display_name": "Cooling-flow deviation",
+      "objective": "Cooling-flow deviation.",
+      "evidence_contract": {
+        "required": [
+          "flow_lpm",
+          "supply_temperature_c",
+          "return_temperature_c",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare flow by load/state against reference.",
+      "economic_method": "economic value only when linked to energy, quality, or reliability",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 9,
+      "machine_type_key": "cooling_system",
+      "diagnostic_key": "excess_energy",
+      "display_name": "Cooling energy excess",
+      "objective": "Cooling energy excess.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "supply_temperature_c",
+          "return_temperature_c",
+          "flow_lpm",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition energy on cooling demand and environmental context.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 10,
+      "machine_type_key": "pump",
+      "diagnostic_key": "pump_efficiency",
+      "display_name": "Pump energy-performance deterioration",
+      "objective": "Pump energy-performance deterioration.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "flow_lpm",
+          "discharge_pressure_bar",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare electrical input against conditioned hydraulic output.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 10,
+      "machine_type_key": "pump",
+      "diagnostic_key": "flow_loss",
+      "display_name": "Flow-performance deviation",
+      "objective": "Flow-performance deviation.",
+      "evidence_contract": {
+        "required": [
+          "flow_lpm",
+          "discharge_pressure_bar",
+          "power_kw",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare flow at comparable pressure/load states.",
+      "economic_method": "economic value only with linked process impact",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 10,
+      "machine_type_key": "pump",
+      "diagnostic_key": "cavitation_indicator",
+      "display_name": "Possible cavitation/condition anomaly",
+      "objective": "Possible cavitation/condition anomaly.",
+      "evidence_contract": {
+        "required": [
+          "vibration_mm_s",
+          "flow_lpm",
+          "discharge_pressure_bar",
+          "power_kw"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Correlate condition and hydraulic variables against known operating regimes.",
+      "economic_method": "reliability exposure; not an automatic savings claim",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 11,
+      "machine_type_key": "hvac_ahu",
+      "diagnostic_key": "cooling_efficiency",
+      "display_name": "Conditioning energy deterioration",
+      "objective": "Conditioning energy deterioration.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "supply_temperature_c",
+          "return_temperature_c",
+          "airflow_m3_h",
+          "ambient_temperature_c"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition energy on ambient and process/occupancy load.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 11,
+      "machine_type_key": "hvac_ahu",
+      "diagnostic_key": "filter_restriction",
+      "display_name": "Possible airflow restriction",
+      "objective": "Possible airflow restriction.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "airflow_m3_h",
+          "operating_state",
+          "filter_dp_pa"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Look for airflow/energy pattern consistent with restriction.",
+      "economic_method": "potential energy exposure; physical validation required",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 11,
+      "machine_type_key": "hvac_ahu",
+      "diagnostic_key": "off_hours_operation",
+      "display_name": "Unnecessary scheduled operation",
+      "objective": "Unnecessary scheduled operation.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "runtime_hours",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare actual runtime with validated required schedule.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 12,
+      "machine_type_key": "transformer",
+      "diagnostic_key": "loss_anomaly",
+      "display_name": "Transformer loss deviation",
+      "objective": "Transformer loss deviation.",
+      "evidence_contract": {
+        "required": [
+          "load_kw",
+          "load_kva",
+          "voltage_v",
+          "current_a"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Estimate or model loading-dependent losses using validated measurement topology.",
+      "economic_method": "excess_loss_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 12,
+      "machine_type_key": "transformer",
+      "diagnostic_key": "overload",
+      "display_name": "Thermal/loading exposure",
+      "objective": "Thermal/loading exposure.",
+      "evidence_contract": {
+        "required": [
+          "load_kva",
+          "current_a",
+          "voltage_v",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare loading with rated/approved operating envelope.",
+      "economic_method": "reliability/capacity exposure",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 12,
+      "machine_type_key": "transformer",
+      "diagnostic_key": "power_quality_indicator",
+      "display_name": "Power-quality deviation",
+      "objective": "Power-quality deviation.",
+      "evidence_contract": {
+        "required": [
+          "power_factor",
+          "voltage_v",
+          "current_a",
+          "load_kw"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare electrical quality indicators with site thresholds and operating context.",
+      "economic_method": "potential demand/loss exposure only with tariff/topology evidence",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 13,
+      "machine_type_key": "dg_generator",
+      "diagnostic_key": "fuel_efficiency",
+      "display_name": "Fuel-performance deterioration",
+      "objective": "Fuel-performance deterioration.",
+      "evidence_contract": {
+        "required": [
+          "load_kw",
+          "fuel_consumption_lph",
+          "runtime_hours",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare fuel per delivered kWh at comparable load.",
+      "economic_method": "excess_fuel_l * fuel_price",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 13,
+      "machine_type_key": "dg_generator",
+      "diagnostic_key": "load_anomaly",
+      "display_name": "Generator loading deviation",
+      "objective": "Generator loading deviation.",
+      "evidence_contract": {
+        "required": [
+          "load_kw",
+          "runtime_hours",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare loading profile with approved operating and backup requirements.",
+      "economic_method": "fuel/maintenance exposure only where supported",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 13,
+      "machine_type_key": "dg_generator",
+      "diagnostic_key": "excess_idle_runtime",
+      "display_name": "Avoidable generator runtime",
+      "objective": "Avoidable generator runtime.",
+      "evidence_contract": {
+        "required": [
+          "load_kw",
+          "runtime_hours",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Identify runtime without required electrical duty outside approved test windows.",
+      "economic_method": "avoidable_fuel_l * fuel_price",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 14,
+      "machine_type_key": "material_handling_conveyor",
+      "diagnostic_key": "energy_per_unit",
+      "display_name": "Excess material-handling energy",
+      "objective": "Excess material-handling energy.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "production_count",
+          "runtime_hours",
+          "operating_state"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Condition energy on throughput and operating regime.",
+      "economic_method": "excess_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 14,
+      "machine_type_key": "material_handling_conveyor",
+      "diagnostic_key": "idle_energy",
+      "display_name": "Idle conveyor energy",
+      "objective": "Idle conveyor energy.",
+      "evidence_contract": {
+        "required": [
+          "power_kw",
+          "runtime_hours",
+          "operating_state",
+          "production_count"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Partition energy by state and compare idle operation with approved reference.",
+      "economic_method": "avoidable_kwh * tariff",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    },
+    {
+      "machine_type_id": 14,
+      "machine_type_key": "material_handling_conveyor",
+      "diagnostic_key": "throughput_anomaly",
+      "display_name": "Handling throughput deviation",
+      "objective": "Handling throughput deviation.",
+      "evidence_contract": {
+        "required": [
+          "production_count",
+          "runtime_hours",
+          "operating_state",
+          "power_kw"
+        ],
+        "preferred": [],
+        "optional": [],
+        "validation": [
+          "data_quality",
+          "unit_and_timestamp_integrity",
+          "operating_context",
+          "persistence"
+        ],
+        "failure_states": [
+          "insufficient_evidence",
+          "reference_uncertain",
+          "diagnosis_unavailable",
+          "contradictory_evidence"
+        ]
+      },
+      "method": "Compare throughput rate against conditioned reference.",
+      "economic_method": "capacity exposure if customer economics are supplied",
+      "output_states": [
+        "observed",
+        "estimated",
+        "hypothesis",
+        "recommended",
+        "verified"
+      ],
+      "safety_boundary": "read_only_initially; consequential physical changes require qualified human approval",
+      "knowledge_status": "candidate",
+      "validation_status": "not_yet_validated",
+      "provenance": {
+        "source": "GridMind machine diagnostic taxonomy",
+        "source_references": [],
+        "note": "Generic diagnostic hypothesis; field validation is required before production use."
+      }
+    }
+  ]
+}
