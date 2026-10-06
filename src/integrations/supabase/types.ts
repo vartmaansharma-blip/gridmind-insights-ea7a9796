@@ -295,6 +295,13 @@ export type Database = {
             foreignKeyName: "diagnostic_rules_machine_type_id_fkey"
             columns: ["machine_type_id"]
             isOneToOne: false
+            referencedRelation: "machine_type_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "diagnostic_rules_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: false
             referencedRelation: "machine_types"
             referencedColumns: ["id"]
           },
@@ -403,6 +410,13 @@ export type Database = {
             foreignKeyName: "factory_assets_machine_type_id_fkey"
             columns: ["machine_type_id"]
             isOneToOne: false
+            referencedRelation: "machine_type_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "factory_assets_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: false
             referencedRelation: "machine_types"
             referencedColumns: ["id"]
           },
@@ -451,6 +465,168 @@ export type Database = {
             columns: ["asset_id"]
             isOneToOne: false
             referencedRelation: "factory_assets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      machine_measurement_definitions: {
+        Row: {
+          canonical_unit: string | null
+          category: string
+          created_at: string
+          diagnostic_uses: Json
+          display_name: string
+          economic_relevance: string | null
+          id: number
+          machine_type_id: number
+          physical_meaning: string
+          preferred_sources: Json
+          quality_rules: Json
+          requiredness: string
+          signal_key: string
+          updated_at: string
+          why_it_matters: string | null
+        }
+        Insert: {
+          canonical_unit?: string | null
+          category: string
+          created_at?: string
+          diagnostic_uses?: Json
+          display_name: string
+          economic_relevance?: string | null
+          id?: number
+          machine_type_id: number
+          physical_meaning: string
+          preferred_sources?: Json
+          quality_rules?: Json
+          requiredness: string
+          signal_key: string
+          updated_at?: string
+          why_it_matters?: string | null
+        }
+        Update: {
+          canonical_unit?: string | null
+          category?: string
+          created_at?: string
+          diagnostic_uses?: Json
+          display_name?: string
+          economic_relevance?: string | null
+          id?: number
+          machine_type_id?: number
+          physical_meaning?: string
+          preferred_sources?: Json
+          quality_rules?: Json
+          requiredness?: string
+          signal_key?: string
+          updated_at?: string
+          why_it_matters?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "machine_measurement_definitions_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: false
+            referencedRelation: "machine_type_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "machine_measurement_definitions_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: false
+            referencedRelation: "machine_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      machine_type_knowledge: {
+        Row: {
+          calibration: Json
+          components: Json
+          created_at: string
+          data_sources: Json
+          diagnostic_scope: Json
+          economics: Json
+          failure_modes: Json
+          id: number
+          industrial_protocols: Json
+          inputs: Json
+          intervention_types: Json
+          knowledge_status: string
+          machine_type_id: number
+          measurement_requirements: Json
+          operating_principle: string | null
+          operating_states: Json
+          outputs: Json
+          performance_reference: Json
+          provenance: Json
+          safety: Json
+          schema_version: string
+          updated_at: string
+          validation_status: string
+        }
+        Insert: {
+          calibration?: Json
+          components?: Json
+          created_at?: string
+          data_sources?: Json
+          diagnostic_scope?: Json
+          economics?: Json
+          failure_modes?: Json
+          id?: number
+          industrial_protocols?: Json
+          inputs?: Json
+          intervention_types?: Json
+          knowledge_status?: string
+          machine_type_id: number
+          measurement_requirements?: Json
+          operating_principle?: string | null
+          operating_states?: Json
+          outputs?: Json
+          performance_reference?: Json
+          provenance?: Json
+          safety?: Json
+          schema_version?: string
+          updated_at?: string
+          validation_status?: string
+        }
+        Update: {
+          calibration?: Json
+          components?: Json
+          created_at?: string
+          data_sources?: Json
+          diagnostic_scope?: Json
+          economics?: Json
+          failure_modes?: Json
+          id?: number
+          industrial_protocols?: Json
+          inputs?: Json
+          intervention_types?: Json
+          knowledge_status?: string
+          machine_type_id?: number
+          measurement_requirements?: Json
+          operating_principle?: string | null
+          operating_states?: Json
+          outputs?: Json
+          performance_reference?: Json
+          provenance?: Json
+          safety?: Json
+          schema_version?: string
+          updated_at?: string
+          validation_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "machine_type_knowledge_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: true
+            referencedRelation: "machine_type_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "machine_type_knowledge_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: true
+            referencedRelation: "machine_types"
             referencedColumns: ["id"]
           },
         ]
@@ -615,7 +791,71 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      machine_measurement_catalog: {
+        Row: {
+          canonical_unit: string | null
+          category: string | null
+          diagnostic_uses: Json | null
+          display_name: string | null
+          economic_relevance: string | null
+          id: number | null
+          machine_type: string | null
+          machine_type_id: number | null
+          physical_meaning: string | null
+          preferred_sources: Json | null
+          quality_rules: Json | null
+          requiredness: string | null
+          signal_key: string | null
+          why_it_matters: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "machine_measurement_definitions_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: false
+            referencedRelation: "machine_type_catalog"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "machine_measurement_definitions_machine_type_id_fkey"
+            columns: ["machine_type_id"]
+            isOneToOne: false
+            referencedRelation: "machine_types"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      machine_type_catalog: {
+        Row: {
+          calibration: Json | null
+          category: string | null
+          components: Json | null
+          data_sources: Json | null
+          detection_targets: Json | null
+          diagnostic_scope: Json | null
+          economics: Json | null
+          failure_modes: Json | null
+          id: number | null
+          industrial_protocols: Json | null
+          inputs: Json | null
+          intervention_types: Json | null
+          knowledge_status: string | null
+          machine_type: string | null
+          measurement_requirements: Json | null
+          operating_principle: string | null
+          operating_states: Json | null
+          optional_metrics: Json | null
+          outputs: Json | null
+          performance_reference: Json | null
+          provenance: Json | null
+          purpose: string | null
+          required_metrics: Json | null
+          safety: Json | null
+          schema_version: string | null
+          validation_status: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
