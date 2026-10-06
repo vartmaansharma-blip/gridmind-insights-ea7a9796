@@ -9,6 +9,8 @@ import type {
   Opportunity,
 } from "./types";
 import { inr, num, pct, monthLabel } from "./format";
+import { validateMonths, type PipelineResult } from "./pipeline";
+import { buildReference, type Reference } from "./reference";
 
 // All assumptions in one place so the engine is transparent and auditable.
 export const ASSUMPTIONS = {
@@ -46,6 +48,9 @@ export type Analysis = {
   alerts: Alert[];
   quality: DataQuality;
   totalSavingAnnual: number;
+  pipeline: PipelineResult;
+  reference: Reference;
+  paused: boolean;
 };
 
 export const equipmentKwh = (e: Equipment) => e.ratedKw * e.quantity * e.hoursPerMonth * e.loadFactor;
@@ -121,23 +126,25 @@ function bySavings(a: Opportunity, b: Opportunity) {
   return b.savingAnnual - a.savingAnnual;
 }
 
-export function analyze(f: Factory): Analysis {
-  const sorted = [...f.months].sort((a, b) => a.month.localeCompare(b.month));
+export function analyze(f: Factory, now: Date = new Date()): Analysis {
+  const pipeline = validateMonths(f.months, now);
+  const sorted = pipeline.usable;
   const C = f.contractDemandKva;
   const rows: MonthRow[] = sorted.map((m) => ({
     ...m,
     sec: m.production > 0 ? m.kwh / m.production : 0,
     costPerKwh: m.kwh > 0 ? m.cost / m.kwh : 0,
-    utilization: C > 0 ? m.peakKva / C : 0,
+    utilization: C > 0 && m.peakKva > 0 ? m.peakKva / C : 0,
     billedKva: Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C),
   }));
   const quality = assessQuality(f, rows);
+  const reference = buildReference(rows);
+  const empty = { avgRate: 0, baselineSec: 0, annualFactor: 0, totalKwh: 0, totalCost: 0, maxPeak: 0, opportunities: [], alerts: [], totalSavingAnnual: 0 };
 
-  if (rows.length === 0) {
-    return {
-      hasData: false, rows, avgRate: 0, baselineSec: 0, annualFactor: 0, totalKwh: 0, totalCost: 0,
-      maxPeak: 0, opportunities: [], alerts: [], quality, totalSavingAnnual: 0,
-    };
+  if (rows.length === 0) return { hasData: false, rows, quality, pipeline, reference, paused: pipeline.analysisPaused, ...empty };
+  if (pipeline.analysisPaused) {
+    // Fail closed: show the data, suppress conclusions.
+    return { hasData: true, rows, latest: rows.at(-1), prev: rows.at(-2), quality, pipeline, reference, paused: true, ...empty };
   }
 
   const n = rows.length;
@@ -146,9 +153,8 @@ export function analyze(f: Factory): Analysis {
   const totalCost = rows.reduce((s, r) => s + r.cost, 0);
   const avgRate = totalKwh > 0 ? totalCost / totalKwh : 0;
   const maxPeak = Math.max(...rows.map((r) => r.peakKva));
-  const validSec = rows.filter((r) => r.sec > 0).map((r) => r.sec).sort((a, b) => a - b);
-  const q = Math.max(1, Math.floor(validSec.length / 4));
-  const baselineSec = validSec.length ? validSec.slice(0, q).reduce((s, x) => s + x, 0) / q : 0;
+  // Reference = comparable-operation median (see reference.ts), not best months or first months.
+  const baselineSec = reference.sec ?? 0;
   const dr = f.demandChargePerKva;
   const opps: Opportunity[] = [];
   const dataConf: Confidence = n >= 12 ? "high" : n >= 6 ? "medium" : "low";
@@ -241,26 +247,27 @@ export function analyze(f: Factory): Analysis {
   }
 
   // 4. Specific energy drift
-  if (baselineSec > 0) {
-    const excessKwh = rows.reduce((s, r) => s + Math.max(0, (r.sec - baselineSec) * r.production), 0);
+  if (baselineSec > 0 && reference.high !== null) {
+    // Only months above the expected envelope contribute; excess measured against the reference median.
+    const excessKwh = rows.filter((r) => r.sec > (reference.high ?? Infinity)).reduce((s, r) => s + Math.max(0, (r.sec - baselineSec) * r.production), 0);
     const loss = excessKwh * avgRate * annualFactor;
     if (loss > 0) {
       const sav = loss * ASSUMPTIONS.secRecoverableShare;
       opps.push({
         id: "sec-drift",
-        title: "Energy per unit drifting above best months",
+        title: "Energy per unit above the expected operating envelope",
         category: "process",
-        problem: `Some months used more kWh per ${f.productUnit} than the plant's own best-performing months.`,
+        problem: `Some months used more kWh per ${f.productUnit} than the plant's own comparable-operation reference.`,
         cause: "Idle running between shifts, longer furnace hold times, seasonal cooling load, or process inefficiency.",
         action: "Shift-wise energy log for top 3 loads, idle shutdown SOP, review high-SEC months with production team.",
         impactAnnual: loss,
         savingAnnual: sav,
         investment: 50000,
         paybackMonths: sav > 0 ? 50000 / (sav / 12) : null,
-        confidence: n >= 6 ? "medium" : "low",
+        confidence: reference.confidence === "high" ? "medium" : "low",
         calc: [
-          `Benchmark SEC (best ${q} month avg) = ${baselineSec.toFixed(3)} kWh/${f.productUnit}`,
-          `Excess kWh = Σ max(0, (SEC − benchmark) × production) = ${num(excessKwh)} kWh`,
+          `Reference SEC (median of ${reference.months.length} comparable months) = ${baselineSec.toFixed(3)} kWh/${f.productUnit}; envelope ${reference.low?.toFixed(3)}–${reference.high?.toFixed(3)} (${reference.confidence} confidence)`,
+          `Excess kWh = Σ over months above envelope of (SEC − reference) × production = ${num(excessKwh)} kWh`,
           `× avg rate ${inr(avgRate)}/kWh, annualised = ${inr(loss)}/yr`,
           `Assumed recoverable share ${pct(ASSUMPTIONS.secRecoverableShare)} → ${inr(sav)}/yr`,
         ],
@@ -309,7 +316,7 @@ export function analyze(f: Factory): Analysis {
 
   return {
     hasData: true, rows, latest: rows[n - 1], prev: rows[n - 2], avgRate, baselineSec, annualFactor,
-    totalKwh, totalCost, maxPeak, opportunities: opps, alerts, quality, totalSavingAnnual,
+    totalKwh, totalCost, maxPeak, opportunities: opps, alerts, quality, totalSavingAnnual, pipeline, reference, paused: false,
   };
 }
 
@@ -399,6 +406,9 @@ export type Verification = {
   savedInr: number;
   annualisedInr: number;
   paybackMonths: number | null;
+  // verified_candidate still requires non-demo data and acceptance before being labelled Verified.
+  status?: "insufficient" | "rejected" | "not_significant" | "verified_candidate";
+  uncertaintyKwh?: number;
 };
 
 // Baseline-adjusted (production-normalised) savings, IPMVP Option C style simplified.
@@ -422,8 +432,13 @@ export function verifyIntervention(rows: MonthRow[], iv: Intervention): Verifica
   const savedKwh = expectedKwh - actualKwh;
   const savedInr = savedKwh * rate;
   const annualisedInr = (savedInr / post.length) * 12;
+  // Significance: saving must exceed 2× the baseline month-to-month variability scaled to post production.
+  const preSecs = pre.map((r) => r.sec);
+  const sd = Math.sqrt(preSecs.reduce((s, x) => s + (x - baselineSec) ** 2, 0) / preSecs.length);
+  const uncertaintyKwh = 2 * sd * postProd / Math.sqrt(post.length);
+  const status: Verification["status"] = post.length < 3 ? "insufficient" : savedKwh <= 0 ? "rejected" : savedKwh > uncertaintyKwh ? "verified_candidate" : "not_significant";
   return {
     ...base, ok: true, baselineSec, postSec: actualKwh / postProd, expectedKwh, actualKwh, savedKwh, savedInr,
-    annualisedInr, paybackMonths: savedInr > 0 ? iv.cost / (savedInr / post.length) : null,
+    annualisedInr, paybackMonths: savedInr > 0 ? iv.cost / (savedInr / post.length) : null, status, uncertaintyKwh,
   };
 }
