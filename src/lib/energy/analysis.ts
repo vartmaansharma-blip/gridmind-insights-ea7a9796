@@ -406,6 +406,9 @@ export type Verification = {
   savedInr: number;
   annualisedInr: number;
   paybackMonths: number | null;
+  // verified_candidate still requires non-demo data and acceptance before being labelled Verified.
+  status?: "insufficient" | "rejected" | "not_significant" | "verified_candidate";
+  uncertaintyKwh?: number;
 };
 
 // Baseline-adjusted (production-normalised) savings, IPMVP Option C style simplified.
@@ -429,8 +432,13 @@ export function verifyIntervention(rows: MonthRow[], iv: Intervention): Verifica
   const savedKwh = expectedKwh - actualKwh;
   const savedInr = savedKwh * rate;
   const annualisedInr = (savedInr / post.length) * 12;
+  // Significance: saving must exceed 2× the baseline month-to-month variability scaled to post production.
+  const preSecs = pre.map((r) => r.sec);
+  const sd = Math.sqrt(preSecs.reduce((s, x) => s + (x - baselineSec) ** 2, 0) / preSecs.length);
+  const uncertaintyKwh = 2 * sd * postProd / Math.sqrt(post.length);
+  const status: Verification["status"] = post.length < 3 ? "insufficient" : savedKwh <= 0 ? "rejected" : savedKwh > uncertaintyKwh ? "verified_candidate" : "not_significant";
   return {
     ...base, ok: true, baselineSec, postSec: actualKwh / postProd, expectedKwh, actualKwh, savedKwh, savedInr,
-    annualisedInr, paybackMonths: savedInr > 0 ? iv.cost / (savedInr / post.length) : null,
+    annualisedInr, paybackMonths: savedInr > 0 ? iv.cost / (savedInr / post.length) : null, status, uncertaintyKwh,
   };
 }
