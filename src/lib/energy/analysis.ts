@@ -121,23 +121,25 @@ function bySavings(a: Opportunity, b: Opportunity) {
   return b.savingAnnual - a.savingAnnual;
 }
 
-export function analyze(f: Factory): Analysis {
-  const sorted = [...f.months].sort((a, b) => a.month.localeCompare(b.month));
+export function analyze(f: Factory, now: Date = new Date()): Analysis {
+  const pipeline = validateMonths(f.months, now);
+  const sorted = pipeline.usable;
   const C = f.contractDemandKva;
   const rows: MonthRow[] = sorted.map((m) => ({
     ...m,
     sec: m.production > 0 ? m.kwh / m.production : 0,
     costPerKwh: m.kwh > 0 ? m.cost / m.kwh : 0,
-    utilization: C > 0 ? m.peakKva / C : 0,
+    utilization: C > 0 && m.peakKva > 0 ? m.peakKva / C : 0,
     billedKva: Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C),
   }));
   const quality = assessQuality(f, rows);
+  const reference = buildReference(rows);
+  const empty = { avgRate: 0, baselineSec: 0, annualFactor: 0, totalKwh: 0, totalCost: 0, maxPeak: 0, opportunities: [], alerts: [], totalSavingAnnual: 0 };
 
-  if (rows.length === 0) {
-    return {
-      hasData: false, rows, avgRate: 0, baselineSec: 0, annualFactor: 0, totalKwh: 0, totalCost: 0,
-      maxPeak: 0, opportunities: [], alerts: [], quality, totalSavingAnnual: 0,
-    };
+  if (rows.length === 0) return { hasData: false, rows, quality, pipeline, reference, paused: pipeline.analysisPaused, ...empty };
+  if (pipeline.analysisPaused) {
+    // Fail closed: show the data, suppress conclusions.
+    return { hasData: true, rows, latest: rows.at(-1), prev: rows.at(-2), quality, pipeline, reference, paused: true, ...empty };
   }
 
   const n = rows.length;
@@ -146,9 +148,8 @@ export function analyze(f: Factory): Analysis {
   const totalCost = rows.reduce((s, r) => s + r.cost, 0);
   const avgRate = totalKwh > 0 ? totalCost / totalKwh : 0;
   const maxPeak = Math.max(...rows.map((r) => r.peakKva));
-  const validSec = rows.filter((r) => r.sec > 0).map((r) => r.sec).sort((a, b) => a - b);
-  const q = Math.max(1, Math.floor(validSec.length / 4));
-  const baselineSec = validSec.length ? validSec.slice(0, q).reduce((s, x) => s + x, 0) / q : 0;
+  // Reference = comparable-operation median (see reference.ts), not best months or first months.
+  const baselineSec = reference.sec ?? 0;
   const dr = f.demandChargePerKva;
   const opps: Opportunity[] = [];
   const dataConf: Confidence = n >= 12 ? "high" : n >= 6 ? "medium" : "low";
