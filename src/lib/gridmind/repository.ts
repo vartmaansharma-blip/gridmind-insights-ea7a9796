@@ -333,18 +333,21 @@ export async function syncFactoryAssets(factoryId: number, equipment: Array<{
     .select("id,asset_metadata").eq("factory_id", factoryId);
   if (readError) throw readError;
   const incomingIds = new Set<number>();
+  const existingMap = new Map((existing ?? []).map((x) => [x.id, x]));
 
   for (const e of equipment) {
     const numericId = Number(e.id);
+    const baseMetadata = Number.isInteger(numericId) ? jsonRecord(existingMap.get(numericId)?.asset_metadata) : {};
     const metadata = {
+      ...baseMetadata,
       category: e.category,
       quantity: e.quantity,
       hoursPerMonth: e.hoursPerMonth,
       loadFactor: e.loadFactor,
       lifecycle_status: "active",
-      application_contract_version: 1,
+      application_contract_version: 2,
     };
-    if (Number.isInteger(numericId) && existing?.some((x) => x.id === numericId)) {
+    if (Number.isInteger(numericId) && existingMap.has(numericId)) {
       incomingIds.add(numericId);
       const { error } = await supabase.from("factory_assets").update({
         name: e.name,
