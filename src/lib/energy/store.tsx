@@ -109,6 +109,7 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
 
   return {
     id: String(snapshot.factoryId),
+    organizationId: snapshot.organizationId,
     name: snapshot.name,
     location: snapshot.location ?? "",
     sector: snapshot.industry ?? "",
