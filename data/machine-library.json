@@ -1,7 +1,7 @@
 {
-  "schema_version": "gridmind-machine-library-v3",
+  "schema_version": "gridmind-machine-library-v4",
   "status": "canonical-build-reference",
-  "note": "Machine types are canonical templates. Sensor requirements are evidence-driven; existing digital data should be used before retrofit sensing. Synthetic/demo data must never be represented as live observations. Expanded taxonomy is intentionally broad; each template must be refined with machine-specific evidence requirements before enabling machine-specific diagnostics.",
+  "note": "Machine types are canonical templates. Regional evidence is merged into canonical machine entries as contextual provenance; region never creates a separate machine identity. Factory assets carry site-specific configuration, calibration, measurements and operating context. Synthetic/demo data must never be represented as live observations.",
   "machines": [
     {
       "id": "cnc-turning-center",
@@ -196,7 +196,86 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "machining.vertical_machining_center",
+        "Vertical Machining Centre"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "BFW VMCs documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform milling/drilling operations in machining.",
+            "major_components": [
+              "spindle",
+              "X/Y/Z axes",
+              "tool changer",
+              "table",
+              "coolant",
+              "CNC control"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "feed",
+              "axis load",
+              "power",
+              "cycle time",
+              "coolant flow",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "mechanical-power-press",
@@ -298,7 +377,85 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "forming.mechanical_power_press",
+        "Mechanical Power Press"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "Multiple capacities documented for trimming",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform trimming, blanking, forming operations in trimming/forming.",
+            "major_components": [
+              "motor",
+              "flywheel",
+              "clutch/brake",
+              "crank/eccentric",
+              "slide",
+              "die",
+              "bolster"
+            ],
+            "key_operating_variables": [
+              "stroke",
+              "strokes/min",
+              "load",
+              "motor power",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "hydraulic-press",
@@ -400,7 +557,85 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "forming.hydraulic_press",
+        "Hydraulic Press"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Process-derived regional archetype; not directly evidenced in sources above",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform forming/pressing operations in metal fabrication.",
+            "major_components": [
+              "pump",
+              "hydraulic power unit",
+              "cylinders",
+              "valves",
+              "frame",
+              "tooling"
+            ],
+            "key_operating_variables": [
+              "pressure",
+              "flow",
+              "force",
+              "cycle time",
+              "oil temperature",
+              "motor power"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "forging-press-hammer",
@@ -1204,7 +1439,84 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "utilities.transformer",
+        "Plant Transformer"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Electrical machinery is a documented regional concentration; exact transformer presence requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform voltage transformation operations in electrical infrastructure.",
+            "major_components": [
+              "core",
+              "windings",
+              "bushings",
+              "tap changer where fitted",
+              "cooling system"
+            ],
+            "key_operating_variables": [
+              "voltage",
+              "current",
+              "load",
+              "winding/oil temperature",
+              "power factor",
+              "harmonics where measured"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "dg-generator",
@@ -1614,7 +1926,84 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "automotive.welding_cell",
+        "Automated/Manual Welding Cell"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Regional metal fabrication/general engineering evidence; exact equipment requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform mig/tig/spot joining operations in automotive fabrication.",
+            "major_components": [
+              "power source",
+              "torch/electrode system",
+              "fixture",
+              "robot/positioner where used",
+              "shielding gas",
+              "extraction"
+            ],
+            "key_operating_variables": [
+              "welding current",
+              "voltage",
+              "wire feed or pulse parameters",
+              "cycle time",
+              "gas flow"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "spot-welding-cell",
@@ -1949,7 +2338,84 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "fabrication.press_brake",
+        "Press Brake"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Metal fabrication concentration; exact machine requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform sheet bending operations in metal fabrication.",
+            "major_components": [
+              "ram",
+              "hydraulic/electric drive",
+              "back gauge",
+              "tooling",
+              "frame",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "force/pressure",
+              "stroke",
+              "cycle time",
+              "motor power",
+              "position accuracy"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "punching-machine",
@@ -2083,7 +2549,83 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "fabrication.shearing_machine",
+        "Shearing Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Metal fabrication concentration; exact machine requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform sheet cutting operations in metal fabrication.",
+            "major_components": [
+              "blade",
+              "drive",
+              "frame",
+              "hold-down",
+              "back gauge",
+              "hydraulic/electric system"
+            ],
+            "key_operating_variables": [
+              "cut force/pressure",
+              "stroke rate",
+              "cycle time",
+              "motor power"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "rolling-machine",
@@ -2284,7 +2826,159 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "machining.grinding_machine",
+        "Grinding Machine",
+        "machining.cnc_grinding",
+        "CNC Grinding Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "Grinding machines documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform grinding/finishing operations in machining.",
+            "major_components": [
+              "grinding wheel",
+              "spindle",
+              "workholding",
+              "table",
+              "coolant",
+              "dressing system"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "power",
+              "wheel condition",
+              "feed",
+              "coolant flow",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        },
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Precision engineering/machining cluster; exact equipment requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform precision grinding operations in precision engineering.",
+            "major_components": [
+              "wheel spindle",
+              "axes",
+              "work spindle",
+              "dressing",
+              "coolant",
+              "CNC"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "wheel power",
+              "feed",
+              "dressing cycle",
+              "coolant flow",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "surface-grinder",
@@ -2552,7 +3246,84 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "machining.column_drilling_machine",
+        "Column Drilling Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "2-inch machine documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform drilling operations in machining.",
+            "major_components": [
+              "spindle",
+              "motor",
+              "quill",
+              "column",
+              "table",
+              "feed mechanism"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "power",
+              "feed",
+              "drilling time",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "milling-machine",
@@ -2619,7 +3390,84 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "machining.conventional_milling_machine",
+        "Conventional Milling Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "General engineering/tooling cluster; exact equipment requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform milling operations in general engineering.",
+            "major_components": [
+              "spindle",
+              "table",
+              "feed drives",
+              "motor",
+              "tooling",
+              "workholding"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "power",
+              "feed",
+              "cutting time",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "lathe-machine",
@@ -2686,7 +3534,85 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "machining.conventional_lathe",
+        "Conventional Lathe"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "6-inch and 8-inch lathes documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform turning operations in machining.",
+            "major_components": [
+              "headstock",
+              "spindle",
+              "chuck",
+              "carriage",
+              "leadscrew",
+              "tailstock",
+              "drive"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "motor power",
+              "feed",
+              "cutting time",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "broaching-machine",
@@ -2753,7 +3679,83 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "machining.broaching_machine",
+        "Broaching Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform spline/profile broaching operations in automotive driveline.",
+            "major_components": [
+              "ram/pull head",
+              "broach tool",
+              "fixture",
+              "hydraulics/drive",
+              "lubrication"
+            ],
+            "key_operating_variables": [
+              "pull force",
+              "stroke",
+              "speed",
+              "cycle time",
+              "hydraulic pressure"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "edm-machine",
@@ -2820,7 +3822,83 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "tooling.edm_machine",
+        "EDM Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-DIE",
+          "evidence_note": "High-precision CNC, EDM and wire-cut machines documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform electrical-discharge machining operations in tool & die.",
+            "major_components": [
+              "power supply",
+              "electrode/workpiece system",
+              "dielectric tank",
+              "servo",
+              "flushing"
+            ],
+            "key_operating_variables": [
+              "pulse current",
+              "voltage",
+              "pulse timing",
+              "dielectric condition",
+              "machining time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "wire-edm-machine",
@@ -2887,7 +3965,85 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "tooling.wire_edm",
+        "Wire EDM Machine"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-DIE",
+          "evidence_note": "Wire-cut equipment documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform wire electrical-discharge machining operations in tool & die.",
+            "major_components": [
+              "wire drive",
+              "power supply",
+              "work tank",
+              "guides",
+              "dielectric system",
+              "axes"
+            ],
+            "key_operating_variables": [
+              "wire speed",
+              "current",
+              "voltage",
+              "flushing flow",
+              "axis speed",
+              "machining time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "die-casting-machine",
@@ -4897,7 +6053,87 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "material_handling.overhead_crane",
+        "Overhead Crane"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Heavy/general engineering cluster supports relevance; exact installation requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform lifting/transport operations in material handling.",
+            "major_components": [
+              "bridge",
+              "trolley",
+              "hoist",
+              "motor",
+              "gearbox",
+              "brakes",
+              "ropes/chain",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "load",
+              "motor current/power",
+              "speed",
+              "duty cycles",
+              "brake status",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "electric-hoist",
@@ -7041,7 +8277,86 @@
           "calibration status acceptable"
         ],
         "safety_boundary": "GridMind does not instruct users to perform hazardous electrical/mechanical installation. Installation, isolation, wiring and physical mounting follow site procedures and qualified-person requirements."
-      }
+      },
+      "aliases": [
+        "utilities.dg_generator",
+        "Diesel Generator"
+      ],
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Industrial utility archetype; requires site-level confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform backup generation operations in plant utility.",
+            "major_components": [
+              "diesel engine",
+              "alternator",
+              "fuel system",
+              "cooling",
+              "exhaust",
+              "governor",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "electrical output",
+              "fuel rate",
+              "load",
+              "speed",
+              "coolant temperature",
+              "runtime"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     },
     {
       "id": "solar-pv-inverter",
@@ -81876,6 +83191,3224 @@
         "validation_status": "not_yet_validated",
         "source_references": []
       }
+    },
+    {
+      "id": "electric-screw-press",
+      "name": "Electric Screw Press",
+      "aliases": [
+        "forging.electric_screw_press"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "1000 T documented at Empire Auto Adityapur",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform closed-die forging operations in forging.",
+            "major_components": [
+              "ram",
+              "screw/flywheel drive",
+              "motor",
+              "clutch/brake",
+              "die set",
+              "frame"
+            ],
+            "key_operating_variables": [
+              "stroke",
+              "force/tonnage",
+              "ram speed",
+              "energy/cycle",
+              "cycle time",
+              "billet temperature"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gravity-drop-hammer",
+      "name": "Gravity Drop Hammer",
+      "aliases": [
+        "forging.gravity_drop_hammer"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "1.5 T and 2 T documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform open/closed-die forging operations in forging.",
+            "major_components": [
+              "ram",
+              "guides",
+              "hammer head",
+              "anvil",
+              "die",
+              "drive/lift mechanism"
+            ],
+            "key_operating_variables": [
+              "blow energy",
+              "stroke",
+              "blow rate",
+              "die temperature",
+              "billet temperature",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "down-stroke-screw-press",
+      "name": "Down-Stroke Screw Press",
+      "aliases": [
+        "forging.downstroke_screw_press"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "300 T documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform closed-die forging operations in forging.",
+            "major_components": [
+              "screw",
+              "ram",
+              "drive",
+              "flywheel",
+              "clutch/brake",
+              "die",
+              "frame"
+            ],
+            "key_operating_variables": [
+              "force",
+              "stroke",
+              "ram speed",
+              "energy/cycle",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "up-stroke-screw-press",
+      "name": "Up-Stroke Screw Press",
+      "aliases": [
+        "forging.upstroke_screw_press"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "200 T documented on forging page; infrastructure page lists 250 T",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform closed-die forging operations in forging.",
+            "major_components": [
+              "screw",
+              "lower-moving ram",
+              "drive",
+              "flywheel",
+              "die",
+              "frame"
+            ],
+            "key_operating_variables": [
+              "force",
+              "stroke",
+              "ram speed",
+              "energy/cycle",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "induction-billet-heater",
+      "name": "Induction Billet Heater",
+      "aliases": [
+        "heating.induction_billet_heater"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "450 kW Megatherm documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform billet heating operations in forging.",
+            "major_components": [
+              "power supply",
+              "induction coil",
+              "cooling circuit",
+              "billet handling",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "power",
+              "frequency",
+              "billet temperature",
+              "heating time",
+              "flow",
+              "cooling temperature"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "oil-fired-heating-furnace",
+      "name": "Oil-Fired Heating Furnace",
+      "aliases": [
+        "heating.oil_fired_furnace"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "Documented at Empire Auto",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform batch/continuous heating operations in forging/heat treatment.",
+            "major_components": [
+              "burner",
+              "chamber",
+              "fuel train",
+              "refractory",
+              "fans",
+              "controls",
+              "exhaust"
+            ],
+            "key_operating_variables": [
+              "zone temperature",
+              "fuel flow",
+              "O2 where available",
+              "furnace pressure",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "shot-blasting-machine",
+      "name": "Shot Blasting Machine",
+      "aliases": [
+        "surface.shot_blasting_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-FORGING",
+          "evidence_note": "7 cu ft documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform surface cleaning operations in forging.",
+            "major_components": [
+              "turbine/wheel",
+              "abrasive circuit",
+              "cabinet",
+              "separator",
+              "dust collector",
+              "conveyor"
+            ],
+            "key_operating_variables": [
+              "motor power",
+              "wheel speed",
+              "blast time",
+              "abrasive flow",
+              "dust differential pressure"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "ring-rolling-machine",
+      "name": "Ring Rolling Machine",
+      "aliases": [
+        "forming.ring_rolling_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-INFRA",
+          "evidence_note": "80–250 diameter range documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform ring rolling operations in forging.",
+            "major_components": [
+              "drive rolls",
+              "mandrel",
+              "axial rolls",
+              "hydraulics",
+              "frame",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "roll speed",
+              "radial force",
+              "axial force",
+              "ring diameter",
+              "temperature",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "circular-saw-machine",
+      "name": "Circular Saw Machine",
+      "aliases": [
+        "cutting.circular_saw"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-INFRA",
+          "evidence_note": "Up to 125 mm rounds documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform bar/billet cutting operations in cutting.",
+            "major_components": [
+              "saw motor",
+              "blade",
+              "vice",
+              "feed mechanism",
+              "coolant",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "motor power",
+              "spindle speed",
+              "feed rate",
+              "cutting time",
+              "coolant flow"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "band-saw-machine",
+      "name": "Band Saw Machine",
+      "aliases": [
+        "cutting.bandsaw"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "300–1200 mm equipment documented across infrastructure pages",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform bar/stock cutting operations in cutting.",
+            "major_components": [
+              "band wheel",
+              "blade",
+              "drive",
+              "hydraulic feed",
+              "vice",
+              "coolant"
+            ],
+            "key_operating_variables": [
+              "blade speed",
+              "feed force/rate",
+              "motor power",
+              "cutting time",
+              "coolant flow"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cnc-turning-centre",
+      "name": "CNC Turning Centre",
+      "aliases": [
+        "machining.cnc_turning_center"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "8 machines documented on machining page; 12 on broader infrastructure page",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform turning operations in machining.",
+            "major_components": [
+              "spindle",
+              "chuck",
+              "turret",
+              "axis drives",
+              "tooling",
+              "coolant",
+              "CNC control"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "feed",
+              "cutting load",
+              "power",
+              "cycle time",
+              "coolant flow",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "horizontal-machining-centre",
+      "name": "Horizontal Machining Centre",
+      "aliases": [
+        "machining.horizontal_machining_center"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "HMCs documented at Jamshedpur plants",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform multi-axis machining operations in machining.",
+            "major_components": [
+              "horizontal spindle",
+              "pallet",
+              "axes",
+              "tool changer",
+              "coolant",
+              "CNC control"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "load",
+              "power",
+              "cycle time",
+              "coolant flow",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "centering-and-facing-machine",
+      "name": "Centering & Facing Machine",
+      "aliases": [
+        "machining.centering_facing_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform end preparation operations in machining.",
+            "major_components": [
+              "spindle",
+              "cutting tools",
+              "slides",
+              "fixture",
+              "drive"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "power",
+              "feed",
+              "cycle time",
+              "cutting load"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gear-cutting-machine",
+      "name": "Gear Cutting Machine",
+      "aliases": [
+        "machining.gear_cutting_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Documented at Jamshedpur Plant III",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform gear generation operations in automotive driveline.",
+            "major_components": [
+              "spindle",
+              "cutter/hob",
+              "work spindle",
+              "indexing",
+              "axes",
+              "drive"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "feed",
+              "cutting load",
+              "power",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gear-shaving-machine",
+      "name": "Gear Shaving Machine",
+      "aliases": [
+        "machining.shaving_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform gear finishing operations in automotive driveline.",
+            "major_components": [
+              "shaving cutter",
+              "work spindle",
+              "slides",
+              "coolant",
+              "drive"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "feed",
+              "power",
+              "cycle time",
+              "coolant flow"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "gear-component-shaping-machine",
+      "name": "Gear/Component Shaping Machine",
+      "aliases": [
+        "machining.shaping_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform gear/component shaping operations in automotive driveline.",
+            "major_components": [
+              "reciprocating cutter head",
+              "work spindle",
+              "indexing",
+              "drive"
+            ],
+            "key_operating_variables": [
+              "stroke rate",
+              "spindle speed",
+              "cutting load",
+              "power",
+              "cycle time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "box-type-normalizing-furnace",
+      "name": "Box-Type Normalizing Furnace",
+      "aliases": [
+        "heat_treatment.box_normalizing_furnace"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-HEAT",
+          "evidence_note": "Pusher system documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform normalizing operations in heat treatment.",
+            "major_components": [
+              "chamber",
+              "burners/heaters",
+              "circulation",
+              "thermocouples",
+              "controls",
+              "refractory"
+            ],
+            "key_operating_variables": [
+              "temperature profile",
+              "soak time",
+              "ramp rate",
+              "fuel/power",
+              "furnace pressure"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "pit-furnace",
+      "name": "Pit Furnace",
+      "aliases": [
+        "heat_treatment.pit_furnace"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-HEAT",
+          "evidence_note": "Two pit furnaces documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform batch heat treatment operations in heat treatment.",
+            "major_components": [
+              "chamber",
+              "heating elements/burners",
+              "load fixture",
+              "thermocouples",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "temperature",
+              "soak time",
+              "heating rate",
+              "power/fuel",
+              "load mass"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "continuous-heat-treatment-furnace",
+      "name": "Continuous Heat Treatment Furnace",
+      "aliases": [
+        "heat_treatment.continuous_furnace"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-INFRA",
+          "evidence_note": "500 kg/hour documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform continuous treatment operations in heat treatment.",
+            "major_components": [
+              "heating zones",
+              "conveyor/pusher",
+              "burners/elements",
+              "atmosphere",
+              "cooling",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "zone temperatures",
+              "line speed",
+              "residence time",
+              "fuel/power",
+              "atmosphere"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "isothermal-annealing-furnace-system",
+      "name": "Isothermal Annealing Furnace/System",
+      "aliases": [
+        "heat_treatment.isothermal_annealing"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Process documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform annealing operations in heat treatment.",
+            "major_components": [
+              "furnace",
+              "controlled cooling/holding section",
+              "atmosphere",
+              "thermocouples"
+            ],
+            "key_operating_variables": [
+              "temperature",
+              "hold time",
+              "cooling rate",
+              "atmosphere",
+              "energy"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "sealed-quench-system",
+      "name": "Sealed Quench System",
+      "aliases": [
+        "heat_treatment.sealed_quench"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Process documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform hardening/quenching operations in heat treatment.",
+            "major_components": [
+              "heating chamber",
+              "quench tank",
+              "agitation",
+              "atmosphere system",
+              "transfer"
+            ],
+            "key_operating_variables": [
+              "temperature",
+              "soak time",
+              "quench temperature",
+              "agitation",
+              "atmosphere"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "plug-quenching-system",
+      "name": "Plug Quenching System",
+      "aliases": [
+        "heat_treatment.plug_quench"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Process documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform quenching operations in heat treatment.",
+            "major_components": [
+              "heating/transfer system",
+              "quench fixture",
+              "coolant circuit",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "part temperature",
+              "quench temperature",
+              "flow/agitation",
+              "transfer time"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "induction-hardening-system",
+      "name": "Induction Hardening System",
+      "aliases": [
+        "heat_treatment.induction_hardening"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "RKFL-PROCESS",
+          "evidence_note": "Process documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform surface hardening operations in heat treatment.",
+            "major_components": [
+              "power supply",
+              "induction coil",
+              "scanning/rotation mechanism",
+              "quench system",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "power",
+              "frequency",
+              "current",
+              "heating time",
+              "part speed",
+              "quench flow/temp"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "cnc-die-machining-centre",
+      "name": "CNC Die-Machining Centre",
+      "aliases": [
+        "tooling.cnc_die_machining"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-INFRA",
+          "evidence_note": "CNC VMCs used for in-house die manufacturing",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform die machining operations in tool & die.",
+            "major_components": [
+              "spindle",
+              "axes",
+              "tool changer",
+              "fixture",
+              "coolant",
+              "CNC control"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "axis load",
+              "power",
+              "feed",
+              "cycle time",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "scrap-baling-machine",
+      "name": "Scrap Baling Machine",
+      "aliases": [
+        "material_handling.scrap_baling_machine"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-MACHINING",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform scrap compaction operations in metal processing.",
+            "major_components": [
+              "hydraulic power unit",
+              "cylinder",
+              "chamber",
+              "ram",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "hydraulic pressure",
+              "cycle time",
+              "motor power",
+              "oil temperature"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "magnetic-particle-magnaflux-crack-detection-machine",
+      "name": "Magnetic Particle/Magnaflux Crack Detection Machine",
+      "aliases": [
+        "testing.magnaflux_crack_detection"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-QA",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform ndt operations in quality/testing.",
+            "major_components": [
+              "magnetizing circuit",
+              "coils/yoke",
+              "bath/applicator",
+              "controls"
+            ],
+            "key_operating_variables": [
+              "magnetizing current/field",
+              "cycle time",
+              "bath condition"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "brinell-hardness-testing-machine",
+      "name": "Brinell Hardness Testing Machine",
+      "aliases": [
+        "testing.brinnell_hardness_tester"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-QA",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform hardness testing operations in quality/metrology.",
+            "major_components": [
+              "indenter",
+              "load mechanism",
+              "specimen stage",
+              "optics/sensor"
+            ],
+            "key_operating_variables": [
+              "test force",
+              "dwell time",
+              "indentation size",
+              "calibration status"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "material-spectrometer",
+      "name": "Material Spectrometer",
+      "aliases": [
+        "testing.spectrometer"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-QA",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform material composition operations in quality/metallurgy.",
+            "major_components": [
+              "excitation source",
+              "optical system",
+              "detector",
+              "sample stand",
+              "gas where required"
+            ],
+            "key_operating_variables": [
+              "excitation parameters",
+              "spectrum",
+              "measurement time",
+              "calibration state"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "surface-roughness-tester",
+      "name": "Surface Roughness Tester",
+      "aliases": [
+        "testing.surface_roughness_tester"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "direct",
+          "source_id": "EMPIRE-QA",
+          "evidence_note": "Documented",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform surface measurement operations in quality/metrology.",
+            "major_components": [
+              "stylus/probe",
+              "drive",
+              "detector",
+              "processor"
+            ],
+            "key_operating_variables": [
+              "traverse speed",
+              "cutoff length",
+              "measurement range",
+              "calibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "industrial-air-compressor",
+      "name": "Industrial Air Compressor",
+      "aliases": [
+        "utilities.air_compressor"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Common industrial utility; regional source establishes broad engineering/manufacturing concentration, not a specific named compressor",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform compressed-air generation operations in plant utility.",
+            "major_components": [
+              "compressor element",
+              "motor",
+              "separator",
+              "cooler",
+              "controls",
+              "dryer interface"
+            ],
+            "key_operating_variables": [
+              "power",
+              "pressure",
+              "flow",
+              "temperature",
+              "runtime",
+              "load/unload state"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "industrial-pump",
+      "name": "Industrial Pump",
+      "aliases": [
+        "utilities.industrial_pump"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "Utility archetype; requires site-level confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform water/process circulation operations in plant utility.",
+            "major_components": [
+              "pump",
+              "motor",
+              "impeller/rotor",
+              "seals",
+              "bearings",
+              "suction/discharge piping"
+            ],
+            "key_operating_variables": [
+              "flow",
+              "pressure/head",
+              "power",
+              "speed",
+              "temperature",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "industrial-drilling-machine",
+      "name": "Industrial Drilling Machine",
+      "aliases": [
+        "machining.industrial_drill"
+      ],
+      "integration": [
+        "existing_digital",
+        "retrofit_electrical",
+        "retrofit_physical"
+      ],
+      "required": [
+        "power_or_energy_where_economically_relevant",
+        "operating_state",
+        "runtime",
+        "production_or_cycle_context"
+      ],
+      "recommended": [
+        "temperature",
+        "vibration",
+        "pressure_or_flow_where_process_relevant"
+      ],
+      "conditional": [],
+      "diagnostics": [],
+      "instrumentation": {},
+      "knowledge_status": "regional-context-promoted",
+      "validation_status": "regional-seed; site validation required",
+      "regional_contexts": [
+        {
+          "region": {
+            "country": "India",
+            "state": "Jharkhand",
+            "industrial_cluster": "Adityapur-Jamshedpur",
+            "scope": "Adityapur Industrial Area, Gamharia and Jamshedpur industrial belt"
+          },
+          "evidence_class": "inferred",
+          "source_id": "DCSME-JSR",
+          "evidence_note": "General engineering cluster; exact machine requires site confirmation",
+          "completeness": "L1",
+          "diagnostic_enablement": "blocked_until_machine_specific_measurement_and_validation",
+          "measurement_model": {
+            "required_to_define": [
+              "power_or_energy_where_economically_relevant",
+              "operating_state",
+              "runtime",
+              "production_or_cycle_context"
+            ],
+            "condition_measurements": [
+              "temperature",
+              "vibration",
+              "pressure_or_flow_where_process_relevant"
+            ],
+            "note": "Final measurement set must be machine-specific and selected from GridMind's knowledge model; this regional seed does not authorize blanket sensor installation."
+          },
+          "evidence_requirements": [
+            "asset_identity",
+            "machine_model_and_configuration",
+            "operating_state",
+            "production_context",
+            "trusted_measurement_source",
+            "data_quality_pass"
+          ],
+          "safety": "Physical installation and electrical/mechanical work require qualified personnel and site procedures.",
+          "engineering_identity": {
+            "purpose": "Perform drilling operations in general engineering.",
+            "major_components": [
+              "spindle",
+              "motor",
+              "feed mechanism",
+              "table",
+              "tooling"
+            ],
+            "key_operating_variables": [
+              "spindle speed",
+              "power",
+              "feed",
+              "cycle time",
+              "vibration"
+            ],
+            "operating_states": [
+              "OFF",
+              "IDLE",
+              "STARTUP",
+              "RUNNING",
+              "LOAD",
+              "STOPPING",
+              "MAINTENANCE"
+            ],
+            "critical_context": [
+              "product/SKU",
+              "material or workpiece",
+              "machine configuration",
+              "operator/process recipe",
+              "shift",
+              "maintenance state"
+            ]
+          }
+        }
+      ]
     }
   ],
   "design_note": "Sensor placement is represented as a measurement zone rather than a hazardous wiring instruction. Exact mounting points depend on asset design, manufacturer requirements, measurement objective and site safety procedures.",
@@ -82072,5 +86605,7 @@
     "existing_validated_or_seed_definitions": 100,
     "candidate_definitions": 900,
     "policy": "Candidate definitions cannot enable machine-specific diagnostics until reviewed against manufacturer documentation, engineering references, field evidence or validated GridMind tests."
-  }
+  },
+  "canonical_identity_rule": "Machine type is universal. Regional evidence modifies context, provenance and applicability; it does not create a regional machine type.",
+  "regional_context_policy": "Regional observations and evidence are retained inside the canonical machine type as regional_contexts. Site-specific facts belong to factory assets."
 }
