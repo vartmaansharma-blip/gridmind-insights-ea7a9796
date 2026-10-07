@@ -44,6 +44,7 @@ const factoryContext = (row: FactoryRow): FactoryContext => {
     location: row.location,
     industry: row.industry,
     timezone: typeof metadata.timezone === "string" ? metadata.timezone : "Asia/Kolkata",
+    metadata,
   };
 };
 
