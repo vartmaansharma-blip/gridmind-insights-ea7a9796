@@ -95,8 +95,7 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
       ...(row.powerFactor !== undefined ? { powerFactor: Number(row.powerFactor) } : {}),
     }));
 
-  const metadataObject = snapshot.observations.find((o) => o.metadata.factory_profile === true);
-  const profile = metadataObject?.provenance ?? {};
+  const profile = snapshot.metadata;
 
   const interventions = snapshot.interventions.map((iv) => ({
     id: String(iv.id),
