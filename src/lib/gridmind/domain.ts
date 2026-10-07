@@ -40,6 +40,7 @@ export type FactoryContext = {
   location: string | null;
   industry: string | null;
   timezone: string;
+  metadata: Record<string, unknown>;
 };
 
 export type ObservationContract = {
