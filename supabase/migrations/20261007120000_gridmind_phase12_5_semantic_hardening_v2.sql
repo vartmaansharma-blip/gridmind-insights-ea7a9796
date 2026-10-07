@@ -1,0 +1,17 @@
+-- GridMind Phase 12.5b: semantic and graph hardening.
+-- Applied to production as migration 20261007120000.
+-- The live migration is authoritative; this file documents the additive changes.
+--
+-- Includes:
+-- * same-factory physical relationships and source mappings
+-- * process parent same-factory integrity
+-- * opportunity/intervention scope validation
+-- * explicit opportunity economic_context linkage
+-- * same-factory opportunity/decision/intervention references
+-- * confidence, uncertainty, economic and temporal invariants
+-- * immutable evidence creation timestamps
+-- * automatic updated_at maintenance
+-- * high-value graph indexes
+--
+-- IMPORTANT: intervention target_scope uses private.validate_intervention_scope();
+-- it must not use the generic scope trigger because the column names differ.
