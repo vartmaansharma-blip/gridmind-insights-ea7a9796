@@ -35,6 +35,7 @@ export type OpportunityStatus = "open" | "planned" | "in_progress" | "implemente
 
 export type Factory = {
   id: string;
+  organizationId: number | null;
   name: string;
   location: string;
   sector: string;
