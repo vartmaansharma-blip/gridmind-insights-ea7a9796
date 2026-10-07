@@ -1108,7 +1108,7 @@ export type Database = {
           connectivity_mode: string | null
           created_at: string | null
           criticality: string | null
-          factory_id: number | null
+          factory_id: number
           id: number
           installation_year: number | null
           machine_type_id: number | null
@@ -1127,7 +1127,7 @@ export type Database = {
           connectivity_mode?: string | null
           created_at?: string | null
           criticality?: string | null
-          factory_id?: number | null
+          factory_id: number
           id?: number
           installation_year?: number | null
           machine_type_id?: number | null
@@ -1146,7 +1146,7 @@ export type Database = {
           connectivity_mode?: string | null
           created_at?: string | null
           criticality?: string | null
-          factory_id?: number | null
+          factory_id?: number
           id?: number
           installation_year?: number | null
           machine_type_id?: number | null
