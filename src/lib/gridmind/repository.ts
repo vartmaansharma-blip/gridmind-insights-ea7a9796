@@ -48,6 +48,47 @@ const factoryContext = (row: FactoryRow): FactoryContext => {
   };
 };
 
+export type CanonicalMachineSnapshot = {
+  id: number;
+  factoryId: number;
+  name: string;
+  machineTypeId: number | null;
+  manufacturer: string | null;
+  model: string | null;
+  ratedPowerKw: number | null;
+  ratedCapacity: string | null;
+  installationYear: number | null;
+  processRole: string | null;
+  connectivityMode: string | null;
+  calibrationStatus: string | null;
+  criticality: string | null;
+  assetMetadata: Record<string, unknown>;
+  machineType: { id: number; name: string; category: string | null; purpose: string | null } | null;
+  dataSources: Array<{ id: number; name: string; sourceType: string; status: string; timezone: string }>;
+  mappings: Array<{ id: number; sourceField: string; canonicalMetric: string; unit: string | null; status: string; confidence: number | null }>;
+  observations: ObservationContract[];
+};
+
+export type CanonicalDeviation = {
+  id: number;
+  factoryId: number;
+  scopeType: string;
+  scopeId: number | null;
+  metric: string;
+  observationId: number;
+  expectationId: number;
+  actualValue: number | null;
+  expectedValue: number | null;
+  deviationValue: number | null;
+  deviationPercentage: number | null;
+  direction: string;
+  persistence: string | null;
+  statisticalSignificance: string | null;
+  engineeringSignificance: string | null;
+  economicMateriality: string | null;
+  status: string;
+};
+
 export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactorySnapshot[]> {
   const { data: session } = await supabase.auth.getSession();
   if (!session.session) return [];
@@ -56,57 +97,159 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
     .from("factories")
     .select("id,name,location,industry,metadata,organization_id")
     .order("id");
-
   if (factoryError) throw factoryError;
   if (!factories?.length) return [];
 
   const ids = factories.map((f) => f.id);
-
-  const [assetsResult, observationsResult, opportunitiesResult, interventionsResult, outcomesResult] =
-    await Promise.all([
-      supabase.from("factory_assets").select("id,factory_id,name,machine_type_id,rated_power_kw,process_role").in("factory_id", ids),
-      supabase.from("observations").select("*").in("factory_id", ids).order("created_at", { ascending: false }),
-      supabase.from("opportunities").select("*").in("factory_id", ids).order("priority_score", { ascending: false, nullsFirst: false }),
-      supabase.from("asset_interventions").select("id,factory_id,opportunity_id,target_scope_type,target_scope_id,status,description,implementation_cost,expected_saving_inr,verification_method").in("factory_id", ids),
-      supabase.from("verified_outcomes").select("*").in("factory_id", ids),
-    ]);
-
+  const [assetsResult, observationsResult, opportunitiesResult, interventionsResult, outcomesResult] = await Promise.all([
+    supabase.from("factory_assets").select("id,factory_id,name,machine_type_id,rated_power_kw,process_role,asset_metadata").in("factory_id", ids),
+    supabase.from("observations").select("*").in("factory_id", ids).order("created_at", { ascending: false }),
+    supabase.from("opportunities").select("*").in("factory_id", ids).order("priority_score", { ascending: false, nullsFirst: false }),
+    supabase.from("asset_interventions").select("id,factory_id,opportunity_id,target_scope_type,target_scope_id,status,description,implementation_cost,expected_saving_inr,verification_method").in("factory_id", ids),
+    supabase.from("verified_outcomes").select("*").in("factory_id", ids),
+  ]);
   const firstError = [assetsResult, observationsResult, opportunitiesResult, interventionsResult, outcomesResult].find((r) => r.error)?.error;
   if (firstError) throw firstError;
 
   return factories.map((factory) => ({
     ...factoryContext(factory),
-    assets: (assetsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => ({
+    assets: (assetsResult.data ?? []).filter((x) => x.factory_id === factory.id && jsonRecord(x.asset_metadata).lifecycle_status !== "retired").map((x) => ({
       id: x.id,
       name: x.name,
       machineTypeId: x.machine_type_id,
       ratedPowerKw: x.rated_power_kw,
       processRole: x.process_role,
     })),
-    observations: (observationsResult.data ?? [])
-      .filter((x) => x.factory_id === factory.id)
-      .map(observationToDomain),
-    opportunities: (opportunitiesResult.data ?? [])
-      .filter((x) => x.factory_id === factory.id)
-      .map((x) => x as unknown as OpportunityContract),
-    interventions: (interventionsResult.data ?? [])
-      .filter((x) => x.factory_id === factory.id)
-      .map((x) => x as unknown as InterventionContract),
-    verifiedOutcomes: (outcomesResult.data ?? [])
-      .filter((x) => x.factory_id === factory.id)
-      .map((x) => x as unknown as VerifiedOutcomeContract),
+    observations: (observationsResult.data ?? []).filter((x) => x.factory_id === factory.id).map(observationToDomain),
+    opportunities: (opportunitiesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as OpportunityContract),
+    interventions: (interventionsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as InterventionContract),
+    verifiedOutcomes: (outcomesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as VerifiedOutcomeContract),
   }));
 }
 
-export async function createFactoryWorkspace(input: {
-  name: string;
-  location?: string;
-  industry?: string;
-}): Promise<number> {
+export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<CanonicalMachineSnapshot[]> {
+  const assetQuery = supabase
+    .from("factory_assets")
+    .select("id,factory_id,name,machine_type_id,manufacturer,model,rated_power_kw,rated_capacity,installation_year,process_role,connectivity_mode,calibration_status,criticality,asset_metadata")
+    .eq("asset_metadata->>lifecycle_status", "active")
+    .order("id");
+  const { data: assets, error: assetError } = factoryId ? await assetQuery.eq("factory_id", factoryId) : await assetQuery;
+  if (assetError) throw assetError;
+
+  const ids = (assets ?? []).map((a) => a.id);
+  const factories = [...new Set((assets ?? []).map((a) => a.factory_id))];
+  const [typesResult, mappingsResult, observationsResult, sourceResult] = await Promise.all([
+    supabase.from("machine_types").select("id,machine_type,category,purpose").in("id", [...new Set((assets ?? []).map((a) => a.machine_type_id).filter((x): x is number => x !== null))]),
+    ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null } as any),
+    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [], error: null } as any),
+    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [], error: null } as any),
+  ]);
+  const err = [typesResult, mappingsResult, observationsResult, sourceResult].find((r) => r.error)?.error;
+  if (err) throw err;
+
+  const typeMap = new Map((typesResult.data ?? []).map((x) => [x.id, x]));
+  const sourceMap = new Map((sourceResult.data ?? []).map((x) => [x.id, x]));
+  return (assets ?? []).map((a) => ({
+    id: a.id,
+    factoryId: a.factory_id,
+    name: a.name,
+    machineTypeId: a.machine_type_id,
+    manufacturer: a.manufacturer,
+    model: a.model,
+    ratedPowerKw: a.rated_power_kw,
+    ratedCapacity: a.rated_capacity,
+    installationYear: a.installation_year,
+    processRole: a.process_role,
+    connectivityMode: a.connectivity_mode,
+    calibrationStatus: a.calibration_status,
+    criticality: a.criticality,
+    assetMetadata: jsonRecord(a.asset_metadata),
+    machineType: a.machine_type_id && typeMap.has(a.machine_type_id) ? (() => {
+      const t = typeMap.get(a.machine_type_id)!;
+      return { id: t.id, name: t.machine_type, category: t.category, purpose: t.purpose };
+    })() : null,
+    dataSources: (mappingsResult.data ?? [])
+      .filter((m) => m.asset_id === a.id)
+      .map((m) => sourceMap.get(m.data_source_id))
+      .filter((s): s is NonNullable<typeof s> => Boolean(s))
+      .map((s) => ({ id: s.id, name: s.name, sourceType: s.source_type, status: s.connection_status, timezone: s.timezone })),
+    mappings: (mappingsResult.data ?? []).filter((m) => m.asset_id === a.id).map((m) => ({
+      id: m.id,
+      sourceField: m.source_field,
+      canonicalMetric: m.canonical_metric,
+      unit: m.unit,
+      status: m.mapping_status,
+      confidence: m.confidence,
+    })),
+    observations: (observationsResult.data ?? []).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
+  }));
+}
+
+export async function getCanonicalOpportunities(factoryId: number): Promise<OpportunityContract[]> {
+  const { data, error } = await supabase
+    .from("opportunities")
+    .select("id,factory_id,title,status,scope_type,scope_id,deviation_id,evidence_bundle_id,gross_loss,avoidable_loss,recoverable_opportunity,expected_recovery,intervention_cost,expected_net_value,expected_roi,expected_payback_months,measurement_confidence,baseline_confidence,causal_confidence,economic_confidence,priority_score,urgency")
+    .eq("factory_id", factoryId)
+    .order("priority_score", { ascending: false, nullsFirst: false });
+  if (error) throw error;
+  return (data ?? []).map((x) => x as unknown as OpportunityContract);
+}
+
+export async function getCanonicalDeviations(factoryId: number): Promise<CanonicalDeviation[]> {
+  const { data, error } = await supabase
+    .from("performance_deviations")
+    .select("id,factory_id,scope_type,scope_id,metric,observation_id,expectation_id,actual_value,expected_value,deviation_value,deviation_percentage,direction,persistence,statistical_significance,engineering_significance,economic_materiality,status")
+    .eq("factory_id", factoryId)
+    .order("created_at", { ascending: false });
+  if (error) throw error;
+  return data ?? [];
+}
+
+export async function getCanonicalVerification(factoryId: number) {
+  const [plans, runs, outcomes] = await Promise.all([
+    supabase.from("verification_plans").select("*").eq("factory_id", factoryId).order("created_at", { ascending: false }),
+    supabase.from("verification_runs").select("*").eq("factory_id", factoryId).order("created_at", { ascending: false }),
+    supabase.from("verified_outcomes").select("*").eq("factory_id", factoryId).order("created_at", { ascending: false }),
+  ]);
+  const err = [plans, runs, outcomes].find((r) => r.error)?.error;
+  if (err) throw err;
+  return { plans: plans.data ?? [], runs: runs.data ?? [], outcomes: outcomes.data ?? [] };
+}
+
+export async function createCanonicalIntervention(input: {
+  factoryId: number;
+  assetId: number;
+  opportunityId?: number | null;
+  title: string;
+  implementedAt: string;
+  cost: number;
+}) {
+  const { data, error } = await supabase.from("asset_interventions").insert({
+    factory_id: input.factoryId,
+    asset_id: input.assetId,
+    opportunity_id: input.opportunityId ?? null,
+    intervention_date: input.implementedAt,
+    intervention_type: "operational_change",
+    description: input.title,
+    expected_saving_inr: null,
+    status: "implemented",
+    implementation_cost: input.cost,
+    preconditions: {},
+    operating_constraints: {},
+    safety_constraints: {},
+    required_resources: {},
+    implementation_steps: [],
+    risk: {},
+    dependencies: [],
+    verification_method: { status: "verification_plan_required", source: "phase_13_2" },
+  }).select("id").single();
+  if (error) throw error;
+  return data.id;
+}
+
+export async function createFactoryWorkspace(input: { name: string; location?: string; industry?: string }): Promise<number> {
   const { data, error } = await (supabase as any).rpc("create_factory_workspace", {
-    p_name: input.name,
-    p_location: input.location ?? null,
-    p_industry: input.industry ?? null,
+    p_name: input.name, p_location: input.location ?? null, p_industry: input.industry ?? null,
   });
   if (error) throw error;
   return Number(data);
@@ -120,23 +263,20 @@ async function getOrCreateManualSource(factoryId: number): Promise<number> {
     .eq("source_type", "manual")
     .eq("name", "GridMind manual entry")
     .maybeSingle();
-
   if (readError) throw readError;
   if (existing) return existing.id;
 
-  const { data, error } = await supabase
-    .from("data_sources")
-    .insert({
-      factory_id: factoryId,
-      name: "GridMind manual entry",
-      source_type: "manual",
-      connection_status: "connected",
-      sampling_frequency: "monthly",
-      metadata: { application: "gridmind", contract_version: 1 },
-    })
-    .select("id")
-    .single();
-
+  const { data, error } = await supabase.from("data_sources").insert({
+    factory_id: factoryId,
+    name: "GridMind manual entry",
+    source_type: "manual",
+    connection_status: "connected",
+    sampling_frequency: "monthly",
+    timezone: "Asia/Kolkata",
+    quality_status: "unverified",
+    configuration_version: 1,
+    metadata: { application: "gridmind", contract_version: 1 },
+  }).select("id").single();
   if (error) throw error;
   return data.id;
 }
@@ -152,6 +292,20 @@ export async function recordFactoryObservation(input: {
   estimated?: boolean;
 }) {
   const sourceId = await getOrCreateManualSource(input.factoryId);
+  const { data: existing, error: lookupError } = await supabase
+    .from("observations")
+    .select("id,value_numeric,created_at")
+    .eq("factory_id", input.factoryId)
+    .eq("data_source_id", sourceId)
+    .eq("observed_at", input.observedAt)
+    .eq("metric", input.metric)
+    .eq("metadata->>entry_key", input.entryKey)
+    .order("created_at", { ascending: false })
+    .limit(1)
+    .maybeSingle();
+  if (lookupError) throw lookupError;
+  if (existing && Number(existing.value_numeric) === input.value) return;
+
   const { error } = await supabase.from("observations").insert({
     factory_id: input.factoryId,
     subject_type: "factory",
@@ -166,49 +320,76 @@ export async function recordFactoryObservation(input: {
     quality_status: input.estimated ? "estimated" : "unverified",
     quality_score: input.estimated ? 0.5 : null,
     is_estimated: Boolean(input.estimated),
-    provenance: {
-      source: "gridmind_manual_entry",
-      entry_key: input.entryKey,
-      application_contract_version: 1,
-    },
-    metadata: {
-      entry_key: input.entryKey,
-      supersession_policy: "latest_created_at_wins",
-    },
+    provenance: { source: "gridmind_manual_entry", entry_key: input.entryKey, application_contract_version: 1 },
+    metadata: { entry_key: input.entryKey, supersession_policy: "append_only" },
   });
   if (error) throw error;
 }
 
-export async function updateFactoryProfile(factoryId: number, patch: {
-  name?: string;
-  location?: string;
-  industry?: string;
-  metadata?: Record<string, unknown>;
-}) {
-  const { data: current, error: readError } = await supabase
-    .from("factories")
-    .select("metadata")
-    .eq("id", factoryId)
-    .single();
+export async function syncFactoryAssets(factoryId: number, equipment: Array<{
+  id: string; name: string; category: string; ratedKw: number; quantity: number; hoursPerMonth: number; loadFactor: number;
+}>) {
+  const { data: existing, error: readError } = await supabase.from("factory_assets")
+    .select("id,asset_metadata").eq("factory_id", factoryId);
   if (readError) throw readError;
+  const incomingIds = new Set<number>();
 
+  for (const e of equipment) {
+    const numericId = Number(e.id);
+    const metadata = {
+      category: e.category,
+      quantity: e.quantity,
+      hoursPerMonth: e.hoursPerMonth,
+      loadFactor: e.loadFactor,
+      lifecycle_status: "active",
+      application_contract_version: 1,
+    };
+    if (Number.isInteger(numericId) && existing?.some((x) => x.id === numericId)) {
+      incomingIds.add(numericId);
+      const { error } = await supabase.from("factory_assets").update({
+        name: e.name,
+        rated_power_kw: e.ratedKw,
+        asset_metadata: metadata,
+      }).eq("id", numericId).eq("factory_id", factoryId);
+      if (error) throw error;
+    } else {
+      const { data, error } = await supabase.from("factory_assets").insert({
+        factory_id: factoryId,
+        name: e.name,
+        rated_power_kw: e.ratedKw,
+        asset_metadata: metadata,
+      }).select("id").single();
+      if (error) throw error;
+      incomingIds.add(data.id);
+    }
+  }
+
+  for (const e of existing ?? []) {
+    if (!incomingIds.has(e.id) && jsonRecord(e.asset_metadata).lifecycle_status !== "retired") {
+      const { error } = await supabase.from("factory_assets").update({
+        asset_metadata: { ...jsonRecord(e.asset_metadata), lifecycle_status: "retired", retired_at: new Date().toISOString() },
+      }).eq("id", e.id).eq("factory_id", factoryId);
+      if (error) throw error;
+    }
+  }
+}
+
+export async function updateFactoryProfile(factoryId: number, patch: {
+  name?: string; location?: string; industry?: string; metadata?: Record<string, unknown>;
+}) {
+  const { data: current, error: readError } = await supabase.from("factories").select("metadata").eq("id", factoryId).single();
+  if (readError) throw readError;
   const metadata = { ...jsonRecord(current.metadata), ...patch.metadata };
-  const { error } = await supabase
-    .from("factories")
-    .update({
-      ...(patch.name !== undefined ? { name: patch.name } : {}),
-      ...(patch.location !== undefined ? { location: patch.location } : {}),
-      ...(patch.industry !== undefined ? { industry: patch.industry } : {}),
-      metadata,
-    })
-    .eq("id", factoryId);
+  const { error } = await supabase.from("factories").update({
+    ...(patch.name !== undefined ? { name: patch.name } : {}),
+    ...(patch.location !== undefined ? { location: patch.location } : {}),
+    ...(patch.industry !== undefined ? { industry: patch.industry } : {}),
+    metadata,
+  }).eq("id", factoryId);
   if (error) throw error;
 }
 
 export async function updateOpportunityStatus(opportunityId: number, status: string) {
-  const { error } = await supabase
-    .from("opportunities")
-    .update({ status })
-    .eq("id", opportunityId);
+  const { error } = await supabase.from("opportunities").update({ status }).eq("id", opportunityId);
   if (error) throw error;
 }
