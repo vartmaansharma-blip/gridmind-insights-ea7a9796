@@ -33,6 +33,7 @@ export function createDemoFactory(): Factory {
   });
   return {
     id: DEMO_FACTORY_ID,
+    organizationId: null,
     name: "Adityapur Precision Auto Components",
     location: "Adityapur Industrial Area, Jharkhand",
     sector: "Auto components — machining, forging & heat treatment",
