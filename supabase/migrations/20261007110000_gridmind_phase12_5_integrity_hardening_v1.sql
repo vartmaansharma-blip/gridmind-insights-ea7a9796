@@ -4,15 +4,6 @@
 alter table public.factories
   add constraint factories_id_organization_unique unique (id, organization_id);
 
-do $$
-begin
-  if not exists (select 1 from pg_constraint where conname='organization_members_org_user_unique') then
-    alter table public.organization_members
-      add constraint organization_members_org_user_unique
-      unique (organization_id, user_id);
-  end if;
-end $$;
-
 alter table public.factory_members
   add column if not exists organization_id bigint;
 
@@ -339,9 +330,6 @@ drop policy if exists "canonical factory members read asset_interventions" on pu
 drop policy if exists "canonical factory members insert asset_interventions" on public.asset_interventions;
 drop policy if exists "canonical factory members update asset_interventions" on public.asset_interventions;
 
-drop index if exists public.factory_members_factory_user_unique;
-drop constraint if exists public.factory_members_factory_user_unique;
-drop constraint if exists public.organization_members_org_user_unique;
 
 create index if not exists asset_interventions_factory_idx on public.asset_interventions(factory_id);
 create index if not exists asset_interventions_opportunity_idx on public.asset_interventions(opportunity_id);
