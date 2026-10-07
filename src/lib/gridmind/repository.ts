@@ -131,13 +131,13 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const assetQuery = supabase
     .from("factory_assets")
     .select("id,factory_id,name,machine_type_id,manufacturer,model,rated_power_kw,rated_capacity,installation_year,process_role,connectivity_mode,calibration_status,criticality,asset_metadata")
-    .eq("asset_metadata->>lifecycle_status", "active")
     .order("id");
   const { data: assets, error: assetError } = factoryId ? await assetQuery.eq("factory_id", factoryId) : await assetQuery;
   if (assetError) throw assetError;
 
-  const ids = (assets ?? []).map((a) => a.id);
-  const factories = [...new Set((assets ?? []).map((a) => a.factory_id))];
+  const activeAssets = (assets ?? []).filter((a) => jsonRecord(a.asset_metadata).lifecycle_status !== "retired");
+  const ids = activeAssets.map((a) => a.id);
+  const factories = [...new Set(activeAssets.map((a) => a.factory_id))];
   const [typesResult, mappingsResult, observationsResult, sourceResult] = await Promise.all([
     supabase.from("machine_types").select("id,machine_type,category,purpose").in("id", [...new Set((assets ?? []).map((a) => a.machine_type_id).filter((x): x is number => x !== null))]),
     ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null } as any),
@@ -149,7 +149,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
 
   const typeMap = new Map((typesResult.data ?? []).map((x) => [x.id, x]));
   const sourceMap = new Map((sourceResult.data ?? []).map((x) => [x.id, x]));
-  return (assets ?? []).map((a) => ({
+  return activeAssets.map((a) => ({
     id: a.id,
     factoryId: a.factory_id,
     name: a.name,
