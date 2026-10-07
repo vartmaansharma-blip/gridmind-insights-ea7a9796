@@ -1,70 +1,60 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useQuery } from "@tanstack/react-query";
+import { getCanonicalOpportunities } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
 import { inr, inrCompact } from "@/lib/energy/format";
-import type { OpportunityStatus } from "@/lib/energy/types";
 import { EmptyState, PageHeader } from "@/components/gm/bits";
-import { FindingFlow, FindingHeader } from "@/components/gm/finding";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { buildIntelligenceOpportunities } from "@/lib/energy/intelligence";
-import { EvidenceLegend, EvidenceTag } from "@/components/gm/evidence";
-import { ProcessRail } from "@/components/gm/bits";
 
 export const Route = createFileRoute("/opportunities")({
-  head: () => ({
-    meta: [
-      { title: "Savings opportunities — GridMind" },
-      { name: "description", content: "Ranked, rupee-quantified electricity savings actions with confidence and payback." },
-      { property: "og:title", content: "Savings opportunities — GridMind" },
-      { property: "og:description", content: "Ranked actions to cut factory electricity cost." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-    ],
-  }),
+  head: () => ({ meta: [{ title: "Opportunities — GridMind" }] }),
   component: Opps,
 });
 
-const STATUS: Record<OpportunityStatus, string> = { open: "Open", planned: "Planned", in_progress: "In progress", implemented: "Implemented" };
+const STATUS = ["detected","quantified","investigating","diagnosed","recommended","accepted","in_progress","awaiting_verification","verified","closed","invalid","insufficient_evidence","not_economically_material","not_actionable","rejected","superseded","unverified"];
 
 function Opps() {
-  const { active, analysis: a, setOppStatus } = useEnergy();
-  if (!active || !a?.hasData) return <EmptyState />;
-  const opportunities = buildIntelligenceOpportunities(active, a);
+  const { active, setOppStatus } = useEnergy();
+  const query = useQuery({
+    queryKey: ["canonical-opportunities", active?.id],
+    queryFn: () => getCanonicalOpportunities(Number(active!.id)),
+    enabled: Boolean(active && !active.isDemo),
+  });
+
+  if (!active || active.isDemo) return <EmptyState />;
+  if (query.isLoading) return <p className="text-sm text-muted-foreground">Loading canonical opportunities…</p>;
+  if (query.error) return <p className="text-sm text-danger">{query.error.message}</p>;
+
+  const opportunities = query.data ?? [];
   return (
     <>
-      <PageHeader eyebrow="Opportunities" title={`${inrCompact(a.totalSavingAnnual)}/yr estimated open savings`}
-        desc="Every figure is calculated from your entered data using the assumptions shown. Treat as estimates until verified." />
-      <ProcessRail active={6} />
-      <div className="mb-4"><EvidenceLegend /></div>
+      <PageHeader eyebrow="Economic intelligence" title={opportunities.length ? opportunities.length + " canonical opportunities" : "No canonical opportunities yet"} desc="This view only shows opportunities persisted in the canonical intelligence model. Screening calculations are not presented as production opportunities." />
       <div className="grid gap-4">
+        {opportunities.length === 0 && <div className="panel p-6 text-sm text-muted-foreground">No evidence-backed opportunity has been persisted yet. The next intelligence phase will populate this from observations, context, expected performance, deviations and evidence.</div>}
         {opportunities.map((o, i) => (
-          <article key={o.id} className="panel p-4 sm:p-5 rise">
-            <FindingHeader o={o} rank={i + 1} />
-            <FindingFlow o={o} />
-            <div className="mt-4 grid gap-3 border-t border-border pt-4 text-xs md:grid-cols-2 xl:grid-cols-4">
-              <div><div className="eyebrow">Evidence & reference</div><ul className="mt-2 space-y-1 text-muted-foreground">{o.evidence.map((x) => <li key={x}>• {x}</li>)}</ul><p className="mt-2"><EvidenceTag k="estimated" /> {o.reference}</p></div>
-              <div><div className="eyebrow">Context & uncertainty</div><p className="mt-2 text-muted-foreground">{o.context}</p><p className="mt-2 text-muted-foreground">{o.uncertainty}</p></div>
-              <div><div className="eyebrow">Possible explanations</div><ul className="mt-2 space-y-1 text-muted-foreground">{o.possibleExplanations.map((x) => <li key={x}>• {x}</li>)}</ul></div>
-              <div><div className="eyebrow">Data needed next</div><ul className="mt-2 space-y-1 text-muted-foreground">{o.missingEvidence.map((x) => <li key={x}>• {x}</li>)}</ul></div>
+          <article key={o.id} className="panel p-5">
+            <div className="flex flex-wrap items-start gap-3">
+              <div className="min-w-0 flex-1"><div className="eyebrow">Opportunity #{i + 1}</div><h2 className="mt-1 text-lg font-semibold">{o.title}</h2><p className="mt-1 text-sm text-muted-foreground">{o.scopeType} · {o.scopeId ?? "factory-wide"}</p></div>
+              <Select value={o.status} onValueChange={(v) => setOppStatus(String(o.id), v as any)}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{STATUS.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
             </div>
-            <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-              <span>Investment <b className="num text-foreground">{o.investment ? inr(o.investment) : "Nil"}</b></span>
-              <span>Payback <b className="num text-foreground">{o.paybackMonths === null ? "—" : o.paybackMonths < 1 ? "Immediate" : `${o.paybackMonths.toFixed(1)} months`}</b></span>
-              <span>Financial state <b className="uppercase text-foreground">{o.financialState}</b></span>
-              <span>Verification <b className="capitalize text-foreground">{o.verificationState}</b></span>
-              <div className="ml-auto">
-                <Select value={active.opportunityStatus[o.id] ?? "open"} onValueChange={(v) => setOppStatus(o.id, v as OpportunityStatus)}>
-                  <SelectTrigger className="h-8 w-[140px]"><SelectValue /></SelectTrigger>
-                  <SelectContent>{Object.entries(STATUS).map(([k, v]) => <SelectItem key={k} value={k}>{v}</SelectItem>)}</SelectContent>
-                </Select>
-              </div>
+            <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+              <Metric label="Recoverable opportunity" value={o.recoverableOpportunity} />
+              <Metric label="Expected recovery" value={o.expectedRecovery} />
+              <Metric label="Expected net value" value={o.expectedNetValue} />
+              <Metric label="Payback" value={o.expectedPaybackMonths == null ? null : o.expectedPaybackMonths} suffix=" months" />
             </div>
-            <details className="mt-3 text-xs">
-              <summary className="cursor-pointer font-medium">How this was calculated</summary>
-              <ol className="mt-2 list-decimal space-y-1 pl-5 text-muted-foreground num">{o.calc.map((c) => <li key={c}>{c}</li>)}</ol>
-            </details>
+            <div className="mt-4 grid gap-3 border-t border-border pt-4 text-xs text-muted-foreground sm:grid-cols-4">
+              <span>Gross loss: {money(o.grossLoss)}</span><span>Avoidable: {money(o.avoidableLoss)}</span><span>Intervention: {money(o.interventionCost)}</span><span>Priority: {o.priorityScore ?? "—"}</span>
+            </div>
+            <div className="mt-3 text-xs text-muted-foreground">Evidence bundle: {o.evidenceBundleId ?? "not linked"} · Deviation: {o.deviationId ?? "not linked"} · Confidence: measurement {o.measurementConfidence ?? "—"}, baseline {o.baselineConfidence ?? "—"}, causal {o.causalConfidence ?? "—"}, economic {o.economicConfidence ?? "—"}</div>
           </article>
         ))}
       </div>
     </>
   );
+}
+
+function money(v: number | null) { return v == null ? "—" : inr(v); }
+function Metric({ label, value, suffix = "" }: { label: string; value: number | null; suffix?: string }) {
+  return <div className="rounded-lg bg-muted/40 p-3"><div className="text-xs text-muted-foreground">{label}</div><div className="num mt-1 text-base font-semibold">{value == null ? "—" : (suffix ? value.toFixed(1) + suffix : inrCompact(value))}</div></div>;
 }
