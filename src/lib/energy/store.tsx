@@ -1,19 +1,41 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { analyze, type Analysis } from "./analysis";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
 import type { Factory, OpportunityStatus } from "./types";
+import {
+  createFactoryWorkspace,
+  getAuthenticatedFactorySnapshots,
+  recordFactoryObservation,
+  updateFactoryProfile,
+} from "@/lib/gridmind/repository";
 
-// Local persistence for the MVP. Swap this provider for a backend-backed one later.
-const KEY = "gridmind:v1";
+/**
+ * Canonical application state boundary.
+ *
+ * Important:
+ * - Supabase is authoritative for authenticated factories.
+ * - The demo factory exists only in memory and is explicitly synthetic.
+ * - localStorage is intentionally not used for operational, economic, or
+ *   factory state.
+ * - Observation edits are append-only records; the repository resolves the
+ *   latest manual entry for each entry key.
+ */
 
-type State = { factories: Factory[]; activeId: string | null };
+type State = {
+  factories: Factory[];
+  activeId: string | null;
+  authenticated: boolean;
+  loading: boolean;
+};
 
 type Ctx = {
   factories: Factory[];
   active: Factory | null;
   analysis: Analysis | null;
+  authenticated: boolean;
+  loading: boolean;
   setActive: (id: string) => void;
-  addFactory: (f: Pick<Factory, "name" | "location" | "sector" | "contractDemandKva" | "demandChargePerKva">) => string;
+  addFactory: (f: Pick<Factory, "name" | "location" | "sector" | "contractDemandKva" | "demandChargePerKva">) => void;
   updateFactory: (id: string, fn: (f: Factory) => Factory) => void;
   deleteFactory: (id: string) => void;
   loadDemo: () => void;
@@ -26,63 +48,216 @@ const StoreCtx = createContext<Ctx | null>(null);
 const uid = () => Math.random().toString(36).slice(2, 10);
 export { uid };
 
+const metricMap = {
+  kwh: ["energy_kwh", "kWh"],
+  cost: ["energy_cost_inr", "INR"],
+  peakKva: ["peak_kva", "kVA"],
+  production: ["production_units", "unit"],
+  operatingHours: ["operating_hours", "hour"],
+  powerFactor: ["power_factor", "ratio"],
+} as const;
+
+const monthBounds = (month: string) => {
+  const start = new Date(`${month}-01T00:00:00+05:30`);
+  const end = new Date(start);
+  end.setMonth(end.getMonth() + 1);
+  return { start: start.toISOString(), end: end.toISOString() };
+};
+
+function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedFactorySnapshots>>[number]): Factory {
+  const metadata = new Map<string, { value: number; createdAt: string }>();
+  for (const o of snapshot.observations) {
+    const key = typeof o.metadata.entry_key === "string" ? o.metadata.entry_key : null;
+    if (!key || o.valueNumeric === null) continue;
+    if (!metadata.has(key) || metadata.get(key)!.createdAt < o.createdAt) {
+      metadata.set(key, { value: o.valueNumeric, createdAt: o.createdAt });
+    }
+  }
+
+  const monthsByKey = new Map<string, Record<string, number | string>>();
+  for (const item of metadata) {
+    const [month, metric] = item[0].split(":");
+    if (!month || !metric) continue;
+    const row = monthsByKey.get(month) ?? { month };
+    row[metric] = item[1].value;
+    monthsByKey.set(month, row);
+  }
+
+  const months = [...monthsByKey.values()]
+    .sort((a, b) => String(a.month).localeCompare(String(b.month)))
+    .map((row) => ({
+      month: String(row.month),
+      kwh: Number(row.kwh ?? 0),
+      cost: Number(row.cost ?? 0),
+      peakKva: Number(row.peakKva ?? 0),
+      production: Number(row.production ?? 0),
+      operatingHours: Number(row.operatingHours ?? 0),
+      ...(row.powerFactor !== undefined ? { powerFactor: Number(row.powerFactor) } : {}),
+    }));
+
+  const metadataObject = snapshot.observations.find((o) => o.metadata.factory_profile === true);
+  const profile = metadataObject?.provenance ?? {};
+
+  const interventions = snapshot.interventions.map((iv) => ({
+    id: String(iv.id),
+    title: iv.description ?? "GridMind intervention",
+    opportunityId: iv.opportunityId ? String(iv.opportunityId) : undefined,
+    implementedMonth: iv.status === "implemented" && iv.factoryId ? new Date().toISOString().slice(0, 7) : "",
+    cost: Number(iv.implementationCost ?? 0),
+  })).filter((iv) => iv.implementedMonth);
+
+  return {
+    id: String(snapshot.factoryId),
+    name: snapshot.name,
+    location: snapshot.location ?? "",
+    sector: snapshot.industry ?? "",
+    productUnit: typeof profile.productUnit === "string" ? profile.productUnit : "unit",
+    contractDemandKva: Number(profile.contractDemandKva ?? 0),
+    demandChargePerKva: Number(profile.demandChargePerKva ?? 0),
+    isDemo: false,
+    months,
+    equipment: snapshot.assets.map((a) => ({
+      id: String(a.id),
+      name: a.name,
+      category: "other",
+      ratedKw: Number(a.ratedPowerKw ?? 0),
+      quantity: 1,
+      hoursPerMonth: 0,
+      loadFactor: 0,
+    })),
+    interventions,
+    opportunityStatus: Object.fromEntries(snapshot.opportunities.map((o) => [String(o.id), o.status as OpportunityStatus])),
+  };
+}
+
+async function persistFactory(factory: Factory) {
+  if (factory.isDemo) return;
+
+  const factoryId = Number(factory.id);
+  if (!Number.isFinite(factoryId)) return;
+
+  await updateFactoryProfile(factoryId, {
+    name: factory.name,
+    location: factory.location,
+    industry: factory.sector,
+    metadata: {
+      contractDemandKva: factory.contractDemandKva,
+      demandChargePerKva: factory.demandChargePerKva,
+      productUnit: factory.productUnit,
+      application_contract_version: 1,
+    },
+  });
+
+  for (const month of factory.months) {
+    const { start, end } = monthBounds(month.month);
+    for (const [field, [metric, unit]] of Object.entries(metricMap) as Array<[keyof typeof metricMap, readonly [string, string]]>) {
+      const value = month[field];
+      if (typeof value !== "number" || !Number.isFinite(value)) continue;
+      if (field === "powerFactor" && value === 0) continue;
+      await recordFactoryObservation({
+        factoryId,
+        metric,
+        unit,
+        value,
+        observedAt: start,
+        observedUntil: end,
+        entryKey: `${month.month}:${field}`,
+      });
+    }
+  }
+}
+
 export function EnergyStoreProvider({ children }: { children: ReactNode }) {
-  const [state, setState] = useState<State>({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID });
-  const [hydrated, setHydrated] = useState(false);
+  const [state, setState] = useState<State>({
+    factories: [createDemoFactory()],
+    activeId: DEMO_FACTORY_ID,
+    authenticated: false,
+    loading: true,
+  });
+  const persistTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
 
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as State;
-        if (Array.isArray(parsed.factories)) setState(parsed);
+    let cancelled = false;
+    void (async () => {
+      try {
+        const snapshots = await getAuthenticatedFactorySnapshots();
+        if (cancelled) return;
+        if (snapshots.length) {
+          const factories = snapshots.map(snapshotToFactory);
+          setState({ factories, activeId: factories[0].id, authenticated: true, loading: false });
+        } else {
+          setState((s) => ({ ...s, loading: false }));
+        }
+      } catch (error) {
+        console.error("[GridMind] canonical factory load failed", error);
+        if (!cancelled) setState((s) => ({ ...s, loading: false }));
       }
-    } catch {
-      /* ignore corrupt storage */
-    }
-    setHydrated(true);
+    })();
+    return () => { cancelled = true; };
   }, []);
 
-  useEffect(() => {
-    if (hydrated) localStorage.setItem(KEY, JSON.stringify(state));
-  }, [state, hydrated]);
+  useEffect(() => () => {
+    for (const timer of persistTimers.current.values()) clearTimeout(timer);
+  }, []);
 
   const active = state.factories.find((f) => f.id === state.activeId) ?? state.factories[0] ?? null;
   const analysis = useMemo(() => (active ? analyze(active) : null), [active]);
 
-  const updateFactory = useCallback((id: string, fn: (f: Factory) => Factory) => {
-    setState((s) => ({ ...s, factories: s.factories.map((f) => (f.id === id ? fn(f) : f)) }));
+  const schedulePersist = useCallback((factory: Factory) => {
+    if (factory.isDemo) return;
+    const existing = persistTimers.current.get(factory.id);
+    if (existing) clearTimeout(existing);
+    const timer = setTimeout(() => {
+      void persistFactory(factory).catch((error) => {
+        console.error("[GridMind] canonical factory write failed", error);
+      });
+      persistTimers.current.delete(factory.id);
+    }, 600);
+    persistTimers.current.set(factory.id, timer);
   }, []);
+
+  const updateFactory = useCallback((id: string, fn: (f: Factory) => Factory) => {
+    setState((s) => {
+      const factories = s.factories.map((f) => {
+        if (f.id !== id) return f;
+        const next = fn(f);
+        schedulePersist(next);
+        return next;
+      });
+      return { ...s, factories };
+    });
+  }, [schedulePersist]);
 
   const value: Ctx = {
     factories: state.factories,
     active,
     analysis,
+    authenticated: state.authenticated,
+    loading: state.loading,
     setActive: (id) => setState((s) => ({ ...s, activeId: id })),
     addFactory: (input) => {
-      const id = uid();
-      const f: Factory = {
-        id, ...input, productUnit: "unit", isDemo: false, months: [], equipment: [], interventions: [], opportunityStatus: {},
-      };
-      setState((s) => ({ factories: [...s.factories, f], activeId: id }));
-      return id;
+      void createFactoryWorkspace(input).then(async () => {
+        const snapshots = await getAuthenticatedFactorySnapshots();
+        const factories = snapshots.map(snapshotToFactory);
+        setState({ factories, activeId: factories.at(-1)?.id ?? null, authenticated: true, loading: false });
+      }).catch((error) => {
+        console.error("[GridMind] factory creation failed", error);
+      });
     },
     updateFactory,
-    deleteFactory: (id) =>
-      setState((s) => {
-        const factories = s.factories.filter((f) => f.id !== id);
-        return { factories, activeId: factories[0]?.id ?? null };
-      }),
-    loadDemo: () =>
-      setState((s) => ({
-        factories: [createDemoFactory(), ...s.factories.filter((f) => f.id !== DEMO_FACTORY_ID)],
-        activeId: DEMO_FACTORY_ID,
-      })),
+    deleteFactory: () => {
+      console.warn("[GridMind] factory deletion is intentionally disabled until lifecycle semantics are implemented.");
+    },
+    loadDemo: () => setState((s) => ({
+      ...s,
+      factories: [createDemoFactory(), ...s.factories.filter((f) => f.id !== DEMO_FACTORY_ID)],
+      activeId: DEMO_FACTORY_ID,
+    })),
     runAnalysis: () => {
       if (active) updateFactory(active.id, (f) => ({ ...f, lastAnalyzedAt: new Date().toISOString() }));
     },
-    setOppStatus: (oppId, st) => {
-      if (active) updateFactory(active.id, (f) => ({ ...f, opportunityStatus: { ...f.opportunityStatus, [oppId]: st } }));
+    setOppStatus: () => {
+      console.info("[GridMind] opportunity status persistence moves to canonical opportunities in Phase 13.3.");
     },
   };
 
