@@ -6,7 +6,9 @@ import {
   createFactoryWorkspace,
   getAuthenticatedFactorySnapshots,
   recordFactoryObservation,
+  syncFactoryAssets,
   updateFactoryProfile,
+  updateOpportunityStatus,
 } from "@/lib/gridmind/repository";
 
 /**
@@ -143,9 +145,11 @@ async function persistFactory(factory: Factory) {
       contractDemandKva: factory.contractDemandKva,
       demandChargePerKva: factory.demandChargePerKva,
       productUnit: factory.productUnit,
-      application_contract_version: 1,
+      application_contract_version: 2,
     },
   });
+
+  await syncFactoryAssets(factoryId, factory.equipment);
 
   for (const month of factory.months) {
     const { start, end } = monthBounds(month.month);
@@ -255,8 +259,17 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     runAnalysis: () => {
       if (active) updateFactory(active.id, (f) => ({ ...f, lastAnalyzedAt: new Date().toISOString() }));
     },
-    setOppStatus: () => {
-      console.info("[GridMind] opportunity status persistence moves to canonical opportunities in Phase 13.3.");
+    setOppStatus: (oppId, status) => {
+      const id = Number(oppId);
+      if (!Number.isInteger(id)) {
+        console.warn("[GridMind] ignored non-canonical opportunity id", oppId);
+        return;
+      }
+      void updateOpportunityStatus(id, status).catch((error) => console.error("[GridMind] canonical opportunity update failed", error));
+      setState((s) => ({
+        ...s,
+        factories: s.factories.map((f) => f.id === active?.id ? { ...f, opportunityStatus: { ...f.opportunityStatus, [oppId]: status } } : f),
+      }));
     },
   };
 
