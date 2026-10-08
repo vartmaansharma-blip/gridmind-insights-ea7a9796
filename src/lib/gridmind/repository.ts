@@ -248,7 +248,7 @@ export async function createCanonicalIntervention(input: {
 }
 
 export async function createFactoryWorkspace(input: { name: string; location?: string; industry?: string }): Promise<number> {
-  const { data, error } = await (supabase as any).rpc("create_factory_workspace", {
+  const { data, error } = await supabase.rpc("create_factory_workspace", {
     p_name: input.name, p_location: input.location ?? null, p_industry: input.industry ?? null,
   });
   if (error) throw error;
