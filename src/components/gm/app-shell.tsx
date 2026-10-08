@@ -9,6 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { supabase } from "@/integrations/supabase/client";
 import { useEnergy } from "@/lib/energy/store";
 import { inrCompact } from "@/lib/energy/format";
 
@@ -83,7 +84,7 @@ export function AddFactoryDialog({ open, onOpenChange }: { open: boolean; onOpen
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { factories, active, setActive, analysis, runAnalysis } = useEnergy();
+  const { factories, active, analysis, runAnalysis, authenticated } = useEnergy();
   const [addOpen, setAddOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -132,7 +133,14 @@ export function AppShell({ children }: { children: ReactNode }) {
             <Button variant="outline" size="icon" className="sm:hidden" onClick={() => setAddOpen(true)} aria-label="Add factory"><Plus /></Button>
             <Button variant="outline" className="hidden sm:inline-flex" onClick={() => setAddOpen(true)}><Plus /> Add factory</Button>
           </div>
-          <Button variant="cta" onClick={onRun} className="hidden sm:inline-flex"><Play /> Run analysis</Button>
+          <div className="flex items-center gap-2">
+            {authenticated ? (
+              <Button variant="outline" size="sm" onClick={() => void supabase.auth.signOut()}>Sign out</Button>
+            ) : (
+              <Button variant="outline" size="sm" asChild><Link to="/auth">Sign in</Link></Button>
+            )}
+            <Button variant="cta" onClick={onRun} className="hidden sm:inline-flex"><Play /> Run analysis</Button>
+          </div>
           <div className="hidden border-l border-border pl-3 text-[10px] text-muted-foreground xl:block">
             <div className="font-semibold text-foreground">{analysis?.quality.grade ?? "No data"} quality · {analysis?.quality.score ?? 0}/100</div>
             <div>{active?.lastAnalyzedAt ? `Analysed ${new Date(active.lastAnalyzedAt).toLocaleString()}` : "Analysis not yet recorded"}</div>
