@@ -38,7 +38,7 @@ type Ctx = {
   authenticated: boolean;
   loading: boolean;
   setActive: (id: string) => void;
-  addFactory: (f: Pick<Factory, "name" | "location" | "sector" | "contractDemandKva" | "demandChargePerKva">) => void;
+  addFactory: (f: Pick<Factory, "name" | "location" | "sector" | "contractDemandKva" | "demandChargePerKva">) => Promise<void>;
   updateFactory: (id: string, fn: (f: Factory) => Factory) => void;
   deleteFactory: (id: string) => void;
   loadDemo: () => void;
@@ -198,8 +198,8 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
         if (cancelled) return;
         const factories = snapshots.map(snapshotToFactory);
         setState({
-          factories: factories.length ? factories : [createDemoFactory()],
-          activeId: factories[0]?.id ?? DEMO_FACTORY_ID,
+          factories,
+          activeId: factories[0]?.id ?? null,
           authenticated: true,
           loading: false,
         });
@@ -262,14 +262,15 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     authenticated: state.authenticated,
     loading: state.loading,
     setActive: (id) => setState((s) => ({ ...s, activeId: id })),
-    addFactory: (input) => {
-      void createFactoryWorkspace(input).then(async () => {
-        const snapshots = await getAuthenticatedFactorySnapshots();
-        const factories = snapshots.map(snapshotToFactory);
-        setState({ factories, activeId: factories.at(-1)?.id ?? null, authenticated: true, loading: false });
-      }).catch((error) => {
-        console.error("[GridMind] factory creation failed", error);
-      });
+    addFactory: async (input) => {
+      const factoryId = await createFactoryWorkspace(input);
+      const snapshots = await getAuthenticatedFactorySnapshots();
+      const factories = snapshots.map(snapshotToFactory);
+      const created = factories.find((factory) => factory.id === String(factoryId));
+      if (!created) {
+        throw new Error("Factory was created but is not visible through the authenticated workspace. Check factory membership and RLS.");
+      }
+      setState({ factories, activeId: created.id, authenticated: true, loading: false });
     },
     updateFactory,
     deleteFactory: () => {
