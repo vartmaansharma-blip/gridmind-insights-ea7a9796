@@ -84,7 +84,7 @@ export function AddFactoryDialog({ open, onOpenChange }: { open: boolean; onOpen
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { factories, active, analysis, runAnalysis, authenticated } = useEnergy();
+  const { factories, active, setActive, analysis, runAnalysis, authenticated } = useEnergy();
   const [addOpen, setAddOpen] = useState(false);
   const navigate = useNavigate();
 
