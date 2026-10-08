@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as EnergyRouteImport } from './routes/energy'
 import { Route as FactoryRouteImport } from './routes/factory'
@@ -21,6 +22,11 @@ import { Route as MachinesIdRouteImport } from './routes/machines.$id'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AlertsRoute = AlertsRouteImport.update({
@@ -61,6 +67,7 @@ const MachinesIdRoute = MachinesIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/alerts': typeof AlertsRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/alerts': typeof AlertsRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
@@ -81,6 +89,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/auth': typeof AuthRoute
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/energy': typeof EnergyRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/alerts'
     | '/energy'
     | '/factory'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/alerts'
     | '/energy'
     | '/factory'
@@ -113,6 +124,7 @@ export interface FileRouteTypes {
     | '/machines'
   id:
     | '__root__'
+    | '/auth'
     | '/'
     | '/alerts'
     | '/energy'
@@ -125,6 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   AlertsRoute: typeof AlertsRoute
   EnergyRoute: typeof EnergyRoute
   FactoryRoute: typeof FactoryRoute
@@ -138,6 +151,19 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
@@ -197,6 +223,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   AlertsRoute: AlertsRoute,
   EnergyRoute: EnergyRoute,
   FactoryRoute: FactoryRoute,
