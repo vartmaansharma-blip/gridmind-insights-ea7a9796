@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { analyze, type Analysis } from "./analysis";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
 import type { Factory, OpportunityStatus } from "./types";
+import { supabase } from "@/integrations/supabase/client";
 import {
   createFactoryWorkspace,
   getAuthenticatedFactorySnapshots,
@@ -182,22 +183,44 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     let cancelled = false;
-    void (async () => {
+
+    const loadForSession = async () => {
       try {
+        const { data: sessionData } = await supabase.auth.getSession();
+        if (cancelled) return;
+
+        if (!sessionData.session) {
+          setState({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID, authenticated: false, loading: false });
+          return;
+        }
+
         const snapshots = await getAuthenticatedFactorySnapshots();
         if (cancelled) return;
-        if (snapshots.length) {
-          const factories = snapshots.map(snapshotToFactory);
-          setState({ factories, activeId: factories[0].id, authenticated: true, loading: false });
-        } else {
-          setState((s) => ({ ...s, loading: false }));
-        }
+        const factories = snapshots.map(snapshotToFactory);
+        setState({
+          factories: factories.length ? factories : [createDemoFactory()],
+          activeId: factories[0]?.id ?? DEMO_FACTORY_ID,
+          authenticated: true,
+          loading: false,
+        });
       } catch (error) {
         console.error("[GridMind] canonical factory load failed", error);
         if (!cancelled) setState((s) => ({ ...s, loading: false }));
       }
-    })();
-    return () => { cancelled = true; };
+    };
+
+    void loadForSession();
+    const { data: authSubscription } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") void loadForSession();
+      if (event === "SIGNED_OUT") {
+        setState({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID, authenticated: false, loading: false });
+      }
+    });
+
+    return () => {
+      cancelled = true;
+      authSubscription.subscription.unsubscribe();
+    };
   }, []);
 
   useEffect(() => () => {
