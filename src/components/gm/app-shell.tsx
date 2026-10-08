@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, type FormEvent, type ReactNode } from "react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { AlertTriangle, BadgeIndianRupee, Cpu, Factory as FactoryIcon, LayoutDashboard, Lightbulb, Play, Plus, Zap } from "lucide-react";
@@ -56,16 +56,22 @@ export function AddFactoryDialog({ open, onOpenChange }: { open: boolean; onOpen
         </DialogHeader>
         <form
           className="grid gap-3"
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             const fd = Object.fromEntries(new FormData(e.currentTarget));
             const r = factorySchema.safeParse(fd);
             if (!r.success) return setErr(r.error.issues[0]?.message ?? "Invalid input");
-            addFactory(r.data);
-            onOpenChange(false);
             setErr(null);
-            toast.success("Factory added — now enter monthly data");
-            navigate({ to: "/factory" });
+            try {
+              await addFactory(r.data);
+              onOpenChange(false);
+              toast.success("Factory added — now enter monthly data");
+              navigate({ to: "/factory" });
+            } catch (error) {
+              const message = error instanceof Error ? error.message : "Factory creation failed";
+              setErr(message);
+              toast.error("Factory creation failed");
+            }
           }}
         >
           <div className="grid gap-1.5"><Label htmlFor="name">Factory name</Label><Input id="name" name="name" required maxLength={100} /></div>
@@ -87,6 +93,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   const { factories, active, setActive, analysis, runAnalysis, authenticated } = useEnergy();
   const [addOpen, setAddOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authenticated && !active && !addOpen) setAddOpen(true);
+  }, [authenticated, active, addOpen]);
 
   const onRun = () => {
     if (!analysis?.hasData) {
@@ -148,7 +158,21 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1440px] px-4 pb-28 pt-6 sm:px-6 lg:pb-12 lg:pt-8">{children}</main>
+      <main className="mx-auto max-w-[1440px] px-4 pb-28 pt-6 sm:px-6 lg:pb-12 lg:pt-8">
+        {authenticated && !active ? (
+          <section className="mx-auto max-w-2xl py-16">
+            <div className="panel p-8 text-center">
+              <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-cta/10 text-cta"><FactoryIcon className="size-6" /></div>
+              <div className="eyebrow">Workspace setup</div>
+              <h1 className="mt-2 text-3xl font-semibold tracking-tight">Create your first factory</h1>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
+                Your account is authenticated, but it has no factory membership yet. Create the factory workspace before entering operational data. GridMind will keep this workspace private and factory-scoped.
+              </p>
+              <Button variant="cta" className="mt-6" onClick={() => setAddOpen(true)}><Plus /> Create factory</Button>
+            </div>
+          </section>
+        ) : children}
+      </main>
 
       <Button variant="cta" onClick={onRun} className="fixed bottom-20 right-4 z-30 rounded-full sm:hidden"><Play /> Run analysis</Button>
       <nav className="fixed inset-x-0 bottom-0 z-30 flex overflow-x-auto border-t border-sidebar-border bg-rail lg:hidden">
