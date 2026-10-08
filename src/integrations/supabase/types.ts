@@ -2987,7 +2987,10 @@ export type Database = {
       }
     }
     Functions: {
-      [_ in never]: never
+      create_factory_workspace: {
+        Args: { p_industry?: string; p_location?: string; p_name: string }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
