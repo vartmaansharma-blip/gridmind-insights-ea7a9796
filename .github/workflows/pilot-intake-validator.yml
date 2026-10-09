@@ -1,0 +1,31 @@
+name: GridMind Pilot Intake Validator
+
+on:
+  pull_request:
+    paths:
+      - "scripts/validate-gridmind-pilot-intake.py"
+      - "tests/test_gridmind_pilot_intake_validator.py"
+      - ".github/workflows/pilot-intake-validator.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/validate-gridmind-pilot-intake.py"
+      - "tests/test_gridmind_pilot_intake_validator.py"
+      - ".github/workflows/pilot-intake-validator.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validator-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run pilot intake validator regression tests
+        run: python -m unittest tests/test_gridmind_pilot_intake_validator.py -v
+      - name: Check validator CLI help
+        run: python scripts/validate-gridmind-pilot-intake.py --help
