@@ -71,9 +71,11 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
   const metadata = new Map<string, { value: number; createdAt: string }>();
   for (const o of snapshot.observations) {
     const key = typeof o.metadata.entry_key === "string" ? o.metadata.entry_key : null;
-    if (!key || o.valueNumeric === null) continue;
+    if (!key) continue;
+    // A null numeric observation with quality_status=missing is an explicit
+    // tombstone, so a cleared field cannot resurrect an older numeric value.
     if (!metadata.has(key) || metadata.get(key)!.createdAt < o.createdAt) {
-      metadata.set(key, { value: o.valueNumeric, createdAt: o.createdAt });
+      metadata.set(key, { value: o.valueNumeric === null ? Number.NaN : o.valueNumeric, createdAt: o.createdAt });
     }
   }
 
@@ -159,13 +161,12 @@ async function persistFactory(factory: Factory) {
     const { start, end } = monthBounds(month.month);
     for (const [field, [metric, unit]] of Object.entries(metricMap) as Array<[keyof typeof metricMap, readonly [string, string]]>) {
       const value = month[field];
-      if (typeof value !== "number" || !Number.isFinite(value)) continue;
       if (field === "powerFactor" && value === 0) continue;
       await recordFactoryObservation({
         factoryId,
         metric,
         unit,
-        value,
+        value: typeof value === "number" && Number.isFinite(value) ? value : null,
         observedAt: start,
         observedUntil: end,
         entryKey: `${month.month}:${field}`,
