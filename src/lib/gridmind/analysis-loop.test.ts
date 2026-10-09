@@ -155,7 +155,7 @@ describe("authoritative factory-analysis loop", () => {
       sample("b1", 500), sample("b1", 510), sample("b3", 490),
     ]));
     expect(unsupported.reasonCodes).toContain("UNSUPPORTED_PRODUCTION_UNIT");
-    expect(duplicate.reference.sampleCount).toBe(2);
+    expect(duplicate.reference.sampleCount).toBe(1);
     expect(duplicate.evidence.excludedBaseline.find((x) => x.id === "b1")?.reasons).toContain("DUPLICATE_SAMPLE_ID");
   });
 
@@ -182,7 +182,7 @@ describe("authoritative factory-analysis loop", () => {
     expect(overlapsCurrent.evidence.excludedBaseline.find((x) => x.id === "b1")?.reasons).toContain("BASELINE_PERIOD_NOT_HISTORICAL");
 
     const overlappingBaselines = analyzeFactoryLoop(input(sample("current", 700), [
-      sample("b1", 500, { periodStart: "2026-10-05T00:00:00.000Z", periodEnd: "2026-10-06T12:00:00.000Z" }),
+      sample("b1", 750, { productionValue: 150, operatingHours: 15, periodStart: "2026-10-05T00:00:00.000Z", periodEnd: "2026-10-06T12:00:00.000Z" }),
       sample("b2", 510, { periodStart: "2026-10-06T00:00:00.000Z", periodEnd: "2026-10-07T00:00:00.000Z" }),
       sample("b3", 490),
     ]));
