@@ -145,8 +145,8 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const [typesResult, mappingsResult, observationsResult, sourceResult] = await Promise.all([
     supabase.from("machine_types").select("id,machine_type,category,purpose").in("id", [...new Set((assets ?? []).map((a) => a.machine_type_id).filter((x): x is number => x !== null))]),
     ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null }),
-    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [], error: null } as any),
-    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [], error: null } as any),
+    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [], error: null }),
+    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [], error: null }),
   ]);
   const err = [typesResult, mappingsResult, observationsResult, sourceResult].find((r) => r.error)?.error;
   if (err) throw err;
@@ -154,7 +154,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   // Conditional empty results above must retain the selected row contracts;
   // avoid widening the mapped records to unknown/{}.
   const typeRows = (typesResult.data ?? []) as MachineTypeQueryRow[];
-  const mappingRows = mappingRows as DataSourceMappingQueryRow[];
+  const mappingRows = (mappingsResult.data ?? []) as DataSourceMappingQueryRow[];
   const observationRows = (observationsResult.data ?? []) as ObservationRow[];
   const sourceRows = (sourceResult.data ?? []) as DataSourceQueryRow[];
   const typeMap = new Map(typeRows.map((x) => [x.id, x]));
