@@ -2,7 +2,7 @@
 
 ## Runtime path
 
-The canonical asset page calls `runCanonicalFactoryAnalysis`. That service reads canonical asset observations, applicable operating contexts, and the active economic context; builds an immutable analysis input; calls the authenticated `persist-factory-analysis` Edge Function; and requests a server-side reload/recalculation before presenting a conclusion.
+The canonical asset page sends only `factoryId`, `assetId`, `asOf`, and an idempotency key. After validating the caller's JWT and passing the caller-scoped factory RLS check, the authenticated `persist-factory-analysis` Edge Function independently loads the asset's canonical observations, applicable operating contexts, and active economic contexts using its privileged client. It assembles the input with the shared adapter, calculates, persists the server-built snapshot, then reloads and recomputes before returning a conclusion. Client-supplied measurements or analysis inputs are rejected.
 
 The Edge Function recalculates with the same shared engine used by the test suite. Browser clients have no direct SELECT/INSERT grants on `factory_analysis_runs`. A positive opportunity is presented only when the persisted result reproduces and the estimated net value is positive.
 
@@ -53,7 +53,8 @@ These fields must be finite numbers; no generic tariff, recovery rate, or interv
 - Non-overlapping historical baseline, comparable operating rates, duplicate IDs, deterministic input order: `analysis-loop.test.ts`
 - Canonical observation assembly, source IDs, unknown role, absent context/economics, no-observation refusal: `analysis-input-adapter.test.ts`
 - Canonical read → persist → reload/recompute orchestration: `analysis-runner.test.ts`
-- JSON-safe immutable request and server-only persistence contract: `analysis-run-store.test.ts`
+- Browser sends only canonical identifiers; no client measurement payload: `analysis-run-store.test.ts`, `analysis-runner.test.ts`
+- Database-level tenant isolation, direct-table denial, least-privilege service-role grants, idempotency uniqueness, and append-only update/delete protection: `supabase/tests/factory-analysis-security.sql`
 - Streamed request-size enforcement, malformed lengths, and malformed JSON: `supabase/functions/_shared/request-body.test.ts`
 
 ## Live-environment verification still required
