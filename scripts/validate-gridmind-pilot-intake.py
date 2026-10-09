@@ -102,6 +102,12 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
             errors.append(f"{label}: provide exactly one of value_numeric or value_text")
         if numeric:
             number(numeric, f"{label}: value_numeric", errors)
+        expected_unit = {"energy": "kWh", "operating_hours": "h"}.get(role)
+        if expected_unit and row.get("unit", "").strip().lower() != expected_unit.lower():
+            errors.append(f"{label}: role {role!r} requires unit {expected_unit!r}; do not convert units implicitly")
+        metric_unit = {"energy_consumption_kwh": "kWh", "operating_hours": "h"}.get(metric)
+        if metric_unit and row.get("unit", "").strip().lower() != metric_unit.lower():
+            errors.append(f"{label}: metric {metric!r} requires unit {metric_unit!r}")
         if text and (role in {"energy", "production", "operating_hours"} or metric in {"energy_consumption_kwh", "production_output", "operating_hours"}):
             errors.append(f"{label}: numeric measurement role cannot use value_text")
         start = parse_time(row.get("period_start", ""), f"{label}: period_start", errors)
@@ -149,11 +155,13 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
                     errors.append(f"{current[3]}: overlapping operating contexts conflict for factory/asset {key}")
 
     economics_by_factory: dict[str, list[tuple[datetime, datetime | None, str]]] = defaultdict(list)
+    economic_rows_by_factory: dict[str, list[dict[str, str]]] = defaultdict(list)
     for i, row in enumerate(economics, 2):
         label = f"{eco_path.name}:{i}"
         required(row, ["factory_id", "context_name", "effective_from", "currency", "source_system", "source_record_id", "source_reference"], label, errors)
         factory = row.get("factory_id", "")
         factories.add(factory)
+        economic_rows_by_factory[factory].append(row)
         start = parse_time(row.get("effective_from", ""), f"{label}: effective_from", errors)
         end = None
         if row.get("effective_until"):
@@ -163,8 +171,21 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
         for field, low, high in [("tariff_inr_per_kwh", 0, None), ("recoverable_fraction", 0, 1), ("intervention_cost_inr", 0, None)]:
             if row.get(field):
                 number(row[field], f"{label}: {field}", errors, low=low, high=high)
+        if row.get("tariff_inr_per_kwh") and row.get("currency", "").upper() != "INR":
+            errors.append(f"{label}: tariff_inr_per_kwh requires currency INR; do not mix currencies or silently convert")
         if start:
             economics_by_factory[factory].append((start, end, label))
+
+    for factory, rows in economics_by_factory.items():
+        rows.sort(key=lambda x: x[0])
+        for index, current in enumerate(rows):
+            for prior in rows[:index]:
+                prior_start, prior_end, prior_label = prior
+                current_start, current_end, current_label = current
+                prior_end_bound = prior_end or datetime.max.replace(tzinfo=prior_start.tzinfo)
+                current_end_bound = current_end or datetime.max.replace(tzinfo=current_start.tzinfo)
+                if current_start < prior_end_bound and prior_start < current_end_bound:
+                    errors.append(f"{current_label}: effective economic context overlaps {prior_label} for factory {factory!r}")
 
     for factory in sorted(f for f in factories if f):
         rows = economics_by_factory.get(factory, [])
