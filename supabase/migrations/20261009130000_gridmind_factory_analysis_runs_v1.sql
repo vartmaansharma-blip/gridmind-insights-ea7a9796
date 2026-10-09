@@ -11,11 +11,14 @@ create table if not exists public.factory_analysis_runs (
   refusal_codes jsonb not null default '[]'::jsonb,
   created_by uuid not null references auth.users(id) on delete restrict,
   created_at timestamptz not null default now(),
-  constraint factory_analysis_runs_input_factory_matches check (input_snapshot->>'factoryId' = factory_id::text),
-  constraint factory_analysis_runs_result_factory_matches check (result->>'factoryId' = factory_id::text),
-  constraint factory_analysis_runs_status_matches check (result->>'status' = analysis_status),
-  constraint factory_analysis_runs_algorithm_matches check (result->>'algorithmVersion' = algorithm_version),
-  constraint factory_analysis_runs_refusals_match check (refusal_codes = coalesce(result->'reasonCodes', '[]'::jsonb)),
+  constraint factory_analysis_runs_input_is_object check (jsonb_typeof(input_snapshot) = 'object'),
+  constraint factory_analysis_runs_result_is_object check (jsonb_typeof(result) = 'object'),
+  constraint factory_analysis_runs_refusals_are_array check (jsonb_typeof(refusal_codes) = 'array'),
+  constraint factory_analysis_runs_input_factory_matches check (input_snapshot ? 'factoryId' and input_snapshot->>'factoryId' = factory_id::text),
+  constraint factory_analysis_runs_result_factory_matches check (result ? 'factoryId' and result->>'factoryId' = factory_id::text),
+  constraint factory_analysis_runs_status_matches check (result ? 'status' and result->>'status' = analysis_status),
+  constraint factory_analysis_runs_algorithm_matches check (result ? 'algorithmVersion' and result->>'algorithmVersion' = algorithm_version),
+  constraint factory_analysis_runs_refusals_match check (result ? 'reasonCodes' and refusal_codes = result->'reasonCodes'),
   constraint factory_analysis_runs_idempotency_key_nonempty check (length(trim(idempotency_key)) between 1 and 200),
   constraint factory_analysis_runs_algorithm_nonempty check (length(trim(algorithm_version)) between 1 and 100),
   constraint factory_analysis_runs_fingerprint_nonempty check (length(trim(result_fingerprint)) between 1 and 100),
@@ -37,3 +40,19 @@ drop policy if exists "active factory members update analysis runs" on public.fa
 revoke all on public.factory_analysis_runs from anon, authenticated;
 grant select, insert on public.factory_analysis_runs to authenticated;
 grant usage, select on sequence public.factory_analysis_runs_id_seq to authenticated;
+
+-- Enforce append-only semantics at the database layer, including privileged application clients.
+create or replace function private.reject_factory_analysis_run_mutation()
+returns trigger
+language plpgsql
+set search_path = ''
+as $function$
+begin
+  raise exception 'FACTORY_ANALYSIS_RUNS_ARE_APPEND_ONLY';
+end;
+$function$;
+revoke all on function private.reject_factory_analysis_run_mutation() from public, anon, authenticated;
+drop trigger if exists factory_analysis_runs_append_only on public.factory_analysis_runs;
+create trigger factory_analysis_runs_append_only
+  before update or delete on public.factory_analysis_runs
+  for each row execute function private.reject_factory_analysis_run_mutation();
