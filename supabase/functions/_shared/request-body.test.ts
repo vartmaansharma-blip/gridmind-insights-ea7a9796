@@ -35,6 +35,14 @@ describe("bounded JSON request parsing", () => {
     });
   });
 
+  it("enforces the actual stream limit when Content-Length under-reports the body", async () => {
+    const input = request(JSON.stringify({ payload: "x".repeat(64) }), { "content-length": "1" });
+    await expect(readBoundedJsonBody(input, 32)).resolves.toEqual({
+      ok: false,
+      reason: "too_large",
+    });
+  });
+
   it("accepts a body exactly at the byte limit", async () => {
     const body = '{"a":1}';
     await expect(readBoundedJsonBody(request(body), new TextEncoder().encode(body).byteLength)).resolves.toEqual({
