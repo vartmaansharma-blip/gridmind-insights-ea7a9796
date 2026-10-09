@@ -4,7 +4,6 @@ import type { AnalysisInput, AnalysisResult } from "./analysis-loop";
 export type FactoryAnalysisRequest = {
   factoryId: number;
   assetId: number;
-  asOf: string;
 };
 
 export type StoredAnalysisRun = {
@@ -45,9 +44,6 @@ export async function persistFactoryAnalysisRun(
   if (!Number.isSafeInteger(request.assetId) || request.assetId <= 0) {
     throw new Error("A valid positive asset ID is required.");
   }
-  if (typeof request.asOf !== "string" || !Number.isFinite(Date.parse(request.asOf))) {
-    throw new Error("A valid analysis timestamp is required.");
-  }
   if (!key || key.length > 200) {
     throw new Error("A non-empty idempotency key of at most 200 characters is required.");
   }
@@ -57,7 +53,6 @@ export async function persistFactoryAnalysisRun(
       action: "persist",
       factoryId: request.factoryId,
       assetId: request.assetId,
-      asOf: request.asOf,
       idempotencyKey: key,
     },
   });
