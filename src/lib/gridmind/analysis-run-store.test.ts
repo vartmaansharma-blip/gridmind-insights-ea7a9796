@@ -10,7 +10,6 @@ import { persistFactoryAnalysisRun, reloadAndVerifyFactoryAnalysisRun } from "./
 const request = () => ({
   factoryId: 1,
   assetId: 7,
-  asOf: "2026-10-09T12:00:00.000Z",
 });
 
 describe("analysis run client adapter", () => {
@@ -28,7 +27,6 @@ describe("analysis run client adapter", () => {
       action: "persist",
       factoryId: 1,
       assetId: 7,
-      asOf: "2026-10-09T12:00:00.000Z",
       idempotencyKey: "run-key",
     });
     expect(options.body).not.toHaveProperty("input");
@@ -44,12 +42,6 @@ describe("analysis run client adapter", () => {
   it("rejects malformed asset identifiers before making a network request", async () => {
     await expect(persistFactoryAnalysisRun({ ...request(), assetId: -1 }, "run-key"))
       .rejects.toThrow("positive asset ID");
-    expect(invoke).not.toHaveBeenCalled();
-  });
-
-  it("rejects invalid analysis timestamps before making a network request", async () => {
-    await expect(persistFactoryAnalysisRun({ ...request(), asOf: "not-a-date" }, "run-key"))
-      .rejects.toThrow("valid analysis timestamp");
     expect(invoke).not.toHaveBeenCalled();
   });
 
