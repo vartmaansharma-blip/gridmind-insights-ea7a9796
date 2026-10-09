@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2.117.2";
+import { readBoundedJsonBody } from "../_shared/request-body.ts";
 import {
   analyzeFactoryLoop,
   canonicalize,
@@ -80,9 +81,6 @@ function reproducible(stored: StoredAnalysisRun, factoryId: number, result: Anal
 runtime.serve(async (request: Request): Promise<Response> => {
   if (request.method === "OPTIONS") return new Response("ok", { headers: CORS_HEADERS });
   if (request.method !== "POST") return reply({ error: "METHOD_NOT_ALLOWED" }, 405);
-  const contentLength = Number(request.headers.get("Content-Length") ?? 0);
-  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) return reply({ error: "ANALYSIS_INPUT_TOO_LARGE" }, 413);
-
   try {
     const supabaseUrl = runtime.env.get("SUPABASE_URL");
     const anonKey = runtime.env.get("SUPABASE_ANON_KEY");
@@ -101,12 +99,14 @@ runtime.serve(async (request: Request): Promise<Response> => {
     const { data: authData, error: authError } = await userClient.auth.getUser(accessToken);
     if (authError || !authData.user) return reply({ error: "AUTHENTICATION_REQUIRED" }, 401);
 
-    let body: unknown;
-    try {
-      body = await request.json();
-    } catch {
+    const parsedBody = await readBoundedJsonBody(request, MAX_REQUEST_BYTES);
+    if (!parsedBody.ok) {
+      if (parsedBody.reason === "too_large") return reply({ error: "ANALYSIS_INPUT_TOO_LARGE" }, 413);
+      if (parsedBody.reason === "invalid_content_length") return reply({ error: "INVALID_CONTENT_LENGTH" }, 400);
+      if (parsedBody.reason === "unreadable_body") return reply({ error: "UNREADABLE_REQUEST_BODY" }, 400);
       return reply({ error: "INVALID_JSON_BODY" }, 400);
     }
+    const body = parsedBody.value;
     if (!isRecord(body)) return reply({ error: "INVALID_REQUEST_BODY" }, 400);
 
     const action = body.action;
