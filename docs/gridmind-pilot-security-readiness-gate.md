@@ -19,7 +19,7 @@ Refresh these findings before any deployment decision.
 
 Do not blindly revoke grants or change the function. Inspect the live function definition, owner, grants, and all functions it calls first.
 
-- [ ] Retrieve `pg_get_functiondef` for the exact overload.
+- [x] Retrieved the live `pg_get_functiondef` for `public.create_factory_workspace(text, text, text)` and inspected its ACLs on 2026-10-09.
 - [ ] Confirm `SECURITY DEFINER` is intentional and uses a fixed, safe `search_path`.
 - [ ] Confirm object references are schema-qualified where appropriate.
 - [ ] Verify identity derives from trusted `auth.uid()` context, not a caller-supplied user ID.
@@ -29,6 +29,14 @@ Do not blindly revoke grants or change the function. Inspect the live function d
 - [ ] Inspect `EXECUTE` grants for `PUBLIC`, `anon`, and `authenticated`; grant only the intended caller class.
 - [ ] Add automated tests for unauthenticated, unauthorized, authorized, cross-tenant, and malformed-input calls.
 - [ ] Implement any fix through a reviewed migration; rerun clean migration replay, database security assertions, and authenticated HTTP acceptance.
+
+### Live review result (read-only, 2026-10-09)
+
+- Owner: `postgres`; `SECURITY DEFINER` is enabled; function-level `search_path` is set to the empty string.
+- The function obtains the caller from `auth.uid()`, rejects unauthenticated calls and blank factory names, and schema-qualifies its table references.
+- It selects an active organization where the caller has `owner` or `admin` role; if none exists, it creates an organization and owner membership. It then creates a factory and factory-owner membership.
+- ACL inspection showed `EXECUTE` for `authenticated` and the owner, with no `anon` or `PUBLIC` execute grant.
+- This makes the advisor warning a review signal, not by itself proof of an exploitable issue. The remaining work is to test authorization/tenant edge cases and confirm the product intends to choose the lowest-ID active owner/admin organization when multiple matches exist. No live function or grants were changed.
 
 **Pass condition:** intended behavior is documented, least-privilege grants are verified, and positive and negative authorization tests pass. A disappearing warning alone is insufficient.
 
