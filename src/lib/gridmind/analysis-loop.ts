@@ -161,8 +161,26 @@ const positive = (value: unknown): value is number => finite(value) && value > 0
 const nonNegative = (value: unknown): value is number => finite(value) && value >= 0;
 const text = (value: unknown): string | null => typeof value === "string" && value.trim() ? value.trim() : null;
 const timestamp = (value: unknown): number | null => {
-  if (typeof value !== "string" ||
-      !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2})$/i.test(value)) return null;
+  if (typeof value !== "string") return null;
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(?:Z|([+-])(\d{2}):(\d{2}))$/i);
+  if (!match) return null;
+
+  const year = Number(match[1]);
+  const month = Number(match[2]);
+  const day = Number(match[3]);
+  const hour = Number(match[4]);
+  const minute = Number(match[5]);
+  const second = Number(match[6]);
+  if (year < 1 || month < 1 || month > 12 || day < 1 || hour > 23 || minute > 59 || second > 59) return null;
+
+  const calendar = new Date(0);
+  calendar.setUTCFullYear(year, month - 1, day);
+  calendar.setUTCHours(hour, minute, second, 0);
+  if (calendar.getUTCFullYear() !== year || calendar.getUTCMonth() !== month - 1 ||
+      calendar.getUTCDate() !== day || calendar.getUTCHours() !== hour ||
+      calendar.getUTCMinutes() !== minute || calendar.getUTCSeconds() !== second) return null;
+  if (match[8] !== undefined && (Number(match[8]) > 23 || Number(match[9]) > 59)) return null;
+
   const parsed = Date.parse(value);
   return Number.isFinite(parsed) ? parsed : null;
 };
