@@ -143,8 +143,12 @@ describe("authoritative factory-analysis loop", () => {
 
   it("rejects timestamps that omit seconds and validates age-policy inputs", () => {
     const malformed = analyzeFactoryLoop(input(sample("current", 700, { periodStart: "2026-10-08T00:00Z" })));
+    const impossibleDate = analyzeFactoryLoop(input(sample("current", 700, { periodStart: "2026-02-30T00:00:00.000Z" })));
+    const offsetTimestamp = analyzeFactoryLoop(input(sample("current", 700, { periodStart: "2026-10-08T05:30:00+05:30" })));
     const badPolicy = analyzeFactoryLoop({ ...input(), maxCurrentAgeDays: -1 });
     expect(malformed.reasonCodes).toContain("INVALID_TIMESTAMP");
+    expect(impossibleDate.reasonCodes).toContain("INVALID_TIMESTAMP");
+    expect(offsetTimestamp.reference.sampleCount).toBe(3);
     expect(badPolicy.reasonCodes).toContain("INVALID_AGE_POLICY");
     expect(badPolicy.evidence.current).toBeNull();
   });
