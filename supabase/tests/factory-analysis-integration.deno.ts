@@ -110,6 +110,29 @@ Deno.test("persist-factory-analysis enforces auth, tenant scope, server-owned in
     throw new Error("Persisted run is not bound to the expected factory and asset");
   }
 
+  // The fixture has four comparable historical periods and a current high-energy period.
+  // Assert the end-to-end financial calculation, not merely a reproducible refusal result.
+  const result = run.result as Json;
+  const reference = result.reference as Json | undefined;
+  const deviation = result.deviation as Json | undefined;
+  const economics = result.economics as Json | undefined;
+  const provenance = result.provenance as Json | undefined;
+  if (result.status !== "opportunity" || deviation?.detected !== true) {
+    throw new Error(`Expected a detected positive-net opportunity, got: ${JSON.stringify({ status: result.status, deviation })}`);
+  }
+  if (reference?.sampleCount !== 4 || economics?.quantified !== true ||
+      economics.estimatedGrossValueInr !== 4000 ||
+      economics.estimatedRecoverableValueInr !== 2000 ||
+      economics.estimatedNetValueInr !== 1500) {
+    throw new Error(`Unexpected financial calculation or baseline: ${JSON.stringify({ reference, economics })}`);
+  }
+  if (!Array.isArray(provenance?.inputObservationIds) || provenance.inputObservationIds.length !== 15) {
+    throw new Error(`Persisted provenance should identify all 15 source observations: ${JSON.stringify(provenance)}`);
+  }
+  if ((run.input_snapshot as unknown as Json).factoryId !== factoryA) {
+    throw new Error("Persisted canonical snapshot is not bound to the authorized factory");
+  }
+
   const retry = await runAnalysis(userA.access_token, {
     action: "persist", factoryId: factoryA, assetId: assetA, idempotencyKey: key,
   });
