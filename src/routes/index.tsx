@@ -24,7 +24,18 @@ export const Route = createFileRoute("/")({
 
 function Overview() {
   const { active, analysis: a } = useEnergy();
-  if (!active || !a?.hasData || !a.latest) return <EmptyState />;
+  if (!active || !a) return <EmptyState />;
+  if (!a.hasData || !a.latest) {
+    return (
+      <>
+        <PageHeader eyebrow="Factory Performance Intelligence" title={active.name} desc={`${active.location} · Economic conclusions remain blocked until usable measurements are available.`} actions={<>{active.isDemo && <DemoBadge />}<QualityPill q={a.quality} /></>} />
+        <Panel className="mt-4" title="No usable monthly evidence" desc={a.pipeline.pauseReason ?? "No valid monthly records are available for screening."}>
+          <p className="text-sm text-muted-foreground">This does not mean the factory has zero losses or zero savings. Missing, invalid, or incomplete measurements prevent a defensible calculation.</p>
+          <Button asChild variant="outline" size="sm" className="mt-4"><Link to="/factory">Review factory data <ArrowRight /></Link></Button>
+        </Panel>
+      </>
+    );
+  }
   const l = a.latest, p = a.prev;
   const opportunities = buildIntelligenceOpportunities(active, a);
   const d = (x: number, y?: number) => (y ? x / y - 1 : 0);
