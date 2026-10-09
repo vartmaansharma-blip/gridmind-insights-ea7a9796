@@ -11,7 +11,7 @@ permissions:
 
 concurrency:
   group: migration-replay-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   replay:
