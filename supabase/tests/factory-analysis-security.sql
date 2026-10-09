@@ -1,0 +1,118 @@
+-- Isolated acceptance test for the factory-analysis table and tenant boundary.
+-- Run only against the ephemeral local Supabase database after a clean migration replay.
+begin;
+
+do $$
+declare
+  user_a constant uuid := 'a1111111-1111-4111-8111-111111111111';
+  user_b constant uuid := 'b2222222-2222-4222-8222-222222222222';
+  org_a bigint;
+  org_b bigint;
+  factory_a bigint;
+  factory_b bigint;
+begin
+  insert into auth.users (id, aud, role, email, created_at, updated_at, raw_app_meta_data, raw_user_meta_data)
+  values
+    (user_a, 'authenticated', 'authenticated', 'gridmind-ci-a@example.test', now(), now(), '{}'::jsonb, '{}'::jsonb),
+    (user_b, 'authenticated', 'authenticated', 'gridmind-ci-b@example.test', now(), now(), '{}'::jsonb, '{}'::jsonb);
+
+  insert into public.organizations (name) values ('gridmind-ci-org-a') returning id into org_a;
+  insert into public.organizations (name) values ('gridmind-ci-org-b') returning id into org_b;
+
+  insert into public.organization_members (organization_id, user_id, role, status)
+  values (org_a, user_a, 'owner', 'active'), (org_b, user_b, 'owner', 'active');
+
+  insert into public.factories (organization_id, name)
+  values (org_a, 'gridmind-ci-factory-a') returning id into factory_a;
+  insert into public.factories (organization_id, name)
+  values (org_b, 'gridmind-ci-factory-b') returning id into factory_b;
+
+  insert into public.factory_members (factory_id, user_id, organization_id, role)
+  values (factory_a, user_a, org_a, 'owner'), (factory_b, user_b, org_b, 'owner');
+end;
+$$;
+
+set local role authenticated;
+select set_config('request.jwt.claim.sub', 'a1111111-1111-4111-8111-111111111111', true);
+select set_config('request.jwt.claims', '{"sub":"a1111111-1111-4111-8111-111111111111","role":"authenticated"}', true);
+
+do $$
+declare
+  visible_factories integer;
+begin
+  select count(*) into visible_factories
+  from public.factories
+  where name like 'gridmind-ci-factory-%';
+
+  if visible_factories <> 1 then
+    raise exception 'TENANT_ISOLATION_FAILED: user A sees % test factories, expected exactly one', visible_factories;
+  end if;
+
+  if has_table_privilege(current_user, 'public.factory_analysis_runs', 'select')
+    or has_table_privilege(current_user, 'public.factory_analysis_runs', 'insert')
+    or has_table_privilege('anon', 'public.factory_analysis_runs', 'select')
+    or has_table_privilege('anon', 'public.factory_analysis_runs', 'insert') then
+    raise exception 'DIRECT_TABLE_ACCESS_NOT_REVOKED';
+  end if;
+
+  begin
+    execute 'select count(*) from public.factory_analysis_runs';
+    raise exception 'DIRECT_SELECT_WAS_ALLOWED';
+  exception
+    when insufficient_privilege then null;
+  end;
+
+  begin
+    execute $statement$
+      insert into public.factory_analysis_runs
+        (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
+         result_fingerprint, analysis_status, refusal_codes, created_by)
+      values
+        (1, 'gridmind-ci-forbidden', 'test-v1', '{"factoryId":1}',
+         '{"factoryId":1,"status":"insufficient_evidence","algorithmVersion":"test-v1","reasonCodes":[]}',
+         'test-fingerprint', 'insufficient_evidence', '[]', 'a1111111-1111-4111-8111-111111111111')
+    $statement$;
+    raise exception 'DIRECT_INSERT_WAS_ALLOWED';
+  exception
+    when insufficient_privilege then null;
+  end;
+end;
+$$;
+
+reset role;
+
+do $$
+declare
+  factory_a bigint;
+  run_id bigint;
+  trigger_message text;
+begin
+  select id into strict factory_a from public.factories where name = 'gridmind-ci-factory-a';
+
+  insert into public.factory_analysis_runs
+    (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
+     result_fingerprint, analysis_status, refusal_codes, created_by)
+  values
+    (factory_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a),
+     jsonb_build_object('factoryId', factory_a, 'status', 'insufficient_evidence',
+                        'algorithmVersion', 'test-v1', 'reasonCodes', '[]'::jsonb),
+     'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
+     'a1111111-1111-4111-8111-111111111111')
+  returning id into run_id;
+
+  begin
+    update public.factory_analysis_runs
+      set result_fingerprint = 'mutated'
+      where id = run_id;
+    raise exception 'APPEND_ONLY_TRIGGER_DID_NOT_BLOCK_UPDATE';
+  exception
+    when raise_exception then
+      get stacked diagnostics trigger_message = message_text;
+      if trigger_message <> 'FACTORY_ANALYSIS_RUNS_ARE_APPEND_ONLY' then
+        raise;
+      end if;
+  end;
+end;
+$$;
+
+rollback;
