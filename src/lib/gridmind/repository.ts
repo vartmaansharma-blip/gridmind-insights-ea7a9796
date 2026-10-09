@@ -284,7 +284,7 @@ async function getOrCreateManualSource(factoryId: number): Promise<number> {
 export async function recordFactoryObservation(input: {
   factoryId: number;
   metric: string;
-  value: number;
+  value: number | null;
   unit: string;
   observedAt: string;
   observedUntil?: string;
@@ -304,20 +304,24 @@ export async function recordFactoryObservation(input: {
     .limit(1)
     .maybeSingle();
   if (lookupError) throw lookupError;
-  if (existing && Number(existing.value_numeric) === input.value) return;
+  if (existing && (
+    input.value === null ? existing.value_numeric === null :
+      existing.value_numeric !== null && Number(existing.value_numeric) === input.value
+  )) return;
 
+  const isMissing = input.value === null;
   const { error } = await supabase.from("observations").insert({
     factory_id: input.factoryId,
     subject_type: "factory",
     subject_id: input.factoryId,
     metric: input.metric,
     value_numeric: input.value,
-    value_text: null,
+    value_text: isMissing ? "MISSING" : null,
     unit: input.unit,
     observed_at: input.observedAt,
     observed_until: input.observedUntil ?? null,
     data_source_id: sourceId,
-    quality_status: input.estimated ? "estimated" : "unverified",
+    quality_status: isMissing ? "missing" : input.estimated ? "estimated" : "unverified",
     quality_score: input.estimated ? 0.5 : null,
     is_estimated: Boolean(input.estimated),
     provenance: { source: "gridmind_manual_entry", entry_key: input.entryKey, application_contract_version: 1 },
