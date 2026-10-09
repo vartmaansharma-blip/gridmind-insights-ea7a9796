@@ -133,7 +133,9 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
       loadFactor: 0,
     })),
     interventions,
-    opportunityStatus: Object.fromEntries(snapshot.opportunities.map((o) => [String(o.id), o.status as OpportunityStatus])),
+    // Canonical database opportunities have a separate lifecycle model and
+    // must not be mixed into local screening-status state.
+    opportunityStatus: {},
   };
 }
 
