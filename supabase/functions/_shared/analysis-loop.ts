@@ -33,7 +33,7 @@ export type OperatingSampleInput = {
 };
 
 export type EconomicInputs = {
-  currency: string;
+  currency: unknown;
   /** Source context metadata is preserved for audit; it is not used as a hidden default. */
   sourceContextId?: number;
   sourceContextName?: string;
@@ -66,6 +66,7 @@ export type ReasonCode =
   | "OPERATING_STATE_NOT_COMPARABLE"
   | "PRODUCT_NOT_COMPARABLE"
   | "PRODUCTION_UNIT_NOT_COMPARABLE"
+  | "MISSING_CURRENCY"
   | "UNSUPPORTED_CURRENCY"
   | "NON_POSITIVE_NET_VALUE"
   | "FACTORY_MISMATCH"
@@ -444,7 +445,11 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const tariff = input.economics.tariffInrPerKwh;
   const recovery = input.economics.recoverableFraction;
   const capex = input.economics.interventionCostInr;
-  if (input.economics.currency !== "INR") economicReasons.push("UNSUPPORTED_CURRENCY");
+  if (input.economics.currency === null || input.economics.currency === undefined || input.economics.currency === "") {
+    economicReasons.push("MISSING_CURRENCY");
+  } else if (typeof input.economics.currency !== "string" || input.economics.currency !== "INR") {
+    economicReasons.push("UNSUPPORTED_CURRENCY");
+  }
   if (!positive(tariff)) economicReasons.push(tariff === null || tariff === undefined || tariff === "" ? "MISSING_TARIFF" : "INVALID_TARIFF");
   if (!finite(recovery)) economicReasons.push(recovery === null || recovery === undefined || recovery === "" ? "MISSING_RECOVERY_FRACTION" : "INVALID_RECOVERY_FRACTION");
   else if (recovery < 0 || recovery > 1) economicReasons.push("INVALID_RECOVERY_FRACTION");
@@ -528,7 +533,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     economics: {
       quantified,
       refusalReasons: quantified ? [] : eligibleForOpportunity ? [...new Set(economicReasons)] : detected ? ["INSUFFICIENT_COMPARABLE_BASELINE"] : [],
-      currency: input.economics.currency,
+      currency: typeof input.economics.currency === "string" && input.economics.currency.trim() ? input.economics.currency : "UNSPECIFIED",
       tariffInrPerKwh: positive(tariff) ? tariff : null,
       recoverableFraction: finite(recovery) && recovery >= 0 && recovery <= 1 ? recovery : null,
       interventionCostInr: nonNegative(capex) ? capex : null,
