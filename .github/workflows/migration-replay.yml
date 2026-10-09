@@ -45,7 +45,22 @@ jobs:
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-security.sql
 
-      - name: Seed isolated users and tenant fixtures for HTTP integration
+      - name: Create confirmed test users through local Auth Admin API
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          export SUPABASE_URL="${API_URL:-http://127.0.0.1:54321}"
+          for email in gridmind-http-a@example.test gridmind-http-b@example.test; do
+            curl --fail-with-body --silent --show-error \
+              "$SUPABASE_URL/auth/v1/admin/users" \
+              -H "apikey: ${SERVICE_ROLE_KEY:?Missing local service-role key}" \
+              -H "Authorization: Bearer $SERVICE_ROLE_KEY" \
+              -H "Content-Type: application/json" \
+              -d "{\\"email\\":\\"$email\\",\\"password\\":\\"gridmind-ci-password\\",\\"email_confirm\\":true}" \
+              > /dev/null
+          done
+
+      - name: Seed isolated tenant fixtures for HTTP integration
         shell: bash
         run: |
           eval "$(supabase status -o env)"
