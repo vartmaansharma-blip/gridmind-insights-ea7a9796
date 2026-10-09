@@ -1,9 +1,3 @@
-import { buildAnalysisInputFromCanonical } from "./analysis-input-adapter";
-import {
-  getCanonicalAnalysisEconomicContext,
-  getCanonicalMachineSnapshots,
-  getCanonicalOperatingContexts,
-} from "./repository";
 import {
   persistFactoryAnalysisRun,
   reloadAndVerifyFactoryAnalysisRun,
@@ -18,8 +12,8 @@ export type CanonicalFactoryAnalysisRun = {
 };
 
 /**
- * End-to-end application service: canonical observations -> explicit context mapping
- * -> server-side calculation/persistence -> server-side reload/recalculation.
+ * Sends canonical entity identifiers only. The Edge Function owns the authoritative
+ * observation/context reads, input assembly, calculation, and persistence.
  */
 export async function runCanonicalFactoryAnalysis(
   factoryId: number,
@@ -33,23 +27,8 @@ export async function runCanonicalFactoryAnalysis(
     throw new Error("A non-empty idempotency key of at most 200 characters is required.");
   }
 
-  const [assets, operatingContexts, economicContext] = await Promise.all([
-    getCanonicalMachineSnapshots(factoryId),
-    getCanonicalOperatingContexts(factoryId, assetId),
-    getCanonicalAnalysisEconomicContext(factoryId, asOf),
-  ]);
-  const asset = assets.find((candidate) => candidate.id === assetId);
-  if (!asset) throw new Error("The asset is not available in this factory or the caller lacks access.");
-
-  const input = buildAnalysisInputFromCanonical({
-    factoryId,
-    assetId,
-    observations: asset.observations,
-    operatingContexts,
-    economicContext,
-    asOf,
-  });
-  const run = await persistFactoryAnalysisRun(input, idempotencyKey);
-  const verification = await reloadAndVerifyFactoryAnalysisRun(factoryId, idempotencyKey.trim());
-  return { input, run, verification };
+  const key = idempotencyKey.trim();
+  const run = await persistFactoryAnalysisRun({ factoryId, assetId, asOf }, key);
+  const verification = await reloadAndVerifyFactoryAnalysisRun(factoryId, key);
+  return { input: run.input_snapshot, run, verification };
 }
