@@ -3,7 +3,7 @@ type ObservationContract = {
   id: number;
   factoryId: number;
   subjectType: string;
-  subjectId: number;
+  subjectId: number | null;
   metric: string;
   valueNumeric: number | null;
   valueText: string | null;
