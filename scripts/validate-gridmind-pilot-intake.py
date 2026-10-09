@@ -85,15 +85,17 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
         factories.add(row.get("factory_id", ""))
         role = row.get("role", "")
         metric = row.get("metric", "")
-        if role not in ROLES and metric not in CANONICAL:
-            errors.append(f"{label}: role/metric is not recognized by the authoritative adapter")
-        if role and metric and role not in ROLES and metric not in CANONICAL:
-            errors.append(f"{label}: explicit role and metric are both unsupported")
+        if role and role not in ROLES:
+            errors.append(f"{label}: explicit role {role!r} is not recognized by the authoritative adapter")
+        elif not role and metric not in CANONICAL:
+            errors.append(f"{label}: metric {metric!r} is not recognized by the authoritative adapter")
         if row.get("quality_status", "").lower() not in USABLE_QUALITY:
             blockers.append(f"{label}: quality_status {row.get('quality_status')!r} is not an accepted analysis quality; do not upgrade it without review")
         est = row.get("is_estimated", "").lower()
         if est not in TRUE | FALSE:
             errors.append(f"{label}: is_estimated must be true/false (or 1/0, yes/no)")
+        elif est in TRUE and row.get("quality_status", "").lower() in {"validated", "valid", "active"}:
+            blockers.append(f"{label}: estimated evidence is labelled as validated/active; review and label it provisionally rather than treating it as measured evidence")
         numeric = row.get("value_numeric", "")
         text = row.get("value_text", "")
         if bool(numeric) == bool(text):
