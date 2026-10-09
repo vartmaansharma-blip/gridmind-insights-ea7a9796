@@ -1,0 +1,1 @@
+create index if not exists processes_parent_factory_fk_idx on public.processes(parent_process_id,factory_id);

@@ -1,5 +1,6 @@
--- GridMind canonical reality and performance layer v1
--- Additive migration. Legacy tables remain intact.
+
+-- GridMind canonical production schema v1
+-- Additive migration: legacy operational tables remain intact.
 
 create table if not exists public.organizations (
   id bigint primary key generated always as identity,
@@ -17,30 +18,42 @@ create table if not exists public.organization_members (
   id bigint primary key generated always as identity,
   organization_id bigint not null references public.organizations(id) on delete restrict,
   user_id uuid not null references auth.users(id) on delete cascade,
-  role text not null default 'viewer' check (role in ('owner','admin','plant_head','engineer','analyst','finance','viewer')),
-  status text not null default 'active' check (status in ('active','suspended','removed')),
+  role text not null default 'viewer'
+    check (role in ('owner','admin','plant_head','engineer','analyst','finance','viewer')),
+  status text not null default 'active'
+    check (status in ('active','suspended','removed')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   unique (organization_id,user_id)
 );
 
-alter table public.factories add column if not exists organization_id bigint;
+alter table public.factories
+  add column if not exists organization_id bigint;
 
 insert into public.organizations (name, legal_name, industry)
 select f.name, f.name, f.industry
 from public.factories f
-where not exists (select 1 from public.organizations o where o.name = f.name);
+where not exists (
+  select 1 from public.organizations o where o.name = f.name
+);
 
 update public.factories f
 set organization_id = o.id
 from public.organizations o
-where f.organization_id is null and o.name = f.name;
+where f.organization_id is null
+  and o.name = f.name;
 
-alter table public.factories alter column organization_id set not null;
+alter table public.factories
+  alter column organization_id set not null;
 
-do $$ begin
-  if not exists (select 1 from pg_constraint where conname = 'factories_organization_id_fkey') then
-    alter table public.factories add constraint factories_organization_id_fkey
+do $$
+begin
+  if not exists (
+    select 1 from pg_constraint
+    where conname = 'factories_organization_id_fkey'
+  ) then
+    alter table public.factories
+      add constraint factories_organization_id_fkey
       foreign key (organization_id) references public.organizations(id) on delete restrict;
   end if;
 end $$;
@@ -55,7 +68,8 @@ create table if not exists public.physical_relationships (
   valid_to timestamptz,
   confidence numeric,
   source_id bigint,
-  status text not null default 'active' check (status in ('active','inactive','unverified')),
+  status text not null default 'active'
+    check (status in ('active','inactive','unverified')),
   metadata jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
@@ -93,12 +107,15 @@ create table if not exists public.data_sources (
   id bigint primary key generated always as identity,
   factory_id bigint not null references public.factories(id) on delete restrict,
   name text not null,
-  source_type text not null check (source_type in ('csv','excel','api','sql','scada','mes','erp','historian','opc_ua','mqtt','meter','sensor','manual','external')),
-  connection_status text not null default 'not_configured' check (connection_status in ('not_configured','connected','degraded','disconnected','error')),
+  source_type text not null
+    check (source_type in ('csv','excel','api','sql','scada','mes','erp','historian','opc_ua','mqtt','meter','sensor','manual','external')),
+  connection_status text not null default 'not_configured'
+    check (connection_status in ('not_configured','connected','degraded','disconnected','error')),
   sampling_frequency text,
   timezone text not null default 'Asia/Kolkata',
   last_ingested_at timestamptz,
-  quality_status text not null default 'unverified' check (quality_status in ('valid','suspect','invalid','missing','stale','conflicting','unverified')),
+  quality_status text not null default 'unverified'
+    check (quality_status in ('valid','suspect','invalid','missing','stale','conflicting','unverified')),
   configuration_version integer not null default 1,
   metadata jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
@@ -114,7 +131,8 @@ create table if not exists public.data_source_mappings (
   asset_id bigint references public.factory_assets(id) on delete restrict,
   unit text,
   transformation text,
-  mapping_status text not null default 'unverified' check (mapping_status in ('candidate','validated','rejected','unverified')),
+  mapping_status text not null default 'unverified'
+    check (mapping_status in ('candidate','validated','rejected','unverified')),
   confidence numeric,
   validated_by uuid references auth.users(id) on delete set null,
   validated_at timestamptz,
@@ -137,7 +155,8 @@ create table if not exists public.observations (
   observed_at timestamptz not null,
   observed_until timestamptz,
   data_source_id bigint references public.data_sources(id) on delete restrict,
-  quality_status text not null default 'unverified' check (quality_status in ('valid','suspect','invalid','missing','estimated','stale','out_of_range','conflicting','unverified')),
+  quality_status text not null default 'unverified'
+    check (quality_status in ('valid','suspect','invalid','missing','estimated','stale','out_of_range','conflicting','unverified')),
   quality_score numeric,
   is_estimated boolean not null default false,
   provenance jsonb not null default '{}'::jsonb,
@@ -153,10 +172,12 @@ create table if not exists public.operating_contexts (
   factory_id bigint not null references public.factories(id) on delete restrict,
   scope_type text not null,
   scope_id bigint,
-  context_type text not null check (context_type in ('production','operating_state','load','temporal','environmental','configuration','maintenance','economic','other')),
+  context_type text not null
+    check (context_type in ('production','operating_state','load','temporal','environmental','configuration','maintenance','economic','other')),
   start_time timestamptz not null,
   end_time timestamptz,
-  status text not null default 'validated' check (status in ('observed','derived','validated','estimated','invalid')),
+  status text not null default 'validated'
+    check (status in ('observed','derived','validated','estimated','invalid')),
   confidence numeric,
   source_id bigint references public.data_sources(id) on delete set null,
   values jsonb not null default '{}'::jsonb,
@@ -190,7 +211,8 @@ create table if not exists public.performance_baselines (
   scope_type text not null,
   scope_id bigint,
   metric text not null,
-  method text not null check (method in ('physics','engineering_reference','historical_like_for_like','regression','peer','hybrid','counterfactual')),
+  method text not null
+    check (method in ('physics','engineering_reference','historical_like_for_like','regression','peer','hybrid','counterfactual')),
   version integer not null default 1,
   training_start timestamptz,
   training_end timestamptz,
@@ -200,7 +222,8 @@ create table if not exists public.performance_baselines (
   context_variables jsonb not null default '[]'::jsonb,
   uncertainty_method text,
   confidence numeric,
-  status text not null default 'candidate' check (status in ('candidate','validated','active','expired','invalidated','superseded')),
+  status text not null default 'candidate'
+    check (status in ('candidate','validated','active','expired','invalidated','superseded')),
   assumptions jsonb not null default '{}'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
@@ -248,7 +271,8 @@ create table if not exists public.performance_deviations (
   statistical_significance text,
   engineering_significance text,
   economic_materiality text,
-  status text not null default 'detected' check (status in ('detected','watch','material','severe','invalid','insufficient_context')),
+  status text not null default 'detected'
+    check (status in ('detected','watch','material','severe','invalid','insufficient_context')),
   created_at timestamptz not null default now()
 );
 
@@ -297,41 +321,113 @@ alter table public.organizations enable row level security;
 alter table public.organization_members enable row level security;
 
 drop policy if exists "members read organizations" on public.organizations;
-create policy "members read organizations" on public.organizations for select to authenticated
-using ((select exists (select 1 from public.organization_members om where om.organization_id=organizations.id and om.user_id=(select auth.uid()) and om.status='active')));
+create policy "members read organizations"
+on public.organizations for select to authenticated
+using ((select exists (
+  select 1 from public.organization_members om
+  where om.organization_id = organizations.id
+    and om.user_id = (select auth.uid())
+    and om.status = 'active'
+)));
 
 drop policy if exists "members read organization_members" on public.organization_members;
-create policy "members read organization_members" on public.organization_members for select to authenticated
-using (user_id=(select auth.uid()) or (select exists (select 1 from public.organization_members om where om.organization_id=organization_members.organization_id and om.user_id=(select auth.uid()) and om.status='active' and om.role in ('owner','admin'))));
+create policy "members read organization_members"
+on public.organization_members for select to authenticated
+using (
+  user_id = (select auth.uid())
+  or (select exists (
+    select 1 from public.organization_members om
+    where om.organization_id = organization_members.organization_id
+      and om.user_id = (select auth.uid())
+      and om.status = 'active'
+      and om.role in ('owner','admin')
+  ))
+);
+
+drop policy if exists "admins insert organization_members" on public.organization_members;
+create policy "admins insert organization_members"
+on public.organization_members for insert to authenticated
+with check ((select exists (
+  select 1 from public.organization_members om
+  where om.organization_id = organization_members.organization_id
+    and om.user_id = (select auth.uid())
+    and om.status = 'active'
+    and om.role in ('owner','admin')
+)));
+
+drop policy if exists "admins update organization_members" on public.organization_members;
+create policy "admins update organization_members"
+on public.organization_members for update to authenticated
+using ((select exists (
+  select 1 from public.organization_members om
+  where om.organization_id = organization_members.organization_id
+    and om.user_id = (select auth.uid())
+    and om.status = 'active'
+    and om.role in ('owner','admin')
+)))
+with check ((select exists (
+  select 1 from public.organization_members om
+  where om.organization_id = organization_members.organization_id
+    and om.user_id = (select auth.uid())
+    and om.status = 'active'
+    and om.role in ('owner','admin')
+)));
 
 create or replace function private.is_factory_member_v2(_factory_id bigint)
-returns boolean language sql stable security definer set search_path=''
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
 as $function$
-  select exists (select 1 from public.factory_members m where m.factory_id=_factory_id and m.user_id=(select auth.uid()));
+  select exists (
+    select 1
+    from public.factory_members m
+    where m.factory_id = _factory_id
+      and m.user_id = (select auth.uid())
+  );
 $function$;
 
 revoke execute on function private.is_factory_member_v2(bigint) from public;
 grant execute on function private.is_factory_member_v2(bigint) to authenticated;
 
 create or replace function private.is_org_member(_organization_id bigint)
-returns boolean language sql stable security definer set search_path=''
+returns boolean
+language sql
+stable
+security definer
+set search_path = ''
 as $function$
-  select exists (select 1 from public.organization_members m where m.organization_id=_organization_id and m.user_id=(select auth.uid()) and m.status='active');
+  select exists (
+    select 1
+    from public.organization_members m
+    where m.organization_id = _organization_id
+      and m.user_id = (select auth.uid())
+      and m.status = 'active'
+  );
 $function$;
 
 revoke execute on function private.is_org_member(bigint) from public;
 grant execute on function private.is_org_member(bigint) to authenticated;
 
+-- Factory-scoped canonical tables.
 do $$
-declare t text;
+declare
+  t text;
 begin
-  foreach t in array array['physical_relationships','products','processes','data_sources','data_source_mappings','observations','operating_contexts','operating_regimes','performance_baselines','performance_expectations','performance_deviations','derived_facts'] loop
-    execute format('alter table public.%I enable row level security',t);
-    execute format('drop policy if exists "factory members read %I" on public.%I',t,t);
-    execute format('create policy "factory members read %I" on public.%I for select to authenticated using ((select private.is_factory_member_v2(factory_id)))',t,t);
-    execute format('drop policy if exists "factory members insert %I" on public.%I',t,t);
-    execute format('create policy "factory members insert %I" on public.%I for insert to authenticated with check ((select private.is_factory_member_v2(factory_id)))',t,t);
-    execute format('drop policy if exists "factory members update %I" on public.%I',t,t);
-    execute format('create policy "factory members update %I" on public.%I for update to authenticated using ((select private.is_factory_member_v2(factory_id))) with check ((select private.is_factory_member_v2(factory_id)))',t,t);
+  foreach t in array array[
+    'physical_relationships','products','processes','data_sources',
+    'data_source_mappings','observations','operating_contexts','operating_regimes',
+    'performance_baselines','performance_expectations','performance_deviations',
+    'derived_facts'
+  ]
+  loop
+    execute format('alter table public.%I enable row level security', t);
+    execute format('drop policy if exists "factory members read %I" on public.%I', t, t);
+    execute format('create policy "factory members read %I" on public.%I for select to authenticated using ((select private.is_factory_member_v2(factory_id)))', t, t);
+    execute format('drop policy if exists "factory members insert %I" on public.%I', t, t);
+    execute format('create policy "factory members insert %I" on public.%I for insert to authenticated with check ((select private.is_factory_member_v2(factory_id)))', t, t);
+    execute format('drop policy if exists "factory members update %I" on public.%I', t, t);
+    execute format('create policy "factory members update %I" on public.%I for update to authenticated using ((select private.is_factory_member_v2(factory_id))) with check ((select private.is_factory_member_v2(factory_id)))', t, t);
   end loop;
 end $$;
