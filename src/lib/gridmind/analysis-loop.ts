@@ -393,7 +393,12 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const actualSec = current && current.production > 0 ? current.energyKwh / current.production : null;
   const delta = actualSec !== null && baselineSec !== null ? actualSec - baselineSec : null;
   const deltaPercent = delta !== null && baselineSec !== null && baselineSec > 0 ? delta / baselineSec * 100 : null;
-  const excessEnergy = current && baselineSec !== null ? current.energyKwh - baselineSec * current.production : null;
+  const expectedEnergyRaw = current && baselineSec !== null ? baselineSec * current.production : null;
+  const excessEnergyRaw = current && baselineSec !== null && expectedEnergyRaw !== null ? current.energyKwh - expectedEnergyRaw : null;
+  const physicalCalculationOverflow = (expectedEnergyRaw !== null && !Number.isFinite(expectedEnergyRaw)) ||
+    (excessEnergyRaw !== null && !Number.isFinite(excessEnergyRaw));
+  if (physicalCalculationOverflow) reasons.push("NUMERIC_OVERFLOW");
+  const excessEnergy = excessEnergyRaw !== null && Number.isFinite(excessEnergyRaw) ? excessEnergyRaw : null;
   const detected = actualSec !== null && upper !== null && actualSec > upper;
   const lowerDeviation = actualSec !== null && lower !== null && actualSec < lower;
   const direction: AnalysisResult["deviation"]["direction"] =
@@ -425,7 +430,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const netValue = quantified ? round(netRaw!) : null;
   const annualized = quantified ? round(annualizedRaw!) : null;
   const resultReasons = [...new Set(reasons)];
-  if (eligibleForOpportunity && !validEconomics) resultReasons.push(...economicReasons);
+  if (eligibleForOpportunity && (!validEconomics || economicCalculationOverflow)) resultReasons.push(...economicReasons);
   if (quantified && netValue !== null && netValue <= 0) resultReasons.push("NON_POSITIVE_NET_VALUE");
 
   let status: AnalysisResult["status"] = "insufficient_evidence";
