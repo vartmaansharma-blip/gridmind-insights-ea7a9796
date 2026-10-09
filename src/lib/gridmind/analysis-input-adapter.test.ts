@@ -24,7 +24,7 @@ const observations = (currentEnergy = 700): ObservationContract[] => {
       factoryId,
       subjectType: "asset" as const,
       subjectId: assetId,
-      metric: row.role,
+      metric: row.role === "energy" ? "energy_consumption_kwh" : row.role === "production" ? "production_output" : row.role,
       valueNumeric: row.value,
       valueText: null,
       unit: row.unit,
@@ -80,6 +80,26 @@ describe("canonical analysis input adapter", () => {
     expect(result.provenance.inputObservationIds).toHaveLength(12);
     expect(result.deviation.detected).toBe(true);
     expect(result.economics.estimatedNetValueInr).toBe(460);
+    expect(result.status).toBe("opportunity");
+  });
+
+  it("uses only the declared canonical metric names when role metadata is absent", () => {
+    const source = observations().map((observation) => {
+      const metadata = { ...observation.metadata };
+      delete metadata.analysis_role;
+      return { ...observation, metadata };
+    });
+    const input = buildAnalysisInputFromCanonical({
+      factoryId,
+      assetId,
+      observations: source,
+      operatingContexts: contexts,
+      economicContext: economics,
+      asOf: "2026-10-09T12:00:00.000Z",
+    });
+    const result = analyzeFactoryLoop(input);
+    expect(input.current.energyValue).toBe(700);
+    expect(input.current.productionValue).toBe(100);
     expect(result.status).toBe("opportunity");
   });
 
