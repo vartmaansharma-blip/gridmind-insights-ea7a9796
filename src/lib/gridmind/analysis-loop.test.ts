@@ -87,9 +87,14 @@ describe("authoritative factory-analysis loop", () => {
   });
 
   it("rejects unknown provenance labels instead of silently treating them as observed", () => {
+    const baseline = [
+      sample("b1", 500, { origin: "observed" }),
+      sample("b2", 510, { origin: "observed" }),
+      sample("b3", 490, { origin: "observed" }),
+    ];
     const invalid = analyzeFactoryLoop(input(sample("current", 700, {
       origin: "real" as OperatingSampleInput["origin"],
-    })));
+    }), baseline));
     expect(invalid.reasonCodes).toContain("INVALID_SAMPLE_ORIGIN");
     expect(invalid.evidence.current).toBeNull();
     expect(invalid.provenance.origin).toBe("estimated");
