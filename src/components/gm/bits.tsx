@@ -85,13 +85,13 @@ export function EmptyState() {
     { icon: Gauge, t: "Factory profile", d: "Contract demand (kVA) and demand charge from your electricity bill." },
     { icon: Database, t: "12 months of bills", d: "kWh, total bill, peak kVA, power factor — plus production and operating hours." },
     { icon: Wrench, t: "Major equipment", d: "Compressors, furnaces, motors, HVAC, lighting — rated kW and hours." },
-    { icon: PlugZap, t: "Run analysis", d: "Get ranked, rupee-quantified savings opportunities in seconds." },
+    { icon: PlugZap, t: "Run screening", d: "Review indicative hypotheses, evidence gaps and what must be checked next." },
   ];
   return (
     <div className="panel mx-auto max-w-3xl p-6 sm:p-10 rise">
       <div className="eyebrow">No data connected yet</div>
-      <h2 className="mt-2 text-2xl font-semibold">Let's find where this factory is losing money on electricity.</h2>
-      <p className="mt-2 text-sm text-muted-foreground">Everything you need is on your monthly electricity bill and production register. Takes about 10 minutes.</p>
+      <h2 className="mt-2 text-2xl font-semibold">Let's screen this factory for potential electricity losses.</h2>
+      <p className="mt-2 text-sm text-muted-foreground">Start with your electricity bills and production register. Screening results are hypotheses—not confirmed losses or savings—until operating context and evidence are validated.</p>
       <ol className="mt-6 grid gap-3 sm:grid-cols-2">
         {steps.map((s, i) => (
           <li key={s.t} className="flex gap-3 rounded-lg border border-border bg-background p-4">
