@@ -209,10 +209,12 @@ const normalizeProductionUnit = (unit: unknown): string | null => {
 const median = (values: number[]): number => {
   const sorted = [...values].sort((a, b) => a - b);
   const mid = Math.floor(sorted.length / 2);
-  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+  return sorted.length % 2 ? sorted[mid] : sorted[mid - 1] / 2 + sorted[mid] / 2;
 };
 const round = (value: number, digits = 8): number => {
+  if (!Number.isFinite(value)) return value;
   const scale = 10 ** digits;
+  if (!Number.isFinite(value * scale)) return value;
   return Math.round((value + Number.EPSILON) * scale) / scale;
 };
 const daysBetween = (start: number, end: number): number => (end - start) / 86_400_000;
@@ -408,11 +410,20 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   if (!nonNegative(capex)) economicReasons.push(capex === null || capex === undefined || capex === "" ? "MISSING_INTERVENTION_COST" : "INVALID_INTERVENTION_COST");
   const validEconomics = input.economics.currency === "INR" && positive(tariff) && finite(recovery) && recovery >= 0 && recovery <= 1 && nonNegative(capex);
   const eligibleForOpportunity = detected && current !== null && excessEnergy !== null && excessEnergy > 0;
-  const quantified = eligibleForOpportunity && validEconomics && current !== null && current.periodDays > 0;
-  const grossValue = quantified ? round(excessEnergy! * (tariff as number)) : null;
-  const recoverableValue = quantified ? round(grossValue! * (recovery as number)) : null;
-  const netValue = quantified ? round(recoverableValue! - (capex as number)) : null;
-  const annualized = quantified && current!.periodDays > 0 ? round(recoverableValue! * 365 / current!.periodDays) : null;
+  const grossRaw = eligibleForOpportunity && positive(tariff) ? excessEnergy! * tariff : null;
+  const recoverableRaw = grossRaw !== null && finite(recovery) ? grossRaw * recovery : null;
+  const netRaw = recoverableRaw !== null && nonNegative(capex) ? recoverableRaw - capex : null;
+  const annualizedRaw = recoverableRaw !== null && current !== null && current.periodDays > 0
+    ? recoverableRaw * 365 / current.periodDays
+    : null;
+  const economicCalculationOverflow = eligibleForOpportunity && validEconomics &&
+    [grossRaw, recoverableRaw, netRaw, annualizedRaw].some((value) => value === null || !Number.isFinite(value));
+  if (economicCalculationOverflow) economicReasons.push("NUMERIC_OVERFLOW");
+  const quantified = eligibleForOpportunity && validEconomics && !economicCalculationOverflow && current !== null && current.periodDays > 0;
+  const grossValue = quantified ? round(grossRaw!) : null;
+  const recoverableValue = quantified ? round(recoverableRaw!) : null;
+  const netValue = quantified ? round(netRaw!) : null;
+  const annualized = quantified ? round(annualizedRaw!) : null;
   const resultReasons = [...new Set(reasons)];
   if (eligibleForOpportunity && !validEconomics) resultReasons.push(...economicReasons);
   if (quantified && netValue !== null && netValue <= 0) resultReasons.push("NON_POSITIVE_NET_VALUE");
