@@ -1,9 +1,11 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
+import type { AnalysisEconomicContext } from "./analysis-input-adapter";
 import type {
   FactoryContext,
   GridMindFactorySnapshot,
   ObservationContract,
+  OperatingContextContract,
   OpportunityContract,
   InterventionContract,
   VerifiedOutcomeContract,
@@ -11,6 +13,7 @@ import type {
 
 type FactoryRow = Database["public"]["Tables"]["factories"]["Row"];
 type ObservationRow = Database["public"]["Tables"]["observations"]["Row"];
+type DataSourceRow = Database["public"]["Tables"]["data_sources"]["Row"];
 
 const jsonRecord = (value: unknown): Record<string, unknown> =>
   value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : {};
@@ -95,7 +98,7 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
 
   const { data: factories, error: factoryError } = await supabase
     .from("factories")
-    .select("id,name,location,industry,metadata,organization_id")
+    .select("id,name,location,industry,metadata,organization_id,created_at,operating_days_per_month,shifts_per_day")
     .order("id");
   if (factoryError) throw factoryError;
   if (!factories?.length) return [];
@@ -140,15 +143,19 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const factories = [...new Set(activeAssets.map((a) => a.factory_id))];
   const [typesResult, mappingsResult, observationsResult, sourceResult] = await Promise.all([
     supabase.from("machine_types").select("id,machine_type,category,purpose").in("id", [...new Set((assets ?? []).map((a) => a.machine_type_id).filter((x): x is number => x !== null))]),
-    ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null } as any),
-    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [], error: null } as any),
-    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [], error: null } as any),
+    ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null }),
+    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [] as ObservationRow[], error: null }),
+    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [] as DataSourceRow[], error: null }),
   ]);
   const err = [typesResult, mappingsResult, observationsResult, sourceResult].find((r) => r.error)?.error;
   if (err) throw err;
 
-  const typeMap = new Map((typesResult.data ?? []).map((x) => [x.id, x]));
-  const sourceMap = new Map((sourceResult.data ?? []).map((x) => [x.id, x]));
+  const typeMap = new Map<number, { id: number; machine_type: string; category: string | null; purpose: string | null }>(
+    (typesResult.data ?? []).map((x: { id: number; machine_type: string; category: string | null; purpose: string | null }) => [x.id, x] as const),
+  );
+  const sourceMap = new Map<number, { id: number; name: string; source_type: string; connection_status: string; timezone: string }>(
+    (sourceResult.data ?? []).map((x: { id: number; name: string; source_type: string; connection_status: string; timezone: string }) => [x.id, x] as const),
+  );
   return activeAssets.map((a) => ({
     id: a.id,
     factoryId: a.factory_id,
@@ -168,7 +175,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
       const t = typeMap.get(a.machine_type_id)!;
       return { id: t.id, name: t.machine_type, category: t.category, purpose: t.purpose };
     })() : null,
-    dataSources: (mappingsResult.data ?? [])
+    dataSources: ((mappingsResult.data ?? []) as Array<{ id: number; data_source_id: number; factory_id: number; source_field: string; canonical_metric: string; asset_id: number | null; unit: string | null; mapping_status: string; confidence: number | null }>)
       .filter((m) => m.asset_id === a.id)
       .map((m) => sourceMap.get(m.data_source_id))
       .filter((s): s is NonNullable<typeof s> => Boolean(s))
@@ -181,8 +188,70 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
       status: m.mapping_status,
       confidence: m.confidence,
     })),
-    observations: (observationsResult.data ?? []).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
+    observations: ((observationsResult.data ?? []) as ObservationRow[]).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
   }));
+}
+
+export async function getCanonicalOperatingContexts(factoryId: number, assetId: number): Promise<OperatingContextContract[]> {
+  const { data, error } = await supabase
+    .from("operating_contexts")
+    .select("id,factory_id,scope_type,scope_id,context_type,start_time,end_time,status,confidence,source_id,values")
+    .eq("factory_id", factoryId)
+    .eq("scope_type", "asset")
+    .eq("scope_id", assetId)
+    .order("start_time", { ascending: true });
+  if (error) throw error;
+  return (data ?? []).map((row) => ({
+    id: row.id,
+    factoryId: row.factory_id,
+    scopeType: row.scope_type,
+    scopeId: row.scope_id,
+    contextType: row.context_type,
+    startTime: row.start_time,
+    endTime: row.end_time,
+    status: row.status,
+    confidence: row.confidence,
+    sourceId: row.source_id,
+    values: jsonRecord(row.values),
+  }));
+}
+
+export async function getCanonicalAnalysisEconomicContext(
+  factoryId: number,
+  asOf: string,
+): Promise<AnalysisEconomicContext | null> {
+  const asOfMs = Date.parse(asOf);
+  if (!Number.isFinite(asOfMs)) throw new Error("A valid analysis timestamp is required.");
+
+  const { data, error } = await supabase
+    .from("economic_contexts")
+    .select("id,factory_id,name,effective_from,effective_until,currency,metadata,status")
+    .eq("factory_id", factoryId)
+    .eq("status", "active")
+    .order("effective_from", { ascending: false, nullsFirst: false });
+  if (error) throw error;
+
+  const effective = (data ?? []).filter((row) => {
+    const from = row.effective_from ? Date.parse(row.effective_from) : Number.NEGATIVE_INFINITY;
+    const until = row.effective_until ? Date.parse(row.effective_until) : Number.POSITIVE_INFINITY;
+    return from <= asOfMs && until >= asOfMs;
+  });
+  if (effective.length === 0) return null;
+
+  const newestFrom = effective[0].effective_from;
+  const newest = effective.filter((row) => row.effective_from === newestFrom);
+  // Multiple equally current contexts are ambiguous; do not pick an arbitrary tariff/cost set.
+  if (newest.length !== 1) return null;
+
+  const row = newest[0];
+  return {
+    id: row.id,
+    name: row.name,
+    currency: row.currency,
+    effectiveFrom: row.effective_from,
+    effectiveUntil: row.effective_until,
+    metadata: jsonRecord(row.metadata),
+  };
 }
 
 export async function getCanonicalOpportunities(factoryId: number): Promise<OpportunityContract[]> {
@@ -202,7 +271,25 @@ export async function getCanonicalDeviations(factoryId: number): Promise<Canonic
     .eq("factory_id", factoryId)
     .order("created_at", { ascending: false });
   if (error) throw error;
-  return data ?? [];
+  return (data ?? []).map((row) => ({
+    id: row.id,
+    factoryId: row.factory_id,
+    scopeType: row.scope_type,
+    scopeId: row.scope_id,
+    metric: row.metric,
+    observationId: row.observation_id,
+    expectationId: row.expectation_id,
+    actualValue: row.actual_value,
+    expectedValue: row.expected_value,
+    deviationValue: row.deviation_value,
+    deviationPercentage: row.deviation_percentage,
+    direction: row.direction,
+    persistence: row.persistence,
+    statisticalSignificance: row.statistical_significance,
+    engineeringSignificance: row.engineering_significance,
+    economicMateriality: row.economic_materiality,
+    status: row.status,
+  }));
 }
 
 export async function getCanonicalVerification(factoryId: number) {
@@ -249,7 +336,7 @@ export async function createCanonicalIntervention(input: {
 
 export async function createFactoryWorkspace(input: { name: string; location?: string; industry?: string }): Promise<number> {
   const { data, error } = await supabase.rpc("create_factory_workspace", {
-    p_name: input.name, p_location: input.location ?? null, p_industry: input.industry ?? null,
+    p_name: input.name, p_location: input.location, p_industry: input.industry,
   });
   if (error) throw error;
   return Number(data);
@@ -391,7 +478,7 @@ export async function updateFactoryProfile(factoryId: number, patch: {
     ...(patch.name !== undefined ? { name: patch.name } : {}),
     ...(patch.location !== undefined ? { location: patch.location } : {}),
     ...(patch.industry !== undefined ? { industry: patch.industry } : {}),
-    metadata,
+    metadata: metadata as Database["public"]["Tables"]["factories"]["Update"]["metadata"],
   }).eq("id", factoryId);
   if (error) throw error;
 }

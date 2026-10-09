@@ -1,0 +1,1 @@
+drop index if exists public.factory_members_factory_user_unique;

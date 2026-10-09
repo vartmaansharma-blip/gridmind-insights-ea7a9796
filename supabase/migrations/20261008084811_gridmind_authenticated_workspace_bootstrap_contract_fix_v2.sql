@@ -1,6 +1,3 @@
--- GridMind authenticated workspace bootstrap contract fix.
--- The live database had the Phase 13.2 migration recorded but the RPC was absent.
--- Keep this definition in source control so the application/database contract is reproducible.
 
 create or replace function public.create_factory_workspace(
   p_name text,
@@ -28,7 +25,11 @@ begin
   end if;
 
   insert into public.organizations (
-    name, industry, country, timezone, status
+    name,
+    industry,
+    country,
+    timezone,
+    status
   )
   values (
     trim(p_name),
@@ -40,14 +41,24 @@ begin
   returning id into v_org_id;
 
   insert into public.organization_members (
-    organization_id, user_id, role, status
+    organization_id,
+    user_id,
+    role,
+    status
   )
   values (
-    v_org_id, v_user_id, 'owner', 'active'
+    v_org_id,
+    v_user_id,
+    'owner',
+    'active'
   );
 
   insert into public.factories (
-    organization_id, name, location, industry, metadata
+    organization_id,
+    name,
+    location,
+    industry,
+    metadata
   )
   values (
     v_org_id,
@@ -62,10 +73,16 @@ begin
   returning id into v_factory_id;
 
   insert into public.factory_members (
-    factory_id, user_id, organization_id, role
+    factory_id,
+    user_id,
+    organization_id,
+    role
   )
   values (
-    v_factory_id, v_user_id, v_org_id, 'owner'
+    v_factory_id,
+    v_user_id,
+    v_org_id,
+    'owner'
   );
 
   return v_factory_id;

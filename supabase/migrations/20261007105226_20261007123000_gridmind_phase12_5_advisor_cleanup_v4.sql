@@ -1,0 +1,25 @@
+drop index if exists public.intervention_outcomes_intervention_factory_idx2;
+drop index if exists public.verification_runs_plan_factory_idx2;
+drop index if exists public.verified_outcomes_run_factory_idx2;
+
+create index if not exists asset_interventions_approved_by_idx on public.asset_interventions(approved_by);
+create index if not exists asset_interventions_asset_factory_fk_idx on public.asset_interventions(asset_id,factory_id);
+create index if not exists asset_interventions_causal_evidence_idx on public.asset_interventions(causal_basis_evidence_id);
+create index if not exists asset_interventions_decision_factory_fk_idx on public.asset_interventions(decision_id,factory_id);
+create index if not exists asset_interventions_decision_idx on public.asset_interventions(decision_id);
+create index if not exists asset_interventions_opportunity_factory_fk_idx on public.asset_interventions(opportunity_id,factory_id);
+create index if not exists causal_tests_factory_idx on public.causal_tests(factory_id);
+create index if not exists data_source_mappings_asset_factory_fk_idx on public.data_source_mappings(asset_id,factory_id);
+create index if not exists data_source_mappings_validated_by_idx on public.data_source_mappings(validated_by);
+create index if not exists decisions_decision_maker_idx on public.decisions(decision_maker);
+create index if not exists evidence_links_bundle_factory_fk_idx on public.evidence_links(evidence_bundle_id,factory_id);
+create index if not exists factory_members_factory_org_fk_idx on public.factory_members(factory_id,organization_id);
+create index if not exists learning_events_evidence_bundle_idx on public.learning_events(evidence_bundle_id);
+create index if not exists learning_events_source_outcome_idx on public.learning_events(source_outcome_id);
+create index if not exists operating_contexts_source_idx on public.operating_contexts(source_id);
+create index if not exists opportunities_economic_context_factory_fk_idx on public.opportunities(economic_context_id,factory_id);
+create index if not exists performance_expectations_factory_idx on public.performance_expectations(factory_id);
+create index if not exists physical_relationships_source_factory_fk_idx on public.physical_relationships(source_asset_id,factory_id);
+create index if not exists physical_relationships_target_factory_fk_idx on public.physical_relationships(target_asset_id,factory_id);
+create index if not exists processes_parent_process_idx on public.processes(parent_process_id);
+create index if not exists verified_outcomes_verified_by_idx on public.verified_outcomes(verified_by);

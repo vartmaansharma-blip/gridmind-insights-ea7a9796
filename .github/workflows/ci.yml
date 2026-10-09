@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Typecheck, lint, and production build
+    name: Typecheck, semantic lint, tests, and production build
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -30,5 +30,15 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Typecheck, lint, and build
-        run: bun run check
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Semantic ESLint
+        # Keep non-formatting rules blocking while legacy Prettier debt is tracked separately.
+        run: 'bunx eslint src/lib/gridmind/analysis-loop.ts src/lib/gridmind/analysis-loop.test.ts src/lib/gridmind/analysis-input-adapter.ts src/lib/gridmind/analysis-input-adapter.test.ts src/lib/gridmind/analysis-runner.ts src/lib/gridmind/analysis-runner.test.ts src/lib/gridmind/analysis-run-store.ts src/lib/gridmind/analysis-run-store.test.ts src/lib/gridmind/repository.ts src/routes/machines.\$id.tsx src/lib/energy/pipeline.ts src/lib/energy/pipeline.test.ts supabase/functions/_shared/analysis-loop.ts supabase/functions/_shared/analysis-input-adapter.ts supabase/functions/_shared/request-body.ts supabase/functions/_shared/request-body.test.ts supabase/functions/persist-factory-analysis/index.ts --rule "prettier/prettier: off"'
+
+      - name: Tests
+        run: bun run test
+
+      - name: Production build
+        run: bun run build

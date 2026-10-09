@@ -1,5 +1,3 @@
--- Revoke factory-level access when a user's organization membership is no longer active.
--- This keeps factory and asset RLS decisions consistent with organization membership state.
 
 CREATE OR REPLACE FUNCTION private.can_access_asset(_asset_id bigint, _roles text[] DEFAULT NULL::text[])
 RETURNS boolean

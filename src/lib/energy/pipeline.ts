@@ -45,7 +45,8 @@ export function validateMonths(months: MonthRecord[], now: Date = new Date()): P
     }
     for (const [k, label] of [["kwh", "energy (kWh)"], ["cost", "cost"], ["production", "production"]] as const) {
       const v = m[k];
-      if (!finite(v)) { states.add("MISSING"); notes.push(`${label} was not provided`); }
+      if (v === null || v === undefined) { states.add("MISSING"); notes.push(`${label} was not provided`); }
+      else if (!finite(v)) { states.add("INVALID"); notes.push(`${label} is not a finite numeric value`); }
       else if (v < 0) { states.add("INVALID"); notes.push(`${label} is negative`); }
       else if (v === 0 && (k === "kwh" || k === "production")) {
         states.add("INSUFFICIENT");

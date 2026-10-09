@@ -1,7 +1,3 @@
--- Keep authenticated factory creation inside the user's existing organization when one exists.
--- This preserves the intended User -> Organization -> Factory tenancy model while still
--- bootstrapping the first organization for a new authenticated user.
-
 create or replace function public.create_factory_workspace(
   p_name text,
   p_location text default null,

@@ -14,9 +14,9 @@ describe("pipeline", () => {
     expect(r.usable).toHaveLength(1);
     expect(r.usable[0].kwh).toBe(100000);
   });
-  it("treats zero production as missing, not zero", () => {
+  it("preserves zero production as an insufficient recorded value, not missing", () => {
     const r = validateMonths([m("2026-01", { production: 0 })], now);
-    expect(r.checks[0].states).toContain("MISSING");
+    expect(r.checks[0].states).toContain("INSUFFICIENT");
     expect(r.usable).toHaveLength(0);
     expect(r.analysisPaused).toBe(true);
   });
