@@ -96,7 +96,7 @@ function contextForPeriod(
   if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return { context: null, ambiguous: false };
 
   const applicable = contexts.filter((context) => {
-    if (context.scopeType !== "asset" || context.scopeId !== assetId || !["active", "valid"].includes(context.status)) return false;
+    if (context.scopeType !== "asset" || context.scopeId !== assetId || !["active", "valid", "validated", "observed", "derived"].includes(context.status.toLowerCase())) return false;
     const contextStart = parsedTime(context.startTime);
     const contextEnd = context.endTime ? parsedTime(context.endTime) : Number.POSITIVE_INFINITY;
     return contextStart <= start && contextEnd >= end;
