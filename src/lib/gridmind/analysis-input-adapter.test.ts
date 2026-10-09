@@ -48,7 +48,7 @@ const contexts: OperatingContextContract[] = [{
   contextType: "analysis",
   startTime: "2026-10-01T00:00:00.000Z",
   endTime: null,
-  status: "active",
+  status: "validated",
   confidence: 1,
   sourceId: 2,
   values: { analysis_loop: { operatingState: "loaded", productCode: "P1" } },
