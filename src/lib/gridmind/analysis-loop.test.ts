@@ -86,6 +86,15 @@ describe("authoritative factory-analysis loop", () => {
     expect(missing.reasonCodes).toContain("MISSING_PRODUCTION_VALUE");
   });
 
+  it("rejects unknown provenance labels instead of silently treating them as observed", () => {
+    const invalid = analyzeFactoryLoop(input(sample("current", 700, {
+      origin: "real" as OperatingSampleInput["origin"],
+    })));
+    expect(invalid.reasonCodes).toContain("INVALID_SAMPLE_ORIGIN");
+    expect(invalid.evidence.current).toBeNull();
+    expect(invalid.provenance.origin).toBe("estimated");
+  });
+
   it("distinguishes a missing measurement from an invalid measurement", () => {
     const missing = analyzeFactoryLoop(input(sample("current", null)));
     const invalid = analyzeFactoryLoop(input(sample("current", Number.NaN)));
@@ -226,6 +235,14 @@ describe("authoritative factory-analysis loop", () => {
     const result = analyzeFactoryLoop(badCurrency);
     expect(result.economics.quantified).toBe(false);
     expect(result.economics.refusalReasons).toContain("UNSUPPORTED_CURRENCY");
+  });
+
+  it("produces the same result when the same baseline evidence arrives in a different order", () => {
+    const baseline = [sample("b1", 500), sample("b2", 510), sample("b3", 490)];
+    const forward = analyzeFactoryLoop(input(sample("current", 700), baseline));
+    const reversed = analyzeFactoryLoop(input(sample("current", 700), [...baseline].reverse()));
+    expect(canonicalize(forward)).toBe(canonicalize(reversed));
+    expect(reproducibilityFingerprint(forward)).toBe(reproducibilityFingerprint(reversed));
   });
 
   it("reproduces the same canonical result and fingerprint after JSON persistence/reload", () => {
