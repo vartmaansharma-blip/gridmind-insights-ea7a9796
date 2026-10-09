@@ -58,11 +58,10 @@ describe("canonical factory analysis runner", () => {
   });
 
   it("sends only canonical identifiers and returns the server-assembled evidence snapshot", async () => {
-    const asOf = "2026-10-09T12:00:00.000Z";
-    const result = await runCanonicalFactoryAnalysis(3, 7, "run-key", asOf);
+    const result = await runCanonicalFactoryAnalysis(3, 7, "run-key");
 
     expect(mocks.persistFactoryAnalysisRun).toHaveBeenCalledWith(
-      { factoryId: 3, assetId: 7, asOf },
+      { factoryId: 3, assetId: 7 },
       "run-key",
     );
     expect(result.input).toBe(serverInput);
@@ -73,7 +72,7 @@ describe("canonical factory analysis runner", () => {
   });
 
   it("rejects invalid entity identifiers before invoking persistence", async () => {
-    await expect(runCanonicalFactoryAnalysis(3, 0, "run-key", "2026-10-09T12:00:00.000Z"))
+    await expect(runCanonicalFactoryAnalysis(3, 0, "run-key"))
       .rejects.toThrow("positive asset ID");
     expect(mocks.persistFactoryAnalysisRun).not.toHaveBeenCalled();
   });
