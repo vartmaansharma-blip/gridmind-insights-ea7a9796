@@ -33,17 +33,17 @@ describe("authoritative factory-analysis loop", () => {
   it("normalizes MWh and Wh to kWh and calculates an independently verifiable opportunity", () => {
     const baseline = [
       sample("b1", 0.5, { energyUnit: "MWh" }),
-      sample("b2", 510, { energyUnit: "Wh" }),
+      sample("b2", 510000, { energyUnit: "Wh" }),
       sample("b3", 490),
     ];
     const result = analyzeFactoryLoop(input(sample("current", 700), baseline));
-    // b1=500 kWh, b2=0.51 kWh, b3=490 kWh; median=490, so 700/100=7 vs baseline 4.9.
-    expect(result.reference.specificEnergyKwhPerUnit).toBe(4.9);
+    // b1=500 kWh, b2=510 kWh, b3=490 kWh; median=500, so 700/100=7 vs baseline 5.
+    expect(result.reference.specificEnergyKwhPerUnit).toBe(5);
     expect(result.deviation.actualSpecificEnergyKwhPerUnit).toBe(7);
-    expect(result.deviation.excessEnergyKwh).toBe(210);
-    expect(result.economics.estimatedGrossValueInr).toBe(1680);
-    expect(result.economics.estimatedRecoverableValueInr).toBe(1008);
-    expect(result.economics.estimatedNetValueInr).toBe(8);
+    expect(result.deviation.excessEnergyKwh).toBe(200);
+    expect(result.economics.estimatedGrossValueInr).toBe(1600);
+    expect(result.economics.estimatedRecoverableValueInr).toBe(960);
+    expect(result.economics.estimatedNetValueInr).toBe(-40);
     expect(result.status).toBe("opportunity");
   });
 
