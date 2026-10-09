@@ -1,4 +1,5 @@
 -- Isolated local-only fixtures for HTTP integration tests. Never run against a shared or production database.
+-- The measurements below are synthetic and exist only to prove the full calculation path.
 begin;
 
 insert into public.organizations (name)
@@ -34,5 +35,66 @@ join auth.users u on (o.name = 'gridmind-http-org-a' and u.email = 'gridmind-htt
                 or (o.name = 'gridmind-http-org-b' and u.email = 'gridmind-http-b@example.test')
 where (f.name = 'gridmind-http-factory-a' and o.name = 'gridmind-http-org-a')
    or (f.name = 'gridmind-http-factory-b' and o.name = 'gridmind-http-org-b');
+
+-- Four historical periods and one current period. Baseline specific energy is ~10 kWh/unit;
+-- the current period is 14 kWh/unit, with explicit economic assumptions producing positive net value.
+with target as (
+  select f.id as factory_id, a.id as asset_id
+  from public.factories f
+  join public.factory_assets a on a.factory_id = f.id
+  where f.name = 'gridmind-http-factory-a' and a.name = 'gridmind-http-asset-a'
+), periods(period_start, period_end, energy_kwh, production_units, operating_hours) as (
+  values
+    ('2026-10-01T00:00:00+05:30'::timestamptz, '2026-10-02T00:00:00+05:30'::timestamptz, 1000::numeric, 100::numeric, 8::numeric),
+    ('2026-10-02T00:00:00+05:30'::timestamptz, '2026-10-03T00:00:00+05:30'::timestamptz, 1020::numeric, 100::numeric, 8::numeric),
+    ('2026-10-03T00:00:00+05:30'::timestamptz, '2026-10-04T00:00:00+05:30'::timestamptz, 980::numeric, 100::numeric, 8::numeric),
+    ('2026-10-04T00:00:00+05:30'::timestamptz, '2026-10-05T00:00:00+05:30'::timestamptz, 1000::numeric, 100::numeric, 8::numeric),
+    ('2026-10-08T00:00:00+05:30'::timestamptz, '2026-10-09T00:00:00+05:30'::timestamptz, 1400::numeric, 100::numeric, 8::numeric)
+), metrics(metric, role, unit, value_column) as (
+  values
+    ('energy_consumption_kwh', 'energy', 'kWh', 'energy'),
+    ('production_output', 'production', 'unit', 'production'),
+    ('operating_hours', 'operating_hours', 'h', 'hours')
+), expanded as (
+  select target.factory_id, target.asset_id, periods.period_start, periods.period_end,
+         metrics.metric, metrics.role, metrics.unit,
+         case metrics.value_column
+           when 'energy' then periods.energy_kwh
+           when 'production' then periods.production_units
+           else periods.operating_hours
+         end as metric_value
+  from target cross join periods cross join metrics
+)
+insert into public.observations
+  (factory_id, subject_type, subject_id, metric, value_numeric, unit, observed_at, observed_until, quality_status, is_estimated, provenance, metadata)
+select factory_id, 'asset', asset_id, metric, metric_value, unit, period_start, period_end, 'valid', false,
+       jsonb_build_object('origin', 'synthetic_test_fixture'),
+       jsonb_build_object(
+         'analysis_role', role,
+         'period_start', period_start::text,
+         'period_end', period_end::text
+       )
+from expanded;
+
+insert into public.operating_contexts
+  (factory_id, scope_type, scope_id, context_type, start_time, end_time, status, confidence, values, metadata)
+select f.id, 'asset', a.id, 'production', '2026-10-01T00:00:00+05:30'::timestamptz, null,
+       'validated', 0.95,
+       jsonb_build_object('analysis_loop', jsonb_build_object('operatingState', 'running', 'productCode', 'SKU-A')),
+       jsonb_build_object('origin', 'synthetic_test_fixture')
+from public.factories f
+join public.factory_assets a on a.factory_id = f.id
+where f.name = 'gridmind-http-factory-a' and a.name = 'gridmind-http-asset-a';
+
+insert into public.economic_contexts
+  (factory_id, name, effective_from, effective_until, currency, status, source, metadata)
+select f.id, 'gridmind-http-test-economics', '2026-09-01T00:00:00+05:30'::timestamptz, null,
+       'INR', 'active', 'synthetic_test_fixture',
+       jsonb_build_object('analysis_loop', jsonb_build_object(
+         'tariffInrPerKwh', 10,
+         'recoverableFraction', 0.5,
+         'interventionCostInr', 500
+       ))
+from public.factories f where f.name = 'gridmind-http-factory-a';
 
 commit;
