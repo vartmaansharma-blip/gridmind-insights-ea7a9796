@@ -58,8 +58,18 @@ begin
   if not has_table_privilege('service_role', 'public.factory_analysis_runs', 'select')
     or not has_table_privilege('service_role', 'public.factory_analysis_runs', 'insert')
     or has_table_privilege('service_role', 'public.factory_analysis_runs', 'update')
-    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'delete') then
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'delete')
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'truncate')
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'references')
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'trigger')
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'maintain') then
     raise exception 'SERVICE_ROLE_GRANTS_ARE_NOT_LEAST_PRIVILEGE';
+  end if;
+
+  if not has_sequence_privilege('service_role', 'public.factory_analysis_runs_id_seq', 'usage')
+    or not has_sequence_privilege('service_role', 'public.factory_analysis_runs_id_seq', 'select')
+    or has_sequence_privilege('service_role', 'public.factory_analysis_runs_id_seq', 'update') then
+    raise exception 'ANALYSIS_RUN_SEQUENCE_GRANTS_ARE_NOT_LEAST_PRIVILEGE';
   end if;
 
   if not (select relrowsecurity from pg_class where oid = 'public.factory_analysis_runs'::regclass) then
