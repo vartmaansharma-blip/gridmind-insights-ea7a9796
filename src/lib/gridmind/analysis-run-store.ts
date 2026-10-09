@@ -37,6 +37,40 @@ const analysisRunTable = () =>
   (supabase as unknown as { from(table: "factory_analysis_runs"): AnalysisRunTable }).from("factory_analysis_runs");
 const columns = "id,factory_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
 
+function jsonSafeSnapshot(value: unknown, ancestors = new WeakSet<object>()): unknown {
+  if (value === undefined) return undefined;
+  if (typeof value === "number" && !Number.isFinite(value)) return String(value);
+  if (typeof value === "bigint" || typeof value === "symbol" || typeof value === "function") return String(value);
+  if (value === null || typeof value !== "object") return value;
+  if (ancestors.has(value)) throw new Error("Analysis input must not contain circular references.");
+  ancestors.add(value);
+  try {
+    if (Array.isArray(value)) {
+      return value.map((item) => {
+        const snapshot = jsonSafeSnapshot(item, ancestors);
+        return snapshot === undefined ? null : snapshot;
+      });
+    }
+    const snapshot: Record<string, unknown> = {};
+    for (const [key, item] of Object.entries(value)) {
+      const normalized = jsonSafeSnapshot(item, ancestors);
+      if (normalized !== undefined) snapshot[key] = normalized;
+    }
+    return snapshot;
+  } finally {
+    ancestors.delete(value);
+  }
+}
+
+function snapshotAnalysisInput(input: AnalysisInput): AnalysisInput {
+  const snapshot = jsonSafeSnapshot(input) as Partial<AnalysisInput>;
+  if (!snapshot || typeof snapshot !== "object" || !snapshot.current ||
+      !Array.isArray(snapshot.baselineSamples) || !snapshot.economics) {
+    throw new Error("A factory analysis input must include current evidence, a baseline sample array, and economic inputs.");
+  }
+  return snapshot as AnalysisInput;
+}
+
 function unwrap<T>(result: TableResult<T>, operation: string): T {
   if (result.error) throw new Error(`GridMind analysis run ${operation} failed: ${result.error.message}`);
   if (!result.data) throw new Error(`GridMind analysis run ${operation} returned no row`);
@@ -59,17 +93,18 @@ function assertSameEvidence(stored: StoredAnalysisRun, input: AnalysisInput, res
 export async function persistFactoryAnalysisRun(input: AnalysisInput, idempotencyKey: string): Promise<StoredAnalysisRun> {
   const key = idempotencyKey.trim();
   if (!key || key.length > 200) throw new Error("A non-empty idempotency key of at most 200 characters is required.");
-  if (!Number.isSafeInteger(input.factoryId) || input.factoryId <= 0) throw new Error("A valid positive factory ID is required.");
+  const inputSnapshot = snapshotAnalysisInput(input);
+  if (!Number.isSafeInteger(inputSnapshot.factoryId) || inputSnapshot.factoryId <= 0) throw new Error("A valid positive factory ID is required.");
   const { data: authData, error: authError } = await supabase.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error("Authentication is required to persist a factory analysis run.");
 
-  const result = analyzeFactoryLoop(input);
+  const result = analyzeFactoryLoop(inputSnapshot);
   const fingerprint = reproducibilityFingerprint(result);
   const table = analysisRunTable();
-  const existingResult = await table.select(columns).eq("factory_id", input.factoryId).eq("idempotency_key", key).single();
+  const existingResult = await table.select(columns).eq("factory_id", inputSnapshot.factoryId).eq("idempotency_key", key).single();
   if (!existingResult.error && existingResult.data) {
-    assertSameEvidence(existingResult.data, input, result);
+    assertSameEvidence(existingResult.data, inputSnapshot, result);
     return existingResult.data;
   }
   if (existingResult.error && existingResult.error.code !== "PGRST116") {
@@ -77,10 +112,10 @@ export async function persistFactoryAnalysisRun(input: AnalysisInput, idempotenc
   }
 
   const inserted = await table.insert({
-    factory_id: input.factoryId,
+    factory_id: inputSnapshot.factoryId,
     idempotency_key: key,
     algorithm_version: result.algorithmVersion,
-    input_snapshot: input,
+    input_snapshot: inputSnapshot,
     result,
     result_fingerprint: fingerprint,
     analysis_status: result.status,
@@ -92,7 +127,7 @@ export async function persistFactoryAnalysisRun(input: AnalysisInput, idempotenc
     // if the already-committed record has identical input and result.
     const raced = await table.select(columns).eq("factory_id", input.factoryId).eq("idempotency_key", key).single();
     if (!raced.error && raced.data) {
-      assertSameEvidence(raced.data, input, result);
+      assertSameEvidence(raced.data, inputSnapshot, result);
       return raced.data;
     }
     throw new Error(`GridMind analysis run persist failed: ${inserted.error.message}`);
