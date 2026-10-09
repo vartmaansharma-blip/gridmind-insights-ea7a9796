@@ -210,6 +210,17 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.economics.label).toBe("estimate");
   });
 
+  it("refuses economic quantification when finite inputs overflow during calculation", () => {
+    const result = analyzeFactoryLoop(input(sample("current", 1e308), [
+      sample("b1", 1e307), sample("b2", 1e307), sample("b3", 1e307),
+    ]));
+    expect(result.deviation.detected).toBe(true);
+    expect(result.economics.quantified).toBe(false);
+    expect(result.economics.estimatedGrossValueInr).toBeNull();
+    expect(result.reasonCodes).toContain("NUMERIC_OVERFLOW");
+    expect(result.economics.refusalReasons).toContain("NUMERIC_OVERFLOW");
+  });
+
   it("refuses to quantify unsupported currency inputs", () => {
     const badCurrency = { ...input(), economics: { ...input().economics, currency: "USD" } } as unknown as AnalysisInput;
     const result = analyzeFactoryLoop(badCurrency);
