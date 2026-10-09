@@ -98,6 +98,14 @@ Deno.test("persist-factory-analysis enforces auth, tenant scope, server-owned in
     throw new Error("Client-supplied measurements were not rejected");
   }
 
+  const injectedEconomics = await runAnalysis(userA.access_token, {
+    action: "persist", factoryId: factoryA, assetId: assetA, idempotencyKey: "client-economics",
+    economics: { tariffInrPerKwh: 0.01, recoverableFraction: 1, interventionCostInr: 0 },
+  });
+  if (injectedEconomics.response.status !== 400 || injectedEconomics.body.error !== "CLIENT_ANALYSIS_INPUT_NOT_ACCEPTED") {
+    throw new Error("Client-supplied economic assumptions or unknown fields were not rejected");
+  }
+
   const key = "integration-single-run";
   const first = await runAnalysis(userA.access_token, {
     action: "persist", factoryId: factoryA, assetId: assetA, idempotencyKey: key,

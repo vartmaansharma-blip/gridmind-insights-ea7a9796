@@ -144,6 +144,15 @@ runtime.serve(async (request: Request): Promise<Response> => {
       return reply({ error: "UNSUPPORTED_ACTION" }, 400);
     }
 
+    // Treat the HTTP contract as a strict allowlist. Ignore nothing silently: client-provided
+    // economics, timestamps, observations, and future unknown fields must never become inputs.
+    const allowedRequestFields = action === "persist"
+      ? new Set(["action", "factoryId", "assetId", "idempotencyKey"])
+      : new Set(["action", "factoryId", "idempotencyKey"]);
+    if (Object.keys(body).some((field) => !allowedRequestFields.has(field))) {
+      return reply({ error: "CLIENT_ANALYSIS_INPUT_NOT_ACCEPTED" }, 400);
+    }
+
     // The caller-scoped query must pass factory RLS before any privileged evidence read/write.
     const { data: factory, error: accessError } = await userClient
       .from("factories")

@@ -2,7 +2,7 @@
 
 ## Runtime path
 
-The canonical asset page sends only `factoryId`, `assetId`, and an idempotency key; the server assigns the analysis timestamp. After validating the caller's JWT and passing the caller-scoped factory RLS check, the authenticated `persist-factory-analysis` Edge Function independently loads the asset's canonical observations, applicable operating contexts, and active economic contexts using its privileged client. It assembles the input with the shared adapter, calculates, persists the server-built snapshot, then reloads and recomputes before returning a conclusion. Client-supplied measurements or analysis inputs are rejected.
+The canonical asset page sends only `factoryId`, `assetId`, and an idempotency key; the server assigns the analysis timestamp. The endpoint uses a strict request-field allowlist and rejects all client-supplied measurements, economic assumptions, timestamps, or unknown fields. After validating the caller's JWT and passing the caller-scoped factory RLS check, the authenticated `persist-factory-analysis` Edge Function independently loads the asset's canonical observations, applicable operating contexts, and active economic contexts using its privileged client. It assembles the input with the shared adapter, calculates, persists the server-built snapshot, then reloads and recomputes before returning a conclusion. Client-supplied measurements or analysis inputs are rejected.
 
 The Edge Function recalculates with the same shared engine used by the test suite. Browser clients have no direct SELECT/INSERT grants on `factory_analysis_runs`. A positive opportunity is presented only when the persisted result reproduces and the estimated net value is positive.
 
@@ -54,8 +54,8 @@ These fields must be finite numbers; no generic tariff, recovery rate, or interv
 - Canonical observation assembly, source IDs, unknown role, absent context/economics, no-observation refusal: `analysis-input-adapter.test.ts`
 - Canonical read → persist → reload/recompute orchestration: `analysis-runner.test.ts`
 - Browser sends only canonical identifiers; no client measurement payload: `analysis-run-store.test.ts`, `analysis-runner.test.ts`
-- Database-level tenant isolation, direct-table denial, least-privilege service-role grants, idempotency uniqueness, and append-only update/delete protection: `supabase/tests/factory-analysis-security.sql`
-- Authenticated local Edge Function HTTP acceptance (authorized/unauthorized users, cross-tenant denial, client-input rejection, same-key retry, conflicting asset, concurrent retry, verification, direct-table denial, and oversized request): `supabase/tests/factory-analysis-integration.deno.ts`; fixtures: `supabase/tests/factory-analysis-integration-setup.sql`; CI runner: `.github/workflows/migration-replay.yml`
+- Database-level tenant isolation, direct-table denial, least-privilege service-role grants, idempotency uniqueness, append-only update/delete protection, and rejection of an asset/factory mismatch by a composite foreign key: `supabase/tests/factory-analysis-security.sql`
+- Authenticated local Edge Function HTTP acceptance (authorized/unauthorized users, cross-tenant denial, strict rejection of client measurements/economics, a positive-net opportunity with exact expected financial values, all 15 source observation IDs, same-key retry, conflicting asset, concurrent retry, reload/recompute verification, direct-table denial, and oversized request): `supabase/tests/factory-analysis-integration.deno.ts`; synthetic fixtures: `supabase/tests/factory-analysis-integration-setup.sql`; CI runner: `.github/workflows/migration-replay.yml`
 - Streamed request-size enforcement, malformed lengths, and malformed JSON: `supabase/functions/_shared/request-body.test.ts`
 
 ## Live-environment verification still required
