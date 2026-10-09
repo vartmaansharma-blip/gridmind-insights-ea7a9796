@@ -97,6 +97,28 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, _ = validator.validate(self.obs, self.ops, self.eco)
         self.assertTrue(any("must include a timezone" in e for e in errors))
 
+    def test_energy_unit_must_be_kwh(self):
+        obs, op, eco = self.valid_rows()
+        obs["unit"] = "MWh"
+        self.write_all([obs], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("requires unit 'kWh'" in e for e in errors))
+
+    def test_non_inr_currency_cannot_be_used_with_inr_tariff_field(self):
+        obs, op, eco = self.valid_rows()
+        eco["currency"] = "USD"
+        self.write_all([obs], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("requires currency INR" in e for e in errors))
+
+    def test_overlapping_economic_contexts_are_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(eco, context_name="overlap", source_record_id="bill-2",
+                      effective_from="2026-01-15T00:00:00+05:30")
+        self.write_all([obs], [op], [eco, second])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("effective economic context overlaps" in e for e in errors))
+
     def test_unknown_explicit_role_is_rejected_even_with_known_metric(self):
         obs, op, eco = self.valid_rows()
         obs["role"] = "made_up_role"
