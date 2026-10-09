@@ -430,7 +430,8 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   else if (recovery < 0 || recovery > 1) economicReasons.push("INVALID_RECOVERY_FRACTION");
   if (!nonNegative(capex)) economicReasons.push(capex === null || capex === undefined || capex === "" ? "MISSING_INTERVENTION_COST" : "INVALID_INTERVENTION_COST");
   const validEconomics = input.economics.currency === "INR" && positive(tariff) && finite(recovery) && recovery >= 0 && recovery <= 1 && nonNegative(capex);
-  const eligibleForOpportunity = detected && current !== null && excessEnergy !== null && excessEnergy > 0;
+  const eligibleForOpportunity = detected && current !== null && excessEnergy !== null && excessEnergy > 0 &&
+    !referenceCalculationOverflow && actualSec !== null && (deltaPercentRaw === null || Number.isFinite(deltaPercentRaw));
   const grossRaw = eligibleForOpportunity && positive(tariff) ? excessEnergy! * tariff : null;
   const recoverableRaw = grossRaw !== null && finite(recovery) ? grossRaw * recovery : null;
   const netRaw = recoverableRaw !== null && nonNegative(capex) ? recoverableRaw - capex : null;
