@@ -454,7 +454,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   if (quantified && netValue !== null && netValue <= 0) resultReasons.push("NON_POSITIVE_NET_VALUE");
 
   let status: AnalysisResult["status"] = "insufficient_evidence";
-  if (current && baselineSec !== null) {
+  if (current && baselineSec !== null && !reasons.includes("NUMERIC_OVERFLOW")) {
     status = quantified ? (netValue !== null && netValue > 0 ? "opportunity" : "deviation_no_opportunity") : detected ? "insufficient_evidence" : "within_reference";
     if (!detected && lowerDeviation) status = "deviation_no_opportunity";
   }
