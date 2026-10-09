@@ -5,7 +5,7 @@
  * snapshot and output, then re-run it after reload to verify reproducibility.
  * It does not infer a machine cause or verified savings from a deviation.
  */
-export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.1.0";
+export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.2.0";
 
 export type SampleQuality = "valid" | "suspect" | "invalid" | "missing" | "stale" | "conflicting" | "unverified";
 export type EvidenceOrigin = "observed" | "synthetic" | "estimated";
@@ -161,6 +161,7 @@ const finite = (value: unknown): value is number => typeof value === "number" &&
 const positive = (value: unknown): value is number => finite(value) && value > 0;
 const nonNegative = (value: unknown): value is number => finite(value) && value >= 0;
 const text = (value: unknown): string | null => typeof value === "string" && value.trim() ? value.trim() : null;
+const evidenceId = (value: unknown): string => typeof value === "string" ? value : `[invalid-id:${typeof value}]`;
 const timestamp = (value: unknown): number | null => {
   if (typeof value !== "string") return null;
   const match = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(?:Z|([+-])(\d{2}):(\d{2}))$/i);
@@ -321,11 +322,11 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     const orderedBaselineSamples = [...input.baselineSamples].sort((a, b) => {
       const startA = timestamp(a.periodStart) ?? Number.POSITIVE_INFINITY;
       const startB = timestamp(b.periodStart) ?? Number.POSITIVE_INFINITY;
-      return startA - startB || a.id.localeCompare(b.id) || canonicalize(a).localeCompare(canonicalize(b));
+      return startA - startB || evidenceId(a.id).localeCompare(evidenceId(b.id)) || canonicalize(a).localeCompare(canonicalize(b));
     });
     for (const sampleInput of orderedBaselineSamples) {
       if (sampleInput.id === input.current.id || (baselineIdCounts.get(sampleInput.id) ?? 0) > 1) {
-        excludedBaseline.push({ id: sampleInput.id, reasons: ["DUPLICATE_SAMPLE_ID"] });
+        excludedBaseline.push({ id: evidenceId(sampleInput.id), reasons: ["DUPLICATE_SAMPLE_ID"] });
         continue;
       }
       const normalized = normalizeSample(sampleInput, input.factoryId, asOfMs, maxBaselineAgeDays, false);
@@ -468,7 +469,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     "Any monetary result is an estimate, not verified savings.",
     ...(synthetic ? ["At least one input is synthetic; this result must never be represented as a real-factory finding."] : []),
   ];
-  if (confidence === "low") limitations.push("Only 3–5 comparable samples are available; reference confidence is low.");
+  if (confidence === "low") limitations.push("Only 3–8 comparable samples are available; reference confidence is low.");
   if (confidence === "medium") limitations.push("At least 9 comparable samples are available; sample count improves coverage but does not establish statistical confidence.");
   if (baselineSecs.length >= 3) limitations.push("Confidence labels are heuristic; sample count alone does not establish statistical confidence.");
 
@@ -524,7 +525,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     provenance: {
       origin,
       synthetic,
-      inputSampleIds: [input.current.id, ...input.baselineSamples.map((x) => x.id).sort()],
+      inputSampleIds: [evidenceId(input.current.id), ...input.baselineSamples.map((x) => evidenceId(x.id)).sort()],
       asOf: asOfMs === null ? input.asOf : new Date(asOfMs).toISOString(),
       assumptions: [
         "Energy normalized to kWh; accepted energy units are Wh, kWh, and MWh.",
