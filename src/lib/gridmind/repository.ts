@@ -1,9 +1,11 @@
 import { supabase } from "@/integrations/supabase/client";
 import type { Database } from "@/integrations/supabase/types";
+import type { AnalysisEconomicContext } from "./analysis-input-adapter";
 import type {
   FactoryContext,
   GridMindFactorySnapshot,
   ObservationContract,
+  OperatingContextContract,
   OpportunityContract,
   InterventionContract,
   VerifiedOutcomeContract,
@@ -188,6 +190,68 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
     })),
     observations: ((observationsResult.data ?? []) as ObservationRow[]).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
   }));
+}
+
+export async function getCanonicalOperatingContexts(factoryId: number, assetId: number): Promise<OperatingContextContract[]> {
+  const { data, error } = await supabase
+    .from("operating_contexts")
+    .select("id,factory_id,scope_type,scope_id,context_type,start_time,end_time,status,confidence,source_id,values")
+    .eq("factory_id", factoryId)
+    .eq("scope_type", "asset")
+    .eq("scope_id", assetId)
+    .order("start_time", { ascending: true });
+  if (error) throw error;
+  return (data ?? []).map((row) => ({
+    id: row.id,
+    factoryId: row.factory_id,
+    scopeType: row.scope_type,
+    scopeId: row.scope_id,
+    contextType: row.context_type,
+    startTime: row.start_time,
+    endTime: row.end_time,
+    status: row.status,
+    confidence: row.confidence,
+    sourceId: row.source_id,
+    values: jsonRecord(row.values),
+  }));
+}
+
+export async function getCanonicalAnalysisEconomicContext(
+  factoryId: number,
+  asOf: string,
+): Promise<AnalysisEconomicContext | null> {
+  const asOfMs = Date.parse(asOf);
+  if (!Number.isFinite(asOfMs)) throw new Error("A valid analysis timestamp is required.");
+
+  const { data, error } = await supabase
+    .from("economic_contexts")
+    .select("id,factory_id,name,effective_from,effective_until,currency,metadata,status")
+    .eq("factory_id", factoryId)
+    .eq("status", "active")
+    .order("effective_from", { ascending: false, nullsFirst: false });
+  if (error) throw error;
+
+  const effective = (data ?? []).filter((row) => {
+    const from = row.effective_from ? Date.parse(row.effective_from) : Number.NEGATIVE_INFINITY;
+    const until = row.effective_until ? Date.parse(row.effective_until) : Number.POSITIVE_INFINITY;
+    return from <= asOfMs && until >= asOfMs;
+  });
+  if (effective.length === 0) return null;
+
+  const newestFrom = effective[0].effective_from;
+  const newest = effective.filter((row) => row.effective_from === newestFrom);
+  // Multiple equally current contexts are ambiguous; do not pick an arbitrary tariff/cost set.
+  if (newest.length !== 1) return null;
+
+  const row = newest[0];
+  return {
+    id: row.id,
+    name: row.name,
+    currency: row.currency,
+    effectiveFrom: row.effective_from,
+    effectiveUntil: row.effective_until,
+    metadata: jsonRecord(row.metadata),
+  };
 }
 
 export async function getCanonicalOpportunities(factoryId: number): Promise<OpportunityContract[]> {
