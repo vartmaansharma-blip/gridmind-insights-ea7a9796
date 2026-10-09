@@ -108,11 +108,13 @@ reset role;
 do $$
 declare
   factory_a bigint;
+  factory_b bigint;
   asset_a bigint;
   run_id bigint;
   trigger_message text;
 begin
   select id into strict factory_a from public.factories where name = 'gridmind-ci-factory-a';
+  select id into strict factory_b from public.factories where name = 'gridmind-ci-factory-b';
   select id into strict asset_a from public.factory_assets where name = 'gridmind-ci-asset-a';
 
   insert into public.factory_analysis_runs
@@ -125,6 +127,22 @@ begin
      'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
      'a1111111-1111-4111-8111-111111111111')
   returning id into run_id;
+
+  begin
+    insert into public.factory_analysis_runs
+      (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,
+       result_fingerprint, analysis_status, refusal_codes, created_by)
+    values
+      (factory_b, asset_a, 'gridmind-ci-cross-factory', 'test-v1',
+       jsonb_build_object('factoryId', factory_b, 'current', jsonb_build_object('assetId', asset_a::text)),
+       jsonb_build_object('factoryId', factory_b, 'status', 'insufficient_evidence',
+                          'algorithmVersion', 'test-v1', 'reasonCodes', '[]'::jsonb),
+       'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
+       'a1111111-1111-4111-8111-111111111111');
+    raise exception 'CROSS_FACTORY_ASSET_BINDING_WAS_ALLOWED';
+  exception
+    when foreign_key_violation then null;
+  end;
 
   begin
     insert into public.factory_analysis_runs
