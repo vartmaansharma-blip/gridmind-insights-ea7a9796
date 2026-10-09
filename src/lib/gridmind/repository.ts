@@ -12,6 +12,9 @@ import type {
 type FactoryRow = Database["public"]["Tables"]["factories"]["Row"];
 type FactoryContextRow = Pick<FactoryRow, "organization_id" | "id" | "name" | "location" | "industry" | "metadata">;
 type ObservationRow = Database["public"]["Tables"]["observations"]["Row"];
+type MachineTypeQueryRow = Pick<Database["public"]["Tables"]["machine_types"]["Row"], "id" | "machine_type" | "category" | "purpose">;
+type DataSourceMappingQueryRow = Pick<Database["public"]["Tables"]["data_source_mappings"]["Row"], "id" | "data_source_id" | "factory_id" | "source_field" | "canonical_metric" | "asset_id" | "unit" | "mapping_status" | "confidence">;
+type DataSourceQueryRow = Pick<Database["public"]["Tables"]["data_sources"]["Row"], "id" | "factory_id" | "name" | "source_type" | "connection_status" | "timezone">;
 
 const jsonRecord = (value: unknown): Record<string, unknown> =>
   value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : {};
@@ -121,7 +124,7 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
       ratedPowerKw: x.rated_power_kw,
       processRole: x.process_role,
     })),
-    observations: (observationsResult.data ?? []).filter((x) => x.factory_id === factory.id).map(observationToDomain),
+    observations: observationRows.filter((x) => x.factory_id === factory.id).map(observationToDomain),
     opportunities: (opportunitiesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as OpportunityContract),
     interventions: (interventionsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as InterventionContract),
     verifiedOutcomes: (outcomesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as VerifiedOutcomeContract),
@@ -148,8 +151,14 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const err = [typesResult, mappingsResult, observationsResult, sourceResult].find((r) => r.error)?.error;
   if (err) throw err;
 
-  const typeMap = new Map((typesResult.data ?? []).map((x) => [x.id, x]));
-  const sourceMap = new Map((sourceResult.data ?? []).map((x) => [x.id, x]));
+  // Conditional empty results above must retain the selected row contracts;
+  // avoid widening the mapped records to unknown/{}.
+  const typeRows = (typesResult.data ?? []) as MachineTypeQueryRow[];
+  const mappingRows = mappingRows as DataSourceMappingQueryRow[];
+  const observationRows = (observationsResult.data ?? []) as ObservationRow[];
+  const sourceRows = (sourceResult.data ?? []) as DataSourceQueryRow[];
+  const typeMap = new Map(typeRows.map((x) => [x.id, x]));
+  const sourceMap = new Map(sourceRows.map((x) => [x.id, x]));
   return activeAssets.map((a) => ({
     id: a.id,
     factoryId: a.factory_id,
