@@ -65,7 +65,7 @@ function snapshotAnalysisInput(input: AnalysisInput): AnalysisInput {
   ) {
     throw new Error("A factory analysis input must include current evidence, a baseline sample array, and economic inputs.");
   }
-  if (!Number.isSafeInteger(snapshot.factoryId) || Number(snapshot.factoryId) <= 0) {
+  if (typeof snapshot.factoryId !== "number" || !Number.isSafeInteger(snapshot.factoryId) || snapshot.factoryId <= 0) {
     throw new Error("A valid positive factory ID is required.");
   }
   return snapshot as unknown as AnalysisInput;
