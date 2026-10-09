@@ -22,13 +22,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
           version: latest
 
       - name: Start isolated local Supabase stack
-        run: supabase start -x studio,edge-runtime,logflare,vector,analytics,imgproxy
+        run: supabase start -x studio,logflare,vector,analytics,imgproxy
 
       - name: Replay every migration from an empty local database
         run: supabase db reset --local
@@ -39,6 +44,40 @@ jobs:
           DB_URL="$(supabase status -o env | sed -n 's/^DB_URL=\"\(.*\)\"$/\1/p')"
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-security.sql
+
+      - name: Seed isolated users and tenant fixtures for HTTP integration
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          test -n "$DB_URL"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-integration-setup.sql
+
+      - name: Exercise authenticated Edge Function end to end
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          export SUPABASE_URL="${API_URL:-http://127.0.0.1:54321}"
+          export SUPABASE_ANON_KEY="${ANON_KEY:?Missing local anon key}"
+          export SUPABASE_SERVICE_ROLE_KEY="${SERVICE_ROLE_KEY:?Missing local service-role key}"
+          cat > /tmp/gridmind-functions.env <<EOF
+          SUPABASE_URL=$SUPABASE_URL
+          SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
+          SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY
+          EOF
+          supabase functions serve persist-factory-analysis --env-file /tmp/gridmind-functions.env > /tmp/gridmind-functions.log 2>&1 &
+          FUNCTION_PID=$!
+          trap 'kill "$FUNCTION_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 60); do
+            CODE="$(curl --silent --output /dev/null --write-out '%{http_code}' "$SUPABASE_URL/functions/v1/persist-factory-analysis" || true)"
+            if [ "$CODE" != "000" ]; then break; fi
+            sleep 2
+          done
+          if [ "${CODE:-000}" = "000" ]; then
+            cat /tmp/gridmind-functions.log
+            echo "Local Edge Function did not become ready"
+            exit 1
+          fi
+          deno test --allow-env --allow-net supabase/tests/factory-analysis-integration.test.ts
 
       - name: Verify migration history has no pending local migrations
         run: supabase migration list --local
