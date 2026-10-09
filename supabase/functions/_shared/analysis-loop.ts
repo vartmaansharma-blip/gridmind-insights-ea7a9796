@@ -5,7 +5,7 @@
  * snapshot and output, then re-run it after reload to verify reproducibility.
  * It does not infer a machine cause or verified savings from a deviation.
  */
-export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.2.0";
+export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.2.1";
 
 export type SampleQuality = "valid" | "suspect" | "invalid" | "missing" | "stale" | "conflicting" | "unverified";
 export type EvidenceOrigin = "observed" | "synthetic" | "estimated";
@@ -164,7 +164,7 @@ const text = (value: unknown): string | null => typeof value === "string" && val
 const evidenceId = (value: unknown): string => typeof value === "string" ? value : `[invalid-id:${typeof value}]`;
 const timestamp = (value: unknown): number | null => {
   if (typeof value !== "string") return null;
-  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(?:Z|([+-])(\d{2}):(\d{2}))$/i);
+  const match = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,9})?(?:Z|([+-])(\d{2}):(\d{2}))$/i);
   if (!match) return null;
 
   const year = Number(match[1]);
