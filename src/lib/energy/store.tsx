@@ -92,8 +92,8 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
     .sort((a, b) => String(a.month).localeCompare(String(b.month)))
     .map((row) => ({
       month: String(row.month),
-      // NaN is the in-memory sentinel for an absent metric. persistFactory skips
-      // non-finite values, so missing data never becomes a recorded zero.
+      // NaN is the in-memory sentinel for an absent metric. persistFactory
+      // records it as an explicit missing-data tombstone, never as numeric zero.
       kwh: row.kwh === undefined ? Number.NaN : Number(row.kwh),
       cost: row.cost === undefined ? Number.NaN : Number(row.cost),
       peakKva: row.peakKva === undefined ? Number.NaN : Number(row.peakKva),
@@ -161,7 +161,6 @@ async function persistFactory(factory: Factory) {
     const { start, end } = monthBounds(month.month);
     for (const [field, [metric, unit]] of Object.entries(metricMap) as Array<[keyof typeof metricMap, readonly [string, string]]>) {
       const value = month[field];
-      if (field === "powerFactor" && value === 0) continue;
       await recordFactoryObservation({
         factoryId,
         metric,
