@@ -90,11 +90,13 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
     .sort((a, b) => String(a.month).localeCompare(String(b.month)))
     .map((row) => ({
       month: String(row.month),
-      kwh: Number(row.kwh ?? 0),
-      cost: Number(row.cost ?? 0),
-      peakKva: Number(row.peakKva ?? 0),
-      production: Number(row.production ?? 0),
-      operatingHours: Number(row.operatingHours ?? 0),
+      // NaN is the in-memory sentinel for an absent metric. persistFactory skips
+      // non-finite values, so missing data never becomes a recorded zero.
+      kwh: row.kwh === undefined ? Number.NaN : Number(row.kwh),
+      cost: row.cost === undefined ? Number.NaN : Number(row.cost),
+      peakKva: row.peakKva === undefined ? Number.NaN : Number(row.peakKva),
+      production: row.production === undefined ? Number.NaN : Number(row.production),
+      operatingHours: row.operatingHours === undefined ? Number.NaN : Number(row.operatingHours),
       ...(row.powerFactor !== undefined ? { powerFactor: Number(row.powerFactor) } : {}),
     }));
 
