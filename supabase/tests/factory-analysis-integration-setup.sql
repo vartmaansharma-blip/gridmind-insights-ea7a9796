@@ -1,28 +1,6 @@
 -- Isolated local-only fixtures for HTTP integration tests. Never run against a shared or production database.
 begin;
 
-insert into auth.users
-  (id, aud, role, email, encrypted_password, email_confirmed_at, created_at, updated_at,
-   raw_app_meta_data, raw_user_meta_data)
-values
-  ('a3333333-3333-4333-8333-333333333333', 'authenticated', 'authenticated',
-   'gridmind-http-a@example.test', crypt('gridmind-ci-password', gen_salt('bf')), now(), now(), now(),
-   '{"provider":"email","providers":["email"]}'::jsonb, '{}'::jsonb),
-  ('b4444444-4444-4444-8444-444444444444', 'authenticated', 'authenticated',
-   'gridmind-http-b@example.test', crypt('gridmind-ci-password', gen_salt('bf')), now(), now(), now(),
-   '{"provider":"email","providers":["email"]}'::jsonb, '{}'::jsonb);
-
--- GoTrue's email identity provider_id is the email address, not the auth.users UUID.
-insert into auth.identities
-  (provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
-values
-  ('gridmind-http-a@example.test', 'a3333333-3333-4333-8333-333333333333',
-   '{"sub":"a3333333-3333-4333-8333-333333333333","email":"gridmind-http-a@example.test","email_verified":true}'::jsonb,
-   'email', now(), now(), now()),
-  ('gridmind-http-b@example.test', 'b4444444-4444-4444-8444-444444444444',
-   '{"sub":"b4444444-4444-4444-8444-444444444444","email":"gridmind-http-b@example.test","email_verified":true}'::jsonb,
-   'email', now(), now(), now());
-
 insert into public.organizations (name)
 values ('gridmind-http-org-a'), ('gridmind-http-org-b');
 
