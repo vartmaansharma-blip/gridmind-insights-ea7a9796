@@ -29,6 +29,7 @@ export type OperatingSampleInput = {
   sourceObservationIds?: number[];
   /** Explicit mapping errors from the canonical-observation adapter. */
   mappingIssues?: string[];
+  contextIssues?: string[];
 };
 
 export type EconomicInputs = {
@@ -58,6 +59,7 @@ export type ReasonCode =
   | "INVALID_SAMPLE_ID"
   | "INVALID_SAMPLE_ORIGIN"
   | "UNMAPPED_OBSERVATION_ROLE"
+  | "AMBIGUOUS_OPERATING_CONTEXT"
   | "INVALID_AGE_POLICY"
   | "NUMERIC_OVERFLOW"
   | "ASSET_CONTEXT_NOT_COMPARABLE"
@@ -253,6 +255,7 @@ function normalizeSample(
   if (input.quality !== "valid") reasons.push("NON_VALID_QUALITY_STATUS");
   if (!["observed", "synthetic", "estimated"].includes(input.origin)) reasons.push("INVALID_SAMPLE_ORIGIN");
   if (input.mappingIssues?.length) reasons.push("UNMAPPED_OBSERVATION_ROLE");
+  if (input.contextIssues?.length) reasons.push("AMBIGUOUS_OPERATING_CONTEXT");
 
   const startMs = timestamp(input.periodStart);
   const endMs = timestamp(input.periodEnd);
