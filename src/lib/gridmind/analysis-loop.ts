@@ -50,6 +50,8 @@ export type ReasonCode =
   | "MISSING_ASSET_ID"
   | "MISSING_OPERATING_STATE"
   | "MISSING_PRODUCT_CONTEXT"
+  | "OPERATING_CONTEXT_NOT_COMPARABLE"
+  | "DUPLICATE_SAMPLE_ID"
   | "INVALID_TIMESTAMP"
   | "FUTURE_TIMESTAMP"
   | "INVALID_PERIOD"
@@ -260,7 +262,13 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const accepted: NormalizedSample[] = [];
 
   if (asOfMs !== null && !invalidFactory) {
+    const seenSampleIds = new Set<string>([input.current.id]);
     for (const sampleInput of input.baselineSamples) {
+      if (seenSampleIds.has(sampleInput.id)) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["DUPLICATE_SAMPLE_ID"] });
+        continue;
+      }
+      seenSampleIds.add(sampleInput.id);
       const normalized = normalizeSample(sampleInput, input.factoryId, asOfMs, input.maxBaselineAgeDays ?? 365, false);
       if (!normalized.sample) {
         excludedBaseline.push({ id: sampleInput.id, reasons: normalized.reasons });
@@ -273,6 +281,13 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
         normalized.sample.productionUnit !== current.productionUnit
       )) {
         excludedBaseline.push({ id: sampleInput.id, reasons: ["MISSING_PRODUCT_CONTEXT"] });
+        continue;
+      }
+      if (current && (
+        Math.abs(normalized.sample.operatingHours / current.operatingHours - 1) > 0.15 ||
+        Math.abs(normalized.sample.production / current.production - 1) > 0.25
+      )) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["OPERATING_CONTEXT_NOT_COMPARABLE"] });
         continue;
       }
       accepted.push(normalized.sample);
