@@ -37,8 +37,8 @@ create policy "active factory members insert analysis runs" on public.factory_an
     and created_by = (select auth.uid())
   );
 drop policy if exists "active factory members update analysis runs" on public.factory_analysis_runs;
-revoke all on public.factory_analysis_runs from anon, authenticated;
-revoke all on sequence public.factory_analysis_runs_id_seq from anon, authenticated;
+revoke all on public.factory_analysis_runs from anon, authenticated, service_role;
+revoke all on sequence public.factory_analysis_runs_id_seq from anon, authenticated, service_role;
 grant select, insert on public.factory_analysis_runs to service_role;
 grant usage, select on sequence public.factory_analysis_runs_id_seq to service_role;
 -- Browser clients cannot write claimed results directly. The authenticated Edge Function
