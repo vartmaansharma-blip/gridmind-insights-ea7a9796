@@ -24,7 +24,7 @@ export const Route = createFileRoute("/factory")({
   component: FactoryPage,
 });
 
-const n = (v: string) => Math.max(0, Number(v) || 0);
+const n = (v: string) => v.trim() === "" ? Number.NaN : Math.max(0, Number(v));
 const CATS: EquipmentCategory[] = ["compressor", "motor", "furnace", "hvac", "lighting", "other"];
 
 function FactoryPage() {
@@ -53,7 +53,7 @@ function FactoryPage() {
         <Panel title="Monthly data" desc="One row per billing month."
           actions={<Button size="sm" variant="outline" onClick={() => up((f) => {
             const last = [...f.months].sort((x, y) => x.month.localeCompare(y.month)).at(-1)?.month;
-            return { ...f, months: [...f.months, { month: last ? nextMonth(last) : new Date().toISOString().slice(0, 7), kwh: 0, cost: 0, peakKva: 0, production: 0, operatingHours: 0 }] };
+            return { ...f, months: [...f.months, { month: last ? nextMonth(last) : new Date().toISOString().slice(0, 7), kwh: Number.NaN, cost: Number.NaN, peakKva: Number.NaN, production: Number.NaN, operatingHours: Number.NaN }] };
           })}>Add month</Button>}>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[760px] text-sm">
@@ -62,7 +62,7 @@ function FactoryPage() {
                 {active.months.map((m, i) => (
                   <tr key={i}>
                     {cols.map(([k]) => (
-                      <td key={k} className="pr-1.5 pb-1.5"><Input className="num h-8" type={k === "month" ? "month" : "number"} step="any" value={m[k] ?? ""} onChange={(e) => setMonth(i, k, e.target.value)} /></td>
+                      <td key={k} className="pr-1.5 pb-1.5"><Input className="num h-8" type={k === "month" ? "month" : "number"} step="any" value={k === "month" ? m.month : Number.isFinite(m[k] as number) ? m[k] : ""} onChange={(e) => setMonth(i, k, e.target.value)} /></td>
                     ))}
                     <td><Button size="icon" variant="ghost" aria-label="Delete" onClick={() => up((f) => ({ ...f, months: f.months.filter((_, j) => j !== i) }))}><Trash2 /></Button></td>
                   </tr>
