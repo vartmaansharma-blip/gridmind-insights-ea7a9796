@@ -182,41 +182,45 @@ runtime.serve(async (request: Request): Promise<Response> => {
       if (!asset) return reply({ error: "ASSET_NOT_FOUND_IN_FACTORY" }, 404);
 
       // Page explicitly because PostgREST's server row cap may be lower than the analysis cap.
-      const observationPage = await readBoundedRows<JsonRecord>(MAX_CANONICAL_OBSERVATIONS, (from, to) =>
-        adminClient.from("observations")
+      const asOf = new Date().toISOString();
+      const observationPage = await readBoundedRows<JsonRecord>(MAX_CANONICAL_OBSERVATIONS, async (from, to) => {
+        const { data, error } = await adminClient.from("observations")
           .select("id,factory_id,subject_type,subject_id,metric,value_numeric,value_text,unit,observed_at,observed_until,quality_status,is_estimated,provenance,metadata")
           .eq("factory_id", factoryId)
           .eq("subject_type", "asset")
           .eq("subject_id", assetId)
           .order("observed_at", { ascending: true })
           .order("id", { ascending: true })
-          .range(from, to) as Promise<{ data: JsonRecord[] | null; error: unknown | null }>,
-      );
+          .range(from, to);
+        return { data: (data ?? []) as unknown as JsonRecord[], error };
+      });
       if (observationPage.error) return reply({ error: "CANONICAL_OBSERVATION_READ_FAILED" }, 500);
       if (observationPage.tooMany) return reply({ error: "CANONICAL_OBSERVATION_SET_TOO_LARGE" }, 413);
 
-      const contextPage = await readBoundedRows<JsonRecord>(MAX_OPERATING_CONTEXTS, (from, to) =>
-        adminClient.from("operating_contexts")
+      const contextPage = await readBoundedRows<JsonRecord>(MAX_OPERATING_CONTEXTS, async (from, to) => {
+        const { data, error } = await adminClient.from("operating_contexts")
           .select("id,factory_id,scope_type,scope_id,start_time,end_time,status,confidence,values")
           .eq("factory_id", factoryId)
           .eq("scope_type", "asset")
           .eq("scope_id", assetId)
           .order("start_time", { ascending: true })
           .order("id", { ascending: true })
-          .range(from, to) as Promise<{ data: JsonRecord[] | null; error: unknown | null }>,
-      );
+          .range(from, to);
+        return { data: (data ?? []) as unknown as JsonRecord[], error };
+      });
       if (contextPage.error) return reply({ error: "CANONICAL_OPERATING_CONTEXT_READ_FAILED" }, 500);
       if (contextPage.tooMany) return reply({ error: "CANONICAL_OPERATING_CONTEXT_SET_TOO_LARGE" }, 413);
 
-      const economicsPage = await readBoundedRows<JsonRecord>(MAX_ECONOMIC_CONTEXTS, (from, to) =>
-        adminClient.from("economic_contexts")
+      const economicsPage = await readBoundedRows<JsonRecord>(MAX_ECONOMIC_CONTEXTS, async (from, to) => {
+        const { data, error } = await adminClient.from("economic_contexts")
           .select("id,factory_id,name,effective_from,effective_until,currency,metadata,status")
           .eq("factory_id", factoryId)
           .eq("status", "active")
           .order("effective_from", { ascending: false, nullsFirst: false })
           .order("id", { ascending: true })
-          .range(from, to) as Promise<{ data: JsonRecord[] | null; error: unknown | null }>,
-      );
+          .range(from, to);
+        return { data: (data ?? []) as unknown as JsonRecord[], error };
+      });
       if (economicsPage.error) return reply({ error: "CANONICAL_ECONOMIC_CONTEXT_READ_FAILED" }, 500);
       if (economicsPage.tooMany) return reply({ error: "CANONICAL_ECONOMIC_CONTEXT_SET_TOO_LARGE" }, 413);
 
@@ -271,7 +275,6 @@ runtime.serve(async (request: Request): Promise<Response> => {
         }
       }
 
-      const asOf = new Date().toISOString();
       const input = buildAnalysisInputFromCanonical({
         factoryId,
         assetId,
