@@ -12,6 +12,7 @@ import {
 type StoredAnalysisRun = {
   id: number;
   factory_id: number;
+  asset_id: number;
   idempotency_key: string;
   algorithm_version: string;
   input_snapshot: AnalysisInput;
@@ -58,9 +59,6 @@ function jsonRecord(value: unknown): JsonRecord {
 function isPositiveId(value: unknown): value is number {
   return typeof value === "number" && Number.isSafeInteger(value) && value > 0;
 }
-function isAnalysisTimestamp(value: unknown): value is string {
-  return typeof value === "string" && STRICT_TIMESTAMP.test(value) && Number.isFinite(Date.parse(value));
-}
 function isIdempotencyKey(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0 && value.trim().length <= 200;
 }
@@ -79,16 +77,6 @@ async function readBoundedRows<T>(
     if (values.length < to - from + 1) return { rows, error: null, tooMany: false };
   }
   return { rows, error: null, tooMany: rows.length > maxRows };
-}
-function sameEvidence(stored: StoredAnalysisRun, input: AnalysisInput, result: AnalysisResult): boolean {
-  return stored.factory_id === input.factoryId &&
-    stored.input_snapshot.factoryId === input.factoryId &&
-    canonicalize(stored.input_snapshot) === canonicalize(input) &&
-    stored.algorithm_version === result.algorithmVersion &&
-    stored.analysis_status === result.status &&
-    canonicalize(stored.refusal_codes) === canonicalize(result.reasonCodes) &&
-    stored.result_fingerprint === reproducibilityFingerprint(result) &&
-    canonicalize(stored.result) === canonicalize(result);
 }
 function reproducible(stored: StoredAnalysisRun, factoryId: number, result: AnalysisResult): boolean {
   return stored.factory_id === factoryId &&
@@ -135,18 +123,15 @@ runtime.serve(async (request: Request): Promise<Response> => {
     let factoryId: number;
     let idempotencyKey: string;
     let assetId: number | null = null;
-    let asOf: string | null = null;
     if (action === "persist") {
-      if ("input" in body || "observations" in body) {
+      if ("input" in body || "observations" in body || "asOf" in body) {
         return reply({ error: "CLIENT_ANALYSIS_INPUT_NOT_ACCEPTED" }, 400);
       }
-      if (!isPositiveId(body.factoryId) || !isPositiveId(body.assetId) ||
-          !isAnalysisTimestamp(body.asOf) || !isIdempotencyKey(body.idempotencyKey)) {
-        return reply({ error: "INVALID_FACTORY_ASSET_TIMESTAMP_OR_IDEMPOTENCY_KEY" }, 400);
+      if (!isPositiveId(body.factoryId) || !isPositiveId(body.assetId) || !isIdempotencyKey(body.idempotencyKey)) {
+        return reply({ error: "INVALID_FACTORY_ASSET_OR_IDEMPOTENCY_KEY" }, 400);
       }
       factoryId = body.factoryId;
       assetId = body.assetId;
-      asOf = body.asOf;
       idempotencyKey = body.idempotencyKey.trim();
     } else if (action === "verify") {
       if (!isPositiveId(body.factoryId) || !isIdempotencyKey(body.idempotencyKey)) {
@@ -171,7 +156,21 @@ runtime.serve(async (request: Request): Promise<Response> => {
       auth: { persistSession: false, autoRefreshToken: false },
     });
 
-    if (action === "persist" && assetId !== null && asOf !== null) {
+    if (action === "persist" && assetId !== null) {
+      // Idempotency is resolved before rereading live evidence: a retry returns the
+      // original immutable snapshot, while reuse for a different asset is a conflict.
+      const { data: existing, error: existingError } = await adminClient
+        .from("factory_analysis_runs")
+        .select(columns)
+        .eq("factory_id", factoryId)
+        .eq("idempotency_key", idempotencyKey)
+        .maybeSingle();
+      if (existingError) return reply({ error: "ANALYSIS_RUN_LOOKUP_FAILED" }, 500);
+      if (existing) {
+        if (existing.asset_id !== assetId) return reply({ error: "IDEMPOTENCY_CONFLICT" }, 409);
+        return reply({ run: existing as StoredAnalysisRun });
+      }
+
       const { data: asset, error: assetError } = await adminClient
         .from("factory_assets")
         .select("id")
@@ -271,6 +270,7 @@ runtime.serve(async (request: Request): Promise<Response> => {
         }
       }
 
+      const asOf = new Date().toISOString();
       const input = buildAnalysisInputFromCanonical({
         factoryId,
         assetId,
@@ -285,24 +285,11 @@ runtime.serve(async (request: Request): Promise<Response> => {
 
       const result = analyzeFactoryLoop(input);
       const fingerprint = reproducibilityFingerprint(result);
-      const { data: existing, error: existingError } = await adminClient
-        .from("factory_analysis_runs")
-        .select(columns)
-        .eq("factory_id", factoryId)
-        .eq("idempotency_key", idempotencyKey)
-        .maybeSingle();
-      if (existingError) return reply({ error: "ANALYSIS_RUN_LOOKUP_FAILED" }, 500);
-      if (existing) {
-        if (!sameEvidence(existing as StoredAnalysisRun, input, result)) {
-          return reply({ error: "IDEMPOTENCY_CONFLICT" }, 409);
-        }
-        return reply({ run: existing as StoredAnalysisRun });
-      }
-
       const { data: inserted, error: insertError } = await adminClient
         .from("factory_analysis_runs")
         .insert({
           factory_id: factoryId,
+          asset_id: assetId,
           idempotency_key: idempotencyKey,
           algorithm_version: result.algorithmVersion,
           input_snapshot: input,
@@ -323,7 +310,7 @@ runtime.serve(async (request: Request): Promise<Response> => {
           .eq("idempotency_key", idempotencyKey)
           .maybeSingle();
         if (raceError) return reply({ error: "ANALYSIS_RUN_RELOAD_FAILED" }, 500);
-        if (raced && sameEvidence(raced as StoredAnalysisRun, input, result)) return reply({ run: raced as StoredAnalysisRun });
+        if (raced && raced.asset_id === assetId) return reply({ run: raced as StoredAnalysisRun });
         if (raced) return reply({ error: "IDEMPOTENCY_CONFLICT" }, 409);
         return reply({ error: "ANALYSIS_RUN_PERSIST_FAILED" }, 500);
       }
