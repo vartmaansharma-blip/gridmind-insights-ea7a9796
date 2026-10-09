@@ -139,7 +139,7 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
     // peak coverage below; this placeholder is never used to infer savings.
     billedKva: Number.isFinite(m.peakKva) ? Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C) : Number.NaN,
   }));
-  const quality = assessQuality(f, rows);
+  const quality = assessQuality(f, rows, pipeline);
   // Only rows with known operating hours can be compared on operating context.
   // Missing context in one month must not poison every otherwise comparable month.
   const referenceRows = rows.filter((r) => Number.isFinite(r.operatingHours) && r.operatingHours > 0);
@@ -372,36 +372,55 @@ function buildAlerts(f: Factory, rows: MonthRow[], baselineSec: number, avgRate:
   return out.sort((a, b) => b.month.localeCompare(a.month) || rank[a.severity] - rank[b.severity]);
 }
 
-function assessQuality(f: Factory, rows: MonthRow[]): DataQuality {
+function assessQuality(f: Factory, rows: MonthRow[], pipeline: PipelineResult): DataQuality {
   const issues: string[] = [];
-  const n = rows.length;
-  let score = (Math.min(n, 12) / 12) * 35;
-  if (n < 12) issues.push(`${n} of 12 recommended months entered`);
-  if (n) {
-    const complete = rows.filter((r) =>
+  const inputRows = f.months;
+  const usableCount = rows.length;
+  let score = (Math.min(usableCount, 12) / 12) * 35;
+
+  if (usableCount < 12) issues.push(`${usableCount} usable of 12 recommended months`);
+  if (inputRows.length === 0) {
+    issues.push("No monthly observations entered");
+  } else {
+    // Measure completeness across every submitted row, not only rows that
+    // survived validation. Otherwise excluded rows make the remaining dataset
+    // look artificially clean.
+    const complete = inputRows.filter((r) =>
       Number.isFinite(r.kwh) && Number.isFinite(r.cost) && Number.isFinite(r.peakKva) &&
       Number.isFinite(r.production) && Number.isFinite(r.operatingHours)
-    ).length / n;
-    const pfShare = rows.filter((r) => Number.isFinite(r.powerFactor) && (r.powerFactor ?? 0) > 0).length / n;
+    ).length / inputRows.length;
+    const pfShare = inputRows.filter((r) => Number.isFinite(r.powerFactor) && (r.powerFactor ?? 0) > 0).length / inputRows.length;
     score += complete * 20 + pfShare * 5;
-    if (complete < 1) issues.push("Some months have missing kWh, cost, peak, production or hours");
+    if (complete < 1) issues.push("Some entered months have missing required measurements");
     if (pfShare < 1) issues.push("Power factor missing for some months");
   }
+
+  const flaggedRows = pipeline.checks.filter((check) => check.states.some((state) => state !== "GOOD"));
+  if (flaggedRows.length) issues.push(`${flaggedRows.length} entered month(s) have data-quality flags`);
+  if (pipeline.stale) issues.push("Most recent usable data is stale");
   if (f.contractDemandKva > 0 && f.demandChargePerKva > 0) score += 5;
   else issues.push("Contract demand or demand charge not set");
+
   if (f.equipment.length) {
     score += 15;
-    if (n) {
+    if (usableCount) {
       const eq = f.equipment.reduce((s, e) => s + equipmentKwh(e), 0);
-      const avg = rows.reduce((s, r) => s + r.kwh, 0) / n;
-      const ratio = eq / avg;
-      if (ratio >= 0.6 && ratio <= 1.1) score += 20;
+      const avg = rows.reduce((s, r) => s + r.kwh, 0) / usableCount;
+      const ratio = avg > 0 ? eq / avg : Number.NaN;
+      if (Number.isFinite(ratio) && ratio >= 0.6 && ratio <= 1.1) score += 20;
       else {
         score += 8;
-        issues.push(`Equipment list explains ${pct(ratio)} of billed kWh (expected 60–110%)`);
+        issues.push(Number.isFinite(ratio)
+          ? `Equipment list explains ${pct(ratio)} of usable-row billed kWh (expected 60–110%)`
+          : "Equipment-to-bill comparison unavailable");
       }
+    } else {
+      issues.push("Equipment-to-bill comparison unavailable without usable monthly data");
     }
-  } else issues.push("No major equipment listed");
+  } else {
+    issues.push("No major equipment listed");
+  }
+
   score = Math.round(Math.min(100, score));
   return { score, grade: score >= 80 ? "Good" : score >= 55 ? "Fair" : "Limited", issues };
 }

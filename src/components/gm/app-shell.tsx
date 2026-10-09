@@ -11,7 +11,6 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useEnergy } from "@/lib/energy/store";
-import { inrCompact } from "@/lib/energy/format";
 
 const NAV = [
   { to: "/", label: "Overview", icon: LayoutDashboard },
@@ -105,8 +104,13 @@ export function AppShell({ children }: { children: ReactNode }) {
       return;
     }
     runAnalysis();
-    toast.success(`Analysis complete: ${analysis.opportunities.length} opportunities, ${inrCompact(analysis.totalSavingAnnual)}/yr estimated`);
-    navigate({ to: "/opportunities" });
+    if (analysis.paused) {
+      toast.info(analysis.pipeline.pauseReason ?? "Screening paused because the evidence is insufficient.");
+      navigate({ to: "/factory" });
+      return;
+    }
+    toast.success(`Screening refreshed: ${analysis.opportunities.length} local findings. Estimates remain unqualified; no canonical opportunity or verified saving was created.`);
+    navigate({ to: "/" });
   };
 
   return (
@@ -149,11 +153,11 @@ export function AppShell({ children }: { children: ReactNode }) {
             ) : (
               <Button variant="outline" size="sm" asChild><Link to="/auth">Sign in</Link></Button>
             )}
-            <Button variant="cta" onClick={onRun} className="hidden sm:inline-flex"><Play /> Run analysis</Button>
+            <Button variant="cta" onClick={onRun} className="hidden sm:inline-flex"><Play /> Run screening</Button>
           </div>
           <div className="hidden border-l border-border pl-3 text-[10px] text-muted-foreground xl:block">
             <div className="font-semibold text-foreground">{analysis?.quality.grade ?? "No data"} quality · {analysis?.quality.score ?? 0}/100</div>
-            <div>{active?.lastAnalyzedAt ? `Analysed ${new Date(active.lastAnalyzedAt).toLocaleString()}` : "Analysis not yet recorded"}</div>
+            <div>{active?.lastAnalyzedAt ? `Last screened ${new Date(active.lastAnalyzedAt).toLocaleString()}` : "Screening not yet recorded"}</div>
           </div>
         </div>
       </header>
