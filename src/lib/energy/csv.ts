@@ -3,21 +3,21 @@ import type { MonthRecord } from "./types";
 
 // Import adapter: CSV → MonthRecord[]. Future meter/API adapters should
 // produce the same MonthRecord shape.
-export const CSV_HEADER = "month,kwh,cost,peak_kva,production,operating_hours,power_factor";
-
 // Blank numeric cells represent missing evidence, not measured zero. NaN is the
 // existing in-memory missing-value sentinel consumed by validateMonths().
+export const CSV_HEADER = "month,kwh,cost,peak_kva,production,operating_hours,power_factor";
+
 const numericCell = (max: number, label: string) =>
   z.string().trim()
     .transform((raw) => ({ raw, value: raw === "" ? Number.NaN : Number(raw) }))
     .refine(
       ({ raw, value }) => raw === "" || (Number.isFinite(value) && value >= 0 && value <= max),
-      `${label} must be a number between 0 and ${max}`,
+      label + " must be a number between 0 and " + max,
     )
     .transform(({ value }) => value);
 
 const rowSchema = z.object({
-  month: z.string().regex(/^\\d{4}-(0[1-9]|1[0-2])$/, "month must be YYYY-MM"),
+  month: z.string().regex(/^\d{4}-(0[1-9]|1[0-2])$/, "month must be YYYY-MM"),
   kwh: numericCell(1e9, "kWh"),
   cost: numericCell(1e11, "Cost"),
   peakKva: numericCell(1e6, "Peak kVA"),
@@ -34,7 +34,7 @@ const rowSchema = z.object({
 });
 
 export function parseMonthlyCsv(text: string): { rows: MonthRecord[]; errors: string[] } {
-  const lines = text.trim().split(/\\r?\\n/).filter(Boolean).slice(0, 240);
+  const lines = text.trim().split(/\r?\n/).filter(Boolean).slice(0, 240);
   const errors: string[] = [];
   const rows: MonthRecord[] = [];
   lines.forEach((line, i) => {
@@ -45,7 +45,7 @@ export function parseMonthlyCsv(text: string): { rows: MonthRecord[]; errors: st
       production: c[4] ?? "", operatingHours: c[5] ?? "", powerFactor: c[6] ?? "",
     });
     if (r.success) rows.push(r.data);
-    else errors.push(`Line ${i + 1}: ${r.error.issues[0]?.message ?? "invalid"}`);
+    else errors.push("Line " + (i + 1) + ": " + (r.error.issues[0]?.message ?? "invalid"));
   });
   return { rows, errors };
 }
