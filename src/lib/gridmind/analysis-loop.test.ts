@@ -9,6 +9,12 @@ import {
 } from "./analysis-loop";
 
 const asOf = "2026-10-09T12:00:00.000Z";
+const samplePeriods: Record<string, { start: string; end: string }> = {
+  current: { start: "2026-10-08T00:00:00.000Z", end: "2026-10-09T00:00:00.000Z" },
+  b1: { start: "2026-10-05T00:00:00.000Z", end: "2026-10-06T00:00:00.000Z" },
+  b2: { start: "2026-10-06T00:00:00.000Z", end: "2026-10-07T00:00:00.000Z" },
+  b3: { start: "2026-10-07T00:00:00.000Z", end: "2026-10-08T00:00:00.000Z" },
+};
 const sample = (id: string, energyValue: unknown, overrides: Partial<OperatingSampleInput> = {}): OperatingSampleInput => ({
   id,
   factoryId: 1,
@@ -20,8 +26,8 @@ const sample = (id: string, energyValue: unknown, overrides: Partial<OperatingSa
   operatingHours: 10,
   operatingState: "loaded",
   productCode: "product-A",
-  periodStart: "2026-10-08T00:00:00.000Z",
-  periodEnd: "2026-10-09T00:00:00.000Z",
+  periodStart: samplePeriods[id]?.start ?? "2026-10-07T00:00:00.000Z",
+  periodEnd: samplePeriods[id]?.end ?? "2026-10-08T00:00:00.000Z",
   quality: "valid",
   origin: "synthetic",
   ...overrides,
@@ -115,9 +121,9 @@ describe("authoritative factory-analysis loop", () => {
 
   it("compares operating rates rather than raw totals across different period lengths", () => {
     const twoDayBaseline = [
-      sample("b1", 1000, { productionValue: 200, operatingHours: 20, periodStart: "2026-10-07T00:00:00.000Z" }),
-      sample("b2", 1020, { productionValue: 204, operatingHours: 20.4, periodStart: "2026-10-07T00:00:00.000Z" }),
-      sample("b3", 980, { productionValue: 196, operatingHours: 19.6, periodStart: "2026-10-07T00:00:00.000Z" }),
+      sample("b1", 1000, { productionValue: 200, operatingHours: 20, periodStart: "2026-10-02T00:00:00.000Z", periodEnd: "2026-10-04T00:00:00.000Z" }),
+      sample("b2", 1020, { productionValue: 204, operatingHours: 20.4, periodStart: "2026-10-04T00:00:00.000Z", periodEnd: "2026-10-06T00:00:00.000Z" }),
+      sample("b3", 980, { productionValue: 196, operatingHours: 19.6, periodStart: "2026-10-06T00:00:00.000Z", periodEnd: "2026-10-08T00:00:00.000Z" }),
     ];
     const result = analyzeFactoryLoop(input(sample("current", 700), twoDayBaseline));
     expect(result.reference.specificEnergyKwhPerUnit).toBe(5);
@@ -166,6 +172,22 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.reference.specificEnergyKwhPerUnit).toBeNull();
     expect(result.reasonCodes).toContain("INSUFFICIENT_COMPARABLE_BASELINE");
     expect(result.status).toBe("insufficient_evidence");
+  });
+
+  it("rejects baseline periods that overlap the current observation or another accepted baseline", () => {
+    const overlapsCurrent = analyzeFactoryLoop(input(sample("current", 700), [
+      sample("b1", 500, { periodStart: "2026-10-08T12:00:00.000Z", periodEnd: "2026-10-09T00:00:00.000Z" }),
+      sample("b2", 510), sample("b3", 490),
+    ]));
+    expect(overlapsCurrent.evidence.excludedBaseline.find((x) => x.id === "b1")?.reasons).toContain("BASELINE_PERIOD_NOT_HISTORICAL");
+
+    const overlappingBaselines = analyzeFactoryLoop(input(sample("current", 700), [
+      sample("b1", 500, { periodStart: "2026-10-05T00:00:00.000Z", periodEnd: "2026-10-06T12:00:00.000Z" }),
+      sample("b2", 510, { periodStart: "2026-10-06T00:00:00.000Z", periodEnd: "2026-10-07T00:00:00.000Z" }),
+      sample("b3", 490),
+    ]));
+    expect(overlappingBaselines.evidence.excludedBaseline.find((x) => x.id === "b2")?.reasons).toContain("OVERLAPPING_BASELINE_PERIODS");
+    expect(overlappingBaselines.reference.sampleCount).toBe(2);
   });
 
   it("rejects cross-factory evidence in the baseline", () => {
