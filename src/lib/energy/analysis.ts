@@ -134,8 +134,10 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
     ...m,
     sec: m.production > 0 ? m.kwh / m.production : 0,
     costPerKwh: m.kwh > 0 ? m.cost / m.kwh : 0,
-    utilization: C > 0 && m.peakKva > 0 ? m.peakKva / C : 0,
-    billedKva: Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C),
+    utilization: C > 0 && Number.isFinite(m.peakKva) && m.peakKva > 0 ? m.peakKva / C : 0,
+    // A missing peak is not a zero peak. Demand claims are gated on complete
+    // peak coverage below; this placeholder is never used to infer savings.
+    billedKva: Number.isFinite(m.peakKva) ? Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C) : Number.NaN,
   }));
   const quality = assessQuality(f, rows);
   const reference = buildReference(rows);
@@ -152,7 +154,9 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
   const totalKwh = rows.reduce((s, r) => s + r.kwh, 0);
   const totalCost = rows.reduce((s, r) => s + r.cost, 0);
   const avgRate = totalKwh > 0 ? totalCost / totalKwh : 0;
-  const maxPeak = Math.max(...rows.map((r) => r.peakKva));
+  const peakRows = rows.filter((r) => Number.isFinite(r.peakKva) && r.peakKva >= 0);
+  const peakCoverageComplete = peakRows.length === rows.length;
+  const maxPeak = peakRows.length ? Math.max(...peakRows.map((r) => r.peakKva)) : 0;
   // Reference = comparable-operation median (see reference.ts), not best months or first months.
   const baselineSec = reference.sec ?? 0;
   const dr = f.demandChargePerKva;
@@ -160,7 +164,9 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
   const dataConf: Confidence = n >= 12 ? "high" : n >= 6 ? "medium" : "low";
 
   // 1. Contract demand optimisation
-  if (C > 0 && dr > 0) {
+  // Demand recommendations require peak measurements for every analyzed
+  // month. Partial coverage cannot support a defensible maximum or annualized claim.
+  if (C > 0 && dr > 0 && peakCoverageComplete) {
     const rec = Math.ceil((maxPeak * ASSUMPTIONS.contractHeadroom) / 10) * 10;
     if (rec < C) {
       const fl = ASSUMPTIONS.minBillingDemandPct;
@@ -215,8 +221,10 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
   }
 
   // 3. Power factor
-  const pfRows = rows.filter((r) => r.powerFactor && r.powerFactor > 0);
-  if (pfRows.length) {
+  const pfRows = rows.filter((r) => Number.isFinite(r.powerFactor) && (r.powerFactor ?? 0) > 0);
+  const pfCoverageComplete = pfRows.length === rows.length;
+  const hoursCoverageComplete = rows.every((r) => Number.isFinite(r.operatingHours) && r.operatingHours > 0);
+  if (pfRows.length && pfCoverageComplete && hoursCoverageComplete) {
     const avgPf = pfRows.reduce((s, r) => s + (r.powerFactor ?? 0), 0) / pfRows.length;
     if (avgPf < ASSUMPTIONS.pfTarget) {
       const penaltyShare = ((ASSUMPTIONS.pfTarget - avgPf) / 0.01) * ASSUMPTIONS.pfPenaltyPerPoint;
