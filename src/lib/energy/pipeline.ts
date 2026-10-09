@@ -56,7 +56,10 @@ export function validateMonths(months: MonthRecord[], now: Date = new Date()): P
     if (!finite(m.operatingHours)) { states.add("MISSING"); notes.push("Operating hours were not provided"); }
     else if (m.operatingHours === 0) { states.add("INSUFFICIENT"); notes.push("Operating hours are zero; operating-context comparisons are unavailable"); }
     else if (m.operatingHours > PIPELINE_RULES.maxHours) { states.add("INVALID"); notes.push("Operating hours exceed hours in a month"); }
-    if (m.powerFactor !== undefined && (!finite(m.powerFactor) || m.powerFactor <= 0 || m.powerFactor > 1)) { states.add("INVALID"); notes.push("Power factor must be between 0 and 1"); }
+    if (m.powerFactor !== undefined) {
+      if (!finite(m.powerFactor)) { states.add("MISSING"); notes.push("Power factor was not provided"); }
+      else if (m.powerFactor <= 0 || m.powerFactor > 1) { states.add("INVALID"); notes.push("Power factor must be greater than 0 and at most 1"); }
+    }
     if (finite(m.kwh) && finite(m.cost) && m.kwh > 0 && m.cost > 0) {
       const rate = m.cost / m.kwh;
       if (rate < PIPELINE_RULES.tariffLow || rate > PIPELINE_RULES.tariffHigh) { states.add("SUSPECT"); notes.push(`Effective rate ₹${rate.toFixed(2)}/kWh is outside the expected band`); }
