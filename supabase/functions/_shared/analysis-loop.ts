@@ -47,6 +47,7 @@ export type AnalysisInput = {
 export type ReasonCode =
   | "INVALID_FACTORY_ID"
   | "INVALID_SAMPLE_ID"
+  | "INVALID_SAMPLE_ORIGIN"
   | "INVALID_AGE_POLICY"
   | "NUMERIC_OVERFLOW"
   | "ASSET_CONTEXT_NOT_COMPARABLE"
@@ -120,7 +121,7 @@ export type AnalysisResult = {
     specificEnergyKwhPerUnit: number | null;
     lowerBound: number | null;
     upperBound: number | null;
-    confidence: "high" | "medium" | "low" | "none";
+    confidence: "medium" | "low" | "none";
     limitations: string[];
   };
   deviation: {
@@ -238,6 +239,7 @@ function normalizeSample(
   const productCode = text(input.productCode);
   if (!productCode) reasons.push("MISSING_PRODUCT_CONTEXT");
   if (input.quality !== "valid") reasons.push("NON_VALID_QUALITY_STATUS");
+  if (!["observed", "synthetic", "estimated"].includes(input.origin)) reasons.push("INVALID_SAMPLE_ORIGIN");
 
   const startMs = timestamp(input.periodStart);
   const endMs = timestamp(input.periodEnd);
@@ -400,7 +402,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const baselineSec = referenceCalculationOverflow ? null : baselineSecCandidate;
   const lower = referenceCalculationOverflow ? null : lowerCandidate;
   const upper = referenceCalculationOverflow ? null : upperCandidate;
-  const confidence: AnalysisResult["reference"]["confidence"] = baselineSecs.length >= 9 ? "high" : baselineSecs.length >= 6 ? "medium" : baselineSecs.length >= 3 ? "low" : "none";
+  const confidence: AnalysisResult["reference"]["confidence"] = baselineSecs.length >= 9 ? "medium" : baselineSecs.length >= 3 ? "low" : "none";
 
   const actualSecRaw = current && current.production > 0 ? current.energyKwh / current.production : null;
   const actualSec = actualSecRaw !== null && Number.isFinite(actualSecRaw) ? actualSecRaw : null;
@@ -458,7 +460,8 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
 
   const allOrigins = [input.current, ...input.baselineSamples].map((x) => x.origin);
   const synthetic = allOrigins.includes("synthetic");
-  const origin: EvidenceOrigin = synthetic ? "synthetic" : allOrigins.includes("estimated") ? "estimated" : "observed";
+  const hasEstimatedOrUnknownOrigin = allOrigins.some((value) => value === "estimated" || !["observed", "synthetic", "estimated"].includes(value));
+  const origin: EvidenceOrigin = synthetic ? "synthetic" : hasEstimatedOrUnknownOrigin ? "estimated" : "observed";
   const limitations = [
     "Historical median is a reference, not proof of healthy or optimal operation.",
     "A deviation identifies a measurable difference; it does not establish root cause or causal attribution.",
@@ -466,7 +469,8 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     ...(synthetic ? ["At least one input is synthetic; this result must never be represented as a real-factory finding."] : []),
   ];
   if (confidence === "low") limitations.push("Only 3–5 comparable samples are available; reference confidence is low.");
-  if (confidence === "medium") limitations.push("Only 6–8 comparable samples are available; reference confidence is medium.");
+  if (confidence === "medium") limitations.push("At least 9 comparable samples are available; sample count improves coverage but does not establish statistical confidence.");
+  if (baselineSecs.length >= 3) limitations.push("Confidence labels are heuristic; sample count alone does not establish statistical confidence.");
 
   return {
     algorithmVersion: ANALYSIS_ALGORITHM_VERSION,
@@ -520,7 +524,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     provenance: {
       origin,
       synthetic,
-      inputSampleIds: [input.current.id, ...input.baselineSamples.map((x) => x.id)],
+      inputSampleIds: [input.current.id, ...input.baselineSamples.map((x) => x.id).sort()],
       asOf: asOfMs === null ? input.asOf : new Date(asOfMs).toISOString(),
       assumptions: [
         "Energy normalized to kWh; accepted energy units are Wh, kWh, and MWh.",
