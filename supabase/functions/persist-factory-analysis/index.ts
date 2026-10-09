@@ -32,7 +32,7 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Content-Type": "application/json",
 };
-const columns = "id,factory_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
+const columns = "id,factory_id,asset_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
 const MAX_REQUEST_BYTES = 4_000_000;
 const MAX_BASELINE_SAMPLES = 5_000;
 const MAX_CANONICAL_OBSERVATIONS = (MAX_BASELINE_SAMPLES + 1) * 5;
