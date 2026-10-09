@@ -2,6 +2,7 @@
 create table if not exists public.factory_analysis_runs (
   id bigint generated always as identity primary key,
   factory_id bigint not null references public.factories(id) on delete restrict,
+  asset_id bigint not null references public.factory_assets(id) on delete restrict,
   idempotency_key text not null,
   algorithm_version text not null,
   input_snapshot jsonb not null,
@@ -15,6 +16,7 @@ create table if not exists public.factory_analysis_runs (
   constraint factory_analysis_runs_result_is_object check (jsonb_typeof(result) = 'object'),
   constraint factory_analysis_runs_refusals_are_array check (jsonb_typeof(refusal_codes) = 'array'),
   constraint factory_analysis_runs_input_factory_matches check (input_snapshot ? 'factoryId' and input_snapshot->>'factoryId' = factory_id::text),
+  constraint factory_analysis_runs_input_asset_matches check (input_snapshot ? 'current' and input_snapshot->'current'->>'assetId' = asset_id::text),
   constraint factory_analysis_runs_result_factory_matches check (result ? 'factoryId' and result->>'factoryId' = factory_id::text),
   constraint factory_analysis_runs_status_matches check (result ? 'status' and result->>'status' = analysis_status),
   constraint factory_analysis_runs_algorithm_matches check (result ? 'algorithmVersion' and result->>'algorithmVersion' = algorithm_version),
@@ -25,6 +27,7 @@ create table if not exists public.factory_analysis_runs (
   constraint factory_analysis_runs_idempotency_unique unique (factory_id, idempotency_key)
 );
 create index if not exists factory_analysis_runs_factory_created_idx on public.factory_analysis_runs(factory_id, created_at desc);
+create index if not exists factory_analysis_runs_asset_created_idx on public.factory_analysis_runs(factory_id, asset_id, created_at desc);
 create index if not exists factory_analysis_runs_factory_status_idx on public.factory_analysis_runs(factory_id, analysis_status, created_at desc);
 alter table public.factory_analysis_runs enable row level security;
 drop policy if exists "active factory members read analysis runs" on public.factory_analysis_runs;
