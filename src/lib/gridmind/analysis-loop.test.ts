@@ -23,7 +23,7 @@ const sample = (id: string, energyValue: unknown, overrides: Partial<OperatingSa
   periodStart: "2026-10-08T00:00:00.000Z",
   periodEnd: "2026-10-09T00:00:00.000Z",
   quality: "valid",
-  origin: "observed",
+  origin: "synthetic",
   ...overrides,
 });
 const input = (
