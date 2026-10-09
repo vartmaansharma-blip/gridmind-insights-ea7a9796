@@ -35,7 +35,7 @@ jobs:
 
       - name: Semantic ESLint
         # Keep non-formatting rules blocking while legacy Prettier debt is tracked separately.
-        run: bunx eslint . --rule 'prettier/prettier: off'
+        run: "bunx eslint . --rule 'prettier/prettier: off'"
 
       - name: Tests
         run: bun run test
