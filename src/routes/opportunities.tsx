@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { toast } from "sonner";
 import { getCanonicalOpportunities } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
 import { inr, inrCompact } from "@/lib/energy/format";
@@ -26,6 +27,14 @@ function Opps() {
   if (query.error) return <p className="text-sm text-danger">{query.error.message}</p>;
 
   const opportunities = query.data ?? [];
+  const changeStatus = (id: string, status: string) => {
+    void setOppStatus(id, status)
+      .then(() => query.refetch())
+      .catch((error: unknown) => {
+        console.error("[GridMind] canonical opportunity status update failed", error);
+        toast.error("Opportunity status was not saved. Please try again.");
+      });
+  };
   return (
     <>
       <PageHeader eyebrow="Economic intelligence" title={opportunities.length ? opportunities.length + " canonical opportunities" : "No canonical opportunities yet"} desc="This view only shows opportunities persisted in the canonical intelligence model. Screening calculations are not presented as production opportunities." />
@@ -35,7 +44,7 @@ function Opps() {
           <article key={o.id} className="panel p-5">
             <div className="flex flex-wrap items-start gap-3">
               <div className="min-w-0 flex-1"><div className="eyebrow">Opportunity #{i + 1}</div><h2 className="mt-1 text-lg font-semibold">{o.title}</h2><p className="mt-1 text-sm text-muted-foreground">{o.scopeType} · {o.scopeId ?? "factory-wide"}</p></div>
-              <Select value={o.status} onValueChange={(v) => setOppStatus(String(o.id), v as any)}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{STATUS.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
+              <Select value={o.status} onValueChange={(v) => changeStatus(String(o.id), v)}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{STATUS.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
             </div>
             <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
               <Metric label="Recoverable opportunity" value={o.recoverableOpportunity} />
