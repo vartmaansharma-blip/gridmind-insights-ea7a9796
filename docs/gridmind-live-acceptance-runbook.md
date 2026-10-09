@@ -18,7 +18,7 @@ The existing assets have not been calibrated according to their current `calibra
 
 ## Steps
 
-1. **Run the diagnostic.** Execute `supabase/tests/gridmind-live-readiness.sql` in the Supabase SQL editor. It is SELECT-only and reports factory blockers plus asset-level observation-role coverage.
+1. **Run the diagnostic.** Execute `supabase/tests/gridmind-live-readiness.sql` in the Supabase SQL editor. It is SELECT-only and reports factory blockers plus asset-level observation-role coverage. Use the blank intake sheets under `docs/templates/gridmind/` to collect and review real source data before writing it to canonical tables; these templates are not SQL imports and must not be treated as validated records.
 2. **Restore legitimate access.** Have the actual workspace owner sign in and use the authenticated workspace flow, or have an authorized project administrator establish the correct active organization and factory membership for the intended user. Do not guess a user UUID or attach a random account to an existing factory. Confirm both membership layers before proceeding.
 3. **Select one pilot asset.** Choose a real asset with a known meter/production source and a responsible factory contact. Record its actual asset ID and a bounded analysis window.
 4. **Ingest canonical observations.** For each comparable period, store asset-scoped observations with the same `factory_id`, `subject_type='asset'`, and `subject_id=<asset id>`. Supply exactly one observation for each required role per period:
@@ -33,6 +33,14 @@ The existing assets have not been calibrated according to their current `calibra
 8. **Apply the migration and deploy only after authorization.** The current PR's isolated clean replay and authenticated HTTP acceptance gates pass. Review and merge PR #3, apply its migration to the intended Supabase project, and deploy the function with JWT verification enabled only after membership/evidence preconditions and change approval are satisfied.
 9. **Run and independently verify.** Use the asset page's “Run and verify” action. Check the source observation IDs, period boundaries, operating context, tariff, recoverable fraction, intervention cost, calculation, and refusal/provisional limitations against the original factory records. Reload and repeat verification. A reproducible result means the calculation is repeatable; it does not by itself prove causality or realized savings.
 10. **Close the loop.** Have a qualified factory engineer review the finding. Only claim realized savings after a separately documented intervention and a suitable post-intervention measurement/verification protocol.
+
+## Blank data-intake templates
+
+- `docs/templates/gridmind/observations.csv`: one row per asset observation; collect energy, production, and operating-hours records for each comparable period, with source references and honest quality flags.
+- `docs/templates/gridmind/operating-contexts.csv`: one row per asset operating-context interval, including state/product context and source reference.
+- `docs/templates/gridmind/economic-context.csv`: one effective economic assumption set, with tariff, recoverable fraction, intervention cost, and source references.
+
+Keep source documents/exports alongside the filled templates in the project's controlled storage. Do not send credentials, personal data, or confidential records into chat. The templates are an intake contract, not proof that values are correct.
 
 ## Acceptance checklist
 
