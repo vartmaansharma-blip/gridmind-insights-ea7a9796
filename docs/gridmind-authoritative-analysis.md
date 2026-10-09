@@ -8,7 +8,7 @@ The Edge Function recalculates with the same shared engine used by the test suit
 
 ## Explicit ingestion contract
 
-The adapter intentionally does not guess metric meanings or fill missing values. A request is rejected if it exceeds 4 MB or contains more than 5,000 baseline periods; data must be explicitly aggregated upstream rather than silently truncated.
+The adapter intentionally does not guess metric meanings or fill missing values. The Edge Function enforces the 4 MB request limit against the actual streamed UTF-8 body, even when `Content-Length` is absent or inaccurate, and separately rejects more than 5,000 baseline periods. Data must be explicitly aggregated upstream rather than silently truncated.
 
 ### Observation roles
 
@@ -54,6 +54,7 @@ These fields must be finite numbers; no generic tariff, recovery rate, or interv
 - Canonical observation assembly, source IDs, unknown role, absent context/economics, no-observation refusal: `analysis-input-adapter.test.ts`
 - Canonical read → persist → reload/recompute orchestration: `analysis-runner.test.ts`
 - JSON-safe immutable request and server-only persistence contract: `analysis-run-store.test.ts`
+- Streamed request-size enforcement, malformed lengths, and malformed JSON: `supabase/functions/_shared/request-body.test.ts`
 
 ## Live-environment verification still required
 
