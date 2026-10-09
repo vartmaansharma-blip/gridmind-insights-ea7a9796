@@ -7,7 +7,7 @@
  */
 export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.2.1";
 
-export type SampleQuality = "valid" | "suspect" | "invalid" | "missing" | "stale" | "conflicting" | "unverified";
+export type SampleQuality = "valid" | "suspect" | "invalid" | "missing" | "stale" | "conflicting" | "unverified" | "estimated" | "out_of_range";
 export type EvidenceOrigin = "observed" | "synthetic" | "estimated";
 
 export type OperatingSampleInput = {
@@ -25,10 +25,17 @@ export type OperatingSampleInput = {
   periodEnd: unknown;
   quality: SampleQuality;
   origin: EvidenceOrigin;
+  /** Canonical observation row IDs that contributed to this assembled period. */
+  sourceObservationIds?: number[];
 };
 
 export type EconomicInputs = {
-  currency: "INR";
+  currency: string;
+  /** Source context metadata is preserved for audit; it is not used as a hidden default. */
+  sourceContextId?: number;
+  sourceContextName?: string;
+  effectiveFrom?: string | null;
+  effectiveUntil?: string | null;
   tariffInrPerKwh: unknown;
   recoverableFraction: unknown;
   interventionCostInr: unknown;
@@ -137,7 +144,7 @@ export type AnalysisResult = {
   economics: {
     quantified: boolean;
     refusalReasons: ReasonCode[];
-    currency: "INR";
+    currency: string;
     tariffInrPerKwh: number | null;
     recoverableFraction: number | null;
     interventionCostInr: number | null;
@@ -152,6 +159,7 @@ export type AnalysisResult = {
     origin: EvidenceOrigin;
     synthetic: boolean;
     inputSampleIds: string[];
+    inputObservationIds: number[];
     asOf: string;
     assumptions: string[];
   };
@@ -511,7 +519,7 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     economics: {
       quantified,
       refusalReasons: quantified ? [] : eligibleForOpportunity ? [...new Set(economicReasons)] : detected ? ["INSUFFICIENT_COMPARABLE_BASELINE"] : [],
-      currency: "INR",
+      currency: input.economics.currency,
       tariffInrPerKwh: positive(tariff) ? tariff : null,
       recoverableFraction: finite(recovery) && recovery >= 0 && recovery <= 1 ? recovery : null,
       interventionCostInr: nonNegative(capex) ? capex : null,
@@ -526,6 +534,9 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
       origin,
       synthetic,
       inputSampleIds: [evidenceId(input.current.id), ...input.baselineSamples.map((x) => evidenceId(x.id)).sort()],
+      inputObservationIds: [...new Set([...(input.current.sourceObservationIds ?? []), ...input.baselineSamples.flatMap((sample) => sample.sourceObservationIds ?? [])])]
+        .filter((id) => Number.isSafeInteger(id) && id > 0)
+        .sort((a, b) => a - b),
       asOf: asOfMs === null ? input.asOf : new Date(asOfMs).toISOString(),
       assumptions: [
         "Energy normalized to kWh; accepted energy units are Wh, kWh, and MWh.",
