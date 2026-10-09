@@ -45,8 +45,12 @@ function unwrap<T>(result: TableResult<T>, operation: string): T {
 }
 function assertSameEvidence(stored: StoredAnalysisRun, input: AnalysisInput, result: AnalysisResult): void {
   if (
+    stored.factory_id !== input.factoryId ||
+    stored.input_snapshot.factoryId !== input.factoryId ||
     canonicalize(stored.input_snapshot) !== canonicalize(input) ||
     stored.algorithm_version !== result.algorithmVersion ||
+    stored.analysis_status !== result.status ||
+    canonicalize(stored.refusal_codes) !== canonicalize(result.reasonCodes) ||
     stored.result_fingerprint !== reproducibilityFingerprint(result) ||
     canonicalize(stored.result) !== canonicalize(result)
   ) throw new Error("Idempotency conflict: this key already belongs to different evidence or a different analysis result.");
@@ -56,6 +60,7 @@ function assertSameEvidence(stored: StoredAnalysisRun, input: AnalysisInput, res
 export async function persistFactoryAnalysisRun(input: AnalysisInput, idempotencyKey: string): Promise<StoredAnalysisRun> {
   const key = idempotencyKey.trim();
   if (!key || key.length > 200) throw new Error("A non-empty idempotency key of at most 200 characters is required.");
+  if (!Number.isSafeInteger(input.factoryId) || input.factoryId <= 0) throw new Error("A valid positive factory ID is required.");
   const { data: authData, error: authError } = await supabase.auth.getUser();
   if (authError) throw authError;
   if (!authData.user) throw new Error("Authentication is required to persist a factory analysis run.");
@@ -67,6 +72,9 @@ export async function persistFactoryAnalysisRun(input: AnalysisInput, idempotenc
   if (!existingResult.error && existingResult.data) {
     assertSameEvidence(existingResult.data, input, result);
     return existingResult.data;
+  }
+  if (existingResult.error && existingResult.error.code !== "PGRST116") {
+    throw new Error(`GridMind analysis run lookup failed: ${existingResult.error.message}`);
   }
 
   const inserted = await table.insert({
@@ -117,7 +125,10 @@ export async function reloadAndVerifyFactoryAnalysisRun(factoryId: number, idemp
     recomputedFingerprint,
     reproducible:
       stored.factory_id === factoryId &&
+      stored.input_snapshot.factoryId === factoryId &&
       stored.algorithm_version === recomputed.algorithmVersion &&
+      stored.analysis_status === recomputed.status &&
+      canonicalize(stored.refusal_codes) === canonicalize(recomputed.reasonCodes) &&
       stored.result_fingerprint === recomputedFingerprint &&
       canonicalize(stored.result) === canonicalize(recomputed),
   };
