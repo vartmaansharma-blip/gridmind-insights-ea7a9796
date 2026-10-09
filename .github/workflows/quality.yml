@@ -34,7 +34,7 @@ jobs:
       - name: Semantic ESLint
         # The repository has thousands of pre-existing Prettier-only errors.
         # Keep all other ESLint rules blocking while formatting debt is handled separately.
-        run: bunx eslint . --rule 'prettier/prettier: off'
+        run: "bunx eslint . --rule 'prettier/prettier: off'"
       - name: Setup Deno
         uses: denoland/setup-deno@v2
         with:
