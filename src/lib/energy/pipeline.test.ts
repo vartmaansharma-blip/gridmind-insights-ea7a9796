@@ -14,14 +14,19 @@ describe("pipeline", () => {
     expect(r.usable).toHaveLength(1);
     expect(r.usable[0].kwh).toBe(100000);
   });
-  it("treats zero production as missing, not zero", () => {
-    const r = validateMonths([m("2026-01", { production: 0 })], now);
-    expect(r.checks[0].states).toContain("MISSING");
-    expect(r.usable).toHaveLength(0);
-    expect(r.analysisPaused).toBe(true);
+  it("distinguishes a measured zero from missing production", () => {
+    const zero = validateMonths([m("2026-01", { production: 0 })], now);
+    expect(zero.checks[0].states).toContain("INSUFFICIENT");
+    expect(zero.checks[0].states).not.toContain("MISSING");
+    expect(zero.usable).toHaveLength(0);
+    expect(zero.analysisPaused).toBe(true);
+
+    const missing = validateMonths([m("2026-01", { production: Number.NaN })], now);
+    expect(missing.checks[0].states).toContain("MISSING");
+    expect(missing.usable).toHaveLength(0);
   });
-  it("flags invalid numbers and out-of-order months", () => {
-    const r = validateMonths([m("2026-03"), m("2026-01", { cost: Number.NaN })], now);
+  it("flags invalid values and out-of-order months", () => {
+    const r = validateMonths([m("2026-03"), m("2026-01", { cost: -1 })], now);
     expect(r.checks[1].states).toContain("INVALID");
     expect(r.checks[1].states).toContain("OUT_OF_ORDER");
   });
