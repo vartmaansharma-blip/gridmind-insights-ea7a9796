@@ -114,7 +114,23 @@ describe("canonical analysis input adapter", () => {
     expect(input.current.operatingState).toBe("");
     expect(result.economics.quantified).toBe(false);
     expect(result.reasonCodes).toContain("MISSING_PRODUCT_CONTEXT");
+  });
+
+  it("refuses economic quantification when physical evidence is sufficient but economics are absent", () => {
+    const input = buildAnalysisInputFromCanonical({
+      factoryId,
+      assetId,
+      observations: observations(),
+      operatingContexts: contexts,
+      economicContext: null,
+      asOf: "2026-10-09T12:00:00.000Z",
+    });
+    const result = analyzeFactoryLoop(input);
+
+    expect(result.deviation.detected).toBe(true);
+    expect(result.economics.quantified).toBe(false);
     expect(result.economics.refusalReasons).toContain("MISSING_TARIFF");
+    expect(result.economics.refusalReasons).toContain("MISSING_RECOVERY_FRACTION");
   });
 
   it("refuses unknown analysis-role mappings and still retains the source observation ID", () => {
