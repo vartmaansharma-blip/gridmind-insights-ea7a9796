@@ -5,7 +5,7 @@
  * snapshot and output, then re-run it after reload to verify reproducibility.
  * It does not infer a machine cause or verified savings from a deviation.
  */
-export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.3.0";
+export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.3.1";
 
 export type SampleQuality = "valid" | "suspect" | "invalid" | "missing" | "stale" | "conflicting" | "unverified" | "estimated" | "out_of_range";
 export type EvidenceOrigin = "observed" | "synthetic" | "estimated";
