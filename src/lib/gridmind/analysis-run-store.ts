@@ -19,7 +19,6 @@ type StoredAnalysisRun = {
   refusal_codes: string[];
   created_by: string | null;
   created_at: string;
-  updated_at: string;
 };
 type TableResult<T> = { data: T | null; error: { message: string; code?: string } | null };
 type AnalysisRunTable = {
@@ -36,7 +35,7 @@ type AnalysisRunTable = {
 };
 const analysisRunTable = () =>
   (supabase as unknown as { from(table: "factory_analysis_runs"): AnalysisRunTable }).from("factory_analysis_runs");
-const columns = "id,factory_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at,updated_at";
+const columns = "id,factory_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
 
 function unwrap<T>(result: TableResult<T>, operation: string): T {
   if (result.error) throw new Error(`GridMind analysis run ${operation} failed: ${result.error.message}`);
