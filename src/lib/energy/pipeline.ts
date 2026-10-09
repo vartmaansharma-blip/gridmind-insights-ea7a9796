@@ -3,7 +3,7 @@
 // rows missing energy, cost or production are excluded from intensity calculations.
 import type { MonthRecord } from "./types";
 
-export const QUALITY_STATES = ["GOOD", "SUSPECT", "INVALID", "STALE", "MISSING", "DUPLICATE", "OUT_OF_ORDER", "CALIBRATION_REQUIRED"] as const;
+export const QUALITY_STATES = ["GOOD", "SUSPECT", "INVALID", "STALE", "MISSING", "INSUFFICIENT", "DUPLICATE", "OUT_OF_ORDER", "CALIBRATION_REQUIRED"] as const;
 export type QualityState = (typeof QUALITY_STATES)[number];
 
 export type RowCheck = { index: number; month: string; states: QualityState[]; notes: string[]; usable: boolean };
@@ -45,19 +45,25 @@ export function validateMonths(months: MonthRecord[], now: Date = new Date()): P
     }
     for (const [k, label] of [["kwh", "energy (kWh)"], ["cost", "cost"], ["production", "production"]] as const) {
       const v = m[k];
-      if (!finite(v)) { states.add("INVALID"); notes.push(`${label} is not a number`); }
+      if (!finite(v)) { states.add("MISSING"); notes.push(`${label} was not provided`); }
       else if (v < 0) { states.add("INVALID"); notes.push(`${label} is negative`); }
-      else if (v === 0) { states.add("MISSING"); notes.push(`${label} missing or zero — not treated as a real zero`); }
+      else if (v === 0 && (k === "kwh" || k === "production")) {
+        states.add("INSUFFICIENT");
+        notes.push(`${label} is a recorded zero; energy-intensity analysis is unavailable for this month`);
+      }
     }
-    if (!finite(m.peakKva) || m.peakKva <= 0) { states.add("MISSING"); notes.push("Peak demand missing — demand checks skip this month"); }
-    if (!finite(m.operatingHours) || m.operatingHours <= 0) { states.add("MISSING"); notes.push("Operating hours missing"); }
+    if (!finite(m.peakKva)) { states.add("MISSING"); notes.push("Peak demand was not provided — demand checks skip this month"); }
+    if (!finite(m.operatingHours)) { states.add("MISSING"); notes.push("Operating hours were not provided"); }
+    else if (m.operatingHours === 0) { states.add("INSUFFICIENT"); notes.push("Operating hours are zero; operating-context comparisons are unavailable"); }
     else if (m.operatingHours > PIPELINE_RULES.maxHours) { states.add("INVALID"); notes.push("Operating hours exceed hours in a month"); }
     if (m.powerFactor !== undefined && (!finite(m.powerFactor) || m.powerFactor <= 0 || m.powerFactor > 1)) { states.add("INVALID"); notes.push("Power factor must be between 0 and 1"); }
     if (finite(m.kwh) && finite(m.cost) && m.kwh > 0 && m.cost > 0) {
       const rate = m.cost / m.kwh;
       if (rate < PIPELINE_RULES.tariffLow || rate > PIPELINE_RULES.tariffHigh) { states.add("SUSPECT"); notes.push(`Effective rate ₹${rate.toFixed(2)}/kWh is outside the expected band`); }
     }
-    const core = !states.has("INVALID") && !states.has("DUPLICATE") && m.kwh > 0 && m.cost > 0 && m.production > 0;
+    const core = !states.has("INVALID") && !states.has("DUPLICATE") &&
+      finite(m.kwh) && finite(m.cost) && finite(m.production) &&
+      m.kwh > 0 && m.cost >= 0 && m.production > 0;
     if (states.size === 0) states.add("GOOD");
     return { index, month: m.month, states: [...states], notes, usable: core };
   });
