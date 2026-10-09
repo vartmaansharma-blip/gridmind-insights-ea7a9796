@@ -9,6 +9,7 @@ export type FactoryAnalysisRequest = {
 export type StoredAnalysisRun = {
   id: number;
   factory_id: number;
+  asset_id: number;
   idempotency_key: string;
   algorithm_version: string;
   input_snapshot: AnalysisInput;
@@ -29,7 +30,7 @@ type VerifyResponse = {
 };
 
 /**
- * The browser sends only canonical entity identifiers and an as-of timestamp.
+ * The browser sends only canonical entity identifiers.
  * The Edge Function loads observations/contexts itself; client-supplied measurements
  * are never accepted as authoritative input.
  */
