@@ -230,6 +230,22 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.economics.label).toBe("estimate");
   });
 
+  it("explicitly labels opportunities built from estimated evidence as provisional", () => {
+    const result = analyzeFactoryLoop(input(
+      sample("current", 700, { origin: "estimated" }),
+      [
+        sample("b1", 500, { origin: "observed" }),
+        sample("b2", 510, { origin: "observed" }),
+        sample("b3", 490, { origin: "observed" }),
+      ],
+      { currency: "INR", tariffInrPerKwh: 8, recoverableFraction: 0.6, interventionCostInr: 500 },
+    ));
+    expect(result.provenance.origin).toBe("estimated");
+    expect(result.reference.limitations).toContain(
+      "At least one input is estimated or has an unknown evidence origin; treat the result as provisional until source measurements are validated.",
+    );
+  });
+
   it("refuses economic quantification when finite inputs overflow during calculation", () => {
     const result = analyzeFactoryLoop(input(sample("current", 1e308), [
       sample("b1", 1e307), sample("b2", 1e307), sample("b3", 1e307),

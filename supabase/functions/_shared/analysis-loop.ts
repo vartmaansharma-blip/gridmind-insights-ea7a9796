@@ -490,6 +490,9 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     "A deviation identifies a measurable difference; it does not establish root cause or causal attribution.",
     "Any monetary result is an estimate, not verified savings.",
     ...(synthetic ? ["At least one input is synthetic; this result must never be represented as a real-factory finding."] : []),
+    ...(hasEstimatedOrUnknownOrigin
+      ? ["At least one input is estimated or has an unknown evidence origin; treat the result as provisional until source measurements are validated."]
+      : []),
   ];
   if (confidence === "low") limitations.push("Only 3–8 comparable samples are available; reference confidence is low.");
   if (confidence === "medium") limitations.push("At least 9 comparable samples are available; sample count improves coverage but does not establish statistical confidence.");

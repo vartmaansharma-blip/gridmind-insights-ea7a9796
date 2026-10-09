@@ -48,7 +48,7 @@ These fields must be finite numbers; no generic tariff, recovery rate, or interv
 
 ## Acceptance coverage
 
-- Missing versus invalid values and genuine zero: `analysis-loop.test.ts`, `analysis-run-store.test.ts`
+- Missing versus invalid values, genuine zero, and explicit provisional labeling for estimated evidence: `analysis-loop.test.ts`, `analysis-run-store.test.ts`
 - Strict timezone-aware timestamps, calendar validity, stale/future periods, operating-hour bounds: `analysis-loop.test.ts`
 - Non-overlapping historical baseline, comparable operating rates, duplicate IDs, deterministic input order: `analysis-loop.test.ts`
 - Canonical observation assembly, source IDs, unknown role, absent context/economics, no-observation refusal: `analysis-input-adapter.test.ts`
