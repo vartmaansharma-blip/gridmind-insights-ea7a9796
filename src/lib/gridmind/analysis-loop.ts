@@ -46,6 +46,15 @@ export type AnalysisInput = {
 
 export type ReasonCode =
   | "INVALID_FACTORY_ID"
+  | "INVALID_SAMPLE_ID"
+  | "INVALID_AGE_POLICY"
+  | "NUMERIC_OVERFLOW"
+  | "ASSET_CONTEXT_NOT_COMPARABLE"
+  | "OPERATING_STATE_NOT_COMPARABLE"
+  | "PRODUCT_NOT_COMPARABLE"
+  | "PRODUCTION_UNIT_NOT_COMPARABLE"
+  | "UNSUPPORTED_CURRENCY"
+  | "NON_POSITIVE_NET_VALUE"
   | "FACTORY_MISMATCH"
   | "MISSING_ASSET_ID"
   | "MISSING_OPERATING_STATE"
@@ -197,6 +206,7 @@ function normalizeSample(
   isCurrent: boolean,
 ): Normalization {
   const reasons: ReasonCode[] = [];
+  if (typeof input.id !== "string" || input.id.trim().length === 0 || input.id.length > 200) reasons.push("INVALID_SAMPLE_ID");
   if (input.factoryId !== factoryId) reasons.push("FACTORY_MISMATCH");
   const assetId = text(input.assetId);
   if (!assetId) reasons.push("MISSING_ASSET_ID");
@@ -224,7 +234,7 @@ function normalizeSample(
   const productionUnit = normalizeProductionUnit(input.productionUnit);
   if (productionUnit === null) reasons.push("UNSUPPORTED_PRODUCTION_UNIT");
   if (input.operatingHours === null || input.operatingHours === undefined || input.operatingHours === "") reasons.push("MISSING_OPERATING_HOURS");
-  else if (!positive(input.operatingHours) || input.operatingHours > 24 * Math.max(1, endMs !== null && startMs !== null ? daysBetween(startMs, endMs) : 0)) {
+  else if (!positive(input.operatingHours) || startMs === null || endMs === null || endMs <= startMs || input.operatingHours > 24 * daysBetween(startMs, endMs)) {
     reasons.push("INVALID_OPERATING_HOURS");
   }
   if (input.productionValue === 0) reasons.push("ZERO_PRODUCTION");
@@ -232,9 +242,16 @@ function normalizeSample(
 
   // A numeric zero is preserved and explicitly reason-coded; it is never converted to null.
   // Zero production and zero energy while producing cannot support an intensity conclusion.
+  const normalizedEnergyKwh = finite(input.energyValue) && energyFactor !== null ? input.energyValue * energyFactor : Number.NaN;
+  const specificEnergy = finite(input.productionValue) && input.productionValue > 0 ? normalizedEnergyKwh / input.productionValue : Number.NaN;
+  if ((!Number.isFinite(normalizedEnergyKwh) || !Number.isFinite(specificEnergy)) &&
+      finite(input.energyValue) && finite(input.productionValue) && input.productionValue > 0 && energyFactor !== null) {
+    reasons.push("NUMERIC_OVERFLOW");
+  }
   if (reasons.length > 0 || assetId === null || operatingState === null || productCode === null ||
       startMs === null || endMs === null || energyFactor === null || productionUnit === null ||
-      !finite(input.energyValue) || !finite(input.productionValue) || !positive(input.operatingHours)) {
+      !finite(input.energyValue) || !finite(input.productionValue) || !positive(input.operatingHours) ||
+      !Number.isFinite(normalizedEnergyKwh) || !Number.isFinite(specificEnergy)) {
     return { sample: null, reasons: [...new Set(reasons)] };
   }
 
@@ -243,7 +260,7 @@ function normalizeSample(
       id: input.id,
       factoryId: input.factoryId,
       assetId,
-      energyKwh: round(input.energyValue * energyFactor),
+      energyKwh: round(normalizedEnergyKwh),
       production: input.productionValue,
       productionUnit,
       operatingHours: input.operatingHours,
@@ -262,14 +279,17 @@ function normalizeSample(
 export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const asOfMs = timestamp(input.asOf);
   const invalidFactory = !Number.isSafeInteger(input.factoryId) || input.factoryId <= 0;
-  const currentNorm = asOfMs === null || invalidFactory
-    ? { sample: null, reasons: [...(invalidFactory ? ["INVALID_FACTORY_ID" as const] : []), ...(asOfMs === null ? ["INVALID_TIMESTAMP" as const] : [])] }
-    : normalizeSample(input.current, input.factoryId, asOfMs, input.maxCurrentAgeDays ?? 90, true);
+  const maxCurrentAgeDays = input.maxCurrentAgeDays ?? 90;
+  const maxBaselineAgeDays = input.maxBaselineAgeDays ?? 365;
+  const invalidAgePolicy = !positive(maxCurrentAgeDays) || !positive(maxBaselineAgeDays);
+  const currentNorm = asOfMs === null || invalidFactory || invalidAgePolicy
+    ? { sample: null, reasons: [...(invalidFactory ? ["INVALID_FACTORY_ID" as const] : []), ...(asOfMs === null ? ["INVALID_TIMESTAMP" as const] : []), ...(invalidAgePolicy ? ["INVALID_AGE_POLICY" as const] : [])] }
+    : normalizeSample(input.current, input.factoryId, asOfMs, maxCurrentAgeDays, true);
   const current = currentNorm.sample;
   const excludedBaseline: Array<{ id: string; reasons: ReasonCode[] }> = [];
   const accepted: NormalizedSample[] = [];
 
-  if (asOfMs !== null && !invalidFactory) {
+  if (asOfMs !== null && !invalidFactory && !invalidAgePolicy) {
     const seenSampleIds = new Set<string>([input.current.id]);
     for (const sampleInput of input.baselineSamples) {
       if (seenSampleIds.has(sampleInput.id)) {
@@ -277,23 +297,30 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
         continue;
       }
       seenSampleIds.add(sampleInput.id);
-      const normalized = normalizeSample(sampleInput, input.factoryId, asOfMs, input.maxBaselineAgeDays ?? 365, false);
+      const normalized = normalizeSample(sampleInput, input.factoryId, asOfMs, maxBaselineAgeDays, false);
       if (!normalized.sample) {
         excludedBaseline.push({ id: sampleInput.id, reasons: normalized.reasons });
         continue;
       }
-      if (current && (
-        normalized.sample.assetId !== current.assetId ||
-        normalized.sample.operatingState !== current.operatingState ||
-        normalized.sample.productCode !== current.productCode ||
-        normalized.sample.productionUnit !== current.productionUnit
-      )) {
-        excludedBaseline.push({ id: sampleInput.id, reasons: ["MISSING_PRODUCT_CONTEXT"] });
+      if (current && normalized.sample.assetId !== current.assetId) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["ASSET_CONTEXT_NOT_COMPARABLE"] });
+        continue;
+      }
+      if (current && normalized.sample.operatingState !== current.operatingState) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["OPERATING_STATE_NOT_COMPARABLE"] });
+        continue;
+      }
+      if (current && normalized.sample.productCode !== current.productCode) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["PRODUCT_NOT_COMPARABLE"] });
+        continue;
+      }
+      if (current && normalized.sample.productionUnit !== current.productionUnit) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["PRODUCTION_UNIT_NOT_COMPARABLE"] });
         continue;
       }
       if (current && (
-        Math.abs(normalized.sample.operatingHours / current.operatingHours - 1) > 0.15 ||
-        Math.abs(normalized.sample.production / current.production - 1) > 0.25
+        Math.abs((normalized.sample.operatingHours / normalized.sample.periodDays) / (current.operatingHours / current.periodDays) - 1) > 0.15 ||
+        Math.abs((normalized.sample.production / normalized.sample.operatingHours) / (current.production / current.operatingHours) - 1) > 0.25
       )) {
         excludedBaseline.push({ id: sampleInput.id, reasons: ["OPERATING_CONTEXT_NOT_COMPARABLE"] });
         continue;
@@ -329,11 +356,12 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const tariff = input.economics.tariffInrPerKwh;
   const recovery = input.economics.recoverableFraction;
   const capex = input.economics.interventionCostInr;
+  if (input.economics.currency !== "INR") economicReasons.push("UNSUPPORTED_CURRENCY");
   if (!positive(tariff)) economicReasons.push(tariff === null || tariff === undefined || tariff === "" ? "MISSING_TARIFF" : "INVALID_TARIFF");
   if (!finite(recovery)) economicReasons.push(recovery === null || recovery === undefined || recovery === "" ? "MISSING_RECOVERY_FRACTION" : "INVALID_RECOVERY_FRACTION");
   else if (recovery < 0 || recovery > 1) economicReasons.push("INVALID_RECOVERY_FRACTION");
   if (!nonNegative(capex)) economicReasons.push(capex === null || capex === undefined || capex === "" ? "MISSING_INTERVENTION_COST" : "INVALID_INTERVENTION_COST");
-  const validEconomics = positive(tariff) && finite(recovery) && recovery >= 0 && recovery <= 1 && nonNegative(capex);
+  const validEconomics = input.economics.currency === "INR" && positive(tariff) && finite(recovery) && recovery >= 0 && recovery <= 1 && nonNegative(capex);
   const eligibleForOpportunity = detected && current !== null && excessEnergy !== null && excessEnergy > 0;
   const quantified = eligibleForOpportunity && validEconomics && current !== null && current.periodDays > 0;
   const grossValue = quantified ? round(excessEnergy! * (tariff as number)) : null;
@@ -342,10 +370,11 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const annualized = quantified && current!.periodDays > 0 ? round(recoverableValue! * 365 / current!.periodDays) : null;
   const resultReasons = [...new Set(reasons)];
   if (eligibleForOpportunity && !validEconomics) resultReasons.push(...economicReasons);
+  if (quantified && netValue !== null && netValue <= 0) resultReasons.push("NON_POSITIVE_NET_VALUE");
 
   let status: AnalysisResult["status"] = "insufficient_evidence";
   if (current && baselineSec !== null) {
-    status = quantified ? "opportunity" : detected ? "insufficient_evidence" : "within_reference";
+    status = quantified ? (netValue !== null && netValue > 0 ? "opportunity" : "deviation_no_opportunity") : detected ? "insufficient_evidence" : "within_reference";
     if (!detected && lowerDeviation) status = "deviation_no_opportunity";
   }
 
@@ -418,9 +447,9 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
       assumptions: [
         "Energy normalized to kWh; accepted energy units are Wh, kWh, and MWh.",
         "Baseline uses the median specific-energy ratio of at least three comparable valid samples.",
-        "Comparability requires the same asset, operating state, product code, and production unit.",
+        "Comparability requires the same asset, operating state, product code, and production unit; operating hours/day must be within 15% and production/operating-hour within 25%.",
         "Reference band is max(1.5 × median absolute deviation, 3% of median).",
-        "Economic estimate uses positive excess kWh × supplied tariff × supplied recoverable fraction.",
+        "Economic estimate uses positive excess kWh × supplied INR tariff × supplied recoverable fraction; an opportunity status additionally requires positive estimated net value after intervention cost.",
         "Annualization assumes the current period is representative of a 365-day year; it is an extrapolation, not verified savings.",
       ],
     },
