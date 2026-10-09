@@ -1,0 +1,418 @@
+/**
+ * Authoritative, deterministic factory-analysis loop.
+ *
+ * This module is deliberately pure: persistence adapters store its complete input
+ * snapshot and output, then re-run it after reload to verify reproducibility.
+ * It does not infer a machine cause or verified savings from a deviation.
+ */
+export const ANALYSIS_ALGORITHM_VERSION = "factory-loop-v1.0.0";
+
+export type SampleQuality = "valid" | "suspect" | "invalid" | "missing" | "stale" | "conflicting" | "unverified";
+export type EvidenceOrigin = "observed" | "synthetic" | "estimated";
+
+export type OperatingSampleInput = {
+  id: string;
+  factoryId: number;
+  assetId: string | null;
+  energyValue: unknown;
+  energyUnit: unknown;
+  productionValue: unknown;
+  productionUnit: unknown;
+  operatingHours: unknown;
+  operatingState: unknown;
+  productCode: unknown;
+  periodStart: unknown;
+  periodEnd: unknown;
+  quality: SampleQuality;
+  origin: EvidenceOrigin;
+};
+
+export type EconomicInputs = {
+  currency: "INR";
+  tariffInrPerKwh: unknown;
+  recoverableFraction: unknown;
+  interventionCostInr: unknown;
+};
+
+export type AnalysisInput = {
+  factoryId: number;
+  current: OperatingSampleInput;
+  baselineSamples: OperatingSampleInput[];
+  economics: EconomicInputs;
+  asOf: string;
+  maxCurrentAgeDays?: number;
+  maxBaselineAgeDays?: number;
+};
+
+export type ReasonCode =
+  | "INVALID_FACTORY_ID"
+  | "FACTORY_MISMATCH"
+  | "MISSING_ASSET_ID"
+  | "MISSING_OPERATING_STATE"
+  | "MISSING_PRODUCT_CONTEXT"
+  | "INVALID_TIMESTAMP"
+  | "FUTURE_TIMESTAMP"
+  | "INVALID_PERIOD"
+  | "STALE_CURRENT_OBSERVATION"
+  | "STALE_BASELINE_OBSERVATION"
+  | "INVALID_ENERGY_VALUE"
+  | "INVALID_PRODUCTION_VALUE"
+  | "INVALID_OPERATING_HOURS"
+  | "UNSUPPORTED_ENERGY_UNIT"
+  | "UNSUPPORTED_PRODUCTION_UNIT"
+  | "NON_VALID_QUALITY_STATUS"
+  | "ZERO_PRODUCTION"
+  | "ZERO_ENERGY_WHILE_PRODUCING"
+  | "INSUFFICIENT_COMPARABLE_BASELINE"
+  | "MISSING_TARIFF"
+  | "INVALID_TARIFF"
+  | "MISSING_RECOVERY_FRACTION"
+  | "INVALID_RECOVERY_FRACTION"
+  | "MISSING_INTERVENTION_COST"
+  | "INVALID_INTERVENTION_COST";
+
+export type NormalizedSample = {
+  id: string;
+  factoryId: number;
+  assetId: string;
+  energyKwh: number;
+  production: number;
+  productionUnit: string;
+  operatingHours: number;
+  operatingState: string;
+  productCode: string;
+  periodStart: string;
+  periodEnd: string;
+  periodDays: number;
+  origin: EvidenceOrigin;
+  sourceQuality: SampleQuality;
+};
+
+export type AnalysisResult = {
+  algorithmVersion: string;
+  factoryId: number;
+  status: "opportunity" | "deviation_no_opportunity" | "within_reference" | "insufficient_evidence";
+  reasonCodes: ReasonCode[];
+  evidence: {
+    current: NormalizedSample | null;
+    acceptedBaselineSampleIds: string[];
+    excludedBaseline: Array<{ id: string; reasons: ReasonCode[] }>;
+  };
+  reference: {
+    method: "median-comparable-specific-energy";
+    sampleCount: number;
+    specificEnergyKwhPerUnit: number | null;
+    lowerBound: number | null;
+    upperBound: number | null;
+    confidence: "high" | "medium" | "low" | "none";
+    limitations: string[];
+  };
+  deviation: {
+    detected: boolean;
+    direction: "higher_energy" | "lower_energy" | "none" | "unknown";
+    actualSpecificEnergyKwhPerUnit: number | null;
+    expectedSpecificEnergyKwhPerUnit: number | null;
+    deltaKwhPerUnit: number | null;
+    deltaPercent: number | null;
+    excessEnergyKwh: number | null;
+    explanation: string;
+  };
+  economics: {
+    quantified: boolean;
+    refusalReasons: ReasonCode[];
+    currency: "INR";
+    tariffInrPerKwh: number | null;
+    recoverableFraction: number | null;
+    interventionCostInr: number | null;
+    estimatedGrossValueInr: number | null;
+    estimatedRecoverableValueInr: number | null;
+    estimatedNetValueInr: number | null;
+    periodDays: number | null;
+    annualizedRecoverableValueInr: number | null;
+    label: "estimate" | "not_quantified";
+  };
+  provenance: {
+    origin: EvidenceOrigin;
+    synthetic: boolean;
+    inputSampleIds: string[];
+    asOf: string;
+    assumptions: string[];
+  };
+};
+
+const finite = (value: unknown): value is number => typeof value === "number" && Number.isFinite(value);
+const positive = (value: unknown): value is number => finite(value) && value > 0;
+const nonNegative = (value: unknown): value is number => finite(value) && value >= 0;
+const text = (value: unknown): string | null => typeof value === "string" && value.trim() ? value.trim() : null;
+const timestamp = (value: unknown): number | null => {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}T/.test(value)) return null;
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
+const ENERGY_TO_KWH: Record<string, number> = {
+  kwh: 1, "kw·h": 1, "kw h": 1,
+  wh: 0.001,
+  mwh: 1000,
+};
+const normalizeEnergyUnit = (unit: unknown): number | null => {
+  const key = text(unit)?.toLowerCase().replace(/\s+/g, " ") ?? "";
+  return ENERGY_TO_KWH[key] ?? null;
+};
+const normalizeProductionUnit = (unit: unknown): string | null => {
+  const normalized = text(unit)?.toLowerCase().replace(/\s+/g, " ") ?? "";
+  return normalized || null;
+};
+const median = (values: number[]): number => {
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+};
+const round = (value: number, digits = 8): number => {
+  const scale = 10 ** digits;
+  return Math.round((value + Number.EPSILON) * scale) / scale;
+};
+const daysBetween = (start: number, end: number): number => (end - start) / 86_400_000;
+
+type Normalization = { sample: NormalizedSample | null; reasons: ReasonCode[] };
+
+function normalizeSample(
+  input: OperatingSampleInput,
+  factoryId: number,
+  asOfMs: number,
+  maxAgeDays: number,
+  isCurrent: boolean,
+): Normalization {
+  const reasons: ReasonCode[] = [];
+  if (input.factoryId !== factoryId) reasons.push("FACTORY_MISMATCH");
+  const assetId = text(input.assetId);
+  if (!assetId) reasons.push("MISSING_ASSET_ID");
+  const operatingState = text(input.operatingState);
+  if (!operatingState) reasons.push("MISSING_OPERATING_STATE");
+  const productCode = text(input.productCode);
+  if (!productCode) reasons.push("MISSING_PRODUCT_CONTEXT");
+  if (input.quality !== "valid") reasons.push("NON_VALID_QUALITY_STATUS");
+
+  const startMs = timestamp(input.periodStart);
+  const endMs = timestamp(input.periodEnd);
+  if (startMs === null || endMs === null) reasons.push("INVALID_TIMESTAMP");
+  if (startMs !== null && startMs > asOfMs || endMs !== null && endMs > asOfMs) reasons.push("FUTURE_TIMESTAMP");
+  if (startMs !== null && endMs !== null && endMs <= startMs) reasons.push("INVALID_PERIOD");
+  if (endMs !== null && endMs <= asOfMs && daysBetween(endMs, asOfMs) > maxAgeDays) {
+    reasons.push(isCurrent ? "STALE_CURRENT_OBSERVATION" : "STALE_BASELINE_OBSERVATION");
+  }
+
+  if (!finite(input.energyValue) || input.energyValue < 0) reasons.push("INVALID_ENERGY_VALUE");
+  const energyFactor = normalizeEnergyUnit(input.energyUnit);
+  if (energyFactor === null) reasons.push("UNSUPPORTED_ENERGY_UNIT");
+  if (!finite(input.productionValue) || input.productionValue < 0) reasons.push("INVALID_PRODUCTION_VALUE");
+  const productionUnit = normalizeProductionUnit(input.productionUnit);
+  if (productionUnit === null) reasons.push("UNSUPPORTED_PRODUCTION_UNIT");
+  if (!positive(input.operatingHours) || input.operatingHours > 24 * Math.max(1, endMs !== null && startMs !== null ? daysBetween(startMs, endMs) : 0)) {
+    reasons.push("INVALID_OPERATING_HOURS");
+  }
+  if (input.productionValue === 0) reasons.push("ZERO_PRODUCTION");
+  if (input.energyValue === 0 && positive(input.productionValue)) reasons.push("ZERO_ENERGY_WHILE_PRODUCING");
+
+  // A numeric zero is preserved and explicitly reason-coded; it is never converted to null.
+  // Zero production and zero energy while producing cannot support an intensity conclusion.
+  if (reasons.length > 0 || assetId === null || operatingState === null || productCode === null ||
+      startMs === null || endMs === null || energyFactor === null || productionUnit === null ||
+      !finite(input.energyValue) || !finite(input.productionValue) || !positive(input.operatingHours)) {
+    return { sample: null, reasons: [...new Set(reasons)] };
+  }
+
+  return {
+    sample: {
+      id: input.id,
+      factoryId: input.factoryId,
+      assetId,
+      energyKwh: round(input.energyValue * energyFactor),
+      production: input.productionValue,
+      productionUnit,
+      operatingHours: input.operatingHours,
+      operatingState,
+      productCode,
+      periodStart: new Date(startMs).toISOString(),
+      periodEnd: new Date(endMs).toISOString(),
+      periodDays: round(daysBetween(startMs, endMs), 8),
+      origin: input.origin,
+      sourceQuality: input.quality,
+    },
+    reasons: [],
+  };
+}
+
+export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
+  const asOfMs = timestamp(input.asOf);
+  const invalidFactory = !Number.isSafeInteger(input.factoryId) || input.factoryId <= 0;
+  const currentNorm = asOfMs === null || invalidFactory
+    ? { sample: null, reasons: [...(invalidFactory ? ["INVALID_FACTORY_ID" as const] : []), ...(asOfMs === null ? ["INVALID_TIMESTAMP" as const] : [])] }
+    : normalizeSample(input.current, input.factoryId, asOfMs, input.maxCurrentAgeDays ?? 90, true);
+  const current = currentNorm.sample;
+  const excludedBaseline: Array<{ id: string; reasons: ReasonCode[] }> = [];
+  const accepted: NormalizedSample[] = [];
+
+  if (asOfMs !== null && !invalidFactory) {
+    for (const sampleInput of input.baselineSamples) {
+      const normalized = normalizeSample(sampleInput, input.factoryId, asOfMs, input.maxBaselineAgeDays ?? 365, false);
+      if (!normalized.sample) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: normalized.reasons });
+        continue;
+      }
+      if (current && (
+        normalized.sample.assetId !== current.assetId ||
+        normalized.sample.operatingState !== current.operatingState ||
+        normalized.sample.productCode !== current.productCode ||
+        normalized.sample.productionUnit !== current.productionUnit
+      )) {
+        excludedBaseline.push({ id: sampleInput.id, reasons: ["MISSING_PRODUCT_CONTEXT"] });
+        continue;
+      }
+      accepted.push(normalized.sample);
+    }
+  }
+
+  const reasons = [...currentNorm.reasons];
+  const secSamples = accepted
+    .filter((sample) => sample.production > 0 && sample.energyKwh > 0)
+    .map((sample) => ({ sample, sec: sample.energyKwh / sample.production }));
+  if (secSamples.length < 3) reasons.push("INSUFFICIENT_COMPARABLE_BASELINE");
+
+  const baselineSecs = secSamples.map((x) => x.sec);
+  const baselineSec = baselineSecs.length >= 3 ? median(baselineSecs) : null;
+  const mad = baselineSec === null ? null : median(baselineSecs.map((sec) => Math.abs(sec - baselineSec)));
+  const halfWidth = baselineSec === null || mad === null ? null : Math.max(1.5 * mad, baselineSec * 0.03);
+  const lower = baselineSec !== null && halfWidth !== null ? Math.max(0, baselineSec - halfWidth) : null;
+  const upper = baselineSec !== null && halfWidth !== null ? baselineSec + halfWidth : null;
+  const confidence: AnalysisResult["reference"]["confidence"] = baselineSecs.length >= 9 ? "high" : baselineSecs.length >= 6 ? "medium" : baselineSecs.length >= 3 ? "low" : "none";
+
+  const actualSec = current && current.production > 0 ? current.energyKwh / current.production : null;
+  const delta = actualSec !== null && baselineSec !== null ? actualSec - baselineSec : null;
+  const deltaPercent = delta !== null && baselineSec !== null && baselineSec > 0 ? delta / baselineSec * 100 : null;
+  const excessEnergy = current && baselineSec !== null ? current.energyKwh - baselineSec * current.production : null;
+  const detected = actualSec !== null && upper !== null && actualSec > upper;
+  const lowerDeviation = actualSec !== null && lower !== null && actualSec < lower;
+  const direction: AnalysisResult["deviation"]["direction"] =
+    detected ? "higher_energy" : lowerDeviation ? "lower_energy" : actualSec === null || baselineSec === null ? "unknown" : "none";
+
+  const economicReasons: ReasonCode[] = [];
+  const tariff = input.economics.tariffInrPerKwh;
+  const recovery = input.economics.recoverableFraction;
+  const capex = input.economics.interventionCostInr;
+  if (!positive(tariff)) economicReasons.push(tariff === null || tariff === undefined || tariff === "" ? "MISSING_TARIFF" : "INVALID_TARIFF");
+  if (!finite(recovery)) economicReasons.push(recovery === null || recovery === undefined || recovery === "" ? "MISSING_RECOVERY_FRACTION" : "INVALID_RECOVERY_FRACTION");
+  else if (recovery < 0 || recovery > 1) economicReasons.push("INVALID_RECOVERY_FRACTION");
+  if (!nonNegative(capex)) economicReasons.push(capex === null || capex === undefined || capex === "" ? "MISSING_INTERVENTION_COST" : "INVALID_INTERVENTION_COST");
+  const validEconomics = positive(tariff) && finite(recovery) && recovery >= 0 && recovery <= 1 && nonNegative(capex);
+  const eligibleForOpportunity = detected && current !== null && excessEnergy !== null && excessEnergy > 0;
+  const quantified = eligibleForOpportunity && validEconomics && current !== null && current.periodDays > 0;
+  const grossValue = quantified ? round(excessEnergy! * (tariff as number)) : null;
+  const recoverableValue = quantified ? round(grossValue! * (recovery as number)) : null;
+  const netValue = quantified ? round(recoverableValue! - (capex as number)) : null;
+  const annualized = quantified && current!.periodDays > 0 ? round(recoverableValue! * 365 / current!.periodDays) : null;
+  const resultReasons = [...new Set(reasons)];
+  if (eligibleForOpportunity && !validEconomics) resultReasons.push(...economicReasons);
+
+  let status: AnalysisResult["status"] = "insufficient_evidence";
+  if (current && baselineSec !== null) {
+    status = quantified ? "opportunity" : detected ? "insufficient_evidence" : "within_reference";
+    if (!detected && lowerDeviation) status = "deviation_no_opportunity";
+  }
+
+  const allOrigins = [input.current, ...input.baselineSamples].map((x) => x.origin);
+  const synthetic = allOrigins.includes("synthetic");
+  const origin: EvidenceOrigin = synthetic ? "synthetic" : allOrigins.includes("estimated") ? "estimated" : "observed";
+  const limitations = [
+    "Historical median is a reference, not proof of healthy or optimal operation.",
+    "A deviation identifies a measurable difference; it does not establish root cause or causal attribution.",
+    "Any monetary result is an estimate, not verified savings.",
+    ...(synthetic ? ["At least one input is synthetic; this result must never be represented as a real-factory finding."] : []),
+  ];
+  if (confidence === "low") limitations.push("Only 3–5 comparable samples are available; reference confidence is low.");
+  if (confidence === "medium") limitations.push("Only 6–8 comparable samples are available; reference confidence is medium.");
+
+  return {
+    algorithmVersion: ANALYSIS_ALGORITHM_VERSION,
+    factoryId: input.factoryId,
+    status,
+    reasonCodes: [...new Set(resultReasons)],
+    evidence: {
+      current,
+      acceptedBaselineSampleIds: secSamples.map((x) => x.sample.id),
+      excludedBaseline,
+    },
+    reference: {
+      method: "median-comparable-specific-energy",
+      sampleCount: secSamples.length,
+      specificEnergyKwhPerUnit: baselineSec === null ? null : round(baselineSec),
+      lowerBound: lower === null ? null : round(lower),
+      upperBound: upper === null ? null : round(upper),
+      confidence,
+      limitations,
+    },
+    deviation: {
+      detected,
+      direction,
+      actualSpecificEnergyKwhPerUnit: actualSec === null ? null : round(actualSec),
+      expectedSpecificEnergyKwhPerUnit: baselineSec === null ? null : round(baselineSec),
+      deltaKwhPerUnit: delta === null ? null : round(delta),
+      deltaPercent: deltaPercent === null ? null : round(deltaPercent, 6),
+      excessEnergyKwh: excessEnergy === null ? null : round(excessEnergy),
+      explanation: current === null || baselineSec === null
+        ? "No physical conclusion: current observation or comparable baseline failed evidence validation."
+        : detected
+          ? `Measured specific energy is ${round(actualSec!, 4)} kWh/${current.productionUnit}, above the reference upper bound ${round(upper!, 4)}. This is a deviation, not a root-cause diagnosis.`
+          : lowerDeviation
+            ? "Measured specific energy is below the reference envelope; investigate metering and operating context before interpreting it."
+            : "Measured specific energy is inside the defensible reference envelope.",
+    },
+    economics: {
+      quantified,
+      refusalReasons: quantified ? [] : eligibleForOpportunity ? [...new Set(economicReasons)] : detected ? ["INSUFFICIENT_COMPARABLE_BASELINE"] : [],
+      currency: "INR",
+      tariffInrPerKwh: positive(tariff) ? tariff : null,
+      recoverableFraction: finite(recovery) && recovery >= 0 && recovery <= 1 ? recovery : null,
+      interventionCostInr: nonNegative(capex) ? capex : null,
+      estimatedGrossValueInr: grossValue,
+      estimatedRecoverableValueInr: recoverableValue,
+      estimatedNetValueInr: netValue,
+      periodDays: current?.periodDays ?? null,
+      annualizedRecoverableValueInr: annualized,
+      label: quantified ? "estimate" : "not_quantified",
+    },
+    provenance: {
+      origin,
+      synthetic,
+      inputSampleIds: [input.current.id, ...input.baselineSamples.map((x) => x.id)],
+      asOf: asOfMs === null ? input.asOf : new Date(asOfMs).toISOString(),
+      assumptions: [
+        "Energy normalized to kWh; accepted energy units are Wh, kWh, and MWh.",
+        "Baseline uses the median specific-energy ratio of at least three comparable valid samples.",
+        "Comparability requires the same asset, operating state, product code, and production unit.",
+        "Reference band is max(1.5 × median absolute deviation, 3% of median).",
+        "Economic estimate uses positive excess kWh × supplied tariff × supplied recoverable fraction.",
+        "Annualization assumes the current period is representative of a 365-day year; it is an extrapolation, not verified savings.",
+      ],
+    },
+  };
+}
+
+/** Canonical JSON for equality checks; object key order cannot alter the fingerprint. */
+export function canonicalize(value: unknown): string {
+  if (value === null || typeof value !== "object") return JSON.stringify(value);
+  if (Array.isArray(value)) return `[${value.map(canonicalize).join(",")}]`;
+  const object = value as Record<string, unknown>;
+  return `{${Object.keys(object).sort().map((key) => `${JSON.stringify(key)}:${canonicalize(object[key])}`).join(",")}}`;
+}
+
+/** Non-cryptographic reproducibility fingerprint, not a security/signature primitive. */
+export function reproducibilityFingerprint(value: unknown): string {
+  const input = canonicalize(value);
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < input.length; index++) {
+    hash ^= input.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  return `fnv1a32:${(hash >>> 0).toString(16).padStart(8, "0")}`;
+}
