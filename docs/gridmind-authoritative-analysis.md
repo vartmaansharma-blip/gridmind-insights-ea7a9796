@@ -2,7 +2,7 @@
 
 ## Runtime path
 
-The canonical asset page sends only `factoryId`, `assetId`, `asOf`, and an idempotency key. After validating the caller's JWT and passing the caller-scoped factory RLS check, the authenticated `persist-factory-analysis` Edge Function independently loads the asset's canonical observations, applicable operating contexts, and active economic contexts using its privileged client. It assembles the input with the shared adapter, calculates, persists the server-built snapshot, then reloads and recomputes before returning a conclusion. Client-supplied measurements or analysis inputs are rejected.
+The canonical asset page sends only `factoryId`, `assetId`, and an idempotency key; the server assigns the analysis timestamp. After validating the caller's JWT and passing the caller-scoped factory RLS check, the authenticated `persist-factory-analysis` Edge Function independently loads the asset's canonical observations, applicable operating contexts, and active economic contexts using its privileged client. It assembles the input with the shared adapter, calculates, persists the server-built snapshot, then reloads and recomputes before returning a conclusion. Client-supplied measurements or analysis inputs are rejected.
 
 The Edge Function recalculates with the same shared engine used by the test suite. Browser clients have no direct SELECT/INSERT grants on `factory_analysis_runs`. A positive opportunity is presented only when the persisted result reproduces and the estimated net value is positive.
 
