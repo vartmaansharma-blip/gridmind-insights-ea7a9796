@@ -15,7 +15,7 @@ const request = () => ({
 describe("analysis run client adapter", () => {
   beforeEach(() => invoke.mockReset());
 
-  it("sends only canonical identifiers and the analysis timestamp, never client measurements", async () => {
+  it("sends only canonical identifiers and never client measurements", async () => {
     invoke.mockResolvedValue({ data: { run: { id: 42 } }, error: null });
 
     await persistFactoryAnalysisRun(request(), "  run-key  ");
