@@ -55,6 +55,17 @@ begin
     raise exception 'DIRECT_TABLE_ACCESS_NOT_REVOKED';
   end if;
 
+  if not has_table_privilege('service_role', 'public.factory_analysis_runs', 'select')
+    or not has_table_privilege('service_role', 'public.factory_analysis_runs', 'insert')
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'update')
+    or has_table_privilege('service_role', 'public.factory_analysis_runs', 'delete') then
+    raise exception 'SERVICE_ROLE_GRANTS_ARE_NOT_LEAST_PRIVILEGE';
+  end if;
+
+  if not (select relrowsecurity from pg_class where oid = 'public.factory_analysis_runs'::regclass) then
+    raise exception 'ANALYSIS_RUN_TABLE_RLS_IS_DISABLED';
+  end if;
+
   begin
     execute 'select count(*) from public.factory_analysis_runs';
     raise exception 'DIRECT_SELECT_WAS_ALLOWED';
@@ -101,10 +112,36 @@ begin
   returning id into run_id;
 
   begin
+    insert into public.factory_analysis_runs
+      (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
+       result_fingerprint, analysis_status, refusal_codes, created_by)
+    values
+      (factory_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a),
+       jsonb_build_object('factoryId', factory_a, 'status', 'insufficient_evidence',
+                          'algorithmVersion', 'test-v1', 'reasonCodes', '[]'::jsonb),
+       'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
+       'a1111111-1111-4111-8111-111111111111');
+    raise exception 'IDEMPOTENCY_UNIQUE_CONSTRAINT_DID_NOT_BLOCK_DUPLICATE';
+  exception
+    when unique_violation then null;
+  end;
+
+  begin
     update public.factory_analysis_runs
       set result_fingerprint = 'mutated'
       where id = run_id;
     raise exception 'APPEND_ONLY_TRIGGER_DID_NOT_BLOCK_UPDATE';
+  exception
+    when raise_exception then
+      get stacked diagnostics trigger_message = message_text;
+      if trigger_message <> 'FACTORY_ANALYSIS_RUNS_ARE_APPEND_ONLY' then
+        raise;
+      end if;
+  end;
+
+  begin
+    delete from public.factory_analysis_runs where id = run_id;
+    raise exception 'APPEND_ONLY_TRIGGER_DID_NOT_BLOCK_DELETE';
   exception
     when raise_exception then
       get stacked diagnostics trigger_message = message_text;
