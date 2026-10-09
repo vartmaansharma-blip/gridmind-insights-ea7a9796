@@ -64,10 +64,10 @@ function contextForPeriod(
   assetId: number,
   periodStart: string,
   periodEnd: string,
-): OperatingContextContract | null {
+ ): { context: OperatingContextContract | null; ambiguous: boolean } {
   const start = parsedTime(periodStart);
   const end = parsedTime(periodEnd);
-  if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return null;
+  if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) return { context: null, ambiguous: false };
 
   const applicable = contexts.filter((context) => {
     if (context.scopeType !== "asset" || context.scopeId !== assetId || !["active", "valid"].includes(context.status)) return false;
@@ -77,7 +77,7 @@ function contextForPeriod(
   }).sort((a, b) =>
     (b.confidence ?? -1) - (a.confidence ?? -1) || parsedTime(b.startTime) - parsedTime(a.startTime) || a.id - b.id,
   );
-  if (!applicable.length) return null;
+  if (!applicable.length) return { context: null, ambiguous: false };
 
   const bestConfidence = applicable[0].confidence ?? -1;
   const bestStart = parsedTime(applicable[0].startTime);
@@ -85,7 +85,7 @@ function contextForPeriod(
     (candidate.confidence ?? -1) === bestConfidence && parsedTime(candidate.startTime) === bestStart,
   );
   const signatures = new Set(equallyRanked.map((candidate) => JSON.stringify(contextValues(candidate), Object.keys(contextValues(candidate)).sort())));
-  return signatures.size === 1 ? applicable[0] : null;
+  return signatures.size === 1 ? { context: applicable[0], ambiguous: false } : { context: null, ambiguous: true };
 }
 
 function qualityFor(observations: ObservationContract[], hasDuplicateRole: boolean, requiredRolesComplete: boolean): SampleQuality {
@@ -130,7 +130,9 @@ function sampleForPeriod(
   const hours = unique("operating_hours");
   const stateObservation = unique("operating_state");
   const productObservation = unique("product_code");
-  const context = contextForPeriod(contexts, assetId, periodStart, periodEnd);
+  const contextSelection = contextForPeriod(contexts, assetId, periodStart, periodEnd);
+  const context = contextSelection.context;
+  if (contextSelection.ambiguous) mappingIssues.push("Equally ranked operating contexts conflict for this period.");
   const values = context ? contextValues(context) : {};
   const contextState = nonEmptyText(values.operatingState);
   const contextProduct = nonEmptyText(values.productCode);
