@@ -29,6 +29,8 @@ const CORS_HEADERS = {
   "Content-Type": "application/json",
 };
 const columns = "id,factory_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
+const MAX_REQUEST_BYTES = 4_000_000;
+const MAX_BASELINE_SAMPLES = 5_000;
 const runtime = (globalThis as typeof globalThis & {
   Deno: {
     env: { get(name: string): string | undefined };
@@ -78,6 +80,8 @@ function reproducible(stored: StoredAnalysisRun, factoryId: number, result: Anal
 runtime.serve(async (request: Request): Promise<Response> => {
   if (request.method === "OPTIONS") return new Response("ok", { headers: CORS_HEADERS });
   if (request.method !== "POST") return reply({ error: "METHOD_NOT_ALLOWED" }, 405);
+  const contentLength = Number(request.headers.get("Content-Length") ?? 0);
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) return reply({ error: "ANALYSIS_INPUT_TOO_LARGE" }, 413);
 
   try {
     const supabaseUrl = runtime.env.get("SUPABASE_URL");
@@ -110,6 +114,9 @@ runtime.serve(async (request: Request): Promise<Response> => {
     let idempotencyKey: string;
     let input: AnalysisInput | null = null;
     if (action === "persist") {
+      if (isRecord(body.input) && Array.isArray(body.input.baselineSamples) && body.input.baselineSamples.length > MAX_BASELINE_SAMPLES) {
+        return reply({ error: "ANALYSIS_INPUT_TOO_LARGE" }, 413);
+      }
       if (!isAnalysisInput(body.input) || !isIdempotencyKey(body.idempotencyKey)) {
         return reply({ error: "INVALID_ANALYSIS_INPUT_OR_IDEMPOTENCY_KEY" }, 400);
       }
