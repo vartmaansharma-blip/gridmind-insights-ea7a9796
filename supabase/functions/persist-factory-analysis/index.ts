@@ -1,4 +1,4 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2.117.2";
+import { createClient } from "npm:@supabase/supabase-js@2.117.2";
 import {
   analyzeFactoryLoop,
   canonicalize,
@@ -88,11 +88,13 @@ runtime.serve(async (request: Request): Promise<Response> => {
     const authorization = request.headers.get("Authorization");
     if (!authorization?.startsWith("Bearer ")) return reply({ error: "AUTHENTICATION_REQUIRED" }, 401);
 
+    const accessToken = authorization.slice("Bearer ".length).trim();
+    if (!accessToken) return reply({ error: "AUTHENTICATION_REQUIRED" }, 401);
     const userClient = createClient(supabaseUrl, anonKey, {
       global: { headers: { Authorization: authorization } },
       auth: { persistSession: false, autoRefreshToken: false },
     });
-    const { data: authData, error: authError } = await userClient.auth.getUser();
+    const { data: authData, error: authError } = await userClient.auth.getUser(accessToken);
     if (authError || !authData.user) return reply({ error: "AUTHENTICATION_REQUIRED" }, 401);
 
     let body: unknown;
