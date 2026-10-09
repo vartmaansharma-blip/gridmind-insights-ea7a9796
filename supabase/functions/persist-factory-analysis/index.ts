@@ -81,6 +81,7 @@ async function readBoundedRows<T>(
 function reproducible(stored: StoredAnalysisRun, factoryId: number, result: AnalysisResult): boolean {
   return stored.factory_id === factoryId &&
     stored.input_snapshot.factoryId === factoryId &&
+    stored.input_snapshot.current.assetId === String(stored.asset_id) &&
     stored.algorithm_version === result.algorithmVersion &&
     stored.analysis_status === result.status &&
     canonicalize(stored.refusal_codes) === canonicalize(result.reasonCodes) &&
