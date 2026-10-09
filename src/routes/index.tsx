@@ -5,7 +5,7 @@ import { useEnergy } from "@/lib/energy/store";
 import { inrCompact, num, pct } from "@/lib/energy/format";
 import { Delta, DemoBadge, EmptyState, Kpi, PageHeader, Panel, ProcessRail, QualityPill } from "@/components/gm/bits";
 import { FindingFlow, FindingHeader } from "@/components/gm/finding";
-import { buildIntelligenceOpportunities, moneyAtRisk } from "@/lib/energy/intelligence";
+import { buildIntelligenceOpportunities } from "@/lib/energy/intelligence";
 import { EvidenceTag } from "@/components/gm/evidence";
 
 export const Route = createFileRoute("/")({
@@ -27,7 +27,6 @@ function Overview() {
   if (!active || !a?.hasData || !a.latest) return <EmptyState />;
   const l = a.latest, p = a.prev;
   const opportunities = buildIntelligenceOpportunities(active, a);
-  const risk = moneyAtRisk(opportunities);
   const d = (x: number, y?: number) => (y ? x / y - 1 : 0);
   const quantified = !a.paused;
   const peakValue = Number.isFinite(l.peakKva) ? `${num(l.peakKva)} kVA` : "Insufficient data";
@@ -43,12 +42,12 @@ function Overview() {
         </Panel>
       )}
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Kpi label="Money at risk" tone="accent" value={quantified ? `${inrCompact(risk)}/yr` : "Not quantified"} sub={quantified ? "Estimated exposure · not verified loss" : "Insufficient evidence · not zero loss"} />
-        <Kpi label="Potential saving" value={quantified ? `${inrCompact(a.totalSavingAnnual)}/yr` : "Not quantified"} sub={quantified ? `${opportunities.filter((o) => o.savingAnnual > 0).length} screening estimates · not verified savings` : "Analysis paused until data is sufficient"} />
+        <Kpi label="Money at risk" tone="accent" value={quantified ? "Not aggregated" : "Not quantified"} sub={quantified ? "Potential findings may overlap; no portfolio total claimed" : "Insufficient evidence · not zero loss"} />
+        <Kpi label="Potential saving" value={quantified ? "Not aggregated" : "Not quantified"} sub={quantified ? `${opportunities.filter((o) => o.savingAnnual > 0).length} screening findings; overlap and causation are not resolved` : "Analysis paused until data is sufficient"} />
         <Kpi label="Electricity cost (latest)" value={Number.isFinite(l.cost) ? inrCompact(l.cost) : "Missing"} sub={<Delta v={d(l.cost, p?.cost)} />} />
         <Kpi label="Peak demand" value={peakValue} sub={Number.isFinite(l.peakKva) ? `${pct(l.utilization)} of ${num(active.contractDemandKva)} kVA contract` : "Peak-demand input is missing"} />
       </div>
-      <Panel className="mt-6" title="Top findings" desc="Ranked by expected annual saving. All figures are engineering estimates."
+      <Panel className="mt-6" title="Top screening findings" desc="Hypotheses ranked by indicative savings. These are not persisted canonical opportunities; overlap and causation are not yet established."
         actions={<Button variant="outline" size="sm" asChild><Link to="/opportunities">All <ArrowRight /></Link></Button>}>
         <div className="grid gap-5">
           {opportunities.slice(0, 3).map((o, i) => (
