@@ -44,13 +44,23 @@ describe("authoritative factory-analysis loop", () => {
       sample("b2", 510000, { energyUnit: "Wh" }),
       sample("b3", 490),
     ];
-    const result = analyzeFactoryLoop(input(sample("current", 700), baseline));
+    const result = analyzeFactoryLoop(input(sample("current", 700), baseline, {
+      currency: "INR", tariffInrPerKwh: 8, recoverableFraction: 0.6, interventionCostInr: 500,
+    }));
     // b1=500 kWh, b2=510 kWh, b3=490 kWh; median=500, so 700/100=7 vs baseline 5.
     expect(result.reference.specificEnergyKwhPerUnit).toBe(5);
     expect(result.deviation.actualSpecificEnergyKwhPerUnit).toBe(7);
     expect(result.deviation.excessEnergyKwh).toBe(200);
     expect(result.economics.estimatedGrossValueInr).toBe(1600);
     expect(result.economics.estimatedRecoverableValueInr).toBe(960);
+    expect(result.economics.estimatedNetValueInr).toBe(460);
+    expect(result.status).toBe("opportunity");
+  });
+
+  it("does not label a quantified but non-positive net-value deviation as an opportunity", () => {
+    const result = analyzeFactoryLoop(input(sample("current", 700)));
+    expect(result.deviation.detected).toBe(true);
+    expect(result.economics.quantified).toBe(true);
     expect(result.economics.estimatedNetValueInr).toBe(-40);
     expect(result.status).toBe("deviation_no_opportunity");
     expect(result.reasonCodes).toContain("NON_POSITIVE_NET_VALUE");
