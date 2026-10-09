@@ -55,8 +55,11 @@ export type ReasonCode =
   | "INVALID_PERIOD"
   | "STALE_CURRENT_OBSERVATION"
   | "STALE_BASELINE_OBSERVATION"
+  | "MISSING_ENERGY_VALUE"
   | "INVALID_ENERGY_VALUE"
+  | "MISSING_PRODUCTION_VALUE"
   | "INVALID_PRODUCTION_VALUE"
+  | "MISSING_OPERATING_HOURS"
   | "INVALID_OPERATING_HOURS"
   | "UNSUPPORTED_ENERGY_UNIT"
   | "UNSUPPORTED_PRODUCTION_UNIT"
@@ -202,13 +205,16 @@ function normalizeSample(
     reasons.push(isCurrent ? "STALE_CURRENT_OBSERVATION" : "STALE_BASELINE_OBSERVATION");
   }
 
-  if (!finite(input.energyValue) || input.energyValue < 0) reasons.push("INVALID_ENERGY_VALUE");
+  if (input.energyValue === null || input.energyValue === undefined || input.energyValue === "") reasons.push("MISSING_ENERGY_VALUE");
+  else if (!finite(input.energyValue) || input.energyValue < 0) reasons.push("INVALID_ENERGY_VALUE");
   const energyFactor = normalizeEnergyUnit(input.energyUnit);
   if (energyFactor === null) reasons.push("UNSUPPORTED_ENERGY_UNIT");
-  if (!finite(input.productionValue) || input.productionValue < 0) reasons.push("INVALID_PRODUCTION_VALUE");
+  if (input.productionValue === null || input.productionValue === undefined || input.productionValue === "") reasons.push("MISSING_PRODUCTION_VALUE");
+  else if (!finite(input.productionValue) || input.productionValue < 0) reasons.push("INVALID_PRODUCTION_VALUE");
   const productionUnit = normalizeProductionUnit(input.productionUnit);
   if (productionUnit === null) reasons.push("UNSUPPORTED_PRODUCTION_UNIT");
-  if (!positive(input.operatingHours) || input.operatingHours > 24 * Math.max(1, endMs !== null && startMs !== null ? daysBetween(startMs, endMs) : 0)) {
+  if (input.operatingHours === null || input.operatingHours === undefined || input.operatingHours === "") reasons.push("MISSING_OPERATING_HOURS");
+  else if (!positive(input.operatingHours) || input.operatingHours > 24 * Math.max(1, endMs !== null && startMs !== null ? daysBetween(startMs, endMs) : 0)) {
     reasons.push("INVALID_OPERATING_HOURS");
   }
   if (input.productionValue === 0) reasons.push("ZERO_PRODUCTION");
