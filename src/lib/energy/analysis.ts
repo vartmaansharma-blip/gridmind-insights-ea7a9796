@@ -422,7 +422,7 @@ function assessQuality(f: Factory, rows: MonthRow[], pipeline: PipelineResult): 
   }
 
   score = Math.round(Math.min(100, score));
-  return { score, grade: score >= 75 ? "Good" : score >= 50 ? "Fair" : "Limited", issues };
+  return { score, grade: score >= 80 ? "Good" : score >= 55 ? "Fair" : "Limited", issues };
 }
 
 export type Verification = {
