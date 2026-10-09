@@ -354,11 +354,13 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
           excludedBaseline.push({ id: sampleInput.id, reasons: ["BASELINE_PERIOD_NOT_HISTORICAL"] });
           continue;
         }
-        const overlapsAcceptedBaseline = accepted.some((acceptedSample) => {
-          const acceptedStart = timestamp(acceptedSample.periodStart);
-          const acceptedEnd = timestamp(acceptedSample.periodEnd);
-          return acceptedStart !== null && acceptedEnd !== null && baselineStart < acceptedEnd && baselineEnd > acceptedStart;
-        });
+        // Baselines are processed by ascending start time and accepted periods never overlap.
+        // Therefore only the last accepted period can overlap this candidate (O(n), not O(n²)).
+        const previousAccepted = accepted[accepted.length - 1];
+        const previousStart = previousAccepted ? timestamp(previousAccepted.periodStart) : null;
+        const previousEnd = previousAccepted ? timestamp(previousAccepted.periodEnd) : null;
+        const overlapsAcceptedBaseline = previousStart !== null && previousEnd !== null &&
+          baselineStart < previousEnd && baselineEnd > previousStart;
         if (overlapsAcceptedBaseline) {
           excludedBaseline.push({ id: sampleInput.id, reasons: ["OVERLAPPING_BASELINE_PERIODS"] });
           continue;
