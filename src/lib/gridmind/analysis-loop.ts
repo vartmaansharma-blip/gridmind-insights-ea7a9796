@@ -383,11 +383,25 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   if (secSamples.length < 3) reasons.push("INSUFFICIENT_COMPARABLE_BASELINE");
 
   const baselineSecs = secSamples.map((x) => x.sec);
-  const baselineSec = baselineSecs.length >= 3 ? median(baselineSecs) : null;
-  const mad = baselineSec === null ? null : median(baselineSecs.map((sec) => Math.abs(sec - baselineSec)));
-  const halfWidth = baselineSec === null || mad === null ? null : Math.max(1.5 * mad, baselineSec * 0.03);
-  const lower = baselineSec !== null && halfWidth !== null ? Math.max(0, baselineSec - halfWidth) : null;
-  const upper = baselineSec !== null && halfWidth !== null ? baselineSec + halfWidth : null;
+  const baselineSecCandidate = baselineSecs.length >= 3 ? median(baselineSecs) : null;
+  const madCandidate = baselineSecCandidate === null ? null : median(baselineSecs.map((sec) => Math.abs(sec - baselineSecCandidate)));
+  const halfWidthCandidate = baselineSecCandidate === null || madCandidate === null
+    ? null
+    : Math.max(1.5 * madCandidate, baselineSecCandidate * 0.03);
+  const lowerCandidate = baselineSecCandidate !== null && halfWidthCandidate !== null
+    ? Math.max(0, baselineSecCandidate - halfWidthCandidate)
+    : null;
+  const upperCandidate = baselineSecCandidate !== null && halfWidthCandidate !== null
+    ? baselineSecCandidate + halfWidthCandidate
+    : null;
+  const referenceCalculationOverflow = [baselineSecCandidate, madCandidate, halfWidthCandidate, lowerCandidate, upperCandidate]
+    .some((value) => value !== null && !Number.isFinite(value));
+  if (referenceCalculationOverflow) reasons.push("NUMERIC_OVERFLOW");
+  const baselineSec = referenceCalculationOverflow ? null : baselineSecCandidate;
+  const mad = referenceCalculationOverflow ? null : madCandidate;
+  const halfWidth = referenceCalculationOverflow ? null : halfWidthCandidate;
+  const lower = referenceCalculationOverflow ? null : lowerCandidate;
+  const upper = referenceCalculationOverflow ? null : upperCandidate;
   const confidence: AnalysisResult["reference"]["confidence"] = baselineSecs.length >= 9 ? "high" : baselineSecs.length >= 6 ? "medium" : baselineSecs.length >= 3 ? "low" : "none";
 
   const actualSec = current && current.production > 0 ? current.energyKwh / current.production : null;
