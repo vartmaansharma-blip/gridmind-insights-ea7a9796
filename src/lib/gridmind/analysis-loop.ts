@@ -179,7 +179,7 @@ const timestamp = (value: unknown): number | null => {
   if (calendar.getUTCFullYear() !== year || calendar.getUTCMonth() !== month - 1 ||
       calendar.getUTCDate() !== day || calendar.getUTCHours() !== hour ||
       calendar.getUTCMinutes() !== minute || calendar.getUTCSeconds() !== second) return null;
-  if (match[8] !== undefined && (Number(match[8]) > 23 || Number(match[9]) > 59)) return null;
+  if (match[8] !== undefined && (Number(match[9]) > 23 || Number(match[10]) > 59)) return null;
 
   const parsed = Date.parse(value);
   return Number.isFinite(parsed) ? parsed : null;
