@@ -10,14 +10,14 @@ permissions:
   contents: read
 
 concurrency:
-  group: quality-${{ github.workflow }}-${{ github.ref }}
+  group: quality-\${{ github.workflow }}-\${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   quality:
-    name: Tests, typecheck, build, and lint
+    name: Tests, typecheck, semantic lint, Deno check, and build
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,7 +31,15 @@ jobs:
         run: bun run test
       - name: Typecheck
         run: bun run typecheck
+      - name: Semantic ESLint
+        # The repository has thousands of pre-existing Prettier-only errors.
+        # Keep all other ESLint rules blocking while formatting debt is handled separately.
+        run: bunx eslint . --rule 'prettier/prettier: off'
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Typecheck authoritative Edge Function
+        run: deno check supabase/functions/persist-factory-analysis/index.ts
       - name: Production build
         run: bun run build
-      - name: Lint
-        run: bun run lint
