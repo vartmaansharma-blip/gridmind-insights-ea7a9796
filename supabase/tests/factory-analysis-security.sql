@@ -10,6 +10,7 @@ declare
   org_b bigint;
   factory_a bigint;
   factory_b bigint;
+  asset_a bigint;
 begin
   insert into auth.users (id, aud, role, email, created_at, updated_at, raw_app_meta_data, raw_user_meta_data)
   values
@@ -26,6 +27,8 @@ begin
   values (org_a, 'gridmind-ci-factory-a') returning id into factory_a;
   insert into public.factories (organization_id, name)
   values (org_b, 'gridmind-ci-factory-b') returning id into factory_b;
+  insert into public.factory_assets (factory_id, name)
+  values (factory_a, 'gridmind-ci-asset-a') returning id into asset_a;
 
   insert into public.factory_members (factory_id, user_id, organization_id, role)
   values (factory_a, user_a, org_a, 'owner'), (factory_b, user_b, org_b, 'owner');
@@ -86,10 +89,10 @@ begin
   begin
     execute $statement$
       insert into public.factory_analysis_runs
-        (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
+        (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,
          result_fingerprint, analysis_status, refusal_codes, created_by)
       values
-        (1, 'gridmind-ci-forbidden', 'test-v1', '{"factoryId":1}',
+        (1, 1, 'gridmind-ci-forbidden', 'test-v1', '{"factoryId":1}',
          '{"factoryId":1,"status":"insufficient_evidence","algorithmVersion":"test-v1","reasonCodes":[]}',
          'test-fingerprint', 'insufficient_evidence', '[]', 'a1111111-1111-4111-8111-111111111111')
     $statement$;
@@ -105,16 +108,18 @@ reset role;
 do $$
 declare
   factory_a bigint;
+  asset_a bigint;
   run_id bigint;
   trigger_message text;
 begin
   select id into strict factory_a from public.factories where name = 'gridmind-ci-factory-a';
+  select id into strict asset_a from public.factory_assets where name = 'gridmind-ci-asset-a';
 
   insert into public.factory_analysis_runs
     (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
      result_fingerprint, analysis_status, refusal_codes, created_by)
   values
-    (factory_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a),
+    (factory_a, asset_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a),
      jsonb_build_object('factoryId', factory_a, 'status', 'insufficient_evidence',
                         'algorithmVersion', 'test-v1', 'reasonCodes', '[]'::jsonb),
      'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
