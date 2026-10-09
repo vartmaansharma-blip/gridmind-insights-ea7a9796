@@ -81,9 +81,8 @@ function contextForPeriod(
 
 function qualityFor(observations: ObservationContract[], hasDuplicateRole: boolean, requiredRolesComplete: boolean): SampleQuality {
   if (hasDuplicateRole) return "conflicting";
-  if (!requiredRolesComplete) return "missing";
   const invalid = observations.find((observation) => observation.qualityStatus !== "valid");
-  if (!invalid) return "valid";
+  if (!invalid) return requiredRolesComplete ? "valid" : "missing";
   const allowed: SampleQuality[] = ["valid", "suspect", "invalid", "missing", "stale", "conflicting", "unverified", "estimated", "out_of_range"];
   return allowed.includes(invalid.qualityStatus as SampleQuality) ? invalid.qualityStatus as SampleQuality : "invalid";
 }
@@ -170,11 +169,11 @@ export function buildAnalysisInputFromCanonical(args: InputAdapterArgs): Analysi
   }
 
   const samples = [...groups.values()].map((rows) => sampleForPeriod(args.factoryId, args.assetId, rows, args.operatingContexts));
-  samples.sort((a, b) =>
-    parsedTime(String(a.periodEnd)) - parsedTime(String(b.periodEnd)) ||
-    parsedTime(String(a.periodStart)) - parsedTime(String(b.periodStart)) ||
-    a.id.localeCompare(b.id),
-  );
+  const recency = (sample: OperatingSampleInput): number => {
+    const end = parsedTime(String(sample.periodEnd));
+    return Number.isFinite(end) ? end : parsedTime(String(sample.periodStart));
+  };
+  samples.sort((a, b) => recency(a) - recency(b) || a.id.localeCompare(b.id));
 
   const current = samples.at(-1) ?? {
     id: "asset-" + args.assetId + ":no-observations",
