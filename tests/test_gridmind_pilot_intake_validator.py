@@ -62,6 +62,18 @@ class IntakeValidatorTests(unittest.TestCase):
         self.write(self.ops, validator.OPS, op)
         self.write(self.eco, validator.ECO, eco)
 
+    def test_repository_template_headers_match_validator_contract(self):
+        root = Path(__file__).parents[1]
+        templates = [
+            (root / "docs/templates/gridmind/observations.csv", validator.OBS),
+            (root / "docs/templates/gridmind/operating-contexts.csv", validator.OPS),
+            (root / "docs/templates/gridmind/economic-context.csv", validator.ECO),
+        ]
+        for path, expected in templates:
+            with self.subTest(template=path.name):
+                with path.open(encoding="utf-8-sig", newline="") as f:
+                    self.assertEqual(next(csv.reader(f)), expected)
+
     def test_explicit_zero_is_preserved_and_not_treated_as_missing(self):
         self.write_all(*([self.valid_rows()[0]], [self.valid_rows()[1]], [self.valid_rows()[2]]))
         errors, blockers = validator.validate(self.obs, self.ops, self.eco)
