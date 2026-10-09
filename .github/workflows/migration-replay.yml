@@ -56,7 +56,7 @@ jobs:
               -H "apikey: ${SERVICE_ROLE_KEY:?Missing local service-role key}" \
               -H "Authorization: Bearer $SERVICE_ROLE_KEY" \
               -H "Content-Type: application/json" \
-              -d "{\\"email\\":\\"$email\\",\\"password\\":\\"gridmind-ci-password\\",\\"email_confirm\\":true}" \
+              -d "$(printf '{"email":"%s","password":"%s","email_confirm":true}' "$email" "gridmind-ci-password")" \
               > /dev/null
           done
 
