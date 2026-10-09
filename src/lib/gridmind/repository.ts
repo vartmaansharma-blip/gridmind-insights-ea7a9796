@@ -11,6 +11,7 @@ import type {
 
 type FactoryRow = Database["public"]["Tables"]["factories"]["Row"];
 type ObservationRow = Database["public"]["Tables"]["observations"]["Row"];
+type DataSourceRow = Database["public"]["Tables"]["data_sources"]["Row"];
 
 const jsonRecord = (value: unknown): Record<string, unknown> =>
   value && typeof value === "object" && !Array.isArray(value) ? (value as Record<string, unknown>) : {};
@@ -141,8 +142,8 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const [typesResult, mappingsResult, observationsResult, sourceResult] = await Promise.all([
     supabase.from("machine_types").select("id,machine_type,category,purpose").in("id", [...new Set((assets ?? []).map((a) => a.machine_type_id).filter((x): x is number => x !== null))]),
     ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null }),
-    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [], error: null } as any),
-    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [], error: null } as any),
+    factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [] as ObservationRow[], error: null }),
+    factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [] as DataSourceRow[], error: null }),
   ]);
   const err = [typesResult, mappingsResult, observationsResult, sourceResult].find((r) => r.error)?.error;
   if (err) throw err;
