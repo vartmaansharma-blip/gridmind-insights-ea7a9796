@@ -140,7 +140,10 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
     billedKva: Number.isFinite(m.peakKva) ? Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C) : Number.NaN,
   }));
   const quality = assessQuality(f, rows);
-  const reference = buildReference(rows);
+  // Only rows with known operating hours can be compared on operating context.
+  // Missing context in one month must not poison every otherwise comparable month.
+  const referenceRows = rows.filter((r) => Number.isFinite(r.operatingHours) && r.operatingHours > 0);
+  const reference = buildReference(referenceRows);
   const empty = { avgRate: 0, baselineSec: 0, annualFactor: 0, totalKwh: 0, totalCost: 0, maxPeak: 0, opportunities: [], alerts: [], totalSavingAnnual: 0 };
 
   if (rows.length === 0) return { hasData: false, rows, quality, pipeline, reference, paused: pipeline.analysisPaused, ...empty };
@@ -375,8 +378,11 @@ function assessQuality(f: Factory, rows: MonthRow[]): DataQuality {
   let score = (Math.min(n, 12) / 12) * 35;
   if (n < 12) issues.push(`${n} of 12 recommended months entered`);
   if (n) {
-    const complete = rows.filter((r) => r.kwh > 0 && r.cost > 0 && r.peakKva > 0 && r.production > 0 && r.operatingHours > 0).length / n;
-    const pfShare = rows.filter((r) => r.powerFactor).length / n;
+    const complete = rows.filter((r) =>
+      Number.isFinite(r.kwh) && Number.isFinite(r.cost) && Number.isFinite(r.peakKva) &&
+      Number.isFinite(r.production) && Number.isFinite(r.operatingHours)
+    ).length / n;
+    const pfShare = rows.filter((r) => Number.isFinite(r.powerFactor) && (r.powerFactor ?? 0) > 0).length / n;
     score += complete * 20 + pfShare * 5;
     if (complete < 1) issues.push("Some months have missing kWh, cost, peak, production or hours");
     if (pfShare < 1) issues.push("Power factor missing for some months");
