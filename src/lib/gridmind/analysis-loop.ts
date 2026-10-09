@@ -150,7 +150,7 @@ const positive = (value: unknown): value is number => finite(value) && value > 0
 const nonNegative = (value: unknown): value is number => finite(value) && value >= 0;
 const text = (value: unknown): string | null => typeof value === "string" && value.trim() ? value.trim() : null;
 const timestamp = (value: unknown): number | null => {
-  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}T/.test(value)) return null;
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}T.*(?:Z|[+-]\d{2}:\d{2})$/i.test(value)) return null;
   const parsed = Date.parse(value);
   return Number.isFinite(parsed) ? parsed : null;
 };
@@ -164,9 +164,17 @@ const normalizeEnergyUnit = (unit: unknown): number | null => {
   const key = text(unit)?.toLowerCase().replace(/\s+/g, " ") ?? "";
   return ENERGY_TO_KWH[key] ?? null;
 };
+const PRODUCTION_UNIT_ALIASES: Record<string, string> = {
+  unit: "unit", units: "unit", piece: "unit", pieces: "unit", pcs: "unit", each: "unit",
+  kg: "kg", kilogram: "kg", kilograms: "kg",
+  g: "g", gram: "g", grams: "g",
+  t: "tonne", tonne: "tonne", tonnes: "tonne", "metric ton": "tonne", "metric tons": "tonne",
+  l: "litre", liter: "litre", liters: "litre", litre: "litre", litres: "litre",
+  m3: "m3", "m³": "m3", "cubic meter": "m3", "cubic meters": "m3",
+};
 const normalizeProductionUnit = (unit: unknown): string | null => {
   const normalized = text(unit)?.toLowerCase().replace(/\s+/g, " ") ?? "";
-  return normalized || null;
+  return PRODUCTION_UNIT_ALIASES[normalized] ?? null;
 };
 const median = (values: number[]): number => {
   const sorted = [...values].sort((a, b) => a - b);
