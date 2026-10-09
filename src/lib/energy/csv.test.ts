@@ -14,8 +14,8 @@ describe("monthly CSV evidence semantics", () => {
     expect(Number.isNaN(parsed.rows[0]?.kwh)).toBe(true);
 
     const quality = validateMonths(parsed.rows, now);
-    expect(quality.checks[0]?.states).toContain("INVALID");
-    expect(quality.checks[0]?.notes.join(" ")).toContain("not a finite numeric value");
+    expect(quality.checks[0]?.states).toContain("MISSING");
+    expect(quality.checks[0]?.notes.join(" ")).toContain("energy (kWh) was not provided");
     expect(quality.usable).toHaveLength(0);
   });
 
