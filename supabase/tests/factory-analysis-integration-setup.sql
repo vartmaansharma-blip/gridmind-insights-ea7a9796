@@ -71,8 +71,8 @@ select factory_id, 'asset', asset_id, metric, metric_value, unit, period_start, 
        jsonb_build_object('origin', 'synthetic_test_fixture'),
        jsonb_build_object(
          'analysis_role', role,
-         'period_start', period_start::text,
-         'period_end', period_end::text
+         'period_start', to_char(period_start at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') || '+00:00',
+         'period_end', to_char(period_end at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US') || '+00:00'
        )
 from expanded;
 
