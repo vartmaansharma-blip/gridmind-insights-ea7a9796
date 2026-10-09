@@ -1,5 +1,4 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { AnalysisInput } from "./analysis-loop";
 
 const { invoke } = vi.hoisted(() => ({ invoke: vi.fn() }));
 vi.mock("@/integrations/supabase/client", () => ({
@@ -8,67 +7,49 @@ vi.mock("@/integrations/supabase/client", () => ({
 
 import { persistFactoryAnalysisRun, reloadAndVerifyFactoryAnalysisRun } from "./analysis-run-store";
 
-const validShape = (): AnalysisInput => ({
+const request = () => ({
   factoryId: 1,
-  current: {
-    id: "current",
-    factoryId: 1,
-    assetId: "compressor-1",
-    energyValue: 0,
-    energyUnit: "kWh",
-    productionValue: 100,
-    productionUnit: "units",
-    operatingHours: 10,
-    operatingState: "loaded",
-    productCode: "product-A",
-    periodStart: "2026-10-08T00:00:00.000Z",
-    periodEnd: "2026-10-09T00:00:00.000Z",
-    quality: "valid",
-    origin: "observed",
-  },
-  baselineSamples: [],
-  economics: {
-    currency: "INR",
-    tariffInrPerKwh: null,
-    recoverableFraction: 0.6,
-    interventionCostInr: 1000,
-  },
+  assetId: 7,
   asOf: "2026-10-09T12:00:00.000Z",
 });
 
 describe("analysis run client adapter", () => {
   beforeEach(() => invoke.mockReset());
 
-  it("uses the server function and preserves zero while representing non-finite values as invalid", async () => {
-    const input = validShape();
-    input.current.energyValue = Number.NaN;
-    input.current.productionValue = 0;
+  it("sends only canonical identifiers and the analysis timestamp, never client measurements", async () => {
     invoke.mockResolvedValue({ data: { run: { id: 42 } }, error: null });
 
-    await persistFactoryAnalysisRun(input, "  run-key  ");
+    await persistFactoryAnalysisRun(request(), "  run-key  ");
 
     expect(invoke).toHaveBeenCalledOnce();
-    const [functionName, request] = invoke.mock.calls[0];
+    const [functionName, options] = invoke.mock.calls[0];
     expect(functionName).toBe("persist-factory-analysis");
-    expect(request.body.action).toBe("persist");
-    expect(request.body.idempotencyKey).toBe("run-key");
-    expect(request.body.input.current.energyValue).toBe("NaN");
-    expect(request.body.input.current.productionValue).toBe(0);
+    expect(options.body).toEqual({
+      action: "persist",
+      factoryId: 1,
+      assetId: 7,
+      asOf: "2026-10-09T12:00:00.000Z",
+      idempotencyKey: "run-key",
+    });
+    expect(options.body).not.toHaveProperty("input");
+    expect(options.body).not.toHaveProperty("observations");
   });
 
-  it("rejects malformed object graphs before making a network request", async () => {
-    const input = validShape();
-    (input.current as unknown as Record<string, unknown>).circular = input.current;
-
-    await expect(persistFactoryAnalysisRun(input, "run-key")).rejects.toThrow("circular references");
+  it("rejects malformed factory identifiers before making a network request", async () => {
+    await expect(persistFactoryAnalysisRun({ ...request(), factoryId: 0 }, "run-key"))
+      .rejects.toThrow("positive factory ID");
     expect(invoke).not.toHaveBeenCalled();
   });
 
-  it("refuses invalid factory identifiers before invoking the server", async () => {
-    const input = validShape();
-    input.factoryId = 0;
+  it("rejects malformed asset identifiers before making a network request", async () => {
+    await expect(persistFactoryAnalysisRun({ ...request(), assetId: -1 }, "run-key"))
+      .rejects.toThrow("positive asset ID");
+    expect(invoke).not.toHaveBeenCalled();
+  });
 
-    await expect(persistFactoryAnalysisRun(input, "run-key")).rejects.toThrow("positive factory ID");
+  it("rejects invalid analysis timestamps before making a network request", async () => {
+    await expect(persistFactoryAnalysisRun({ ...request(), asOf: "not-a-date" }, "run-key"))
+      .rejects.toThrow("valid analysis timestamp");
     expect(invoke).not.toHaveBeenCalled();
   });
 
