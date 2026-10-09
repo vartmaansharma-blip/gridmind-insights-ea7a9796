@@ -4,6 +4,7 @@ import {
   canonicalize,
   reproducibilityFingerprint,
   type AnalysisInput,
+  type EconomicInputs,
   type OperatingSampleInput,
 } from "./analysis-loop";
 
@@ -25,9 +26,16 @@ const sample = (id: string, energyValue: unknown, overrides: Partial<OperatingSa
   origin: "observed",
   ...overrides,
 });
-const input = (current = sample("current", 700), baselineSamples = [sample("b1", 500), sample("b2", 510), sample("b3", 490)], economics = {
-  currency: "INR" as const, tariffInrPerKwh: 8, recoverableFraction: 0.6, interventionCostInr: 1000,
-}): AnalysisInput => ({ factoryId: 1, current, baselineSamples, economics, asOf });
+const input = (
+  current = sample("current", 700),
+  baselineSamples = [sample("b1", 500), sample("b2", 510), sample("b3", 490)],
+  economics: EconomicInputs = {
+    currency: "INR",
+    tariffInrPerKwh: 8,
+    recoverableFraction: 0.6,
+    interventionCostInr: 1000,
+  },
+): AnalysisInput => ({ factoryId: 1, current, baselineSamples, economics, asOf });
 
 describe("authoritative factory-analysis loop", () => {
   it("normalizes MWh and Wh to kWh and calculates an independently verifiable opportunity", () => {
@@ -58,7 +66,16 @@ describe("authoritative factory-analysis loop", () => {
     const zero = analyzeFactoryLoop(input(sample("current", 700, { productionValue: 0 })));
     const missing = analyzeFactoryLoop(input(sample("current", 700, { productionValue: null })));
     expect(zero.reasonCodes).toContain("ZERO_PRODUCTION");
-    expect(missing.reasonCodes).toContain("INVALID_PRODUCTION_VALUE");
+    expect(missing.reasonCodes).toContain("MISSING_PRODUCTION_VALUE");
+  });
+
+  it("distinguishes a missing measurement from an invalid measurement", () => {
+    const missing = analyzeFactoryLoop(input(sample("current", null)));
+    const invalid = analyzeFactoryLoop(input(sample("current", Number.NaN)));
+    expect(missing.reasonCodes).toContain("MISSING_ENERGY_VALUE");
+    expect(invalid.reasonCodes).toContain("INVALID_ENERGY_VALUE");
+    expect(missing.evidence.current).toBeNull();
+    expect(invalid.evidence.current).toBeNull();
   });
 
   it("rejects unsupported units, invalid timestamps, stale data, and non-valid quality", () => {
