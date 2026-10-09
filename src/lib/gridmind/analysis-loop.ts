@@ -402,9 +402,13 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const upper = referenceCalculationOverflow ? null : upperCandidate;
   const confidence: AnalysisResult["reference"]["confidence"] = baselineSecs.length >= 9 ? "high" : baselineSecs.length >= 6 ? "medium" : baselineSecs.length >= 3 ? "low" : "none";
 
-  const actualSec = current && current.production > 0 ? current.energyKwh / current.production : null;
+  const actualSecRaw = current && current.production > 0 ? current.energyKwh / current.production : null;
+  const actualSec = actualSecRaw !== null && Number.isFinite(actualSecRaw) ? actualSecRaw : null;
+  if (actualSecRaw !== null && !Number.isFinite(actualSecRaw)) reasons.push("NUMERIC_OVERFLOW");
   const delta = actualSec !== null && baselineSec !== null ? actualSec - baselineSec : null;
-  const deltaPercent = delta !== null && baselineSec !== null && baselineSec > 0 ? delta / baselineSec * 100 : null;
+  const deltaPercentRaw = delta !== null && baselineSec !== null && baselineSec > 0 ? delta / baselineSec * 100 : null;
+  const deltaPercent = deltaPercentRaw !== null && Number.isFinite(deltaPercentRaw) ? deltaPercentRaw : null;
+  if (deltaPercentRaw !== null && !Number.isFinite(deltaPercentRaw)) reasons.push("NUMERIC_OVERFLOW");
   const expectedEnergyRaw = current && baselineSec !== null ? baselineSec * current.production : null;
   const excessEnergyRaw = current && baselineSec !== null && expectedEnergyRaw !== null ? current.energyKwh - expectedEnergyRaw : null;
   const physicalCalculationOverflow = (expectedEnergyRaw !== null && !Number.isFinite(expectedEnergyRaw)) ||
