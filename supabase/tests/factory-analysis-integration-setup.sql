@@ -12,13 +12,14 @@ values
    'gridmind-http-b@example.test', crypt('gridmind-ci-password', gen_salt('bf')), now(), now(), now(),
    '{"provider":"email","providers":["email"]}'::jsonb, '{}'::jsonb);
 
+-- GoTrue's email identity provider_id is the email address, not the auth.users UUID.
 insert into auth.identities
   (provider_id, user_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
 values
-  ('a3333333-3333-4333-8333-333333333333', 'a3333333-3333-4333-8333-333333333333',
+  ('gridmind-http-a@example.test', 'a3333333-3333-4333-8333-333333333333',
    '{"sub":"a3333333-3333-4333-8333-333333333333","email":"gridmind-http-a@example.test","email_verified":true}'::jsonb,
    'email', now(), now(), now()),
-  ('b4444444-4444-4444-8444-444444444444', 'b4444444-4444-4444-8444-444444444444',
+  ('gridmind-http-b@example.test', 'b4444444-4444-4444-8444-444444444444',
    '{"sub":"b4444444-4444-4444-8444-444444444444","email":"gridmind-http-b@example.test","email_verified":true}'::jsonb,
    'email', now(), now(), now());
 
