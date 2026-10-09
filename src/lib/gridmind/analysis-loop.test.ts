@@ -241,11 +241,16 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.economics.refusalReasons).toContain("NUMERIC_OVERFLOW");
   });
 
-  it("refuses to quantify unsupported currency inputs", () => {
+  it("distinguishes missing currency from unsupported currency inputs", () => {
     const badCurrency = { ...input(), economics: { ...input().economics, currency: "USD" } } as unknown as AnalysisInput;
-    const result = analyzeFactoryLoop(badCurrency);
-    expect(result.economics.quantified).toBe(false);
-    expect(result.economics.refusalReasons).toContain("UNSUPPORTED_CURRENCY");
+    const unsupported = analyzeFactoryLoop(badCurrency);
+    const missingCurrency = { ...input(), economics: { ...input().economics, currency: null } } as unknown as AnalysisInput;
+    const missing = analyzeFactoryLoop(missingCurrency);
+    expect(unsupported.economics.quantified).toBe(false);
+    expect(unsupported.economics.currency).toBe("USD");
+    expect(unsupported.economics.refusalReasons).toContain("UNSUPPORTED_CURRENCY");
+    expect(missing.economics.currency).toBe("UNSPECIFIED");
+    expect(missing.economics.refusalReasons).toContain("MISSING_CURRENCY");
   });
 
   it("produces the same result when the same baseline evidence arrives in a different order", () => {
