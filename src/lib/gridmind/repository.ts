@@ -147,8 +147,12 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const err = [typesResult, mappingsResult, observationsResult, sourceResult].find((r) => r.error)?.error;
   if (err) throw err;
 
-  const typeMap = new Map((typesResult.data ?? []).map((x) => [x.id, x]));
-  const sourceMap = new Map((sourceResult.data ?? []).map((x) => [x.id, x]));
+  const typeMap = new Map<number, { id: number; machine_type: string; category: string | null; purpose: string | null }>(
+    (typesResult.data ?? []).map((x: { id: number; machine_type: string; category: string | null; purpose: string | null }) => [x.id, x] as const),
+  );
+  const sourceMap = new Map<number, { id: number; name: string; source_type: string; connection_status: string; timezone: string }>(
+    (sourceResult.data ?? []).map((x: { id: number; name: string; source_type: string; connection_status: string; timezone: string }) => [x.id, x] as const),
+  );
   return activeAssets.map((a) => ({
     id: a.id,
     factoryId: a.factory_id,
@@ -168,7 +172,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
       const t = typeMap.get(a.machine_type_id)!;
       return { id: t.id, name: t.machine_type, category: t.category, purpose: t.purpose };
     })() : null,
-    dataSources: (mappingsResult.data ?? [])
+    dataSources: ((mappingsResult.data ?? []) as Array<{ id: number; data_source_id: number; factory_id: number; source_field: string; canonical_metric: string; asset_id: number | null; unit: string | null; mapping_status: string; confidence: number | null }>)
       .filter((m) => m.asset_id === a.id)
       .map((m) => sourceMap.get(m.data_source_id))
       .filter((s): s is NonNullable<typeof s> => Boolean(s))
@@ -181,7 +185,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
       status: m.mapping_status,
       confidence: m.confidence,
     })),
-    observations: (observationsResult.data ?? []).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
+    observations: ((observationsResult.data ?? []) as ObservationRow[]).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
   }));
 }
 
