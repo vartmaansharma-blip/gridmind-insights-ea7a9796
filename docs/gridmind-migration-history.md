@@ -16,17 +16,18 @@ A fresh database could therefore replay a different history from the schema curr
 
 The migration source rows reported one SQL statement per recorded migration. The restored files preserve the SQL text stored in those records; they are not a newly designed schema or an attempt to rewrite production history.
 
+A clean replay then exposed one additional source-history gap: `20261006043042_harden_rls_auto_enable_function.sql` revokes privileges on `public.rls_auto_enable()` but does not create it. Read-only inspection confirmed that the live schema has both this function and the `ensure_rls` DDL event trigger, neither of which appears in the 21 recorded migration statements. Without that pre-existing bootstrap, a clean replay fails on the second migration and also misses the live behavior that automatically enables RLS on new public tables. A compatibility bootstrap migration, `20261006030000_gridmind_rls_auto_enable_bootstrap.sql`, now reconstructs the function and creates the event trigger only when absent. The function body matches the live definition; the migration is ordered before the core schema migration.
+
 ## Verification and limits
 
-The repository now contains 21 version-aligned files for the migrations already recorded in Supabase, plus the new pending analysis-run migration. GitHub CI and the GridMind Quality Gate are running against this reconciliation commit.
+The repository contains the 21 version-aligned sources from the live migration registry, the recovered pre-registry RLS bootstrap, and the pending analysis-run migration. A dedicated GitHub Actions workflow now starts an ephemeral local Supabase stack, resets the database from zero, runs SQL assertions for tenant isolation/direct-table denial/append-only behavior, and checks migration history. The first run correctly failed at the missing bootstrap; the recovered migration was then added and the workflow is being rerun.
 
-This repairs source alignment, but it is not yet proof that a clean local database reset succeeds. The next database acceptance step is to run a clean Supabase migration replay in an isolated development database, then compare the resulting schema against the live schema before deploying the pending analysis migration. Production must not be reset or replayed.
+A successful replay will prove the source history can initialize a clean local database. It does not by itself prove the complete live schema is identical; the next comparison must cover key tables, constraints, RLS policies, grants, indexes, and security-definer functions. Production has not been reset or replayed.
 
 ## Next acceptance gate
 
-1. Rebuild the schema from the 21 versioned migration files in an isolated database.
-2. Confirm the replay completes without manual SQL intervention.
-3. Compare key tables, constraints, RLS policies, grants, indexes, and security-definer functions against the live project.
-4. Apply the pending analysis-run migration only in the isolated database.
-5. Test authenticated factory access, cross-tenant denial, direct-table denial, concurrent idempotency, and reload/recompute integrity with controlled membership fixtures.
-6. Deploy only after the isolated acceptance tests pass and the live membership/bootstrap path is understood.
+1. Confirm the new clean replay and SQL security assertions pass in GitHub Actions.
+2. Compare key tables, constraints, RLS policies, grants, indexes, event triggers, and security-definer functions against the live project.
+3. Extend integration coverage to the Edge Function's authenticated request path and concurrent idempotent retries.
+4. Apply/deploy to a separately provisioned Supabase branch only after explicit cost approval and passing local replay.
+5. Deploy to the live project only after isolated tenant tests pass and the membership/bootstrap path is understood.
