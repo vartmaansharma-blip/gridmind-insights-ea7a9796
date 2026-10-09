@@ -124,7 +124,7 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
       ratedPowerKw: x.rated_power_kw,
       processRole: x.process_role,
     })),
-    observations: observationRows.filter((x) => x.factory_id === factory.id).map(observationToDomain),
+    observations: (observationsResult.data ?? []).filter((x) => x.factory_id === factory.id).map(observationToDomain),
     opportunities: (opportunitiesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as OpportunityContract),
     interventions: (interventionsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as InterventionContract),
     verifiedOutcomes: (outcomesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as VerifiedOutcomeContract),
