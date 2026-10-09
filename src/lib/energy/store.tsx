@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { analyze, type Analysis } from "./analysis";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
-import type { Factory, OpportunityStatus } from "./types";
+import type { Factory } from "./types";
 import { supabase } from "@/integrations/supabase/client";
 import {
   createFactoryWorkspace,
@@ -43,7 +43,7 @@ type Ctx = {
   deleteFactory: (id: string) => void;
   loadDemo: () => void;
   runAnalysis: () => void;
-  setOppStatus: (oppId: string, s: OpportunityStatus) => void;
+  setOppStatus: (oppId: string, s: string) => Promise<void>;
 };
 
 const StoreCtx = createContext<Ctx | null>(null);
@@ -286,17 +286,14 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     runAnalysis: () => {
       if (active) updateFactory(active.id, (f) => ({ ...f, lastAnalyzedAt: new Date().toISOString() }));
     },
-    setOppStatus: (oppId, status) => {
+    setOppStatus: async (oppId, status) => {
       const id = Number(oppId);
-      if (!Number.isInteger(id)) {
-        console.warn("[GridMind] ignored non-canonical opportunity id", oppId);
-        return;
+      if (!Number.isInteger(id) || id <= 0) {
+        throw new Error("A persisted canonical opportunity ID is required.");
       }
-      void updateOpportunityStatus(id, status).catch((error) => console.error("[GridMind] canonical opportunity update failed", error));
-      setState((s) => ({
-        ...s,
-        factories: s.factories.map((f) => f.id === active?.id ? { ...f, opportunityStatus: { ...f.opportunityStatus, [oppId]: status } } : f),
-      }));
+      // Canonical lifecycle states are distinct from local screening statuses.
+      // Persist first; the canonical opportunities query refreshes only on success.
+      await updateOpportunityStatus(id, status);
     },
   };
 
