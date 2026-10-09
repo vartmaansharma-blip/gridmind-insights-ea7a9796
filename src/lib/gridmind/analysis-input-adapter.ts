@@ -116,7 +116,9 @@ function sampleForPeriod(
     const { role, issue } = roleOf(observation);
     if (issue) mappingIssues.push(issue);
     if (!role) continue;
-    byRole.set(role, [...(byRole.get(role) ?? []), observation]);
+    const roleRows = byRole.get(role) ?? [];
+    roleRows.push(observation);
+    byRole.set(role, roleRows);
   }
   const hasDuplicateRole = [...byRole.values()].some((rows) => rows.length > 1);
   const unique = (role: AnalysisObservationRole): ObservationContract | null => {
@@ -174,7 +176,9 @@ export function buildAnalysisInputFromCanonical(args: InputAdapterArgs): Analysi
     const start = periodStartOf(observation);
     const end = periodEndOf(observation);
     const key = start + "\u0000" + end;
-    groups.set(key, [...(groups.get(key) ?? []), observation]);
+    const periodRows = groups.get(key) ?? [];
+    periodRows.push(observation);
+    groups.set(key, periodRows);
   }
 
   const samples = [...groups.values()].map((rows) => sampleForPeriod(args.factoryId, args.assetId, rows, args.operatingContexts));
