@@ -52,7 +52,8 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.economics.estimatedGrossValueInr).toBe(1600);
     expect(result.economics.estimatedRecoverableValueInr).toBe(960);
     expect(result.economics.estimatedNetValueInr).toBe(-40);
-    expect(result.status).toBe("opportunity");
+    expect(result.status).toBe("deviation_no_opportunity");
+    expect(result.reasonCodes).toContain("NON_POSITIVE_NET_VALUE");
   });
 
   it("preserves a genuine numeric zero and refuses to call zero energy while producing a valid performance result", () => {
@@ -102,6 +103,36 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.status).toBe("insufficient_evidence");
   });
 
+  it("compares operating rates rather than raw totals across different period lengths", () => {
+    const twoDayBaseline = [
+      sample("b1", 1000, { productionValue: 200, operatingHours: 20, periodStart: "2026-10-07T00:00:00.000Z" }),
+      sample("b2", 1020, { productionValue: 204, operatingHours: 20.4, periodStart: "2026-10-07T00:00:00.000Z" }),
+      sample("b3", 980, { productionValue: 196, operatingHours: 19.6, periodStart: "2026-10-07T00:00:00.000Z" }),
+    ];
+    const result = analyzeFactoryLoop(input(sample("current", 700), twoDayBaseline));
+    expect(result.reference.specificEnergyKwhPerUnit).toBe(5);
+    expect(result.reference.sampleCount).toBe(3);
+    expect(result.evidence.excludedBaseline).toHaveLength(0);
+  });
+
+  it("rejects operating hours exceeding the actual observation period", () => {
+    const result = analyzeFactoryLoop(input(sample("current", 700, {
+      operatingHours: 2,
+      periodStart: "2026-10-09T10:00:00.000Z",
+      periodEnd: "2026-10-09T11:00:00.000Z",
+    })));
+    expect(result.reasonCodes).toContain("INVALID_OPERATING_HOURS");
+    expect(result.evidence.current).toBeNull();
+  });
+
+  it("rejects timestamps that omit seconds and validates age-policy inputs", () => {
+    const malformed = analyzeFactoryLoop(input(sample("current", 700, { periodStart: "2026-10-08T00:00Z" })));
+    const badPolicy = analyzeFactoryLoop({ ...input(), maxCurrentAgeDays: -1 });
+    expect(malformed.reasonCodes).toContain("INVALID_TIMESTAMP");
+    expect(badPolicy.reasonCodes).toContain("INVALID_AGE_POLICY");
+    expect(badPolicy.evidence.current).toBeNull();
+  });
+
   it("rejects unsupported production units and duplicate sample IDs", () => {
     const unsupported = analyzeFactoryLoop(input(sample("current", 700, { productionUnit: "bananas" })));
     const duplicate = analyzeFactoryLoop(input(sample("current", 700), [
@@ -110,6 +141,14 @@ describe("authoritative factory-analysis loop", () => {
     expect(unsupported.reasonCodes).toContain("UNSUPPORTED_PRODUCTION_UNIT");
     expect(duplicate.reference.sampleCount).toBe(2);
     expect(duplicate.evidence.excludedBaseline.find((x) => x.id === "b1")?.reasons).toContain("DUPLICATE_SAMPLE_ID");
+  });
+
+  it("reports a context-specific exclusion reason for mismatched assets", () => {
+    const result = analyzeFactoryLoop(input(sample("current", 700), [
+      sample("b1", 500, { assetId: "compressor-2" }), sample("b2", 510), sample("b3", 490),
+    ]));
+    expect(result.evidence.excludedBaseline.find((x) => x.id === "b1")?.reasons).toContain("ASSET_CONTEXT_NOT_COMPARABLE");
+    expect(result.reference.sampleCount).toBe(2);
   });
 
   it("requires three comparable valid baseline samples", () => {
@@ -133,6 +172,13 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.provenance.origin).toBe("synthetic");
     expect(result.reference.limitations.some((x) => x.includes("synthetic"))).toBe(true);
     expect(result.economics.label).toBe("estimate");
+  });
+
+  it("refuses to quantify unsupported currency inputs", () => {
+    const badCurrency = { ...input(), economics: { ...input().economics, currency: "USD" } } as unknown as AnalysisInput;
+    const result = analyzeFactoryLoop(badCurrency);
+    expect(result.economics.quantified).toBe(false);
+    expect(result.economics.refusalReasons).toContain("UNSUPPORTED_CURRENCY");
   });
 
   it("reproduces the same canonical result and fingerprint after JSON persistence/reload", () => {
