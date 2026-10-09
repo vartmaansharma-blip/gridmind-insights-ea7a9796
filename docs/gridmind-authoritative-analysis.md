@@ -34,7 +34,7 @@ Duplicate role measurements, unknown explicit role labels, conflicting context, 
 
 ### Operating context
 
-An applicable `operating_contexts` row must have `scope_type = 'asset'`, the asset's `scope_id`, and status `active` or `valid`. Its `values.analysis_loop` object must contain `operatingState` and `productCode` for the period. Equally ranked conflicting contexts are treated as ambiguous.
+An applicable `operating_contexts` row may supply operating state and product context; it must have `scope_type = 'asset'`, the asset's `scope_id`, and status `active` or `valid`. Its `values.analysis_loop` object can supply `operatingState` and `productCode`. Explicit `operating_state` and `product_code` observations can supply those values instead. If both sources provide a value and disagree, the period is refused. A value absent from both sources remains missing and cannot support a comparable sample. Equally ranked applicable contexts with different values are treated as ambiguous.
 
 ### Economic context
 
