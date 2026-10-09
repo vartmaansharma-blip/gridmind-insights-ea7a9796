@@ -178,12 +178,12 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
       const t = typeMap.get(a.machine_type_id)!;
       return { id: t.id, name: t.machine_type, category: t.category, purpose: t.purpose };
     })() : null,
-    dataSources: (mappingsResult.data ?? [])
+    dataSources: mappingRows
       .filter((m) => m.asset_id === a.id)
       .map((m) => sourceMap.get(m.data_source_id))
       .filter((s): s is NonNullable<typeof s> => Boolean(s))
       .map((s) => ({ id: s.id, name: s.name, sourceType: s.source_type, status: s.connection_status, timezone: s.timezone })),
-    mappings: (mappingsResult.data ?? []).filter((m) => m.asset_id === a.id).map((m) => ({
+    mappings: mappingRows.filter((m) => m.asset_id === a.id).map((m) => ({
       id: m.id,
       sourceField: m.source_field,
       canonicalMetric: m.canonical_metric,
@@ -191,7 +191,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
       status: m.mapping_status,
       confidence: m.confidence,
     })),
-    observations: (observationsResult.data ?? []).filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
+    observations: observationRows.filter((o) => o.subject_type === "asset" && o.subject_id === a.id).map(observationToDomain),
   }));
 }
 
