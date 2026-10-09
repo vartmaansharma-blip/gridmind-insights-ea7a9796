@@ -20,15 +20,15 @@ Refresh these findings before any deployment decision.
 Do not blindly revoke grants or change the function. Inspect the live function definition, owner, grants, and all functions it calls first.
 
 - [x] Retrieved the live `pg_get_functiondef` for `public.create_factory_workspace(text, text, text)` and inspected its ACLs on 2026-10-09.
-- [ ] Confirm `SECURITY DEFINER` is intentional and uses a fixed, safe `search_path`.
-- [ ] Confirm object references are schema-qualified where appropriate.
-- [ ] Verify identity derives from trusted `auth.uid()` context, not a caller-supplied user ID.
-- [ ] Verify membership and role checks happen before privileged writes.
-- [ ] Verify users cannot create or attach workspaces to organizations they do not control.
-- [ ] Validate inputs and ensure errors do not expose sensitive details.
-- [ ] Inspect `EXECUTE` grants for `PUBLIC`, `anon`, and `authenticated`; grant only the intended caller class.
+- [x] Confirmed the function uses a fixed, empty `search_path` (read-only review, 2026-10-09); re-check after any function change.
+- [x] Confirmed table references are schema-qualified in the reviewed function definition.
+- [x] Confirmed caller identity derives from trusted `auth.uid()`, not a caller-supplied user ID.
+- [x] Confirmed the function requires an authenticated caller and selects only an active organization where the caller has owner/admin role, or creates a new organization for the caller if none exists.
+- [ ] Add/execute automated tests proving users cannot create or attach workspaces to organizations they do not control, including cross-tenant attempts and users with multiple eligible organizations.
+- [ ] Validate all inputs (including location and industry) and ensure errors do not expose sensitive details.
+- [x] Confirmed `EXECUTE` is granted to `authenticated` and the owner, with no `anon` or `PUBLIC` execute grant in the inspected ACLs.
 - [ ] Add automated tests for unauthenticated, unauthorized, authorized, cross-tenant, and malformed-input calls.
-- [ ] Implement any fix through a reviewed migration; rerun clean migration replay, database security assertions, and authenticated HTTP acceptance.
+- [ ] Implement any required fix through a reviewed migration; rerun clean migration replay, database security assertions, and authenticated HTTP acceptance.
 
 ### Live review result (read-only, 2026-10-09)
 
