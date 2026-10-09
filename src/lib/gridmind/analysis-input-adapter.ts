@@ -112,6 +112,7 @@ function sampleForPeriod(
   const periodEnd = observations.map(periodEndOf).sort((a, b) => parsedTime(b) - parsedTime(a))[0] ?? "";
   const byRole = new Map<AnalysisObservationRole, ObservationContract[]>();
   const mappingIssues: string[] = [];
+  const contextIssues: string[] = [];
   for (const observation of observations) {
     const { role, issue } = roleOf(observation);
     if (issue) mappingIssues.push(issue);
@@ -132,7 +133,7 @@ function sampleForPeriod(
   const productObservation = unique("product_code");
   const contextSelection = contextForPeriod(contexts, assetId, periodStart, periodEnd);
   const context = contextSelection.context;
-  if (contextSelection.ambiguous) mappingIssues.push("Equally ranked operating contexts conflict for this period.");
+  if (contextSelection.ambiguous) contextIssues.push("Equally ranked operating contexts conflict for this period.");
   const values = context ? contextValues(context) : {};
   const contextState = nonEmptyText(values.operatingState);
   const contextProduct = nonEmptyText(values.productCode);
@@ -162,6 +163,7 @@ function sampleForPeriod(
     origin: originFor(observations),
     sourceObservationIds: allIds,
     mappingIssues,
+    contextIssues,
   };
 }
 
