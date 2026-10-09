@@ -95,7 +95,7 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
 
   const { data: factories, error: factoryError } = await supabase
     .from("factories")
-    .select("id,name,location,industry,metadata,organization_id")
+    .select("id,name,location,industry,metadata,organization_id,created_at,operating_days_per_month,shifts_per_day")
     .order("id");
   if (factoryError) throw factoryError;
   if (!factories?.length) return [];
@@ -140,7 +140,7 @@ export async function getCanonicalMachineSnapshots(factoryId?: number): Promise<
   const factories = [...new Set(activeAssets.map((a) => a.factory_id))];
   const [typesResult, mappingsResult, observationsResult, sourceResult] = await Promise.all([
     supabase.from("machine_types").select("id,machine_type,category,purpose").in("id", [...new Set((assets ?? []).map((a) => a.machine_type_id).filter((x): x is number => x !== null))]),
-    ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null } as any),
+    ids.length ? supabase.from("data_source_mappings").select("id,data_source_id,factory_id,source_field,canonical_metric,asset_id,unit,mapping_status,confidence").in("asset_id", ids) : Promise.resolve({ data: [], error: null }),
     factories.length ? supabase.from("observations").select("*").in("factory_id", factories).order("created_at", { ascending: false }) : Promise.resolve({ data: [], error: null } as any),
     factories.length ? supabase.from("data_sources").select("id,factory_id,name,source_type,connection_status,timezone").in("factory_id", factories) : Promise.resolve({ data: [], error: null } as any),
   ]);
@@ -202,7 +202,25 @@ export async function getCanonicalDeviations(factoryId: number): Promise<Canonic
     .eq("factory_id", factoryId)
     .order("created_at", { ascending: false });
   if (error) throw error;
-  return data ?? [];
+  return (data ?? []).map((row) => ({
+    id: row.id,
+    factoryId: row.factory_id,
+    scopeType: row.scope_type,
+    scopeId: row.scope_id,
+    metric: row.metric,
+    observationId: row.observation_id,
+    expectationId: row.expectation_id,
+    actualValue: row.actual_value,
+    expectedValue: row.expected_value,
+    deviationValue: row.deviation_value,
+    deviationPercentage: row.deviation_percentage,
+    direction: row.direction,
+    persistence: row.persistence,
+    statisticalSignificance: row.statistical_significance,
+    engineeringSignificance: row.engineering_significance,
+    economicMateriality: row.economic_materiality,
+    status: row.status,
+  }));
 }
 
 export async function getCanonicalVerification(factoryId: number) {
@@ -249,7 +267,7 @@ export async function createCanonicalIntervention(input: {
 
 export async function createFactoryWorkspace(input: { name: string; location?: string; industry?: string }): Promise<number> {
   const { data, error } = await supabase.rpc("create_factory_workspace", {
-    p_name: input.name, p_location: input.location ?? null, p_industry: input.industry ?? null,
+    p_name: input.name, p_location: input.location, p_industry: input.industry,
   });
   if (error) throw error;
   return Number(data);
@@ -391,7 +409,7 @@ export async function updateFactoryProfile(factoryId: number, patch: {
     ...(patch.name !== undefined ? { name: patch.name } : {}),
     ...(patch.location !== undefined ? { location: patch.location } : {}),
     ...(patch.industry !== undefined ? { industry: patch.industry } : {}),
-    metadata,
+    metadata: metadata as Database["public"]["Tables"]["factories"]["Update"]["metadata"],
   }).eq("id", factoryId);
   if (error) throw error;
 }
