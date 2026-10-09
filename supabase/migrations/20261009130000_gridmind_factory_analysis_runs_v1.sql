@@ -38,8 +38,9 @@ create policy "active factory members insert analysis runs" on public.factory_an
   );
 drop policy if exists "active factory members update analysis runs" on public.factory_analysis_runs;
 revoke all on public.factory_analysis_runs from anon, authenticated;
-grant select, insert on public.factory_analysis_runs to authenticated;
-grant usage, select on sequence public.factory_analysis_runs_id_seq to authenticated;
+revoke all on sequence public.factory_analysis_runs_id_seq from anon, authenticated;
+-- Browser clients cannot write claimed results directly. The authenticated Edge Function
+-- verifies factory membership, runs the shared engine, and writes using the service role.
 
 -- Enforce append-only semantics at the database layer, including privileged application clients.
 create or replace function private.reject_factory_analysis_run_mutation()
