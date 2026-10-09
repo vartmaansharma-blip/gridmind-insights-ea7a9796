@@ -153,6 +153,25 @@ describe("canonical analysis input adapter", () => {
     expect(result.economics.refusalReasons).toContain("MISSING_RECOVERY_FRACTION");
   });
 
+  it("preserves malformed economic inputs as invalid instead of reclassifying them as missing", () => {
+    const malformedEconomics = {
+      ...economics,
+      metadata: { analysis_loop: { tariffInrPerKwh: "8", recoverableFraction: 0.6, interventionCostInr: 500 } },
+    };
+    const input = buildAnalysisInputFromCanonical({
+      factoryId,
+      assetId,
+      observations: observations(),
+      operatingContexts: contexts,
+      economicContext: malformedEconomics,
+      asOf: "2026-10-09T12:00:00.000Z",
+    });
+    const result = analyzeFactoryLoop(input);
+    expect(result.economics.quantified).toBe(false);
+    expect(result.economics.refusalReasons).toContain("INVALID_TARIFF");
+    expect(result.economics.refusalReasons).not.toContain("MISSING_TARIFF");
+  });
+
   it("refuses equally ranked conflicting operating contexts", () => {
     const conflictingContexts = [
       ...contexts,
