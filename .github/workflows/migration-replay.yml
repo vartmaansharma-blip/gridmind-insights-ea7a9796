@@ -77,7 +77,7 @@ jobs:
             echo "Local Edge Function did not become ready"
             exit 1
           fi
-          deno test --allow-env --allow-net supabase/tests/factory-analysis-integration.test.ts
+          deno test --allow-env --allow-net supabase/tests/factory-analysis-integration.deno.ts
 
       - name: Verify migration history has no pending local migrations
         run: supabase migration list --local
