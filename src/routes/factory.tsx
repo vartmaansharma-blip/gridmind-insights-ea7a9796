@@ -24,7 +24,10 @@ export const Route = createFileRoute("/factory")({
   component: FactoryPage,
 });
 
-const n = (v: string) => v.trim() === "" ? Number.NaN : Math.max(0, Number(v));
+const n = (v: string) => Math.max(0, Number(v) || 0);
+// Blank monthly cells remain missing; other numeric profile/equipment fields
+// retain their existing non-negative input handling.
+const monthValue = (v: string) => v.trim() === "" ? Number.NaN : Math.max(0, Number(v));
 const CATS: EquipmentCategory[] = ["compressor", "motor", "furnace", "hvac", "lighting", "other"];
 
 function FactoryPage() {
@@ -33,7 +36,7 @@ function FactoryPage() {
   if (!active) return <div className="panel p-6"><Button variant="cta" onClick={loadDemo}>Load demo factory</Button></div>;
   const up = (fn: (f: Factory) => Factory) => updateFactory(active.id, fn);
   const setMonth = (i: number, k: keyof MonthRecord, v: string) =>
-    up((f) => ({ ...f, months: f.months.map((m, j) => (j === i ? { ...m, [k]: k === "month" ? v : n(v) } : m)) }));
+    up((f) => ({ ...f, months: f.months.map((m, j) => (j === i ? { ...m, [k]: k === "month" ? v : monthValue(v) } : m)) }));
   const cols: [keyof MonthRecord, string][] = [["month", "Month"], ["kwh", "kWh"], ["cost", "Bill ₹"], ["peakKva", "Peak kVA"], ["production", "Production"], ["operatingHours", "Hours"], ["powerFactor", "PF"]];
 
   return (
