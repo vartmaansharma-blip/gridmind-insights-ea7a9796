@@ -485,10 +485,11 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
 
 /** Canonical JSON for equality checks; object key order cannot alter the fingerprint. */
 export function canonicalize(value: unknown): string {
-  if (value === null || typeof value !== "object") return JSON.stringify(value);
-  if (Array.isArray(value)) return `[${value.map(canonicalize).join(",")}]`;
+  if (value === undefined) return "null";
+  if (value === null || typeof value !== "object") return JSON.stringify(value) ?? "null";
+  if (Array.isArray(value)) return `[${value.map((item) => item === undefined ? "null" : canonicalize(item)).join(",")}]`;
   const object = value as Record<string, unknown>;
-  return `{${Object.keys(object).sort().map((key) => `${JSON.stringify(key)}:${canonicalize(object[key])}`).join(",")}}`;
+  return `{${Object.keys(object).filter((key) => object[key] !== undefined).sort().map((key) => `${JSON.stringify(key)}:${canonicalize(object[key])}`).join(",")}}`;
 }
 
 /** Non-cryptographic reproducibility fingerprint, not a security/signature primitive. */
