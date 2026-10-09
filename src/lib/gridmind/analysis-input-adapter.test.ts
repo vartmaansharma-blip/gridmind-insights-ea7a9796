@@ -153,6 +153,24 @@ describe("canonical analysis input adapter", () => {
     expect(result.economics.refusalReasons).toContain("MISSING_RECOVERY_FRACTION");
   });
 
+  it("refuses equally ranked conflicting operating contexts", () => {
+    const conflictingContexts = [
+      ...contexts,
+      { ...contexts[0], id: 13, values: { analysis_loop: { operatingState: "unloaded", productCode: "P2" } } },
+    ];
+    const input = buildAnalysisInputFromCanonical({
+      factoryId,
+      assetId,
+      observations: observations(),
+      operatingContexts: conflictingContexts,
+      economicContext: economics,
+      asOf: "2026-10-09T12:00:00.000Z",
+    });
+    const result = analyzeFactoryLoop(input);
+    expect(result.reasonCodes).toContain("AMBIGUOUS_OPERATING_CONTEXT");
+    expect(result.economics.quantified).toBe(false);
+  });
+
   it("refuses unknown analysis-role mappings and still retains the source observation ID", () => {
     const source = observations();
     source[9] = { ...source[9], metadata: { ...source[9].metadata, analysis_role: "energy_guess" } };
