@@ -39,7 +39,7 @@ jobs:
         uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x
-      - name: Typecheck authoritative Edge Function
-        run: deno check supabase/functions/persist-factory-analysis/index.ts
+      - name: Typecheck authoritative Edge Function and HTTP acceptance test
+        run: deno check supabase/functions/persist-factory-analysis/index.ts supabase/tests/factory-analysis-integration.deno.ts
       - name: Production build
         run: bun run build
