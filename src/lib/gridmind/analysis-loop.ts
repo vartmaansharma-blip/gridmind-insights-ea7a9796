@@ -61,6 +61,8 @@ export type ReasonCode =
   | "MISSING_PRODUCT_CONTEXT"
   | "OPERATING_CONTEXT_NOT_COMPARABLE"
   | "DUPLICATE_SAMPLE_ID"
+  | "BASELINE_PERIOD_NOT_HISTORICAL"
+  | "OVERLAPPING_BASELINE_PERIODS"
   | "INVALID_TIMESTAMP"
   | "FUTURE_TIMESTAMP"
   | "INVALID_PERIOD"
@@ -283,25 +285,49 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
   const maxCurrentAgeDays = input.maxCurrentAgeDays ?? 90;
   const maxBaselineAgeDays = input.maxBaselineAgeDays ?? 365;
   const invalidAgePolicy = !positive(maxCurrentAgeDays) || !positive(maxBaselineAgeDays);
-  const currentNorm = asOfMs === null || invalidFactory || invalidAgePolicy
-    ? { sample: null, reasons: [...(invalidFactory ? ["INVALID_FACTORY_ID" as const] : []), ...(asOfMs === null ? ["INVALID_TIMESTAMP" as const] : []), ...(invalidAgePolicy ? ["INVALID_AGE_POLICY" as const] : [])] }
+  const duplicateCurrentId = input.baselineSamples.some((sampleInput) => sampleInput.id === input.current.id);
+  const currentNorm = asOfMs === null || invalidFactory || invalidAgePolicy || duplicateCurrentId
+    ? { sample: null, reasons: [...(invalidFactory ? ["INVALID_FACTORY_ID" as const] : []), ...(asOfMs === null ? ["INVALID_TIMESTAMP" as const] : []), ...(invalidAgePolicy ? ["INVALID_AGE_POLICY" as const] : []), ...(duplicateCurrentId ? ["DUPLICATE_SAMPLE_ID" as const] : [])] }
     : normalizeSample(input.current, input.factoryId, asOfMs, maxCurrentAgeDays, true);
   const current = currentNorm.sample;
   const excludedBaseline: Array<{ id: string; reasons: ReasonCode[] }> = [];
   const accepted: NormalizedSample[] = [];
 
   if (asOfMs !== null && !invalidFactory && !invalidAgePolicy) {
-    const seenSampleIds = new Set<string>([input.current.id]);
-    for (const sampleInput of input.baselineSamples) {
-      if (seenSampleIds.has(sampleInput.id)) {
+    const baselineIdCounts = new Map<string, number>();
+    for (const sampleInput of input.baselineSamples) baselineIdCounts.set(sampleInput.id, (baselineIdCounts.get(sampleInput.id) ?? 0) + 1);
+    const orderedBaselineSamples = [...input.baselineSamples].sort((a, b) => {
+      const startA = timestamp(a.periodStart) ?? Number.POSITIVE_INFINITY;
+      const startB = timestamp(b.periodStart) ?? Number.POSITIVE_INFINITY;
+      return startA - startB || a.id.localeCompare(b.id) || canonicalize(a).localeCompare(canonicalize(b));
+    });
+    for (const sampleInput of orderedBaselineSamples) {
+      if (sampleInput.id === input.current.id || (baselineIdCounts.get(sampleInput.id) ?? 0) > 1) {
         excludedBaseline.push({ id: sampleInput.id, reasons: ["DUPLICATE_SAMPLE_ID"] });
         continue;
       }
-      seenSampleIds.add(sampleInput.id);
       const normalized = normalizeSample(sampleInput, input.factoryId, asOfMs, maxBaselineAgeDays, false);
       if (!normalized.sample) {
         excludedBaseline.push({ id: sampleInput.id, reasons: normalized.reasons });
         continue;
+      }
+      if (current) {
+        const baselineStart = timestamp(normalized.sample.periodStart);
+        const baselineEnd = timestamp(normalized.sample.periodEnd);
+        const currentStart = timestamp(current.periodStart);
+        if (baselineStart === null || baselineEnd === null || currentStart === null || baselineEnd > currentStart) {
+          excludedBaseline.push({ id: sampleInput.id, reasons: ["BASELINE_PERIOD_NOT_HISTORICAL"] });
+          continue;
+        }
+        const overlapsAcceptedBaseline = accepted.some((acceptedSample) => {
+          const acceptedStart = timestamp(acceptedSample.periodStart);
+          const acceptedEnd = timestamp(acceptedSample.periodEnd);
+          return acceptedStart !== null && acceptedEnd !== null && baselineStart < acceptedEnd && baselineEnd > acceptedStart;
+        });
+        if (overlapsAcceptedBaseline) {
+          excludedBaseline.push({ id: sampleInput.id, reasons: ["OVERLAPPING_BASELINE_PERIODS"] });
+          continue;
+        }
       }
       if (current && normalized.sample.assetId !== current.assetId) {
         excludedBaseline.push({ id: sampleInput.id, reasons: ["ASSET_CONTEXT_NOT_COMPARABLE"] });
