@@ -12,6 +12,8 @@ create table if not exists public.factory_analysis_runs (
   refusal_codes jsonb not null default '[]'::jsonb,
   created_by uuid not null references auth.users(id) on delete restrict,
   created_at timestamptz not null default now(),
+  constraint factory_analysis_runs_asset_factory_fkey foreign key (asset_id, factory_id)
+    references public.factory_assets(id, factory_id) on delete restrict,
   constraint factory_analysis_runs_input_is_object check (jsonb_typeof(input_snapshot) = 'object'),
   constraint factory_analysis_runs_result_is_object check (jsonb_typeof(result) = 'object'),
   constraint factory_analysis_runs_refusals_are_array check (jsonb_typeof(refusal_codes) = 'array'),
