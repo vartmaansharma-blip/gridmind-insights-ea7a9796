@@ -398,8 +398,6 @@ export function analyzeFactoryLoop(input: AnalysisInput): AnalysisResult {
     .some((value) => value !== null && !Number.isFinite(value));
   if (referenceCalculationOverflow) reasons.push("NUMERIC_OVERFLOW");
   const baselineSec = referenceCalculationOverflow ? null : baselineSecCandidate;
-  const mad = referenceCalculationOverflow ? null : madCandidate;
-  const halfWidth = referenceCalculationOverflow ? null : halfWidthCandidate;
   const lower = referenceCalculationOverflow ? null : lowerCandidate;
   const upper = referenceCalculationOverflow ? null : upperCandidate;
   const confidence: AnalysisResult["reference"]["confidence"] = baselineSecs.length >= 9 ? "high" : baselineSecs.length >= 6 ? "medium" : baselineSecs.length >= 3 ? "low" : "none";
