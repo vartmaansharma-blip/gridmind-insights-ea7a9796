@@ -116,10 +116,10 @@ begin
   select id into strict asset_a from public.factory_assets where name = 'gridmind-ci-asset-a';
 
   insert into public.factory_analysis_runs
-    (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
+    (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,
      result_fingerprint, analysis_status, refusal_codes, created_by)
   values
-    (factory_a, asset_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a),
+    (factory_a, asset_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a, 'current', jsonb_build_object('assetId', asset_a::text)),
      jsonb_build_object('factoryId', factory_a, 'status', 'insufficient_evidence',
                         'algorithmVersion', 'test-v1', 'reasonCodes', '[]'::jsonb),
      'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
@@ -128,10 +128,10 @@ begin
 
   begin
     insert into public.factory_analysis_runs
-      (factory_id, idempotency_key, algorithm_version, input_snapshot, result,
+      (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,
        result_fingerprint, analysis_status, refusal_codes, created_by)
     values
-      (factory_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a),
+      (factory_a, 'gridmind-ci-append-only', 'test-v1', jsonb_build_object('factoryId', factory_a, 'current', jsonb_build_object('assetId', asset_a::text)),
        jsonb_build_object('factoryId', factory_a, 'status', 'insufficient_evidence',
                           'algorithmVersion', 'test-v1', 'reasonCodes', '[]'::jsonb),
        'test-fingerprint', 'insufficient_evidence', '[]'::jsonb,
