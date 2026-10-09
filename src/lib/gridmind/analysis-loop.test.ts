@@ -78,13 +78,15 @@ describe("authoritative factory-analysis loop", () => {
     expect(invalid.evidence.current).toBeNull();
   });
 
-  it("rejects unsupported units, invalid timestamps, stale data, and non-valid quality", () => {
+  it("rejects unsupported units, invalid timestamps, future timestamps, stale data, and non-valid quality", () => {
     const unit = analyzeFactoryLoop(input(sample("current", 700, { energyUnit: "widgets" })));
     const timestamp = analyzeFactoryLoop(input(sample("current", 700, { periodStart: "not-a-date" })));
+    const future = analyzeFactoryLoop(input(sample("current", 700, { periodEnd: "2026-10-10T00:00:00.000Z" })));
     const stale = analyzeFactoryLoop(input(sample("current", 700, { periodEnd: "2025-01-01T00:00:00.000Z" })));
     const quality = analyzeFactoryLoop(input(sample("current", 700, { quality: "unverified" })));
     expect(unit.reasonCodes).toContain("UNSUPPORTED_ENERGY_UNIT");
     expect(timestamp.reasonCodes).toContain("INVALID_TIMESTAMP");
+    expect(future.reasonCodes).toContain("FUTURE_TIMESTAMP");
     expect(stale.reasonCodes).toContain("STALE_CURRENT_OBSERVATION");
     expect(quality.reasonCodes).toContain("NON_VALID_QUALITY_STATUS");
   });
@@ -98,6 +100,16 @@ describe("authoritative factory-analysis loop", () => {
     expect(result.economics.estimatedGrossValueInr).toBeNull();
     expect(result.economics.refusalReasons).toContain("MISSING_TARIFF");
     expect(result.status).toBe("insufficient_evidence");
+  });
+
+  it("rejects unsupported production units and duplicate sample IDs", () => {
+    const unsupported = analyzeFactoryLoop(input(sample("current", 700, { productionUnit: "bananas" })));
+    const duplicate = analyzeFactoryLoop(input(sample("current", 700), [
+      sample("b1", 500), sample("b1", 510), sample("b3", 490),
+    ]));
+    expect(unsupported.reasonCodes).toContain("UNSUPPORTED_PRODUCTION_UNIT");
+    expect(duplicate.reference.sampleCount).toBe(2);
+    expect(duplicate.evidence.excludedBaseline.find((x) => x.id === "b1")?.reasons).toContain("DUPLICATE_SAMPLE_ID");
   });
 
   it("requires three comparable valid baseline samples", () => {
