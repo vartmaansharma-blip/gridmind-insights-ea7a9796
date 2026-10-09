@@ -19,7 +19,6 @@ export async function runCanonicalFactoryAnalysis(
   factoryId: number,
   assetId: number,
   idempotencyKey: string,
-  asOf = new Date().toISOString(),
 ): Promise<CanonicalFactoryAnalysisRun> {
   if (!Number.isSafeInteger(factoryId) || factoryId <= 0) throw new Error("A valid positive factory ID is required.");
   if (!Number.isSafeInteger(assetId) || assetId <= 0) throw new Error("A valid positive asset ID is required.");
@@ -28,7 +27,7 @@ export async function runCanonicalFactoryAnalysis(
   }
 
   const key = idempotencyKey.trim();
-  const run = await persistFactoryAnalysisRun({ factoryId, assetId, asOf }, key);
+  const run = await persistFactoryAnalysisRun({ factoryId, assetId }, key);
   const verification = await reloadAndVerifyFactoryAnalysisRun(factoryId, key);
   return { input: run.input_snapshot, run, verification };
 }
