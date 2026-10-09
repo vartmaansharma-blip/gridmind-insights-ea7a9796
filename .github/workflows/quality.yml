@@ -34,7 +34,7 @@ jobs:
       - name: Semantic ESLint
         # The repository has thousands of pre-existing Prettier-only errors.
         # Keep all other ESLint rules blocking while formatting debt is handled separately.
-        run: 'bunx eslint src/lib/gridmind/analysis-loop.ts src/lib/gridmind/analysis-loop.test.ts src/lib/gridmind/analysis-input-adapter.ts src/lib/gridmind/analysis-input-adapter.test.ts src/lib/gridmind/analysis-runner.ts src/lib/gridmind/analysis-run-store.ts src/lib/gridmind/analysis-run-store.test.ts src/lib/gridmind/repository.ts src/routes/machines.$id.tsx src/lib/energy/pipeline.ts src/lib/energy/pipeline.test.ts supabase/functions/_shared/analysis-loop.ts supabase/functions/persist-factory-analysis/index.ts --rule "prettier/prettier: off"'
+        run: 'bunx eslint src/lib/gridmind/analysis-loop.ts src/lib/gridmind/analysis-loop.test.ts src/lib/gridmind/analysis-input-adapter.ts src/lib/gridmind/analysis-input-adapter.test.ts src/lib/gridmind/analysis-runner.ts src/lib/gridmind/analysis-runner.test.ts src/lib/gridmind/analysis-run-store.ts src/lib/gridmind/analysis-run-store.test.ts src/lib/gridmind/repository.ts src/routes/machines.$id.tsx src/lib/energy/pipeline.ts src/lib/energy/pipeline.test.ts supabase/functions/_shared/analysis-loop.ts supabase/functions/persist-factory-analysis/index.ts --rule "prettier/prettier: off"'
       - name: Setup Deno
         uses: denoland/setup-deno@v2
         with:
