@@ -21,13 +21,22 @@ type InputAdapterArgs = {
 };
 
 const ROLES = new Set<AnalysisObservationRole>(["energy", "production", "operating_hours", "operating_state", "product_code"]);
+const CANONICAL_METRIC_ROLES: Record<string, AnalysisObservationRole> = {
+  energy_consumption_kwh: "energy",
+  production_output: "production",
+  operating_hours: "operating_hours",
+  operating_state: "operating_state",
+  product_code: "product_code",
+};
 const record = (value: unknown): Record<string, unknown> =>
   value !== null && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : {};
 const roleOf = (observation: ObservationContract): { role: AnalysisObservationRole | null; issue: string | null } => {
   const metadata = record(observation.metadata);
   const provenance = record(observation.provenance);
   const raw = metadata.analysis_role ?? provenance.analysis_role;
-  if (raw === undefined || raw === null || raw === "") return { role: null, issue: null };
+  if (raw === undefined || raw === null || raw === "") {
+    return { role: CANONICAL_METRIC_ROLES[observation.metric] ?? null, issue: null };
+  }
   if (typeof raw !== "string" || !ROLES.has(raw as AnalysisObservationRole)) {
     return { role: null, issue: "Observation " + observation.id + " has an unsupported analysis_role." };
   }
