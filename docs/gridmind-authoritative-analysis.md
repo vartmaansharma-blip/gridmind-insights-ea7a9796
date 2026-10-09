@@ -8,7 +8,7 @@ The Edge Function recalculates with the same shared engine used by the test suit
 
 ## Explicit ingestion contract
 
-The adapter intentionally does not guess metric meanings or fill missing values.
+The adapter intentionally does not guess metric meanings or fill missing values. A request is rejected if it exceeds 4 MB or contains more than 5,000 baseline periods; data must be explicitly aggregated upstream rather than silently truncated.
 
 ### Observation roles
 
@@ -30,7 +30,7 @@ When that metadata is absent, only these exact canonical metric names are recogn
 
 Each observation needs an explicit unit and a real observation period. `metadata.period_start` can define the common period start; otherwise `observed_at` is used. `observed_until` or explicit `metadata.period_end` must define the period end. The adapter does not infer a period from a single point timestamp. Source observation IDs, raw values, units, quality, provenance, and period boundaries remain in the persisted input snapshot.
 
-Duplicate role measurements, unknown explicit role labels, conflicting context, missing values, non-valid quality, overlapping periods, and unsupported units are refused rather than resolved by arbitrary selection.
+Duplicate role measurements, unknown explicit role labels, conflicting context, missing values, non-valid quality, overlapping periods, unsupported units, and numeric overflow are refused rather than resolved by arbitrary selection. The algorithm version is stored with each result; semantic changes require a version bump.
 
 ### Operating context
 
