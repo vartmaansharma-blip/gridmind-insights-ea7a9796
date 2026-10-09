@@ -1,18 +1,10 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { CanonicalMachineSnapshot } from "./repository";
+import type { AnalysisInput } from "./analysis-loop";
 import type { StoredAnalysisRun } from "./analysis-run-store";
 
 const mocks = vi.hoisted(() => ({
-  getCanonicalMachineSnapshots: vi.fn(),
-  getCanonicalOperatingContexts: vi.fn(),
-  getCanonicalAnalysisEconomicContext: vi.fn(),
   persistFactoryAnalysisRun: vi.fn(),
   reloadAndVerifyFactoryAnalysisRun: vi.fn(),
-}));
-vi.mock("./repository", () => ({
-  getCanonicalMachineSnapshots: mocks.getCanonicalMachineSnapshots,
-  getCanonicalOperatingContexts: mocks.getCanonicalOperatingContexts,
-  getCanonicalAnalysisEconomicContext: mocks.getCanonicalAnalysisEconomicContext,
 }));
 vi.mock("./analysis-run-store", () => ({
   persistFactoryAnalysisRun: mocks.persistFactoryAnalysisRun,
@@ -21,7 +13,36 @@ vi.mock("./analysis-run-store", () => ({
 
 import { runCanonicalFactoryAnalysis } from "./analysis-runner";
 
-const stored = { id: 42 } as unknown as StoredAnalysisRun;
+const serverInput: AnalysisInput = {
+  factoryId: 3,
+  current: {
+    id: "asset-7:no-observations",
+    factoryId: 3,
+    assetId: "7",
+    energyValue: null,
+    energyUnit: null,
+    productionValue: null,
+    productionUnit: null,
+    operatingHours: null,
+    operatingState: "",
+    productCode: "",
+    periodStart: "",
+    periodEnd: "",
+    quality: "missing",
+    origin: "synthetic",
+    sourceObservationIds: [],
+    mappingIssues: [],
+  },
+  baselineSamples: [],
+  economics: {
+    currency: "INR",
+    tariffInrPerKwh: null,
+    recoverableFraction: null,
+    interventionCostInr: null,
+  },
+  asOf: "2026-10-09T12:00:00.000Z",
+};
+const stored = { id: 42, input_snapshot: serverInput } as unknown as StoredAnalysisRun;
 const verification = {
   stored,
   recomputed: { status: "insufficient_evidence" },
@@ -32,30 +53,28 @@ const verification = {
 describe("canonical factory analysis runner", () => {
   beforeEach(() => {
     Object.values(mocks).forEach((mock) => mock.mockReset());
-    mocks.getCanonicalMachineSnapshots.mockResolvedValue([
-      { id: 7, observations: [] } as unknown as CanonicalMachineSnapshot,
-    ]);
-    mocks.getCanonicalOperatingContexts.mockResolvedValue([]);
-    mocks.getCanonicalAnalysisEconomicContext.mockResolvedValue(null);
     mocks.persistFactoryAnalysisRun.mockResolvedValue(stored);
     mocks.reloadAndVerifyFactoryAnalysisRun.mockResolvedValue(verification);
   });
 
-  it("assembles canonical evidence, persists it, then reloads and verifies the same run", async () => {
-    const result = await runCanonicalFactoryAnalysis(3, 7, "run-key", "2026-10-09T12:00:00.000Z");
+  it("sends only canonical identifiers and returns the server-assembled evidence snapshot", async () => {
+    const asOf = "2026-10-09T12:00:00.000Z";
+    const result = await runCanonicalFactoryAnalysis(3, 7, "run-key", asOf);
 
+    expect(mocks.persistFactoryAnalysisRun).toHaveBeenCalledWith(
+      { factoryId: 3, assetId: 7, asOf },
+      "run-key",
+    );
+    expect(result.input).toBe(serverInput);
     expect(result.input.current.origin).toBe("synthetic");
     expect(result.input.current.energyValue).toBeNull();
-    expect(mocks.persistFactoryAnalysisRun).toHaveBeenCalledWith(result.input, "run-key");
     expect(mocks.reloadAndVerifyFactoryAnalysisRun).toHaveBeenCalledWith(3, "run-key");
     expect(result.verification.reproducible).toBe(true);
   });
 
-  it("refuses to persist when the asset is not available in the requested factory", async () => {
-    mocks.getCanonicalMachineSnapshots.mockResolvedValue([]);
-
-    await expect(runCanonicalFactoryAnalysis(3, 7, "run-key", "2026-10-09T12:00:00.000Z"))
-      .rejects.toThrow("asset is not available");
+  it("rejects invalid entity identifiers before invoking persistence", async () => {
+    await expect(runCanonicalFactoryAnalysis(3, 0, "run-key", "2026-10-09T12:00:00.000Z"))
+      .rejects.toThrow("positive asset ID");
     expect(mocks.persistFactoryAnalysisRun).not.toHaveBeenCalled();
   });
 });
