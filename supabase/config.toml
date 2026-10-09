@@ -1,1 +1,4 @@
 project_id = "bvqmvgbfqhgczwbvlqkk"
+
+[functions.persist-factory-analysis]
+verify_jwt = true
