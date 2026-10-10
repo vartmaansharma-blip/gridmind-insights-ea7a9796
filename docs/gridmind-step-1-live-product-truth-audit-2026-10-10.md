@@ -108,14 +108,15 @@ In parallel, arrange the authorized owner sign-in to establish workspace members
 - [Latest Vercel deployment](https://vercel.com/vartmaansharma-blips-projects/gridmind/79sPFhdDJ59UxfPHhZ9MQTAWFN1v)
 
 
-## Follow-up source/migration reconciliation (same audit session)
+## Corrected source/migration reconciliation (verified after the initial report)
 
-A second repository inspection found a more specific discrepancy:
+The initial follow-up note above incorrectly stated that the repository did not contain the persistence-table migration. A full migration filename/content scan found the exact migration on `main`:
 
-- The deployed Edge Function source exists on GitHub at `supabase/functions/persist-factory-analysis/index.ts`.
-- The migration-replay workflow and integration tests expect the table `factory_analysis_runs`.
-- Searching the current default-branch source and inspecting the relevant schema migration files did not find a migration that creates `public.factory_analysis_runs`; the live database confirms the table is absent.
-- PR #3's metadata says it was merged, while its description contains stale wording saying it remains open/unmerged. Therefore PR metadata/body alone is not reliable evidence that the needed migration is present on `main`.
-- The correct next engineering task is to inspect the full `main` tree and exact merge commit history, then reconcile the migration source with the expected table/function contract. Run the clean replay workflow against the exact current SHA and check its result. Do not hand-write or apply a production migration based only on this audit.
+- `supabase/migrations/20261009130000_gridmind_factory_analysis_runs_v1.sql`
+- It creates `public.factory_analysis_runs`, enforces append-only behavior, applies RLS, and grants table writes to the service role rather than browser roles.
+- The live Supabase migration history stops at `20261009075300_require_active_org_membership_for_factory_access_v1`. Therefore `20261009130000_gridmind_factory_analysis_runs_v1` is present in source but **not applied to the live database**.
+- The repository also contains `supabase/functions/persist-factory-analysis/index.ts`, but the live Supabase project reports zero deployed Edge Functions.
 
-This makes the immediate blocker more precise: **migration/source drift or a missing migration definition for the persistence table**, in addition to the confirmed absence of the live Edge Function and live workspace memberships.
+**Correct diagnosis:** this is not a missing migration source. It is a pending production migration plus an undeployed Edge Function. Do not add a duplicate migration. The safe next step is to run/verify the existing migration through the approved release path, then deploy the function with the required secrets and validate authenticated persistence/reload/reproducibility. These production operations were not performed by this documentation commit.
+
+The prior incorrect sentence claiming that no migration definition exists is superseded by this corrected finding.
