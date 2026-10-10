@@ -1,6 +1,6 @@
 # GridMind Product Definition and Strategic Evolution
 
-**Status:** Strategy and decision framework, not a claim of current product readiness  
+**Status:** Strategy and decision framework, not a claim of current product readiness. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs immediate scope and any conflicting strategic instruction.  
 **Last updated:** 2026-10-10
 
 ## 1. The concise definition
