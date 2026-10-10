@@ -85,7 +85,11 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     operating = read_csv(ops_path, OPS, errors)
     economics = read_csv(eco_path, ECO, errors)
 
-    source_ids: set[tuple[str, str]] = set()
+    source_ids: dict[str, set[tuple[str, str]]] = {
+        "observations": set(),
+        "operating_contexts": set(),
+        "economic_contexts": set(),
+    }
     intervals: dict[tuple[str, str, str], list[tuple[datetime, datetime, str]]] = defaultdict(list)
     observation_periods: list[tuple[str, str, datetime, datetime, str]] = []
     valid_context_coverage: list[tuple[str, str, datetime, datetime, str]] = []
