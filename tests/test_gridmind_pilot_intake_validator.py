@@ -185,5 +185,12 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, _ = validator.validate(self.obs, self.ops, self.eco)
         self.assertTrue(any("duplicate source_system/source_record_id in economic contexts" in error for error in errors))
 
+    def test_asset_cannot_belong_to_multiple_factories_across_intake_files(self):
+        obs, op, eco = self.valid_rows()
+        op["factory_id"] = "F2"
+        self.write_all([obs], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("asset 'A1' is assigned to multiple factories" in error for error in errors))
+
 if __name__ == "__main__":
     unittest.main()
