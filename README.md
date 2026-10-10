@@ -70,6 +70,14 @@ Expansion should follow customer evidence and reuse of the same trusted context 
 
 This is a set of conditional expansion options, not a forecast or commitment to deliver every layer.
 
+## Website, marketing and sales strategy
+
+The main website is a separate future-facing marketing project, not the current deployed application. Its purpose is to attract relevant industrial buyers, explain GridMind's value proposition, demonstrate its evidence-first approach, address commercial and technical objections, and generate qualified discovery conversations.
+
+See [GridMind website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md) for target buyers, marketing angles, hero concepts, ethical persuasion, homepage narrative, interactive demo, conversion funnel, sales assets, objections, visual direction, measurement and a 90-day plan.
+
+The next design deliverable is a complete homepage specification. The new main site should be designed and built separately from the current application.
+
 ## Product and trust principles
 
 - Evidence-first, with traceable provenance and explicit uncertainty.
@@ -89,6 +97,7 @@ The immediate priority is to refresh read-only readiness, establish legitimate c
 
 See:
 - [GridMind product definition and strategy](docs/gridmind-product-definition.md)
+- [GridMind website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md)
 - [System-alignment audit](docs/gridmind-system-alignment-audit.md)
 - [Release gate](docs/release-gate.md)
 
