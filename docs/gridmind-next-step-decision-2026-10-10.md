@@ -171,3 +171,14 @@ Read-only production queries confirm one existing Supabase Auth user matching th
 - [ ] Commercial offer and messaging validated with industrial buyers.
 
 **Decision:** continue technical acceptance through the founder's authenticated workspace flow. Do not build more features or make production/pilot claims until the live-user path and real-data evidence are established.
+
+
+## Latest execution decision — app flow is implemented; interactive sign-in is the only immediate user-side dependency
+
+On documentation commit `394cdb25d1ef9e5e28ac7e2e12812f98b2b78cd4`, CI and GridMind Quality Gate passed. Migration Replay remained pending at last check, so the current commit is not fully green yet.
+
+The app already has an authenticated workspace setup path: `/auth` signs in an existing user; if the authenticated user has no visible factory, the app shell displays **Create your first factory**; submitting the Add Factory form invokes the authenticated `create_factory_workspace` RPC and reloads the authorized factory snapshots. The live Auth user exists, but currently has no organization or factory membership.
+
+**Next action:** founder signs in privately through the deployed app using the existing account, then creates a founder-owned factory workspace through the UI. Do not create a duplicate account, request a password in chat, manually insert membership rows, or attach the founder to the configured factory before ownership is confirmed. After the UI flow, verify memberships read-only and perform live persist/retry/recompute, direct-write denial, and cross-tenant isolation tests. Then qualify a real factory and traceable data before claiming pilot readiness.
+
+Workflow links for the current commit: [CI passed](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717626), [Quality Gate passed](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717676), [Migration Replay pending](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717696).
