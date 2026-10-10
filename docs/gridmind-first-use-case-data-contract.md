@@ -1,6 +1,6 @@
 # GridMind first-use-case data contract
 
-**Status:** Provisional pilot contract for customer discovery and engineering review. It is not evidence that a real factory has supplied data or that GridMind is validated.
+**Status:** Provisional candidate-specific data contract for customer discovery and engineering review. It is not the selected first wedge unless the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) is updated with evidence. It is not evidence that a real factory has supplied data or that GridMind is validated.
 
 ## 1. Provisional first use case
 
