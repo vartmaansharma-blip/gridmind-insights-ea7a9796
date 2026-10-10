@@ -58,3 +58,13 @@ Read-only audit of GitHub default-branch files, Vercel deployment metadata and g
 
 ## Audit status
 Partial, evidence-based audit complete. No new code fixes made in this pass. Main uncertainty is live end-to-end persistence, followed by build/test execution and current-production SSR verification.
+
+
+## Repair execution update — 2026-10-10
+
+### Code change committed
+- Commit: [990a718](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/commit/990a718057c0e115c6ad78e045ac6dfd1321288b)
+- File: `src/lib/energy/store.tsx`
+- Change: serialize debounced persistence operations per factory to prevent overlapping writes from completing out of order; surface persistence failures with a user-visible toast while retaining the detailed error in the console for diagnosis.
+- Rationale: the UI updated local React state optimistically and persistence failures were only written to the console, so a failed save could look successful. Concurrent debounced writes could also race.
+- Verification status: source change committed. Build/typecheck/test results and authenticated save-after-reload acceptance are not yet established. Do not call this issue fully resolved until CI/build succeeds and profile, monthly rows, and equipment are saved and verified after reload in an authenticated test workspace.
