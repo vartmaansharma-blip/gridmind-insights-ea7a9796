@@ -1,6 +1,6 @@
 # GridMind expansion architecture: one core, multiple industrial businesses
 **Date:** 2026-10-10  
-**Status:** Strategic direction, not a claim that these modules are built or validated.
+**Status:** Strategic direction, not a claim that these modules are built or validated. Follow the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) for current scope and decision authority.
 
 ## Decision
 
@@ -96,6 +96,6 @@ Customer data cannot be reused across customers by default. Contract rights, pri
 
 ## Current recommendation
 
-Keep GridMind as the long-term industrial platform thesis. The immediate decision is not to build all these modules; it is to find the strongest first commercial wedge and prove one end-to-end customer result. Procurement intelligence is the strongest alternative to test; a narrow vertical workflow may be the easiest to sell; energy efficiency is a credible entry only if customer access and technical review are available.
+Keep GridMind as the long-term industrial platform thesis. The immediate decision is not to build all these modules; it is to find the strongest first commercial wedge and prove one end-to-end customer result. Operational-loss investigation, one-category procurement intelligence, and one narrow vertical workflow must be compared using the same evidence rubric. Prior documentation depth or founder preference does not confer priority. Energy is eligible only if customer access, data boundaries and qualified review make the case defensible.
 
 **North-star target:** GridMind becomes a trusted industrial decision-to-outcome platform whose recommendations are traceable, whose uncertainty is explicit, and whose impact can be independently verified. Expansion is earned one adjacent workflow at a time.
