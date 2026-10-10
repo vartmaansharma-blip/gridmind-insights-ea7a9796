@@ -63,9 +63,11 @@ Track qualified conversations and willingness to share a real problem/data pathw
 
 **Exit condition:** documented interview notes and a positioning decision based on observed comprehension, problem relevance, trust concerns, and next-step conversion.
 
-### Gate 4 — Implement a narrow, truthful main website
+### Gate 4 — Implement a narrow, truthful main website (conditional, not current)
 
-Build the public marketing website as a separate surface from the current application. Start with:
+This gate is **not active yet**. Begin only after product truth is refreshed, the initial offer and exclusions are explicit, and buyer discovery provides enough evidence to justify the site scope. If those prerequisites are not met, continue discovery and authorized technical acceptance instead of implementing the full site.
+
+When the gate passes, build the public marketing website as a separate surface from the current application. Start with:
 1. one clear homepage;
 2. a credible evidence-to-decision workflow explanation;
 3. a clearly labelled synthetic illustrative example, if it helps comprehension;
@@ -156,7 +158,7 @@ Read-only production queries confirm one existing Supabase Auth user matching th
 3. **Verify memberships read-only.** Confirm active organization and factory memberships after the application flow.
 4. **Run live authenticated acceptance.** Persist one authorized test analysis, retry the same idempotency key, reload/recompute/verify, confirm cross-tenant denial, and confirm browser-role direct writes remain denied. Keep test fixtures local; do not insert fake factory evidence into production.
 5. **Qualify one real pilot.** Obtain authorization, source provenance, comparable energy/production/operating-hour periods, operating context, and documented tariff/intervention assumptions. Have a qualified factory reviewer assess the result.
-6. **Then advance commercial validation.** Prepare the narrow pilot offer and claim-evidence matrix, conduct structured buyer conversations, and build the marketing homepage around proven capabilities. Website completion is not a substitute for product validation.
+6. **Then advance commercial validation.** Prepare the narrow offer and claim-evidence matrix, and conduct structured buyer conversations. Build a marketing homepage only after the prerequisites above pass; website completion is not a substitute for product validation.
 
 ### Current gate status
 
