@@ -31,17 +31,9 @@ The loop is the product's organizing principle. Energy analysis, machine intelli
 
 ## Initial wedge and expansion rule
 
-The first commercial wedge is **not permanently fixed to energy**. Energy and utility losses are a promising candidate because they can sometimes be quantified, but the initial use case must be selected through customer discovery and real-data access. Compare candidate problems by:
+The first commercial wedge is **not permanently fixed to energy**. Energy and utility losses are a promising candidate because they can sometimes be quantified, but the initial use case must be selected through customer discovery and real-data access. Compare candidate problems by severity and frequency of economic pain, access to trustworthy authorized data, ability to establish a defensible baseline and measure outcomes, urgency and willingness to pay, delivery cost and time, repeatability, and operational risk.
 
-1. severity and frequency of the economic pain;
-2. access to trustworthy, authorized data;
-3. ability to establish a defensible baseline and measure an outcome;
-4. urgency and willingness to pay;
-5. time and cost to deliver a useful result;
-6. repeatability across facilities without excessive bespoke engineering;
-7. safety, operational and integration risk.
-
-Start with one narrow problem and one defined customer profile. Do not expand the scope until the evidence-to-action-to-verification workflow has been demonstrated with real data, reviewed by a qualified domain expert, and repeated at another facility.
+Start with one narrow problem and one defined customer profile. Do not expand until the evidence-to-action-to-verification workflow has been demonstrated with real data, reviewed by a qualified domain expert, and repeated at another facility.
 
 ## Evidence and economic model
 
@@ -63,7 +55,7 @@ Economic prioritization should account for expected value, evidence confidence, 
 Expansion should follow customer evidence and reuse of the same trusted context and verification loop:
 
 1. **Prove one use case:** authorized real data, repeatable analysis, independent domain review, a useful intervention decision, and measured post-intervention outcome.
-2. **Deepen the facility workflow:** add adjacent energy, utility, asset, maintenance, reliability, quality or production-loss workflows only where the data and customer problem justify them.
+2. **Deepen the facility workflow:** add adjacent energy, utility, asset, maintenance, reliability, quality or production-loss workflows only where data and customer problems justify them.
 3. **Connect decisions to execution:** support repair-versus-replace decisions, lifecycle economics, quote comparison, supplier qualification and implementation coordination when these are natural next steps from validated opportunities.
 4. **Build a permissioned industrial network:** connect factories with qualified service providers, OEMs, distributors and specialists; preserve customer choice, transparent incentives, confidentiality and auditability.
 5. **Scale across sites and industrial segments:** offer repeatable multi-facility workflows and carefully governed benchmarks only when evidence is comparable and customers have granted appropriate data rights.
@@ -74,9 +66,10 @@ This is a set of conditional expansion options, not a forecast or commitment to 
 
 The main website is a separate future-facing marketing project, not the current deployed application. Its purpose is to attract relevant industrial buyers, explain GridMind's value proposition, demonstrate its evidence-first approach, address commercial and technical objections, and generate qualified discovery conversations.
 
-See [GridMind website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md) for target buyers, marketing angles, hero concepts, ethical persuasion, homepage narrative, interactive demo, conversion funnel, sales assets, objections, visual direction, measurement and a 90-day plan.
+- [Website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md)
+- [Main website homepage specification](docs/gridmind-main-website-homepage-spec.md)
 
-The next design deliverable is a complete homepage specification. The new main site should be designed and built separately from the current application.
+The homepage specification defines the draft copy, section order, hero alternatives, product walkthrough, conversion paths, visual system, responsive behavior, accessibility, analytics, claim review, acceptance criteria and next steps. It is a specification, not an implemented website.
 
 ## Product and trust principles
 
@@ -93,11 +86,14 @@ The next design deliverable is a complete homepage specification. The new main s
 
 **GridMind's long-term product direction is a strategy; it is not evidence of present readiness.** The repository audit dated 2026-10-10 states that feature expansion should pause and GridMind should not be described as pilot-ready until the end-to-end evidence-to-action-to-verification path is demonstrated on real factory evidence. Its recorded live-readiness figures are a historical snapshot and must be refreshed before operational decisions.
 
-The immediate priority is to refresh read-only readiness, establish legitimate customer-authorized access, obtain traceable real-factory data, qualify it, run the analysis, obtain independent domain review, and—if the evidence justifies action—measure and verify the result. Then repeat the process at a second facility.
+The immediate product priority is to refresh read-only readiness, establish legitimate customer-authorized access, obtain traceable real-factory data, qualify it, run the analysis, obtain independent domain review, and—if the evidence justifies action—measure and verify the result. Then repeat the process at a second facility.
+
+The immediate website priority is to refresh product readiness and map each proposed public claim to current evidence before implementation or launch.
 
 See:
 - [GridMind product definition and strategy](docs/gridmind-product-definition.md)
 - [GridMind website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md)
+- [GridMind homepage specification](docs/gridmind-main-website-homepage-spec.md)
 - [System-alignment audit](docs/gridmind-system-alignment-audit.md)
 - [Release gate](docs/release-gate.md)
 
