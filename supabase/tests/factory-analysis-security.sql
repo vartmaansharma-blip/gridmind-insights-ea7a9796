@@ -73,6 +73,29 @@ begin
     raise exception 'UNNECESSARY_ORGANIZATION_MEMBERSHIP_TABLE_PRIVILEGES_REMAIN';
   end if;
 
+  -- RLS does not protect TRUNCATE; no API role should have structural privileges
+  -- on any public base or partitioned table.
+  if exists (
+    select 1
+    from pg_class c
+    join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public'
+      and c.relkind in ('r', 'p')
+      and (
+        has_table_privilege('anon', c.oid, 'truncate')
+        or has_table_privilege('authenticated', c.oid, 'truncate')
+        or has_table_privilege('service_role', c.oid, 'truncate')
+        or has_table_privilege('anon', c.oid, 'references')
+        or has_table_privilege('authenticated', c.oid, 'references')
+        or has_table_privilege('service_role', c.oid, 'references')
+        or has_table_privilege('anon', c.oid, 'trigger')
+        or has_table_privilege('authenticated', c.oid, 'trigger')
+        or has_table_privilege('service_role', c.oid, 'trigger')
+      )
+  ) then
+    raise exception 'UNNECESSARY_STRUCTURAL_PRIVILEGES_REMAIN_ON_PUBLIC_TABLES';
+  end if;
+
   if not exists (
     select 1 from pg_proc p
     join pg_namespace n on n.oid = p.pronamespace
