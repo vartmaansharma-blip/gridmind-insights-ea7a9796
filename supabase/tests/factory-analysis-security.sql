@@ -11,6 +11,7 @@ declare
   factory_a bigint;
   factory_b bigint;
   asset_a bigint;
+  asset_b bigint;
 begin
   insert into auth.users (id, aud, role, email, created_at, updated_at, raw_app_meta_data, raw_user_meta_data)
   values
@@ -29,6 +30,8 @@ begin
   values (org_b, 'gridmind-ci-factory-b') returning id into factory_b;
   insert into public.factory_assets (factory_id, name)
   values (factory_a, 'gridmind-ci-asset-a') returning id into asset_a;
+  insert into public.factory_assets (factory_id, name)
+  values (factory_b, 'gridmind-ci-asset-b') returning id into asset_b;
 
   insert into public.factory_members (factory_id, user_id, organization_id, role)
   values (factory_a, user_a, org_a, 'owner'), (factory_b, user_b, org_b, 'owner');
@@ -50,6 +53,44 @@ begin
   if visible_factories <> 1 then
     raise exception 'TENANT_ISOLATION_FAILED: user A sees % test factories, expected exactly one', visible_factories;
   end if;
+
+  if (select count(*) from public.factory_assets where name like 'gridmind-ci-asset-%') <> 1 then
+    raise exception 'CROSS_TENANT_ASSET_READ_WAS_ALLOWED';
+  end if;
+
+  if not has_function_privilege('authenticated', 'public.create_factory_workspace(text,text,text)', 'execute')
+    or has_function_privilege('anon', 'public.create_factory_workspace(text,text,text)', 'execute') then
+    raise exception 'WORKSPACE_BOOTSTRAP_FUNCTION_GRANTS_ARE_NOT_LEAST_PRIVILEGE';
+  end if;
+
+  if not exists (
+    select 1 from pg_proc p
+    join pg_namespace n on n.oid = p.pronamespace
+    where n.nspname = 'public'
+      and p.proname = 'create_factory_workspace'
+      and pg_get_function_identity_arguments(p.oid) = 'p_name text, p_location text, p_industry text'
+      and coalesce(array_to_string(p.proconfig, ','), '') like '%search_path=""%'
+  ) then
+    raise exception 'WORKSPACE_BOOTSTRAP_SEARCH_PATH_NOT_PINNED';
+  end if;
+
+  -- User A must not be able to promote, modify, or add members in organization B.
+  update public.organization_members
+    set role = 'owner'
+    where organization_id = (select id from public.organizations where name = 'gridmind-ci-org-b')
+      and user_id = 'b2222222-2222-4222-8222-222222222222';
+  if found then
+    raise exception 'CROSS_TENANT_MEMBERSHIP_UPDATE_WAS_ALLOWED';
+  end if;
+
+  begin
+    insert into public.organization_members (organization_id, user_id, role, status)
+    select id, 'a1111111-1111-4111-8111-111111111111', 'owner', 'active'
+    from public.organizations where name = 'gridmind-ci-org-b';
+    raise exception 'CROSS_TENANT_MEMBERSHIP_INSERT_WAS_ALLOWED';
+  exception
+    when insufficient_privilege then null;
+  end;
 
   if has_table_privilege(current_user, 'public.factory_analysis_runs', 'select')
     or has_table_privilege(current_user, 'public.factory_analysis_runs', 'insert')
@@ -110,12 +151,14 @@ declare
   factory_a bigint;
   factory_b bigint;
   asset_a bigint;
+  asset_b bigint;
   run_id bigint;
   trigger_message text;
 begin
   select id into strict factory_a from public.factories where name = 'gridmind-ci-factory-a';
   select id into strict factory_b from public.factories where name = 'gridmind-ci-factory-b';
   select id into strict asset_a from public.factory_assets where name = 'gridmind-ci-asset-a';
+  select id into strict asset_b from public.factory_assets where name = 'gridmind-ci-asset-b';
 
   insert into public.factory_analysis_runs
     (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,
