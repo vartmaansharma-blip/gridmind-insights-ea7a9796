@@ -47,3 +47,9 @@ for update
 to authenticated
 using ((select private.is_org_admin(organization_id)))
 with check ((select private.is_org_admin(organization_id)));
+
+-- These structural privileges are not needed by the application roles and are not
+-- constrained by row-level security. Remove any legacy/PUBLIC grants explicitly.
+revoke truncate, references, trigger
+on table public.organization_members
+from public, anon, authenticated, service_role;
