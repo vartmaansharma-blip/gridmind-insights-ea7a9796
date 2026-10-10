@@ -84,6 +84,16 @@ A third small migration was merged in [PR #22](https://github.com/vartmaansharma
 These are schema/grant checks, not a substitute for a live authenticated two-user API test.
 
 
+## Broader policy/function inventory — 2026-10-10
+
+A further read-only catalogue query after the third production migration found:
+- All **42/42** public base/partitioned tables have RLS enabled.
+- No current public-table RLS policies target `PUBLIC` or `anon`.
+- The public schema has two SECURITY DEFINER functions: `public.create_factory_workspace` and `public.rls_auto_enable`. The bootstrap function has an empty search path, execute denied to anon/PUBLIC, and execute granted to authenticated (intentional onboarding RPC). `rls_auto_enable` is not executable by anon, authenticated, or PUBLIC and has `search_path=pg_catalog`.
+- Supabase Security Advisor continues to report leaked-password protection disabled. That Auth setting cannot be changed by a SQL migration and remains a dashboard/configuration action.
+
+This is a useful inventory baseline, not a complete proof that every policy predicate and every cross-factory relationship is correct. The next engineering checks are table-by-table predicate/grant review and authenticated API-level negative tests across the canonical graph.
+
 ## Phase 2 checklist
 
 | Item | Status | Evidence / next action |
@@ -93,7 +103,7 @@ These are schema/grant checks, not a substitute for a live authenticated two-use
 | 2.3 Add cross-tenant asset read denial test | **Implemented and passing locally in CI** | `supabase/tests/factory-analysis-security.sql`; Migration Replay passed. |
 | 2.4 Add cross-tenant membership write denial test | **Implemented and passing locally in CI** | Same test script, user A attempting to update/insert in org B. |
 | 2.5 Verify SECURITY DEFINER function grants and search path | **Core bootstrap checks passing; full catalogue audit open** | Test asserts public workspace bootstrap is executable by authenticated, not anon, and has empty search path. Existing private helper ACLs still need a broader catalogue audit. |
-| 2.6 Audit all RLS policies and table grants across canonical tables | **In progress / incomplete** | The organization_members structural grants were corrected in the proposed migration and are tested; a table-by-table matrix for all public tables and functions remains. |
+| 2.6 Audit all RLS policies and table grants across canonical tables | **Partially verified; semantic review incomplete** | All 42/42 public base/partitioned tables have RLS enabled; no public-table policies target PUBLIC/anon; no app role has structural TRUNCATE/REFERENCES/TRIGGER grants. Continue reviewing each policy predicate, DML grant, relationship constraint, and edge-function boundary. |
 | 2.7 Verify cross-factory composite constraints | **Partially implemented in schema; runtime coverage incomplete** | Several canonical graph edges already have composite factory-scoped foreign keys. Add explicit negative tests for cross-factory observations, mappings, opportunities, interventions, verification plans/runs, and outcomes. |
 | 2.8 Review workspace bootstrap organization selection | **Open** | The RPC chooses the first active owner/admin organization when a caller belongs to multiple organizations. Confirm intended product behavior; preferably require an explicit authorized organization or a separate “create new organization” flow rather than silently selecting the first. |
 | 2.9 Review leaked-password protection | **Blocked on Auth configuration access** | Previous read-only Supabase advisor snapshot reported it disabled. Confirm current setting and enable through authorized Auth settings after reviewing login/reset UX. No production setting changed. |
