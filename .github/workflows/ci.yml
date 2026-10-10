@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
+      - name: Markdown internal-link audit
+        run: bun run docs:links
+
       - name: Typecheck
         run: bun run typecheck
 
