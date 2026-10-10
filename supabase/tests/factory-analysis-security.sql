@@ -68,7 +68,7 @@ begin
     join pg_namespace n on n.oid = p.pronamespace
     where n.nspname = 'public'
       and p.proname = 'create_factory_workspace'
-      and pg_get_function_identity_arguments(p.oid) = 'p_name text, p_location text, p_industry text'
+      and p.pronargs = 3
       and coalesce(array_to_string(p.proconfig, ','), '') like '%search_path=""%'
   ) then
     raise exception 'WORKSPACE_BOOTSTRAP_SEARCH_PATH_NOT_PINNED';
