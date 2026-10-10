@@ -1,6 +1,7 @@
 # GridMind Main Website: Marketing, Sales Psychology and Conversion Strategy
 
 **Status:** Strategic plan and hypotheses to validate; not a claim of current product readiness.  
+**Decision authority:** Follow the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). This document defines messaging strategy; it does not authorize immediate website implementation.
 **Last updated:** 2026-10-10  
 **Brand:** GridMind  
 **Descriptor:** Infrastructure Intelligence
@@ -335,8 +336,10 @@ Therefore:
 - State data, integration and security capabilities accurately.
 - Do not fabricate testimonials, scarcity, logos, performance benchmarks or customer counts.
 
-## 17. Immediate next deliverable
+## 17. Deliverable status and implementation gate
 
-Turn this strategy into a **complete homepage specification**: exact section order, final draft copy, visual composition, interactions, CTA destinations, proof requirements, responsive behavior, and a claim-by-claim evidence checklist. Then define the supporting pages and build the new main website separately from the existing application.
+The homepage specification now exists at [Main Website Homepage Specification](gridmind-main-website-homepage-spec.md). Do not create more strategy/specification layers by default.
 
-The site must sell GridMind's intended ability to reason about industrial problems and support better decisions—not merely its ability to display industrial data.
+**Current decision:** Full website implementation is gated, not the next immediate task. First refresh live product truth, define the honest initial offer, and test the positioning with relevant buyers. A small copy or offer test is allowed if it helps discovery and makes no unsupported capability claims. After those gates, implement the smallest separate marketing surface that serves the validated offer; keep it separate from the production application until an explicit launch decision.
+
+The site must communicate GridMind's intended ability to reason about industrial problems and support better decisions—not merely display industrial data—and must distinguish present, tested capability from future ambition.
