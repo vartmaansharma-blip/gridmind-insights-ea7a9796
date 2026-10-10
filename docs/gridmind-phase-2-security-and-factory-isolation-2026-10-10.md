@@ -72,6 +72,18 @@ Proposed correction in branch `security/scope-membership-update-policy`:
 - Apply to production only after clean replay and CI pass, then re-query `pg_policies` to confirm the live policy roles.
 
 
+## Production rollout update — 2026-10-10
+
+A third small migration was merged in [PR #22](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/22) after the live policy inventory found the organization-membership UPDATE policy's target role was `PUBLIC` rather than explicitly `authenticated`.
+
+- Applied production migration `20261010104942 / scope_membership_update_policy`.
+- Requeried `pg_policies`: SELECT, INSERT, and UPDATE policies on `organization_members` now all target `authenticated`; UPDATE calls `private.is_org_admin(organization_id)`.
+- Requeried all 42 public base/partitioned tables: **42/42 have RLS enabled**.
+- After the structural-grant migration, the effective-privilege audit reports **0/42 tables** with app-role `TRUNCATE`, `REFERENCES`, or `TRIGGER` privileges.
+
+These are schema/grant checks, not a substitute for a live authenticated two-user API test.
+
+
 ## Phase 2 checklist
 
 | Item | Status | Evidence / next action |
