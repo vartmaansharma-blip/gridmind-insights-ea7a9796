@@ -40,7 +40,16 @@ def read_csv(path: Path, expected: list[str], errors: list[str]) -> list[dict[st
             if reader.fieldnames != expected:
                 errors.append(f"{path}: headers must match the repository template exactly; expected: {','.join(expected)}")
                 return []
-            return [{k: (v or "").strip() for k, v in row.items()} for row in reader]
+            rows: list[dict[str, str]] = []
+            for line_number, row in enumerate(reader, start=2):
+                if None in row:
+                    errors.append(f"{path}:{line_number}: row has extra columns; expected {len(expected)} fields")
+                    continue
+                normalized = {k: (v or "").strip() for k, v in row.items()}
+                if not any(normalized.values()):
+                    continue
+                rows.append(normalized)
+            return rows
     except OSError as exc:
         errors.append(f"{path}: cannot read file ({exc})")
         return []
@@ -78,6 +87,9 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
 
     source_ids: set[tuple[str, str]] = set()
     intervals: dict[tuple[str, str, str], list[tuple[datetime, datetime, str]]] = defaultdict(list)
+    observation_periods: list[tuple[str, str, datetime, datetime, str]] = []
+    valid_context_coverage: list[tuple[str, str, datetime, datetime, str]] = []
+    economic_coverage: list[tuple[str, datetime, datetime | None, str, float | None, str]] = []
     factories: set[str] = set()
     for i, row in enumerate(observations, 2):
         label = f"{obs_path.name}:{i}"
@@ -115,6 +127,8 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
         if start and end:
             if end <= start:
                 errors.append(f"{label}: period_end must be after period_start")
+            if end > start:
+                observation_periods.append((row.get("factory_id", ""), row.get("asset_id", ""), start, end, label))
             key_role = role or metric
             intervals[(row.get("factory_id", ""), row.get("asset_id", ""), key_role)].append((start, end, label))
         sid = row.get("source_record_id", "")
@@ -140,12 +154,24 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
         if start and end:
             if end <= start:
                 errors.append(f"{label}: end_time must be after start_time")
-            signature = "|".join([row.get("operating_state", ""), row.get("product_code", "")])
-            context_intervals[(row.get("factory_id", ""), row.get("asset_id", ""))].append((start, end, signature, label))
+            else:
+                signature = "|".join([row.get("operating_state", ""), row.get("product_code", "")])
+                context_intervals[(row.get("factory_id", ""), row.get("asset_id", ""))].append((start, end, signature, label))
+                if row.get("status", "").lower() in USABLE_QUALITY:
+                    valid_context_coverage.append((row.get("factory_id", ""), row.get("asset_id", ""), start, end, label))
         if row.get("status", "").lower() not in USABLE_QUALITY:
             blockers.append(f"{label}: status is not an accepted analysis status; human review required")
         if row.get("confidence"):
             number(row["confidence"], f"{label}: confidence", errors, low=0, high=1)
+
+    for factory, asset, period_start, period_end, observation_label in observation_periods:
+        if not any(
+            ctx_factory == factory and ctx_asset == asset and ctx_start <= period_start and ctx_end >= period_end
+            for ctx_factory, ctx_asset, ctx_start, ctx_end, _ in valid_context_coverage
+        ):
+            blockers.append(
+                f"{observation_label}: no accepted operating-context interval covers this observation period for factory {factory!r}, asset {asset!r}"
+            )
 
     for key, rows in context_intervals.items():
         rows.sort(key=lambda x: x[0])
@@ -168,13 +194,18 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
             end = parse_time(row["effective_until"], f"{label}: effective_until", errors)
         if start and end and end <= start:
             errors.append(f"{label}: effective_until must be after effective_from")
+        tariff_value = None
         for field, low, high in [("tariff_inr_per_kwh", 0, None), ("recoverable_fraction", 0, 1), ("intervention_cost_inr", 0, None)]:
             if row.get(field):
-                number(row[field], f"{label}: {field}", errors, low=low, high=high)
-        if row.get("tariff_inr_per_kwh") and row.get("currency", "").upper() != "INR":
+                parsed = number(row[field], f"{label}: {field}", errors, low=low, high=high)
+                if field == "tariff_inr_per_kwh":
+                    tariff_value = parsed
+        currency = row.get("currency", "").upper()
+        if row.get("tariff_inr_per_kwh") and currency != "INR":
             errors.append(f"{label}: tariff_inr_per_kwh requires currency INR; do not mix currencies or silently convert")
         if start:
             economics_by_factory[factory].append((start, end, label))
+            economic_coverage.append((factory, start, end, label, tariff_value, currency))
 
     for factory, rows in economics_by_factory.items():
         rows.sort(key=lambda x: x[0])
@@ -186,6 +217,20 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
                 current_end_bound = current_end or datetime.max.replace(tzinfo=current_start.tzinfo)
                 if current_start < prior_end_bound and prior_start < current_end_bound:
                     errors.append(f"{current_label}: effective economic context overlaps {prior_label} for factory {factory!r}")
+
+    for factory, asset, period_start, period_end, observation_label in observation_periods:
+        covering = [
+            item for item in economic_coverage
+            if item[0] == factory and item[1] <= period_start and (item[2] is None or item[2] >= period_end)
+        ]
+        if not covering:
+            blockers.append(
+                f"{observation_label}: no economic context is effective for the full observation period; do not quantify financial impact"
+            )
+        elif not any(item[4] is not None and item[5] == "INR" for item in covering):
+            blockers.append(
+                f"{observation_label}: no covering INR tariff is documented; do not quantify financial impact"
+            )
 
     for factory in sorted(f for f in factories if f):
         rows = economics_by_factory.get(factory, [])
