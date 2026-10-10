@@ -37,6 +37,8 @@ Start with one narrow problem and one defined customer profile. Do not expand un
 
 ## Data advantage strategy
 
+GridMind's long-term product model is the [Factory Value-Chain Intelligence Model](docs/gridmind-factory-value-chain-intelligence.md): connect process flow, assets, materials, utilities, quality, maintenance, logistics and economics through evidence-backed relationships. This is a target architecture, not a claim that every domain is implemented.
+
 The [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md) defines proposed release gates for input integrity, expert-reviewed finding quality, correct refusal, reproducibility and responsible performance claims.
 
 The immediate execution artifact is the [First-Use-Case Data Contract](docs/gridmind-first-use-case-data-contract.md), which specifies a provisional pilot question, evidence schema, quality/refusal gates, independent review rubric and permission boundaries.
