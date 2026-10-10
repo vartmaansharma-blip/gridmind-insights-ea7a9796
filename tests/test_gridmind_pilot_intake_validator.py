@@ -160,5 +160,16 @@ class IntakeValidatorTests(unittest.TestCase):
         _, blockers = validator.validate(self.obs, self.ops, self.eco)
         self.assertTrue(any("no economic context is effective for the full observation period" in blocker for blocker in blockers))
 
+    def test_operating_state_requires_text_value(self):
+        obs, op, eco = self.valid_rows()
+        obs["role"] = "operating_state"
+        obs["metric"] = "operating_state"
+        obs["value_numeric"] = "1"
+        obs["unit"] = "state"
+        self.write_all([obs], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("must use value_text" in error for error in errors))
+        self.assertTrue(any("require value_text" in error for error in errors))
+
 if __name__ == "__main__":
     unittest.main()
