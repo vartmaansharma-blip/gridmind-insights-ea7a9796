@@ -41,7 +41,7 @@ jobs:
       - name: Verify canonical analysis persistence schema contract
         shell: bash
         run: |
-          DB_URL="$(supabase status -o env | sed -n 's/^DB_URL=\\"\\(.*\\)\\"$/\\1/p')"
+          DB_URL="$(supabase status -o env | sed -n 's/^DB_URL=\"\(.*\)\"$/\1/p')"
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-schema-contract.sql
 
