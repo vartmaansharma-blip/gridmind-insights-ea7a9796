@@ -8,7 +8,7 @@ declare
   user_b constant uuid := 'b4444444-4444-4444-8444-444444444444';
   org_a bigint;
   org_b bigint;
-  factory_id bigint;
+  v_factory_id bigint;
   actual_org_id bigint;
 begin
   if has_function_privilege('anon', 'public.create_factory_workspace(text,text,text)', 'execute') then
@@ -61,11 +61,11 @@ begin
       end if;
   end;
 
-  factory_id := public.create_factory_workspace('gridmind-bootstrap-factory-a', 'test location', 'test industry');
+  v_factory_id := public.create_factory_workspace('gridmind-bootstrap-factory-a', 'test location', 'test industry');
 
   select f.organization_id into strict actual_org_id
   from public.factories f
-  where f.id = factory_id;
+  where f.id = v_factory_id;
 
   if actual_org_id <> org_a then
     raise exception 'WORKSPACE_ATTACHED_TO_UNAUTHORIZED_ORGANIZATION: expected %, got %', org_a, actual_org_id;
@@ -81,7 +81,7 @@ begin
 
   if not exists (
     select 1 from public.factory_members fm
-    where fm.factory_id = factory_id and fm.organization_id = org_a
+    where fm.v_factory_id = v_factory_id and fm.organization_id = org_a
       and fm.user_id = user_a and fm.role = 'owner'
   ) then
     raise exception 'FACTORY_OWNER_MEMBERSHIP_MISSING';
@@ -89,7 +89,7 @@ begin
 
   if exists (
     select 1 from public.factory_members fm
-    where fm.factory_id = factory_id and fm.organization_id = org_b
+    where fm.v_factory_id = v_factory_id and fm.organization_id = org_b
   ) then
     raise exception 'CROSS_TENANT_FACTORY_MEMBERSHIP_CREATED';
   end if;
