@@ -29,7 +29,7 @@ The current production ACL and function definition should still be rechecked bef
 
 - [x] Read source migrations and identify the intended bootstrap behavior.
 - [x] Confirm the latest Security Advisor warning and leaked-password finding.
-- [ ] Add automated positive and negative tests for unauthenticated, authorized, cross-tenant, malformed-input, and multiple-eligible-organization cases.
+- [x] Add an isolated SQL test for unauthenticated calls, blank names, anonymous EXECUTE denial, and correct owner membership on the created factory (PR #13; CI passed, migration replay still pending at the latest check).\n- [ ] Extend coverage for explicit cross-tenant organization selection and multiple-eligible-organization behavior; current bootstrap RPC has no organization ID argument, so those cases must validate isolation/selection behavior rather than caller-supplied org IDs.
 - [ ] Prove a caller cannot attach a factory to an organization they do not control or bypass active organization membership.
 - [ ] Confirm the behavior when a user has multiple active owner/admin organizations is deliberate and deterministic.
 - [ ] Re-run clean migration replay, tenant-isolation tests, and authenticated HTTP acceptance on the same candidate SHA.
@@ -72,7 +72,7 @@ Use the existing canonical observation, operating-context, and economic-context 
 
 ## 6. Current release gate
 
-At the latest inspection, the repository main commit was `f4b07cce152e8c3422f2ac948b4ea1edea40db32`. Its clean local migration replay workflow was still **in progress**; the local Supabase startup step had not yet completed, and the tenant-isolation / authenticated HTTP steps had not run. A green Vercel status does not replace these acceptance checks.
+At the latest inspection, main commit `f4b07cce152e8c3422f2ac948b4ea1edea40db32` completed clean migration replay successfully, including the existing tenant-isolation and authenticated HTTP acceptance suite. PR #13 adds the workspace-bootstrap SQL test; its standard CI passed, but its expanded migration-replay workflow was still **in progress** at the latest check, with local Supabase startup not yet complete. A green Vercel status does not replace these acceptance checks.
 
 **NO-GO** while memberships, canonical evidence, required run-store migration/function deployment, security validation, or end-to-end acceptance remain missing. Never bypass a gate with synthetic data or weakened access controls.
 
