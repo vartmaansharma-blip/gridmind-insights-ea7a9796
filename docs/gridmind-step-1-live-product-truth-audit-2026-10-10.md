@@ -139,3 +139,39 @@ Commits:
 **Validation status:** repository source and commit metadata were inspected; the latest combined commit status was still pending at the time of this update. Do not claim the new migration replay test passed until its workflow result is confirmed.
 
 **Still blocked:** applying migration `20261009130000_gridmind_factory_analysis_runs_v1` to production through the approved release path; deploying `persist-factory-analysis` with the required secrets; establishing a legitimate authorized owner/factory membership; and running the authenticated end-to-end verification against live authorized evidence. None of those production operations were performed by these commits.
+
+
+## Production follow-through — 2026-10-10
+
+After the repository changes above, the existing migration was applied to the live Supabase project using the exact committed SQL from `supabase/migrations/20261009130000_gridmind_factory_analysis_runs_v1.sql`. No duplicate migration file was created.
+
+### Live database verification
+
+A read-only post-deployment query confirmed:
+
+- `public.factory_analysis_runs` exists.
+- Row-level security is enabled.
+- The expected member-scoped SELECT and INSERT policies exist.
+- The append-only trigger exists.
+- `authenticated` cannot directly INSERT analysis runs.
+- `service_role` has the intended SELECT and INSERT privileges.
+
+Supabase migration history records the migration as version `20261010075630` with name `20261009130000_gridmind_factory_analysis_runs_v1`. Supabase assigned a fresh history version during application; retain the committed source migration as the canonical definition and verify future migration replay against this live history.
+
+### Edge Function deployment
+
+Deployed `persist-factory-analysis` as active version 1 with JWT verification enabled. The initial deployment attempt failed because the deployment bundler did not resolve the source tree's parent-relative `../_shared/` imports. The deployment package was corrected by bundling the exact shared source modules alongside the entrypoint and adjusting only the packaged import paths. No source files were changed by that packaging adjustment.
+
+- Function ID: `27cae70d-8852-4c31-9062-ad01307dd092`
+- Status: `ACTIVE`
+- JWT verification: enabled
+- Function source is available in the repository at `supabase/functions/persist-factory-analysis/index.ts` and its imported shared modules.
+
+### Remaining validation — not yet complete
+
+- The GitHub Migration Replay workflow for commit `37c028df80b065057dbab036891353c8be6e6320` was still `in_progress` at the last check. Do not report its test suite as passing until a completed result is visible.
+- A live authenticated HTTP persist/retry/verify test has not yet been completed. Production has zero organization-membership rows and zero factory-membership rows from the earlier audit, so do not create fabricated production identities or seed synthetic evidence merely to make this pass.
+- Function deployment is confirmed by Supabase's control plane, but runtime HTTP behavior remains unverified. Inspect function logs and test with a legitimately authorized account and factory before declaring Step 1 closed.
+- Existing security-advisor warnings remain: the authenticated SECURITY DEFINER workspace-creation function and disabled leaked-password protection. The workspace function was reviewed previously and should not be changed without an explicit authorization-contract review.
+
+**Current state:** schema deployment and Edge Function deployment are complete; security-preserving live schema checks pass. Authenticated runtime acceptance and the CI migration-replay result remain open. Demo data remains synthetic and must not be described as a real-factory finding.
