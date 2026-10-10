@@ -1,6 +1,6 @@
 # GridMind next-step decision — 2026-10-10
 
-**Decision status:** Recommended next move; no product code or production infrastructure changed by this review.  
+**Decision status:** Historical decision log with later dated updates below. The current scope is governed by the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md); older action lists in this file are superseded where they conflict with the latest execution decision.  
 **Scope reviewed:** GitHub default branch `main`, latest commits, README, homepage specification, website marketing/sales strategy, system-alignment audit, live-acceptance runbook, real-factory data request, authoritative-analysis design, and release gate.
 
 ## Executive recommendation
@@ -97,9 +97,8 @@ A green deployment, synthetic benchmark, or reproducible calculation alone is no
 1. Refresh live readiness; preserve the output and deployment/commit identifiers.
 2. Draft the one-page initial offer and claim-evidence matrix.
 3. Conduct a small set of structured buyer conversations using the three hero directions.
-4. Decide whether the next deliverable is a pilot-offer page or the full homepage based on the evidence.
-5. Implement the main site separately; run the release gate and verify the CTA.
-6. Continue the real-data product validation track without implying that website completion equals product validation.
+4. Do not implement the full marketing site yet. Decide on a concise offer page only after current product truth, offer scope and buyer evidence are clear.
+5. Continue real-data product validation through the authorized workflow; website work must not imply product validation.
 
 ## Decision rule
 
@@ -119,7 +118,7 @@ If current product readiness remains blocked, the site may still support honest 
 
 ## Execution update — 2026-10-10
 
-The first live product-readiness step has progressed beyond repository inspection:
+This is a historical execution update; re-check live state before relying on these environment facts. The first live product-readiness step had progressed beyond repository inspection at the time recorded:
 
 - Applied the existing analysis-persistence migration to the live Supabase database.
 - Verified the analysis table, RLS, member-scoped policies, append-only trigger, and role grants with a read-only SQL check.
@@ -173,11 +172,11 @@ Read-only production queries confirm one existing Supabase Auth user matching th
 **Decision:** continue technical acceptance through the founder's authenticated workspace flow. Do not build more features or make production/pilot claims until the live-user path and real-data evidence are established.
 
 
-## Latest execution decision — app flow is implemented; interactive sign-in is the only immediate user-side dependency
+## Historical execution decision — app flow was implemented; founder access was the next dependency at that time
 
 On documentation commit `394cdb25d1ef9e5e28ac7e2e12812f98b2b78cd4`, CI and GridMind Quality Gate passed. Migration Replay remained pending at last check, so the current commit is not fully green yet.
 
-The app already has an authenticated workspace setup path: `/auth` signs in an existing user; if the authenticated user has no visible factory, the app shell displays **Create your first factory**; submitting the Add Factory form invokes the authenticated `create_factory_workspace` RPC and reloads the authorized factory snapshots. The live Auth user exists, but currently has no organization or factory membership.
+At the time of this entry, the app had an authenticated workspace setup path: `/auth` signs in an existing user; if the authenticated user has no visible factory, the app shell displays **Create your first factory**; submitting the Add Factory form invokes the authenticated `create_factory_workspace` RPC and reloads the authorized factory snapshots. The live Auth user exists, but currently has no organization or factory membership.
 
 **Next action:** founder signs in privately through the deployed app using the existing account, then creates a founder-owned factory workspace through the UI. Do not create a duplicate account, request a password in chat, manually insert membership rows, or attach the founder to the configured factory before ownership is confirmed. After the UI flow, verify memberships read-only and perform live persist/retry/recompute, direct-write denial, and cross-tenant isolation tests. Then qualify a real factory and traceable data before claiming pilot readiness.
 
