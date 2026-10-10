@@ -29,6 +29,7 @@ This directory contains product definitions, engineering contracts, validation p
 
 - [Phase 1 Execution Baseline](gridmind-phase-1-execution-baseline-2026-10-10.md) — verified GitHub/CI state, intervention-date correction, and the Vercel release blocker.
 - [Phase 2 Security and Factory Isolation](gridmind-phase-2-security-and-factory-isolation-2026-10-10.md) — organization-membership RLS fix, cross-tenant tests, and outstanding security verification.
+- [Phase 3 — Data Integrity and Reproducible Analysis](gridmind-phase-3-data-integrity-and-reproducibility-2026-10-10.md) — active execution plan covering inherited release gates, schema-backed intervention timestamps, canonical input snapshots, and reproducibility acceptance tests.
 - [Intervention Date Integrity Correction](code-quality-correction-intervention-date-integrity-2026-10-10.md) — correction for fabricated implementation timing and the required durable schema fix.
 - [Current System Readiness and Stack Assessment](gridmind-current-system-readiness-2026-10-10.md) — freshest read-only GitHub/Vercel/Supabase/Lovable snapshot; explicitly supersedes older live-state facts where newer evidence differs.
 - [Buyer-Discovery Tracker and Wedge Selection](gridmind-buyer-discovery-tracker-2026-10-10.md) — blank evidence tracker for three candidate problems; no buyer validation is implied.

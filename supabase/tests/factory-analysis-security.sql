@@ -12,7 +12,21 @@ declare
   factory_b bigint;
   asset_a bigint;
   asset_b bigint;
+  implemented_at_column record;
 begin
+  select is_nullable, column_default, data_type
+    into implemented_at_column
+  from information_schema.columns
+  where table_schema = 'public'
+    and table_name = 'asset_interventions'
+    and column_name = 'implemented_at';
+
+  if not found
+    or implemented_at_column.is_nullable <> 'YES'
+    or implemented_at_column.column_default is not null
+    or implemented_at_column.data_type <> 'timestamp with time zone' then
+    raise exception 'INTERVENTION_IMPLEMENTED_AT_MUST_BE_NULLABLE_TIMESTAMPTZ_WITHOUT_GUESSED_DEFAULT';
+  end if;
   insert into auth.users (id, aud, role, email, created_at, updated_at, raw_app_meta_data, raw_user_meta_data)
   values
     (user_a, 'authenticated', 'authenticated', 'gridmind-ci-a@example.test', now(), now(), '{}'::jsonb, '{}'::jsonb),

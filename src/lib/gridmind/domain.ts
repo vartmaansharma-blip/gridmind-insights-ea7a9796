@@ -124,6 +124,7 @@ export type InterventionContract = {
   targetScopeId: number | null;
   status: string | null;
   description: string | null;
+  implementedAt: string | null;
   implementationCost: number | null;
   expectedSavingInr: number | null;
   verificationMethod: Record<string, unknown>;

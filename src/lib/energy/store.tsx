@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import { analyze, type Analysis } from "./analysis";
+import { implementedMonthFromTimestamp } from "./intervention-date";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
 import type { Factory, OpportunityStatus } from "./types";
 import { supabase } from "@/integrations/supabase/client";
@@ -109,8 +110,8 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
     id: String(iv.id),
     title: iv.description ?? "GridMind intervention",
     opportunityId: iv.opportunityId ? String(iv.opportunityId) : undefined,
-    // Do not fabricate an implementation month: the current persisted contract has no implementation timestamp.
-    implementedMonth: "",
+    // Only project a month from a recorded implementation timestamp; null stays unknown.
+    implementedMonth: implementedMonthFromTimestamp(iv.implementedAt, snapshot.timezone),
     cost: Number(iv.implementationCost ?? 0),
   })).filter((iv) => iv.implementedMonth);
 
