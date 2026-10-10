@@ -2,79 +2,78 @@
 
 Status: **NO-GO for a production pilot until all applicable gates below are evidenced.** This checklist is a control document, not proof that a control has passed.
 
-## 1. Read-only environment audit (2026-10-09)
+## 1. Fresh read-only environment audit (2026-10-10)
 
-- One factory, one organization, and eight assets exist.
-- All eight assets are not marked calibrated and have zero or unknown sensor coverage.
-- One asset has missing or non-positive rated power.
-- No active factory or organization memberships were found.
-- No canonical observations, operating contexts, economic contexts, data sources, or data-source mappings were found.
-- The `factory_analysis_runs` table/migration is absent from the live schema.
-- No GridMind Edge Functions are deployed.
-- Supabase Security Advisor reports that `public.create_factory_workspace(p_name text, p_location text, p_industry text)` is executable by the `authenticated` role as `SECURITY DEFINER`, and that leaked-password protection is disabled.
+Live read-only SQL confirmed:
+- 1 factory and 8 registered assets.
+- 0 active organization memberships and 0 factory memberships.
+- 0 canonical observations, operating contexts, economic contexts, data sources, and data-source mappings.
+- The `public.factory_analysis_runs` table is absent.
+- No GridMind Edge Functions are currently deployed.
+- The Supabase Security Advisor reports that `public.create_factory_workspace(p_name text, p_location text, p_industry text)` is executable by `authenticated` as a `SECURITY DEFINER` function, and leaked-password protection is disabled.
 
-Refresh these findings before any deployment decision.
+These counts describe the current inspection, not proof of equipment measurement quality. Refresh them before each deployment decision.
 
-## 2. Review the workspace-creation RPC
+## 2. Workspace-creation RPC security review
 
-Do not blindly revoke grants or change the function. Inspect the live function definition, owner, grants, and all functions it calls first.
+The RPC is a necessary bootstrap path because normal table writes are membership-gated. The advisor warning is a review signal, not by itself proof of exploitability. Do not blindly revoke grants or switch to `SECURITY INVOKER`; that could break legitimate workspace creation without proving the authorization issue is solved.
 
-- [x] Retrieved the live `pg_get_functiondef` for `public.create_factory_workspace(text, text, text)` and inspected its ACLs on 2026-10-09.
-- [x] Confirmed the function uses a fixed, empty `search_path` (read-only review, 2026-10-09); re-check after any function change.
-- [x] Confirmed table references are schema-qualified in the reviewed function definition.
-- [x] Confirmed caller identity derives from trusted `auth.uid()`, not a caller-supplied user ID.
-- [x] Confirmed the function requires an authenticated caller and selects only an active organization where the caller has owner/admin role, or creates a new organization for the caller if none exists.
-- [ ] Add/execute automated tests proving users cannot create or attach workspaces to organizations they do not control, including cross-tenant attempts and users with multiple eligible organizations.
-- [ ] Validate all inputs (including location and industry) and ensure errors do not expose sensitive details.
-- [x] Confirmed `EXECUTE` is granted to `authenticated` and the owner, with no `anon` or `PUBLIC` execute grant in the inspected ACLs.
-- [ ] Add automated tests for unauthenticated, unauthorized, authorized, cross-tenant, and malformed-input calls.
-- [ ] Implement any required fix through a reviewed migration; rerun clean migration replay, database security assertions, and authenticated HTTP acceptance.
+Source migrations show the function:
+- Derives identity from `auth.uid()`, rejects unauthenticated calls and blank names.
+- Uses an empty fixed `search_path` in a later hardening migration.
+- Uses schema-qualified table references.
+- Grants execution to `authenticated` and does not grant it to `anon`.
+- Chooses an active organization where the caller has an owner/admin role, or creates a new organization for the caller if no eligible organization exists; then creates a factory and owner membership.
 
-### Live review result (read-only, 2026-10-09)
+The current production ACL and function definition should still be rechecked before any release, because source migrations are not a substitute for live state.
 
-- Owner: `postgres`; `SECURITY DEFINER` is enabled; function-level `search_path` is set to the empty string.
-- The function obtains the caller from `auth.uid()`, rejects unauthenticated calls and blank factory names, and schema-qualifies its table references.
-- It selects an active organization where the caller has `owner` or `admin` role; if none exists, it creates an organization and owner membership. It then creates a factory and factory-owner membership.
-- ACL inspection showed `EXECUTE` for `authenticated` and the owner, with no `anon` or `PUBLIC` execute grant.
-- This makes the advisor warning a review signal, not by itself proof of an exploitable issue. The remaining work is to test authorization/tenant edge cases and confirm the product intends to choose the lowest-ID active owner/admin organization when multiple matches exist. No live function or grants were changed.
+- [x] Read source migrations and identify the intended bootstrap behavior.
+- [x] Confirm the latest Security Advisor warning and leaked-password finding.
+- [ ] Add automated positive and negative tests for unauthenticated, authorized, cross-tenant, malformed-input, and multiple-eligible-organization cases.
+- [ ] Prove a caller cannot attach a factory to an organization they do not control or bypass active organization membership.
+- [ ] Confirm the behavior when a user has multiple active owner/admin organizations is deliberate and deterministic.
+- [ ] Re-run clean migration replay, tenant-isolation tests, and authenticated HTTP acceptance on the same candidate SHA.
 
-**Pass condition:** intended behavior is documented, least-privilege grants are verified, and positive and negative authorization tests pass. A disappearing warning alone is insufficient.
+**Pass condition:** intended behavior is documented, least-privilege grants are verified live, and positive/negative authorization tests pass. A disappearing warning alone is insufficient.
 
 ## 3. Authentication hardening
 
-- [ ] Enable Supabase leaked-password protection in the correct project/auth settings.
+- [ ] Project owner enables Supabase leaked-password protection in the correct Auth settings.
 - [ ] Confirm sign-in and password-reset behavior.
-- [ ] Re-run the security advisor and record the result.
-- [ ] Obtain project-owner authorization and a rollback/communication plan before changing production auth settings.
+- [ ] Re-run the Security Advisor and record the result.
+- [ ] Record owner approval and a rollback/communication plan before changing production Auth settings.
+
+This is an owner-level setting; it has not been changed by this audit.
 
 ## 4. Real pilot access and evidence
 
-- [ ] Provision membership only for named, authorized pilot users; confirm organization/factory linkage.
+- [ ] Have the actual workspace owner or authorized administrator provision membership for named pilot users.
+- [ ] Confirm both organization and factory membership, and verify tenant isolation.
 - [ ] Select an asset with an identifiable meter/source and responsible factory contact.
-- [ ] Confirm equipment identity and rated power against source records.
 - [ ] Obtain traceable energy readings and comparable production/output records over an agreed baseline window.
-- [ ] Record operating hours/states, product or process mix, and material downtime.
-- [ ] Capture units, timezone, period boundaries, source system, source record/reference, quality status, and estimated-vs-measured status.
-- [ ] Obtain an effective-dated tariff, recoverable fraction, and intervention cost with source and approver.
-- [ ] Validate calibration and sensor coverage; inventory metadata alone is not proof of measurement.
-- [ ] Keep missing, invalid, stale, and measured-zero values distinct. Reject fabricated or untraceable evidence.
+- [ ] Record operating hours/states, product or process mix, material downtime, units, timezone, period boundaries, source references, and honest quality flags.
+- [ ] Obtain effective-dated tariff, recoverable fraction, and intervention-cost evidence with source and approver.
+- [ ] Validate equipment identity, calibration, and sensor coverage. Inventory metadata is not proof of measurement.
+- [ ] Keep missing, invalid, stale, estimated, unverified, and measured-zero values distinct. Never fabricate or guess factory evidence.
 
-Use the existing canonical observation, operating-context, and economic-context CSV intake templates. Synthetic test fixtures must remain labelled as synthetic and must never be copied into live factory evidence.
+Use the existing canonical observation, operating-context, and economic-context CSV intake templates. The local intake validator is preflight only; it does not upload or persist data. Synthetic fixtures must remain labelled as synthetic.
 
 ## 5. Controlled deployment and acceptance
 
-- [ ] Review the full PR diff and current head SHA; do not rely on old check results.
+- [ ] Review the full PR diff and current head SHA; do not rely on checks from an older commit.
 - [ ] CI, GridMind Quality Gate, clean migration replay, database security assertions, and authenticated HTTP acceptance pass on the exact candidate commit.
-- [ ] Refresh read-only readiness diagnostics and resolve hard blockers.
-- [ ] Review migration sequence, required privileges, backup/rollback path, and expected downtime.
+- [ ] Refresh the read-only readiness diagnostic and resolve hard blockers.
+- [ ] Review migration sequence, privileges, backup/rollback path, and expected impact.
 - [ ] Obtain explicit project-owner approval before production migrations or Edge Function deployment.
-- [ ] Verify JWT authorization and tenant isolation after deployment.
+- [ ] Deploy with JWT verification enabled and verify tenant isolation.
 - [ ] Run analysis only against real, authorized canonical evidence.
-- [ ] Independently recompute the result and verify source IDs, assumptions, period alignment, algorithm version, refusal codes, and reproducibility.
-- [ ] Describe opportunities as estimates until post-intervention measurements verify realized outcomes.
+- [ ] Reload/recompute and verify source IDs, period alignment, context, economic assumptions, algorithm version, refusal codes, and reproducibility.
+- [ ] Obtain independent engineering review. Describe opportunities as estimates until post-intervention measurements verify realized outcomes.
 
-## 6. Go/no-go rule
+## 6. Current release gate
 
-**NO-GO** while memberships, canonical evidence, operating/economic context, required migration/function deployment, or security validation remain missing. Never bypass a gate with synthetic data or weakened access controls.
+At the latest inspection, the repository main commit was `f4b07cce152e8c3422f2ac948b4ea1edea40db32`. Its clean local migration replay workflow was still **in progress**; the local Supabase startup step had not yet completed, and the tenant-isolation / authenticated HTTP steps had not run. A green Vercel status does not replace these acceptance checks.
+
+**NO-GO** while memberships, canonical evidence, required run-store migration/function deployment, security validation, or end-to-end acceptance remain missing. Never bypass a gate with synthetic data or weakened access controls.
 
 This checklist does not authorize production changes.
