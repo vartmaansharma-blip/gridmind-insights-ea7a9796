@@ -35,6 +35,10 @@ The first commercial wedge is **not permanently fixed to energy**. Energy and ut
 
 Start with one narrow problem and one defined customer profile. Do not expand until the evidence-to-action-to-verification workflow has been demonstrated with real data, reviewed by a qualified domain expert, and repeated at another facility.
 
+## Data advantage strategy
+
+GridMind's data strategy is to build a permissioned, traceable, context-rich learning system—not simply accumulate rows or scrape documents. The [Data Advantage Strategy](docs/gridmind-data-advantage-strategy.md) defines six data assets, source priorities, the learning flywheel, quality controls, measurable data-moat metrics, and the first real-factory validation sequence. The strategy is a plan, not a claim that these assets or advantages are already validated.
+
 ## Evidence and economic model
 
 GridMind distinguishes between:
