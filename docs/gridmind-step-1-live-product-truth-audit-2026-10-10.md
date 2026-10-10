@@ -215,3 +215,18 @@ The eight configured assets are still not evidence of real operating measurement
 **Do not create or directly attach a membership from an administrative SQL shortcut.** The founder's existing authentication identity is present; the missing step is authenticated workspace setup and correct authorization. Sign in through the application with that existing account, then determine whether the configured factory belongs to the founder or is merely demo/third-party inventory. If it is not the founder's workspace, create a separate workspace using the authenticated workspace-creation flow rather than attaching the founder to the existing factory.
 
 After the authenticated workspace flow, verify both organization and factory memberships read-only. Then select one confirmed real asset, obtain the real-factory data request and evidence, and perform live authenticated persist/retry/reload/recompute plus cross-tenant denial checks. No live membership, data, migration, or deployment writes were made by this recheck.
+
+
+## Follow-up execution check — 2026-10-10, after documentation commit `394cdb2`
+
+### Account and application flow
+
+The existing Supabase Auth identity matching the repository commit email is present, but read-only counts still show zero organization memberships and zero factory memberships. The app's implemented route is `/auth`; it uses password-based Supabase sign-in and does not require creating another identity. After sign-in, `src/components/gm/app-shell.tsx` presents **Create your first factory** when no authenticated factory is visible. Its Add Factory flow calls `createFactoryWorkspace` in `src/lib/gridmind/repository.ts`, which invokes the authenticated `create_factory_workspace` RPC and reloads the caller's factory snapshots. This is the appropriate path; do not manually insert memberships or attach the account to the configured existing factory until its ownership is confirmed.
+
+### Workflow status correction
+
+For commit `394cdb25d1ef9e5e28ac7e2e12812f98b2b78cd4`, CI passed and GridMind Quality Gate passed. Migration Replay was still pending at the latest check. Earlier commit `aecd4f2` had all three workflows pass, but that historical pass must not be presented as a pass for the newer commit. See [CI run](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717626), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717676), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717696).
+
+### Hard blocker and safe next step
+
+The remaining immediate blocker is an interactive sign-in using the founder's existing credentials. The assistant cannot complete this without a user-authenticated browser session and must not ask for or handle the password. Once the founder signs in and creates a factory they own, verify both membership layers read-only, then perform production persist/retry/recompute and tenant-isolation acceptance. Real-factory analysis still requires authorized, traceable evidence; configured demo assets are not evidence.
