@@ -107,6 +107,18 @@ begin
     raise exception 'WORKSPACE_BOOTSTRAP_SEARCH_PATH_NOT_PINNED';
   end if;
 
+  if not exists (
+    select 1
+    from pg_policies
+    where schemaname = 'public'
+      and tablename = 'organization_members'
+      and policyname = 'admins update organization_members'
+      and cmd = 'UPDATE'
+      and roles = array['authenticated']::name[]
+  ) then
+    raise exception 'ORGANIZATION_MEMBERS_UPDATE_POLICY_NOT_SCOPED_TO_AUTHENTICATED';
+  end if;
+
   -- User A must not be able to promote, modify, or add members in organization B.
   update public.organization_members
     set role = 'owner'
