@@ -106,3 +106,16 @@ In parallel, arrange the authorized owner sign-in to establish workspace members
 - [Release gate](release-gate.md)
 - [GridMind repository](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796)
 - [Latest Vercel deployment](https://vercel.com/vartmaansharma-blips-projects/gridmind/79sPFhdDJ59UxfPHhZ9MQTAWFN1v)
+
+
+## Follow-up source/migration reconciliation (same audit session)
+
+A second repository inspection found a more specific discrepancy:
+
+- The deployed Edge Function source exists on GitHub at `supabase/functions/persist-factory-analysis/index.ts`.
+- The migration-replay workflow and integration tests expect the table `factory_analysis_runs`.
+- Searching the current default-branch source and inspecting the relevant schema migration files did not find a migration that creates `public.factory_analysis_runs`; the live database confirms the table is absent.
+- PR #3's metadata says it was merged, while its description contains stale wording saying it remains open/unmerged. Therefore PR metadata/body alone is not reliable evidence that the needed migration is present on `main`.
+- The correct next engineering task is to inspect the full `main` tree and exact merge commit history, then reconcile the migration source with the expected table/function contract. Run the clean replay workflow against the exact current SHA and check its result. Do not hand-write or apply a production migration based only on this audit.
+
+This makes the immediate blocker more precise: **migration/source drift or a missing migration definition for the persistence table**, in addition to the confirmed absence of the live Edge Function and live workspace memberships.
