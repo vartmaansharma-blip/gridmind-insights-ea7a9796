@@ -130,3 +130,7 @@ A successful data intake alone is not a successful pilot. A positive estimate al
 6. Agree baseline method, comparison rubric, thresholds and handling of inconclusive results.
 7. Ingest a minimal controlled sample; validate units, periods, source references and coverage.
 8. Only then run analysis and review its persisted reproducibility.
+
+## Related execution artifact
+
+Use the [Pilot Comparison Scorecard](gridmind-pilot-comparison-scorecard.md) to pre-register the conventional baseline, reviewer rubric, comparative metrics and intervention-outcome review before analyzing the case.
