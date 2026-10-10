@@ -1,88 +1,103 @@
 # GridMind Insights
 
-> **Intelligence for energy-intensive physical infrastructure.**
+> **Industrial intelligence that turns factory evidence into verified economic improvement.**
 
-GridMind Insights is an industrial intelligence platform designed to help factories understand energy performance, machine behaviour, operational losses, and improvement opportunities.
+GridMind is being built to help industrial teams identify economically important operational problems, understand what the available evidence supports, prioritize interventions, coordinate the people and resources needed to act, and verify whether the outcome improved.
 
-## Production
+GridMind is not intended to be merely an energy dashboard, anomaly detector, generic AI assistant, or supplier marketplace. Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation. That ambition must be earned through repeatable customer outcomes.
 
-**Live production application:** https://gridmind-insights.lovable.app
+## Product definition
 
-The production application provides the current deployed GridMind experience.
+**GridMind is an evidence-backed industrial intelligence and value-realization platform. It transforms authorized, traceable factory data and operating context into reproducible findings and economically prioritized opportunities; supports qualified people in deciding and coordinating interventions; and measures outcomes against a defensible baseline.**
 
-## What GridMind does
+A finding is not automatically a root-cause diagnosis. A quantified opportunity is not realized savings. A recommendation is not proof that an intervention is safe, appropriate, or effective. GridMind must preserve those distinctions throughout the product.
 
-GridMind follows an evidence-first workflow:
+## Customer outcome
 
-**DATA → BASELINE → DETECT → EXPLAIN → QUANTIFY → RECOMMEND → VERIFY → LEARN**
+Help a factory answer, with traceable evidence:
 
-It is designed to help industrial teams answer:
+- Where may it be losing money, energy, production capacity, quality, or equipment reliability?
+- What changed, over which comparable period, and how trustworthy is the evidence?
+- What is observed, what is estimated, and what remains a hypothesis?
+- Which opportunity is worth investigating first, considering value, confidence, cost, risk, downtime, and time to benefit?
+- What evidence, people, equipment, services, or purchasing decisions are needed to act?
+- Did the intervention actually improve the outcome, after accounting for relevant operating changes?
 
-- Where is the factory losing money or usable capacity?
-- What changed in energy or machine performance?
-- What evidence supports the finding?
-- What may be causing the abnormal behaviour?
-- What action should be investigated or taken?
-- What improvement was actually achieved after an intervention?
+## Core operating loop
 
-## Core capabilities
+**CONTEXTUALIZE → QUALIFY EVIDENCE → DETECT → INVESTIGATE → PRIORITIZE → DECIDE → COORDINATE → VERIFY → LEARN**
 
-- Factory energy intelligence
-- Machine and asset intelligence
-- Machine passports and retrofit assessment
-- Energy, demand and production analysis
-- Data-quality monitoring
-- Diagnostic rules and anomaly detection
-- Opportunity identification and financial impact analysis
-- Intervention tracking
-- Savings measurement and verification
-- Synthetic factory/data scenarios for development and testing
+The loop is the product's organizing principle. Energy analysis, machine intelligence, maintenance workflows, procurement, supplier discovery, and implementation coordination are potential capabilities within this loop—not independent features to add without a demonstrated customer need.
 
-## Evidence model
+## Initial wedge and expansion rule
+
+The first commercial wedge is **not permanently fixed to energy**. Energy and utility losses are a promising candidate because they can sometimes be quantified, but the initial use case must be selected through customer discovery and real-data access. Compare candidate problems by:
+
+1. severity and frequency of the economic pain;
+2. access to trustworthy, authorized data;
+3. ability to establish a defensible baseline and measure an outcome;
+4. urgency and willingness to pay;
+5. time and cost to deliver a useful result;
+6. repeatability across facilities without excessive bespoke engineering;
+7. safety, operational and integration risk.
+
+Start with one narrow problem and one defined customer profile. Do not expand the scope until the evidence-to-action-to-verification workflow has been demonstrated with real data, reviewed by a qualified domain expert, and repeated at another facility.
+
+## Evidence and economic model
 
 GridMind distinguishes between:
 
-- **Observed** — directly supported by supplied measurements
-- **Estimated** — calculated from available data
-- **Hypothesis** — a possible explanation requiring validation
-- **Recommended** — a proposed next action
-- **Verified** — supported by post-intervention evidence
+- **Observed** — directly supported by supplied measurements or records.
+- **Estimated** — calculated from available evidence and explicit assumptions.
+- **Hypothesis** — a possible explanation requiring validation.
+- **Recommended** — a proposed action for qualified human review.
+- **Implemented** — an intervention recorded as having occurred.
+- **Verified** — an outcome supported by appropriate post-intervention evidence and a defensible comparison.
 
-Synthetic/demo data must not be presented as real factory measurements or verified customer savings.
+Synthetic/demo data must never be represented as real factory measurements or verified customer outcomes. Missing data is not zero. An observation is not a diagnosis; an estimate is not realized savings; a hypothesis is not a fact.
 
-## Product architecture
+Economic prioritization should account for expected value, evidence confidence, intervention cost, operational disruption, safety and implementation risk, time to benefit, and verification feasibility. Financial outputs must preserve their inputs, assumptions, source lineage, currency and calculation method. Do not claim realized savings without post-intervention measurement and review.
 
-The platform is being developed around a factory-to-asset intelligence model:
+## Expansion architecture
 
-**Factory → Systems/Areas → Machines → Sensors → Measurements → Findings → Opportunities → Interventions → Verification**
+Expansion should follow customer evidence and reuse of the same trusted context and verification loop:
 
-For legacy industrial equipment, the intended approach is a retrofit sensing layer and gateway rather than requiring every machine to have native digital connectivity.
+1. **Prove one use case:** authorized real data, repeatable analysis, independent domain review, a useful intervention decision, and measured post-intervention outcome.
+2. **Deepen the facility workflow:** add adjacent energy, utility, asset, maintenance, reliability, quality or production-loss workflows only where the data and customer problem justify them.
+3. **Connect decisions to execution:** support repair-versus-replace decisions, lifecycle economics, quote comparison, supplier qualification and implementation coordination when these are natural next steps from validated opportunities.
+4. **Build a permissioned industrial network:** connect factories with qualified service providers, OEMs, distributors and specialists; preserve customer choice, transparent incentives, confidentiality and auditability.
+5. **Scale across sites and industrial segments:** offer repeatable multi-facility workflows and carefully governed benchmarks only when evidence is comparable and customers have granted appropriate data rights.
 
-## Safety and reliability principles
+This is a set of conditional expansion options, not a forecast or commitment to deliver every layer.
 
-GridMind is designed to:
+## Product and trust principles
 
-- fail closed when evidence is insufficient
-- distinguish sensor/data problems from machine problems
-- reject invalid, stale, duplicate or impossible measurements
-- avoid unsupported financial claims
-- preserve calculation and diagnostic traceability
-- keep initial OT integrations read-only
-- verify savings rather than assuming them
+- Evidence-first, with traceable provenance and explicit uncertainty.
+- Fail closed when required evidence is missing, invalid, stale, incomparable or unauthorized.
+- Distinguish instrumentation/data-quality issues from possible physical equipment issues.
+- Keep initial operational-technology integrations read-only unless a separately reviewed and explicitly authorized control design exists.
+- Require qualified human review for consequential operational recommendations.
+- Never let supplier commissions or partner incentives secretly determine recommendations.
+- Do not reuse or share customer data across facilities without appropriate permission and contractual rights.
+- Prefer a repeatable, auditable workflow over feature breadth or an impressive demo.
 
-## Current status
+## Current status and release discipline
 
-The repository contains the current GridMind application and its supporting product architecture. Development is ongoing toward a production-ready industrial intelligence platform.
+**GridMind's long-term product direction is a strategy; it is not evidence of present readiness.** The repository audit dated 2026-10-10 states that feature expansion should pause and GridMind should not be described as pilot-ready until the end-to-end evidence-to-action-to-verification path is demonstrated on real factory evidence. Its recorded live-readiness figures are a historical snapshot and must be refreshed before operational decisions.
 
-Repository quality gates now run automatically on `main`, `develop`, and pull requests targeting either branch. The required automated gate is TypeScript typecheck → ESLint → production build. See [`docs/release-gate.md`](docs/release-gate.md) for the release standard.
+The immediate priority is to refresh read-only readiness, establish legitimate customer-authorized access, obtain traceable real-factory data, qualify it, run the analysis, obtain independent domain review, and—if the evidence justifies action—measure and verify the result. Then repeat the process at a second facility.
+
+See:
+- [GridMind product definition and strategy](docs/gridmind-product-definition.md)
+- [System-alignment audit](docs/gridmind-system-alignment-audit.md)
+- [Release gate](docs/release-gate.md)
+
+## Production application
+
+https://gridmind-insights.lovable.app
 
 ## Repository
 
-GitHub: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
+https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
 
-## Development
-
-The project should be treated as an industrial intelligence product rather than a generic analytics dashboard. Changes should preserve the evidence hierarchy, data-quality safeguards, deterministic calculations, and separation between synthetic/demo data and real measured data.
-
-The project is developed with [Lovable](https://lovable.dev).
-
+The project is developed with [Lovable](https://lovable.dev). Changes should preserve the evidence hierarchy, data-quality safeguards, deterministic calculations, security boundaries, and separation between synthetic/demo data and real measured data.
