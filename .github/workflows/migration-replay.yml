@@ -81,7 +81,20 @@ jobs:
           EOF
           supabase functions serve persist-factory-analysis --env-file /tmp/gridmind-functions.env > /tmp/gridmind-functions.log 2>&1 &
           FUNCTION_PID=$!
-          trap 'kill "$FUNCTION_PID" 2>/dev/null || true' EXIT
+          on_exit() {
+            status=$?
+            if [ "$status" -ne 0 ]; then
+              echo "Edge Function integration failed; sanitized server log follows:"
+              if [ -f /tmp/gridmind-functions.log ]; then
+                sed -E 's/(SUPABASE_(ANON|SERVICE_ROLE)_KEY=).*/\\1[REDACTED]/' /tmp/gridmind-functions.log | tail -n 250
+              else
+                echo "Function server log was not created."
+              fi
+            fi
+            kill "$FUNCTION_PID" 2>/dev/null || true
+            exit "$status"
+          }
+          trap on_exit EXIT
           for attempt in $(seq 1 60); do
             CODE="$(curl --silent --output /dev/null --write-out '%{http_code}' "$SUPABASE_URL/functions/v1/persist-factory-analysis" || true)"
             if [ "$CODE" != "000" ]; then break; fi
