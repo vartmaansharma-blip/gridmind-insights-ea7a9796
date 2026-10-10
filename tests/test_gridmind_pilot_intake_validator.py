@@ -171,5 +171,19 @@ class IntakeValidatorTests(unittest.TestCase):
         self.assertTrue(any("must use value_text" in error for error in errors))
         self.assertTrue(any("require value_text" in error for error in errors))
 
+    def test_duplicate_source_record_in_operating_contexts_is_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(op, operating_state="idle", source_record_id=op["source_record_id"])
+        self.write_all([obs], [op, second], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("duplicate source_system/source_record_id in operating contexts" in error for error in errors))
+
+    def test_duplicate_source_record_in_economic_contexts_is_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(eco, context_name="duplicate-source", source_record_id=eco["source_record_id"])
+        self.write_all([obs], [op], [eco, second])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("duplicate source_system/source_record_id in economic contexts" in error for error in errors))
+
 if __name__ == "__main__":
     unittest.main()
