@@ -40,6 +40,17 @@ The connected Supabase project was queried read-only after the initial code revi
 
 The SQL was read-only. No production policy, grants, Auth setting, membership, or data was changed.
 
+## Production rollout result (read-only verification after migration)
+
+**Migration applied:** Supabase accepted `harden_organization_membership_rls` and recorded version `20261010103936`. The SQL is the same as the reviewed migration committed in GitHub, with the applied version recorded by Supabase.
+
+**Post-apply checks passed:**
+- `organization_members` SELECT/INSERT/UPDATE policies now call `private.is_org_admin(organization_id)` rather than self-querying the RLS-protected table.
+- Effective privilege checks now report `anon`: no SELECT/INSERT/UPDATE/DELETE/TRUNCATE/REFERENCES/TRIGGER; `authenticated`: SELECT/INSERT/UPDATE remain available under RLS, with DELETE/TRUNCATE/REFERENCES/TRIGGER denied; `service_role`: the listed direct table privileges are denied on this table (service-role bypass capabilities remain a separate platform concern).
+- The live migration history contains `20261010103936 / harden_organization_membership_rls`.
+
+No factory, organization, or membership rows were changed by the migration. This resolves the identified recursive-policy definition and unnecessary structural grants in the live schema. It does **not** finish Phase 2 by itself: Auth leaked-password protection remains disabled, the all-table/function privilege audit is unfinished, multi-organization workspace selection still needs a product decision, and authenticated production API smoke tests/deployed commit alignment remain to be completed.
+
 ## Phase 2 checklist
 
 | Item | Status | Evidence / next action |
