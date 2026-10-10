@@ -1,5 +1,5 @@
 # GridMind improvement priorities — 2026-10-10
-**Status:** Execution priorities derived from the master thesis critique. These are proposed gates, not claims that they have passed.
+**Status:** Execution priorities derived from the master thesis critique. These are proposed gates, not claims that they have passed. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs conflicts and current scope.
 
 ## Decision
 Keep the broad GridMind company thesis; narrow the next execution cycle to proving one valuable, safe, repeatable customer workflow. Do not expand the product surface until this is demonstrated.
@@ -94,4 +94,4 @@ Maintain one row per candidate and capture:
 ## Operating rule
 Every material strategic claim should be labelled **observed evidence**, **inference**, or **untested hypothesis**. Record material changes in GitHub. Never treat a roadmap, passing deployment status or polished UI as proof of product-market fit.
 
-**Immediate next action:** create the candidate scorecard and begin buyer/problem discovery before expanding the feature set.
+**Immediate next action:** refresh current product truth and execute the authorized live-readiness audit; in parallel, start buyer/problem discovery and populate the three-candidate scorecard. Do not expand the feature set or build the marketing site while these gates are unresolved.
