@@ -1,6 +1,6 @@
 # GridMind 30-Day Build and Validation Plan
 **Date:** 2026-10-10  
-**Status:** Plan, not evidence of completion.
+**Status:** Plan, not evidence of completion. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs conflicts and current scope. This plan is an execution sequence, not permission to bypass product, data-rights, buyer-evidence or security gates.
 
 ## Objective
 Within 30 days, make an evidence-based **go / narrow / pivot / stop** decision about GridMind's first commercial workflow. Test three candidates equally: (1) operational-loss investigation, (2) intelligence for one industrial procurement category, and (3) one narrow vertical AI workflow. Build only the smallest reliable workflow justified by customer evidence.
