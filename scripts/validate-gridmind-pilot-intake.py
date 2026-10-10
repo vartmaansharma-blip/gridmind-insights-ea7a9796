@@ -95,10 +95,25 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     valid_context_coverage: list[tuple[str, str, datetime, datetime, str]] = []
     economic_coverage: list[tuple[str, datetime, datetime | None, str, float | None, str]] = []
     factories: set[str] = set()
+    asset_factories: dict[str, str] = {}
+
+    def register_asset_factory(factory_id: str, asset_id: str, label: str) -> None:
+        if not factory_id or not asset_id:
+            return
+        prior_factory = asset_factories.get(asset_id)
+        if prior_factory is not None and prior_factory != factory_id:
+            errors.append(
+                f"{label}: asset {asset_id!r} is assigned to multiple factories "
+                f"({prior_factory!r} and {factory_id!r}); resolve identity before analysis"
+            )
+        else:
+            asset_factories[asset_id] = factory_id
+
     for i, row in enumerate(observations, 2):
         label = f"{obs_path.name}:{i}"
         required(row, ["factory_id", "asset_id", "period_start", "period_end", "role", "metric", "unit", "quality_status", "is_estimated", "source_system", "source_record_id", "source_reference"], label, errors)
         factories.add(row.get("factory_id", ""))
+        register_asset_factory(row.get("factory_id", ""), row.get("asset_id", ""), label)
         role = row.get("role", "")
         metric = row.get("metric", "")
         if role and role not in ROLES:
@@ -163,6 +178,7 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
                 errors.append(f"{label}: duplicate source_system/source_record_id in operating contexts {key!r}")
             source_ids["operating_contexts"].add(key)
         factories.add(row.get("factory_id", ""))
+        register_asset_factory(row.get("factory_id", ""), row.get("asset_id", ""), label)
         start = parse_time(row.get("start_time", ""), f"{label}: start_time", errors)
         end = parse_time(row.get("end_time", ""), f"{label}: end_time", errors)
         if start and end:
