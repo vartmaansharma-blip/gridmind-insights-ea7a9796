@@ -239,7 +239,7 @@ export function buildAnalysisInputFromCanonical(args: InputAdapterArgs): Analysi
 
   const economicMetadata = record(record(args.economicContext?.metadata).analysis_loop);
   const economics: EconomicInputs = {
-    currency: args.economicContext?.currency ?? "INR",
+    currency: args.economicContext?.currency ?? null,
     tariffInrPerKwh: economicMetadata.tariffInrPerKwh ?? null,
     recoverableFraction: economicMetadata.recoverableFraction ?? null,
     interventionCostInr: economicMetadata.interventionCostInr ?? null,

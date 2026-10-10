@@ -132,6 +132,8 @@ describe("canonical analysis input adapter", () => {
 
     expect(input.current.productCode).toBe("");
     expect(input.current.operatingState).toBe("");
+    expect(input.economics.currency).toBeNull();
+    expect(result.economics.currency).toBe("UNSPECIFIED");
     expect(result.economics.quantified).toBe(false);
     expect(result.reasonCodes).toContain("MISSING_PRODUCT_CONTEXT");
   });
