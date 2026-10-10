@@ -122,3 +122,8 @@ https://gridmind-insights.lovable.app
 https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
 
 The project is developed with [Lovable](https://lovable.dev). Changes should preserve the evidence hierarchy, data-quality safeguards, deterministic calculations, security boundaries, and separation between synthetic/demo data and real measured data.
+
+
+## Current execution priorities
+
+See the [GridMind Improvement Priorities](docs/gridmind-improvement-priorities-2026-10-10.md) for P0/P1/P2 work, acceptance criteria, and the first 30-day validation sequence.
