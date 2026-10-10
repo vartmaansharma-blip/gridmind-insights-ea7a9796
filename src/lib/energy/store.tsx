@@ -109,7 +109,8 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
     id: String(iv.id),
     title: iv.description ?? "GridMind intervention",
     opportunityId: iv.opportunityId ? String(iv.opportunityId) : undefined,
-    implementedMonth: iv.status === "implemented" && iv.factoryId ? new Date().toISOString().slice(0, 7) : "",
+    // Do not fabricate an implementation month: the current persisted contract has no implementation timestamp.
+    implementedMonth: "",
     cost: Number(iv.implementationCost ?? 0),
   })).filter((iv) => iv.implementedMonth);
 
