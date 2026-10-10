@@ -1,6 +1,6 @@
 # GridMind Master Business Thesis and Ordered Expansion Roadmap
 **Decision date:** 2026-10-10  
-**Status:** Master strategic thesis. This describes the intended business, not current product capability or validated product-market fit.
+**Status:** Master strategic thesis. This describes the intended business, not current product capability or validated product-market fit. Current scope and conflict resolution are governed by the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md); this roadmap is the long-term thesis, not independent authorization to build every stage.
 
 ## 1. The master idea
 
