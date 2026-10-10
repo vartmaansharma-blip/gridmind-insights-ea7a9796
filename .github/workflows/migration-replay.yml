@@ -2,7 +2,7 @@ name: GridMind Migration Replay
 
 on:
   push:
-    branches: [main, develop, "feature/**"]
+    branches: [main, develop, "feature/**", "test/**"]
   pull_request:
     branches: [main, develop]
 
@@ -37,6 +37,13 @@ jobs:
 
       - name: Replay every migration from an empty local database
         run: supabase db reset --local
+
+      - name: Test workspace bootstrap authorization
+        shell: bash
+        run: |
+          DB_URL="$(supabase status -o env | sed -n 's/^DB_URL=\"\(.*\)\"$/\1/p')"
+          test -n "$DB_URL"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/workspace-bootstrap-security.sql
 
       - name: Test tenant isolation, direct-table denial, and append-only persistence
         shell: bash
