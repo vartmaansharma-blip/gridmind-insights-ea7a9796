@@ -136,3 +136,38 @@ Do **not** start building the marketing homepage yet and do not declare the prod
 4. If runtime acceptance passes, close Step 1 and return to commercial validation: a concise pilot offer, claim-evidence matrix, and structured buyer conversations. Build the public marketing site around verified capabilities and evidence—not around assumptions.
 
 The production project currently has no organization/factory membership rows from the initial audit, so the live authenticated test needs a legitimate authorized account and must not be faked with production seed data.
+
+
+## Execution update — workflow gate closed, founder access is next
+
+**Recheck timestamp:** 2026-10-10, approximately 08:05 UTC. This updates the earlier note that workflow results were pending.
+
+### Verified engineering result
+
+The latest commit reviewed was `aecd4f2839358f0d72f8034862f7313972288d63`. Its [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036362857), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036362793), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036362872) workflows all passed. Migration Replay started a clean local Supabase stack, replayed all migrations from an empty database, passed the persistence schema contract, tenant-isolation/direct-write-denial/append-only tests, ran authenticated HTTP integration against isolated local fixtures, and confirmed no pending local migrations.
+
+### Fresh production preflight
+
+Read-only production queries confirm one existing Supabase Auth user matching the email used for repository commits, but that account has no organization or factory membership. The live project still has one organization, one factory, eight configured assets, and zero observations, operating contexts, economic contexts, or persisted analysis runs. The persistence table is deployed with RLS and the Edge Function is active with JWT verification. No production memberships or measurements were created.
+
+### Exact next actions
+
+1. **Founder signs in using the existing account** through GridMind's authenticated application flow. Do not create a duplicate account.
+2. **Determine workspace ownership.** Confirm whether the configured factory is genuinely the founder's workspace. If it is demo or third-party inventory, do not attach the founder account to it; use the authenticated workspace-creation flow for a separate founder-owned workspace.
+3. **Verify memberships read-only.** Confirm active organization and factory memberships after the application flow.
+4. **Run live authenticated acceptance.** Persist one authorized test analysis, retry the same idempotency key, reload/recompute/verify, confirm cross-tenant denial, and confirm browser-role direct writes remain denied. Keep test fixtures local; do not insert fake factory evidence into production.
+5. **Qualify one real pilot.** Obtain authorization, source provenance, comparable energy/production/operating-hour periods, operating context, and documented tariff/intervention assumptions. Have a qualified factory reviewer assess the result.
+6. **Then advance commercial validation.** Prepare the narrow pilot offer and claim-evidence matrix, conduct structured buyer conversations, and build the marketing homepage around proven capabilities. Website completion is not a substitute for product validation.
+
+### Current gate status
+
+- [x] Repository CI and production build checks.
+- [x] Clean local migration replay and schema/security contract tests.
+- [x] Local authenticated Edge Function integration using isolated test fixtures.
+- [x] Live persistence schema and Edge Function deployment verified.
+- [ ] Authenticated founder workspace setup and live membership verification.
+- [ ] Live production authenticated persist/retry/recompute and cross-tenant tests.
+- [ ] Real-factory evidence, expert review, and outcome validation.
+- [ ] Commercial offer and messaging validated with industrial buyers.
+
+**Decision:** continue technical acceptance through the founder's authenticated workspace flow. Do not build more features or make production/pilot claims until the live-user path and real-data evidence are established.
