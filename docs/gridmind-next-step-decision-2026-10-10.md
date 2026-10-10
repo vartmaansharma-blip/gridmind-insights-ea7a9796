@@ -221,3 +221,21 @@ The commercial bar is now explicit: GridMind must show measurable advantage over
 7. Publish no comparative advantage, savings or production-readiness claim unless the evidence supports it. A valid refusal due to insufficient evidence is a useful safety behavior, but not by itself proof of commercial value.
 
 **Decision rule:** expand only when GridMind demonstrates a useful advantage without increasing unsupported causal claims or unsafe recommendations. The scorecard and capability ladder are recorded in [the system-alignment audit](gridmind-system-alignment-audit.md).
+
+
+---
+
+## Current execution refresh — 2026-10-10 10:05 UTC
+
+This dated refresh supersedes earlier environment snapshots above where newer read-only evidence differs. See [Current System Readiness and Stack Assessment](gridmind-current-system-readiness-2026-10-10.md) and the [Buyer-Discovery Tracker](gridmind-buyer-discovery-tracker-2026-10-10.md).
+
+- CI on `36fd257a8212130d9038db4d550a3bb68d05f5bb`: **success**.
+- Quality Gate on the same commit: **success**.
+- Migration Replay on the same commit: **in progress** at the latest check; final success is not established.
+- The latest inspected Vercel deployment is `READY` but is built from `6e41958017f98f5d28448749f86a5ccb25b66906`, not the current GitHub main SHA. A Vercel build-rate-limit failure remains to be diagnosed.
+- Supabase currently reports 2 organizations, 4 factories, 1 organization membership, 3 factory memberships, zero observations, zero operating contexts, zero economic contexts, and zero analysis-run rows. The `factory_analysis_runs` table now exists, and `persist-factory-analysis` is listed as an active JWT-verified Edge Function. Earlier claims that these objects were absent describe the earlier 07:49 UTC snapshot and are no longer current.
+- Supabase security warnings remain: authenticated execution of a SECURITY DEFINER workspace function and disabled leaked-password protection. No settings or production data were changed in this refresh.
+- Lovable's latest commit SHA matches the inspected GitHub main SHA.
+- No authenticated live persist/reload/retry/recompute workflow, cross-tenant denial suite, real-factory evidence, independent expert review, or buyer validation is established.
+
+**Execution order remains:** finish release checks and verify the intended deployed SHA; prove authorized end-to-end workflow and tenant isolation; populate the buyer-discovery tracker with real evidence; select one wedge only if it passes the evidence gate. Keep the current stack and avoid additional infrastructure until these gates are resolved.

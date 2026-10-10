@@ -23,6 +23,11 @@ This directory contains product definitions, engineering contracts, validation p
 - [Release Gate](release-gate.md)
 - [Live Acceptance Runbook](gridmind-live-acceptance-runbook.md)
 
+## Current execution and validation
+
+- [Current System Readiness and Stack Assessment](gridmind-current-system-readiness-2026-10-10.md) — freshest read-only GitHub/Vercel/Supabase/Lovable snapshot; explicitly supersedes older live-state facts where newer evidence differs.
+- [Buyer-Discovery Tracker and Wedge Selection](gridmind-buyer-discovery-tracker-2026-10-10.md) — blank evidence tracker for three candidate problems; no buyer validation is implied.
+
 ## Pilot and evaluation
 
 - [First-Use-Case Data Contract](gridmind-first-use-case-data-contract.md) — provisional candidate contract, not a selected wedge by itself.
