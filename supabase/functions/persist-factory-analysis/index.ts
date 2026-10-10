@@ -16,6 +16,7 @@ type StoredAnalysisRun = {
   idempotency_key: string;
   algorithm_version: string;
   input_snapshot: AnalysisInput;
+  input_snapshot_sha256: string | null;
   result: AnalysisResult;
   result_fingerprint: string;
   analysis_status: AnalysisResult["status"];
@@ -32,7 +33,7 @@ const CORS_HEADERS = {
   "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Content-Type": "application/json",
 };
-const columns = "id,factory_id,asset_id,idempotency_key,algorithm_version,input_snapshot,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
+const columns = "id,factory_id,asset_id,idempotency_key,algorithm_version,input_snapshot,input_snapshot_sha256,result,result_fingerprint,analysis_status,refusal_codes,created_by,created_at";
 const MAX_REQUEST_BYTES = 4_000_000;
 const MAX_BASELINE_SAMPLES = 5_000;
 const MAX_CANONICAL_OBSERVATIONS = (MAX_BASELINE_SAMPLES + 1) * 5;
@@ -78,6 +79,13 @@ async function readBoundedRows<T>(
   }
   return { rows, error: null, tooMany: rows.length > maxRows };
 }
+async function inputSnapshotSha256(input: AnalysisInput): Promise<string> {
+  const bytes = new TextEncoder().encode(canonicalize(input));
+  const digest = await crypto.subtle.digest("SHA-256", bytes);
+  const hex = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `sha256:${hex}`;
+}
+
 function reproducible(stored: StoredAnalysisRun, factoryId: number, result: AnalysisResult): boolean {
   return stored.factory_id === factoryId &&
     stored.input_snapshot.factoryId === factoryId &&
@@ -298,6 +306,7 @@ runtime.serve(async (request: Request): Promise<Response> => {
 
       const result = analyzeFactoryLoop(input);
       const fingerprint = reproducibilityFingerprint(result);
+      const inputSnapshotFingerprint = await inputSnapshotSha256(input);
       const { data: inserted, error: insertError } = await adminClient
         .from("factory_analysis_runs")
         .insert({
@@ -306,6 +315,7 @@ runtime.serve(async (request: Request): Promise<Response> => {
           idempotency_key: idempotencyKey,
           algorithm_version: result.algorithmVersion,
           input_snapshot: input,
+          input_snapshot_sha256: inputSnapshotFingerprint,
           result,
           result_fingerprint: fingerprint,
           analysis_status: result.status,
@@ -346,11 +356,16 @@ runtime.serve(async (request: Request): Promise<Response> => {
       return reply({ error: "STORED_ANALYSIS_INPUT_INVALID", reproducible: false }, 409);
     }
     const recomputedFingerprint = reproducibilityFingerprint(recomputed);
+    const recomputedInputSnapshotFingerprint = await inputSnapshotSha256((stored as StoredAnalysisRun).input_snapshot);
+    const inputSnapshotIntegrity = typeof (stored as StoredAnalysisRun).input_snapshot_sha256 === "string" &&
+      (stored as StoredAnalysisRun).input_snapshot_sha256 === recomputedInputSnapshotFingerprint;
     return reply({
       stored: stored as StoredAnalysisRun,
       recomputed,
       recomputedFingerprint,
-      reproducible: reproducible(stored as StoredAnalysisRun, factoryId, recomputed),
+      recomputedInputSnapshotFingerprint,
+      inputSnapshotIntegrity,
+      reproducible: inputSnapshotIntegrity && reproducible(stored as StoredAnalysisRun, factoryId, recomputed),
     });
   } catch {
     return reply({ error: "INTERNAL_SERVER_ERROR" }, 500);
