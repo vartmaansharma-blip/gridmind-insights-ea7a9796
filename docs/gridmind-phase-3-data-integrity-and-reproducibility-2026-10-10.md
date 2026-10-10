@@ -160,3 +160,14 @@ Phase 3 is complete only when all of the following are evidenced:
 - Added clean-migration schema assertions for the nullable digest and its format constraint, plus authenticated integration assertions for the stored/recomputed digest.
 - SHA-256 detects accidental divergence and supports auditability. It is **not** a digital signature and cannot prove resistance to a privileged database administrator who can alter both data and digest.
 - No production migration has been applied. Merge requires CI, Quality Gate, migration replay, and end-to-end authenticated integration tests to pass on the exact final commit.
+
+
+## Execution log — cryptographic snapshot integrity merged
+
+**Merged to `main` on 2026-10-11:** PR [#25](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/25) was squash-merged as `beb16d9a45e5ecf9e5c6b95296a96762016ac171` from reviewed head `c60aaf0ad990b96aafd9779a5f27d613ef5873a5`.
+
+- CI run [38050989130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38050989130), Quality Gate run [38050989141](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38050989141), and Migration Replay run [38050989147](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38050989147) completed successfully on the exact reviewed PR head. The migration replay included the schema contract, tenant isolation/direct-table denial/append-only tests, authenticated Edge Function integration, and no-pending-local-migrations check.
+- The nullable `input_snapshot_sha256` column and canonical SHA-256 verification are now in repository `main`; historical rows intentionally remain NULL and therefore cannot be certified reproducible by this digest check.
+- **Not deployed:** the migration has not been applied to production, and the Vercel deployment quota failure remains a separate live-release blocker.
+- **Next test gap:** add explicit negative-path coverage for a missing legacy digest and a mismatched digest/snapshot. Because the application table is append-only, tampering simulation must be confined to an isolated local test fixture or a pure integrity-verification unit test; do not weaken production append-only rules for testing.
+- Continue inherited Phase 1/2 gates in parallel: identify deployed SHA, smoke-test auth/workspace/save/reload/analysis, complete semantic tenant-isolation tests, and resolve leaked-password protection and multi-organization selection behavior. Do not call Phase 3 or production readiness complete yet.
