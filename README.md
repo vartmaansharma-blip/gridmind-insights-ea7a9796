@@ -6,6 +6,10 @@ GridMind is being built to help industrial teams identify economically important
 
 GridMind is not intended to be merely an energy dashboard, anomaly detector, generic AI assistant, or supplier marketplace. Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation. That ambition must be earned through repeatable customer outcomes.
 
+## Execution discipline
+
+The [Strategic Reality Check](docs/gridmind-strategic-reality-check-2026-10-10.md) records the current course correction: prove the live authenticated workflow, select the first problem from customer evidence, and complete one auditable real-factory proof loop before broadening the platform or making superiority/savings claims.
+
 ## Product definition
 
 **GridMind is an evidence-backed industrial intelligence and value-realization platform. It transforms authorized, traceable factory data and operating context into reproducible findings and economically prioritized opportunities; supports qualified people in deciding and coordinating interventions; and measures outcomes against a defensible baseline.**
