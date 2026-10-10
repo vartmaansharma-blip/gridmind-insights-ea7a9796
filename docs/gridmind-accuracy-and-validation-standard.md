@@ -1,6 +1,6 @@
 # GridMind accuracy and validation standard
 
-**Status:** Required engineering and pilot policy. Thresholds below are proposed release gates to be reviewed against the selected use case; they are not achieved performance claims.
+**Status:** Required engineering and pilot policy. Thresholds below are proposed release gates to be reviewed against the selected use case; they are not achieved performance claims. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs scope; validation targets do not imply that a pilot, generalized accuracy claim, or product launch is currently authorized.
 
 ## 1. Accuracy is a system property
 
