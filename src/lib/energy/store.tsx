@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { toast } from "sonner";
 import { analyze, type Analysis } from "./analysis";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
 import type { Factory, OpportunityStatus } from "./types";
@@ -182,6 +183,7 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     loading: true,
   });
   const persistTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
+  const persistQueues = useRef(new Map<string, Promise<void>>());
 
   useEffect(() => {
     let cancelled = false;
@@ -237,8 +239,21 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     const existing = persistTimers.current.get(factory.id);
     if (existing) clearTimeout(existing);
     const timer = setTimeout(() => {
-      void persistFactory(factory).catch((error) => {
+      // Serialize writes per factory so a slower, older request cannot finish
+      // after a newer edit and overwrite it. A failed write is visible to the
+      // user instead of silently leaving the screen's optimistic state unsaved.
+      const previous = persistQueues.current.get(factory.id) ?? Promise.resolve();
+      const current = previous
+        .catch(() => undefined)
+        .then(() => persistFactory(factory));
+      persistQueues.current.set(factory.id, current);
+      void current.catch((error) => {
         console.error("[GridMind] canonical factory write failed", error);
+        toast.error("GridMind couldn't save these changes. Check your connection and permissions, then try again.");
+      }).finally(() => {
+        if (persistQueues.current.get(factory.id) === current) {
+          persistQueues.current.delete(factory.id);
+        }
       });
       persistTimers.current.delete(factory.id);
     }, 600);
