@@ -236,6 +236,10 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
                 parsed = number(row[field], f"{label}: {field}", errors, low=low, high=high)
                 if field == "tariff_inr_per_kwh":
                     tariff_value = parsed
+            else:
+                blockers.append(
+                    f"{label}: {field} is absent; do not quantify financial impact until the source value is documented"
+                )
         currency = row.get("currency", "").upper()
         if row.get("tariff_inr_per_kwh") and currency != "INR":
             errors.append(f"{label}: tariff_inr_per_kwh requires currency INR; do not mix currencies or silently convert")
