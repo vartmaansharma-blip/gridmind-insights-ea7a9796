@@ -138,5 +138,27 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, _ = validator.validate(self.obs, self.ops, self.eco)
         self.assertTrue(any("explicit role" in e for e in errors))
 
+    def test_extra_csv_columns_are_reported_without_crashing(self):
+        obs, op, eco = self.valid_rows()
+        self.write_all([obs], [op], [eco])
+        with self.obs.open("a", encoding="utf-8", newline="") as f:
+            f.write("F1,A1,2026-02-01T00:00:00+05:30,2026-03-01T00:00:00+05:30,energy,energy_consumption_kwh,1,,kWh,validated,false,meter-export,row-2,controlled://meter-export/row-2,notes,unexpected\n")
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("row has extra columns" in error for error in errors))
+
+    def test_operating_context_must_cover_observation_period(self):
+        obs, op, eco = self.valid_rows()
+        op["start_time"] = "2026-01-15T00:00:00+05:30"
+        self.write_all([obs], [op], [eco])
+        _, blockers = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("no accepted operating-context interval covers" in blocker for blocker in blockers))
+
+    def test_economic_context_must_cover_full_observation_period(self):
+        obs, op, eco = self.valid_rows()
+        eco["effective_until"] = "2026-01-20T00:00:00+05:30"
+        self.write_all([obs], [op], [eco])
+        _, blockers = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("no economic context is effective for the full observation period" in blocker for blocker in blockers))
+
 if __name__ == "__main__":
     unittest.main()
