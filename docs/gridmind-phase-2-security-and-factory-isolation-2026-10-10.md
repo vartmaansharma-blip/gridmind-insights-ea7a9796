@@ -62,6 +62,16 @@ A second corrective migration is proposed in branch `security/revoke-public-stru
 
 **Status:** merged in [PR #21](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/21), with [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045773200), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045773147), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045773190) passing. Applied to production as migration `20261010104457 / revoke_public_structural_table_privileges`. Post-apply read-only audit across all 42 public base/partitioned tables reports **0 tables** where anon, authenticated, or service_role has effective `TRUNCATE`, `REFERENCES`, or `TRIGGER` privilege. The same audit reports RLS enabled on all 42/42 public base/partitioned tables.
 
+## Follow-up finding: explicit role scope on membership UPDATE policy
+
+The live policy inventory after the first RLS fix showed `admins update organization_members` targeted `PUBLIC` because the migration omitted an explicit `TO authenticated`. Its predicate still required `private.is_org_admin(organization_id)`, and effective table privileges for anon UPDATE were false, so this was not evidence that anonymous writes succeeded. Nevertheless, policy scope should be explicit and least-privilege.
+
+Proposed correction in branch `security/scope-membership-update-policy`:
+- Migration `20261010130000_scope_membership_update_policy.sql` recreates the policy with `TO authenticated`.
+- Migration-replay test asserts the policy's role list is exactly `authenticated`.
+- Apply to production only after clean replay and CI pass, then re-query `pg_policies` to confirm the live policy roles.
+
+
 ## Phase 2 checklist
 
 | Item | Status | Evidence / next action |
