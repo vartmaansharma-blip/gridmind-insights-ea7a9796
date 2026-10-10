@@ -127,3 +127,8 @@ The project is developed with [Lovable](https://lovable.dev). Changes should pre
 ## Current execution priorities
 
 See the [GridMind Improvement Priorities](docs/gridmind-improvement-priorities-2026-10-10.md) for P0/P1/P2 work, acceptance criteria, and the first 30-day validation sequence.
+
+
+## 30-day execution plan
+
+The [GridMind 30-Day Build and Validation Plan](docs/gridmind-30-day-execution-plan-2026-10-10.md) defines daily actions, build scope, customer questions, acceptance gates, and Day 30 decision criteria.
