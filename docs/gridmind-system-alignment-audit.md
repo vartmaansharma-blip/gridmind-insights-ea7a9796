@@ -1,7 +1,7 @@
 # GridMind system-alignment audit
 
-**Audit date:** 2026-10-09  
-**Scope:** repository evidence, draft PRs #7–#10, canonical analysis code, intake templates/validator, migration-replay workflow, and the existing live-acceptance runbook.  
+**Audit date:** 2026-10-10  
+**Scope:** repository evidence, PRs #7–#10, canonical analysis code, intake templates/validator, migration-replay workflow, and the existing live-acceptance runbook. This snapshot was refreshed after PRs #7, #8, and #10 were merged; PR #9 remains under review.  
 **Purpose:** align the build to one evidence-to-action-to-verification outcome before adding features.  
 **Evidence limits:** this is a source-code and recorded-readiness audit, not an independent industrial engineering review. A passing test proves only the tested behavior. The live-readiness figures below are those recorded in the runbook's last read-only inspection and must be refreshed before operational decisions.
 
@@ -39,7 +39,7 @@ The runbook's recorded last read-only inspection found one factory, eight regist
 **Required correction:** refresh read-only readiness; establish legitimate membership through the authorized owner/admin; choose one asset with traceable meter and matching production data; gather the requested history and tariff/operating records; do not fabricate missing values.
 
 ### P0 — End-to-end proof is not yet established
-The code has a canonical adapter, deterministic engine, persistence function and reload/recompute design. That does not prove the live deployed path works or that a real finding survives expert review. PR #10's CI and Quality Gate passed on its current head when checked; Migration Replay was still running. A separate Vercel check reported a build-rate-limit URL, which is not evidence of an application-code failure. No production deployment/migration was performed in this audit.
+The code has a canonical adapter, deterministic engine, persistence function and reload/recompute design. That does not prove the live deployed path works or that a real finding survives expert review. PRs #7 and #10 were merged only after CI, Quality Gate, and Migration Replay reported success on their respective heads. PR #8's pilot data-request document was also merged after its checks passed. These merges do not prove production deployed behavior. PR #9's validator changes are under review; its intake-specific tests and CI/Quality Gate passed on the latest checked head, while Migration Replay was still running. No production deployment/migration was performed.
 
 **Required correction:** require all core checks to pass on the same SHA, then a controlled local end-to-end run, then authorized live acceptance. Never use a green unrelated check or an older SHA as proof for the current code.
 
@@ -84,12 +84,12 @@ The project direction correctly distinguishes a detected deviation, an estimated
 
 Snapshot from the reviewed GitHub state:
 
-- **PR #7 — missing-vs-zero in monthly CSV:** open draft, unmerged. This concerns the legacy monthly evidence path.
-- **PR #8 — real-factory data request:** open draft, unmerged. Useful pilot operations artifact.
-- **PR #9 — local pilot intake validator:** open draft, unmerged. Useful preflight; not canonical ingestion.
-- **PR #10 — no implicit currency default:** open draft, unmerged. CI and Quality Gate succeeded on head `e13ca02a098c525443df4682717647011e834506`; Migration Replay was still in progress at the last check. Vercel reported build-rate-limit. Recheck before treating checks as final.
+- **PR #7 — missing-vs-zero in monthly CSV:** merged as `e77a65266ec557f1203695d9ad0786ae57bc46e8`; this improves the legacy monthly evidence path only.
+- **PR #8 — real-factory data request:** merged as `6a9aefc2484edf50be7a860322f3def4c4156405`; this is a pilot operations artifact, not factory evidence.
+- **PR #9 — local pilot intake validator:** open, under review; changes now include extra-column handling and period coverage blockers. Intake-specific tests, CI and Quality Gate passed on the latest checked head; Migration Replay was still running at refresh time. Recheck before merge.
+- **PR #10 — no implicit currency default:** merged as `fb02cf8323c72ff215985770865d4fde497b7a3e`; this removes an unsupported currency assumption, but does not validate real economics.
 
-Do not merge by counting green PRs. First decide the intended architecture and verify the entire chain. Do not merge any PR as part of this audit.
+Merge decisions must follow code review and current checks on the exact head SHA. A merge is not proof of live readiness.
 
 ## One corrective sequence — execute in this order
 
