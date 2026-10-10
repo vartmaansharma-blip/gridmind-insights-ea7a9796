@@ -60,7 +60,7 @@ A second corrective migration is proposed in branch `security/revoke-public-stru
 - Ordinary SELECT/INSERT/UPDATE/DELETE grants and RLS policies are left unchanged.
 - The migration-replay security test now checks effective privileges across all public base/partitioned tables so this class of over-grant cannot silently return.
 
-**Status:** proposed; must pass clean migration replay and all CI checks before applying to production. The first production migration only corrected `organization_members`; this broader follow-up has not yet been applied live.
+**Status:** merged in [PR #21](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/21), with [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045773200), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045773147), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045773190) passing. Applied to production as migration `20261010104457 / revoke_public_structural_table_privileges`. Post-apply read-only audit across all 42 public base/partitioned tables reports **0 tables** where anon, authenticated, or service_role has effective `TRUNCATE`, `REFERENCES`, or `TRIGGER` privilege. The same audit reports RLS enabled on all 42/42 public base/partitioned tables.
 
 ## Phase 2 checklist
 
@@ -98,4 +98,4 @@ Phase 2 is not complete until:
 5. Leaked-password protection and current live function grants are confirmed in Supabase.
 6. Vercel serves the approved SHA and deployed authorization checks pass.
 
-**Current decision:** the proposed organization-membership RLS fix and structural-privilege revocation pass CI, Quality Gate, and clean migration replay on PR head `8b0c562eb94d9adbddc8b050233c0bd2294b6159`. Phase 2 remains in progress: the full schema/grant audit, Auth leaked-password setting, multi-organization bootstrap behavior, production rollout, and deployed two-user API acceptance are still open.
+**Current decision:** two security migrations are merged and applied to production. Read-only checks confirm organization membership policies no longer self-query, all 42 public base/partitioned tables have RLS enabled, and no API role has effective TRUNCATE/REFERENCES/TRIGGER on those tables. Phase 2 remains in progress: the complete table-by-table DML/RLS/function audit, Auth leaked-password setting, multi-organization bootstrap behavior, deployed-commit alignment, and authenticated two-user production API acceptance are still open.
