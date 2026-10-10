@@ -115,3 +115,24 @@ If current product readiness remains blocked, the site may still support honest 
 - [Real-factory pilot data request](gridmind-real-factory-pilot-data-request.md)
 - [Authoritative analysis design](gridmind-authoritative-analysis.md)
 - [Release gate](release-gate.md)
+
+
+## Execution update — 2026-10-10
+
+The first live product-readiness step has progressed beyond repository inspection:
+
+- Applied the existing analysis-persistence migration to the live Supabase database.
+- Verified the analysis table, RLS, member-scoped policies, append-only trigger, and role grants with a read-only SQL check.
+- Deployed `persist-factory-analysis` as an active Edge Function with JWT verification enabled.
+- Recorded the deployment and remaining gaps in [the Step 1 audit](gridmind-step-1-live-product-truth-audit-2026-10-10.md).
+
+### Revised next action
+
+Do **not** start building the marketing homepage yet and do not declare the product production-ready. First finish runtime acceptance:
+
+1. Confirm the GitHub Migration Replay workflow completes successfully.
+2. Run the authenticated persist → idempotent retry → recompute/verify flow using a legitimate authorized factory account.
+3. Confirm cross-tenant access is denied and direct browser writes remain denied.
+4. If runtime acceptance passes, close Step 1 and return to commercial validation: a concise pilot offer, claim-evidence matrix, and structured buyer conversations. Build the public marketing site around verified capabilities and evidence—not around assumptions.
+
+The production project currently has no organization/factory membership rows from the initial audit, so the live authenticated test needs a legitimate authorized account and must not be faked with production seed data.
