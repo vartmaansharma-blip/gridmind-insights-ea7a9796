@@ -22,11 +22,11 @@ This directory contains product definitions, engineering contracts, validation p
 - [Migration History](gridmind-migration-history.md)
 - [Release Gate](release-gate.md)
 - [Live Acceptance Runbook](gridmind-live-acceptance-runbook.md)
+- [Production Schema Alignment Runbook — 2026-10-11](gridmind-production-schema-alignment-runbook-2026-10-11.md) — production schema mismatch, safe preflight, migration authorization boundary, and post-migration release acceptance.
 
 ## Current execution and validation
 
 - [Tool Operating Model](gridmind-tool-operating-model-2026-10-10.md) — responsibilities for Lovable, optional Figma, GitHub, coding/review agents, Vercel, Supabase and conditional specialist tools.
-
 - [Phase 1 Execution Baseline](gridmind-phase-1-execution-baseline-2026-10-10.md) — verified GitHub/CI state, intervention-date correction, and the Vercel release blocker.
 - [Phase 2 Security and Factory Isolation](gridmind-phase-2-security-and-factory-isolation-2026-10-10.md) — organization-membership RLS fix, cross-tenant tests, and outstanding security verification.
 - [Phase 3 — Data Integrity and Reproducible Analysis](gridmind-phase-3-data-integrity-and-reproducibility-2026-10-10.md) — active execution plan covering inherited release gates, schema-backed intervention timestamps, canonical input snapshots, and reproducibility acceptance tests.
