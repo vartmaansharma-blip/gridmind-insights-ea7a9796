@@ -8,13 +8,7 @@ Use this runbook to prepare one real asset for a controlled GridMind analysis. T
 
 ## Current live preflight
 
-The last read-only inspection of project `bvqmvgbfqhgczwbvlqkk` found:
-- 1 factory and 8 registered assets.
-- 0 active organization/factory membership rows.
-- 0 canonical observations, operating contexts, economic contexts, data sources, and source mappings.
-- No `factory_analysis_runs` table and no deployed Edge Function.
-
-The existing assets have not been calibrated according to their current `calibration_status` values. This is a measurement-quality caveat, not permission to manufacture calibration evidence.
+Read-only checks of project `bvqmvgbfqhgczwbvlqkk` on 2026-10-10 found 1 organization, 1 factory, and 8 assets; zero organization-membership rows, factory-membership rows, canonical observations, or persisted analysis runs. The `factory_analysis_runs` table is now live with RLS, member-scoped policies, append-only protection, denied direct authenticated inserts, and intended service-role grants. Edge Function `persist-factory-analysis` is ACTIVE (version 1) with JWT verification enabled. The GitHub clean-replay and authenticated HTTP acceptance workflow was still pending at the latest check, so success is not yet established. Asset calibration status remains a measurement-quality caveat; do not manufacture evidence. Production authenticated acceptance still requires a legitimate authorized account and real source evidence.
 
 ## Steps
 
@@ -30,7 +24,7 @@ The existing assets have not been calibrated according to their current `calibra
 5. **Record operating context.** Add an asset-scoped `operating_contexts` row whose interval covers each period and whose `values.analysis_loop` contains the relevant operating state and product code when applicable. Do not create overlapping equally ranked conflicting contexts.
 6. **Record economics.** Add exactly one active `economic_contexts` row effective for the analysis timestamp. Use the currency actually applicable to the source evidence and set `metadata.analysis_loop.tariffInrPerKwh`, `recoverableFraction`, and `interventionCostInr` from documented inputs. These fields must not be guessed. Resolve ambiguous or overlapping economic contexts before analysis.
 7. **Review readiness again.** Require at least four complete comparable historical periods plus a current period for the initial pilot, and inspect all blockers and quality flags. The code's formal caps are not a substitute for sufficient evidence.
-8. **Apply the migration and deploy only after authorization.** The current PR's isolated clean replay and authenticated HTTP acceptance gates pass. Review and merge PR #3, apply its migration to the intended Supabase project, and deploy the function with JWT verification enabled only after membership/evidence preconditions and change approval are satisfied.
+8. **Confirm deployed release state.** The analysis persistence migration is already applied to the live project and `persist-factory-analysis` is deployed with JWT verification enabled. Do not reapply the migration just to repeat the same change. First confirm the GitHub clean-replay/authenticated HTTP workflow passes; then continue with legitimate membership and evidence preconditions.
 9. **Run and independently verify.** Use the asset page's “Run and verify” action. Check the source observation IDs, period boundaries, operating context, tariff, recoverable fraction, intervention cost, calculation, and refusal/provisional limitations against the original factory records. Reload and repeat verification. A reproducible result means the calculation is repeatable; it does not by itself prove causality or realized savings.
 10. **Close the loop.** Have a qualified factory engineer review the finding. Only claim realized savings after a separately documented intervention and a suitable post-intervention measurement/verification protocol.
 
@@ -50,7 +44,8 @@ Keep source documents/exports alongside the filled templates in the project's co
 - [ ] Period boundaries, units, source provenance, and quality states reviewed.
 - [ ] Operating contexts cover the relevant periods without unresolved ambiguity.
 - [ ] One unambiguous effective economic context uses documented values.
-- [ ] Live migration and Edge Function deployment authorized and recorded.
+- [x] Live migration and Edge Function deployment recorded; schema contract verified.
+- [ ] GitHub clean migration replay and authenticated HTTP acceptance workflow completes successfully.
 - [ ] Run saved, source IDs checked, reload/recompute verification succeeds.
 - [ ] Independent engineer review recorded.
 - [ ] Estimated opportunity is not represented as verified or realized savings.
