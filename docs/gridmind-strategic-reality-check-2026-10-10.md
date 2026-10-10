@@ -1,6 +1,6 @@
 # GridMind strategic reality check — 2026-10-10
 
-**Decision:** The long-term direction is sound. The execution sequence must now become stricter: stop broadening the vision until the current product path and one customer problem are proven.
+**Decision:** The long-term direction is a hypothesis to earn through evidence. The execution sequence must stay narrow until the current product path and one customer problem are proven. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs any conflict with this historical review.
 
 ## The first-principles test
 
