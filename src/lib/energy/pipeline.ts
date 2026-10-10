@@ -45,7 +45,7 @@ export function validateMonths(months: MonthRecord[], now: Date = new Date()): P
     }
     for (const [k, label] of [["kwh", "energy (kWh)"], ["cost", "cost"], ["production", "production"]] as const) {
       const v = m[k];
-      if (v === null || v === undefined) { states.add("MISSING"); notes.push(`${label} was not provided`); }
+      if (v === null || v === undefined || (typeof v === "number" && Number.isNaN(v))) { states.add("MISSING"); notes.push(`${label} was not provided`); }
       else if (!finite(v)) { states.add("INVALID"); notes.push(`${label} is not a finite numeric value`); }
       else if (v < 0) { states.add("INVALID"); notes.push(`${label} is negative`); }
       else if (v === 0 && (k === "kwh" || k === "production")) {
@@ -53,12 +53,15 @@ export function validateMonths(months: MonthRecord[], now: Date = new Date()): P
         notes.push(`${label} is a recorded zero; energy-intensity analysis is unavailable for this month`);
       }
     }
-    if (!finite(m.peakKva)) { states.add("MISSING"); notes.push("Peak demand was not provided — demand checks skip this month"); }
-    if (!finite(m.operatingHours)) { states.add("MISSING"); notes.push("Operating hours were not provided"); }
+    if (Number.isNaN(m.peakKva) || m.peakKva === null || m.peakKva === undefined) { states.add("MISSING"); notes.push("Peak demand was not provided — demand checks skip this month"); }
+    else if (!finite(m.peakKva)) { states.add("INVALID"); notes.push("Peak demand is not a finite numeric value"); }
+    if (Number.isNaN(m.operatingHours) || m.operatingHours === null || m.operatingHours === undefined) { states.add("MISSING"); notes.push("Operating hours were not provided"); }
+    else if (!finite(m.operatingHours)) { states.add("INVALID"); notes.push("Operating hours are not a finite numeric value"); }
     else if (m.operatingHours === 0) { states.add("INSUFFICIENT"); notes.push("Operating hours are zero; operating-context comparisons are unavailable"); }
     else if (m.operatingHours > PIPELINE_RULES.maxHours) { states.add("INVALID"); notes.push("Operating hours exceed hours in a month"); }
     if (m.powerFactor !== undefined) {
-      if (!finite(m.powerFactor)) { states.add("MISSING"); notes.push("Power factor was not provided"); }
+      if (Number.isNaN(m.powerFactor)) { states.add("MISSING"); notes.push("Power factor was not provided"); }
+      else if (!finite(m.powerFactor)) { states.add("INVALID"); notes.push("Power factor is not a finite numeric value"); }
       else if (m.powerFactor <= 0 || m.powerFactor > 1) { states.add("INVALID"); notes.push("Power factor must be greater than 0 and at most 1"); }
     }
     if (finite(m.kwh) && finite(m.cost) && m.kwh > 0 && m.cost > 0) {

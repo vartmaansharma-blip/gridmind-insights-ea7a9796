@@ -21,7 +21,7 @@ describe("pipeline", () => {
     expect(r.analysisPaused).toBe(true);
   });
   it("flags invalid numbers and out-of-order months", () => {
-    const r = validateMonths([m("2026-03"), m("2026-01", { cost: Number.NaN })], now);
+    const r = validateMonths([m("2026-03"), m("2026-01", { cost: -1 })], now);
     expect(r.checks[1].states).toContain("INVALID");
     expect(r.checks[1].states).toContain("OUT_OF_ORDER");
   });
