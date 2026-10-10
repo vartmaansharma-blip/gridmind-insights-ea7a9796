@@ -138,9 +138,9 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
         sid = row.get("source_record_id", "")
         if sid:
             key = (row.get("source_system", ""), sid)
-            if key in source_ids:
-                errors.append(f"{label}: duplicate source_system/source_record_id {key!r}")
-            source_ids.add(key)
+            if key in source_ids["observations"]:
+                errors.append(f"{label}: duplicate source_system/source_record_id in observations {key!r}")
+            source_ids["observations"].add(key)
 
     for key, rows in intervals.items():
         rows.sort(key=lambda x: x[0])
@@ -152,6 +152,12 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     for i, row in enumerate(operating, 2):
         label = f"{ops_path.name}:{i}"
         required(row, ["factory_id", "asset_id", "start_time", "end_time", "status", "source_system", "source_record_id", "source_reference"], label, errors)
+        sid = row.get("source_record_id", "")
+        if sid:
+            key = (row.get("source_system", ""), sid)
+            if key in source_ids["operating_contexts"]:
+                errors.append(f"{label}: duplicate source_system/source_record_id in operating contexts {key!r}")
+            source_ids["operating_contexts"].add(key)
         factories.add(row.get("factory_id", ""))
         start = parse_time(row.get("start_time", ""), f"{label}: start_time", errors)
         end = parse_time(row.get("end_time", ""), f"{label}: end_time", errors)
@@ -189,6 +195,12 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     for i, row in enumerate(economics, 2):
         label = f"{eco_path.name}:{i}"
         required(row, ["factory_id", "context_name", "effective_from", "currency", "source_system", "source_record_id", "source_reference"], label, errors)
+        sid = row.get("source_record_id", "")
+        if sid:
+            key = (row.get("source_system", ""), sid)
+            if key in source_ids["economic_contexts"]:
+                errors.append(f"{label}: duplicate source_system/source_record_id in economic contexts {key!r}")
+            source_ids["economic_contexts"].add(key)
         factory = row.get("factory_id", "")
         factories.add(factory)
         economic_rows_by_factory[factory].append(row)
