@@ -125,7 +125,19 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
     })),
     observations: (observationsResult.data ?? []).filter((x) => x.factory_id === factory.id).map(observationToDomain),
     opportunities: (opportunitiesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as OpportunityContract),
-    interventions: (interventionsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as InterventionContract),
+    interventions: (interventionsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x): InterventionContract => ({
+      id: x.id,
+      factoryId: x.factory_id,
+      opportunityId: x.opportunity_id,
+      targetScopeType: x.target_scope_type,
+      targetScopeId: x.target_scope_id,
+      status: x.status,
+      description: x.description,
+      implementedAt: x.implemented_at,
+      implementationCost: x.implementation_cost,
+      expectedSavingInr: x.expected_saving_inr,
+      verificationMethod: jsonRecord(x.verification_method),
+    })),
     verifiedOutcomes: (outcomesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as VerifiedOutcomeContract),
   }));
 }
