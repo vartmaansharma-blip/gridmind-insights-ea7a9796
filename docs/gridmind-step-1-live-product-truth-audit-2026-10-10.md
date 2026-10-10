@@ -188,3 +188,30 @@ A fresh read-only inventory query shows the single registered factory and its ei
 Obtain a legitimate factory/workspace owner account and authorization for one real pilot site, then request existing source records using [the real-factory pilot data request](gridmind-real-factory-pilot-data-request.md). Prefer an asset with an identifiable meter boundary, matched production output, operating hours/context, documented tariff, and a reviewer who can validate the source. Only after access and data provenance are established should canonical observations be ingested and the authenticated production acceptance test be run.
 
 The GitHub migration replay / authenticated HTTP test workflow was still running at the last check. Its result remains unconfirmed.
+
+
+## Current verified state — rechecked 2026-10-10, approximately 08:05 UTC
+
+This section supersedes the earlier top-level environment snapshot where it conflicts with the later production follow-through notes.
+
+### Workflow evidence
+
+On commit `aecd4f2839358f0d72f8034862f7313972288d63`, all three latest GitHub Actions workflows completed successfully:
+
+- [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036362857): typecheck, semantic ESLint, tests, and production build passed.
+- [GridMind Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036362793): passed.
+- [GridMind Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036362872): clean local Supabase startup, replay of every migration from an empty database, schema contract, tenant-isolation/direct-table-denial/append-only tests, authenticated Edge Function HTTP integration using isolated local fixtures, and no-pending-local-migrations check all passed.
+
+This closes the repository-level CI/replay gate for that commit. It does **not** prove that the production account can authenticate, that the live workspace membership is correct, or that a real-factory analysis is valid.
+
+### Fresh live account and data preflight
+
+A new read-only query found one Supabase Auth user. The user matching the email used by the repository's GitHub commits exists, but has zero organization memberships and zero factory memberships. The query deliberately did not copy the email address into this audit. Live counts remain: one organization, one factory, zero organization memberships, zero factory memberships, zero analysis runs, zero canonical observations, zero operating contexts, and zero economic contexts. The Edge Function remains ACTIVE version 1 with JWT verification enabled.
+
+The eight configured assets are still not evidence of real operating measurements: the latest asset inventory reported generic manufacturers, not-calibrated status, and 0% sensor coverage. Do not treat this workspace as a real pilot until an authorized factory contact confirms its identity and supplies traceable records.
+
+### Decision and next action
+
+**Do not create or directly attach a membership from an administrative SQL shortcut.** The founder's existing authentication identity is present; the missing step is authenticated workspace setup and correct authorization. Sign in through the application with that existing account, then determine whether the configured factory belongs to the founder or is merely demo/third-party inventory. If it is not the founder's workspace, create a separate workspace using the authenticated workspace-creation flow rather than attaching the founder to the existing factory.
+
+After the authenticated workspace flow, verify both organization and factory memberships read-only. Then select one confirmed real asset, obtain the real-factory data request and evidence, and perform live authenticated persist/retry/reload/recompute plus cross-tenant denial checks. No live membership, data, migration, or deployment writes were made by this recheck.
