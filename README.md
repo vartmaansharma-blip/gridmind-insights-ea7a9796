@@ -1,12 +1,16 @@
 # GridMind Insights
 
-> **Industrial intelligence that turns factory evidence into verified economic improvement.**
+> **Being built to turn industrial evidence into better decisions and verified improvement.**
 
 GridMind is being built to help industrial teams identify economically important operational problems, understand what the available evidence supports, prioritize interventions, coordinate the people and resources needed to act, and verify whether the outcome improved.
 
 GridMind is not intended to be merely an energy dashboard, anomaly detector, generic AI assistant, or supplier marketplace. Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation. That ambition must be earned through repeatable customer outcomes.
 
 The staged expansion strategy is in the [GridMind Expansion Architecture](docs/gridmind-expansion-architecture-2026-10-10.md). The provisional business scores are in the [Business Thesis Ratings](docs/business-thesis-ratings-2026-10-10.md). The broader venture choice is documented in the [Industrial Venture Strategy Research](docs/gridmind-industrial-venture-strategy-research-2026-10-10.md). Its conclusion is to preserve GridMind as a long-term industrial thesis while testing GridMind, narrow procurement intelligence, and a specific vertical operations workflow against real buyer pain before committing the next major build.
+
+## Start here
+
+Use the [Documentation Index](docs/README.md) for the canonical reading order. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs current commitments and resolves conflicts across strategy, product, website, and execution documents.
 
 ## Execution discipline
 
@@ -104,7 +108,7 @@ The homepage specification defines the draft copy, section order, hero alternati
 
 The immediate product priority is to refresh read-only readiness, establish legitimate customer-authorized access, obtain traceable real-factory data, qualify it, run the analysis, obtain independent domain review, and—if the evidence justifies action—measure and verify the result. Then repeat the process at a second facility.
 
-The immediate website priority is to refresh product readiness and map each proposed public claim to current evidence before implementation or launch.
+The immediate website task is limited to claim and offer validation. Full public-site implementation remains gated until product truth is refreshed, the initial offer and exclusions are clear, and relevant buyer evidence justifies the scope.
 
 See:
 - [GridMind product definition and strategy](docs/gridmind-product-definition.md)
