@@ -1,0 +1,67 @@
+# GridMind Phase 2 — security and factory-isolation execution tracker
+
+**Date:** 2026-10-10  
+**Branch:** `security/phase-2-tenant-isolation`  
+**Base:** Phase 1 stabilization branch `fix/no-synthetic-intervention-dates`  
+**Scope:** harden the organization membership authorization path and expand automated tenant-isolation checks. This is not a security certification.
+
+## Evidence-backed findings
+
+### Finding 1 — organization membership RLS recursively queried its own table
+
+The prior policies on `public.organization_members` used subqueries against `public.organization_members` to decide whether the caller was an active owner/admin. Because the same table's RLS policies apply to those subqueries, this can recursively re-enter the policies and fail with a recursion error rather than authorizing safely.
+
+**Implemented in this branch:** migration `20261010110000_harden_organization_membership_rls.sql` adds `private.is_org_admin(bigint)`, a narrowly scoped `SECURITY DEFINER` predicate with an empty search path and no caller-supplied user ID. It revokes execute from PUBLIC/anon, grants it to authenticated, and rewrites SELECT/INSERT/UPDATE policies to call that predicate. The predicate only returns true for the caller's active owner/admin membership in the specified organization.
+
+**Validation status:** automated clean migration replay and tenant security tests are pending for this branch. Do not deploy this migration until those checks pass and the migration diff is reviewed.
+
+### Finding 2 — existing coverage was narrow
+
+The existing `supabase/tests/factory-analysis-security.sql` tested factory visibility and the special append-only analysis-run table, but did not directly assert cross-tenant asset invisibility or organization-membership write denial.
+
+**Implemented in this branch:** expanded the existing migration-replay security test to assert:
+- user A sees only their test factory and its assets, not tenant B's assets;
+- a user cannot update or insert organization memberships in another tenant;
+- workspace bootstrap execution is granted to authenticated and denied to anon;
+- the public workspace bootstrap function has a pinned empty search path;
+- existing least-privilege analysis-run table/sequence grants and append-only constraints continue to be checked.
+
+**Validation status:** tests are committed to the branch, but not yet verified green. A passing CI run is required before calling these protections tested.
+
+## Phase 2 checklist
+
+| Item | Status | Evidence / next action |
+|---|---|---|
+| 2.1 Review tenant identity model | **Reviewed in source** | Organization membership + factory membership are separate gates; factory membership has organization linkage and composite integrity constraints. Verify live RLS and membership state independently. |
+| 2.2 Fix organization membership policy recursion | **Implemented; awaiting tests/review** | Migration `20261010110000_harden_organization_membership_rls.sql`. |
+| 2.3 Add cross-tenant asset read denial test | **Implemented; awaiting tests** | `supabase/tests/factory-analysis-security.sql`. |
+| 2.4 Add cross-tenant membership write denial test | **Implemented; awaiting tests** | Same test script, user A attempting to update/insert in org B. |
+| 2.5 Verify SECURITY DEFINER function grants and search path | **Test added; awaiting tests** | Test asserts public workspace bootstrap is executable by authenticated, not anon, and has empty search path. Existing private helper ACLs still need a broader catalogue audit. |
+| 2.6 Audit all RLS policies and table grants across canonical tables | **In progress / incomplete** | Build a table-by-table matrix of RLS enabled, SELECT/INSERT/UPDATE/DELETE policies, table/sequence grants, and service-role requirements. This patch is not a complete policy audit. |
+| 2.7 Verify cross-factory composite constraints | **Partially implemented in schema; runtime coverage incomplete** | Several canonical graph edges already have composite factory-scoped foreign keys. Add explicit negative tests for cross-factory observations, mappings, opportunities, interventions, verification plans/runs, and outcomes. |
+| 2.8 Review workspace bootstrap organization selection | **Open** | The RPC chooses the first active owner/admin organization when a caller belongs to multiple organizations. Confirm intended product behavior; preferably require an explicit authorized organization or a separate “create new organization” flow rather than silently selecting the first. |
+| 2.9 Review leaked-password protection | **Blocked on Auth configuration access** | Previous read-only Supabase advisor snapshot reported it disabled. Confirm current setting and enable through authorized Auth settings after reviewing login/reset UX. No production setting changed. |
+| 2.10 Recheck public SECURITY DEFINER warning | **Needs live confirmation** | The public workspace bootstrap function is intentionally callable by authenticated users for onboarding, uses `auth.uid()`, and has a pinned empty search path. Confirm current grants and function definition in the live database; do not treat the advisor warning alone as proof of exploitability. |
+| 2.11 Verify deployed release and authenticated smoke tests | **Blocked by Phase 1 Vercel rate limit** | Deploy only after checks pass and provider permits deployment; verify deployed SHA, sign-in, factory isolation, and authorized/unauthorized writes. |
+| 2.12 Live two-user isolation acceptance | **Not yet run** | Use two independent authenticated test users and at least two factories in separate organizations; prove read and write denial at API level, not only through UI filtering. Do not use real customer data. |
+
+## Safety boundaries
+
+- Do not remove RLS, broaden grants, or use the service role in browser code to make workflows pass.
+- Do not change production Auth settings or apply migrations to production without authorization and a reviewed release.
+- A zero-row UPDATE can be a valid RLS denial; tests must distinguish that from a successful write.
+- Test both read isolation and write isolation; UI filtering is not a security boundary.
+- Treat tenant isolation as defense in depth: RLS + constrained RPCs + relational factory-consistency constraints + authenticated integration tests.
+- Keep credentials, tokens, customer records, and secrets out of logs and documentation.
+
+## Phase 2 exit criteria
+
+Phase 2 is not complete until:
+1. Migration replay and all CI workflows pass on the final PR head.
+2. The membership policy recursion fix is reviewed and merged.
+3. Cross-tenant read/write denial is demonstrated by automated tests and a separate authenticated API smoke test.
+4. The table/grant/RLS matrix covers every public table and every SECURITY DEFINER function.
+5. Leaked-password protection and current live function grants are confirmed in Supabase.
+6. Vercel serves the approved SHA and deployed authorization checks pass.
+
+**Current decision:** the first concrete RLS defect has a proposed migration and the security test suite has been strengthened. Phase 2 remains in progress until workflow evidence and live-environment checks support closure.
