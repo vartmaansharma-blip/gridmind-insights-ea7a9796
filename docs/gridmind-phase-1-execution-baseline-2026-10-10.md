@@ -43,3 +43,10 @@ Do not call the deployment step complete until Vercel serves the approved commit
 2. Resolve Vercel deployment rate limiting without making unapproved account/billing changes; deploy the approved commit and verify its SHA.
 3. Carry `implemented_at` and its audit/test contract into the canonical schema intervention-history task.
 4. Continue with the highest-risk security/tenant-isolation and persistence acceptance checks; do not add product features ahead of them.
+
+## Post-merge update — 2026-10-10
+
+- The intervention-date correction and the Phase 2 organization-membership security fix were merged together in [PR #20](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/20), merge commit `ac44236ff0de73f98ce2cc110b56de0392cef7fa`.
+- The final pre-merge PR head passed [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045457382), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045457383), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045457388).
+- The organization-membership migration was subsequently applied to the live Supabase project and verified; details are in the [Phase 2 security tracker](gridmind-phase-2-security-and-factory-isolation-2026-10-10.md).
+- **Phase 1 deployment item remains open:** the repository merge does not prove Vercel is serving this commit. Confirm the deployment provider's rate-limit window, deployed SHA, routes, sign-in, and authorized factory workflow before declaring Phase 1 fully closed.
