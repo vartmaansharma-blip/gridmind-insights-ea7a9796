@@ -51,7 +51,7 @@ class IntakeValidatorTests(unittest.TestCase):
             "factory_id":"F1", "context_name":"tariff-2026",
             "effective_from":"2026-01-01T00:00:00+05:30",
             "effective_until":"", "currency":"INR",
-            "tariff_inr_per_kwh":"8.5", "recoverable_fraction":"", "intervention_cost_inr":"",
+            "tariff_inr_per_kwh":"8.5", "recoverable_fraction":"0.6", "intervention_cost_inr":"500",
             "source_system":"invoice", "source_record_id":"bill-1",
             "source_reference":"controlled://bills/bill-1", "notes":""
         }
@@ -94,6 +94,16 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, blockers = validator.validate(self.obs, self.ops, self.eco)
         self.assertEqual(errors, [])
         self.assertTrue(any("tariff is absent" in b for b in blockers))
+
+    def test_missing_recovery_fraction_or_intervention_cost_blocks_financial_quantification(self):
+        for field in ("recoverable_fraction", "intervention_cost_inr"):
+            with self.subTest(field=field):
+                obs, op, eco = self.valid_rows()
+                eco[field] = ""
+                self.write_all([obs], [op], [eco])
+                errors, blockers = validator.validate(self.obs, self.ops, self.eco)
+                self.assertEqual(errors, [])
+                self.assertTrue(any(f"{field} is absent" in blocker for blocker in blockers))
 
     def test_overlapping_same_role_periods_are_rejected(self):
         obs, op, eco = self.valid_rows()
