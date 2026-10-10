@@ -1,4 +1,4 @@
-The master company thesis and ordered expansion roadmap are in the [GridMind Master Business Thesis](docs/gridmind-master-business-thesis-roadmap-2026-10-10.md). # GridMind Insights
+# GridMind Insights
 
 > **Industrial intelligence that turns factory evidence into verified economic improvement.**
 
@@ -132,3 +132,8 @@ See the [GridMind Improvement Priorities](docs/gridmind-improvement-priorities-2
 ## 30-day execution plan
 
 The [GridMind 30-Day Build and Validation Plan](docs/gridmind-30-day-execution-plan-2026-10-10.md) defines daily actions, build scope, customer questions, acceptance gates, and Day 30 decision criteria.
+
+
+## Decision authority
+
+The [GridMind Decision Constitution and Contradiction Register](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) is the canonical guide for resolving conflicts among strategy, product, use-case, website and execution documents. It distinguishes long-term ambition from current commitments and defines how future decisions supersede prior ones.
