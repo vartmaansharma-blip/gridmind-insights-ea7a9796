@@ -120,3 +120,22 @@ The initial follow-up note above incorrectly stated that the repository did not 
 **Correct diagnosis:** this is not a missing migration source. It is a pending production migration plus an undeployed Edge Function. Do not add a duplicate migration. The safe next step is to run/verify the existing migration through the approved release path, then deploy the function with the required secrets and validate authenticated persistence/reload/reproducibility. These production operations were not performed by this documentation commit.
 
 The prior incorrect sentence claiming that no migration definition exists is superseded by this corrected finding.
+
+
+## Engineering follow-through committed
+
+The following safe repository changes were made after the live audit:
+
+1. Added `supabase/tests/factory-analysis-schema-contract.sql`, a read-only post-migration contract test that fails if the persistence table, RLS, member-scoped read/insert policies, append-only trigger, or expected role grants are missing.
+2. Updated `.github/workflows/migration-replay.yml` to run this contract test immediately after a clean local migration replay.
+3. Corrected the diagnosis above: the migration exists in source; it is pending in the live project. No duplicate migration was added.
+
+Commits:
+- `0d416a9b15184780f7bd0ef7725c7d22c372350c` — correct audit diagnosis.
+- `7e755d5c931d542e46b42e7ed62de401c82b822e` — add schema contract test.
+- `a2ed14729830d7ccef754635a8127c4d8f6536b6` — wire test into migration replay.
+- `b1d69708af51edabf3f81329b26b25c01d32080f` — correct workflow DB URL parsing.
+
+**Validation status:** repository source and commit metadata were inspected; the latest combined commit status was still pending at the time of this update. Do not claim the new migration replay test passed until its workflow result is confirmed.
+
+**Still blocked:** applying migration `20261009130000_gridmind_factory_analysis_runs_v1` to production through the approved release path; deploying `persist-factory-analysis` with the required secrets; establishing a legitimate authorized owner/factory membership; and running the authenticated end-to-end verification against live authorized evidence. None of those production operations were performed by these commits.
