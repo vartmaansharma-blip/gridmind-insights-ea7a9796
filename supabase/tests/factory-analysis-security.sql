@@ -63,6 +63,16 @@ begin
     raise exception 'WORKSPACE_BOOTSTRAP_FUNCTION_GRANTS_ARE_NOT_LEAST_PRIVILEGE';
   end if;
 
+  if has_table_privilege('anon', 'public.organization_members', 'truncate')
+    or has_table_privilege('authenticated', 'public.organization_members', 'truncate')
+    or has_table_privilege('service_role', 'public.organization_members', 'truncate')
+    or has_table_privilege('anon', 'public.organization_members', 'references')
+    or has_table_privilege('authenticated', 'public.organization_members', 'references')
+    or has_table_privilege('anon', 'public.organization_members', 'trigger')
+    or has_table_privilege('authenticated', 'public.organization_members', 'trigger') then
+    raise exception 'UNNECESSARY_ORGANIZATION_MEMBERSHIP_TABLE_PRIVILEGES_REMAIN';
+  end if;
+
   if not exists (
     select 1 from pg_proc p
     join pg_namespace n on n.oid = p.pronamespace
