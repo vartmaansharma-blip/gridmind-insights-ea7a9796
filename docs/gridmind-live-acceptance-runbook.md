@@ -56,3 +56,25 @@ Keep source documents/exports alongside the filled templates in the project's co
 - PR #3: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/3
 - Authoritative analysis design: `docs/gridmind-authoritative-analysis.md`
 - Clean replay and HTTP acceptance workflow: `.github/workflows/migration-replay.yml`
+
+
+## Founder setup — exact application path and latest workflow state
+
+### Authenticated setup path
+
+The current application already implements the intended flow; no new account or administrative membership write is required:
+
+1. Open the deployed GridMind app and go to `/auth`.
+2. Choose **Sign in** and enter the existing account credentials in the browser. Credentials must never be sent through ChatGPT, GitHub issues, documentation, or chat.
+3. After sign-in, the application loads canonical factory snapshots using the authenticated Supabase client. If no factory is visible, the app shell displays **Create your first factory** and the **Add factory** dialog.
+4. Submit the real factory name, location, and sector. The app calls the authenticated `create_factory_workspace` RPC, then reloads snapshots and verifies the newly created factory is visible under the caller's RLS scope.
+5. If the configured existing factory is not confirmed to be founder-owned, do not attach the account to it. Create a separate founder-owned workspace through the app.
+6. After the flow, recheck organization and factory memberships with read-only queries. Then test the live persistence Edge Function using the signed-in session.
+
+### Latest CI state for documentation commit `394cdb25d1ef9e5e28ac7e2e12812f98b2b78cd4`
+
+- [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717626): passed.
+- [GridMind Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717676): passed.
+- [GridMind Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717696): **pending at last check**; do not mark this commit's replay gate passed until GitHub reports a completed success.
+
+The app flow is ready to be exercised, but an external authenticated browser session is required. The assistant cannot sign in as the founder without the founder privately entering credentials. No production membership, workspace, measurement, migration, or deployment writes were performed during this check.
