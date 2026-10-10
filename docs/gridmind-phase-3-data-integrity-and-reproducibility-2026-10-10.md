@@ -149,3 +149,14 @@ Phase 3 is complete only when all of the following are evidenced:
 - **Trade-off:** slower visible feature velocity in exchange for lower risk of false conclusions and a defensible path to customer review.
 - **Known blockers:** Vercel deployed-SHA verification, Supabase Auth leaked-password protection, authenticated two-user production API isolation, complete semantic policy/grant review, and ambiguous multi-organization selection behavior.
 - **Next decision:** refresh inherited Phase 1/2 release gates, then implement P2 canonical input snapshot integrity after reviewing the existing adapter and persisted-run contract. No production migration is authorized by this plan alone.
+
+## Execution log — input snapshot integrity slice
+
+**Implemented on branch; not yet merged or deployed:**
+
+- Added nullable `input_snapshot_sha256` to persisted analysis runs. Historical records remain NULL; no hash is invented for legacy data.
+- The persistence Edge Function computes SHA-256 over the canonicalized exact `AnalysisInput` snapshot at write time.
+- Verification recomputes the digest from the stored snapshot and exposes `inputSnapshotIntegrity`; a missing/mismatched digest cannot be reported as reproducible.
+- Added clean-migration schema assertions for the nullable digest and its format constraint, plus authenticated integration assertions for the stored/recomputed digest.
+- SHA-256 detects accidental divergence and supports auditability. It is **not** a digital signature and cannot prove resistance to a privileged database administrator who can alter both data and digest.
+- No production migration has been applied. Merge requires CI, Quality Gate, migration replay, and end-to-end authenticated integration tests to pass on the exact final commit.

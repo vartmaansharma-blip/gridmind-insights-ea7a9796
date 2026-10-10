@@ -183,6 +183,16 @@ Deno.test("persist-factory-analysis enforces auth, tenant scope, server-owned in
   if (verification.response.status !== 200 || verification.body.reproducible !== true) {
     throw new Error(`Reload/recompute verification failed: ${verification.response.status} ${JSON.stringify(verification.body)}`);
   }
+  if (verification.body.inputSnapshotIntegrity !== true ||
+      typeof verification.body.recomputedInputSnapshotFingerprint !== "string" ||
+      !/^sha256:[0-9a-f]{64}$/.test(verification.body.recomputedInputSnapshotFingerprint)) {
+    throw new Error(`Input snapshot SHA-256 verification failed: ${JSON.stringify(verification.body)}`);
+  }
+  const storedRun = verification.body.stored as Json;
+  if (typeof storedRun.input_snapshot_sha256 !== "string" ||
+      storedRun.input_snapshot_sha256 !== verification.body.recomputedInputSnapshotFingerprint) {
+    throw new Error("Stored input snapshot digest does not match the recomputed SHA-256 digest");
+  }
 
   const foreignAsset = await runAnalysis(userA.access_token, {
     action: "persist", factoryId: factoryB, assetId: assetA, idempotencyKey: "foreign-factory",

@@ -6,6 +6,8 @@ declare
   v_read_policy boolean;
   v_insert_policy boolean;
   v_append_only_trigger boolean;
+  v_input_digest_nullable boolean;
+  v_input_digest_constraint boolean;
 begin
   if to_regclass('public.factory_analysis_runs') is null then
     raise exception 'MISSING_SCHEMA_CONTRACT: public.factory_analysis_runs';
@@ -52,6 +54,26 @@ begin
 
   if not v_append_only_trigger then
     raise exception 'MISSING_SCHEMA_CONTRACT: append-only trigger is absent';
+  end if;
+
+  select is_nullable = 'YES' into v_input_digest_nullable
+  from information_schema.columns
+  where table_schema = 'public'
+    and table_name = 'factory_analysis_runs'
+    and column_name = 'input_snapshot_sha256';
+
+  if coalesce(v_input_digest_nullable, false) is not true then
+    raise exception 'MISSING_SCHEMA_CONTRACT: historical input snapshot digest must remain nullable';
+  end if;
+
+  select exists (
+    select 1 from pg_constraint
+    where conrelid = 'public.factory_analysis_runs'::regclass
+      and conname = 'factory_analysis_runs_input_snapshot_sha256_format'
+  ) into v_input_digest_constraint;
+
+  if not v_input_digest_constraint then
+    raise exception 'MISSING_SCHEMA_CONTRACT: SHA-256 digest format constraint is absent';
   end if;
 
   if has_table_privilege('anon', 'public.factory_analysis_runs', 'SELECT')
