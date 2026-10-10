@@ -6,7 +6,7 @@ GridMind is being built to help industrial teams identify economically important
 
 GridMind is not intended to be merely an energy dashboard, anomaly detector, generic AI assistant, or supplier marketplace. Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation. That ambition must be earned through repeatable customer outcomes.
 
-The provisional business scores are in the [Business Thesis Ratings](docs/business-thesis-ratings-2026-10-10.md). The broader venture choice is documented in the [Industrial Venture Strategy Research](docs/gridmind-industrial-venture-strategy-research-2026-10-10.md). Its conclusion is to preserve GridMind as a long-term industrial thesis while testing GridMind, narrow procurement intelligence, and a specific vertical operations workflow against real buyer pain before committing the next major build.
+The staged expansion strategy is in the [GridMind Expansion Architecture](docs/gridmind-expansion-architecture-2026-10-10.md). The provisional business scores are in the [Business Thesis Ratings](docs/business-thesis-ratings-2026-10-10.md). The broader venture choice is documented in the [Industrial Venture Strategy Research](docs/gridmind-industrial-venture-strategy-research-2026-10-10.md). Its conclusion is to preserve GridMind as a long-term industrial thesis while testing GridMind, narrow procurement intelligence, and a specific vertical operations workflow against real buyer pain before committing the next major build.
 
 ## Execution discipline
 
