@@ -122,6 +122,10 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
             errors.append(f"{label}: metric {metric!r} requires unit {metric_unit!r}")
         if text and (role in {"energy", "production", "operating_hours"} or metric in {"energy_consumption_kwh", "production_output", "operating_hours"}):
             errors.append(f"{label}: numeric measurement role cannot use value_text")
+        if (role in {"operating_state", "product_code"} or metric in {"operating_state", "product_code"}) and numeric:
+            errors.append(f"{label}: operating-state and product-code evidence must use value_text, not value_numeric")
+        if (role in {"operating_state", "product_code"} or metric in {"operating_state", "product_code"}) and not text:
+            errors.append(f"{label}: operating-state and product-code evidence require value_text")
         start = parse_time(row.get("period_start", ""), f"{label}: period_start", errors)
         end = parse_time(row.get("period_end", ""), f"{label}: period_end", errors)
         if start and end:
