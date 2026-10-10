@@ -175,3 +175,16 @@ Deployed `persist-factory-analysis` as active version 1 with JWT verification en
 - Existing security-advisor warnings remain: the authenticated SECURITY DEFINER workspace-creation function and disabled leaked-password protection. The workspace function was reviewed previously and should not be changed without an explicit authorization-contract review.
 
 **Current state:** schema deployment and Edge Function deployment are complete; security-preserving live schema checks pass. Authenticated runtime acceptance and the CI migration-replay result remain open. Demo data remains synthetic and must not be described as a real-factory finding.
+
+
+## Pilot readiness check — 2026-10-10
+
+A fresh read-only inventory query shows the single registered factory and its eight configured assets. All eight currently report `manufacturer = Generic`, `calibration_status = not_calibrated`, and `sensor_coverage_pct = 0`. No canonical observations or saved analysis runs exist, and there are no organization/factory membership rows.
+
+**Decision:** none of these asset records currently qualifies as a real-data pilot candidate based on the database evidence. Treat this inventory as configured/demo setup until an authorized factory contact confirms the site and asset identity. Do not pick a machine or calculate savings from its nameplate data alone.
+
+### Next external dependency
+
+Obtain a legitimate factory/workspace owner account and authorization for one real pilot site, then request existing source records using [the real-factory pilot data request](gridmind-real-factory-pilot-data-request.md). Prefer an asset with an identifiable meter boundary, matched production output, operating hours/context, documented tariff, and a reviewer who can validate the source. Only after access and data provenance are established should canonical observations be ingested and the authenticated production acceptance test be run.
+
+The GitHub migration replay / authenticated HTTP test workflow was still running at the last check. Its result remains unconfirmed.
