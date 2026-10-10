@@ -1,6 +1,7 @@
 # GridMind Main Website — Homepage Specification
 
-**Status:** Build-ready specification; not implemented. **Last updated:** 2026-10-10.  
+**Status:** Specification drafted; not implemented. **Implementation is gated by the current Decision Constitution.** Last updated: 2026-10-10.  
+**Decision authority:** [GridMind Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Completeness of this specification does not mean website implementation is the current priority.
 **Scope:** New public-facing main website only; no changes to the current deployed application are authorized.  
 **Brand descriptor:** Infrastructure Intelligence. **Primary audience:** Factory owners, plant heads, operations and energy leaders. **Primary conversion:** A qualified conversation about a specific industrial problem.
 
@@ -289,13 +290,12 @@ Review every statement about customers, deployments, partners, credentials, read
 
 The homepage is ready for implementation review when every section has approved copy and a defined purpose; every CTA has a valid destination and tested outcome; every product/company claim has an evidence classification; synthetic content is persistently labelled; no fabricated customer proof, savings or unsupported readiness claims remain; mobile works without hover or motion; accessibility checks pass; performance is measured; analytics avoids sensitive data; form handling and privacy notice are tested; the new site remains separate from the current app until an explicit launch decision; and content, product status, security language and CTA are reviewed before launch.
 
-## 12. Immediate next steps
+## 12. Next steps, in the correct order
 
-1. Refresh the read-only product readiness audit and map which homepage claims are supportable today.
-2. Validate hero and core positioning with target industrial buyers.
-3. Finalize the first use case and create the clearly labelled illustrative walkthrough.
-4. Design homepage and responsive prototypes.
-5. Build a separate implementation plan, then implement the new site.
-6. Test claims, forms, analytics, accessibility and performance before launch.
+1. Refresh the read-only product readiness audit and map each proposed homepage claim to current evidence and readiness.
+2. Define the honest initial offer and exclusions; the first commercial wedge remains undecided until buyer and data evidence support a choice.
+3. Test hero and core positioning with target industrial buyers. Treat the hidden-loss hero as one hypothesis, not a settled winner.
+4. Only after the offer and claim gates pass, decide whether a concise offer page or the full homepage is justified. Then design and implement the smallest separate marketing surface that serves that validated purpose.
+5. Test claims, forms, analytics, accessibility, performance and CTA behavior before launch.
 
-**Strategic constraint:** The main website can communicate GridMind's ambition, but must never make the company appear more operationally mature than the evidence supports.
+**Strategic constraint:** The main website may communicate GridMind's ambition, but must never make the company appear more operationally mature than the evidence supports. See the Decision Constitution for the current priority order.
