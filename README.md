@@ -1,4 +1,4 @@
-# GridMind Insights
+The master company thesis and ordered expansion roadmap are in the [GridMind Master Business Thesis](docs/gridmind-master-business-thesis-roadmap-2026-10-10.md). # GridMind Insights
 
 > **Industrial intelligence that turns factory evidence into verified economic improvement.**
 
