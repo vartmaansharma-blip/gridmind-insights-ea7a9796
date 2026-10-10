@@ -93,6 +93,26 @@ begin
   ) then
     raise exception 'CROSS_TENANT_FACTORY_MEMBERSHIP_CREATED';
   end if;
+
+  -- A user who controls multiple organizations must not be silently routed
+  -- into whichever organization happens to have the smallest ID.
+  insert into public.organizations (name, status)
+  values ('gridmind-bootstrap-org-a2', 'active')
+  returning id into org_b;
+
+  insert into public.organization_members (organization_id, user_id, role, status)
+  values (org_b, user_a, 'owner', 'active');
+
+  begin
+    perform public.create_factory_workspace('gridmind-bootstrap-ambiguous-factory', null, null);
+    raise exception 'AMBIGUOUS_ORGANIZATION_WAS_SILENTLY_SELECTED';
+  exception
+    when raise_exception then
+      if sqlerrm = 'AMBIGUOUS_ORGANIZATION_WAS_SILENTLY_SELECTED' then raise; end if;
+      if sqlerrm not like '%MULTIPLE_ELIGIBLE_ORGANIZATIONS%' then
+        raise exception 'UNEXPECTED_AMBIGUOUS_ORGANIZATION_ERROR: %', sqlerrm;
+      end if;
+  end;
 end;
 $$;
 
