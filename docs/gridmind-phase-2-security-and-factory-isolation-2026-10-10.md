@@ -13,7 +13,7 @@ The prior policies on `public.organization_members` used subqueries against `pub
 
 **Implemented in this branch:** migration `20261010110000_harden_organization_membership_rls.sql` adds `private.is_org_admin(bigint)`, a narrowly scoped `SECURITY DEFINER` predicate with an empty search path and no caller-supplied user ID. It revokes execute from PUBLIC/anon, grants it to authenticated, and rewrites SELECT/INSERT/UPDATE policies to call that predicate. The predicate only returns true for the caller's active owner/admin membership in the specified organization.
 
-**Validation status:** automated clean migration replay and tenant security tests are pending for this branch. Do not deploy this migration until those checks pass and the migration diff is reviewed.
+**Validation status:** clean migration replay and the tenant security test passed on PR head `8b0c562eb94d9adbddc8b050233c0bd2294b6159` in [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045250549). The migration diff still requires review and has not been applied to production.
 
 ### Finding 2 — existing coverage was narrow
 
@@ -26,7 +26,7 @@ The existing `supabase/tests/factory-analysis-security.sql` tested factory visib
 - the public workspace bootstrap function has a pinned empty search path;
 - existing least-privilege analysis-run table/sequence grants and append-only constraints continue to be checked.
 
-**Validation status:** tests are committed to the branch, but not yet verified green. A passing CI run is required before calling these protections tested.
+**Validation status:** [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045250515), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045250513), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38045250549) all passed on PR head `8b0c562eb94d9adbddc8b050233c0bd2294b6159`.
 
 ## Live database cross-check (read-only, 2026-10-10)
 
@@ -45,11 +45,11 @@ The SQL was read-only. No production policy, grants, Auth setting, membership, o
 | Item | Status | Evidence / next action |
 |---|---|---|
 | 2.1 Review tenant identity model | **Reviewed in source** | Organization membership + factory membership are separate gates; factory membership has organization linkage and composite integrity constraints. Verify live RLS and membership state independently. |
-| 2.2 Fix organization membership policy recursion | **Implemented; awaiting tests/review** | Migration `20261010110000_harden_organization_membership_rls.sql`. |
-| 2.3 Add cross-tenant asset read denial test | **Implemented; awaiting tests** | `supabase/tests/factory-analysis-security.sql`. |
-| 2.4 Add cross-tenant membership write denial test | **Implemented; awaiting tests** | Same test script, user A attempting to update/insert in org B. |
-| 2.5 Verify SECURITY DEFINER function grants and search path | **Test added; awaiting tests** | Test asserts public workspace bootstrap is executable by authenticated, not anon, and has empty search path. Existing private helper ACLs still need a broader catalogue audit. |
-| 2.6 Audit all RLS policies and table grants across canonical tables | **In progress / incomplete** | Build a table-by-table matrix of RLS enabled, SELECT/INSERT/UPDATE/DELETE policies, table/sequence grants, and service-role requirements. This patch is not a complete policy audit. |
+| 2.2 Fix organization membership policy recursion | **Implemented; automated tests pass; review/production rollout pending** | Migration `20261010110000_harden_organization_membership_rls.sql`; migration replay passed. |
+| 2.3 Add cross-tenant asset read denial test | **Implemented and passing locally in CI** | `supabase/tests/factory-analysis-security.sql`; Migration Replay passed. |
+| 2.4 Add cross-tenant membership write denial test | **Implemented and passing locally in CI** | Same test script, user A attempting to update/insert in org B. |
+| 2.5 Verify SECURITY DEFINER function grants and search path | **Core bootstrap checks passing; full catalogue audit open** | Test asserts public workspace bootstrap is executable by authenticated, not anon, and has empty search path. Existing private helper ACLs still need a broader catalogue audit. |
+| 2.6 Audit all RLS policies and table grants across canonical tables | **In progress / incomplete** | The organization_members structural grants were corrected in the proposed migration and are tested; a table-by-table matrix for all public tables and functions remains. |
 | 2.7 Verify cross-factory composite constraints | **Partially implemented in schema; runtime coverage incomplete** | Several canonical graph edges already have composite factory-scoped foreign keys. Add explicit negative tests for cross-factory observations, mappings, opportunities, interventions, verification plans/runs, and outcomes. |
 | 2.8 Review workspace bootstrap organization selection | **Open** | The RPC chooses the first active owner/admin organization when a caller belongs to multiple organizations. Confirm intended product behavior; preferably require an explicit authorized organization or a separate “create new organization” flow rather than silently selecting the first. |
 | 2.9 Review leaked-password protection | **Blocked on Auth configuration access** | Previous read-only Supabase advisor snapshot reported it disabled. Confirm current setting and enable through authorized Auth settings after reviewing login/reset UX. No production setting changed. |
@@ -76,4 +76,4 @@ Phase 2 is not complete until:
 5. Leaked-password protection and current live function grants are confirmed in Supabase.
 6. Vercel serves the approved SHA and deployed authorization checks pass.
 
-**Current decision:** the first concrete RLS defect has a proposed migration and the security test suite has been strengthened. Phase 2 remains in progress until workflow evidence and live-environment checks support closure.
+**Current decision:** the proposed organization-membership RLS fix and structural-privilege revocation pass CI, Quality Gate, and clean migration replay on PR head `8b0c562eb94d9adbddc8b050233c0bd2294b6159`. Phase 2 remains in progress: the full schema/grant audit, Auth leaked-password setting, multi-organization bootstrap behavior, production rollout, and deployed two-user API acceptance are still open.
