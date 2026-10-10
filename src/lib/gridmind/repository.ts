@@ -108,7 +108,7 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
     supabase.from("factory_assets").select("id,factory_id,name,machine_type_id,rated_power_kw,process_role,asset_metadata").in("factory_id", ids),
     supabase.from("observations").select("*").in("factory_id", ids).order("created_at", { ascending: false }),
     supabase.from("opportunities").select("*").in("factory_id", ids).order("priority_score", { ascending: false, nullsFirst: false }),
-    supabase.from("asset_interventions").select("id,factory_id,opportunity_id,target_scope_type,target_scope_id,status,description,implementation_cost,expected_saving_inr,verification_method").in("factory_id", ids),
+    supabase.from("asset_interventions").select("id,factory_id,opportunity_id,target_scope_type,target_scope_id,status,description,implemented_at,implementation_cost,expected_saving_inr,verification_method").in("factory_id", ids),
     supabase.from("verified_outcomes").select("*").in("factory_id", ids),
   ]);
   const firstError = [assetsResult, observationsResult, opportunitiesResult, interventionsResult, outcomesResult].find((r) => r.error)?.error;
