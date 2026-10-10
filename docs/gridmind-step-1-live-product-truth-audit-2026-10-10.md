@@ -230,3 +230,35 @@ For commit `394cdb25d1ef9e5e28ac7e2e12812f98b2b78cd4`, CI passed and GridMind Qu
 ### Hard blocker and safe next step
 
 The remaining immediate blocker is an interactive sign-in using the founder's existing credentials. The assistant cannot complete this without a user-authenticated browser session and must not ask for or handle the password. Once the founder signs in and creates a factory they own, verify both membership layers read-only, then perform production persist/retry/recompute and tenant-isolation acceptance. Real-factory analysis still requires authorized, traceable evidence; configured demo assets are not evidence.
+
+
+## Live readiness refresh — 2026-10-10, current recheck
+
+This section supersedes older live-count and deployment statements above where they conflict. It records read-only observations only; it does not represent an authenticated end-to-end acceptance test.
+
+### Verified current observations
+
+- **Supabase public-table inventory:** 2 organizations, 4 factories, 8 factory assets, 1 active organization membership (role: owner), 3 factory memberships (all role: owner), 0 canonical observations, 0 operating contexts, 0 economic contexts, and 0 persisted factory analysis runs.
+- **Interpretation limit:** row counts do not establish that any site or asset is a real customer facility, that the current user is authorized to use it for a pilot, or that the recorded memberships have the intended ownership. The earlier zero-membership snapshot is now stale.
+- **Vercel:** the most recent deployment returned by the deployment listing is in `READY` state and points to source commit `74015c0de7b80fb254acb8a2c0dd14b6a864c9e6`. This is older than the latest documentation-only commits. A READY deployment is not evidence that authenticated application flows pass.
+- **Runtime errors:** Vercel's aggregated runtime-error view reported no runtime errors during the preceding 24 hours. This does not test business logic, authorization boundaries, data correctness, or persistence.
+- **GitHub checks:** the latest documentation commit's CI, GridMind Quality Gate, and Migration Replay runs were pending at the time of this check. Earlier successful workflow runs apply only to their own recorded commit and must not be carried forward as current status.
+
+### Acceptance-gate status
+
+| Gate | Status | Evidence / limitation |
+|---|---|---|
+| Source repository has CI, quality, migration replay and test definitions | **Verified present** | Workflow and test files exist in the repository. |
+| Latest commit passes CI, quality and migration replay | **Pending / unknown** | Must confirm final workflow conclusions for the final commit. |
+| Production deployment exists and reports READY | **Verified, limited** | Deployment source commit is older than latest documentation commits; readiness does not prove functional acceptance. |
+| No aggregated runtime errors in prior 24 hours | **Verified, limited** | Error aggregation is not a functional test. |
+| Authenticated live persist → idempotent retry → reload/recompute | **Not verified** | No end-to-end result was collected in this read-only refresh. |
+| Cross-tenant denial and direct-write denial in production | **Not verified in this refresh** | Historical local isolated tests are not substitutes for current production acceptance. |
+| Real-factory source data, independent review and measured outcome | **Not established** | Current canonical evidence/context/run counts are zero. |
+| Buyer pain and willingness to pay validated | **Not established** | No interview or paid-pilot evidence was collected by this refresh. |
+
+### Next safe action
+
+Use the authorized application sign-in/workspace flow to establish which factory workspace belongs to the legitimate user. Do not modify memberships or seed factory data as a shortcut. After authorization is confirmed, run the documented live acceptance sequence with a clearly identified test analysis, then request traceable factory records under explicit permission. In parallel, begin structured buyer discovery using the common candidate rubric in [the pilot comparison scorecard](gridmind-pilot-comparison-scorecard.md).
+
+**Readiness decision:** GridMind is **not yet demonstrated pilot-ready** by the evidence collected here. This is an evidence-status decision, not a claim that the product cannot become ready.
