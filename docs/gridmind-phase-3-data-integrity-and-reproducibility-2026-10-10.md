@@ -95,6 +95,18 @@ Do not collapse these into one “AI accuracy” score. Do not publish accuracy,
 
 **Gate P4:** metric definitions, denominators, missing-data treatment, case inclusion/exclusion, and reviewer process are documented before displaying any percentage.
 
+## Execution log — first implementation slice
+
+**Implemented on this branch; not yet merged or deployed:**
+- Added migration `20261010140000_add_intervention_implemented_at.sql` with nullable `timestamptz`. Existing rows remain NULL; there is no guessed backfill or default.
+- Added `implemented_at` to generated database types and the canonical intervention domain contract.
+- Updated the repository query to load the canonical timestamp.
+- Replaced the previous always-empty timeline projection with a timezone-aware projection based only on the recorded instant and the factory timezone. Missing/invalid timestamp or timezone remains unknown and is not shown as a fabricated month.
+- Added unit tests for missing timestamps, timezone month boundaries, invalid timestamps, and invalid timezones.
+- Added migration-replay schema assertions that `implemented_at` is nullable, uses `timestamp with time zone`, and has no default.
+
+**Not yet verified:** workflows for the current branch head, clean migration replay, deployed UI behavior, and a complete intervention status-transition workflow. The new migration has not been applied to production. This is a narrow first slice, not completion of Phase 3.
+
 ## 4. Execution order
 
 1. Re-read current source and migration state; write a short file-by-file implementation map.
