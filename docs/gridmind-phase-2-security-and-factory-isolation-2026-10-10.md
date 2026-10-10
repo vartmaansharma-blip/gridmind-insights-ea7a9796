@@ -28,6 +28,18 @@ The existing `supabase/tests/factory-analysis-security.sql` tested factory visib
 
 **Validation status:** tests are committed to the branch, but not yet verified green. A passing CI run is required before calling these protections tested.
 
+## Live database cross-check (read-only, 2026-10-10)
+
+The connected Supabase project was queried read-only after the initial code review.
+
+- **Confirmed in the live database:** the current SELECT/INSERT/UPDATE policies on `public.organization_members` contain direct subqueries against `public.organization_members` itself. This matches the recursive-policy defect described above. The new migration is **not applied to production**; live behavior remains unchanged until a reviewed release is approved.
+- **Confirmed:** `public.create_factory_workspace(text,text,text)` is SECURITY DEFINER, has `search_path=""`, and its current ACL grants execute to `authenticated` (not `anon`). This is consistent with its intended authenticated onboarding role; continue to test its behavior and avoid relying on the advisor warning alone.
+- **Confirmed:** existing private membership/asset helper functions are SECURITY DEFINER, have an empty search path, and have execute grants to `authenticated` but not PUBLIC/anon in their ACLs.
+- **Additional least-privilege review needed:** information-schema output reports `REFERENCES`, `TRIGGER`, and `TRUNCATE` grants for `anon` and/or `authenticated` on `organization_members`. These are not ordinary row-read/write grants, but they should be checked against effective privileges and revoked if unnecessary in a separately reviewed migration. Do not assume they are exploitable without verifying role inheritance and effective privileges.
+- The live migration history is still at `20261010082706`; this branch's `20261010110000_harden_organization_membership_rls.sql` has not been applied to the live project.
+
+The SQL was read-only. No production policy, grants, Auth setting, membership, or data was changed.
+
 ## Phase 2 checklist
 
 | Item | Status | Evidence / next action |
