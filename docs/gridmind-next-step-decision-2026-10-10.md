@@ -3,6 +3,28 @@
 **Decision status:** Historical decision log with later dated updates below. The current scope is governed by the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md); older action lists in this file are superseded where they conflict with the latest execution decision.  
 **Scope reviewed:** GitHub default branch `main`, latest commits, README, homepage specification, website marketing/sales strategy, system-alignment audit, live-acceptance runbook, real-factory data request, authoritative-analysis design, and release gate.
 
+## Current operating directive — 2026-10-10
+
+> **This section supersedes older “next action”, “exact next actions”, and workflow-status statements below wherever they conflict.** The sections below are retained as a decision history, not a live task queue. Their environment counts and workflow results are snapshots from the timestamps stated there.
+
+**Current sequence**
+1. Refresh product truth from the live environment and current GitHub checks; record facts, unknowns, and blockers with timestamps.
+2. In parallel, validate three candidate problems with buyers using one shared rubric: (a) operational-loss investigation, (b) intelligence for one procurement category, and (c) one narrow vertical workflow. Do not assume energy or procurement has won.
+3. Select one bounded offer only when buyer pain, authorized data, reviewability, feasible delivery, and a credible measurement path are supported.
+4. Complete authenticated live acceptance and real-factory validation. Do not create or alter production memberships/data as a substitute for authorized user flows.
+5. Update public claims and build the full marketing site only after the offer and claim evidence justify it.
+
+**Current live snapshot, checked 2026-10-10**
+- Vercel reports a recent production deployment in `READY` state, but its recorded source commit is older than the latest documentation commits. Deployment readiness alone does not prove current authenticated workflows pass.
+- Vercel's aggregated runtime-error view reports no runtime errors in the preceding 24 hours. This is not a functional acceptance test.
+- Read-only Supabase counts: 2 organizations, 4 factories, 8 factory assets, 1 active organization-owner membership, 3 factory-owner memberships, 0 observations, 0 operating contexts, 0 economic contexts, and 0 persisted analysis runs. These counts alone do not establish that any factory is real, authorized for a pilot, or properly owned by the intended founder.
+- The latest documentation commit's CI, Quality Gate, and Migration Replay runs were pending at the last check. Recheck their final conclusions against the final commit before calling the repository green.
+- No live authenticated persist/retry/recompute, cross-tenant denial, real-factory evidence, expert review, or buyer validation was established by these read-only checks.
+
+**Immediate execution target:** finish a timestamped readiness record, then start structured buyer discovery. Do not wait for website work to begin buyer discovery; do not claim product readiness from deployment status or database row counts.
+
+---
+
 ## Executive recommendation
 
 **Do not spend the next cycle polishing animations, expanding features, or presenting GridMind as pilot-ready.** The main-website planning artifacts now exist and are coherent enough to move from open-ended planning into a controlled validation and implementation sequence.
@@ -139,7 +161,7 @@ Do **not** start building the marketing homepage yet and do not declare the prod
 The production project currently has no organization/factory membership rows from the initial audit, so the live authenticated test needs a legitimate authorized account and must not be faked with production seed data.
 
 
-## Execution update — workflow gate closed, founder access is next
+## Historical execution update — workflow gate closed, founder access was next at that time
 
 **Recheck timestamp:** 2026-10-10, approximately 08:05 UTC. This updates the earlier note that workflow results were pending.
 
