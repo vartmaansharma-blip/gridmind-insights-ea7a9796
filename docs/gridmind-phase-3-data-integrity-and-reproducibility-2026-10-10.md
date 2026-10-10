@@ -97,7 +97,7 @@ Do not collapse these into one “AI accuracy” score. Do not publish accuracy,
 
 ## Execution log — first implementation slice
 
-**Implemented on this branch; not yet merged or deployed:**
+**Merged to `main`; deployment remains unverified:**
 - Added migration `20261010140000_add_intervention_implemented_at.sql` with nullable `timestamptz`. Existing rows remain NULL; there is no guessed backfill or default.
 - Added `implemented_at` to generated database types and the canonical intervention domain contract.
 - Updated the repository query to load the canonical timestamp.
@@ -105,7 +105,9 @@ Do not collapse these into one “AI accuracy” score. Do not publish accuracy,
 - Added unit tests for missing timestamps, timezone month boundaries, invalid timestamps, and invalid timezones.
 - Added migration-replay schema assertions that `implemented_at` is nullable, uses `timestamp with time zone`, and has no default.
 
-**Not yet verified:** workflows for the current branch head, clean migration replay, deployed UI behavior, and a complete intervention status-transition workflow. The new migration has not been applied to production. This is a narrow first slice, not completion of Phase 3.
+**Verified on 2026-10-10:** PR [#23](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/23) was merged by squash as `5853cbbbee697bc8b780937e7892d88491cccbc0`. On the reviewed PR head `f4ee8d9ef959ada7eb24c743acceee57213c4f02`, [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38046877112), [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38046877120), and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38046877096) all passed. A new post-merge main-branch migration replay was started as run [38050619929](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38050619929) and was still in progress at the last check. The new migration has not been applied to production.
+
+**Still unverified:** exact deployed UI behavior and a complete intervention status-transition workflow. This is a narrow first slice, not completion of Phase 3.
 
 ## 4. Execution order
 
@@ -146,4 +148,4 @@ Phase 3 is complete only when all of the following are evidenced:
 - **Why:** a secure system can still produce a wrong industrial conclusion if source mapping, periods, context, or persistence are incorrect.
 - **Trade-off:** slower visible feature velocity in exchange for lower risk of false conclusions and a defensible path to customer review.
 - **Known blockers:** Vercel deployed-SHA verification, Supabase Auth leaked-password protection, authenticated two-user production API isolation, complete semantic policy/grant review, and ambiguous multi-organization selection behavior.
-- **Next decision:** after P0 status is refreshed and P1 schema mapping is reviewed, approve or revise the minimal migration and implementation plan. No production migration is authorized by this plan alone.
+- **Next decision:** refresh inherited Phase 1/2 release gates, then implement P2 canonical input snapshot integrity after reviewing the existing adapter and persisted-run contract. No production migration is authorized by this plan alone.
