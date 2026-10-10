@@ -126,6 +126,7 @@ export type Database = {
           implementation_duration: string | null
           implementation_steps: Json
           intervention_date: string | null
+          implemented_at: string | null
           intervention_type: string | null
           operating_constraints: Json
           opportunity_id: number | null
@@ -162,6 +163,7 @@ export type Database = {
           implementation_duration?: string | null
           implementation_steps?: Json
           intervention_date?: string | null
+          implemented_at?: string | null
           intervention_type?: string | null
           operating_constraints?: Json
           opportunity_id?: number | null
