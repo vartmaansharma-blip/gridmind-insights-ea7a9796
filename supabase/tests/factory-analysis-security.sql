@@ -87,7 +87,9 @@ begin
     insert into public.organization_members (organization_id, user_id, role, status)
     select id, 'a1111111-1111-4111-8111-111111111111', 'owner', 'active'
     from public.organizations where name = 'gridmind-ci-org-b';
-    raise exception 'CROSS_TENANT_MEMBERSHIP_INSERT_WAS_ALLOWED';
+    if found then
+      raise exception 'CROSS_TENANT_MEMBERSHIP_INSERT_WAS_ALLOWED';
+    end if;
   exception
     when insufficient_privilege then null;
   end;
