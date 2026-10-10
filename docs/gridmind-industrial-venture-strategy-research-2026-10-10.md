@@ -1,6 +1,6 @@
 # GridMind and the broader industrial venture strategy — research review, 2026-10-10
 
-**Decision status:** Strategic hypothesis based on public sources and current project artifacts. It is not customer validation, investment advice, or proof of product-market fit.
+**Decision status:** Strategic hypothesis based on public sources and current project artifacts. It is not customer validation, investment advice, or proof of product-market fit. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs current scope; comparative ratings below do not select the first wedge without buyer/data evidence.
 
 ## Executive decision
 
