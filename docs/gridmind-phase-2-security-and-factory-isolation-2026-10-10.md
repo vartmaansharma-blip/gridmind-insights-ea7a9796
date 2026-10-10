@@ -5,6 +5,17 @@
 **Base:** Phase 1 stabilization branch `fix/no-synthetic-intervention-dates`  
 **Scope:** harden the organization membership authorization path and expand automated tenant-isolation checks. This is not a security certification.
 
+## Current verified status (supersedes stale historical snapshots below)
+
+The original findings and initial rollout notes below are retained as audit history; some early paragraphs describe the pre-fix state and should not be read as the current production state.
+
+- Merged PRs: [#20](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/20), [#21](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/21), [#22](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/22).
+- Applied production migrations: `20261010103936 / harden_organization_membership_rls`, `20261010104457 / revoke_public_structural_table_privileges`, and `20261010104942 / scope_membership_update_policy`.
+- Last verified read-only schema audit: 42/42 public base/partitioned tables have RLS enabled; no public-table RLS policies target PUBLIC/anon; 0/42 tables have effective app-role TRUNCATE/REFERENCES/TRIGGER privileges.
+- Still open: complete semantic DML/RLS/relationship audit, Auth leaked-password protection, multi-organization bootstrap selection, deployed-SHA alignment, and authenticated two-user production API acceptance.
+- These database catalog checks are not a security certification and do not prove all factory graph relationships are isolated at the API layer.
+
+
 ## Evidence-backed findings
 
 ### Finding 1 — organization membership RLS recursively queried its own table
