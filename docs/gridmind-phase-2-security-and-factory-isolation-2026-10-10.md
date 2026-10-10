@@ -51,6 +51,17 @@ The SQL was read-only. No production policy, grants, Auth setting, membership, o
 
 No factory, organization, or membership rows were changed by the migration. This resolves the identified recursive-policy definition and unnecessary structural grants in the live schema. It does **not** finish Phase 2 by itself: Auth leaked-password protection remains disabled, the all-table/function privilege audit is unfinished, multi-organization workspace selection still needs a product decision, and authenticated production API smoke tests/deployed commit alignment remain to be completed.
 
+## Follow-up finding: structural grants across the entire public schema
+
+After applying the first production fix, a read-only audit across every public base/partitioned table found that `anon` and `authenticated` still had effective `TRUNCATE`, `REFERENCES`, and `TRIGGER` privileges on many other tables. `TRUNCATE` bypasses row-level security. This is broader than the original organization-membership issue.
+
+A second corrective migration is proposed in branch `security/revoke-public-structural-grants`:
+- `20261010120000_revoke_public_structural_table_privileges.sql` revokes only `TRUNCATE`, `REFERENCES`, and `TRIGGER` from PUBLIC, anon, authenticated, and service_role across all public base and partitioned tables.
+- Ordinary SELECT/INSERT/UPDATE/DELETE grants and RLS policies are left unchanged.
+- The migration-replay security test now checks effective privileges across all public base/partitioned tables so this class of over-grant cannot silently return.
+
+**Status:** proposed; must pass clean migration replay and all CI checks before applying to production. The first production migration only corrected `organization_members`; this broader follow-up has not yet been applied live.
+
 ## Phase 2 checklist
 
 | Item | Status | Evidence / next action |
