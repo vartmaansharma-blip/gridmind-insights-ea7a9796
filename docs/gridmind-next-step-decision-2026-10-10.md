@@ -182,3 +182,19 @@ The app already has an authenticated workspace setup path: `/auth` signs in an e
 **Next action:** founder signs in privately through the deployed app using the existing account, then creates a founder-owned factory workspace through the UI. Do not create a duplicate account, request a password in chat, manually insert membership rows, or attach the founder to the configured factory before ownership is confirmed. After the UI flow, verify memberships read-only and perform live persist/retry/recompute, direct-write denial, and cross-tenant isolation tests. Then qualify a real factory and traceable data before claiming pilot readiness.
 
 Workflow links for the current commit: [CI passed](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717626), [Quality Gate passed](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717676), [Migration Replay pending](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38036717696).
+
+## Strategic correction — the product must beat the manual assessment, not just digitize it
+
+The commercial bar is now explicit: GridMind must show measurable advantage over an engineer-led on-site assessment for a narrowly defined use case. It should exploit longitudinal, cross-system evidence; make comparisons more consistent; prioritize investigations by defensible economics and uncertainty; and continuously verify outcomes. It must not claim to replace physical inspection or expert judgment when required evidence is not available.
+
+**Next product target:** one controlled real-factory head-to-head validation, not another feature sprint.
+
+1. Choose one asset/process and one recurring, costly operational question with a named factory owner.
+2. Agree the existing engineer-led baseline process and comparison metrics before analyzing the case.
+3. Obtain authorized, traceable energy, production, operating-context and economic records; record coverage and gaps.
+4. Have GridMind produce a reproducible finding, alternative hypotheses, uncertainty, and the next evidence/inspection needed.
+5. Ask an independent qualified reviewer to compare the GridMind result with the conventional assessment, including false positives, missed issues, time, and economic accuracy.
+6. If an intervention is approved, record its owner, cost and operating changes, then measure the post-action result using an agreed method.
+7. Publish no comparative advantage, savings or production-readiness claim unless the evidence supports it. A valid refusal due to insufficient evidence is a useful safety behavior, but not by itself proof of commercial value.
+
+**Decision rule:** expand only when GridMind demonstrates a useful advantage without increasing unsupported causal claims or unsafe recommendations. The scorecard and capability ladder are recorded in [the system-alignment audit](gridmind-system-alignment-audit.md).
