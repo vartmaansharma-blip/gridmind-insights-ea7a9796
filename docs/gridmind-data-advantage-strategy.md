@@ -126,7 +126,11 @@ If the customer approves an intervention, track its actual cost and operational 
 ### Finally: test transferability
 Repeat at a materially different site. Separate what generalizes from site-specific configuration and record onboarding cost. Only then decide which data assets or connectors deserve scaled investment.
 
-## 8. Definition of a real GridMind data moat
+## Immediate implementation artifact
+
+The [First-Use-Case Data Contract](gridmind-first-use-case-data-contract.md) turns this strategy into an actionable provisional pilot definition, including the data contract, refusal rules, reviewer rubric and execution checklist. Validate the use case with a real factory before treating it as a final commercial wedge.
+
+## 9. Definition of a real GridMind data moat
 
 The moat is not the number of rows, documents or integrations. It is the combination of:
 - correctly mapped, contextualized, traceable industrial evidence;
