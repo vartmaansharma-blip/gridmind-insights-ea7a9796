@@ -166,3 +166,8 @@ The [Founder Opportunity Cost Review: B2B vs B2C](docs/founder-opportunity-cost-
 ## Opportunity tournament — Test 1 (2026-10-11)
 
 The [Opportunity Tournament desk-evidence test](docs/opportunity-tournament-test-1-desk-evidence-2026-10-11.md) compares GridMind with a narrow B2B AI service-to-software path and a creator-led consumer brand. This is public-source desk research, not customer validation. It recommends real buyer discovery before choosing a winner.
+
+
+## Opportunity tournament — Test 2 (2026-10-11)
+
+The [Customer Discovery Kit](docs/opportunity-tournament-test-2-customer-discovery-kit-2026-10-11.md) contains interview scripts, outreach messages, evidence rules, a tracker, and decision gates for GridMind, B2B service-to-software, and a creator-led consumer brand. It is prepared for outreach; no interviews or messages are claimed.
