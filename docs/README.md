@@ -88,3 +88,6 @@ This directory contains product definitions, engineering contracts, validation p
 ## Opportunity testing
 
 - [Opportunity Tournament — Test 1: Evidence-Based Desk Test — 2026-10-11](opportunity-tournament-test-1-desk-evidence-2026-10-11.md) — initial public-source comparison of GridMind, B2B service-to-software, and creator-led consumer brand. Explicitly not customer validation; next gate is real-world discovery.
+
+
+- [Opportunity Tournament — Test 2: Customer Discovery Kit — 2026-10-11](opportunity-tournament-test-2-customer-discovery-kit-2026-10-11.md) — outreach scripts, interview questions, tracker, evidence rules, and decision gates. Prepared only; no interviews or messages are claimed.
