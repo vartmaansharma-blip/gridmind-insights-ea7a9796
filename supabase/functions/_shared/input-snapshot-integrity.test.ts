@@ -1,25 +1,28 @@
-import { assertEquals } from "jsr:@std/assert";
 import { inputSnapshotDigestMatches } from "./input-snapshot-integrity.ts";
 
 const validDigest = `sha256:${"a".repeat(64)}`;
 const otherDigest = `sha256:${"b".repeat(64)}`;
 
+function assertEqual(actual: boolean, expected: boolean, label: string): void {
+  if (actual !== expected) throw new Error(`${label}: expected ${expected}, got ${actual}`);
+}
+
 Deno.test("legacy NULL input snapshot digest is never integrity-verified", () => {
-  assertEquals(inputSnapshotDigestMatches(null, validDigest), false);
-  assertEquals(inputSnapshotDigestMatches(undefined, validDigest), false);
+  assertEqual(inputSnapshotDigestMatches(null, validDigest), false, "NULL digest");
+  assertEqual(inputSnapshotDigestMatches(undefined, validDigest), false, "undefined digest");
 });
 
 Deno.test("malformed input snapshot digests fail closed", () => {
-  assertEquals(inputSnapshotDigestMatches("fnv1a32:12345678", validDigest), false);
-  assertEquals(inputSnapshotDigestMatches("sha256:abc", validDigest), false);
-  assertEquals(inputSnapshotDigestMatches(`sha256:${"A".repeat(64)}`, validDigest), false);
-  assertEquals(inputSnapshotDigestMatches(validDigest, "not-a-sha256-digest"), false);
+  assertEqual(inputSnapshotDigestMatches("fnv1a32:12345678", validDigest), false, "wrong algorithm");
+  assertEqual(inputSnapshotDigestMatches("sha256:abc", validDigest), false, "short digest");
+  assertEqual(inputSnapshotDigestMatches(`sha256:${"A".repeat(64)}`, validDigest), false, "uppercase digest");
+  assertEqual(inputSnapshotDigestMatches(validDigest, "not-a-sha256-digest"), false, "invalid recomputed digest");
 });
 
 Deno.test("mismatched input snapshot digest is not integrity-verified", () => {
-  assertEquals(inputSnapshotDigestMatches(otherDigest, validDigest), false);
+  assertEqual(inputSnapshotDigestMatches(otherDigest, validDigest), false, "mismatched digest");
 });
 
 Deno.test("exact well-formed input snapshot digest matches", () => {
-  assertEquals(inputSnapshotDigestMatches(validDigest, validDigest), true);
+  assertEqual(inputSnapshotDigestMatches(validDigest, validDigest), true, "matching digest");
 });
