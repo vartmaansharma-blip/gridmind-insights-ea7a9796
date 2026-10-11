@@ -1,5 +1,8 @@
 # GridMind — Problem Failure Analysis and Next Experiments
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document preserves supporting analysis, not an independent schedule or work queue. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files.
+
+
 **Date:** 2026-10-11  
 **Status:** Active hypothesis analysis. Desk research only; no customer interviews, customer records, or willingness-to-pay evidence are claimed.  
 **Decision authority:** Follow the GridMind Decision Constitution and contradiction register.
