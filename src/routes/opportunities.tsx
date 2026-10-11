@@ -125,7 +125,7 @@ function OpportunityWorkspace({ factory, analysis }: { factory: Factory; analysi
           </div>
         </aside>
 
-        <main className="panel min-w-0 overflow-hidden">
+        <section className="panel min-w-0 overflow-hidden">
           <div className="border-b border-border p-4 sm:p-5">
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0"><div className="eyebrow">Selected opportunity · {selected.opportunityClass}</div><h2 className="mt-1 text-xl font-semibold leading-snug">{selected.title}</h2><p className="mt-2 max-w-2xl text-sm text-muted-foreground">{selected.problem}</p></div>
@@ -157,7 +157,7 @@ function OpportunityWorkspace({ factory, analysis }: { factory: Factory; analysi
               <p className="text-xs text-muted-foreground">Evidence must be time-aligned, attributable to the relevant system, and reviewed with the operator before the hypothesis is promoted.</p>
             </div>}
           </div>
-        </main>
+        </section>
 
         <aside className="space-y-4">
           <section className="panel p-4 sm:p-5">
