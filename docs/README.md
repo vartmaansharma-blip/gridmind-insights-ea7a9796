@@ -9,6 +9,8 @@ This directory contains product definitions, engineering contracts, validation p
 
 ## Start here
 
+- [Immediate Execution Plan — 2026-10-11](gridmind-immediate-execution-2026-10-11.md) — first 72 hours, 14-day and 30-day priorities across buyer evidence, technical release gates, product scope and brand screening.
+
 - [Company Definition and Brand-Name Risk Review — 2026-10-11](gridmind-brand-definition-and-name-risk-2026-10-11.md) — clarifies the industrial decision-intelligence thesis and records public name-conflict signals; not legal clearance.
 
 
