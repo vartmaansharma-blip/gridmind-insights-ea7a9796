@@ -8,7 +8,7 @@
 
 **NO-GO for declaring production-ready. NO production migration was applied in this run.**
 
-The production migration inventory ends at `20261010104942 scope_membership_update_policy`. A read-only `information_schema.columns` query returned no rows for either expected Phase 3 column:
+The latest direct read-only migration inventory checked on 2026-10-11 ends at `20261011062256 add_factory_analysis_run_fk_indexes`. A read-only `information_schema.columns` query returned no rows for either expected Phase 3 column:
 
 - `public.asset_interventions.implemented_at`
 - `public.factory_analysis_runs.input_snapshot_sha256`
@@ -18,7 +18,7 @@ Repository migrations that have passed clean migration replay are not automatica
 ## 2. Confirmed facts vs. unverified assumptions
 
 ### Confirmed in this preflight
-- Production Supabase migration inventory ends at `20261010104942`.
+- Latest direct Supabase migration inventory ends at `20261011062256 add_factory_analysis_run_fk_indexes`.
 - Neither of the two Phase 3 columns above was found by the read-only information-schema query.
 - No production DDL or data change was performed.
 - The Vercel deployment previously observed as READY is not evidence that production database schema or authenticated flows are correct.
@@ -266,7 +266,7 @@ Therefore classify this as **default-privilege coverage to verify**, not a confi
 
 ### Current verified observations
 
-- Refreshed migration inventory returns **32 recorded production migrations**; latest observed versions remain `20261011062242` and `20261011062256`. Neither repository migration `20261010140000_add_intervention_implemented_at.sql` nor `20261010150000_add_analysis_input_snapshot_sha256.sql` is represented by its intended version/name in the returned inventory.
+- The latest direct migration inventory query returned **30 recorded production migrations**; the latest observed versions remain `20261011062242` and `20261011062256`. An earlier count of 32 in this runbook is superseded by this fresh result and should not be relied upon. Neither repository migration `20261010140000_add_intervention_implemented_at.sql` nor `20261010150000_add_analysis_input_snapshot_sha256.sql` is represented by its intended version/name in the returned inventory.
 - Fresh `information_schema.columns` query again returns **zero rows** for `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256`. Do not treat repository types or the Edge Function's declared contract as proof that production has these columns.
 - Supabase reports **no development branches** for this project. Therefore there is currently no confirmed isolated branch available for migration replay, role-created table experiments, workspace-RPC tests, or two-user tenant tests. No test identities were created and no branch/project was created in this pass.
 - Current live role metadata: `supabase_admin` is a superuser and can create roles/databases; `postgres` is also a table-creating role. All public base tables/views inspected are owned by `postgres`. This establishes that `supabase_admin` has the capability to create objects, but does not prove that normal GridMind application migrations are executed under that role. Keep the default-privilege question open until a controlled non-production table-creation test establishes the effective defaults for each relevant creator role.
@@ -316,7 +316,7 @@ The RPC definition is a real behavior mismatch, but this query does not prove a 
 
 No production schema, data, grants, Auth settings, migration history, or deployment target was changed.
 
-## 9. Repository migration-version alignment change — proposed on branch fix/align-migration-version-history
+## Migration filename alignment change — proposed on branch fix/align-migration-version-history
 
 Read-only comparison of the 30 remote migration records against the 33 local migration files found seven logical migrations whose local filename version prefix differed from the remote version, despite matching migration names. This makes the local CLI treat already-applied migrations as pending by version. Their filenames have been aligned on the proposed branch without changing SQL contents:
 
