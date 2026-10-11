@@ -116,3 +116,51 @@ Loading, no data, demo data, insufficient evidence, failed analysis, persisted r
 
 ## Next step
 Conduct the rendered UI walkthrough and map ranked issues to exact screens and components. Then prototype one opportunity journey before making broad visual changes.
+
+## Follow-up: live route response walkthrough — 2026-10-11
+
+### What was checked
+Fetched the deployed Overview, Opportunities and Savings/Verification routes directly from the current Vercel deployment:
+`https://gridmind-cf3axeqfg-vartmaansharma-blips-projects.vercel.app/`
+
+| Route | Direct response observation | Design implication | Confidence |
+|---|---|---|---|
+| Overview `/` | HTTP 200. Server-rendered response includes the demo factory, ₹1.68 Cr/year estimated exposure, ₹1.03 Cr/year potential savings, opportunity summaries, and ₹0 verified. | The example communicates material value, but demo/synthetic context and the distinction between exposure, potential and verified value must remain unmistakable wherever figures appear. | High for fetched HTML; not a screenshot assessment. |
+| Opportunities `/opportunities` | HTTP 200. Direct response contains “No data connected yet” onboarding and asks for factory inputs; overview's demo figures are absent. | A direct route entry does not preserve the overview's visible demo context in its server response. The user needs an explicit, consistent state and a clear way to inspect the same example or understand why results are unavailable. | High for fetched HTML; client hydration may change the browser view. |
+| Savings / Verification `/savings` | HTTP 200. Direct response likewise contains “No data connected yet” onboarding; overview shows an “Open verification” path and ₹0 verified. | Verification needs a state-specific explanation: no verified outcomes yet is different from no factory data connected. Do not let generic onboarding erase the user's context. | High for fetched HTML; client hydration may change the browser view. |
+
+### Interpretation boundary
+This was a direct-route HTML response check, not a live interactive browser session. I did not capture screenshots, click through hydrated client-side state, test viewport widths, or run accessibility automation. The source audit already identifies a demo-mode branch in Opportunities and Savings that returns a generic empty state; the live response check corroborates the direct-entry symptom, but it does not establish the full hydrated click-path. Mark the browser journey as **not yet verified**, not as passed or definitively broken in every session.
+
+### Design decision
+**Decision:** fix the shared result/state contract before visual polish. A demo/screening result must have an explicit provenance and stable identity as the user moves from Overview to Opportunity and Verification. If a route cannot display that result, it must say why and offer a useful next step; it must not silently imply that the factory has no data.
+
+The UI must distinguish at minimum:
+- **Demo example:** synthetic, clearly labelled; never represented as customer evidence.
+- **Screening result:** provisional analysis with visible data coverage and limitations.
+- **Persisted opportunity:** durable record with source, version and audit trail.
+- **Insufficient evidence:** explain what is unknown and what evidence would reduce uncertainty.
+- **No verified outcome:** no accepted post-intervention result exists; not equivalent to no data.
+- **Verified outcome:** only when an auditable baseline, post-period, comparison method, confounders and reviewer acceptance exist.
+- **Connection / request failure:** identify the failure and safe recovery path rather than reusing a no-data state.
+
+### Phase 2 — smallest safe implementation slice
+1. Trace the exact demo/screening result source on Overview and the factory/demo state consumed by Opportunities and Savings. Confirm the intended state transition before editing.
+2. Define a typed route-state contract and shared value-state vocabulary; avoid a broad architecture rewrite.
+3. Preserve the current demo example across navigation, or provide an explicit “Open demo example” action that consistently enters the same example state on all three routes.
+4. Make Verification's empty state say “No outcomes verified yet” when that is the truth, while separately explaining whether data is connected and whether an intervention exists.
+5. Keep value categories separate: exposure ≠ potential savings ≠ expected savings ≠ realized/verified savings. Label demo figures at their point of use.
+6. Add regression tests for direct entry and in-app navigation across Overview → Opportunity → Verification, including demo, no factory, persisted result, insufficient evidence and request failure.
+7. Verify desktop/mobile layout, keyboard navigation, focus state and reduced-motion behaviour in a real browser before closing the design phase.
+
+### Acceptance criteria for the slice
+- Same demo/example context is available after navigating from Overview to Opportunities and Verification, or a deliberate and truthful state transition is shown.
+- No result silently disappears because a route reads a different source of truth.
+- Direct route entry and in-app navigation have tested, documented outcomes.
+- “No data connected”, “no opportunity”, “insufficient evidence” and “no verified outcome” are separate states.
+- Demo data is visibly synthetic; no demo savings are claimed as customer-realized.
+- Tests cover the states above and pass in CI; no production database or settings changes are needed for this UI-state correction.
+- Browser observations are recorded separately from source inference.
+
+### Scope and release guardrail
+This is a UI/state-consistency slice, not authorization to claim production readiness, verified customer savings, validated product-market fit, or broad industrial platform capability. No application code or production settings were changed during this follow-up check.
