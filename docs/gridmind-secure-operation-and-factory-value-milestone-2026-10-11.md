@@ -40,7 +40,7 @@ Supabase Security Advisor currently reports:
 2. **Warning:** leaked-password protection is disabled. Enable it in Supabase Auth settings after checking the current login and recovery flows.
 3. **Performance advisory:** many indexes are unused in the current low-traffic snapshot. Do not drop them without workload evidence and query-plan review.
 
-The combined status for commit `6874f4e291f1418841e40d840a324513ec4fe589` reports a Vercel failure whose target URL identifies a build-rate-limit/plan restriction. Treat deployment verification as blocked until a current release deployment succeeds; this signal does not by itself prove an application-code defect.
+The latest successful Vercel production deployment observed is [deployment `dpl_72GwVVgx9JvDYHhYS5XTbFVeE9LP`](https://vercel.com/vartmaansharma-blips-projects/gridmind/72GwVVgx9JvDYHhYS5XTbFVeE9LP), marked READY on commit `50c57c89e48b80162ddb33599467ab61a973aeab`. The current repository commit `da16717861b2c5baf6beca17acc02b6cd7354088` has a Vercel failure status whose target identifies a build-rate-limit/plan restriction. GitHub comparison confirms the commits after `50c57c89` change documentation only, not application source. Thus a successful deployment exists for the unchanged application source, but the exact-current-commit release check remains red; do not describe the latest commit as fully green.
 
 Prior CI, Quality Gate, and migration-replay successes documented in the security audit were on earlier commits. Do not silently treat those results as proof that the latest commit is green.
 
