@@ -1,0 +1,645 @@
+# GridMind Master Plan — Company, Product, Validation and Execution System
+
+**Version:** 1.0  
+**Last updated:** 2026-10-11  
+**Status:** Canonical operating plan; strategy is structured, but commercial hypotheses remain unvalidated.  
+**Authority:** This document integrates the current company direction. The [Decision Constitution and Contradiction Register](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) remains the record of binding decisions and explicit contradictions; where an older plan conflicts with a newer verified decision, record the resolution rather than silently rewriting history.  
+**Scope:** Complete planning baseline before the next execution sprint. This is not evidence that customer discovery, production readiness, a pilot, revenue, savings, or product-market fit has occurred.
+
+---
+
+## 0. Executive decision
+
+**Long-term ambition:** Build a trusted industrial decision-and-value-realization layer that helps industrial businesses identify material losses or risks, connect authorized evidence, investigate causes, prioritize decisions, coordinate human-approved interventions, and verify outcomes.
+
+**Near-term strategy:** Do not build the entire platform. Find one recurring, costly, reachable, measurable industrial workflow where the buyer confirms that current alternatives leave a material gap. Deliver a bounded, human-reviewed service/pilot first; productize only repeatable steps.
+
+**Current commercial wedge:** Undecided. Five opportunity families remain hypotheses: downtime/production loss; quality defects/scrap/rework; maintenance recurrence/reliability; energy/material inefficiency; and cross-functional decision/handoff delay. Procurement intelligence and a narrow vertical operations service remain comparator alternatives where buyer access or willingness to pay may be stronger.
+
+**Next business milestone:** Complete real discovery sufficient to choose a narrow problem and secure a permissioned retrospective test with an appropriate buyer and qualified domain reviewer. The initial target is 10 substantive conversations over 30 days; this is a target, not a claim or guarantee.
+
+**What must not happen next:** Do not expand the feature roadmap, choose a wedge from founder preference alone, treat simulated interviews as evidence, request confidential data casually, make savings/superiority claims, or label a prototype as production-ready.
+
+### Current state of evidence
+
+| Topic | Status | What would change the status |
+|---|---|---|
+| Long-term industrial thesis | Strategic hypothesis | Repeated buyer evidence and defensible outcome evidence |
+| Specific buyer/problem | Unvalidated | Recent incidents described by relevant roles across independent accounts |
+| Incumbent gap | Unvalidated | Workflow-level evidence that current tools/processes leave a costly residual problem |
+| Wedge selection | Open | Evidence-backed comparison plus hard-gate pass |
+| Data access | Unvalidated for any customer | Explicit permission, documented provenance, practical access and security approval |
+| Technical production readiness | Must be checked against latest live audit; do not infer from planning docs | Reproducible live acceptance, security and cross-tenant tests |
+| Measurable customer value | None claimed | Pre-agreed baseline, intervention record, post-period evidence and review |
+| Willingness to pay | None claimed | Budget/process evidence, paid scoped test, or credible buyer commitment |
+| Repeatable delivery economics | Unknown | Time/cost-to-deliver measured across comparable cases |
+| Moat | Future hypothesis | Demonstrated repeatability, trusted data lineage, outcome history, integration and distribution advantages |
+
+## 1. First-principles problem model
+
+Factories convert materials, energy, labour, equipment capacity and time into saleable output. Value can be lost through unplanned stops, slow cycles, defects, rework, scrap, energy/material waste, maintenance recurrence, missed handoffs, planning mistakes, supplier delays, or decisions made too late. But not every loss is addressable by software, AI, or a new vendor.
+
+The root commercial question is not “Can AI analyse factory data?” It is:
+
+> **Is there a recurring decision or workflow where an identifiable buyer experiences material avoidable cost or risk, current alternatives leave a meaningful gap, GridMind can lawfully access enough evidence, and a bounded intervention can produce incremental value that the buyer can verify and pay for?**
+
+### Causal chain to test
+
+**Operational event → observed consequence/risk → evidence assembly → qualified analysis → decision by accountable person → approved intervention → measured outcome → retained learning.**
+
+A break in this chain is a possible failure point:
+- Event is not reliably recorded.
+- Records cannot be accessed or joined.
+- Apparent signal is confounded by product mix, shifts, demand, weather, operating conditions or another cause.
+- The finding is not actionable.
+- No person has authority or resources to act.
+- Intervention cannot be safely performed.
+- Outcome cannot be measured or attributed.
+- The value is real but too small, too infrequent or too expensive to capture commercially.
+
+GridMind should only own the portion of this chain it can materially improve. A non-software constraint, an existing incumbent capability, a low-cost process change, or a qualified specialist may be the better solution.
+
+### Falsifiable thesis
+
+GridMind is worth pursuing if discovery demonstrates all of the following:
+1. A narrowly defined class of buyers repeatedly experiences a costly problem.
+2. A specific workflow step remains inadequately served by existing tools, vendors, people or process.
+3. The buyer can supply or authorize access to relevant evidence.
+4. The analysis can produce a useful decision earlier, more reliably, or at lower total cost than the best realistic alternative.
+5. An accountable person can approve and execute the intervention.
+6. The outcome can be measured with an agreed method and acceptable confounder controls.
+7. The expected customer value exceeds total adoption and delivery cost by a margin the buyer finds compelling.
+8. GridMind can deliver repeatedly without disproportionate expert labour, integration effort, liability or support.
+9. A credible budget and purchasing path exists.
+
+If these conditions do not hold, narrow, pivot, partner, or stop. Do not defend the original concept against contrary evidence.
+
+## 2. Strategic principles and non-goals
+
+### Principles
+1. **Value before features:** every proposed feature must connect to a buyer, workflow, decision and measurable result.
+2. **Evidence before claims:** label observations, estimates, hypotheses, recommendations, implemented actions and verified outcomes separately.
+3. **Narrow entry, expandable architecture:** begin with one workflow; reuse the evidence and verification loop only where buyer evidence supports it.
+4. **Integrate before replacing:** complement ERP/MES/SCADA/CMMS/QMS/BI, spreadsheets, OEM support and people where they already work.
+5. **Human authority:** consequential industrial, safety, maintenance, quality and production decisions remain with qualified, authorized people.
+6. **Security as a prerequisite:** factory isolation, least privilege, data minimization and auditable access are release gates, not premium features.
+7. **Measure the alternative:** compare GridMind with the best practical status quo, including doing nothing, manual analysis, an incumbent vendor or a specialist.
+8. **No invented evidence:** simulations are useful for product testing, never market validation.
+9. **Reversible decisions first:** run cheap, informative tests before expensive architecture or hiring commitments.
+10. **Earn expansion:** a broader intelligence platform is a destination, not an initial scope commitment.
+
+### Non-goals for the first wedge
+- Replacing a factory's ERP, MES, SCADA, CMMS, QMS, historian, BI platform or system integrator.
+- Unsupervised control of machines, setpoints, production schedules or safety-critical systems.
+- Claiming autonomous root-cause analysis without appropriate validation.
+- Building a universal factory ontology or integrations for every sector before a buyer case exists.
+- Accumulating sensitive data without a clear permission, retention, security and customer-value basis.
+- Publishing customer names, factory metrics, logos, case studies or savings without written authorization.
+- Treating AI usage, dashboards, alerts, data volume or model sophistication as customer value by themselves.
+
+## 3. Opportunity portfolio and wedge-selection rules
+
+### Five candidate problem families
+
+| Candidate | Potential buyer/owner | Potential value | Main challenge / falsifier | Status |
+|---|---|---|---|---|
+| A. Downtime / production loss | Plant/production manager, operations head, reliability lead | Recoverable throughput, reduced disruption, faster investigation | Strong existing historian/MES/CMMS/OEM processes; production loss hard to attribute | Hypothesis |
+| B. Quality defects / scrap / rework | Quality head, production manager, process engineer | Lower scrap, rework, returns and investigation time | Traceability may be poor; root cause complex; regulated/customer-specific controls | Hypothesis |
+| C. Maintenance recurrence / reliability | Maintenance/reliability manager, plant manager | Reduce repeat failures, reactive work and downtime | CMMS/EAM or OEM may already solve the use case; asset-specific expertise needed | Hypothesis |
+| D. Energy / material inefficiency | Energy manager, plant manager, finance/operations | Lower utility/material intensity and cost | Metering and normalization issues; established audits/ESCOs/energy systems; savings attribution | Hypothesis |
+| E. Cross-functional decision / handoff delay | Operations/plant manager, supply chain, quality or planning leader | Faster decisions, fewer missed handoffs, less coordination burden | Pain may be organizational rather than software-solvable; diffuse budget owner | Hypothesis |
+
+Procurement intelligence and a narrow B2B service-to-software alternative should be considered if discovery indicates a clearer buyer, faster access to a paid test, or stronger repeatability. They are not presumed better.
+
+### Scoring rubric after evidence exists
+
+Use a 1–5 score only with a cited observation/source and confidence rating. If a critical input is unknown, write **Unknown** instead of manufacturing a score.
+
+| Criterion | Weight | Evidence required |
+|---|---:|---|
+| Severity and frequency of pain | 20% | Specific recent incidents and recurrence |
+| Economic consequence and addressable share | 20% | Customer-grounded calculation with explicit assumptions |
+| Willingness to pay / buying path | 20% | Existing spend, budget process, paid test or concrete buyer commitment |
+| Buyer access and permissioned data access | 15% | Identifiable buyer, data owner and feasible approved route |
+| Credible delivery and verification | 15% | Bounded method, reviewer, baseline and outcome test |
+| Repeatability / expansion potential | 10% | Same workflow repeats across comparable customers with shared context |
+
+A weighted score is a decision aid, not proof. No numeric rank is valid while critical inputs remain unknown.
+
+### Hard gates: all must pass before choosing a commercial wedge
+1. **Real pain:** a recent, specific example from a relevant buyer/operator.
+2. **Material consequence:** credible economic or operational consequence, not just a broad market statistic.
+3. **Residual gap:** evidence that the best existing alternative leaves a meaningful problem.
+4. **Ownership:** named operational owner and route to the economic buyer.
+5. **Data feasibility:** documented source, permission, quality, minimization and retention path.
+6. **Actionability:** a qualified person can act on the finding within real operational constraints.
+7. **Verification:** pre-agreed baseline and feasible post-period measure.
+8. **Incrementality:** a fair comparison against the status quo and alternative solutions.
+9. **Commercial feasibility:** plausible buyer value, price, delivery cost and purchase path.
+10. **Risk acceptability:** cybersecurity, privacy, safety, legal and reputational risks can be controlled.
+
+### Wedge decision outcomes
+- **Select:** all critical gates pass and evidence is materially stronger than alternatives.
+- **Narrow:** pain exists but buyer, asset/process, incident type, geography, or deliverable is too broad.
+- **Run another test:** the most important uncertainty can be resolved cheaply.
+- **Pivot:** another opportunity has stronger pain, access, economics or delivery evidence.
+- **Partner:** the value exists but a qualified integrator, auditor, OEM or domain expert is necessary.
+- **Stop/pause:** no reachable buyer, no meaningful residual gap, no lawful data path, no defensible outcome measure, or economics fail.
+
+## 4. Customer and market discovery
+
+### Initial ideal-customer-profile hypothesis
+Start with a reachable, operationally complex manufacturing site where a specific recurring workflow is visible, an owner can be interviewed, the records exist, and a small test can be approved. Do not assume a particular industry, factory size, region or technology stack is the winner until discovery establishes it.
+
+Potential roles to interview:
+- Plant/operations manager: production continuity, throughput, cross-team coordination.
+- Maintenance/reliability leader: recurring failures, work orders, downtime.
+- Quality leader/process engineer: defects, scrap, rework, traceability.
+- Energy/utility manager: consumption, tariff, operating normalization.
+- Finance/owner: economic consequence, budget, payback, vendor approval.
+- IT/OT/security/data owner: systems, access, cybersecurity, deployment.
+- Integrator/OEM/consultant: current alternatives and deployment realities.
+
+Map roles separately: user, operational owner, champion, economic buyer, data/system owner, cybersecurity approver, safety/quality approver and blocker. In smaller companies, one person may hold several roles.
+
+### Interview protocol
+Do not pitch first. Ask about actual behaviour:
+1. Tell me about the last time this problem happened.
+2. What triggered it, and what happened in sequence?
+3. Who noticed, investigated, decided, approved, acted and verified?
+4. What systems, records, experts or vendors were used?
+5. What worked well, and what should not be replaced?
+6. What remained unresolved, and what did that cost?
+7. How is the consequence calculated? Which inputs are recorded versus estimated?
+8. How often has it happened over the last 3–12 months?
+9. What alternatives were tried and what changed?
+10. Who owns the operational metric and budget?
+11. Which evidence would be needed for a credible investigation?
+12. Who controls that evidence, and what permission/security process applies?
+13. What would make a small test worthwhile? What would count as failure?
+14. What concrete next step is reasonable?
+
+Avoid leading questions (“Would you use AI?” “Would this save money?”). Ask for actual examples, prior spend, workarounds, approvals and behaviour.
+
+### Evidence ladder
+- **A — Directly verified:** authorized records or direct observation with traceable source.
+- **B — Reconstructable:** source inputs and formula identified; independent check pending.
+- **C — Expert estimate:** knowledgeable estimate, not reconciled to records.
+- **D — Anecdotal:** broad assertion, hearsay or hypothetical.
+
+For each claim record: exact claim, who/what supports it, date, source/permission, confidence, counter-evidence, what would falsify it, and next test. Keep observations separate from interpretation and decision.
+
+### Recruitment and outreach
+Use legitimate public professional channels, associations, events, existing relationships and qualified adult/professional introductions. Candidate routes documented elsewhere include ACMA Eastern Region and BEE/SIDHIEE cluster networks; verify contacts and relevance at time of use. Never imply affiliation or endorsement. Do not send outreach or make commitments without appropriate oversight. The founder is a minor: involve a trusted adult/professional in contracts, payment, sensitive data handling, and formal industrial access. No factory visit without explicit permission, appropriate supervision and site safety approval.
+
+### Discovery target and interpretation
+Initial 30-day target: 10 substantive conversations across relevant roles/accounts, then a written synthesis. This is a learning target, not a statistical market survey. Seek independent examples and disconfirming evidence. One conversation can reveal a testable lead; it cannot establish market size or repeatable demand.
+
+## 5. Competitive and alternative analysis
+
+The true competitor is not only another AI startup. Compare the proposed workflow against:
+- Existing internal process, spreadsheets, shift logs and meetings.
+- ERP/MES/SCADA/historian/CMMS/EAM/QMS/BI capabilities already paid for.
+- OEM, system integrator, consultant, energy auditor or reliability specialist.
+- A process redesign, staff training, maintenance change or other non-software intervention.
+- Doing nothing, tolerating the loss or fixing the underlying source system.
+- A narrow manual service that produces the outcome without software.
+
+For every candidate, create an alternatives table:
+- Job each alternative performs well.
+- Cost and switching/adoption burden.
+- Data/system coverage and permissions.
+- Time to useful result.
+- Quality/traceability and explainability.
+- Human expertise required.
+- Deployment/security burden.
+- What remains unresolved, with a real example.
+- Why GridMind is incrementally better or why it should not be used.
+
+**Differentiation hypothesis:** GridMind may connect fragmented authorized evidence to a decision and verified outcome across organizational/system boundaries. This is not unique by assertion. It must be proven against the customer's best realistic alternative. If an incumbent already solves the job well, integrate, partner or abandon that wedge.
+
+## 6. Offer, positioning and business model
+
+### Positioning hypothesis
+For a specific industrial buyer facing a recurring, costly operational workflow, GridMind helps assemble traceable evidence, investigate a bounded question, prioritize a human-approved next action and verify the outcome—without requiring replacement of core factory systems.
+
+Do not position as “AI for every factory,” “fully autonomous factory intelligence,” “guaranteed savings,” or a proven platform until evidence supports such claims.
+
+### Initial offer hypotheses to test
+1. **Paid diagnostic / retrospective investigation:** one agreed incident or recurring workflow; a defined evidence packet, assumptions, alternative explanations, economic range and recommended next test; expert-reviewed.
+2. **Time-boxed assisted pilot:** the above plus a limited live or historical workflow, agreed baseline and post-period outcome measurement.
+3. **Recurring workflow service:** only after repeated demand, defined cadence, known delivery effort and renewal rationale.
+4. **Software subscription / integration layer:** only after repeated steps, customer permissions, quality thresholds and deployment model become stable.
+
+A service-led start may reduce initial build and integration risk, but it can become a low-margin consultancy. Measure expert hours, customization, data cleaning, review effort, deployment time and repeatability from the first test.
+
+### Pricing and willingness-to-pay experiment
+Do not invent a price as if market-validated. For each buyer:
+- Ask what is spent today on the workflow/problem, including internal time, vendor services and tolerated cost.
+- Determine procurement minimums, approval thresholds, vendor onboarding, security review and payment timing.
+- Propose a fixed-scope test with explicit deliverables, exclusions, duration, access needs, review requirements and price after understanding the buyer's process.
+- Test a range only when supported by scope and delivery cost; record the actual response and objections.
+- Distinguish polite interest, free-test interest, data access, signed pilot intent, procurement initiation, paid pilot and repeat purchase.
+- Never promise savings or use contingency fees tied to unverified results without legal/commercial review.
+
+### Unit economics
+Track per engagement:
+- Revenue and collected cash.
+- Founder/expert hours by activity.
+- Data preparation, integration and infrastructure cost.
+- Third-party tools, travel and reviewer cost.
+- Support, security and onboarding effort.
+- Gross contribution = revenue minus direct delivery cost.
+- Gross margin = gross contribution / revenue.
+- Time from first contact to signed approval, data access, result and payment.
+- Customization share vs reusable workflow.
+- Expected support/maintenance after delivery.
+- Customer value range, value capture by GridMind, and customer payback.
+
+No universal margin or payback threshold is assumed before learning the market. Set target thresholds after estimating actual delivery costs and buyer economics; reject engagements that create large liabilities or unbounded unpaid customization.
+
+## 7. Product strategy and staged roadmap
+
+### Product organizing loop
+**CONTEXTUALIZE → QUALIFY EVIDENCE → DETECT → INVESTIGATE → PRIORITIZE → DECIDE → COORDINATE → VERIFY → LEARN**
+
+### Stage 0 — Plan and product truth
+- Reconcile strategy and technical state against latest repository/live audits.
+- Distinguish deployed, tested, partial, simulated and planned functionality.
+- Define the exact current release blocker(s) and security acceptance gates.
+- No new product scope while the first commercial wedge remains undecided, except fixes required for safe, honest discovery or an explicitly justified small test.
+
+### Stage 1 — Discovery and wedge selection
+- Complete comparable interviews and evidence log.
+- Map the workflow and incumbent alternatives.
+- Select or reject candidate through hard gates.
+- Define buyer, user, data owner, economic buyer, job-to-be-done and one success measure.
+- No customer-specific data accepted until permission, scope, retention and security are documented.
+
+### Stage 2 — Bounded retrospective proof
+- Use one closed incident or defined historical workflow selected with the buyer.
+- Agree question, data scope, baseline, comparison, reviewer, exclusions and success/failure rules in advance.
+- Begin with minimal, de-identified or synthetic data for pipeline dry runs; label it clearly and do not present it as customer evidence.
+- If real records are approved, maintain provenance, units, timestamps, missingness, transformations and access logs.
+- Produce a reproducible analysis packet with observations, estimates, hypotheses, alternative explanations, confidence and human-review record.
+- Compare against the best status quo and a qualified reviewer.
+- Stop if data quality, permissions, safety, attribution or economics make the result indefensible.
+
+### Stage 3 — Pilot only after retrospective evidence
+- Time-boxed, limited scope with written authorization and an agreed owner.
+- Baseline and outcome measurement preregistered before intervention.
+- No write access or control-system changes by default.
+- Qualified customer staff authorize and perform any operational action.
+- Record contextual changes and confounders.
+- Review outcome and costs with the customer before any claim.
+- Secure explicit permission for any external case study.
+
+### Stage 4 — Repeatability
+- Repeat the same workflow across at least two independent, comparable cases before treating the delivery pattern as repeatable; more evidence may be required for heterogeneous factories.
+- Quantify variance in data preparation, reviewer effort, accuracy, time-to-result, implementation and value.
+- Identify which steps generalize and which require customer-specific configuration.
+- Build only reusable product capabilities that materially reduce cost, risk or time.
+
+### Stage 5 — Productization and expansion
+- Stabilize core workflow, onboarding, permissions, evidence lineage, monitoring, support and evaluation.
+- Add integrations only when they unlock a validated customer case or reduce repeated delivery cost.
+- Expand to adjacent problem families only where the buyer, data, distribution or trust assets overlap.
+- Consider multi-site benchmarking or cross-customer learning only with explicit legal basis, permission, aggregation protections and safeguards against re-identification.
+- Autonomous or write-capable features require a separate hazard analysis, authorization model and staged safety case; not part of the initial MVP.
+
+## 8. MVP scope and acceptance contract
+
+The initial MVP is not “a full platform.” It is the minimum workflow that can support one selected problem end to end.
+
+### Minimum deliverable
+1. Defined question and customer-approved scope.
+2. Source inventory, permissions, provenance and data dictionary.
+3. Input-quality report (coverage, missingness, duplicates, unit/time-zone issues, stale values and anomalies).
+4. Reproducible analysis with versioned code/configuration and recorded assumptions.
+5. Findings separated into observed, estimated, hypothesis and recommended.
+6. At least one alternative explanation and relevant confounders.
+7. Economic estimate with formula, sources, range/sensitivity and explicit exclusions.
+8. Prioritized next step with responsible human reviewer/owner.
+9. Verification plan and baseline definition.
+10. Audit trail, limitations, data-retention/disposal plan and customer handoff.
+
+### Acceptance criteria
+- Another qualified reviewer can reproduce the analysis from the authorized inputs and recorded method.
+- Material inputs, transformations, assumptions and model/version are traceable.
+- Missing or conflicting evidence is disclosed, not silently imputed as fact.
+- The workflow refuses or flags conclusions when input quality is insufficient.
+- No unsupported root-cause, savings, safety or superiority claim.
+- Customer understands uncertainty and approves any next operational step.
+- Time and cost to produce the deliverable are recorded.
+- A clear stop/failure outcome is allowed; a useful negative finding is not disguised as success.
+
+## 9. Data, architecture, security and responsible operation
+
+### Data contract
+For each source, record:
+- Customer/organization and authorized data owner.
+- Purpose and exact permitted use.
+- Data categories, sensitivity and minimization rationale.
+- Source system, field definitions, units, timestamps/time zone and lineage.
+- Collection method, consent/authorization and access scope.
+- Retention, deletion, export and incident procedures.
+- Transformations, data-quality issues and version identifiers.
+- Whether data can be used for model improvement or cross-customer learning (default: no without explicit basis and authorization).
+
+### Tenant and access boundaries
+- Enforce organization/factory isolation server-side, not only in UI.
+- Apply least privilege, authenticated membership checks, scoped queries and secure service-role handling.
+- Keep secrets out of client bundles, logs, commits and screenshots.
+- Test both allowed and denied access paths, including cross-tenant reads/writes, direct API calls, storage, exports and background jobs.
+- Separate demo/seed data from customer data and visibly label it.
+- Record access and important data changes where appropriate.
+- Establish backup/restore and incident response before production commitments.
+- Never use production factory data in public demos or unapproved model training.
+
+### Industrial/OT boundary
+- Initial product is read-only by default; no control loop, setpoint writes, safety bypasses, PLC/SCADA changes or autonomous maintenance/production decisions.
+- Do not connect to OT networks without customer IT/OT authorization, qualified integrator review, security assessment and site-approved change control.
+- Operational recommendations require qualified human review, and safety/quality procedures take precedence.
+- Document intended use, out-of-scope uses, failure modes and escalation path.
+
+### Technical gates
+Before describing a workflow as production-ready, verify current status and run:
+1. Clean build/type/lint/test checks applicable to the repository.
+2. Authenticated end-to-end workflow using the canonical deployed application.
+3. Correct database schema, migrations and durable writes.
+4. Tenant isolation and least-privilege tests.
+5. Failure-path, stale/missing data and unauthorized-access tests.
+6. Reproducibility and audit-trail checks.
+7. Deployment/rollback, observability, backup and recovery checks appropriate to scope.
+8. User acceptance on the actual workflow, not just a passing unit test or a plan document.
+
+Do not state that these gates passed unless a dated run result proves it. Recheck live state before relying on historical audit findings.
+
+## 10. Pilot design and proof of value
+
+### Before the test
+Write a short protocol approved by the buyer and relevant domain/security owners:
+- Problem and decision to be improved.
+- Site/process/asset scope and dates.
+- Data sources, permissions, retention and permitted recipients.
+- Baseline period and comparison method.
+- Primary metric and guardrails.
+- Analysis method, exclusions and handling of missing/conflicting data.
+- Qualified reviewer and customer decision owner.
+- What constitutes success, failure, inconclusive result and stop condition.
+- Cost/time measurement.
+- Publication and reference permission (default: no external use).
+
+### Measurement hierarchy
+1. **Workflow output:** time to assemble evidence, time to investigation, completeness, reproducibility.
+2. **Decision quality:** reviewer agreement, useful/incorrect findings, justified abstentions, actionability.
+3. **Operational outcome:** event recurrence, downtime, scrap, energy/material intensity or other selected metric.
+4. **Economic outcome:** attributable cost impact using customer-approved method.
+5. **Commercial outcome:** paid conversion, renewal, expansion and referral.
+6. **Delivery economics:** time, direct cost, customization and support burden.
+
+Do not substitute a leading metric for a downstream outcome. Faster analysis is valuable only if it changes a decision or reduces cost/risk in a way the buyer values.
+
+### Attribution discipline
+- Agree baseline and method before viewing post-intervention results.
+- Normalize where appropriate for product mix, operating hours, volume, shifts, weather, tariffs, demand, asset changes and other relevant factors.
+- Distinguish gross theoretical opportunity, addressable opportunity, expected benefit, measured change and attributable benefit.
+- Avoid double counting lost production, contribution margin, overtime, scrap and other consequences.
+- Report ranges and sensitivity when assumptions materially affect the result.
+- Record no improvement, negative outcomes and inconclusive cases.
+- Do not claim causality from before/after correlation alone when other changes could explain the outcome.
+
+## 11. Go-to-market, marketing and sales
+
+### Initial go-to-market hypothesis
+Founder-led, relationship-led discovery is the first channel because trust, data access and domain understanding are prerequisites. Public professional channels, industry associations/events, trusted adult/professional introductions and relevant integrators are potential routes. Channel effectiveness is unknown until tested.
+
+### Sales process
+1. Identify a specific account and relevant role.
+2. Establish a legitimate introduction or public professional contact.
+3. Conduct problem-first discovery without overpitching.
+4. Qualify pain, consequence, alternative, owner, budget, data and approval path.
+5. Agree a low-risk next step (follow-up, workflow map or scoped diagnostic).
+6. Prepare a written scope, exclusions, data/security needs, acceptance criteria and price.
+7. Obtain required adult/professional, customer, legal and security approvals.
+8. Deliver, review and measure.
+9. Ask for renewal, referral or approved case study only after results and permission.
+10. Update CRM/evidence register and revise the thesis.
+
+### Website and message
+The website should communicate one buyer, one painful job, one credible process and one low-risk next step. Before validation, use honest language such as “designed to help” and “testing with industrial workflows”; do not imply established customers, proven savings, endorsements, integrations or autonomous capabilities that are not verified.
+
+The website should not become the main growth project before there is a clear wedge. Avoid broad feature matrices and vague AI claims. Any published metric or case study needs traceable evidence and written authorization.
+
+### Sales assets to prepare after a wedge is selected
+- One-page problem brief.
+- Workflow/current-alternative map.
+- Example deliverable using clearly labeled synthetic data.
+- Scope and data-permission checklist.
+- Pilot protocol and acceptance rubric.
+- Pricing/ROI worksheet with assumptions.
+- Security and data-handling summary.
+- Case-study template with approval and attribution controls.
+
+## 12. Metrics and operating dashboard
+
+Maintain a compact dashboard with evidence quality, not vanity counts.
+
+### Discovery
+- Target accounts identified and source.
+- Relevant contacts approached / replies / substantive conversations.
+- Conversations with a specific recent incident.
+- Independent accounts confirming the same workflow.
+- Accounts with named operational owner and economic buyer.
+- Accounts with feasible permissioned data route.
+- Concrete next steps accepted.
+
+### Product/analysis
+- Input completeness and data-quality exceptions.
+- Time to prepare data and produce result.
+- Reproducibility rate under independent review.
+- Reviewer agreement and error severity.
+- Unsupported-claim / incorrect-conclusion rate.
+- Correct abstention/refusal rate on insufficient evidence.
+- Actionability and time to decision.
+- Safety/security incidents (target zero; any incident triggers review).
+
+### Customer value
+- Baseline and post-period metric availability.
+- Verified outcome vs agreed target.
+- Attribution confidence and confounder status.
+- Buyer-confirmed usefulness.
+- Addressable value range vs total cost of adoption.
+- Cases where the correct result was no intervention.
+
+### Commercial
+- Qualified opportunities, proposals, pilots, paid conversions and renewals.
+- Time between stages.
+- Price offered and buyer response.
+- Collected revenue, direct cost, delivery hours and gross contribution.
+- Reusable vs custom effort.
+- Referral and expansion evidence.
+
+### Guardrails
+- No customer-data ingestion without authorization.
+- No cross-tenant exposure.
+- No unsupported savings claims.
+- No unapproved operational writes.
+- No customer-identifiable publication without written permission.
+- No feature expansion without problem evidence, measurable acceptance criteria and a named owner.
+
+Do not set artificial numerical success targets for accuracy, margins or ROI before the task and risk are defined. Set them with the buyer and qualified reviewer before the relevant test.
+
+## 13. Milestones and execution calendar
+
+Calendar estimates are planning targets and should be revised against actual availability, access and approvals.
+
+### Before execution: plan-completeness gate
+- [x] Long-term thesis and principles stated.
+- [x] Candidate problem families and alternatives mapped.
+- [x] Wedge hard gates defined.
+- [x] Discovery protocol and evidence ladder defined.
+- [x] Product stages and MVP acceptance criteria defined.
+- [x] Data/security and industrial-safety boundaries defined.
+- [x] Pilot, attribution and outcome standards defined.
+- [x] Commercial model, sales process, metrics and decision outcomes defined.
+- [ ] Latest live technical readiness reconciled to current deployed state before any production promise.
+- [ ] First real customer evidence gathered; this is execution, not a document-completeness requirement.
+
+### Days 1–7: access and first signal
+- Prepare a short, honest discovery brief and contact list.
+- Seek a relevant introduction through a trusted adult/professional or public industry route.
+- Target the first substantive conversation and document the actual workflow.
+- No product expansion unless a specific finding justifies a bounded experiment.
+- Update the evidence register and next test after each real interaction.
+
+### Days 8–14: compare problems
+- Continue conversations across relevant roles and candidate problem families.
+- Compare incumbent alternatives and identify the most important unknown.
+- Check who owns budget and data permission.
+- Choose one cheap falsification test, not a broad build.
+
+### Days 15–21: scope the retrospective test
+- If a buyer and feasible permissioned records exist, draft a bounded protocol and data contract.
+- Obtain approvals before any non-public data is shared.
+- Dry-run the workflow using synthetic/de-identified test inputs where appropriate.
+- Review analysis method with a qualified domain expert.
+- If no data path exists, test a different buyer/workflow or record access as a distribution blocker.
+
+### Days 22–30: decide
+- Run the retrospective test only if authorization and gates are met.
+- Measure delivery effort and review quality.
+- Seek a concrete paid next step only when the result and scope justify it.
+- Decide GO / NARROW / PIVOT / PARTNER / PAUSE based on evidence.
+- Publish a dated sprint report and revise the decision log.
+
+### After day 30
+- Repeat the chosen workflow across comparable cases before declaring repeatability.
+- Productize only the parts that repeatedly matter.
+- Expand only when customer evidence, security and delivery economics support it.
+
+## 14. Risk register and contingencies
+
+| Risk | Early warning | Mitigation / contingency | Stop condition |
+|---|---|---|---|
+| No buyer access | Outreach has no credible route or conversations repeatedly cancel | Use legitimate associations, trusted introductions, public events; narrow segment | Pause build investment if access remains absent after a defined outreach experiment |
+| Pain not urgent | Generic complaints; no recent example or consequence | Reconstruct last incident; test other candidates | Stop wedge if no material unresolved problem |
+| Incumbent already solves it | Existing tools deliver timely, trusted result | Integrate/partner or choose adjacent gap | Abandon if no incremental benefit |
+| Data inaccessible or poor | Missing records, unclear ownership, no permission | Reduce scope, use approved data export, document limitations | Stop if no defensible analysis is possible |
+| Savings cannot be attributed | No baseline or major confounders | Retrospective bounded question; preregister measures; report uncertainty | Do not claim value without a credible measure |
+| High customization | Every customer needs a different pipeline | Narrow ICP and input contract; charge for legitimate setup if viable | Pivot if delivery cannot become repeatable |
+| Service trap | Expert hours dominate value, low gross contribution | Standardize deliverables, price for labour, automate only repeated tasks | Do not scale low-margin unbounded consulting |
+| Model/analysis error | Reviewer disagreement, unsupported explanations | Abstain, add controls, independent review, simplify method | Stop use case if consequential errors cannot be controlled |
+| Security/privacy incident | Excessive access, secrets exposure, unclear retention | Minimize data, least privilege, audit, response plan | Suspend processing and follow incident protocol |
+| OT/safety risk | Request for control access or unsupervised action | Read-only design, qualified approval, separate hazard analysis | No OT write/control without formal safety and security gates |
+| Founder capacity/credibility | Too many workstreams, formal commitments beyond experience | Small scope, trusted adult/professional oversight, qualified reviewers | Defer commitments that cannot be responsibly fulfilled |
+| Premature marketing | Claims precede evidence | Claim review and evidence links | Remove unsupported claims immediately |
+| Opportunity cost | Other reachable business has clearer paid path | Compare alternatives using same evidence rubric | Pivot if GridMind's evidence/economics are materially weaker |
+| Dependence on one champion | One person supports but buyer/security/operations do not | Map all buying and approval roles | Do not forecast deal until authority and process are known |
+
+## 15. Decision governance and recordkeeping
+
+Every meaningful change must be recorded in GitHub. Do not create duplicate strategy docs when an existing canonical document can be updated.
+
+For each decision record:
+- Date and decision ID.
+- Previous state and proposed change.
+- Triggering evidence, with links or sanitized notes.
+- Facts vs interpretations vs hypotheses.
+- Options considered and strongest counterargument.
+- Trade-offs, risks and reversible/irreversible aspects.
+- Decision and rationale.
+- Owner and next action/date.
+- Acceptance or falsification criterion.
+- Affected files, implementation status and commit.
+- What would cause the decision to be revisited.
+
+Maintain three separate records:
+1. **Strategy/decision log:** what we believe and why.
+2. **Evidence register:** what actually happened, source, permission and confidence.
+3. **Execution tracker:** task, owner, status, blocker, acceptance test and evidence link.
+
+A plan update is not task completion. A commit is evidence of a document change, not proof of customer value or production readiness. Historical audit claims must be rechecked when current state matters.
+
+## 16. Definition of a complete plan
+
+“Complete” does not mean predicting every detail or writing endlessly. The plan is complete enough to execute when it contains:
+- A clear thesis that can be falsified.
+- Explicit assumptions and unknowns.
+- Alternatives and wedge-selection criteria.
+- A buyer discovery method and evidence standard.
+- A product scope and staged roadmap.
+- Technical, data, security, privacy and safety gates.
+- Pilot design and attribution method.
+- Business model and pricing experiments.
+- Marketing/sales process.
+- Metrics, risks, owners, milestones and decision rules.
+- Recordkeeping and a current next action.
+
+This baseline covers those planning dimensions. Remaining blanks are real-world unknowns that documents cannot solve: who has the pain, which workflow wins, whether data can be authorized, what buyers will pay, and whether outcomes are repeatable. The next work must generate evidence rather than add speculative chapters.
+
+## 17. Immediate next action
+
+**Begin the 30-day discovery sprint; do not start another broad planning cycle.** First, reconcile the latest live technical readiness report and use the existing buyer-discovery kit to prepare a concise, honest introduction. Then seek one real manufacturing conversation through a legitimate route, ask about a recent incident, and record what was actually learned. Do not claim outreach or customer validation until it occurs.
+
+**First sprint deliverable:** a dated evidence record containing at least one real incident narrative (or an honest account of why access failed), current workflow and alternatives, consequence calculation status, buyer/data-owner map, permissions status, strongest disconfirming evidence, and next test.
+
+**Next decision gate:** choose a wedge only when its hard gates are met; otherwise run the next cheapest informative test, narrow, pivot, partner or pause.
+
+---
+
+## Appendix A — Evidence labels
+
+- **Observed:** directly supported by a source or event.
+- **Estimated:** calculated from inputs and assumptions, with method stated.
+- **Hypothesis:** plausible explanation or future claim requiring validation.
+- **Recommended:** proposed action for human consideration.
+- **Approved:** authorized by the responsible person for the stated scope.
+- **Implemented:** action actually performed and recorded.
+- **Verified:** outcome supported by suitable post-action evidence and a defensible comparison.
+- **Unknown:** evidence is insufficient; do not silently fill the gap.
+
+## Appendix B — Per-candidate one-page decision record
+
+- Candidate and exact workflow:
+- Target customer/site type and buyer roles:
+- Most recent real incident:
+- Current workflow and systems:
+- Residual gap:
+- Consequence and calculation:
+- Frequency:
+- Current alternatives and why they fall short:
+- Data source/owner/permission:
+- Proposed bounded deliverable:
+- Qualified reviewer:
+- Baseline and outcome measure:
+- Security/safety/privacy constraints:
+- Price/budget/purchasing evidence:
+- Delivery hours/cost and repeatability:
+- Evidence supporting:
+- Evidence against:
+- Unknowns:
+- Hard-gate status:
+- Decision (select/narrow/test/pivot/partner/stop):
+- Next action, owner and date:
+- Source links and related commit:
