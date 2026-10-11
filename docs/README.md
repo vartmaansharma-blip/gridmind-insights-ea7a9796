@@ -26,6 +26,10 @@ This directory contains product definitions, engineering contracts, validation p
 
 ## Current execution and validation
 
+- [Founder Commitment and 30-Day Validation Gates — 2026-10-11](gridmind-founder-commitment-and-next-execution-2026-10-11.md) — current commitment, evidence standard, 30-day targets, and continue/narrow/pivot gates.
+
+- [Founder Commitment and 30-Day Validation Gates — 2026-10-11](gridmind-founder-commitment-and-next-execution-2026-10-11.md) — current commitment, evidence standard, 30-day targets, and continue/narrow/pivot gates.
+
 - [Repository Decision-Consistency Audit — 2026-10-11](gridmind-repository-decision-consistency-audit-2026-10-11.md) — strategy/status reconciliation; not a full code or production audit.
 - [Problem Failure Analysis and Next Experiments — 2026-10-11](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md) — failure modes, falsification tests, economics and buyer-access blocker.
 - [Manufacturing Workflow Stress Test — 2026-10-11](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md) — synthetic incident workflow, alternatives and proposed bounded test.
