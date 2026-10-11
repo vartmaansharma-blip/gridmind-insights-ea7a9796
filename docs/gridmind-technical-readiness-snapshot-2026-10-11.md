@@ -213,3 +213,10 @@ Attempted to create Supabase development branch `gridmind-readiness-test` after 
 The immediate next step is to run the existing repository-local migration replay and integration tests, and capture their current-head result. This is a useful CI gate but **does not replace** a live isolated Supabase environment for testing provider-specific roles, two-user cross-tenant access, or authenticated production acceptance. Do not upgrade the plan or mutate production automatically; first use an already-authorized staging project if one exists, otherwise keep those checks explicitly blocked.
 
 Issue #27 records this blocker and the execution pivot. Production remains **NO-GO / HOLD**.
+
+
+## CI execution request — 2026-10-11
+
+The existing `.github/workflows/migration-replay.yml` is configured to run on pushes to `main`, `develop`, and `feature/**`, and on pull requests targeting `main` or `develop`. Its single job starts an ephemeral local Supabase stack, resets/replays all repository migrations, validates the analysis schema contract, checks tenant isolation and append-only persistence, creates two local Auth users, seeds isolated fixtures, tests the authenticated `persist-factory-analysis` Edge Function, and checks for pending migrations.
+
+The workflow file was inspected read-only. The current run result has **not yet been retrieved**, and no passing result is claimed here. This documentation commit will provide a push event that should request a fresh CI run; verify the actual Actions run and logs before treating the gate as passed. A GitHub API write may not trigger Actions depending on token/event policy, so absence of a run must be recorded as not triggered, not as a test failure or pass.
