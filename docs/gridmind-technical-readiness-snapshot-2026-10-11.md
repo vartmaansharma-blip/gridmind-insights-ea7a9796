@@ -173,3 +173,34 @@ The earlier catalog result was too broad to label a confirmed migration failure.
 The repository migration explicitly uses `ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public`, so the `supabase_admin` entries do **not by themselves prove that migration failed**; default privileges are creator-role-specific. They do reveal a coverage question: if `supabase_admin` can create public tables in this environment, its defaults may not have the same least-privilege behavior. Next, verify which role actually creates application tables and whether `supabase_admin` is expected/able to create public tables; reproduce with a harmless staging table created by each relevant role. Do not change provider-managed role defaults blindly.
 
 Therefore classify this as **default-privilege coverage to verify**, not a confirmed production exploit or confirmed migration failure. No production changes were made. Other NO-GO gates remain: missing nullable columns, incomplete authenticated two-tenant and end-to-end tests, and the two Security Advisor warnings.
+
+
+## Fresh execution pass — 2026-10-11 (read-only)
+
+### Results
+
+- Fresh Supabase migration inventory: **32 entries**; latest observed migration versions `20261011062242` and `20261011062256`. The two expected repository migrations are still not evidenced in the live inventory.
+- Fresh column check: **zero rows** for `public.asset_interventions.implemented_at` and `public.factory_analysis_runs.input_snapshot_sha256`. Schema contract remains mismatched.
+- Supabase branch inventory: **no development branches**. Safe staging experiments and two-user tests cannot be truthfully marked complete. No branch/project or test users were created.
+- Role/object ownership check: `supabase_admin` is superuser-capable; `postgres` is also a creator role; inspected public application objects are owned by `postgres`. This supports testing creator-role-specific default ACLs in isolation, not modifying provider-managed defaults in production.
+- Across all inspected public tables/views, effective privilege checks were false for `TRUNCATE`, `REFERENCES`, and `TRIGGER` for `anon`, `authenticated`, and `service_role`. This closes that narrow catalog spot-check only; it is not an RLS/tenant-isolation pass.
+- Security Advisor still reports authenticated execution of `public.create_factory_workspace(text,text,text)` as SECURITY DEFINER and disabled leaked-password protection.
+- Workspace RPC definition requires authentication and uses an empty search path, but chooses the lowest-ID active owner/admin organization for users with multiple qualifying memberships. No isolated behavior tests were run; no bypass has been established by the read-only definition alone.
+
+### Gate decisions
+
+| Gate | Current status |
+|---|---|
+| Safe migration/role test | **BLOCKED** — no development branch available |
+| Missing-column reconciliation | **OPEN** — prepared SQL reviewed; no migration applied |
+| Two-user cross-tenant read/write | **NOT RUN** |
+| Workspace RPC adversarial cases | **NOT RUN** |
+| Leaked-password protection | **OPEN** |
+| Full live authenticated workflow | **NOT RUN** |
+| Production readiness | **NO-GO / HOLD** |
+
+### Next action
+
+Obtain an authorized isolated Supabase test environment, replay the current repository migration set there, and execute the test matrix before designing a production migration/history repair. Then resolve the RPC behavior and leaked-password setting through reviewed changes, and run end-to-end authenticated acceptance against the exact release candidate. Never use production as the scratch environment, invent historical hashes/timestamps, edit migration history manually, or treat a Vercel READY status as acceptance evidence.
+
+No production mutation, deployment, settings change, or outreach was performed in this pass.
