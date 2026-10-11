@@ -1,8 +1,10 @@
+> **Decision status update (2026-10-11): REJECTED.** This document is historical design documentation, not an active build instruction. The concept was judged insufficiently aligned with GridMind's intended identity and at risk of reading as decorative energy-tech/SaaS design. Do not implement it. Any replacement direction must be evaluated on its own merits.
+
 # GridMind Signature Motion Prototype — Build Specification
 
 **Date:** 2026-10-11  
-**Status:** Approved for a bounded prototype; not approval to replace the current application or launch the full marketing website.  
-**Decision:** Prototype the topographic hero and four-stage process rail. Keep them only if usability, distinctiveness, accessibility and performance checks pass.  
+**Status:** REJECTED — do not implement this concept. Retained only as a record of a rejected proposal.  
+**Decision:** The topographic hero, cursor ripple, and four-stage glowing process rail are rejected as a visual direction. No prototype or product integration is authorized from this specification. The concept may be reconsidered only if a materially different proposal is explicitly approved.  
 **Authority:** The GridMind Decision Constitution takes precedence over this specification.
 
 ## 1. Objective and decision to be tested
