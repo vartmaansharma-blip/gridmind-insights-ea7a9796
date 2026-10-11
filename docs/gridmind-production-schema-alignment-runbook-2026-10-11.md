@@ -260,3 +260,40 @@ The earlier catalog result was too broad to label a confirmed migration failure.
 The repository migration explicitly uses `ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public`, so the `supabase_admin` entries do **not by themselves prove that migration failed**; default privileges are creator-role-specific. They do reveal a coverage question: if `supabase_admin` can create public tables in this environment, its defaults may not have the same least-privilege behavior. Next, verify which role actually creates application tables and whether `supabase_admin` is expected/able to create public tables; reproduce with a harmless staging table created by each relevant role. Do not change provider-managed role defaults blindly.
 
 Therefore classify this as **default-privilege coverage to verify**, not a confirmed production exploit or confirmed migration failure. No production changes were made. Other NO-GO gates remain: missing nullable columns, incomplete authenticated two-tenant and end-to-end tests, and the two Security Advisor warnings.
+
+
+## Fresh execution pass — 2026-10-11 (read-only; test-environment gate)
+
+### Current verified observations
+
+- Refreshed migration inventory returns **32 recorded production migrations**; latest observed versions remain `20261011062242` and `20261011062256`. Neither repository migration `20261010140000_add_intervention_implemented_at.sql` nor `20261010150000_add_analysis_input_snapshot_sha256.sql` is represented by its intended version/name in the returned inventory.
+- Fresh `information_schema.columns` query again returns **zero rows** for `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256`. Do not treat repository types or the Edge Function's declared contract as proof that production has these columns.
+- Supabase reports **no development branches** for this project. Therefore there is currently no confirmed isolated branch available for migration replay, role-created table experiments, workspace-RPC tests, or two-user tenant tests. No test identities were created and no branch/project was created in this pass.
+- Current live role metadata: `supabase_admin` is a superuser and can create roles/databases; `postgres` is also a table-creating role. All public base tables/views inspected are owned by `postgres`. This establishes that `supabase_admin` has the capability to create objects, but does not prove that normal GridMind application migrations are executed under that role. Keep the default-privilege question open until a controlled non-production table-creation test establishes the effective defaults for each relevant creator role.
+- A fresh privilege query across every public table/view returned **false** for API-role `TRUNCATE`, `REFERENCES`, and `TRIGGER` checks for `anon`, `authenticated`, and `service_role`. This is a useful current least-privilege result for these tested privilege types, not proof of overall authorization or tenant isolation.
+- Security Advisor still reports (1) authenticated execution of the `SECURITY DEFINER` RPC `public.create_factory_workspace(text,text,text)` and (2) disabled leaked-password protection.
+- The live workspace RPC has an empty search path and rejects unauthenticated callers. It chooses the lowest-ID active organization where the caller has owner/admin status; if none exists, it creates an organization and owner membership. The choice is deterministic but could surprise a legitimate user with multiple owner/admin memberships. No evidence from this read-only check proves a cross-tenant bypass. Validate zero/one/multiple membership cases with a separate reviewer before changing function/grants.
+
+### Execution status against the requested sequence
+
+| Work item | Status | Evidence / next action |
+|---|---|---|
+| Establish migration and role behavior in safe environment | **BLOCKED — no branch available** | Production catalog was inspected read-only; do not run role-creation experiments in production. Provision an isolated Supabase branch/project through the approved cost/authorization flow, then replay current migrations and test the actual table creator roles. |
+| Reconcile the two missing columns | **PREPARED, NOT APPLIED** | Exact repository SQL reviewed. Both changes are additive and nullable; SHA check accepts NULL or `sha256:` + 64 lowercase hex. Migration identity/version drift still requires an approved reconciliation path and independent review. |
+| Two-user/two-factory isolation | **NOT RUN** | No isolated branch and no two dedicated test identities. Create explicit fixtures only in non-production; verify read/write denial through UI, REST/RPC, Edge Function, views and storage where used. |
+| Workspace-creation security warning | **INVESTIGATED, NOT RESOLVED** | Function definition reviewed; zero/one/multiple membership tests and reviewer sign-off are still required. Do not suppress the warning by blindly revoking onboarding access or switching security mode. |
+| Leaked-password protection | **OPEN** | Setting remains disabled. A project owner must review impact and enable it through the authorized Auth settings workflow, followed by sign-in/reset regression tests. |
+| Complete authenticated workflow | **NOT RUN LIVE** | Requires a legitimate signed-in browser session and non-production test accounts; never request credentials in chat. The current live project has no analysis runs, so persistence/reload/idempotency cannot be inferred from existing data. |
+| Production readiness reassessment | **NO-GO / HOLD** | Missing columns, no isolated adversarial tests, unresolved Auth settings/RPC review, and no current live end-to-end acceptance evidence. |
+
+### Safe next execution order
+
+1. Arrange an isolated Supabase development branch/project using the platform's cost/authorization process; do not experiment with DDL or table creation in production. If branch creation requires cost acknowledgement, obtain that acknowledgement before proceeding.
+2. Replay the exact current repository migration set in that environment and capture migration history, resulting column definitions, constraints, effective default ACLs for tables created under each relevant role, and build/test results.
+3. Have an authorized database operator and independent reviewer select the canonical migration-history reconciliation path. Do not hand-edit migration history or blindly replay earlier migrations in production.
+4. In the isolated environment, run workspace RPC tests for unauthenticated, regular-member, one-owner/admin-org, and multiple-owner/admin-org cases; then run two-user/two-factory negative read/write tests.
+5. Fix issues on a branch and add regression tests before any production migration or function/grant change.
+6. Have the project owner enable leaked-password protection in the authorized settings workflow and verify sign-in, sign-up, password reset, and recovery.
+7. Run the complete authenticated journey on the exact release candidate; attach evidence and then reassess the release gate.
+
+No production DDL, data, grants, Auth settings, migration history, deployment, or outreach was changed in this pass.
