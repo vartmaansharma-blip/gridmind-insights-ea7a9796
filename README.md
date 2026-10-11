@@ -14,7 +14,7 @@ The staged expansion strategy is in the [GridMind Expansion Architecture](docs/g
 
 ## Start here
 
-Use the [Documentation Index](docs/README.md) for the canonical reading order. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs current commitments and resolves conflicts across strategy, product, website, and execution documents.
+Use the [GridMind Master Plan](docs/gridmind-master-plan-2026-10-11.md) as the complete operating plan for company strategy, validation, product, security, commercial model, milestones and decision rules. The [Documentation Index](docs/README.md) provides the full reading order. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs binding commitments and conflict resolution.
 
 ## Current execution priority — 2026-10-11
 
