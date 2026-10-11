@@ -239,3 +239,14 @@ The Vercel project now has an Ignored Build Step command:
 Intent: skip a deployment build only when the commit changes files exclusively under `docs/` and/or the repository-root `README.md`; any change outside those paths should continue to the normal build. If Git cannot compare the commit with its parent, the command should fail non-zero and allow the build rather than silently skipping it.
 
 This is a preventive quota-control measure, not a claim that the pre-existing failed Vercel check has turned green. The project domains and last READY deployment were re-read after the setting update and remained present. Verify the next code-changing commit receives a normal successful deployment; if the current Vercel plan limit still blocks builds, the remaining options are to wait for the quota window to reset or have the project owner approve a plan change. No billing change was made.
+
+
+### Follow-up verification — quota mitigation did not clear the GitHub release signal
+
+After adding the Ignored Build Step and committing the warm-introduction update, the latest commit `d5a1deddeaeb44536dffffe8f216034b56503d86` still reports a Vercel failure pointing to the build-rate-limit/plan page. The Vercel deployment list has not produced a newer deployment for that commit; the newest listed READY production deployment remains `dpl_72GwVVgx9JvDYHhYS5XTbFVeE9LP` on `50c57c89e48b80162ddb33599467ab61a973aeab`.
+
+Therefore, the ignored-build-step setting is a reasonable quota-avoidance attempt but **is not verified as a fix and has not cleared the current release check**. Do not state otherwise. Next safe route: inspect the Vercel dashboard's exact failed build event and quota reset timing; if the provider rejects the commit before the ignored-build command can run, wait for reset or ask the project owner to approve a plan change. Do not alter production application behavior or bypass release gates just to make the status green.
+
+### Buyer-access status — warm introduction is the next human action
+
+The buyer-discovery document now records a warm-introduction route based on the founder's previously stated local industrial network. No individual has yet been identified or contacted in the connected records. The next external action is to send the warm-introduction request to one trusted connection and ask for one operational owner; the outreach text is recorded in [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). No message was sent by the assistant and no conversation is booked.
