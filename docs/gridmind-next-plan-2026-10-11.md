@@ -460,3 +460,36 @@ The analysis decomposes a possible incident workflow into event capture, identit
 **Sharper hypothesis to test:** for one defined class of recurring quality or production incident, create a traceable investigation packet from customer-approved records that reduces evidence-assembly/review effort without claiming autonomous diagnosis.
 
 **Next gate:** compare this output against one real customer's current workflow; measure elapsed time, completeness, reviewer corrections, delivery labor, and the buyer's concrete next step. If simpler process improvement or existing tools solve the problem better, change or reject the wedge. No customer validation or product results are claimed.
+
+
+## Active execution plan — 30-day evidence sprint (2026-10-11 to 2026-11-10)
+
+This section supersedes open-ended “next step” language in this document. Do not create another broad plan. The [Master Plan execution contract](gridmind-master-plan-2026-10-11.md) is the detailed source of truth; this section is the short operating queue.
+
+### One objective
+By 2026-11-10, target 10 qualified manufacturing conversations, one evidence-backed operational-problem decision, one permissioned retrospective test if access/review are available, and a technical release decision tied to verified acceptance evidence. These are targets only; no demand, customer value or release readiness is assumed.
+
+### Two parallel tracks
+**A — technical trust:** (1) reconcile the missing live-schema fields `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256` against migrations and application contracts read-only; (2) draft a reviewed migration proposal; (3) test `create_factory_workspace` authorization in isolated fixtures; (4) resolve leaked-password protection with the authorized settings owner; (5) test two-user cross-tenant denial; (6) complete end-to-end persistence, reload, retry, denial, logs and exact-SHA deployment acceptance. Production stays NO-GO until required gates pass. Production schema/settings changes require authorized owner, explicit approval, recovery plan, second-person review and stop conditions.
+
+**B — customer evidence:** (1) find a real, legitimate introduction route; (2) request a 20-minute conversation about a recent incident; (3) reconstruct the actual workflow, consequence and alternatives; (4) map operational owner, buyer, approval and data permissions; (5) quantify conservative incremental value versus all-in adoption/delivery cost; (6) run a human-reviewed retrospective only with explicit organizational permission; (7) record advance/narrow/pivot/stop.
+
+### First week
+- **Oct 11:** inspect existing readiness evidence; create a read-only schema discrepancy checklist and identify the first legitimate introduction route.
+- **Oct 12:** compare migrations/application contract/live schema; prepare RPC and tenant-isolation tests. No production DDL.
+- **Oct 13:** begin a small batch of truthful, personalized requests; record only actual sends/replies.
+- **Oct 14:** conduct first available interview and reconstruct a real incident; if no interview, record the blocker and try another legitimate route.
+- **Oct 15:** map alternatives, buyer, approvals, data ownership and evidence gaps.
+- **Oct 16:** define a bounded retrospective experiment and baseline if a real incident and permission path exist; otherwise choose the next smallest access/evidence test.
+- **Oct 17:** review actual activity, evidence for/against, technical status, blockers and next owners/dates.
+
+### Hard gates
+- No cross-tenant access, schema mismatch or unverified persistence path may be waved through as production-ready.
+- No confidential data without explicit organizational authorization and suitable controls.
+- No synthetic scenario counts as customer evidence; no outreach/interview is counted until it happens.
+- If an existing process or product solves the problem adequately, recommend it or reject the wedge.
+- Continue only when a real problem, consequence, accountable owner/buyer, residual gap, authorized data path, credible economics and measurable test are supported. Otherwise narrow, pivot or stop.
+- Record significant decisions and completed work in GitHub; distinguish observed, estimated, hypothesis, unknown, implemented and verified.
+
+### Immediate action
+Perform the read-only schema-contract reconciliation and prepare the first legitimate introduction route in parallel. The detailed acceptance criteria, stop conditions and ownership boundaries are in the Master Plan execution contract and Technical Readiness Snapshot.
