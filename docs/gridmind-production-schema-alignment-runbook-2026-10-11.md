@@ -160,13 +160,13 @@ A direct read-only comparison of the full `supabase/migrations/` directory with 
    - `20261010140000_add_intervention_implemented_at.sql` — `public.asset_interventions.implemented_at`
    - `20261010150000_add_analysis_input_snapshot_sha256.sql` — `public.factory_analysis_runs.input_snapshot_sha256`
 3. **Seven repository migrations are recorded under different live version IDs**, even though the live entry names indicate corresponding migration intent:
-   - repository `20261009130000_gridmind_factory_analysis_runs_v1.sql` → live version `20261010075630`
-   - `20261010100000_restore_authenticated_factory_api_privileges.sql` → `20261010081740`
-   - `20261010103000_grant_authenticated_factory_profile_updates.sql` → `20261010082541`
-   - `20261010104000_grant_authenticated_factory_asset_writes.sql` → `20261010082706`
-   - `20261010110000_harden_organization_membership_rls.sql` → `20261010103936`
-   - `20261010120000_revoke_public_structural_table_privileges.sql` → `20261010104457`
-   - `20261010130000_scope_membership_update_policy.sql` → `20261010104942`
+   - repository `20261010075630_20261009130000_gridmind_factory_analysis_runs_v1.sql` → live version `20261010075630`
+   - `20261010081740_restore_authenticated_factory_api_privileges.sql` → `20261010081740`
+   - `20261010082541_grant_authenticated_factory_profile_updates.sql` → `20261010082541`
+   - `20261010082706_grant_authenticated_factory_asset_writes.sql` → `20261010082706`
+   - `20261010103936_harden_organization_membership_rls.sql` → `20261010103936`
+   - `20261010104457_revoke_public_structural_table_privileges.sql` → `20261010104457`
+   - `20261010104942_scope_membership_update_policy.sql` → `20261010104942`
 
 ### Interpretation and limits
 
@@ -225,13 +225,13 @@ Produce a complete per-migration disposition table and arrange non-production tw
 | Repository migration | Live evidence | Disposition |
 |---|---|---|
 | `20261006030000_gridmind_rls_auto_enable_bootstrap.sql` | `ensure_rls` event trigger is enabled and `public.rls_auto_enable()` exists with matching high-level behavior. | **Functionally represented; version identity unresolved.** Do not replay just to align history. Compare full function definition/ACL and migration runner semantics before deciding whether to repair history or repository migration strategy. |
-| `20261009130000_gridmind_factory_analysis_runs_v1.sql` | Table, expected core constraints, append-only trigger, service-role persistence grants, member read/insert policies and related indexes exist. Extra indexes also exist. | **Core effects represented; exact body equivalence unproven.** The two column migrations below are separate and remain absent. |
-| `20261010100000_restore_authenticated_factory_api_privileges.sql` | Read-only grants show expected authenticated SELECT/INSERT/UPDATE privileges for the named factory workflow tables. | **Spot-check matches.** Complete semantic diff of all grants and API-exposed objects still required. |
-| `20261010103000_grant_authenticated_factory_profile_updates.sql` | `authenticated` has UPDATE on `factories`. | **Observed effect matches.** |
-| `20261010104000_grant_authenticated_factory_asset_writes.sql` | `authenticated` has INSERT/UPDATE on `factory_assets`; owner/admin RLS policies exist. | **Observed effect matches.** Tenant behavior still needs two-user tests. |
-| `20261010110000_harden_organization_membership_rls.sql` | `private.is_org_admin` exists; organization membership policies use it and are scoped to authenticated. Function ACL shows authenticated EXECUTE. | **Observed effect broadly matches.** Confirm no unintended ACLs and test real authorization/recursion behavior. |
-| `20261010120000_revoke_public_structural_table_privileges.sql` | Catalog spot-check returned no TRUNCATE/REFERENCES/TRIGGER grants to PUBLIC, anon, authenticated or service_role for the checked public tables. | **Spot-check matches.** Query should be repeated across all public tables in final acceptance. |
-| `20261010130000_scope_membership_update_policy.sql` | `admins update organization_members` policy is scoped to `{authenticated}`. | **Observed effect matches.** |
+| `20261010075630_20261009130000_gridmind_factory_analysis_runs_v1.sql` | Table, expected core constraints, append-only trigger, service-role persistence grants, member read/insert policies and related indexes exist. Extra indexes also exist. | **Core effects represented; exact body equivalence unproven.** The two column migrations below are separate and remain absent. |
+| `20261010081740_restore_authenticated_factory_api_privileges.sql` | Read-only grants show expected authenticated SELECT/INSERT/UPDATE privileges for the named factory workflow tables. | **Spot-check matches.** Complete semantic diff of all grants and API-exposed objects still required. |
+| `20261010082541_grant_authenticated_factory_profile_updates.sql` | `authenticated` has UPDATE on `factories`. | **Observed effect matches.** |
+| `20261010082706_grant_authenticated_factory_asset_writes.sql` | `authenticated` has INSERT/UPDATE on `factory_assets`; owner/admin RLS policies exist. | **Observed effect matches.** Tenant behavior still needs two-user tests. |
+| `20261010103936_harden_organization_membership_rls.sql` | `private.is_org_admin` exists; organization membership policies use it and are scoped to authenticated. Function ACL shows authenticated EXECUTE. | **Observed effect broadly matches.** Confirm no unintended ACLs and test real authorization/recursion behavior. |
+| `20261010104457_revoke_public_structural_table_privileges.sql` | Catalog spot-check returned no TRUNCATE/REFERENCES/TRIGGER grants to PUBLIC, anon, authenticated or service_role for the checked public tables. | **Spot-check matches.** Query should be repeated across all public tables in final acceptance. |
+| `20261010104942_scope_membership_update_policy.sql` | `admins update organization_members` policy is scoped to `{authenticated}`. | **Observed effect matches.** |
 | `20261010140000_add_intervention_implemented_at.sql` | `asset_interventions.implemented_at` is absent. | **Not applied or not represented.** Safe additive nullable column; historical values must remain NULL. Requires approved migration reconciliation. |
 | `20261010150000_add_analysis_input_snapshot_sha256.sql` | `factory_analysis_runs.input_snapshot_sha256` and its format constraint are absent. | **Not applied or not represented.** Safe additive nullable column plus check constraint; historical hashes must remain NULL. Requires approved migration reconciliation. |
 
@@ -315,3 +315,21 @@ A new read-only query was run against Supabase project `bvqmvgbfqhgczwbvlqkk` af
 The RPC definition is a real behavior mismatch, but this query does not prove a cross-tenant bypass or establish why the candidate migration has not been applied. The correct next step is an isolated replay and membership-matrix test, followed by independent review of the full migration-history/schema drift. Do not hand-edit migration history, blindly replay earlier migrations, or run production DDL without explicit authorization, a recovery point, an authorized operator and a second reviewer.
 
 No production schema, data, grants, Auth settings, migration history, or deployment target was changed.
+
+## 9. Repository migration-version alignment change — proposed on branch fix/align-migration-version-history
+
+Read-only comparison of the 30 remote migration records against the 33 local migration files found seven logical migrations whose local filename version prefix differed from the remote version, despite matching migration names. This makes the local CLI treat already-applied migrations as pending by version. Their filenames have been aligned on the proposed branch without changing SQL contents:
+
+| Recorded remote version | Aligned local migration filename |
+|---|---|
+| 20261010075630 | 20261010075630_20261009130000_gridmind_factory_analysis_runs_v1.sql |
+| 20261010081740 | 20261010081740_restore_authenticated_factory_api_privileges.sql |
+| 20261010082541 | 20261010082541_grant_authenticated_factory_profile_updates.sql |
+| 20261010082706 | 20261010082706_grant_authenticated_factory_asset_writes.sql |
+| 20261010103936 | 20261010103936_harden_organization_membership_rls.sql |
+| 20261010104457 | 20261010104457_revoke_public_structural_table_privileges.sql |
+| 20261010104942 | 20261010104942_scope_membership_update_policy.sql |
+
+After those filename alignments, the remaining local-only migrations are expected to be the idempotent RLS bootstrap `20261006030000_gridmind_rls_auto_enable_bootstrap.sql` plus the two genuinely missing nullable-column migrations `20261010140000_add_intervention_implemented_at.sql` and `20261010150000_add_analysis_input_snapshot_sha256.sql`. This expected set must be confirmed by the branch's clean replay and a fresh local-vs-remote migration-list comparison before merge or any production operation.
+
+This change only aligns repository version prefixes to already-recorded remote history; it does not modify production migration history or execute production DDL. The RLS bootstrap's live function/event-trigger equivalence and ACL preservation still require explicit review before any production migration push. The two missing columns remain absent until an authorized change window.
