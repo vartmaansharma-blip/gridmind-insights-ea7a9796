@@ -159,3 +159,30 @@ Do not call the work a pilot until all are true:
 - The factory accepts the observation window, stop criteria, and review of results.
 
 **Truth boundary:** as of this update, no discovery interview, customer commitment, factory permission, data transfer, intervention, or savings result has occurred. The next external dependency is access to a real factory owner; the next technical dependency is a verified authenticated production workflow plus resolution or explicit owner acceptance of the Vercel build-rate-limit status.
+
+
+## Warm-introduction execution path — 2026-10-11
+
+Prior project context indicates the founder may have access to a network of approximately 10–20 industrial facilities around Jamshedpur/Adityapur, spanning steel, engineering, automotive, fabrication, and ancillary manufacturing. This is a potential access route, **not a verified prospect list or confirmed permission**. No individual contacts or specific facilities have been named in the available record.
+
+### First move: ask for one introduction, not a factory data dump
+
+Send this to the trusted person who can make the introduction:
+
+> Hi — I’m working on GridMind, an early project exploring how industrial teams investigate recurring operational problems and verify whether improvements actually work. I’m not looking to sell a finished product or request factory data at this stage. Could you introduce me to one plant/operations manager, maintenance or continuous-improvement lead, or energy/utility owner who might be willing to have a 20-minute discovery conversation? I’d only ask about a recent problem and the current investigation process. No confidential information or factory records are needed. If there is no fit, that is completely fine.
+
+### Qualification rule for the introduction
+
+Prioritize a person who can describe a specific recent incident and current workflow, not simply someone with a senior title. A useful first contact should have direct experience of production/maintenance/energy operations or be able to introduce the operational owner. The first conversation is discovery only; no recommendation, data collection, or intervention.
+
+### Prospect tracker — fill only with real information
+
+| Status | Contact | Role / facility | Warm-intro source | Why qualified | Next action |
+|---|---|---|---|---|---|
+| Awaiting real introduction | Not yet identified | Jamshedpur/Adityapur industrial operations | Founder’s existing network; individual not recorded | No contact has been verified | Ask one trusted connection for an introduction |
+
+Do not populate this row with guessed names. Once a real contact is identified, record only information needed for the outreach and follow-up. Do not send messages or represent an interview as booked unless it actually happens.
+
+### First-call outcome to capture
+
+Immediately after the conversation, record: the last concrete incident, frequency, existing workaround, evidence/source records, consequence, decision owner, current alternatives, access restrictions, and the exact agreed next step. If the person cannot identify a material recurring problem or cannot reach the owner, mark the lead as unqualified and move on.
