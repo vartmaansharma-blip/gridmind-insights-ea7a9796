@@ -25,19 +25,21 @@ Branch: fix/workspace-bootstrap-org-ambiguity
 
 This is intentionally a narrow behavior fix. It does not clear the Security Advisor's SECURITY DEFINER warning; the RPC remains privileged code exposed for the intended authenticated onboarding path. That design still requires qualified security review and a complete grants/function-body audit. The new multi-organization rejection is a safe interim behavior until an explicit organization-selection contract exists.
 
-## Validation state
+## Validation state — exact PR head 023767f0efd108d2a07d466976711a5549a3b33d
 
-- [ ] Clean migration replay on this branch.
-- [ ] Workspace bootstrap SQL contract passes.
-- [ ] Existing schema/security contract and HTTP two-user Edge Function suite pass on this exact head.
-- [ ] Review generated migration semantics and function ACLs.
+- [x] Clean migration replay on this branch — [run 38149176365](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149176365) passed.
+- [x] Workspace bootstrap SQL contract passed within that clean replay.
+- [x] Existing schema/security contract and HTTP two-user Edge Function suite passed within the same exact-head replay.
+- [x] Repository CI passed — [run 38149176347](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149176347).
+- [x] GridMind Quality Gate passed — [run 38149176361](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149176361).
+- [x] Self-review of migration semantics and preserved function grants completed; this is not a substitute for independent security review.
 - [ ] Review the UI's handling of AMBIGUOUS_ORGANIZATION_CONTEXT so the user receives a clear selection/recovery path.
-- [ ] Qualified security review of the SECURITY DEFINER RPC.
+- [ ] Qualified independent security review of the SECURITY DEFINER RPC.
 - [ ] Authorized Auth settings owner enables leaked-password protection and tests sign-in/reset/recovery.
 - [ ] Production schema alignment: reconcile migration history and object definitions; secure recovery point, named operator and independent reviewer; obtain explicit production-change authorization; apply only through approved migration workflow; verify columns and old-row integrity.
 - [ ] Two-user production acceptance and authenticated sign-in → workspace → analysis → reload verification on the exact deployed SHA.
 
-No test is marked passed until the corresponding workflow completes for the current branch head. CI results from earlier commits do not count as evidence for this patch.
+The automated checks above passed on the exact PR head. Production schema/Auth changes and independent security review remain open.
 
 ## Production boundary
 
