@@ -4,6 +4,9 @@ This directory contains product definitions, engineering contracts, validation p
 
 ## Start here
 
+- [Industrial Workflow and Structural-Gap Map](gridmind-industrial-workflow-and-gap-map-2026-10-11.md) — first-pass map of factory workflows, incumbent systems, candidate structural gaps, falsification tests and validation steps; desk research only.
+
+
 1. [Decision Constitution and Contradiction Register](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — authoritative interpretation of current commitments and conflict resolution.
 2. [30-Day Execution Plan](gridmind-30-day-execution-plan-2026-10-10.md) — current validation sequence; a plan is not evidence of completion.
 3. [Next-Step Decision Log](gridmind-next-step-decision-2026-10-10.md) — dated history and execution decisions. Older instructions are superseded where they conflict with the Constitution; refresh environment facts before acting on historical entries.
