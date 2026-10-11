@@ -345,3 +345,100 @@ Failure on traceability or unsupported causal claims is a stop condition for the
 
 ### Next real-world execution gate
 The immediate task is not more simulation or product coding. Identify legitimate interview opportunities, request conversations without implying a sale, and complete the first real interview. Record anonymized notes only with permission. The target remains 10 substantive conversations across relevant roles and segments; no outreach, interview, data access, pilot, savings, or paid commitment is claimed as completed.
+
+
+## 9. Direct answers to the open GridMind questions — 2026-10-11
+
+**Interpretation rule:** The answers below are current strategic decisions or explicit hypotheses, not claims of customer validation. Where evidence is absent, the answer is “unknown; test it,” not an invented fact.
+
+### 9.1 Business direction and first wedge
+
+1. **What problem should we solve first?**  
+   **Current hypothesis to test:** help a manufacturing team investigate one recurring, closed operational incident by reconstructing a traceable timeline from authorized records, surfacing contradictions and missing evidence, and organizing the next investigation steps. This is narrower and more testable than a general “AI for factories” platform. It is not yet selected as the final commercial wedge.
+
+2. **Which segment should we target?**  
+   Start discovery across engineering/automotive-component SMEs, metal fabrication/foundries, and food processing/packaging. Do not declare a winner until interviews establish problem severity, buyer access, data feasibility, and a credible buying path. First prioritize the segment where the founder can obtain legitimate introductions and where one real incident can be evaluated safely.
+
+3. **How frequent and costly is the problem?**  
+   **Unknown.** Ask for recent incidents and reconstruct frequency and cost from records where possible. Do not assume downtime is equivalent to financial loss or borrow a generic industry average as the customer's cost.
+
+4. **What alternatives do factories use?**  
+   Likely alternatives to investigate include shift/maintenance/quality logs, spreadsheets, ERP/MES/CMMS/QMS systems, BI tools, engineers' own analysis, OEMs, consultants, and process changes. Which ones are actually used and how well they work must be learned per customer.
+
+5. **Why would a customer choose GridMind?**  
+   Only if a fair comparison shows a meaningful incremental benefit—such as faster evidence reconciliation, fewer material omissions, better traceability, reduced total investigation effort, or a more defensible decision—that current tools and people do not already provide. Until tested, no differentiated advantage is proven.
+
+6. **Who pays?**  
+   The economic buyer may be an owner/MD or an operations/plant leader with budget authority; the user may be a maintenance, quality, or production professional. Confirm the actual budget owner and approval chain in each case. Do not assume the interviewee is the buyer.
+
+7. **Will customers pay now?**  
+   **Unknown.** Stronger evidence requires a buyer to agree on a bounded evaluation, success criteria, and a real commercial next step. Interest or praise alone is not validation.
+
+8. **Can delivery repeat across factories?**  
+   **Unknown.** Track how much setup, mapping, human review, integration, and customization each case requires. Repeatability is demonstrated only after the workflow works across independent cases without costs growing linearly with customization.
+
+### 9.2 First product workflow
+
+**Recommended experiment, conditional on access and permission:**
+1. Select one closed historical incident.
+2. Obtain explicit authorization for the records and define data-handling boundaries before access.
+3. Have a qualified reviewer document the current-process reference assessment before reviewing GridMind output where practical.
+4. Run the prototype against the same authorized evidence.
+5. Compare factual accuracy, traceability, omissions, contradictions, unsupported causal statements, usefulness, and total review time.
+6. Record failures and reviewer disagreement.
+7. Do not make a live operational recommendation or change equipment/processes as part of this initial test.
+
+**Required system behavior:** distinguish source-backed facts, estimates, hypotheses, contradictions, and unknowns; link material claims to source evidence; abstain when evidence is inadequate; preserve tenant boundaries; and require authorized human judgment for consequential actions.
+
+**Minimum inputs:** only those required for the chosen incident. Candidate records could include event timestamps, maintenance work orders, shift logs, quality/rework records, and production context, but actual required inputs must be determined from the case—not presumed. If records are inaccessible or too poor, stop or narrow the test rather than inventing data.
+
+### 9.3 Proving value
+
+- **Accuracy:** independent qualified reviewer compares the output against a reference assessment.
+- **Time:** measure end-to-end effort, including review and correction, against the existing workflow.
+- **Evidence quality:** count material claims with source support, missing evidence, contradictions detected, and unsupported claims.
+- **Recurrence prevention:** not proven by a single retrospective case; requires follow-up across relevant incidents and time.
+- **Financial improvement:** not proven by a report. Requires a pre-agreed baseline, measurement window, confounder review, cost definition, and credible attribution.
+- **Value versus cost:** compare defensible expected/realized benefit with implementation, integration, training, review, and recurring operating costs.
+
+**Stop condition:** if the tool cannot preserve evidence lineage or makes unsupported causal claims, do not advance that workflow to operational use.
+
+### 9.4 Commercial and technical unknowns
+
+Still unknown and requiring evidence:
+- Will the buyer share appropriately authorized records?
+- What minimum data quality and volume are sufficient?
+- What is the actual budget and procurement cycle?
+- What security, retention, hosting, and vendor requirements apply?
+- Can the prototype outperform the current process on a decision-relevant measure?
+- What is the human verification burden?
+- What price and service scope can be profitable for GridMind and worthwhile to the customer?
+- How much customer-specific engineering is required?
+- Can the same workflow be repeated safely across separate tenants and different plant contexts?
+- Will customers renew, expand, or refer others after receiving value?
+
+Do not claim that authentication, isolation, persistence, deployment, or other engineering requirements are currently passing without running the relevant tests against the current implementation.
+
+### 9.5 Potential moat and scale
+
+**Strategic answer:** do not try to create a moat by adding generic AI features. Earn one through trusted industrial context, source-linked evidence, repeatable workflows, safe integrations, verified outcome learning using permissioned data, and a reliable route to industrial buyers. None of these is yet a demonstrated moat.
+
+Scale should be modeled only after a repeatable use case is evidenced. Measure reachable buyers, contract value, sales-cycle length, acquisition cost, implementation hours, review burden, gross margin, retention, and expansion potential. Market-size estimates without a validated buyer/problem are not sufficient to justify building.
+
+### 9.6 Decisions now
+
+**Decide now:**
+- No final wedge selection yet; test the incident-investigation hypothesis first because it can be evaluated retrospectively with bounded scope if permissioned data becomes available.
+- No live factory integration or autonomous operational control in the first experiment.
+- No savings, causality, customer demand, pilot readiness, or moat claims without supporting evidence.
+- Discovery interviews and the smallest defensible comparison take priority over new product features.
+
+**Execute next:**
+1. Identify three legitimate interview opportunities: one owner/MD, one plant/production manager, and one maintenance/reliability or quality professional.
+2. Send tailored requests only after the founder approves/initiates the actual outreach; this document does not claim messages have been sent.
+3. Complete interviews using the protocol in this document and record permissioned, anonymized notes.
+4. After the first three interviews, compare problem candidates and contradictions; continue toward 10 substantive conversations if the evidence remains ambiguous.
+5. Seek an authorized historical case only if a real contact and qualified reviewer agree it is appropriate.
+6. Update this framework with dated evidence, decisions, failed hypotheses, and next actions.
+
+**Current factual status:** this document contains strategic answers and hypotheses. It does not establish that any real interview, customer commitment, factory-data access, test, savings result, or paid demand has occurred.
