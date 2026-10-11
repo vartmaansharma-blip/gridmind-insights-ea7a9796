@@ -25,13 +25,13 @@ Branch: fix/workspace-bootstrap-org-ambiguity-v2 (PR #34)
 
 This is intentionally a narrow behavior fix. It does not clear the Security Advisor's SECURITY DEFINER warning; the RPC remains privileged code exposed for the intended authenticated onboarding path. That design still requires qualified security review and a complete grants/function-body audit. The new multi-organization rejection is a safe interim behavior until an explicit organization-selection contract exists.
 
-## Validation state — exact PR #34 head 6ffe0eeee45ccf37353d54253e75ed812a90ecf9
+## Validation state — exact code/test snapshot 6932065b61578c6b0d6220852263e0d1ee6355ca
 
-- [x] Clean migration replay — [run 38149577585](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149577585) passed.
+- [x] Clean migration replay — [run 38150148771](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38150148771) passed.
 - [x] Workspace bootstrap SQL contract passed within that clean replay.
 - [x] Existing canonical schema/security contract, tenant-isolation checks, append-only persistence checks, and authenticated two-user Edge Function integration suite passed within the same replay.
-- [x] Repository CI passed — [run 38149577570](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149577570).
-- [x] GridMind Quality Gate passed — [run 38149577610](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149577610).
+- [x] Repository CI — [run 38150148850](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38150148850) passed.
+- [x] GridMind Quality Gate — [run 38150148727](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38150148727) passed.
 - [ ] Vercel check: currently blocked by build-rate-limit; no deployment promotion occurred.
 - [x] Self-review of migration semantics and preserved function grants completed; this is not a substitute for independent security review.
 - [x] Repository search found no current frontend or Edge Function caller of create_factory_workspace; there is no existing UI error path to exercise. Before integrating this RPC into onboarding, add an explicit organization-selection/recovery state for AMBIGUOUS_ORGANIZATION_CONTEXT rather than silently retrying.
@@ -40,7 +40,7 @@ This is intentionally a narrow behavior fix. It does not clear the Security Advi
 - [ ] Production schema alignment: reconcile migration history and object definitions; secure recovery point, named operator and independent reviewer; obtain explicit production-change authorization; apply only through approved migration workflow; verify columns and old-row integrity.
 - [ ] Two-user production acceptance and authenticated sign-in → workspace → analysis → reload verification on the exact deployed SHA.
 
-The automated CI, Quality Gate, and clean migration replay passed on the exact PR #34 head. Production schema/Auth changes and independent security review remain open.
+The CI, Quality Gate, and clean migration replay passed on code/test snapshot 6932065b61578c6b0d6220852263e0d1ee6355ca. Later commits on this branch are documentation-only and do not alter the tested SQL migration, security contract, or workflow. Production schema/Auth changes and independent security review remain open.
 
 ## Production boundary
 
