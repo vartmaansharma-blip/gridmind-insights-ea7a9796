@@ -189,3 +189,42 @@ No public customer claim or case study without explicit permission and evidence 
 8. Update this record with exact evidence, test SHA, links, and pass/fail/inconclusive outcomes.
 
 **Current conclusion:** GridMind has a meaningful security foundation, but the full user journey is not yet proven and no measurable factory value has been demonstrated. The next proof is not another feature: it is one secure, reproducible workflow followed by one honest, measured pilot.
+
+
+## Execution update — 2026-10-11
+
+### Trust gate: isolated two-user persistence/isolation suite passed
+
+The GitHub Actions run [38118481616 — Clean local database migration replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481616) has now completed successfully. Its completed steps include:
+
+- Starting an isolated local Supabase stack and replaying all migrations from an empty database.
+- Verifying the canonical analysis persistence schema contract.
+- Testing tenant isolation, direct-table denial, and append-only persistence.
+- Creating two confirmed test users through the local Auth Admin API and seeding isolated tenant fixtures.
+- Exercising the authenticated Edge Function end to end.
+- Verifying there are no pending local migrations.
+
+The HTTP integration suite in `supabase/tests/factory-analysis-integration.deno.ts` specifically tests cross-tenant denial, unauthenticated rejection, rejection of client-supplied measurement/economic inputs, durable analysis persistence, same-key idempotent retry, conflicting-key rejection, concurrent retries, reproducibility/input-digest verification, direct-table read/write denial, and oversized-request rejection. The workflow's successful conclusion is evidence these configured checks passed in the isolated test environment.
+
+The CI and Quality Gate runs previously recorded as passing are [CI 38118481636](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481636) and [Quality Gate 38118481623](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481623) on commit `bb0b4386c553dea5f7a908b5ee63295da4e8f8a6`. The migration replay has now also completed successfully on its tracked run. Later changes through the current documentation commit are documentation-only, but do not relabel the Vercel check as green.
+
+### Release check: still blocked by Vercel build-rate limit
+
+- The latest successful production deployment observed is [READY deployment `dpl_72GwVVgx9JvDYHhYS5XTbFVeE9LP`](https://vercel.com/vartmaansharma-blips-projects/gridmind/72GwVVgx9JvDYHhYS5XTbFVeE9LP), on application-source commit `50c57c89e48b80162ddb33599467ab61a973aeab`.
+- The current documentation commit `ee0bdf7878629f434bef1d6c055f81bb20db8f07` reports Vercel status failure with a target indicating a build-rate-limit/plan restriction.
+- This is a platform/quota blocker, not evidence that the application build itself failed. No plan upgrade, billing change, or weakening of deployment checks has been made.
+- The deployed application source has not changed in the documentation-only commits after the last READY deployment. Nevertheless, a live authenticated production sign-in → workspace → analysis → reload test remains unverified. Do not call the production trust gate passed until that workflow is tested on an authorized account and the release signal is resolved or explicitly accepted by the responsible owner.
+
+### Value gate: pilot preparation is ready; real-factory execution has not started
+
+The buyer-discovery protocol and real-factory data request already exist in this repository. No real buyer interview, factory permission, data transfer, intervention, savings, or paid pilot is claimed. The next fieldwork target is three short discovery interviews with reachable plant/operations, maintenance/continuous-improvement, or energy/utility owners. Use their actual recent incidents and records to choose the wedge; do not assume energy loss is the right wedge simply because the data-request template supports it.
+
+**Pilot activation sequence**
+1. Obtain a real factory owner's agreement to a discovery conversation; do not invent a prospect or imply a relationship.
+2. Establish one recent, recurring problem and ask what source records can verify its frequency and consequence.
+3. Confirm who owns the problem, who can authorize data use, who can approve any operational change, and what confidentiality/retention rules apply.
+4. Choose one problem only if a minimum viable baseline and a safe, human-approved intervention are feasible.
+5. Preregister the primary normalized metric, guardrails, exclusions, observation windows, and stop criteria before examining post-intervention results.
+6. Do not ingest real factory data or recommend operational action until production access control and data-handling arrangements have been verified. Any pilot data must use the factory's approved controlled storage/transfer route, not public GitHub.
+
+**Current decision:** isolated technical acceptance is now demonstrated. Production authenticated workflow, Vercel release status, and buyer/pilot validation remain open. No database permission was broadened and no production business data was fabricated.
