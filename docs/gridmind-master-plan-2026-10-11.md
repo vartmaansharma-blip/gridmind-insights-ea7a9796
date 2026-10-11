@@ -785,3 +785,36 @@ Use an authorized, isolated Supabase branch/project—not production—to replay
 ### Current boundary
 
 The isolated migration/isolation integration test is green. Production deployment, public availability, production schema parity, and production authenticated end-to-end behavior remain **unverified** by this checkpoint. No production migration, SSO change, plan upgrade, or release promotion was performed.
+
+
+## Priority reset: buyer evidence first, engineering evidence in parallel — 2026-10-11
+
+This section supersedes any interpretation of the previous immediate action that would put more feature development or production deployment ahead of market discovery.
+
+### Group 1 — one real incident interview is the commercial bottleneck
+
+**No initial wedge is selected.** The electricity-cost tool, human-reviewed incident evidence brief (downtime/rework/quality), procurement comparison, one vertical workflow, and process-improvement service remain competing hypotheses. Current code does not decide which problem a buyer has.
+
+The first experiment is one legitimate, adult-supported conversation with a relevant manufacturing operational owner. Reconstruct their last real incident; identify timeline, recurrence, measured consequence vs estimate, current systems/vendors/Lean process, residual gap, owner/budget path, data owner/permission, manual expert hours, and a concrete next step. Do not pitch before understanding the incident, request files in the first conversation, or call one interview market validation.
+
+Execution script and Jamshedpur recruitment routes are recorded in the [Discovery Execution Kit](gridmind-discovery-execution-kit-2026-10-11.md). The recommended first organizational route is ASIA's published general contact channel, reviewed with a trusted adult/professional before sending. ACMA Eastern Region and MSME Tool Room Jamshedpur are alternatives. **No outreach has been sent; no buyer/contact/interview is verified.**
+
+### Group 2 — engineering questions we can investigate without pretending they are resolved
+
+Run these as a bounded engineering audit while buyer recruitment proceeds; do not let them turn into open-ended feature work.
+
+1. **One authoritative analysis engine:** trace the user-facing client calculation and server/Edge Function path, compare formulas, inputs, missing-data semantics, rounding, units, and output states. Name the canonical implementation and add parity tests. Do not claim savings/root cause from demo screening.
+2. **Equipment edit/reload data integrity:** reproduce an edit → save → reload round trip using an isolated fixture. Identify whether fields are dropped in the form, request payload, server validation, database write, or read hydration. Add a regression test before fixing. No production test writes.
+3. **Tenant isolation:** use two dedicated test identities and two isolated factory fixtures in a non-production environment. Prove allowed access and denied cross-tenant reads/writes across the relevant UI/API/RPC/Edge Function paths. Empty-table results or RLS-enabled flags alone do not count.
+4. **Analysis persistence and schema alignment:** production still lacks the observed required columns `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256`; migration history also needs the documented reconciliation path. Production remains NO-GO. Do not apply DDL or hand-edit migration history. Use the approved, reviewed migration workflow only after explicit authorization, recovery point and independent review.
+5. **Demo Opportunities → Verification continuity (PR #31):** keep synthetic estimates separate from canonical persisted opportunities and verified outcomes. PR #31 is open/draft and its own description still requires a manual desktop/mobile workflow review; this is a truthful demo-state/continuity task, not evidence of real savings. Finish only after the exact candidate's migration replay and acceptance gates are checked.
+
+### Group 3 — intentionally parked
+
+Do not spend the next sprint on moat claims, pricing certainty, brand-name conclusions, public website claims, broad ten-year strategy elaboration, or polish that does not resolve a real buyer problem or a demonstrated critical defect. Preserve existing strategy as hypotheses; revisit these only when Group 1 produces evidence.
+
+### Decision rule
+
+The next status update must distinguish: (a) what a real buyer actually said and what evidence supports it, (b) what code/tests actually proved, and (c) what remains unknown. A successful build, READY preview, friendly interview, demo estimate, or planned outreach is not a substitute for the relevant proof.
+
+**Immediate action:** recruit and conduct the first permitted incident interview; in parallel, start the bounded authoritative-engine parity audit and equipment edit/reload reproduction. Keep production changes blocked until authorization and reviewed release gates are satisfied.
