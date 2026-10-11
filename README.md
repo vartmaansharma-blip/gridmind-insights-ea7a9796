@@ -18,6 +18,9 @@ Use the [GridMind Master Plan](docs/gridmind-master-plan-2026-10-11.md) as the c
 
 ## Current execution priority — 2026-10-11
 
+- [Fresh Technical Readiness Snapshot](docs/gridmind-technical-readiness-snapshot-2026-10-11.md) — current read-only checks; production readiness remains NO-GO due to schema mismatch, open security warnings, and unverified authenticated acceptance.
+- [Discovery Execution Kit](docs/gridmind-discovery-execution-kit-2026-10-11.md) — prepared outreach drafts, recruitment routes, interview guide and empty tracker; no outreach or interviews claimed.
+
 - [Founder Commitment and 30-Day Validation Gates](docs/gridmind-founder-commitment-and-next-execution-2026-10-11.md) — GridMind remains the leading long-term thesis, conditional on buyer evidence; no validation is claimed.
 
 **Primary milestone:** establish one real manufacturing buyer conversation and test a specific recent operational incident before expanding product scope or public marketing claims. The human-reviewed incident investigation packet is a hypothesis—not a selected or validated wedge. Procurement intelligence and a narrow vertical workflow remain alternatives. No buyer interviews, customer data, measured savings, pricing commitments, or paid pilots are claimed.
