@@ -333,3 +333,13 @@ Read-only comparison of the 30 remote migration records against the 33 local mig
 After those filename alignments, the remaining local-only migrations are expected to be the idempotent RLS bootstrap `20261006030000_gridmind_rls_auto_enable_bootstrap.sql` plus the two genuinely missing nullable-column migrations `20261010140000_add_intervention_implemented_at.sql` and `20261010150000_add_analysis_input_snapshot_sha256.sql`. This expected set must be confirmed by the branch's clean replay and a fresh local-vs-remote migration-list comparison before merge or any production operation.
 
 This change only aligns repository version prefixes to already-recorded remote history; it does not modify production migration history or execute production DDL. The RLS bootstrap's live function/event-trigger equivalence and ACL preservation still require explicit review before any production migration push. The two missing columns remain absent until an authorized change window.
+
+### Post-alignment version-set comparison — 2026-10-11
+
+After the seven filename changes, a fresh read-only comparison of the branch's local migration filenames against the live migration inventory confirmed: **33 local SQL files, 30 live migration records, all 30 live version IDs present locally, zero remote-only version IDs, and exactly three local-only version IDs**:
+
+- `20261006030000_gridmind_rls_auto_enable_bootstrap.sql`
+- `20261010140000_add_intervention_implemented_at.sql`
+- `20261010150000_add_analysis_input_snapshot_sha256.sql`
+
+This confirms the local/remote *version-set* reconciliation, not SQL body equivalence for all migrations and not the result of `supabase db push --dry-run`. Before production changes, the authorized operator must still run the CLI dry-run against the exact confirmed project, inspect the pending SQL list, and review the RLS bootstrap plus both column changes.
