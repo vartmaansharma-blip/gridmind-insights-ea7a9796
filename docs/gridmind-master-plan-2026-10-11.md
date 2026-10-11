@@ -904,3 +904,13 @@ Do not treat earlier passing runs as validation of these new commits. Wait for t
 ### Acceptance gate remains unchanged
 
 PR #37 remains draft and unmerged until a controlled authenticated **non-production** UI test edits category, quantity, hours/month, and load factor; saves; reloads; and confirms the same values. If no authenticated browser session or safe test account is available, record that as a blocker rather than inventing a pass.
+
+
+## Execution update: stronger equipment contract test and buyer evidence capture — 2026-10-11
+
+- Added `docs/gridmind-first-buyer-conversation-record-2026-10-11.md`, a blank, evidence-led interview record with confidentiality/safety gates, fact-versus-estimate tracking, falsification questions, and explicit decision criteria. It does not claim any outreach, interview, customer, or data access.
+- In PR #37, extracted the equipment metadata persistence payload into a shared helper used by `syncFactoryAssets`, and added a test that checks payload creation → hydration round trip while preserving unrelated metadata.
+- The first run on the refactor caught a real TypeScript contract error: `Record<string, unknown>` was not assignable to Supabase's JSON type. Fixed the helper return type to the repository's `Json` contract. This intermediate failure was caught before merge.
+- On corrected head `35a10356a6b06f26c62503f2d5e336fbde98ee2b`, CI run [38152859545](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152859545) passed. Quality Gate [38152859497](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152859497) and Migration Replay [38152859506](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152859506) were still in progress/pending at last check.
+- PR #37 remains draft. No authenticated browser session or approved non-production test account was available through the connected tools, so the true UI save → reload test remains unperformed. Do not merge until the test is executed in a controlled non-production environment.
+- Buyer discovery remains the commercial bottleneck. The first move is a warm introduction request, not unsolicited factory data collection. No outreach was sent.
