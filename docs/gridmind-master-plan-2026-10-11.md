@@ -914,3 +914,8 @@ PR #37 remains draft and unmerged until a controlled authenticated **non-product
 - On corrected head `35a10356a6b06f26c62503f2d5e336fbde98ee2b`, CI run [38152859545](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152859545) passed. Quality Gate [38152859497](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152859497) and Migration Replay [38152859506](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152859506) were still in progress/pending at last check.
 - PR #37 remains draft. No authenticated browser session or approved non-production test account was available through the connected tools, so the true UI save → reload test remains unperformed. Do not merge until the test is executed in a controlled non-production environment.
 - Buyer discovery remains the commercial bottleneck. The first move is a warm introduction request, not unsolicited factory data collection. No outreach was sent.
+
+
+### Follow-up validation note — 2026-10-11
+
+The corrected-head CI and Quality Gate passes above were for commit `35a10356a6b06f26c62503f2d5e336fbde98ee2b). During final source verification, the new persistence-payload round-trip test was found not to be present in that commit, so it was added explicitly in follow-up commit `bb08ae58748bcc152522676a1d72e679d5bfe898`. Do not treat the earlier workflow passes as validation of this newest test commit. The new head must pass fresh CI/Quality Gate and migration replay before the candidate is considered automated-test clean.
