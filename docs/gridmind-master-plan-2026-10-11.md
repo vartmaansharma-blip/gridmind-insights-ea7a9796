@@ -51,7 +51,7 @@ For C4, do **not** promise a technical electricity-bill review unless a qualifie
 
 Use one public industry/technical-network route in parallel to ask about appropriate public events or a legitimate research introduction—not member lists or endorsements. Existing public route references in the discovery kit include ASIA Jamshedpur, ACMA Eastern Region, IDTR, and JSIA; verify the official channel and relevance before use.
 
-**Kill date: 2026-10-17.** If zero substantive calls are booked after 30 warm asks, stop repeating the same route. Review the actual funnel, change the introduction source and/or offer, and run a new 7-day test through the public association/technical-learning route. If 30 warm asks cannot be assembled, record access as a blocker instead of inflating the funnel.
+**Concrete route trigger:** if no trusted connector is identified by **2026-10-12**, use the ASIA Jamshedpur official contact route as the first public inquiry (contact details are in the tracker) while building the warm-ask list. ACMA Eastern Region and IDTR are named fallback routes, not buyer leads. **Kill date: 2026-10-17.** If zero substantive calls are booked after 30 warm asks, stop repeating the same route. Review the actual funnel, change the introduction source and/or offer, and run a new 7-day test through the public association/technical-learning route. If 30 warm asks cannot be assembled, record access as a blocker instead of inflating the funnel.
 
 No outreach is sent automatically. A trusted adult/professional must review and support external industrial outreach and any formal engagement. No factory visit, commercial commitment, payment arrangement, or non-public data handling without the appropriate authorization and oversight.
 
