@@ -197,3 +197,24 @@ Read-only catalog inspection adds important context:
 The bootstrap migration is **functionally represented in live objects but not represented by its repository version prefix**. The two nullable column migrations are **not evidenced as applied and their columns are absent**. Seven other migration bodies appear represented under different live version IDs, but body equivalence is not proven. The safe resolution is a per-migration reconciliation matrix (repository SQL hash/content, live version/name, current object effects, differences, disposition), not bulk replay and not manual history edits.
 
 No schema, data, grants, settings, migration history or deployment was changed. Production remains NO-GO pending independent review and authenticated cross-tenant/end-to-end acceptance.
+
+
+## Read-only grants and policy comparison — 2026-10-11
+
+A catalog query compared current table grants and selected RLS policy definitions against the intent of the seven repository migrations that appear under different live version IDs.
+
+### Observed matches
+
+- Authenticated grants exist for the application tables named in the privilege-restoration migration, including factory read/update, asset read/insert/update, observation/data-source/context/opportunity/intervention/outcome writes, organization membership read/insert/update, and verification plan/run writes.
+- factory_analysis_runs has service-role SELECT/INSERT grants, and its RLS policies target authenticated for member reads/inserts. Insert checks require private.is_factory_member_v2(factory_id) and created_by = auth.uid().
+- organization_members policies are explicitly scoped to authenticated; reads are self or organization-admin, and inserts/updates use private.is_org_admin(organization_id).
+- factories and factory_assets have authenticated-member read policies and owner/admin update/write policies in the live catalog.
+- The live bootstrap event trigger/function and live policy/grant state are consistent with several repository migration intentions.
+
+### Limits / unresolved
+
+This is a spot-check of current grants and selected policies, not a complete semantic diff of all seven migration SQL bodies. It does not prove each migration was applied exactly once or that no unintended privileges exist elsewhere. The missing column migrations remain unresolved. Cross-tenant denial still requires tests with two distinct authenticated identities and fixtures in a non-production environment. The SECURITY DEFINER workspace RPC needs explicit tests for users with zero, one, and multiple active owner/admin organization memberships.
+
+### Next safe action
+
+Produce a complete per-migration disposition table and arrange non-production two-user tests. No production mutation or migration-history edit is authorized by this read-only result.
