@@ -23,7 +23,7 @@ We should not animate the entire website before testing the core concept. First 
 
 > **Everything is connected. What are we missing?**
 
-Retain this as the leading curiosity-driven hook. It communicates a philosophy, creates a question in the visitor's mind, and can scale beyond a single industrial use case. Do not replace it with a generic savings claim.
+Retain this as the leading creative direction for the motion prototype. It communicates a philosophy, creates a question in the visitor's mind, and can scale beyond a single industrial use case. However, it is not yet the final market-validated homepage headline: the Decision Constitution requires testing it against evidence-led and buyer-relevant alternatives before committing to full website implementation.
 
 ### 1.2 Supporting ambition (provisional)
 
@@ -296,7 +296,7 @@ Set numerical targets after a baseline or pilot; do not invent conversion benchm
 ## 10. Recorded direction and unresolved hypotheses
 
 ### Direction recorded in planning
-- Retain **“Everything is connected. What are we missing?”** as the primary hook.
+- Use **“Everything is connected. What are we missing?”** as the leading creative hook for prototyping, subject to buyer validation—not as a permanently selected market-winning headline.
 - Use **“Find the value your operations are hiding”** as supporting commercial messaging.
 - Treat animation as a core experience discipline.
 - Develop an original GridMind Reveal rather than copy one reference site.
@@ -320,3 +320,23 @@ Define the first scenario's data and analytical rules, then storyboard the GridM
 ## Related documents
 - [GridMind Main Website — Homepage Specification](gridmind-main-website-homepage-spec.md)
 - [GridMind Decision Constitution and Contradiction Register](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md)
+
+
+## 12. Alignment with the GridMind Decision Constitution
+
+This document governs motion and the proposed Discovery Lab; it does not supersede the [GridMind Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md).
+
+The following constraints remain binding:
+- The immediate priority is to establish product truth and validate one narrow customer problem, not to implement the full public website or expand the platform.
+- The first commercial wedge remains undecided. Compare operational-loss/constraint investigation, procurement intelligence for one specific category, and one narrow vertical operations workflow. Energy intensity for a bounded asset/process remains a candidate, not the chosen winner.
+- The homepage hook and other brand copy are hypotheses to test with target buyers. Visual appeal alone does not validate positioning.
+- A marketing simulation, a working-looking UI, repository code, or a deployment does not establish production readiness or customer value.
+- Public claims must be mapped to verified capabilities and evidence. Synthetic examples must remain clearly labelled.
+- Consequential industrial decisions require qualified human review and customer authority; the demo must not imply autonomous safety-critical or production-critical control.
+- The Day-30 outcome remains an evidence-backed GO / NARROW / PIVOT / STOP decision, not a guaranteed paid pilot.
+
+The broader website page structure and homepage section-by-section specification remain in [GridMind Main Website — Homepage Specification](gridmind-main-website-homepage-spec.md). This motion strategy does not replace that specification or authorize implementing it before the required validation gates pass.
+
+## 13. Scope of this record
+
+This file captures the decisions and proposals from the motion and Discovery Lab planning conversation. It is **not** a complete master record of every GridMind business, product, security, commercial, or website decision. For those, consult the Decision Constitution and Homepage Specification linked above. If a conflict appears, the Decision Constitution takes precedence.
