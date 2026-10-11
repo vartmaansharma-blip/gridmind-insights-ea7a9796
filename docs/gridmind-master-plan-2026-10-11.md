@@ -598,6 +598,21 @@ A plan update is not task completion. A commit is evidence of a document change,
 
 This baseline covers those planning dimensions. Remaining blanks are real-world unknowns that documents cannot solve: who has the pain, which workflow wins, whether data can be authorized, what buyers will pay, and whether outcomes are repeatable. The next work must generate evidence rather than add speculative chapters.
 
+## Current execution status — fresh snapshot 2026-10-11
+
+The latest read-only technical check is documented in the [Technical Readiness Snapshot](gridmind-technical-readiness-snapshot-2026-10-11.md). It found:
+- Supabase reports `ACTIVE_HEALTHY`; 42 listed public tables have RLS enabled, but policy correctness and end-to-end tenant isolation remain unproven.
+- The two expected columns `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256` were not found in live schema inspection. Production remains NO-GO until the schema mismatch is reconciled by an authorized, reviewed migration.
+- `persist-factory-analysis` is active with JWT verification enabled; this does not prove authorization correctness or persistence/reload success.
+- Security Advisor still reports the authenticated `create_factory_workspace` SECURITY DEFINER warning and disabled leaked-password protection.
+- Live counts are 1 Auth user, 4 factories, 8 assets, 0 observations and 0 analysis runs; this is insufficient for true two-user tenant-isolation or populated persistence tests.
+- The inspected READY Vercel production deployment was built from application commit `50c57c89e48b80162ddb33599467ab61a973aeab`, not the current documentation head.
+- No authenticated UI acceptance test was run in this pass. No production change was made.
+
+Customer discovery preparation is now in the [Discovery Execution Kit](gridmind-discovery-execution-kit-2026-10-11.md). It contains truthful outreach drafts, public routes, interview questions and an empty tracker. **No outreach has been sent and no interviews have occurred.**
+
+These findings update the execution order: keep product/production claims gated; resolve schema alignment through an authorized change process and complete isolated acceptance tests, while beginning buyer discovery without factory data or claims of production readiness.
+
 ## 17. Immediate next action
 
 **Begin the 30-day discovery sprint; do not start another broad planning cycle.** First, reconcile the latest live technical readiness report and use the existing buyer-discovery kit to prepare a concise, honest introduction. Then seek one real manufacturing conversation through a legitimate route, ask about a recent incident, and record what was actually learned. Do not claim outreach or customer validation until it occurs.
