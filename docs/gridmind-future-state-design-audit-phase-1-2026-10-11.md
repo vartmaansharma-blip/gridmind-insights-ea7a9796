@@ -164,3 +164,19 @@ The UI must distinguish at minimum:
 
 ### Scope and release guardrail
 This is a UI/state-consistency slice, not authorization to claim production readiness, verified customer savings, validated product-market fit, or broad industrial platform capability. No application code or production settings were changed during this follow-up check.
+
+
+## Phase 2 implementation started — 2026-10-11
+
+A narrow implementation is in review on [PR #31](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/31), branch `fix/demo-opportunity-verification-states`.
+
+### Changes in the draft PR
+- The demo Opportunities route now intends to show the same local screening findings as Overview, explicitly labelled as synthetic screening calculations—not canonical persisted opportunities or customer evidence.
+- The demo Verification route now intends to state “No outcomes verified yet,” explain that the demo has no canonical verification records, and label the included intervention as synthetic.
+- The changes preserve the existing canonical query path for non-demo factories and do not create or mutate canonical records.
+
+### Validation status
+- Source changes committed to the feature branch; draft PR opened.
+- CI status at time of record: typecheck/lint/test/build workflows were still running; no pass result is claimed.
+- Interactive browser testing, responsive inspection and accessibility checks are still outstanding.
+- The PR is deliberately a draft and must not be merged until CI and the manual acceptance path pass.
