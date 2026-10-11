@@ -96,11 +96,15 @@ Loading, no data, demo data, insufficient evidence, failed analysis, persisted r
 | 8 | Validate responsive/accessibility behaviour | Keyboard, reduced-motion and mobile checks pass |
 | 9 | Conduct rendered UI and task walkthrough | Screens captured at key widths; representative tasks observed |
 
-## Audit limits
+## Live deployment spot-check and audit limits
+- Inspected server-rendered HTML from the identified READY deployment, [GridMind deployment at commit 50c57c8](https://vercel.com/vartmaansharma-blips-projects/gridmind/72GwVVgx9JvDYHhYS5XTbFVeE9LP), and cross-checked current GitHub source.
+- The overview server response shows a fictional Adityapur factory, a demo badge, ₹1.68 Cr/year estimated exposure, ₹1.03 Cr/year potential saving, eight opportunities, and ₹0 verified. Large financial figures are prominent; demo/fictional context and the distinction between exposure, potential and verified value must remain unmistakable at the point of interpretation.
+- Route source confirms a critical journey break: the overview can show locally generated demo findings, but the Opportunities route returns the generic empty state when the active factory is demo data. The Savings route does the same for demo data, despite the overview offering an “Open verification” path. This is source evidence for the demo-mode branch, not a completed click-flow recording.
+- Independent server requests to /opportunities and /savings show the generic “No data connected yet” onboarding because client-side factory state is not present in that server request. This alone does not prove what a hydrated browser session shows; the route source explains the demo-mode branch that needs to be corrected.
 - Reviewed root layout, global styles, shell/navigation, overview, factory input, energy, machines, opportunities, alerts, savings and evidence/finding components in GitHub.
-- This is a source-based product/design audit, not a rendered screenshot review, browser interaction test, accessibility audit or user study.
-- No design changes were implemented in Phase 1.
-- Do not rate the visual design definitively until the live interface is inspected at desktop and mobile widths.
+- This is a source review plus server-rendered HTML spot-check, not a screenshot/pixel review, browser interaction test, accessibility audit or user study.
+- No design changes have been implemented in Phase 1.
+- Do not rate visual design definitively until the live interface is inspected at desktop and mobile widths.
 
 ## Phase 1 exit criteria
 1. Capture and review the current rendered UI at desktop and mobile widths.
