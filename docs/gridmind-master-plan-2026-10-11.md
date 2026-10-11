@@ -818,3 +818,31 @@ Do not spend the next sprint on moat claims, pricing certainty, brand-name concl
 The next status update must distinguish: (a) what a real buyer actually said and what evidence supports it, (b) what code/tests actually proved, and (c) what remains unknown. A successful build, READY preview, friendly interview, demo estimate, or planned outreach is not a substitute for the relevant proof.
 
 **Immediate action:** recruit and conduct the first permitted incident interview; in parallel, start the bounded authoritative-engine parity audit and equipment edit/reload reproduction. Keep production changes blocked until authorization and reviewed release gates are satisfied.
+
+
+## Code inspection results: dual engines and equipment round-trip defect — 2026-10-11
+
+This is source-code inspection, not live customer validation or authenticated browser acceptance.
+
+### Confirmed: there are two different analysis paths
+
+- The user-facing legacy electricity workspace (src/lib/energy/analysis.ts, consumed by src/lib/energy/store.tsx and the /, /energy, and /factory routes) analyses monthly bills, kWh, peak kVA, power factor, production, and manually entered equipment. It calculates electricity-specific opportunity estimates and contains explanatory cause/action strings. These outputs are not the same contract as the canonical server analysis.
+- The canonical asset workflow (supabase/functions/_shared/analysis-loop.ts, called via src/lib/gridmind/analysis-runner.ts from /machines/$id) is versioned factory-loop-v1.3.1, consumes canonical observation/operating/economic inputs, checks comparable historical periods and evidence quality, stores an input snapshot and result, and recomputes for reproducibility. Its header explicitly says it does not infer machine cause or verified savings from a deviation.
+- The overview and demo Opportunities route still derive screening estimates from the client electricity engine, while the canonical Opportunities route reads persisted canonical opportunity records. The two paths have different inputs, output semantics and evidence gates. This is a product correctness risk, not merely a naming mismatch.
+
+Decision not to guess the winner: customer discovery must decide whether the first product is (a) an electricity-cost workflow or (b) a human-reviewed incident evidence brief for downtime/rework/quality or another workflow. Until then, do not merge these engines by assumption or treat their outputs as interchangeable. If electricity wins, define a canonical energy-analysis input/output contract and parity tests against the server path. If the incident brief wins, keep the electricity calculator as a clearly bounded legacy/demo module until its relevance is proven. In either case, screen estimates, causal explanations, recommendations and verified outcomes must remain distinct.
+
+### Confirmed: equipment edit/reload defect in the legacy workspace
+
+- syncFactoryAssets writes equipment category, quantity, hoursPerMonth and loadFactor into factory_assets.asset_metadata.
+- The authenticated snapshot includes that metadata, but the previous snapshotToFactory ignored it and reconstructed each equipment row with defaults (other, quantity 1, hours 0, load factor 0). Therefore a saved edit could appear to revert after reload and change downstream estimates.
+- A focused fix and pure unit tests have been opened as draft PR #37: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37, branch fix/equipment-metadata-roundtrip-v1. It restores the four fields with validation and explicit defaults for malformed/legacy metadata.
+- PR #37 is NOT merged. The latest combined commit status showed a Vercel build-rate-limit failure; GitHub CI had not yet been verified through the available workflow-run query. A fetch-back confirmed the four changed files contain the intended edits. Automated CI and an authenticated save -> reload browser test are still required.
+
+### Engineering order updated
+
+1. Keep buyer discovery first; it determines whether the electricity-specific product is the right wedge.
+2. Validate PR #37 with CI and an isolated authenticated edit -> save -> reload test. Do not claim the defect is fixed in a live environment until verified.
+3. Design a small, explicit client/server engine parity contract after the buyer workflow is selected. Include the same source inputs, units, missing-vs-zero rules, reference window, uncertainty, refusal states, formula/version, and output semantics in tests.
+4. Keep tenant isolation, migration-history/schema reconciliation and production release gates separate. No production writes or promotion were made in this inspection.
+
