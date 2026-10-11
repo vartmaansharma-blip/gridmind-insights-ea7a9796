@@ -2,6 +2,8 @@
 
 This directory contains product definitions, engineering contracts, validation procedures, historical audits, and strategy records. Read this index before opening individual documents.
 
+- [Supabase Connection & Security Audit — 2026-10-11](gridmind-supabase-connection-security-audit-2026-10-11.md) — verified database checks, least-privilege changes, index fixes, open security and end-to-end connection tests.
+
 ## Start here
 
 - [Industrial Workflow and Structural-Gap Map](gridmind-industrial-workflow-and-gap-map-2026-10-11.md) — first-pass map of factory workflows, incumbent systems, candidate structural gaps, falsification tests and validation steps; desk research only.
