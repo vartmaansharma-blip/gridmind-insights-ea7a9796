@@ -35,7 +35,7 @@ The [Strategic Reality Check](docs/gridmind-strategic-reality-check-2026-10-10.m
 
 ## Product definition
 
-**GridMind helps an industrial team make one consequential operating decision better by turning authorized, imperfect operational evidence into a traceable finding, a reviewed next action, and a measurable outcome.** Its long-term ambition is a broader industrial intelligence and value-realization platform, earned workflow by workflow—not a claim that broad capabilities already exist.
+**GridMind is being designed as a decision-to-verified-outcome workflow for industrial teams:** turn authorized, imperfect evidence into a traceable finding, help a responsible person evaluate an action, and measure the result against an agreed baseline. The first buyer, workflow and commercial wedge remain unvalidated and undecided. Its long-term ambition is a broader industrial intelligence and value-realization platform, earned workflow by workflow—not a claim that broad capabilities already exist.
 
 The [Product Definition and Conceptual Contract](docs/gridmind-product-definition.md) defines the customer job, unit of value, minimum product loop, product boundaries, evidence states, and requirements for selecting the first use case.
 
