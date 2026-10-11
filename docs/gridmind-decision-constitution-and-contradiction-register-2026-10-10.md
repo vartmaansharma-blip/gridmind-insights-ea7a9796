@@ -107,3 +107,19 @@ Do not leave a superseded instruction silently active in a prominent document. U
 
 ## 6. Single-sentence operating rule
 **Keep the ambition broad, the current commitment narrow, the evidence explicit, and each expansion earned.**
+
+
+## Latest operating decision — 2026-10-11 problem and workflow stress test
+
+This dated update applies the hierarchy above to the latest problem-failure analysis and manufacturing workflow stress test.
+
+- **Current priority:** primary buyer/problem evidence, not additional broad product scope or public-site polish.
+- **Leading hypothesis only:** a human-reviewed, source-linked investigation packet for one defined recurring production or quality incident, built from customer-approved existing records. This does not supersede D3: the first commercial wedge remains undecided.
+- **Alternatives remain open:** operational-loss investigation, one-category procurement intelligence, and a narrow vertical workflow remain candidates until evidence justifies a choice.
+- **Required proof:** a real recent incident; current workflow and alternatives; measured versus estimated consequence; budget owner and buying process; permitted data path; qualified review; conservative incremental value; delivery effort/cost; and a concrete buyer next step.
+- **Trust boundary:** separate source-backed facts, calculations, hypotheses, counter-evidence, and unknowns. No autonomous root-cause, savings, customer outcome, or production-readiness claims without evidence.
+- **Buyer access:** no qualified buyer, interview, customer record, data permission, willingness-to-pay signal, or paid commitment is claimed as of this update.
+- **Design boundary:** Clarity Engineered remains a visual exploration direction only. The HTML prototype has not been recorded as browser/device validated. Do not treat it as a production-ready public site.
+- **Decision rule:** advance, narrow, change wedge, or stop. If existing tools/process solve the problem, or data access, material value, trust, buyer commitment, or delivery economics fail, do not force the AI thesis.
+
+Supporting records: [Problem Failure Analysis](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md), [Manufacturing Workflow Stress Test](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md), [Commercial Wedge Scorecard](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md), and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md).
