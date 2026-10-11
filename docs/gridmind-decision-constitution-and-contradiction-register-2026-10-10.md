@@ -159,3 +159,27 @@ See [Bigger Problem Thesis](gridmind-bigger-problem-thesis-2026-10-11.md). No te
 **Immediate execution effect:** The 30-day goal remains to select, narrow, or reject the first commercial workflow based on real evidence. Product definition is now more precise; product-market fit, customer demand, live workflow correctness, and commercial readiness remain unproven.
 
 **Affected canonical documents:** `gridmind-product-definition.md`, `gridmind-30-day-execution-plan-2026-10-10.md`, `gridmind-initial-commercial-wedge-scorecard-2026-10-11.md`, `gridmind-founder-commitment-and-next-execution-2026-10-11.md`.
+
+
+## Concept refinement — decision-to-verified-outcome contract (2026-10-11)
+
+The product definition now sharpens the broad industrial-intelligence thesis into a decision-level contract.
+
+**Binding interpretation:** GridMind's initial product is a decision-to-verified-outcome workflow for one consequential industrial decision. Its value is not an alert or generated report; it is a traceable finding that can inform a human decision and, where action is approved, support measurement of the result.
+
+Keep these lifecycle states distinct:
+1. Signal — something may warrant attention.
+2. Finding — a claim supported by identified evidence and limitations.
+3. Opportunity — a possible improvement with estimated, not realized, value.
+4. Decision/action — a choice approved by the responsible human owner.
+5. Outcome — a measured result against a predeclared baseline and window, with attribution limits.
+
+Before a candidate is scored, apply hard gates for: named buyer/owner; concrete recent event; addressable decision; permissioned usable data; credible baseline and outcome metric; plausible incremental advantage over existing alternatives; safe and bounded delivery; and a concrete commercial next step. Weighted scores must not hide fatal blockers or unknowns.
+
+The first offer may be manual-first and software-assisted to test whether a real result is valuable. Automate repeated steps only after observing them. This does not establish that GridMind should become a consulting agency; it is a way to avoid building a generalized platform before knowing what repeats.
+
+The product must be willing to report “insufficient evidence,” “existing process is adequate,” “not controllable,” “not economically justified,” and “no measurable improvement.” These are valid outcomes, not product failures to conceal.
+
+**Unchanged:** first commercial wedge remains undecided. The next action is evidence-led buyer and workflow discovery, not broad feature expansion.
+
+**Canonical detail:** [Product Definition — sections 13–14](gridmind-product-definition.md). No customer validation or product readiness is implied by this conceptual refinement.
