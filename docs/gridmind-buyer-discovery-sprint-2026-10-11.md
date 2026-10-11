@@ -53,9 +53,9 @@ The listed institutions are public routes to investigate, not verified leads, en
 | Route ID | Route | Intended ask | Status | Owner / next action |
 |---|---|---|---|---|
 | **R1** | Warm introduction through existing trusted professional/family network | One introduction to a production/operations or energy/utility professional | **Not activated; no connector named** | Founder: identify reachable introducers with trusted adult/professional support |
-| **R2** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/ | Ask about public events or an appropriate research-networking route | Not contacted | Use only if R1 is blocked or as parallel public route |
-| **R3** | ACMA Eastern Region official contact: https://www.acma.in/contact.php | Ask about public events / proper introduction process; no member-list request | Not contacted | Secondary route |
-| **R4** | Indo-Danish Tool Room industry enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php | Ask about public technical learning / suitable research contacts | Not contacted | Secondary technical-learning route |
+| **R2 — first public route** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/; published email `deargsasia@gmail.com`, phones `+91 87090 14720` / `+91 90608 10588` (re-check before use) | Ask for a public event or a willing professional for a 20-minute research conversation; do not request a member list | Not contacted | Founder + trusted adult/professional review; use if no warm connector is named by Oct 12 |
+| **R3** | ACMA Eastern Region official contact: https://www.acma.in/contact.php; published `acmaer@acma.in`, `anjali.nair@acma.in` (re-check before use) | Ask about public events / proper introduction process; no member-list request | Not contacted | Secondary route if ASIA does not produce a suitable path |
+| **R4** | Indo-Danish Tool Room industry enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php; published `reach@idtr.gov.in`, `+91 657 2201261/62` (re-check before use) | Ask about public technical learning / suitable research contacts | Not contacted | Secondary technical-learning route |
 | **R5** | JSIA affiliated bodies directory: https://www.jsia.co.in/affiliated-bodies.php | Identify an official public route, not scrape personal details | Not contacted | Secondary route |
 
 ### Funnel ledger
