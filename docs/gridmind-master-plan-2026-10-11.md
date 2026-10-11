@@ -736,3 +736,26 @@ This note reconciles the latest discussion with the binding wedge-selection rule
 - **No validation is claimed.** No customer conversation, customer data access, paid commitment, realized saving, or product readiness is implied by this planning correction.
 
 This update records a correction to the discussion, not a change to the long-term GridMind ambition. The binding rule remains: choose the initial workflow from evidence, not founder preference, a prior specification, or an unsupported score.
+
+## Verified engineering and deployment checkpoint — 2026-10-11
+
+This checkpoint records live GitHub/Vercel evidence inspected on 2026-10-11; it supersedes assumptions based only on earlier chat notes.
+
+### What is verified
+
+- **Database/integration CI passed:** [GitHub Actions run 38118481616](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481616) completed successfully. The job replayed migrations from an empty local database, checked the analysis-persistence schema contract, tested tenant isolation/direct-table denial/append-only persistence, created isolated test users, exercised the authenticated Edge Function end to end, and checked for pending local migrations. This is evidence for that isolated test run only—not production-schema parity or production authorization.
+- **A current feature-branch preview is READY:** Vercel deployment [dpl_6kWhogPyyW4RREXo4taYJGxgUMQk](https://vercel.com/vartmaansharma-blips-projects/gridmind/6kWhogPyyW4RREXo4taYJGxgUMQk) is built from `feat/opportunity-workspace-v1`, commit `b195eee20d68aa12b06cdad1622cd22cd4c8583f`, message “Reset workspace review state when analysis context changes.” Preview URL: https://gridmind-7f89phnyl-vartmaansharma-blips-projects.vercel.app
+- **Production is not verified as live:** the Vercel project metadata reports `live: false`; the ten most recent production-targeted deployments returned by the project listing were all `CANCELED`. The latest READY deployment is a feature-branch preview with no production target. The project also reports SSO protection enabled for deployments other than custom domains. Do not treat a READY preview as a public production release.
+- **The Vercel status attached to the documentation commit reported a build-rate-limit failure** with this dashboard target: https://vercel.com/vartmaansharma-blips-projects?upgradeToPro=build-rate-limit. This status alone does not prove the exact cause of every canceled production deployment; inspect the specific deployment events before concluding.
+
+### Next technical actions — in order
+
+1. **Stop creating redundant deployment attempts.** Inspect the relevant canceled production deployment's build events/logs and confirm whether the blocker is build quota/rate limiting, deployment configuration, or another cause.
+2. **Verify the intended release candidate.** Review the exact feature-branch diff and its checks; do not promote a feature preview merely because it is READY.
+3. **Resolve production access and release state deliberately.** Confirm the intended production branch/commit, domain protection expectations, and authorized release path. Do not weaken SSO or change billing/plan settings as a workaround without an explicit owner decision.
+4. **Reconcile production schema separately.** CI passing on a clean local database does not prove that the linked production database matches migrations. Inspect the live schema read-only, record exact discrepancies and migration history, and use reviewed, recoverable change control before any DDL.
+5. **Update this record only when a deployment or verification step actually changes state.** Required release evidence: candidate SHA, passing checks, deployment state/target, relevant logs, route/auth smoke tests, and rollback path.
+
+### Current boundary
+
+The isolated migration/isolation integration test is green. Production deployment, public availability, production schema parity, and production authenticated end-to-end behavior remain **unverified** by this checkpoint. No production migration, SSO change, plan upgrade, or release promotion was performed.
