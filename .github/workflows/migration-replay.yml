@@ -52,6 +52,13 @@ jobs:
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-security.sql
 
+      - name: Test workspace bootstrap authentication and organization selection
+        shell: bash
+        run: |
+          DB_URL="$(supabase status -o env | sed -n 's/^DB_URL=\\\"\\(.*\\)\\\"$/\\1/p')"
+          test -n "$DB_URL"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/workspace-bootstrap-security.sql
+
       - name: Create confirmed test users through local Auth Admin API
         shell: bash
         run: |
