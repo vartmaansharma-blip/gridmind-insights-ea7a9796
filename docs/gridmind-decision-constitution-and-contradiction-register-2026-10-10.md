@@ -67,6 +67,22 @@ The exact workflow depends on the selected use case. Not every candidate needs a
 ### D8 — Day-30 outcome
 **Decision:** Day 30 produces an evidence-backed GO / NARROW / PIVOT / STOP decision. A paid pilot is a target, not a guaranteed result. If access, data rights, review or buyer evidence is missing, record the blocker honestly and plan the next test. No fabricated factory data or fake validation.
 
+### D9 — Concept and product-expansion principles
+
+**Decision:** GridMind is a proposed industrial decision-and-value-realization layer. Its central hypothesis is that connecting authorized operational evidence to investigation, human-approved action, and verified outcomes can improve some consequential industrial workflows beyond existing alternatives.
+
+**Binding principles:**
+1. **Value before features:** every capability must serve a validated customer need or a clearly stated, testable assumption.
+2. **Evidence before claims:** label facts, estimates, hypotheses, expert judgments, and verified outcomes separately.
+3. **Narrow entry point, expandable architecture:** keep the long-term platform as a destination; do not build multiple workflows before the first is demonstrated.
+4. **Existing alternatives are the baseline:** compare GridMind against current software, expert review, integrations, and simpler process changes.
+5. **Incremental value must be demonstrated:** better analysis is not automatically a better decision, and a better decision is not automatically realized savings.
+6. **Expansion must earn approval:** require repeatability, buyer evidence, security and data-rights compliance, measurable outcomes, and a credible delivery model.
+
+**Unknown, not decided:** the initial industry segment, economic buyer, first workflow, pricing, willingness to pay, delivery model, and durable competitive advantage. The five opportunity territories in the bigger-problem thesis are candidates, not validated rankings. No customer demand, savings, or technical readiness is implied.
+
+**Change rule:** revise these principles only through an explicit decision record containing new evidence, trade-offs, risks, date, and affected documents.
+
 ## 3. Contradiction register and resolution
 
 | Apparent conflict | Resolution | What is binding now |
