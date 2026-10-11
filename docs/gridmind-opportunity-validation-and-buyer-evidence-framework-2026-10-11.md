@@ -442,3 +442,69 @@ Scale should be modeled only after a repeatable use case is evidenced. Measure r
 6. Update this framework with dated evidence, decisions, failed hypotheses, and next actions.
 
 **Current factual status:** this document contains strategic answers and hypotheses. It does not establish that any real interview, customer commitment, factory-data access, test, savings result, or paid demand has occurred.
+
+
+## 10. Five-opportunity first-pass tournament — 2026-10-11
+
+**Purpose:** Compare possible entry points before committing to one. This is a desk-based hypothesis screen, not customer validation. No numeric winner is declared because buyer pain, willingness to pay, data access, and incremental performance remain unknown.
+
+### Candidate opportunities
+
+| Candidate | Likely user / buyer to investigate | Potential first deliverable | Evidence needed to advance | Main failure mode |
+|---|---|---|---|---|
+| A. Recurring downtime / production loss | Production manager, maintenance leader, plant head / owner | Reconstruct a specific stoppage and compare possible next steps against the existing process | Recent event; defensible cost; evidence that investigation or coordination is a material bottleneck; measurable test | Loss is mostly unrecoverable or due to capacity, demand, parts, or other constraints GridMind cannot change |
+| B. Quality defects / scrap / rework | Quality manager, production leader, owner | Assemble a traceable defect/rework case and surface patterns or missing evidence | Defect records, repeatability, clear cost calculation, qualified reviewer, strong controls against false causal claims | Existing QMS/statistical process controls already work; data is inconsistent; product or safety risk from bad advice |
+| C. Maintenance investigation / recurrence | Reliability or maintenance engineer, maintenance manager / plant head | Compare a traceable incident timeline and corrective-action history with the current workflow | Work orders/logs, recurrence evidence, engineer review, reduced review effort or improved evidence completeness | Records do not capture useful context; true cause needs physical inspection or specialist diagnosis; GridMind only summarizes |
+| D. Energy / material efficiency | Energy manager, operations head, owner | Identify an evidence-backed anomaly or prioritize a bounded efficiency investigation | Meter/process context, operating conditions, normalization, cost baseline, authorized energy/production data | Apparent savings are explained by product mix, weather, operating hours, price, or production changes; specialist audit is more appropriate |
+| E. Cross-team handoff / decision delay | Plant/operations manager, owner | Trace one case across production, maintenance, quality, and approval handoffs | Specific delays, accountable owner, evidence of avoidable coordination work, testable process change | Root issue is authority, staffing, incentives, or management discipline rather than information |
+
+### Desk evidence and implications
+
+Public official sources confirm that industrial clusters exist where focused discovery may be feasible; they do not establish demand for GridMind:
+- [BEE/SIDHIEE cluster details](https://sidhiee.beeindia.gov.in/ClusterDetails) describe the Pune forging cluster and other manufacturing clusters, including automotive/engineering activity.
+- [BEE/SIDHIEE programme overview](https://sidhiee.beeindia.gov.in/aboutbee) lists MSME clusters and sectors such as foundry, forging, textiles, food processing, ceramics and mixed industries.
+- [ACMA contact page](https://acma.in/contact.php) provides a legitimate public route to ask the association for appropriate research introductions or public events. It is an introduction route, not evidence that a specific manufacturer will participate.
+- [ACMA associate membership information](https://www.acma.in/associate-member.php) lists IT/IoT/Industry 4.0/digitization solution providers among eligible categories, but membership is not proposed as the first step and should not be purchased merely to conduct discovery.
+
+These sources support a practical recruitment plan, not a market-size or willingness-to-pay conclusion.
+
+### Preliminary decision
+
+**Keep all five candidates open through initial discovery.** Use recurring incident investigation as a testable product hypothesis because a closed historical case may permit a bounded retrospective comparison. Do not treat it as the winner: downtime, quality, recurrence, energy/material, and handoff problems may overlap, and the actual bottleneck could be non-software.
+
+For each interview, ask about one recent incident first. Classify which of the five problem families it fits only after mapping the current workflow and evidence. One conversation may produce evidence against several candidates; do not force it into the favored hypothesis.
+
+### First three recruitment routes
+
+These are **organization-level routes**, not named interviewees or confirmed interview appointments:
+
+1. **Automotive-component industry route:** Ask ACMA's Eastern Region contact whether they can suggest a suitable public event, SME network, or professional willing to participate in a short student research conversation. Official page: https://acma.in/contact.php. The site lists the Eastern Region office in Jamshedpur and public contact details. Do not imply ACMA endorses GridMind.
+2. **Cluster route:** Use the BEE/SIDHIEE cluster profiles to identify a relevant forging, foundry, or mixed-manufacturing cluster; then seek a legitimate introduction through a cluster organization, public event, or existing trusted adult/professional contact. Start with https://sidhiee.beeindia.gov.in/ClusterDetails.
+3. **Local / existing-network route:** Ask a trusted adult or known professional for an introduction to one owner/MD or plant/production manager, and separately one maintenance/reliability or quality professional. Do not cold-contact private individuals through guessed email addresses; use publicly provided professional channels and respect non-response.
+
+### Tailored request variants
+
+**To an industry association / cluster coordinator**
+> Hello, I’m a student researching how manufacturing teams handle recurring production, maintenance, and quality problems. I’m looking for a few short, non-commercial research conversations with professionals who are willing to share general experience without confidential company information. Could you suggest an appropriate public event or channel, or forward this request if suitable? This is independent research; I am not implying any endorsement by your organization.
+
+**To an owner / managing director**
+> Hello, I’m researching how manufacturing SMEs decide which recurring operational problems deserve attention and investment. Would you be open to a 20-minute research conversation about how such problems are handled today? I’m not selling software and do not need confidential company information. I’m hoping to understand a recent example and how the business evaluates its impact.
+
+**To a plant / maintenance / quality professional**
+> Hello, I’m researching how manufacturing teams investigate recurring production, maintenance, and quality issues. Would you be open to a 20-minute conversation about the current workflow, the records teams rely on, and what remains difficult? I’m not looking for confidential details or a sales opportunity—only your general professional experience.
+
+Messages are drafts only. **No message has been sent and no interviewee has been confirmed.** Since the founder is a minor, use appropriate adult guidance for introductions and any later factory interaction; do not visit a site or request operational records without the site's explicit permission and required safety approvals.
+
+### Outreach tracker (blank until action occurs)
+
+| ID | Route | Target role | Public channel / introducer | Request sent? | Reply | Interview date | Permission / notes |
+|---|---|---|---|---|---|---|---|
+| P1 | ACMA Eastern Region / industry network | Owner/MD or production leader | Official contact page; ask for appropriate route | No | — | — | Not contacted |
+| P2 | BEE/SIDHIEE cluster ecosystem | Foundry/forging/SME operations professional | Cluster profile → legitimate organization/event route | No | — | — | Not contacted |
+| P3 | Existing trusted network | Maintenance/reliability or quality professional | Adult/trusted professional introduction | No | — | — | No named person identified |
+
+### What would change our decision?
+
+Advance a candidate only if a real interview yields a recent specific incident, a credible consequence, a clearly mapped existing workflow, a material unresolved gap, a plausible data-permission path, and a reachable owner willing to discuss a concrete next step. If these are absent, keep investigating or reject the candidate; do not make up scores to force a decision.
+
+**Next action:** pursue the three recruitment routes and record actual status. Desk research and this comparison do not substitute for interviews.
