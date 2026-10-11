@@ -767,6 +767,21 @@ The two canceled GitHub Actions jobs for candidate commit `b195eee20d68aa12b06cd
 
 The original cancellation cause has not been established. The successful re-runs show the candidate can pass these checks; they do not prove production schema parity, production availability, or customer validation. The migration replay run previously inspected was cancelled and returned no job records, so a green migration replay on this exact SHA is still not evidenced by this checkpoint.
 
+## Fresh production and release-candidate reconciliation — 2026-10-11
+
+This pass rechecked the connected Supabase project read-only and inspected the newest READY Vercel preview.
+
+- **Current preview candidate:** [commit 480a9cf](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/commit/480a9cf7a2f3c3dda078c325ba21cb8f89044bb8), branch `fix/workspace-bootstrap-org-ambiguity-v2`, Vercel deployment [dpl_BMgKLcThMbnKJM6C2e6Ls5YsUArH](https://vercel.com/vartmaansharma-blips-projects/gridmind/BMgKLcThMbnKJM6C2e6Ls5YsUArH) is READY with a successful Vercel status. It remains a preview, not a production release.
+- **Candidate migration:** `supabase/migrations/20261011073000_harden_workspace_bootstrap_org_selection_v1.sql` fails closed when an authenticated user has multiple active owner/admin organization memberships, instead of silently choosing the lowest organization ID. This is a meaningful authorization-context hardening change, but the current candidate's complete CI/migration-replay evidence is not established in this pass.
+- **Production RPC is behind that candidate:** a read-only catalog query found the live `public.create_factory_workspace(text,text,text)` still selects the lowest-ID active owner/admin organization, records application contract version 2, and does not contain the ambiguity guard. It has an empty search path and checks `auth.uid()`; no cross-tenant bypass was established by this query.
+- **Schema mismatch remains live:** the production migration inventory tail is `20261011062256`; `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256` are still absent. The newer workspace ambiguity migration is also not in the production migration inventory. This is not permission to apply migrations: reconcile the full repository/history drift first.
+- **Security Advisor:** still reports the authenticated SECURITY DEFINER workspace RPC and disabled leaked-password protection. The RPC warning needs an intentional-design/security review; do not suppress it by blindly changing grants or function security. Leaked-password protection needs an authorized owner decision and regression tests.
+- **Release state:** production readiness remains NO-GO. No production DDL, migration-history edits, Auth setting changes, deployment promotion, or customer-data operations were performed.
+
+### Highest-value next technical action
+
+Use an authorized, isolated Supabase branch/project—not production—to replay the exact reviewed candidate migrations and test workspace creation for unauthenticated users, ordinary members, one owner/admin organization, and multiple owner/admin organizations. Then run two-user/two-factory cross-tenant read/write tests and capture the exact commit, migration history, and results. The connected project currently reports no development branches, so branch/project provisioning must follow the platform's cost/authorization flow. Do not create a paid resource or change production as a workaround.
+
 ### Current boundary
 
 The isolated migration/isolation integration test is green. Production deployment, public availability, production schema parity, and production authenticated end-to-end behavior remain **unverified** by this checkpoint. No production migration, SSO change, plan upgrade, or release promotion was performed.
