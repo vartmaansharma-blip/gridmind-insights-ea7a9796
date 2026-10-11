@@ -1,3 +1,7 @@
+## Bigger problem thesis — 2026-10-11
+
+GridMind's long-term hypothesis is not merely incident reporting: it is a trusted industrial decision-and-improvement layer that helps identify costly operational losses, establish evidence, coordinate interventions, and verify economic outcomes. The first commercial wedge is still undecided. Read the [Bigger Problem Thesis](docs/gridmind-bigger-problem-thesis-2026-10-11.md) for the territories, falsification tests, and staged path.
+
 # GridMind Insights
 
 > **Being built to turn industrial evidence into better decisions and verified improvement.**
