@@ -205,3 +205,31 @@ Every important status should be labelled **planned, in progress, blocked, or co
 5. Founder: use the first buyer evidence to update the product definition, the investor shortlist and the pilot offer.
 
 **North star:** GridMind should become trusted infrastructure for making and verifying important industrial decisions. Earn that position one measurable workflow at a time.
+
+
+## 10. Current research update — investor/program shortlist (checked 2026-10-11)
+
+This section adds current official-source research. Fit is conditional on the actual founder team, incorporation/eligibility, product evidence, and program terms; researching or applying does not imply selection or funding.
+
+### First: founder programs and non-dilutive ecosystem support
+- **Accel Atoms:** official FAQ says it supports pre-seed/seed founders and is open to solo founders, but selected startups must be incorporated by the time of selection to take external investment; the programme asks for founder commitment. Review eligibility and current cohort before applying: https://atoms.accel.com/faqs and https://atoms.accel.com/apply. Treat this as a future option only if GridMind's team and commitment fit.
+- **MeitY Startup Hub — GENESIS EIR 3.0:** the official MSH press-release page reports the call launched on 4 August 2026 and is open, with incubation and support aimed particularly at Tier-II/Tier-III ecosystems. Confirm the live application, age/education eligibility, implementing agency, terms and deadlines directly before preparing an application: https://msh.meity.gov.in/media/press-release-all.
+- **pi Ventures:** official site states a $250k–$3m cheque range, mainly Seed and Series A, and says it can consider no-revenue startups when there is a strong technological foundation and clear scalability path. This is a later-stage conversation once the wedge and technical differentiation are clear: https://www.piventures.in/.
+- **Endiya Partners:** official site focuses on early-stage enterprise and industrial tech and recommends quality referrals. Its portfolio includes ThirdAI Automation, described as a causal-intelligence platform for complex manufacturing; this is a reason to study portfolio adjacency and potential thesis fit carefully, not a reason to assume they will or will not invest in GridMind: https://www.endiya.com/ and https://www.endiya.com/portfolio.
+- **Speciale Invest:** retain as a research target for deep-tech/engineering fit; check its current thesis, portfolio overlap and stage directly before outreach: https://www.specialeinvest.com/about.
+
+### Recommended order of approach
+1. **Industrial operators/design partners:** obtain a specific problem statement and permissioned test opportunity; no investor pitch needed yet.
+2. **Industrial integrators/advisers:** ask for workflow feedback and possible introductions; do not promise reseller economics before product value is proven.
+3. **Incubator/EIR programme:** verify eligibility and use it for mentorship, pilot access and validation support if suitable.
+4. **Accelerator/early-stage investor:** approach when GridMind has a concise problem thesis, credible demo, evidence of buyer access and a clear team commitment.
+5. **Deep-tech VC:** approach selectively with technical differentiation, evidence, market logic, and a concrete use-of-funds plan.
+
+### Current app/tool decision
+- Keep GitHub + Codex, Supabase and Vercel as the core engineering system.
+- Add product analytics only after defining safe event fields and consent; avoid capturing sensitive factory data or session replay by default. PostHog's official pricing page lists a free tier, but feature and privacy configuration still matter: https://posthog.com/pricing.
+- Add LLM tracing/evaluation only if LLM calls materially drive GridMind's outputs. Langfuse offers a free Hobby tier and paid tiers; review retention, hosting and redaction before sending any data: https://langfuse.com/pricing.
+- Do not buy a stack of tools in advance. First produce a labelled test set, a domain-review process, and a small evaluation report; choose tooling that makes those repeatable.
+
+### Outreach and legal guardrails
+GridMind should not claim a customer result, production readiness, savings, accuracy, or funding eligibility without evidence. Do not send confidential factory data to external services without authorization and a data-handling review. Any incorporation, investment, equity, grant, customer-data or contractual commitment should be reviewed with appropriate adult and qualified legal/financial support before signing.
