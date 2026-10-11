@@ -12,6 +12,17 @@ The staged expansion strategy is in the [GridMind Expansion Architecture](docs/g
 
 Use the [Documentation Index](docs/README.md) for the canonical reading order. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs current commitments and resolves conflicts across strategy, product, website, and execution documents.
 
+## Current execution priority — 2026-10-11
+
+**Primary milestone:** establish one real manufacturing buyer conversation and test a specific recent operational incident before expanding product scope or public marketing claims. The human-reviewed incident investigation packet is a hypothesis—not a selected or validated wedge. Procurement intelligence and a narrow vertical workflow remain alternatives. No buyer interviews, customer data, measured savings, pricing commitments, or paid pilots are claimed.
+
+- [Problem Failure Analysis and Next Experiments](docs/gridmind-problem-failure-analysis-and-experiments-2026-10-11.md)
+- [Manufacturing Workflow Stress Test](docs/gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md)
+- [Commercial Wedge Scorecard](docs/gridmind-initial-commercial-wedge-scorecard-2026-10-11.md)
+- [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md)
+- [Repository Decision-Consistency Audit](docs/gridmind-repository-decision-consistency-audit-2026-10-11.md)
+- [GitHub validation milestone #27](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/27)
+
 ## Execution discipline
 
 The [Strategic Reality Check](docs/gridmind-strategic-reality-check-2026-10-10.md) records the current course correction: prove the live authenticated workflow, select the first problem from customer evidence, and complete one auditable real-factory proof loop before broadening the platform or making superiority/savings claims.
