@@ -1,7 +1,7 @@
 # GridMind Product Definition and Strategic Evolution
 
 **Status:** Strategy and decision framework, not a claim of current product readiness. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs immediate scope and any conflicting strategic instruction.  
-**Last updated:** 2026-10-10
+**Last updated:** 2026-10-11
 
 ## 1. The concise definition
 
@@ -12,6 +12,26 @@ The company-level ambition is to expand this repeatable decision loop across ind
 Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation—not simply a dashboard, an isolated AI agent, an energy-monitoring tool, or a marketplace.
 
 The definition intentionally includes both intelligence and realization. Identifying an opportunity creates little durable value if a factory cannot make a decision, mobilize the right resources, implement an intervention, and establish whether the outcome improved.
+
+### First-principles foundation and boundaries
+
+The fundamental problem is not that factories lack dashboards or AI. It is the testable possibility that, for some costly recurring decisions, relevant evidence is fragmented or difficult to reconcile, the responsible people cannot confidently choose or coordinate an intervention, and the resulting business outcome is not reliably verified. This gap must be demonstrated in a real workflow; it must never be assumed from the existence of multiple systems.
+
+The causal chain to investigate is:
+
+**Operational event → measurable consequence or risk → detection → evidence gathering and reconciliation → decision → approved intervention → measured outcome → retained learning.**
+
+GridMind creates incremental value only when it improves one or more links in this chain beyond the customer's current tools, experts, and processes. Detection alone is not value realization. An estimate is not a verified saving, and temporal sequence alone does not prove causation.
+
+**Operating principles**
+- **Value before features:** build a capability only when it addresses a specific validated need or is necessary to test a high-risk hypothesis.
+- **Evidence before claims:** distinguish observed facts, estimates, hypotheses, expert judgments, and verified outcomes.
+- **Narrow entry point, expandable architecture:** design reusable foundations where justified, but implement only the bounded workflow selected by evidence.
+- **Integrate before replacing:** use existing systems where they already perform well; prefer simpler process changes when they achieve equal or better outcomes.
+- **Human authority and safe boundaries:** consequential actions remain with authorized customer personnel and qualified experts.
+- **Earn expansion:** add a new workflow only when a real customer need and a credible shared-core advantage justify it.
+
+**Current unknowns:** the underserved gap, best buyer/segment, first workflow, willingness to pay, measurable incremental value, delivery economics, and durable differentiation. No customer validation, savings, or repeatable commercial outcome is implied by this definition.
 
 ## 2. The strategic distinction: destination versus entry point
 
