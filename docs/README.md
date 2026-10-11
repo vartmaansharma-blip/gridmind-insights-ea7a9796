@@ -9,6 +9,8 @@ This directory contains product definitions, engineering contracts, validation p
 
 ## Start here
 
+- [Opportunity Workspace Prototype v1 — 2026-10-11](gridmind-opportunity-workspace-prototype-v1-2026-10-11.md) — proposed end-to-end decision workspace, Reveal interaction grammar, value-state language, responsive rules and acceptance criteria; design specification only, not implemented or user-tested.
+
 - [Future-State Design Audit — Phase 1 (2026-10-11)](gridmind-future-state-design-audit-phase-1-2026-10-11.md) — future-facing product model, current design-model gaps, ranked backlog, and audit limitations.
 
 
