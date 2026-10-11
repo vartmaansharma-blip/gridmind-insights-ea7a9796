@@ -126,3 +126,50 @@ A failed test is valuable if it cheaply rules out a weak direction. Do not move 
 **GridMind's ambition is to help industrial businesses convert operational evidence into better decisions and verified economic improvement. Its first product is undecided. The immediate job is to discover which costly decision or recurring loss is urgent, measurable, accessible, and underserved enough to justify a focused first wedge.**
 
 This keeps the ambition large while leaving the first product falsifiable.
+
+
+## 10. Ten-year ambition — 2026 to 2036
+
+**Ambition:** build toward a globally useful industrial decision-and-verified-outcome platform, while treating company scale as an outcome of customer value rather than a product requirement. The scenarios below are illustrative planning cases, not forecasts, commitments, market research, or valuation advice. Revenue means annual company revenue in USD; valuation ranges are speculative and depend heavily on growth, gross margin, retention, capital markets, and business model.
+
+| Scenario | Illustrative 2036 scale | What would have to be true |
+|---|---:|---|
+| Durable specialist company | $5M–$20M annual revenue; hypothetical $25M–$150M valuation | One narrow industrial workflow produces repeatable outcomes; customers renew; delivery becomes efficient; business can be profitable. |
+| Global vertical/platform business | $50M–$200M annual revenue; hypothetical $300M–$2B valuation | Multiple validated workflows, multi-site expansion, durable retention, repeatable integrations, strong unit economics, and a defensible distribution channel. |
+| Exceptional industrial infrastructure outcome | $500M+ annual revenue; hypothetical $5B–$15B+ valuation | GridMind becomes a trusted layer across thousands of sites and industrial groups; its permissioned context and verified outcome loops compound; deployment and governance scale without bespoke consulting dominating costs. |
+
+These are not equally likely. The specialist-company case is the practical target to earn; the platform case is an ambitious strategic objective; the infrastructure case is an exceptional upside scenario, not the base plan. Do not use valuation multiples as a reason to build ahead of evidence.
+
+### Milestones that earn the right to scale
+
+**2026–2027 — Prove a problem and a buyer**
+- Complete the secure, authenticated production workflow and maintain the isolated multi-tenant security tests.
+- Conduct real discovery interviews and select a problem only after comparing the current workaround, economic consequence, data access, alternatives, and buyer urgency.
+- Run one permissioned, human-reviewed test against a documented baseline.
+- Measure usefulness, time/cost to deliver, error/omission rate, and whether the buyer takes a concrete next step.
+- Continue only if the test demonstrates incremental value over a credible alternative.
+
+**2027–2029 — Prove repeatability**
+- Convert the first result into a bounded offer with explicit scope, exclusions, price hypothesis, and delivery requirements.
+- Repeat the workflow with multiple customers/sites; do not count demos or unpaid bespoke analysis as product-market fit.
+- Measure paid conversion, time to first value, renewal/expansion, gross margin, implementation hours, and customer-reported outcomes.
+- Standardize integrations and security controls where the evidence shows they recur.
+
+**2029–2032 — Expand from the validated wedge**
+- Add adjacent workflows only when existing customers demonstrate the need and the same evidence-to-action-to-verification loop can be reused.
+- Expand within customer groups and then across sectors where the operating context is sufficiently similar.
+- Build partner distribution and enterprise integrations only when they reduce acquisition or delivery cost.
+- Establish a permissioned data model; never treat cross-customer reuse as automatic.
+
+**2032–2036 — Earn platform status**
+- Support multi-site governance, reusable workflows, independent outcome review, robust auditability, and customer-controlled data boundaries.
+- Build a partner ecosystem around implementation and verified outcomes if it creates customer value without biasing recommendations.
+- Consider infrastructure-scale ambitions only if retention, unit economics, reliability, and expansion evidence support them.
+
+### Leading indicators to track from the beginning
+
+Track qualified buyer conversations, percentage naming a recent consequential problem, permissioned-data conversion, time to first useful finding, reviewer acceptance, unsupported-finding rate, action adoption, verified outcome rate, paid conversion, gross margin after delivery labor, renewal/expansion, and repeatability across sites. Define denominators and evidence sources before setting targets. Avoid vanity metrics such as dashboard visits, features shipped, model calls, or raw data volume unless they predict a customer outcome.
+
+### The first-principles constraint
+
+A ten-year ambition does not justify a ten-year build plan. GridMind earns each expansion by proving, in order: **real problem → authorized evidence → trustworthy finding → approved action → measured outcome → repeatable delivery → repeatable economics → platform expansion.** If a simpler tool or process solves the problem better, use it or reject that wedge. If outcomes are not measurable, do not claim value. If each deployment requires custom founder labor, do not call it scalable software yet.
