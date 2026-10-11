@@ -53,7 +53,7 @@ Use one public industry/technical-network route in parallel to ask about appropr
 
 **Concrete route trigger:** if no trusted connector is identified by **2026-10-12**, use the ASIA Jamshedpur official contact route as the first public inquiry (contact details are in the tracker) while building the warm-ask list. ACMA Eastern Region and IDTR are named fallback routes, not buyer leads. **Kill date: 2026-10-17.** If zero substantive calls are booked after 30 warm asks, stop repeating the same route. Review the actual funnel, change the introduction source and/or offer, and run a new 7-day test through the public association/technical-learning route. If 30 warm asks cannot be assembled, record access as a blocker instead of inflating the funnel.
 
-No outreach is sent automatically. A trusted adult/professional must review and support external industrial outreach and any formal engagement. No factory visit, commercial commitment, payment arrangement, or non-public data handling without the appropriate authorization and oversight.
+No outreach is sent automatically. A trusted adult/professional must review and support external industrial outreach and any formal engagement. No factory visit, commercial commitment, payment arrangement, or non-public data handling without the appropriate authorization and oversight. The access routes below are unactivated hypotheses, not a secured path to buyers: no connector is named, no association has been contacted, and no introduction is confirmed. If 30 legitimate warm asks cannot be assembled, record the access blocker and activate the public-route experiment rather than implying the funnel is available.
 
 ## 5. Two-tier decision gates
 
@@ -138,7 +138,7 @@ A fee must make sense against conservative incremental value **and** cover deliv
 | Customer operational owner and data approver | **Not yet identified** | Before any customer-specific test or data access |
 | Customer security/privacy approver | **Not yet identified** | Before any non-public data is transferred or processed |
 | Supabase/security practitioner | **Not assigned; not a current discovery gate** | Only if a selected workflow requires production data/security changes |
-| Trademark/legal counsel | **Not assigned; not a current sprint gate** | Before material trademark spend, formal legal claims, or contracts that need counsel |
+| Founder contracting capacity / eligibility | **Not resolved in this plan; do not infer from legacy prose** | Before any formal contract, payment, incorporation, equity, or other binding commitment; does not block no-data discovery with appropriate oversight |\n| Trademark/legal counsel | **Not assigned; not a current sprint gate** | Before material trademark spend, formal legal claims, or contracts that need counsel |
 
 Do not write as if an unassigned reviewer has approved anything. A missing role blocks only the stage that requires that role; it must not prevent offline interviews.
 
