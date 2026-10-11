@@ -16,6 +16,24 @@ ERP, MES, CMMS, QMS, historians/SCADA, BI tools, consultants, and experienced em
 
 **Long-term thesis:** GridMind aims to become a trusted industrial decision-and-improvement layer that helps teams identify where value is leaking, establish what evidence supports, prioritize and coordinate interventions, and verify whether value was actually recovered. This is a platform ambition, not a current capability claim or permission to build a generic AI chatbot/dashboard.
 
+## 1.1 The causal problem model and competing explanations
+
+Use this causal model to investigate a real operational case:
+
+**Event → consequence or risk → detection → evidence → investigation → decision → approved intervention → measured outcome → learning.**
+
+A GridMind opportunity exists only if evidence shows that a consequential link in this chain is materially underperforming and GridMind can improve it better than a viable alternative. The existence of fragmented systems alone does not prove a valuable gap.
+
+Test competing explanations before attributing a problem to missing intelligence:
+- The customer already has an adequate tool or expert workflow.
+- The issue is caused by process discipline, incentives, staffing, training, or authority rather than missing software.
+- The data needed to investigate is unavailable, unreliable, or too costly to reconcile.
+- The buyer cannot control the intervention or capture the economic benefit.
+- The apparent loss is not addressable, is double-counted, or cannot be separated from normal operating variation.
+- A simpler integration, report, process change, or specialist service would achieve the same result more cheaply.
+
+**Decision principles:** value before features; evidence before claims; narrow entry point with expandable architecture. Build only enough to test a material assumption, and preserve “insufficient evidence” as a valid output.
+
 ## 2. First-principles tests
 
 1. The loss or decision bottleneck is real, recent, and material to a buyer.
