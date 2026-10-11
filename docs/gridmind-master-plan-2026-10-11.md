@@ -876,3 +876,31 @@ Using a controlled non-production account and factory:
 6. Capture test environment, steps, result, and any console/network errors. Do not use production data or relax access controls to perform the test.
 
 **Decision:** automated isolated CI evidence has improved, but do not merge PR #37 or promote a deployment based on these results alone.
+
+
+## PR #37 follow-through: test the persistence-to-hydration contract — 2026-10-11
+
+### Code change made on the existing draft PR branch
+
+The original regression tests proved that persisted metadata can be hydrated, but did not exercise the metadata payload construction used by the save path. To close that gap without pretending it is a browser test:
+
+- Extracted `assetMetadataFromEquipmentInput` into the shared equipment metadata module.
+- Updated `syncFactoryAssets` to use the same helper that the test exercises.
+- Added a round-trip contract test: representative equipment inputs are serialized into the persisted metadata shape and passed back through the hydration helper; the four fields must match, and unrelated metadata must be preserved.
+- Existing malformed/missing metadata default tests remain.
+
+This is a stronger unit-level regression test for the save-payload → reload-hydration mapping. It does **not** exercise the Supabase network write, Auth session, RLS, or browser reload.
+
+### Current verification status
+
+The new commits triggered fresh workflows on PR #37 head `6b6583e17196d047663203606a770fb48e31c763):
+
+- CI run [38152781659](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152781659): in progress at last check.
+- GridMind Quality Gate [38152781670](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152781670): queued at last check.
+- GridMind Migration Replay [38152781676](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152781676): pending at last check.
+
+Do not treat earlier passing runs as validation of these new commits. Wait for the fresh runs to finish.
+
+### Acceptance gate remains unchanged
+
+PR #37 remains draft and unmerged until a controlled authenticated **non-production** UI test edits category, quantity, hours/month, and load factor; saves; reloads; and confirms the same values. If no authenticated browser session or safe test account is available, record that as a blocker rather than inventing a pass.
