@@ -1,5 +1,8 @@
 # GridMind Discovery Execution Kit — 2026-10-11
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful interview questions and route research, but its old schedule, candidate labels, gates, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
+
+
 **Status:** Prepared for human-led execution. No outreach has been sent and no conversation has occurred as a result of this file.  
 **Objective:** Start the 30-day target of 10 substantive manufacturing discovery conversations without pitching an unvalidated product or requesting confidential records prematurely.
 
