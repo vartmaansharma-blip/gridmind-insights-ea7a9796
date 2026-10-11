@@ -428,7 +428,7 @@ Scale should be modeled only after a repeatable use case is evidenced. Measure r
 ### 9.6 Decisions now
 
 **Decide now:**
-- No final wedge selection yet; test the incident-investigation hypothesis first because it can be evaluated retrospectively with bounded scope if permissioned data becomes available.
+- No final wedge selection yet; compare downtime/production loss, quality defects/scrap/rework, maintenance recurrence/reliability, energy/material inefficiency, and cross-functional handoff delay. The recommended first experiment is a human-reviewed retrospective investigation of one closed incident selected with a real buyer and permissioned data; it tests the workflow without declaring a category winner.
 - No live factory integration or autonomous operational control in the first experiment.
 - No savings, causality, customer demand, pilot readiness, or moat claims without supporting evidence.
 - Discovery interviews and the smallest defensible comparison take priority over new product features.
@@ -437,7 +437,7 @@ Scale should be modeled only after a repeatable use case is evidenced. Measure r
 1. Identify three legitimate interview opportunities: one owner/MD, one plant/production manager, and one maintenance/reliability or quality professional.
 2. Send tailored requests only after the founder approves/initiates the actual outreach; this document does not claim messages have been sent.
 3. Complete interviews using the protocol in this document and record permissioned, anonymized notes.
-4. After the first three interviews, compare problem candidates and contradictions; continue toward 10 substantive conversations if the evidence remains ambiguous.
+4. Compare all five problem families after each interview, record contradictions and confidence, and continue toward 10 substantive conversations if evidence remains ambiguous. Do not force a candidate winner from desk research.
 5. Seek an authorized historical case only if a real contact and qualified reviewer agree it is appropriate.
 6. Update this framework with dated evidence, decisions, failed hypotheses, and next actions.
 
