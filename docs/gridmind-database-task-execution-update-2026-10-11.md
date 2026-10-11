@@ -58,3 +58,9 @@ The repository already contains the two idempotent nullable-column migrations on
 - [Technical Readiness Snapshot](gridmind-technical-readiness-snapshot-2026-10-11.md)
 - [Supabase Connection & Security Audit](gridmind-supabase-connection-security-audit-2026-10-11.md)
 - [Issue #29 — Immediate priorities and release gates](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29)
+
+## Privilege-boundary review — 2026-10-11 20:35 IST
+
+A fresh read-only function catalog query confirmed the live RPC owner is `postgres`; the owner is not marked superuser in this catalog but does have `BYPASSRLS`. The function has `search_path=""` and its observed ACL is `{postgres=X/postgres,authenticated=X/postgres}`: signed-in users can invoke it, while PUBLIC is not granted EXECUTE. This is a meaningful defense-in-depth baseline, not proof that the privileged function is safe by itself.
+
+Because the function owner bypasses RLS, its body must remain a narrow, fully schema-qualified authorization boundary. The current live body checks `auth.uid()`, but selects the first active owner/admin organization ordered by ID; PR #35 changes that ambiguity into an explicit fail-closed error. The function remains SECURITY DEFINER and still needs independent review of every read/write, grants, role assumptions, and abuse cases before production rollout. Do not switch it to SECURITY INVOKER or remove EXECUTE as a quick way to clear the advisor warning without first implementing and testing an alternative onboarding path.
