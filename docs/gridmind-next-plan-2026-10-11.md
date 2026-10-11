@@ -5,6 +5,10 @@
 **Authority:** The GridMind Decision Constitution and Contradiction Register takes precedence.  
 **Scope:** Coordinate the current decision sequence: validate one narrow buyer problem and product truth first; continue only bounded visual exploration that supports that work. This does not authorize a full public-site build or changes to the existing product route.
 
+## Strategic frame — ambition large, first wedge falsifiable
+
+The incident-investigation packet is only one possible entry point. GridMind's long-term hypothesis is a trusted industrial decision-and-improvement layer: identify costly operational losses, establish evidence, coordinate human-approved interventions, and verify outcomes. The first product is undecided. Compare loss recovery, cross-system decision intelligence, recurrence prevention, quality/supplier traceability, and energy/material productivity using buyer evidence—not TAM speculation or prototype convenience. Read the [Bigger Problem Thesis](gridmind-bigger-problem-thesis-2026-10-11.md) before changing scope.
+
 ## Current execution priority — updated 2026-10-11
 
 **Commercial discovery is the primary gate.** The creative-direction sections below preserve the rationale and acceptance criteria for visual exploration, but they must not be read as the highest-priority work. The first wedge remains undecided. The incident-investigation-packet idea is a hypothesis only; procurement intelligence and a narrow vertical workflow remain candidates. No buyer interview, customer data, willingness-to-pay evidence, or paid commitment is claimed. See the [Problem Failure Analysis](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md), [Manufacturing Workflow Stress Test](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md), and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md).
