@@ -723,3 +723,16 @@ These findings update the execution order: keep product/production claims gated;
 
 ### Immediate next action
 Create and complete two small artifacts today: **(1)** a read-only reconciliation checklist for the two missing live-schema columns against the exact repository migrations/application contract, and **(2)** the first legitimate manufacturing introduction route in the contact tracker. These can proceed in parallel. No outreach, schema change, interview or customer validation is claimed until it actually occurs.
+
+## Chat-to-plan correction — 2026-10-11
+
+This note reconciles the latest discussion with the binding wedge-selection rules above and in the [Commercial Wedge Scorecard](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md) and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md).
+
+- **No first wedge is selected.** Energy/material inefficiency remains one candidate among the five problem families, not the chosen entry point.
+- **Withdraw unsupported preliminary numeric rankings.** A prior conversational comparison assigned estimated scores and placed energy first without customer evidence. Those numbers are not validated findings and must not be used for prioritization, investor claims, product-roadmap commitments, or marketing. This correction supersedes those preliminary chat scores.
+- **Use the canonical evidence-led rubric.** Score severity/frequency (20%), economic consequence (20%), willingness-to-pay evidence (20%), customer/data access (15%), first-delivery feasibility (15%), and repeatability/expansion potential (10%) only when supported by traceable evidence and confidence ratings. Unknown inputs remain Unknown; hard-gate failures cannot be hidden by a weighted score.
+- **Compare the same alternatives fairly.** Retain downtime/production loss, quality defects/scrap/rework, maintenance recurrence/reliability, energy/material inefficiency, and cross-functional decision/handoff delay as candidates. Procurement intelligence or a narrow vertical workflow may re-enter as a comparator when defined around a specific buyer, recurring decision, and measurable consequence.
+- **Next execution step:** recruit and conduct real, permission-respecting discovery; capture a recent incident, current alternatives, buyer/budget ownership, consequence calculation, data rights/quality, qualified reviewer, baseline/outcome method, delivery effort, and concrete next step. The 10-conversation/30-day target is a learning target, not completed work or statistical proof.
+- **No validation is claimed.** No customer conversation, customer data access, paid commitment, realized saving, or product readiness is implied by this planning correction.
+
+This update records a correction to the discussion, not a change to the long-term GridMind ambition. The binding rule remains: choose the initial workflow from evidence, not founder preference, a prior specification, or an unsupported score.
