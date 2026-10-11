@@ -68,9 +68,12 @@ export function AddFactoryDialog({ open, onOpenChange }: { open: boolean; onOpen
               toast.success("Factory added — now enter monthly data");
               navigate({ to: "/factory" });
             } catch (error) {
-              const message = error instanceof Error ? error.message : "Factory creation failed";
+              const rawMessage = error instanceof Error ? error.message : "Factory creation failed";
+              const message = rawMessage.includes("AMBIGUOUS_ORGANIZATION_CONTEXT")
+                ? "This account has more than one eligible organization. GridMind stopped factory creation to avoid placing data in the wrong workspace. No factory was created. Ask your workspace administrator to confirm the intended organization and resolve the membership, then retry."
+                : rawMessage;
               setErr(message);
-              toast.error("Factory creation failed");
+              toast.error(message === rawMessage ? "Factory creation failed" : "Workspace organization needs review");
             }
           }}
         >
