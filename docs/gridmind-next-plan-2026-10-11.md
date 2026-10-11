@@ -1,100 +1,120 @@
-# GridMind Next Plan — From Design Rejection to Evidence-Led Direction
+# GridMind Next Plan — Creative Direction to Comparable Visual Exploration
 
 **Date:** 2026-10-11  
-**Status:** Active execution plan  
+**Status:** Active execution plan; creative direction advanced, prototypes not yet built.  
 **Authority:** The GridMind Decision Constitution and Contradiction Register takes precedence.  
-**Scope:** Strategy, discovery, and concept selection. This plan does not authorize product-route replacement or production claims.
+**Scope:** Creative direction and bounded concept exploration. This does not authorize a full public-site build or changes to the existing product route.
 
 ## Executive decision
 
-Do not build the rejected neon topographic hero, cursor ripple, or glowing process rail. Do not select another visual direction by taste alone. The next deliverable is a small set of materially different concepts grounded in GridMind's intended role and the buyer's problem, then a documented selection against explicit criteria.
+Advance **Clarity Engineered** as the leading creative direction for GridMind's visual exploration. It means making the hidden logic of industrial complexity visible through precise, evidence-aware storytelling.
 
-GridMind's long-term ambition remains industrial intelligence and value realization. The immediate job is to identify one costly, frequent, measurable industrial problem and determine whether GridMind can credibly help solve it.
+This is approval to explore a creative direction—not approval of a final visual design, headline, palette, first commercial wedge, product claim, or production implementation. The complete direction, principles, constraints, prototype criteria, and acceptance criteria are recorded in [GridMind Creative Direction — Clarity Engineered](gridmind-creative-direction-clarity-engineered-2026-10-11.md).
 
-## Work sequence
+The design ambition is Apple-level coherence, Nothing-level recognisability, and ambitious interactive storytelling, translated into an original GridMind identity rather than copied brand styling.
 
-### Step 1 — Re-establish the problem before the visual style
-Write a one-page buyer/problem brief answering:
-- Which role experiences the problem, owns the budget, and can authorize a pilot?
-- What decision is difficult or delayed today?
-- What evidence and systems does that person currently use?
-- What does the problem cost in time, throughput, energy, quality, downtime, or working capital?
-- What is the current workaround and why is it insufficient?
-- What would a buyer need to see to trust a recommendation?
-- What can GridMind demonstrate today, versus what is only a hypothesis?
+## What changes from the previous plan
 
-Do not assume energy is the chosen wedge. Compare operational-loss/constraint investigation, procurement intelligence for one bounded category, and one narrow vertical operations workflow.
+- Earlier metaphors (Case File, Decision Instrument, System Reveal, Hidden Shift, Decision Under Glass, Operating Portrait, Factory Unfolds, Evidence Constellation, Decision Theatre) remain useful research ingredients, but none is a canonical, approved design.
+- Stop accumulating abstract concept names. The next work must be tangible visual explorations that can be compared.
+- The visual concept can now progress in parallel with buyer/problem discovery, but it must not be used to avoid selecting and validating a credible initial offer.
+- Visual ambition is a first-class requirement. Clarity, evidence integrity, accessibility, performance, and commercial relevance remain hard constraints.
+- No full homepage or public website implementation until the product-truth, offer, and claim gates in the Decision Constitution pass.
 
-### Step 2 — Create three distinct creative concepts
-Create a concise storyboard for each, without implementing production UI:
-1. **The Hidden System:** reveal meaningful relationships between signals and an operational question.
-2. **The Intelligence Engine:** show evidence becoming structured explanations, economic implications, and a decision.
-3. **The Industrial Observatory:** communicate an interconnected industrial system with a strong sense of scale.
+## Current creative direction
 
-Each storyboard must show the first screen, what happens after the first interaction, what the visitor learns, what is factual versus simulated, and the next commercial action. These are candidates, not approved directions.
+**Working concept:** Clarity Engineered  
+**Core principle:** Make the complexity visible; make the evidence legible; make the next decision understandable.
 
-### Step 3 — Score the concepts
-Score each from 1–5 against:
-- Immediate comprehension for an industrial buyer (25%)
-- Commercial relevance and credibility (20%)
-- Distinctiveness and memorability (15%)
-- Alignment with actual/proposed product workflow (15%)
-- Evidence integrity and risk of misleading claims (10%)
-- Accessibility and mobile usability (10%)
-- Feasibility and performance cost (5%)
+### Motion grammar
+1. **Reveal** — bring meaningful context into view.
+2. **Relate** — align relevant evidence on a shared frame, scale, or timeline.
+3. **Investigate** — focus on a specific question without losing orientation.
+4. **Resolve** — make observations, hypotheses, missing evidence, and a possible next decision legible.
 
-Record rationale, uncertainty, and what test could disprove the current favorite. Aesthetic preference alone cannot win the decision.
+These are semantic principles, not a compulsory sequence of effects. No decorative motion, generic glowing networks, fake telemetry, unsupported causal links, cursor ripples, rejected neon-lime topographic hero, or glowing Data → Detect → Quantify → Verify rail.
 
-### Step 4 — Test the underlying message
-Before coding the marketing experience, show a small number of target-relevant people the problem statement and concept storyboards. Ask them to explain in their own words:
-- What GridMind does;
-- Who it is for;
-- Which business problem it addresses;
-- What they would need to trust it;
-- Whether they would take a concrete next step.
+## Execution sequence
 
-Do not lead respondents or treat compliments as validation. Record exact objections and confusion. If direct buyer access is not yet available, label the work desk research/internal hypothesis rather than customer validation.
+### Step 1 — Keep the commercial question active
+Continue the existing buyer/problem discovery and compare the three candidate wedges in the Decision Constitution: operational-loss/constraint investigation, procurement intelligence for one bounded category, and one narrow vertical operations workflow. Do not choose energy simply because it is easy to visualize or already documented.
 
-### Step 5 — Select a narrow first commercial problem
-Compare candidate wedges on severity, frequency, measurability, data accessibility, time to evidence, buyer ownership, willingness to pay, implementation burden, and safety/security constraints. Select only when evidence supports it; otherwise explicitly record what remains unknown.
+The visual prototype may use a synthetic scenario, but its purpose is to test communication—not to validate the market or claim a product capability.
 
-### Step 6 — Define the honest demo boundary
-Separate:
-- **Concept simulation:** illustrative, synthetic, not product proof.
-- **Working prototype:** specific capabilities demonstrated in a reproducible flow.
-- **Customer deployment:** actual customer environment and authorized data.
-- **Verified outcome:** baseline, method, confounders, customer confirmation, and measured result.
+### Step 2 — Produce three comparable visual explorations
+Use the same Clarity Engineered design philosophy, but test three different visual entry points:
 
-Never present a simulated result as achieved savings or imply production readiness from a mockup.
+1. **Context Arrives:** a stable measurement becomes more interpretable as production context and operating events align around it.
+2. **The Operation in Layers:** a simplified process composition reveals the relevant layer for a selected operational question.
+3. **Evidence Changes the Decision:** a possible action is unpacked into observations, assumptions, missing evidence, and trade-offs.
 
-### Step 7 — Build only the smallest informative prototype
-Once a concept is selected, create a bounded prototype to answer a specific question. Keep it separate from the existing application route. Use synthetic data labeled clearly if real authorized data is unavailable. Test comprehension, keyboard/touch accessibility, reduced motion, mobile performance, and whether animation adds understanding rather than decoration.
+Each must include:
+- a strong static opening frame;
+- a three-frame motion storyboard;
+- one meaningful visitor interaction;
+- clear labels and plain-language explanation;
+- a closing state and provisional next action;
+- mobile and reduced-motion states;
+- an explicit claim/capability boundary.
 
-### Step 8 — Decide what ships
-Proceed to the public marketing site only after:
-- the first buyer and problem are stated clearly;
-- the offer and call to action are credible;
-- each factual claim maps to evidence;
-- demo status and data handling are explicit;
-- privacy, security, accessibility, and performance reviews are complete.
+Do not build three unrelated brands or three versions of a generic diagram. Each exploration should express one coherent GridMind identity.
 
-## Immediate deliverables
+### Step 3 — Compare with a fixed rubric
+Score each from 1–5. These are internal judgments unless buyer-tested.
 
-1. Buyer/problem brief with explicit unknowns.
-2. Three storyboards for materially different design concepts.
-3. Weighted scorecard and rationale.
-4. Validation notes, clearly distinguishing research from customer evidence.
-5. Updated decision record: GO, NARROW, PIVOT, or STOP.
+| Criterion | Weight |
+|---|---:|
+| Brand recognisability and originality | 25% |
+| Immediate comprehension | 20% |
+| Motion meaning and craft | 20% |
+| Industrial credibility and evidence integrity | 15% |
+| Commercial relevance | 10% |
+| Accessibility and performance feasibility | 10% |
+
+For each score, record why, what remains uncertain, and what observation would change the score. Do not let “looks cool” or the highest total alone determine the winner; a serious credibility or comprehension failure can disqualify a concept.
+
+### Step 4 — Test comprehension, not just preference
+Where feasible, show the explorations in randomized order to relevant industrial decision-makers without explaining the intended message first. Ask:
+- What do you think GridMind does?
+- What does the visual appear to promise?
+- Which elements seem credible or suspicious?
+- What remains unclear?
+- What business question would you bring to GridMind?
+- What next step would you take?
+
+Capture confusion, skepticism, and mistaken assumptions. If direct buyer access is not available, label the review internal and keep the direction provisional.
+
+### Step 5 — Select or revise
+Choose a direction only if it combines distinctiveness with fast comprehension, evidence integrity, and credible business relevance. If none passes, revise the concepts rather than forcing a winner.
+
+### Step 6 — Build one bounded prototype
+After choosing a concept for further exploration, build only the hero-to-investigation sequence as an isolated prototype. Preserve the existing product route. Use deterministic synthetic data with a visible label. Test desktop, mobile, keyboard/touch, reduced motion, readability, loading performance, and whether motion adds understanding.
+
+### Step 7 — Keep product and commercial gates intact
+Before full public-site implementation:
+- refresh the product-truth/readiness audit;
+- define the honest first offer and exclusions;
+- map public claims to demonstrated capabilities and evidence;
+- confirm CTA and form behavior, privacy/data handling, security language, accessibility, and performance;
+- keep synthetic marketing scenarios separate from product proof.
 
 ## Guardrails
 
 - Ambition broad; immediate commitment narrow.
-- Do not implement the rejected topographic direction.
-- Do not start a large website build to avoid the harder buyer/problem decision.
-- No invented customer proof, savings, integrations, security guarantees, or product capabilities.
-- Preserve the existing application route and architecture.
-- Update this plan when new evidence changes a decision; keep prior decisions traceable in GitHub history.
+- Visual excellence is a priority, not a substitute for evidence or commercial validation.
+- No invented customer proof, savings, integrations, security guarantees, product capabilities, or results.
+- Clearly label synthetic data and hypothetical findings.
+- Do not imply causation from visual proximity or correlation alone.
+- Do not add motion that blocks comprehension or the next action.
+- Preserve the existing product route and architecture.
+- Update the decision record when evidence changes a decision; keep earlier choices traceable through GitHub history.
+
+## Immediate deliverable
+
+Three comparable visual explorations for Clarity Engineered, each with a static opening, a three-frame motion sequence, meaningful interaction, labels, mobile/reduced-motion treatment, and claim boundary.
 
 ## Exit criterion
 
-The next phase is complete when we can explain, in plain language and with evidence labels, **which industrial buyer has which important problem, why GridMind is a credible candidate to help, and which experience best communicates that proposition**. A polished animation is not an exit criterion.
+This phase is complete when the three explorations can be compared on actual visual evidence, the leading direction is supported by explicit rationale, key risks are documented, and the next prototype has a narrow, testable purpose. The phase is **not** complete because the strategy document is polished or the animation is impressive.
+
+**Operating rule:** Make the complexity visible; make the evidence legible; make the next decision understandable.
