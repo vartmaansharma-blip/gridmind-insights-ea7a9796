@@ -35,7 +35,9 @@ The [Strategic Reality Check](docs/gridmind-strategic-reality-check-2026-10-10.m
 
 ## Product definition
 
-**GridMind is an evidence-backed industrial intelligence and value-realization platform. It transforms authorized, traceable factory data and operating context into reproducible findings and economically prioritized opportunities; supports qualified people in deciding and coordinating interventions; and measures outcomes against a defensible baseline.**
+**GridMind helps an industrial team make one consequential operating decision better by turning authorized, imperfect operational evidence into a traceable finding, a reviewed next action, and a measurable outcome.** Its long-term ambition is a broader industrial intelligence and value-realization platform, earned workflow by workflow—not a claim that broad capabilities already exist.
+
+The [Product Definition and Conceptual Contract](docs/gridmind-product-definition.md) defines the customer job, unit of value, minimum product loop, product boundaries, evidence states, and requirements for selecting the first use case.
 
 A finding is not automatically a root-cause diagnosis. A quantified opportunity is not realized savings. A recommendation is not proof that an intervention is safe, appropriate, or effective. GridMind must preserve those distinctions throughout the product.
 
