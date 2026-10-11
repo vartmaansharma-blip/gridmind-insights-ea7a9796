@@ -147,3 +147,47 @@ Target: 10 substantive conversations in 30 days, subject to legitimate access an
 ## Success is not the number of messages sent
 
 The sprint advances only when it improves understanding of a real workflow and produces a concrete next step. No reply is not demand validation. A positive comment is not willingness to pay. A sample file is not permission unless the right data owner authorizes it. A plausible calculation is not realized savings. A single interview is not product-market fit.
+
+## Public route verification and immediate next action — 2026-10-11
+
+**Status:** Public recruitment routes checked; no outreach sent, no contact relationship established, and no interview booked. These are legitimate routes to request a research/networking path—not customer leads or endorsements.
+
+### Routes verified from public sources
+
+| Priority | Route | Why it fits | Published route | Current status |
+|---|---|---|---|---|
+| 1 | Adityapur Small Industries Association (ASIA) | Its public site describes an Adityapur manufacturing cluster and lists automotive components, metal processing/fabrication, industrial equipment, chemicals, plastics, and other categories. This makes it a relevant route for learning which workflows are common, not evidence of GridMind demand. | https://asiajamshedpur.com/contact/ | Verified on 2026-10-11; not contacted |
+| 2 | ACMA Eastern Region | Automotive-component industry association with an Eastern Region office in Jamshedpur; relevant for requesting an appropriate public event or research networking route. | https://www.acma.in/contact.php | Verified on 2026-10-11; not contacted |
+| 3 | Jharkhand Small Industry Association (JSIA) | Public directory lists affiliated associations and chambers in Jharkhand, including ASIA. | https://www.jsia.co.in/affiliated-bodies.php | Verified on 2026-10-11; not contacted |
+| 4 | BEE/SIDHIEE manufacturing-cluster directory | Potential route for identifying relevant energy-efficiency cluster contexts if discovery evidence points toward energy/material waste. | https://sidhiee.beeindia.gov.in/ClusterDetails | Existing route; re-check before use |
+
+Sources checked: ASIA official contact and product/process pages (https://asiajamshedpur.com/contact/, https://asiajamshedpur.com/products-processes/); ACMA official contact page (https://www.acma.in/contact.php); JSIA affiliated-bodies page (https://www.jsia.co.in/affiliated-bodies.php). Public directory information can change; re-check before contacting.
+
+### First action
+
+Ask a trusted adult/professional to review and, if appropriate, help send a single personalized inquiry through ASIA's published general contact route. Request a 20-minute research conversation or a public event/networking route; do not request member lists, private data, factory records, or introductions to named individuals without consent.
+
+**Suggested message (draft only; not sent):**
+
+> Subject: Request for a short manufacturing workflow research conversation
+>
+> Hello ASIA team,
+>
+> I am conducting early-stage research into how manufacturing teams investigate recurring operational problems and decide which improvements are worth pursuing. I am not presenting a finished product or claiming customer results.
+>
+> Could you suggest a suitable public event, networking route, or professional role through which I could learn about common manufacturing workflows? If appropriate, I would be grateful for a short conversation with someone willing to discuss the process at a general level. I will not ask for confidential factory records or retain identifying notes without permission.
+>
+> Thank you for your guidance.
+
+### Execution checklist
+
+- [ ] Review and personalize the message with a trusted adult/professional.
+- [ ] Confirm the published contact route is still current.
+- [ ] Send only if the adult reviewer agrees; log actual date/status, not intended activity.
+- [ ] If there is no reply, record no response and try one other legitimate route; do not infer demand.
+- [ ] If a conversation is offered, use the existing 20-minute interview guide and ask about one recent real incident before presenting any GridMind concept.
+- [ ] After the conversation, record the actual evidence, counter-evidence, unknowns, and agreed next action; update the scorecard only where evidence supports it.
+
+### Guardrails
+
+The founder is a minor. Formal commercial commitments, factory/site access, contracts, payments, and sensitive industrial data handling require appropriate trusted-adult/professional involvement and the organization's authorization. No factory visit without explicit permission, suitable supervision, and site safety approval. No confidential operational data should be placed in a public repository. This document records desk research and a draft only; it does not imply outreach, response, buyer access, or validation.
