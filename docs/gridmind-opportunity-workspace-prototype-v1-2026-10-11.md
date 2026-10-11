@@ -260,4 +260,38 @@ Before redesigning all routes, prototype one desktop and mobile opportunity scre
 
 Review it against five questions: Is the problem understood in five seconds? Can a plant engineer challenge the reasoning? Can finance distinguish potential from verified value? Does motion explain rather than distract? Does the page still work without motion and on a small screen?
 
-**Status:** reference principles and design direction reviewed; a visual prototype and rendered desktop/mobile review remain outstanding. This is not a claim of user validation or a finished redesign.
+**Status:** reference principles and design direction reviewed. A first coded, demo-only workspace slice is now on branch `feat/opportunity-workspace-v1`; automated checks and browser/mobile interaction review are still outstanding. This is not a claim of user validation, production readiness, or a finished redesign.
+
+
+## Implementation log — first workspace slice
+
+**Date:** 2026-10-11  
+**Branch:** `feat/opportunity-workspace-v1`  
+**Scope:** `src/routes/opportunities.tsx`
+
+### Implemented in code (not yet validated)
+
+- Replaces the demo Opportunities empty state with a responsive opportunity workspace while keeping canonical opportunity records on the existing repository-backed path.
+- Adds a selectable screening queue, operating-context panel, and three evidence-reveal layers: Signal, Economics, and Evidence.
+- Exposes the current calculation trail, alternative explanations, uncertainty, and missing evidence before a next step is considered.
+- Separates screened impact and potential saving from verified value; verified value remains ₹0 in the synthetic workflow.
+- Adds an explicitly session-only human-review marker. It is not persisted and does not authorize or record a plant action.
+- Defines an outcome contract from baseline through human-approved intervention, counterfactual comparison, attribution review, and verification.
+- Keeps the synthetic/demo boundary visible and states that the page does not control equipment or create canonical opportunities.
+
+### Deliberate constraints
+
+- No database, RLS, schema, production configuration, or autonomous-control changes.
+- No new canonical opportunity or verification records.
+- No customer outcome or product-market-fit claims.
+- The existing canonical opportunity status workflow remains the source for persisted status changes.
+
+### Acceptance still required
+
+1. Run CI/typecheck/lint/tests/build on the branch and fix every failure.
+2. Inspect the Vercel preview in a browser at desktop and narrow mobile widths.
+3. Exercise queue selection and each evidence layer using keyboard and pointer.
+4. Confirm direct-route entry, no-data state, canonical data path, and reduced-motion/accessibility behavior.
+5. Compare the rendered page against the five design tests above before calling this milestone complete.
+
+**Current assessment:** a concrete product slice exists in source control, but it is not yet accepted. The branch is separate from `main`; no production deployment or merge is implied.
