@@ -297,3 +297,21 @@ Therefore classify this as **default-privilege coverage to verify**, not a confi
 7. Run the complete authenticated journey on the exact release candidate; attach evidence and then reassess the release gate.
 
 No production DDL, data, grants, Auth settings, migration history, deployment, or outreach was changed in this pass.
+
+
+## Fresh production RPC and candidate reconciliation — 2026-10-11
+
+A new read-only query was run against Supabase project `bvqmvgbfqhgczwbvlqkk` after inspecting the current candidate branch. No writes were executed.
+
+| Item | Fresh observation | Decision |
+|---|---|---|
+| Production migration inventory | Latest recorded version remains `20261011062256` | Do not infer repository migrations are applied merely because they exist in GitHub. |
+| `public.asset_interventions.implemented_at` | No matching live column | Existing blocker remains. |
+| `public.factory_analysis_runs.input_snapshot_sha256` | No matching live column | Existing blocker remains. |
+| Live `create_factory_workspace` function | `SECURITY DEFINER`, empty search path, requires `auth.uid()`, selects the lowest-ID active owner/admin organization, stores application contract version 2; no `AMBIGUOUS_ORGANIZATION_CONTEXT` guard | Live behavior does not yet match candidate migration `20261011073000_harden_workspace_bootstrap_org_selection_v1.sql`. Test in isolation before any production change. |
+| Candidate deployment | Vercel READY, branch `fix/workspace-bootstrap-org-ambiguity-v2`, SHA `480a9cf7a2f3c3dda078c325ba21cb8f89044bb8`, Vercel status successful | Preview evidence only. Complete GitHub CI and migration-replay evidence for this exact SHA remains unverified here. |
+| Security Advisor | Authenticated SECURITY DEFINER RPC warning; leaked-password protection disabled | Review intended trust boundary and authorized Auth setting change separately. Do not blindly revoke onboarding access or change function security. |
+
+The RPC definition is a real behavior mismatch, but this query does not prove a cross-tenant bypass or establish why the candidate migration has not been applied. The correct next step is an isolated replay and membership-matrix test, followed by independent review of the full migration-history/schema drift. Do not hand-edit migration history, blindly replay earlier migrations, or run production DDL without explicit authorization, a recovery point, an authorized operator and a second reviewer.
+
+No production schema, data, grants, Auth settings, migration history, or deployment target was changed.
