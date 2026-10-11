@@ -78,3 +78,8 @@ This directory contains product definitions, engineering contracts, validation p
 - Every new strategic decision should state the previous decision, change, evidence, trade-offs, risks, date, and affected documents.
 - Label claims as observed evidence, inference, or untested hypothesis.
 - Do not delete historical migration/audit records merely to make the directory shorter.
+
+
+## Founder strategy and opportunity cost
+
+- [Founder Opportunity Cost Review: B2B vs B2C — 2026-10-11](founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md) — cross-category opportunity ranking, parameter scorecards, celebrity-brand counterfactual, and 30-day validation tournament. Directional scores only; no business is declared validated.
