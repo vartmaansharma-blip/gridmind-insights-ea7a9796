@@ -837,7 +837,7 @@ Decision not to guess the winner: customer discovery must decide whether the fir
 - syncFactoryAssets writes equipment category, quantity, hoursPerMonth and loadFactor into factory_assets.asset_metadata.
 - The authenticated snapshot includes that metadata, but the previous snapshotToFactory ignored it and reconstructed each equipment row with defaults (other, quantity 1, hours 0, load factor 0). Therefore a saved edit could appear to revert after reload and change downstream estimates.
 - A focused fix and pure unit tests have been opened as draft PR #37: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37, branch fix/equipment-metadata-roundtrip-v1. It restores the four fields with validation and explicit defaults for malformed/legacy metadata.
-- PR #37 is NOT merged. The latest combined commit status showed a Vercel build-rate-limit failure; GitHub CI had not yet been verified through the available workflow-run query. A fetch-back confirmed the four changed files contain the intended edits. Automated CI and an authenticated save -> reload browser test are still required.
+- PR #37 is NOT merged. GitHub CI run 38152262864 and GridMind Quality Gate run 38152262668 passed on the PR head. Migration Replay run 38152262737 was still in progress at last inspection (local Supabase stack startup). Vercel status failed with a build-rate-limit upgrade URL; this is not evidence of a code failure. A fetch-back confirmed the four changed files contain the intended edits. An authenticated save -> reload browser test is still required.
 
 ### Engineering order updated
 
