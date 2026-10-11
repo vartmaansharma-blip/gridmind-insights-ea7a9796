@@ -1,5 +1,8 @@
 # GridMind buyer-discovery tracker and wedge selection
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful analysis, but its old schedules, candidate letters, gates, engineering priorities, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
+
+
 **Status:** Ready to collect evidence; no buyer discovery is marked complete.  
 **Created:** 2026-10-10  
 **Governing rule:** The Decision Constitution and pilot comparison scorecard control selection. This tracker records evidence; it does not preselect a winner.
