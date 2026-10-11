@@ -228,3 +228,14 @@ The buyer-discovery protocol and real-factory data request already exist in this
 6. Do not ingest real factory data or recommend operational action until production access control and data-handling arrangements have been verified. Any pilot data must use the factory's approved controlled storage/transfer route, not public GitHub.
 
 **Current decision:** isolated technical acceptance is now demonstrated. Production authenticated workflow, Vercel release status, and buyer/pilot validation remain open. No database permission was broadened and no production business data was fabricated.
+
+
+### Release-quota mitigation applied — 2026-10-11
+
+The Vercel project now has an Ignored Build Step command:
+
+`git diff --quiet HEAD^ HEAD -- . ':(exclude)docs/**' ':(exclude)README.md'`
+
+Intent: skip a deployment build only when the commit changes files exclusively under `docs/` and/or the repository-root `README.md`; any change outside those paths should continue to the normal build. If Git cannot compare the commit with its parent, the command should fail non-zero and allow the build rather than silently skipping it.
+
+This is a preventive quota-control measure, not a claim that the pre-existing failed Vercel check has turned green. The project domains and last READY deployment were re-read after the setting update and remained present. Verify the next code-changing commit receives a normal successful deployment; if the current Vercel plan limit still blocks builds, the remaining options are to wait for the quota window to reset or have the project owner approve a plan change. No billing change was made.
