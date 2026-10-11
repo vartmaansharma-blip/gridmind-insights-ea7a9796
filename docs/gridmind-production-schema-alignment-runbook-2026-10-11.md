@@ -100,3 +100,29 @@ All tests must use the intended production deployment and legitimately provision
 5. Apply the migrations using the approved workflow; run all post-migration acceptance tests.
 6. Update Phase 1/2/3 trackers with exact SHA, timestamps, evidence, failures, owners, and retest status.
 7. Only then decide whether the live engineering release gate is closed. Customer validation and independently reviewed factory evidence remain separate product-market/value gates.
+
+
+## 7. Read-only discrepancy reconciliation — 2026-10-11
+
+**Finding: repository migrations exist, but the recorded production migration history stops before them.** This is the directly supported cause of the observed version/schema mismatch; the available evidence does not establish why the migrations were not applied (for example, skipped, blocked, or applied to a different environment).
+
+| Contract | Repository evidence | Production evidence in the 2026-10-11 snapshot | Conclusion |
+|---|---|---|---|
+| `public.asset_interventions.implemented_at` | Migration `supabase/migrations/20261010140000_add_intervention_implemented_at.sql` adds nullable `timestamptz` with no default. | Migration inventory ended at `20261010104942 scope_membership_update_policy`; read-only `information_schema.columns` lookup returned no matching column. | Migration version `20261010140000` is later than the recorded live head and is not evidenced as applied in production. |
+| `public.factory_analysis_runs.input_snapshot_sha256` | Migration `supabase/migrations/20261010150000_add_analysis_input_snapshot_sha256.sql` adds nullable text, constraining non-NULL values to `sha256:` plus 64 lowercase hex characters. | Same recorded live head; read-only column lookup returned no matching column. | Migration version `20261010150000` is later than the recorded live head and is not evidenced as applied in production. |
+
+### Why this matters
+- The intervention timestamp migration preserves historical uncertainty: existing records remain NULL; no timestamp should be inferred from status, creation date, or today's date.
+- The analysis persistence function selects `input_snapshot_sha256` as part of its run contract. A missing column can break affected persistence/read paths; exact user-visible failure must be confirmed by controlled testing, not guessed from the schema observation alone.
+- The generated TypeScript database types already include `asset_interventions.implemented_at` and the function contract names `input_snapshot_sha256`; code/type presence is not evidence of production DDL.
+
+### Safe remediation path — prepared, not authorized/executed
+1. Reconfirm project ID and environment and capture a fresh migration inventory and full table metadata immediately before the change; the earlier snapshot is dated evidence, not a live guarantee.
+2. On a reviewed branch/current commit, run migration replay and inspect both migrations, the surrounding schema, constraints, indexes, triggers, grants and RLS. Resolve any drift before production.
+3. Have an authorized project operator and independent second reviewer approve the exact migration SHAs, low-traffic window, tested recovery/restore point, monitoring and written stop conditions.
+4. Apply the two migrations in timestamp order through the approved Supabase migration workflow only. Do not run ad-hoc DDL, disable RLS/append-only controls, or invent backfills.
+5. Verify migration history and exact column definitions; confirm existing rows are preserved and both new fields remain NULL for historical rows absent valid source evidence.
+6. Run analysis digest creation/recomputation, idempotent retry, conflicting-key rejection, null legacy digest handling, intervention date projection, and isolated two-user tenant-isolation tests. Record candidate SHA and evidence.
+7. If inventory, definitions, data, constraints, or security behavior differ from expectation, stop and follow the approved recovery plan. Do not improvise a destructive rollback.
+
+**No production migration, setting change, deployment, or data mutation was performed as part of this read-only reconciliation. Production remains NO-GO until the authorized remediation and acceptance tests pass.**
