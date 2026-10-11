@@ -156,3 +156,8 @@ The [GridMind 30-Day Build and Validation Plan](docs/gridmind-30-day-execution-p
 ## Decision authority
 
 The [GridMind Decision Constitution and Contradiction Register](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) is the canonical guide for resolving conflicts among strategy, product, use-case, website and execution documents. It distinguishes long-term ambition from current commitments and defines how future decisions supersede prior ones.
+
+
+## Cross-category founder opportunity review — 2026-10-11
+
+The [Founder Opportunity Cost Review: B2B vs B2C](docs/founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md) compares GridMind with a creator-led consumer brand, vertical AI, AI services, consumer apps, marketplaces, and other paths. It explicitly treats GridMind as a contender rather than a predetermined winner and proposes a 30-day evidence tournament. Scores are hypotheses, not validated probabilities.
