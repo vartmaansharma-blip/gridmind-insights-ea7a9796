@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { equipmentFieldsFromAssetMetadata } from "./equipment-metadata";
+import { assetMetadataFromEquipmentInput, equipmentFieldsFromAssetMetadata } from "./equipment-metadata";
 
 describe("equipmentFieldsFromAssetMetadata", () => {
   it("restores saved equipment inputs after canonical snapshot reload", () => {
