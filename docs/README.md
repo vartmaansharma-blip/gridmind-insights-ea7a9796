@@ -2,6 +2,8 @@
 
 This directory contains product definitions, engineering contracts, validation procedures, historical audits, and strategy records. Read this index before opening individual documents.
 
+- [Fresh Technical Readiness Snapshot — 2026-10-11](gridmind-technical-readiness-snapshot-2026-10-11.md) — fresh read-only check of production schema, Supabase advisors, data counts, Edge Function status and Vercel deployment; NO-GO for production readiness.
+- [Discovery Execution Kit — 2026-10-11](gridmind-discovery-execution-kit-2026-10-11.md) — truthful outreach drafts, public recruitment routes, interview protocol and tracker; no outreach/interviews claimed.
 - [Supabase Connection & Security Audit — 2026-10-11](gridmind-supabase-connection-security-audit-2026-10-11.md) — verified database checks, least-privilege changes, index fixes, open security and end-to-end connection tests.
 - [Secure Operation & Factory Value Milestone — 2026-10-11](gridmind-secure-operation-and-factory-value-milestone-2026-10-11.md) — current live security evidence, end-to-end acceptance gates, and a preregistered first-factory pilot protocol; neither production workflow nor commercial value is claimed as proven.
 
