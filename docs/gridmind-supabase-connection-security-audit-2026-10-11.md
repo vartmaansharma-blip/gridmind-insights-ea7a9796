@@ -100,3 +100,23 @@ These SQL checks support the basic non-member visibility boundary, but they are 
 6. Recheck Vercel deployment SHA and resolve the separate build-rate-limit blocker before asserting that the currently tested source is the deployed source.
 
 **Status update:** CI and Quality Gate passed after the documentation fix. Latest migration replay and live production end-to-end acceptance remain pending. No production business rows were inserted or modified during the RLS smoke tests.
+
+
+## End-to-end workflow execution checkpoint — 2026-10-11
+
+### Current evidence
+- Latest tracked migration-replay run: [run 38118239514](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118239514), commit `2d498a01c00716a323a6be7b28f4515327f9cce4`. At the latest inspection, the job was still in progress at **Start isolated local Supabase stack**; migration replay and downstream SQL/HTTP tests had not started. Do not treat this as a pass. The workflow job-log fetch returned no log artifact, so the cause of the delay is not yet established.
+- The repository already includes a two-user HTTP acceptance suite in `supabase/tests/factory-analysis-integration.deno.ts`. It covers cross-tenant requests, rejected client-provided measurements/economics, persistence, same-key retry, idempotency conflicts, concurrent retries, recomputation/input-digest verification, direct-table access denial, and oversized-request rejection. The SQL security suite also checks tenant isolation, membership boundaries, append-only analysis persistence, and least-privilege grants. The current workflow must finish successfully for this test coverage to count as executed evidence.
+- The latest Vercel production deployment is marked `READY`: [deployment](https://vercel.com/vartmaansharma-blips-projects/gridmind/BkYZkNwHQJ8Muvyj2gNdEhn5bHBT). It runs commit `a078aafd002935865fa5e6b000fe55a26483d05a`, while GitHub `main` is at `2d498a01c00716a323a6be7b28f4515327f9cce4` (five commits ahead). The intervening comparison showed documentation and a database migration, not application-source changes. Therefore the source SHA is not identical, but no frontend code difference was identified in that comparison. Live sign-in and analysis persistence still have not been verified by this check.
+- Vercel reported no grouped runtime errors in the selected previous 24-hour window. This is useful operational evidence, not proof that the end-to-end workflow works.
+- A fresh Supabase Security Advisor check still reports two warnings: the authenticated `public.create_factory_workspace(text,text,text)` SECURITY DEFINER RPC requires a documented, tested authorization rationale, and leaked-password protection remains disabled. Do not suppress the function warning merely to make the dashboard green. The multi-organization selection behavior should be tested before the product supports users belonging to multiple owner/admin organizations.
+
+### Next actions — in order
+1. Recheck the migration-replay run and inspect step/job logs if it fails or remains stalled. Do not run the same test against production.
+2. If the local stack starts, confirm all migration replay, schema contract, SQL security, and authenticated Edge Function HTTP tests pass on the exact commit.
+3. Investigate the workspace bootstrap RPC's multi-organization behavior and add an isolated regression test before changing its authorization logic.
+4. Verify the deployed user journey with a designated authorized test account and a safe test asset: sign in, select/create workspace, persist an analysis, reload/recompute it, and verify tenant denial. Avoid inserting synthetic business records into the live database.
+5. Resolve leaked-password protection through Supabase Auth settings after reviewing the sign-in flow; this has not been changed by the database tools.
+6. Re-run CI, Quality Gate, migration replay, and Supabase advisors after any code or schema fix, and update this audit with the resulting evidence.
+
+**Current gate:** basic live RLS smoke checks and CI/Quality Gate are positive; migration replay and the production authenticated journey remain unverified. GridMind is not yet cleared as production-ready.
