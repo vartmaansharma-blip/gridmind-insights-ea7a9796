@@ -1,7 +1,7 @@
 # GridMind Next Plan — Creative Direction to Comparable Visual Exploration
 
 **Date:** 2026-10-11  
-**Status:** Active execution plan; creative direction advanced, prototypes not yet built.  
+**Status:** Active execution plan; creative direction and reference audit recorded; three-concept comparison exists; interactive The Cut prototype and commercial validation remain pending.  
 **Authority:** The GridMind Decision Constitution and Contradiction Register takes precedence.  
 **Scope:** Creative direction and bounded concept exploration. This does not authorize a full public-site build or changes to the existing product route.
 
@@ -109,13 +109,17 @@ Before full public-site implementation:
 - Preserve the existing product route and architecture.
 - Update the decision record when evidence changes a decision; keep earlier choices traceable through GitHub history.
 
-## Immediate deliverable
+## Completed milestone — three-concept comparison
 
-Three comparable visual explorations for Clarity Engineered, each with a static opening, a three-frame motion sequence, meaningful interaction, labels, mobile/reduced-motion treatment, and claim boundary.
+The three-concept comparison is committed at [GridMind — The Reveal: Visual Explorations](prototypes/gridmind-the-reveal-explorations.html). This satisfies the initial artifact-creation milestone only. It does not mean a winning direction has been validated, nor that the commercial wedge is selected.
+
+## Current immediate deliverable
+
+Build one continuous, isolated, interactive **The Cut** prototype with a strong static opening, meaningful context selector, evidence/uncertainty boundary, next-investigation question, responsive and reduced-motion behavior, keyboard/touch support, and visible synthetic-data disclosure. Keep `src/routes/index.tsx` unchanged.
 
 ## Exit criterion
 
-This phase is complete when the three explorations can be compared on actual visual evidence, the leading direction is supported by explicit rationale, key risks are documented, and the next prototype has a narrow, testable purpose. The phase is **not** complete because the strategy document is polished or the animation is impressive.
+The design exploration advances when the interactive prototype works across target viewport/input modes, the weighted review and comprehension tests are recorded, capability misunderstandings are checked, and a leading direction is justified by evidence. Commercial validation remains a separate gate. This phase is **not** complete because the strategy document is polished or the animation is impressive.
 
 **Operating rule:** Make the complexity visible; make the evidence legible; make the next decision understandable.
 
@@ -156,3 +160,149 @@ Reviewed the previously selected references across industrial AI, visual storyte
 These are principles to translate, not visual assets or claims to copy. The audit explicitly prohibits fabricated results, unverified integrations, fake live telemetry, unsupported causality, and arbitrary savings claims.
 
 **Next execution step:** build the standalone hero-to-investigation prototype in `docs/prototypes/`, with a meaningful context selector, an evidence/uncertainty boundary, responsive and reduced-motion behavior, and a visible synthetic-data disclaimer. Do not alter `src/routes/index.tsx`. This prototype tests visual communication only; it does not validate the initial commercial wedge or authorize a full public-site build.
+
+
+## Plan improvements — execution control and first-principles validation (2026-10-11)
+
+This section tightens the plan from a creative brief into an execution system. It does not override the GridMind Decision Constitution; where there is a conflict, the Constitution takes precedence.
+
+### Improvement 1 — Run three workstreams in parallel, with explicit dependencies
+
+**A. Commercial discovery (start now; do not wait for design):**
+- Compare the three candidate wedges: operational-loss/constraint investigation; procurement intelligence for one bounded category; and a narrow vertical operations workflow.
+- Score each candidate 1–5 against the following weighted criteria: problem severity/frequency (20%); economic consequence (20%); willingness-to-pay evidence (20%); access to customers and relevant data (15%); credible first-delivery feasibility (15%); expansion potential (10%).
+- For every score, record the evidence, confidence level, critical assumption, and what observation would change the score. Unknowns are not zeroes and should not be disguised as facts.
+- Conduct problem interviews with relevant industrial decision-makers when access is available. Ask about the last real occurrence, existing workaround, time/cost consequences, data availability, current alternatives, budget ownership, procurement friction, and evidence needed to trust a solution.
+- Do not call a candidate validated based only on compliments, hypothetical interest, or a polished prototype. Record interview evidence and willingness-to-pay signals separately.
+
+**B. Product truth and delivery feasibility:**
+- Maintain a capability register with four statuses: demonstrated today; implemented but not yet verified; proposed; explicitly out of scope.
+- For each potential public claim, record the exact wording, supporting evidence, capability status, limitation, and approval decision.
+- Document required inputs, outputs, human review, failure modes, data permissions, security/privacy implications, and manual work needed for the first offer.
+- Do not imply integrations, real-time monitoring, autonomous diagnosis, causal attribution, verified savings, security certifications, or customer proof unless demonstrated and appropriately evidenced.
+
+**C. Brand and experience:**
+- Build the isolated The Cut prototype and test whether the interaction improves comprehension, not just whether it looks polished.
+- Keep the creative direction provisional until the interaction and message are tested. Do not let prototype completion select the commercial wedge by default.
+
+### Improvement 2 — Use a transparent opportunity scorecard
+
+For each candidate, include:
+1. Problem and named buyer/user.
+2. Triggering event and frequency.
+3. Current workaround and alternatives.
+4. Cost of the status quo, including how the estimate was obtained.
+5. Evidence of urgency and willingness to pay.
+6. Data access, quality, permission, and integration burden.
+7. A smallest credible deliverable and its human-in-the-loop boundaries.
+8. Time and resources needed to deliver the first outcome.
+9. Competitive/substitute options, including spreadsheets, consultants, incumbent software, and doing nothing.
+10. Expansion path if the first use case works.
+
+A weighted score is a prioritization aid, not a substitute for judgment. Include confidence and downside risks next to the score. If a candidate scores well because several assumptions are unknown, run tests against those assumptions before committing.
+
+### Improvement 3 — Define measurable prototype acceptance criteria before polishing
+
+The Cut prototype is ready for review only when all of these are true:
+- The initial static frame communicates a coherent industrial investigation without requiring animation.
+- The visitor can change context using an explicit control; the selected state changes annotations and evidence, not only colour.
+- The underlying illustrative measurement remains stable while the contextual layer changes, and the experience does not imply causation from proximity alone.
+- The evidence panel separates observations within the synthetic scenario, possible explanations that are not established, and missing evidence/next checks.
+- The synthetic-data disclaimer remains visible and understandable on desktop and mobile.
+- All essential content remains available with reduced motion and without JavaScript-driven animation.
+- Core controls are keyboard accessible, visibly focused, labelled for assistive technology, and usable by touch.
+- At narrow widths, the evidence and controls remain readable without horizontal overflow.
+- The interaction does not block the core message, hijack scrolling, simulate live telemetry, or require a third-party service.
+- The prototype stays outside the production route and does not alter `src/routes/index.tsx`.
+
+These are acceptance conditions, not a claim that the prototype has already passed them. Record the actual verification method and results. If a browser/device check was not performed, mark it not tested.
+
+### Improvement 4 — Test understanding, recall, and false inferences
+
+Run a lightweight, documented test with people unfamiliar with GridMind. Where possible, include target industrial buyers; label internal-only feedback as internal and provisional.
+
+**Before explaining the prototype, ask:**
+- What do you think this is for?
+- What changed when you used the context control?
+- What do you think GridMind can do today?
+- What evidence is shown, and what remains unknown?
+- What would you inspect or ask next?
+
+After a short unrelated interval, ask what they remember. Track:
+- correct explanation of intended purpose;
+- correct understanding of the interaction;
+- mistaken assumptions about live data, integrations, automation, causation, or verified outcomes;
+- recall of the distinctive signature;
+- accessibility or usability failures;
+- perceived relevance to a real operational problem.
+
+Record participant type, date, task, observed response, issue severity, and resulting change. Do not treat a tiny convenience sample as statistically representative. If the prototype causes repeated false capability assumptions, revise the design and labels before adding polish.
+
+### Improvement 5 — Validate the offer separately from the design
+
+Before approving the production homepage, write a one-page offer brief containing:
+- initial customer profile and buyer;
+- specific triggering problem and current alternative;
+- deliverable and explicit exclusions;
+- required customer inputs/data and permissions;
+- delivery method and human involvement;
+- what success would mean and how it would be measured;
+- likely objections, purchasing path, and CTA;
+- evidence still missing.
+
+A credible first offer may be narrow and partly manual if that is what can be delivered honestly. Do not disguise a proposed service as an existing software capability. Do not publish price, savings, or outcome guarantees without a defensible basis.
+
+### Improvement 6 — Add decision gates with stop/revise rules
+
+| Gate | Required evidence | Pass decision | Stop/revise condition |
+|---|---|---|---|
+| G1: Initial problem | Comparative opportunity scorecard; key assumptions and evidence gaps; initial customer/problem evidence where access permits | Select one provisional wedge for testing | No candidate has a credible problem, reachable buyer, or feasible data path |
+| G2: Product truth | Capability register, delivery boundaries, risk/failure-mode review | Approve only claims that match demonstrated evidence | The proposed promise depends on unbuilt or inaccessible capabilities |
+| G3: Interactive prototype | Acceptance checks, documented technical review, comprehension/false-inference findings | Refine and carry forward a defensible experience | Visitors misunderstand the core idea or infer unsupported capabilities |
+| G4: Offer | Clear buyer, problem, deliverable, inputs, exclusions, measurement, and credible customer-interest evidence | Approve a provisional offer and CTA | The problem is not urgent enough, delivery is not credible, or evidence is too weak |
+| G5: Production website | Approved offer and claims; privacy/security/accessibility/performance review; CTA and data-handling design | Authorize bounded production implementation | Any critical truth, security, privacy, or usability issue remains unresolved |
+
+Passing a gate means the listed evidence exists and has been reviewed; it does not mean every commercial uncertainty disappears.
+
+### Improvement 7 — Instrument the future site around meaningful outcomes
+
+Before launch, define what each conversion event means. Candidate events include qualified inquiry, completed assessment request, booked discovery conversation, or another action that matches the actual offer. Choose only after the offer is validated.
+
+For every event, document:
+- event name and precise definition;
+- user action and required properties;
+- analytics/privacy implications and consent requirements;
+- baseline availability and reporting owner;
+- what decision the metric will inform.
+
+Do not optimize for raw clicks or animation engagement if they do not predict qualified demand. Avoid collecting unnecessary personal or factory-sensitive data.
+
+### Improvement 8 — Make the project record operational
+
+At the end of every substantive work session, update the relevant GitHub record with:
+- decision/change and rationale;
+- evidence and confidence;
+- assumptions and unresolved questions;
+- files/code changed and commit link;
+- tests actually run and results;
+- failures or rejected alternatives;
+- next action and its completion condition;
+- conditions that would trigger reconsideration.
+
+Keep decisions traceable rather than overwriting uncertainty with certainty. Distinguish **planned**, **implemented**, **tested**, and **validated**. A file or code commit proves implementation of an artifact, not customer demand or product effectiveness.
+
+### Ranked next actions
+
+1. **Build The Cut as one continuous isolated interactive prototype.** This is the next tangible design deliverable and should be evaluated against Improvement 3 before visual embellishment.
+2. **Create the opportunity scorecard for the three commercial wedges.** Populate it with evidence and confidence; explicitly mark unknowns rather than inventing scores.
+3. **Audit the current product against the capability register.** Separate what works now from what is proposed and what cannot yet be promised.
+4. **Run comprehension and false-inference tests on the prototype.** Record raw observations and resulting revisions.
+5. **Conduct customer/problem discovery in parallel.** Use the same interview structure across candidates so the comparison is meaningful.
+6. **Write the first-offer brief only after evidence narrows the choice.**
+7. **Authorize production-site work only after G1–G5 are reviewed.**
+
+### Current state after this plan revision
+
+- **Recorded:** creative direction, reference roles, claim guardrails, three-concept comparison, and the next-prototype brief.
+- **Not yet established:** a winning visual direction, validated commercial wedge, willingness to pay, final offer, production-ready claims, or production-site authorization.
+- **Next deliverable:** a working isolated The Cut prototype plus an evidence-backed opportunity scorecard. Do not claim either is complete until the artifact exists and the relevant checks have actually been performed.
