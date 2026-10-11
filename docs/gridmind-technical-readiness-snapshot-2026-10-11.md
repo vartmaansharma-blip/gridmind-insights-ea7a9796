@@ -137,3 +137,10 @@ Read-only catalog checks found the live `ensure_rls` event trigger enabled and `
 The live SECURITY DEFINER `create_factory_workspace` function requires an authenticated user and uses an empty search path. It selects the first active owner/admin organization by ID when the user belongs to multiple such organizations; test that deterministic selection and authorization behavior in an isolated environment with an independent reviewer. The Security Advisor warning remains open. Both expected schema columns remain absent.
 
 Disposition: bootstrap capability present but migration identity unaligned; seven migration bodies likely represented under changed version IDs but not yet proven identical; two additive column migrations not evidenced as applied and columns absent. Reconcile per migration and live object, never bulk replay or hand-edit migration history. No production changes were made; production remains **NO-GO**.
+
+
+## Read-only grants/policy spot-check — 2026-10-11
+
+Current table grants and selected policy definitions broadly match the intent of the seven migration files recorded under changed live version IDs: expected authenticated CRUD grants are present for the listed factory workflow tables; factory and asset policies are member-read / owner-admin-write; organization membership policies are explicitly authenticated and admin-scoped; factory analysis runs allow service-role persistence and authenticated member reads/inserts with creator identity checks. This spot-check is not a complete migration semantic diff and does not prove tenant isolation.
+
+The remaining technical sequence is a complete migration-by-migration disposition, then non-production tests for workspace RPC behavior with zero/one/multiple active owner/admin memberships, two-user cross-tenant reads/writes, and end-to-end persistence. The missing implemented_at and input_snapshot_sha256 columns remain unresolved. No production mutation occurred; production remains NO-GO.
