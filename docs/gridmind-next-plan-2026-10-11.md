@@ -118,3 +118,24 @@ Three comparable visual explorations for Clarity Engineered, each with a static 
 This phase is complete when the three explorations can be compared on actual visual evidence, the leading direction is supported by explicit rationale, key risks are documented, and the next prototype has a narrow, testable purpose. The phase is **not** complete because the strategy document is polished or the animation is impressive.
 
 **Operating rule:** Make the complexity visible; make the evidence legible; make the next decision understandable.
+
+## Execution update — 2026-10-11
+
+### Step 2 deliverable created
+An interactive, standalone HTML comparison of three materially different executions of **The Reveal** is now committed at [GridMind — The Reveal: Visual Explorations](prototypes/gridmind-the-reveal-explorations.html).
+
+The prototype contains:
+- **The Context Snap** — time-series context alignment;
+- **The Layer Cut** — a selectable abstract industrial-system layer view;
+- **The Evidence Fold** — a proposed action opened into observed, assumed, and missing evidence.
+
+Each includes an interactive control, a distinct visual signature, a claim boundary, and a visible synthetic/illustrative-data disclaimer. It is a concept comparison, not a production page, and does not change `src/routes/index.tsx`.
+
+### Next step — review and test the three concepts
+1. Open the HTML file from GitHub and compare the three concepts at desktop and mobile widths.
+2. Score each against the existing weighted rubric; record reasons and unresolved risks, not just a total.
+3. Ask a small number of people unfamiliar with GridMind to view the concepts without an explanation first. Test what they think GridMind does, what they remember, and what they believe is being promised. If relevant industrial buyers are unavailable, label feedback as internal and provisional.
+4. Select a leading concept only if comprehension, distinctiveness, and credibility pass. Otherwise revise; do not force a winner.
+5. In parallel, continue validating the initial commercial wedge. The visual exercise does not settle the offer or authorize the full public website.
+
+**Current status:** tangible concepts exist; no winning direction has been validated; production implementation remains gated.
