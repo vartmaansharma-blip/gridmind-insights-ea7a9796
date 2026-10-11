@@ -338,3 +338,62 @@ Created [GridMind Initial Commercial Wedge Scorecard](gridmind-initial-commercia
 5. Keep the production-site gate closed until product truth, initial offer, claims, and privacy/security/accessibility checks are reviewed.
 
 **Current state:** The isolated prototype and commercial-discovery framework now exist in GitHub. The artifact is implemented but not browser-tested; the market hypotheses remain unvalidated. The next step is verification and real-world evidence, not more abstract planning.
+
+
+## Priority reset — commercial viability before further visual polish (2026-10-11)
+
+### Why the priority changed
+
+A factory saving only ₹2,000–₹3,000 per month may not support a viable GridMind offer. The question is not simply whether GridMind can produce some savings; it is whether a specific buyer receives enough credible incremental value to justify the fee, adoption burden, risk, and change-management effort—and whether GridMind can deliver that outcome at sustainable cost.
+
+This is now a **critical commercial thesis risk**. A real problem is not automatically a good business. Do not defend the concept by inflating savings, inventing a higher-value use case, or treating a prototype as proof. If the economics are weak, narrow or abandon the candidate and test another one.
+
+The scorecard now includes a commercial economics gate: [GridMind Initial Commercial Wedge Scorecard](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md#commercial-economics-gate--required-before-choosing-a-wedge).
+
+### Revised next milestone
+
+**Milestone: produce an evidence-backed commercial viability decision for one narrowly defined industrial problem.** The deliverable is not a prettier homepage. It is a decision record that shows the problem, buyer, status quo, conservative incremental value, purchase path, data access, delivery process, and plausible GridMind unit economics—or clearly concludes that current evidence is insufficient.
+
+### Execution order
+
+1. **Define reachable buyer segments.** List specific people we can realistically approach, their roles, likely operating context, and how contact is possible. Do not claim access until confirmed.
+2. **Run problem-first discovery.** Ask for the last real occurrence, frequency, current workaround, operational and financial consequence, existing alternatives, decision owner, and what remains unresolved. Do not lead with the GridMind concept or ask only whether someone likes AI.
+3. **Quantify economics conservatively.** Record low/base/high estimates, sources, attribution, recurrence, confidence, buyer hurdle, adoption costs, and a path to measure the outcome. Treat a few thousand rupees of monthly benefit as a warning when the delivery model is high-touch.
+4. **Map current alternatives.** Include existing staff/processes, spreadsheets, incumbent industrial software, vendors/consultants, and doing nothing. GridMind must beat the buyer's real alternative—not an imaginary empty market.
+5. **Check data and delivery feasibility.** Identify the minimum records needed, who owns them, permission constraints, data quality, human/domain review, failure modes, and the smallest useful output that can be delivered honestly.
+6. **Model GridMind unit economics.** Estimate qualification/sales, onboarding, expert time, support, hosting/inference, integrations, QA/rework, contract value, gross margin, and founder hours. Mark estimates as estimates until observed.
+7. **Test willingness to pay behaviorally.** Seek a specific next step with a credible buyer: a scoped proposal discussion, budget-owner introduction, permitted sample-data review, or paid-pilot discussion. Compliments and hypothetical interest do not validate demand.
+8. **Compare candidates A/B/C only after evidence collection.** Use the existing weighted scorecard, attach confidence and source to each score, and keep unknowns visible. Select a provisional wedge only if it clears the economics and feasibility gates.
+9. **Then shape the first offer and site narrative.** Explain the verified pain, specific deliverable, required inputs, exclusions, measurement method, and CTA. Keep all claims within demonstrated product truth.
+10. **Resume visual iteration only when it answers a real commercial communication need.** The existing prototype remains a communication experiment, not a market signal. Browser/device verification is still outstanding and must be recorded honestly.
+
+### Decision thresholds without fake precision
+
+Do not impose one universal rupee threshold across all factories or business models. Establish the threshold with the actual buyer and economics:
+- Is the conservative incremental value material relative to fees and adoption cost?
+- Does the outcome clear that buyer's required return, risk reduction, or payback?
+- Is the problem frequent enough for recurring revenue, or should it be a paid one-off investigation?
+- Can GridMind retain adequate gross profit after real delivery/support costs?
+- Does the solution remain valuable after existing tools and normal process improvements are accounted for?
+
+If these cannot be answered, the decision is **not yet validated**—not “yes” by optimism and not “no” solely because one early estimate is small.
+
+### Exit criteria for this milestone
+
+The milestone is complete only when the project record contains:
+- at least one real, recent problem narrative from a relevant buyer, or an explicit record that buyer access is still a blocker;
+- a baseline/workaround and comparable alternatives;
+- a transparent conservative value estimate with uncertainty and attribution;
+- the adoption burden, budget owner, buying process, and actual willingness-to-pay signal (or a clear absence of one);
+- data permissions and a credible minimum delivery method;
+- a first-pass GridMind cost-to-serve and gross-margin model;
+- an evidence-backed decision to proceed, narrow, test further, or reject the candidate.
+
+No such buyer evidence is being claimed by this plan update. The immediate work is to collect it.
+
+### Current status after priority reset
+
+- **Recorded:** concern about low monthly value as a critical viability risk; commercial economics gate and required evidence fields; updated execution sequence.
+- **Still unknown:** the strongest buyer/problem, value magnitude, willingness to pay, data access, delivery costs, and whether any candidate supports a sustainable business.
+- **Not authorized:** unsupported savings claims, choosing a wedge without evidence, or advancing to a full public homepage because the visual prototype exists.
+- **Next action:** identify reachable buyers and start problem-first discovery; update the scorecard after every actual conversation. In parallel, make no further aesthetic expansion until a specific communication issue justifies it. Keep browser verification of The Cut as a bounded technical check, not the primary milestone.
