@@ -441,3 +441,14 @@ Added [GridMind Problem Failure Analysis and Next Experiments](gridmind-problem-
 
 ### Evidence boundary
 Desk research supports hypothesis generation only. It does not validate customer demand, price, savings, product reliability, or a defensible moat. No customer interviews, factory records, data permissions, or paid commitments are claimed. The public website and visual prototype remain secondary to the next real buyer conversation.
+
+
+## Execution update — manufacturing workflow stress test (2026-10-11)
+
+Added [Manufacturing Expert Simulation and Wedge Stress Test](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md). This is expert-style desk analysis and a synthetic example, not first-hand factory experience or customer validation.
+
+The analysis decomposes a possible incident workflow into event capture, identity matching, time alignment, context retention, conflict resolution, repeat investigation, action closure, cost attribution, knowledge retention, and audit/customer pressure. It also records the competitive reality: factory analytics, CMMS, ERP/MES, and QMS/RCA products already exist, so GridMind cannot differentiate on “AI root cause analysis” alone.
+
+**Sharper hypothesis to test:** for one defined class of recurring quality or production incident, create a traceable investigation packet from customer-approved records that reduces evidence-assembly/review effort without claiming autonomous diagnosis.
+
+**Next gate:** compare this output against one real customer's current workflow; measure elapsed time, completeness, reviewer corrections, delivery labor, and the buyer's concrete next step. If simpler process improvement or existing tools solve the problem better, change or reject the wedge. No customer validation or product results are claimed.
