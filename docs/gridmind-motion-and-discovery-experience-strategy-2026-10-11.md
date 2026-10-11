@@ -408,3 +408,60 @@ Navigation, section transitions, and micro-interactions support these four momen
 
 ### Decision status
 **No reference-derived visual direction is approved yet.** The next artifact should be three distinct hero storyboards, each showing the first frame, reveal sequence, transition into the investigation, mobile/static fallback, and the specific buyer question it helps answer. Choose based on comprehension, credibility, distinctiveness, feasibility, and buyer feedback—not visual spectacle alone.
+
+
+---
+
+## 2026-10-11 Creative-direction correction — Clarity Engineered
+
+**Status:** This dated amendment supersedes any conflicting earlier visual guidance in this file. It does not supersede the Decision Constitution's commercial, product-readiness, safety, data-rights, or implementation gates.
+
+### Why this correction is needed
+
+The earlier motion strategy moved too quickly toward a dark field with disconnected signals, a generic connection sequence, and a broad “everything is connected” message. Those are possible devices, but they risk resembling familiar AI/network visuals and do not by themselves establish a distinctive GridMind identity. A sequence of motion stages is not a complete art direction.
+
+### Current leading direction
+
+Advance **Clarity Engineered** as the leading creative direction for exploration. Its purpose is to make the hidden logic of industrial complexity visible through precise, evidence-aware storytelling.
+
+This direction combines:
+- discovery of relevant operational context;
+- the precision of an instrument that distinguishes evidence from assumptions;
+- selective movement that reveals how context changes interpretation.
+
+It is a creative direction only. It does not validate the product proposition, select the first commercial wedge, or approve a full marketing-site build.
+
+See [GridMind Creative Direction — Clarity Engineered](gridmind-creative-direction-clarity-engineered-2026-10-11.md) for the canonical design brief and acceptance criteria.
+
+### Revised signature motion grammar
+
+Use **Reveal → Relate → Investigate → Resolve** as semantic principles:
+1. Reveal a meaningful layer or contextual fact.
+2. Relate selected evidence on a shared scale, frame, or timeline.
+3. Investigate one question while retaining enough context to stay oriented.
+4. Resolve the view into observed facts, hypotheses, missing evidence, and a possible next decision.
+
+Do not render these principles as a generic vertical rail or force every page into the same four-step animation. Motion must change meaning or capability, not merely move objects.
+
+### Corrected visual constraints
+
+- A dark background and glowing data points are not the default direction. Test warm/mineral neutrals, graphite, and one purposeful signal accent.
+- A node network is not a signature unless the relationships are meaningful, specific, and visually ownable.
+- Do not treat 3D, cinematic movement, or scroll effects as inherently premium. Use the simplest technique that achieves the intended result.
+- The static opening frame must have a strong, recognisable composition.
+- Every visual scenario must label synthetic data and separate observation, hypothesis, missing evidence, and verified outcomes accurately.
+- Preserve reduced-motion, keyboard/touch, mobile, readability, and performance requirements.
+- Do not imply integrations, live telemetry, causal diagnosis, savings, or deployed capability that has not been demonstrated.
+
+### Next deliverable
+
+Create three comparable visual explorations of the same GridMind design philosophy:
+1. **Context Arrives** — a stable measurement becomes more interpretable as context appears.
+2. **The Operation in Layers** — a simplified operational composition reveals a relevant layer.
+3. **Evidence Changes the Decision** — a potential action is examined through observations, assumptions, missing evidence, and trade-offs.
+
+Each must have a static opening, three-frame motion storyboard, meaningful interaction, clear labels, mobile/reduced-motion treatment, and a claim boundary. Score using the rubric in the Clarity Engineered brief. The concepts remain provisional until visual comparison and, where possible, target-buyer comprehension testing.
+
+### Unchanged strategic gates
+
+The first commercial wedge remains undecided. Product truth, honest offer, and claim-to-evidence mapping remain prerequisites for the full public website. The current application route must remain intact. A marketing simulation is not product proof.
