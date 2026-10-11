@@ -218,3 +218,23 @@ This is a spot-check of current grants and selected policies, not a complete sem
 ### Next safe action
 
 Produce a complete per-migration disposition table and arrange non-production two-user tests. No production mutation or migration-history edit is authorized by this read-only result.
+
+
+## Per-migration disposition matrix — read-only review, 2026-10-11
+
+| Repository migration | Live evidence | Disposition |
+|---|---|---|
+| `20261006030000_gridmind_rls_auto_enable_bootstrap.sql` | `ensure_rls` event trigger is enabled and `public.rls_auto_enable()` exists with matching high-level behavior. | **Functionally represented; version identity unresolved.** Do not replay just to align history. Compare full function definition/ACL and migration runner semantics before deciding whether to repair history or repository migration strategy. |
+| `20261009130000_gridmind_factory_analysis_runs_v1.sql` | Table, expected core constraints, append-only trigger, service-role persistence grants, member read/insert policies and related indexes exist. Extra indexes also exist. | **Core effects represented; exact body equivalence unproven.** The two column migrations below are separate and remain absent. |
+| `20261010100000_restore_authenticated_factory_api_privileges.sql` | Read-only grants show expected authenticated SELECT/INSERT/UPDATE privileges for the named factory workflow tables. | **Spot-check matches.** Complete semantic diff of all grants and API-exposed objects still required. |
+| `20261010103000_grant_authenticated_factory_profile_updates.sql` | `authenticated` has UPDATE on `factories`. | **Observed effect matches.** |
+| `20261010104000_grant_authenticated_factory_asset_writes.sql` | `authenticated` has INSERT/UPDATE on `factory_assets`; owner/admin RLS policies exist. | **Observed effect matches.** Tenant behavior still needs two-user tests. |
+| `20261010110000_harden_organization_membership_rls.sql` | `private.is_org_admin` exists; organization membership policies use it and are scoped to authenticated. Function ACL shows authenticated EXECUTE. | **Observed effect broadly matches.** Confirm no unintended ACLs and test real authorization/recursion behavior. |
+| `20261010120000_revoke_public_structural_table_privileges.sql` | Catalog spot-check returned no TRUNCATE/REFERENCES/TRIGGER grants to PUBLIC, anon, authenticated or service_role for the checked public tables. | **Spot-check matches.** Query should be repeated across all public tables in final acceptance. |
+| `20261010130000_scope_membership_update_policy.sql` | `admins update organization_members` policy is scoped to `{authenticated}`. | **Observed effect matches.** |
+| `20261010140000_add_intervention_implemented_at.sql` | `asset_interventions.implemented_at` is absent. | **Not applied or not represented.** Safe additive nullable column; historical values must remain NULL. Requires approved migration reconciliation. |
+| `20261010150000_add_analysis_input_snapshot_sha256.sql` | `factory_analysis_runs.input_snapshot_sha256` and its format constraint are absent. | **Not applied or not represented.** Safe additive nullable column plus check constraint; historical hashes must remain NULL. Requires approved migration reconciliation. |
+
+### Reconciliation conclusion
+
+The evidence supports two different classes of mismatch: (a) version identity drift where most inspected effects are already present, and (b) two additive schema changes whose columns and associated check constraint are absent. The bootstrap's live capability is present even though its version prefix is missing. The safe next step is to agree on the canonical migration-history strategy and test it on a restored/staging copy first; never bulk replay migrations or manually manufacture history entries. A complete ACL/function-body diff and authenticated two-tenant tests remain required before production approval.
