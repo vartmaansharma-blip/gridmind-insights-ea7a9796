@@ -1,5 +1,8 @@
 # Founder Opportunity Cost Review: B2B vs B2C — 2026-10-11
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document preserves strategic analysis, not an independent schedule, candidate list, gate system, or execution commitment. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files.
+
+
 **Status:** Decision-support analysis; not a market validation result.  
 **Decision:** Do not declare GridMind the winner yet. Keep it as one contender and run a time-boxed comparison against a celebrity-/creator-led consumer brand and other business models before committing major build time or money.  
 **Founder assumptions:** India-based, young founder, limited personal capital, likely solo or very small team, strong interest in AI/technology/business, no verified celebrity audience or distribution asset documented in this project. These assumptions materially affect the ranking.  
