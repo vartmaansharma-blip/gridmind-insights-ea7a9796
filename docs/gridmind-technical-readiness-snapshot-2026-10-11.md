@@ -91,3 +91,18 @@ The READY deployment inspected was built from application commit `50c57c89e48b80
 - [Secure Operation & Factory Value Milestone](gridmind-secure-operation-and-factory-value-milestone-2026-10-11.md)
 - [Production Schema Alignment Runbook](gridmind-production-schema-alignment-runbook-2026-10-11.md)
 - [Live Acceptance Runbook](gridmind-live-acceptance-runbook.md)
+
+
+## Read-only root-cause update — 2026-10-11
+
+The repository contains the two additive migrations named in the schema-alignment runbook:
+- `20261010140000_add_intervention_implemented_at.sql` adds nullable `public.asset_interventions.implemented_at timestamptz` with no default.
+- `20261010150000_add_analysis_input_snapshot_sha256.sql` adds nullable `public.factory_analysis_runs.input_snapshot_sha256 text` and a check allowing NULL or `sha256:` followed by 64 lowercase hexadecimal characters.
+
+The recorded production migration inventory ends at `20261010104942 scope_membership_update_policy`, before both repository migration versions. The earlier read-only live column query returned no rows for either field. Therefore the supported explanation is **migration-history/version lag: these repository migrations are not evidenced as applied to the inspected production database**. The reason they are absent is not established. Recheck live state before any change because this snapshot may become stale.
+
+The Edge Function `persist-factory-analysis` declares `input_snapshot_sha256` in its stored-run type and selected column list, so the missing column is a credible persistence compatibility risk. This does not prove which live user path fails; a controlled test is still required. The intervention migration intentionally leaves historical timestamps NULL; do not synthesize dates. The safe remediation and stop conditions are recorded in the [Production Schema Alignment Runbook](gridmind-production-schema-alignment-runbook-2026-10-11.md).
+
+**Discovery route:** the existing execution kit identifies ACMA Eastern Region's public contact page as a potential route to ask for an appropriate event/research networking channel: https://acma.in/contact.php. This is a documented public route, not a verified personal introduction, endorsement, or evidence of buyer access. No contact has been sent. First choice remains a trusted adult/professional introduction, but no named person is yet verified in the project record. Do not claim an introduction until an actual consenting contact and route are confirmed.
+
+No production mutation, deployment, or outreach was performed during this pass. Production remains **NO-GO** pending authorized migration and verified acceptance tests.
