@@ -128,3 +128,12 @@ A read-only comparison found 33 SQL files under the current repository migration
 The name correspondence does not prove SQL-body identity or explain how/why version IDs changed. The bootstrap's effects are also not established by migration inventory alone. Inspect those SQL bodies and compare live object/privilege/function definitions before planning a change. Do not blindly replay migrations or edit history manually. See the [Production Schema Alignment Runbook](gridmind-production-schema-alignment-runbook-2026-10-11.md) for the full reconciliation and stop conditions.
 
 No production DDL, migration-history change, settings change, deployment or outreach was performed. Production remains **NO-GO** pending reviewed schema reconciliation and authenticated acceptance testing.
+
+
+## Object-level preflight — 2026-10-11
+
+Read-only catalog checks found the live `ensure_rls` event trigger enabled and `public.rls_auto_enable()` present, so the bootstrap migration's intended capability exists despite its missing version-prefix entry. Exact SQL-body equivalence is unproven; do not replay the bootstrap just to align history. The live catalog also contains `private.is_org_admin`, `private.is_factory_member_v2`, `private.reject_factory_analysis_run_mutation`, an append-only trigger on `factory_analysis_runs`, and relevant RLS policies. Existence does not prove safe authorization or cross-tenant isolation.
+
+The live SECURITY DEFINER `create_factory_workspace` function requires an authenticated user and uses an empty search path. It selects the first active owner/admin organization by ID when the user belongs to multiple such organizations; test that deterministic selection and authorization behavior in an isolated environment with an independent reviewer. The Security Advisor warning remains open. Both expected schema columns remain absent.
+
+Disposition: bootstrap capability present but migration identity unaligned; seven migration bodies likely represented under changed version IDs but not yet proven identical; two additive column migrations not evidenced as applied and columns absent. Reconcile per migration and live object, never bulk replay or hand-edit migration history. No production changes were made; production remains **NO-GO**.
