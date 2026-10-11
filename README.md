@@ -187,3 +187,7 @@ The [Current Product Rating](docs/gridmind-product-rating-2026-10-11.md) scores 
 ## Current execution plan — 2026-10-11
 
 The [30-Day GridMind Execution Plan](docs/gridmind-execution-plan-30-day-2026-10-11.md) defines technical release gates, buyer-discovery targets, a permissioned test path, weekly milestones, and day-30 go/no-go decisions. Targets are not claims of completed work; production remains NO-GO until the documented gates pass.
+
+## Strategic leverage map — 2026-10-11
+
+The [GridMind Strategic Leverage Map](docs/gridmind-strategic-leverage-map-2026-10-11.md) covers product direction, out-of-the-box distribution, a selective app/tool stack, potential investor and non-dilutive funding routes, advisors, defensibility, and a 90-day roadmap. These are hypotheses and targets—not claims of customer, investor, or partner commitments.
