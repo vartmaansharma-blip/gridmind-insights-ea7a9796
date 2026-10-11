@@ -106,3 +106,12 @@ The Edge Function `persist-factory-analysis` declares `input_snapshot_sha256` in
 **Discovery route:** the existing execution kit identifies ACMA Eastern Region's public contact page as a potential route to ask for an appropriate event/research networking channel: https://acma.in/contact.php. This is a documented public route, not a verified personal introduction, endorsement, or evidence of buyer access. No contact has been sent. First choice remains a trusted adult/professional introduction, but no named person is yet verified in the project record. Do not claim an introduction until an actual consenting contact and route are confirmed.
 
 No production mutation, deployment, or outreach was performed during this pass. Production remains **NO-GO** pending authorized migration and verified acceptance tests.
+
+
+## Fresh live recheck and cause refinement — 2026-10-11
+
+A fresh read-only check reconfirmed project `bvqmvgbfqhgczwbvlqkk` is `ACTIVE_HEALTHY` on PostgreSQL 17.11 in `ap-south-1`. Current production migration inventory includes versions `20261011062242` and `20261011062256`; the two expected columns remain absent on a fresh information-schema query.
+
+**Correction to the initial explanation:** because production contains later migration versions than repository migrations `20261010140000` and `20261010150000`, this is not merely a production migration head lag. Evidence supports an **out-of-order/missing migration-history or schema-drift discrepancy**. The precise mechanism is unknown and must not be guessed. Do not blindly run earlier migrations, manually insert migration-history rows, or bypass the normal migration runner. The runbook now requires an authorized operator and independent reviewer to reconcile the full migration directory/history and decide the approved path before any production DDL.
+
+No production changes or outreach were performed. The production release gate remains **NO-GO**.
