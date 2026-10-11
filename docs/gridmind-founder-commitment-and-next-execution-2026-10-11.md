@@ -1,5 +1,8 @@
 # GridMind Founder Commitment and Next Execution — 2026-10-11
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful analysis, but its old schedules, candidate letters, gates, engineering priorities, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
+
+
 ## Commitment
 
 GridMind remains the leading long-term industrial-AI thesis for now. This is a commitment to disciplined validation, not blind loyalty to a product hypothesis.
