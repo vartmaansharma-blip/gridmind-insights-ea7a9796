@@ -136,3 +136,26 @@ The first wedge remains undecided. Compare: (1) industrial loss detection and ve
 Evaluate buyer-owned consequence, recurrence, baseline/counterfactual, permitted data access, time to result, superiority to current tools and simple process fixes, reviewer trust, delivery burden, repeatability, and expansion potential. Potential long-term advantages—industrial context resolution, traceable evidence, permissioned intervention/outcome data, repeatable workflows, integration know-how, governance, and distribution—must be earned rather than assumed.
 
 See [Bigger Problem Thesis](gridmind-bigger-problem-thesis-2026-10-11.md). No territory or wedge is validated by this strategic analysis.
+
+
+## Canonical conceptual clarification — 2026-10-11
+
+**Previous state:** GridMind was described broadly as an industrial intelligence and value-realization platform. That remains the long-term destination, but by itself it is too abstract to govern the first product.
+
+**Clarification:** GridMind's product contract is to help one industrial decision owner make one consequential operating decision better by turning authorized, imperfect evidence into a traceable finding, a reviewed next action, and a measurable outcome. Platform breadth is earned only by repeating this loop across validated workflows.
+
+### Binding consequences
+1. A dashboard, chatbot, anomaly, report, or plausible AI explanation is not by itself customer value.
+2. Every proposed first use case must name a user, economic buyer, triggering event, decision, current workaround, observable failure, required authorized data, bounded deliverable, qualified reviewer, outcome metric, and reason to choose GridMind over alternatives.
+3. The system must distinguish source observations, calculations, hypotheses, causal claims, recommendations, approved interventions, estimated opportunity, and verified outcomes.
+4. If the evidence is insufficient, contradictory, stale, incomparable, or unauthorized, GridMind must disclose the gap or stop; it must not manufacture certainty.
+5. Consequential operational action remains under the customer's qualified human review, authorization, and safety/change-control process. No autonomous industrial control is implied.
+6. Economic outputs require traceable inputs, explicit assumptions, versioned deterministic calculations, and uncertainty. Estimated opportunity is not realized savings.
+7. Do not build universal ontology, broad integrations, multi-vertical modules, or a new marketing surface merely to make the concept feel complete. Build only the smallest workflow justified by evidence.
+8. Do not pick a first wedge because a specification already exists or implementation looks easiest. Compare candidates against the same buyer, data, outcome, and delivery gates.
+9. If an existing tool, expert, or simpler process is sufficient, state that plainly; GridMind must demonstrate incremental value rather than force AI into the workflow.
+10. A reusable component or moat is only a hypothesis until multiple permissioned cases demonstrate repeatability and customers accept the value.
+
+**Immediate execution effect:** The 30-day goal remains to select, narrow, or reject the first commercial workflow based on real evidence. Product definition is now more precise; product-market fit, customer demand, live workflow correctness, and commercial readiness remain unproven.
+
+**Affected canonical documents:** `gridmind-product-definition.md`, `gridmind-30-day-execution-plan-2026-10-10.md`, `gridmind-initial-commercial-wedge-scorecard-2026-10-11.md`, `gridmind-founder-commitment-and-next-execution-2026-10-11.md`.
