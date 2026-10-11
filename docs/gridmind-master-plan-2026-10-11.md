@@ -919,3 +919,12 @@ PR #37 remains draft and unmerged until a controlled authenticated **non-product
 ### Follow-up validation note — 2026-10-11
 
 The corrected-head CI and Quality Gate passes above were for commit `35a10356a6b06f26c62503f2d5e336fbde98ee2b). During final source verification, the new persistence-payload round-trip test was found not to be present in that commit, so it was added explicitly in follow-up commit `bb08ae58748bcc152522676a1d72e679d5bfe898`. Do not treat the earlier workflow passes as validation of this newest test commit. The new head must pass fresh CI/Quality Gate and migration replay before the candidate is considered automated-test clean.
+
+
+### Latest-head CI refresh — 2026-10-11
+
+For newest PR #37 head `bb08ae58748bcc152522676a1d72e679d5bfe898` (which includes the explicit persistence-payload round-trip test):
+- CI [38152967763](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152967763): **passed**.
+- Quality Gate [38152967796](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152967796): still in progress at last check.
+- Migration Replay [38152967805](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152967805): pending at last check.
+- This does not change the no-production-write and authenticated UI save → reload acceptance gates.
