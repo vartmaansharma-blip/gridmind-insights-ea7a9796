@@ -115,3 +115,16 @@ A fresh read-only check reconfirmed project `bvqmvgbfqhgczwbvlqkk` is `ACTIVE_HE
 **Correction to the initial explanation:** because production contains later migration versions than repository migrations `20261010140000` and `20261010150000`, this is not merely a production migration head lag. Evidence supports an **out-of-order/missing migration-history or schema-drift discrepancy**. The precise mechanism is unknown and must not be guessed. Do not blindly run earlier migrations, manually insert migration-history rows, or bypass the normal migration runner. The runbook now requires an authorized operator and independent reviewer to reconcile the full migration directory/history and decide the approved path before any production DDL.
 
 No production changes or outreach were performed. The production release gate remains **NO-GO**.
+
+
+## Exact migration identity reconciliation — 2026-10-11
+
+A read-only comparison found 33 SQL files under the current repository migration directory and 30 recorded live migrations. The issue is more specific than a simple head mismatch:
+
+- `20261006030000_gridmind_rls_auto_enable_bootstrap.sql` has no live entry with that version prefix.
+- The two migrations `20261010140000_add_intervention_implemented_at.sql` and `20261010150000_add_analysis_input_snapshot_sha256.sql` have no corresponding live version entries, and the expected columns remain absent.
+- Seven migration files appear in live history under different version IDs, based on matching migration names: repository versions `20261009130000`, `20261010100000`, `20261010103000`, `20261010104000`, `20261010110000`, `20261010120000`, `20261010130000` correspond by name to live versions `20261010075630`, `20261010081740`, `20261010082541`, `20261010082706`, `20261010103936`, `20261010104457`, `20261010104942`, respectively.
+
+The name correspondence does not prove SQL-body identity or explain how/why version IDs changed. The bootstrap's effects are also not established by migration inventory alone. Inspect those SQL bodies and compare live object/privilege/function definitions before planning a change. Do not blindly replay migrations or edit history manually. See the [Production Schema Alignment Runbook](gridmind-production-schema-alignment-runbook-2026-10-11.md) for the full reconciliation and stop conditions.
+
+No production DDL, migration-history change, settings change, deployment or outreach was performed. Production remains **NO-GO** pending reviewed schema reconciliation and authenticated acceptance testing.
