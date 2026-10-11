@@ -5,12 +5,11 @@ import { ArrowDownRight, ArrowRight, Check, ChevronRight, CircleHelp, ClipboardC
 import { getCanonicalOpportunities } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
 import { inr, inrCompact } from "@/lib/energy/format";
-import { EmptyState, PageHeader, Panel, DemoBadge } from "@/components/gm/bits";
+import { EmptyState, PageHeader, DemoBadge } from "@/components/gm/bits";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { buildIntelligenceOpportunities } from "@/lib/energy/intelligence";
 import type { Factory } from "@/lib/energy/types";
 import type { Analysis } from "@/lib/energy/analysis";
-import type { IntelligenceOpportunity } from "@/lib/energy/intelligence";
 
 export const Route = createFileRoute("/opportunities")({
   head: () => ({ meta: [{ title: "Opportunity workspace — GridMind" }] }),
