@@ -147,3 +147,37 @@ No production migration or other mutation was performed. Continue to require fre
 The fresh inventory shows live migrations `20261011062242` and `20261011062256`, which are later than the repository migration versions `20261010140000` and `20261010150000`, while the two expected columns remain absent. Therefore this is **not accurately described as a simple production migration head lag**. The current evidence is more precisely an **out-of-order/missing migration-history or schema-drift discrepancy**: later migration versions are present, but these earlier repository migrations and their columns are absent. The exact mechanism (migration files omitted from an applied release, history manipulation, manual drift, or another cause) is not established by the available evidence.
 
 Before remediation, the authorized operator must compare the complete migration directory and recorded production history, verify the current branch/commit and migration naming, and determine whether the migration runner will attempt the two earlier versions safely. Do not blindly apply migrations or insert migration-history rows manually. If the normal runner cannot safely reconcile this gap, stop and prepare a reviewed, explicit reconciliation plan with the database owner and independent reviewer. Preserve migration history; do not bypass it.
+
+
+## Exact repository-to-live migration reconciliation — 2026-10-11
+
+A direct read-only comparison of the full `supabase/migrations/` directory with the live Supabase migration inventory was completed. It found **33 SQL migration files in GitHub and 30 recorded migration entries in production**. Comparing only the newest timestamps was insufficient and the earlier notes did not fully describe the mismatch.
+
+### Findings
+
+1. **Repository file with no corresponding live migration entry by filename prefix:** `20261006030000_gridmind_rls_auto_enable_bootstrap.sql`. The live inventory has no `20261006030000` version. Do not assume it is safe or necessary to replay; inspect its exact effect against current schema and grants first.
+2. **Two repository migrations whose versions are absent from live history and whose expected columns are absent in the live schema:**
+   - `20261010140000_add_intervention_implemented_at.sql` — `public.asset_interventions.implemented_at`
+   - `20261010150000_add_analysis_input_snapshot_sha256.sql` — `public.factory_analysis_runs.input_snapshot_sha256`
+3. **Seven repository migrations are recorded under different live version IDs**, even though the live entry names indicate corresponding migration intent:
+   - repository `20261009130000_gridmind_factory_analysis_runs_v1.sql` → live version `20261010075630`
+   - `20261010100000_restore_authenticated_factory_api_privileges.sql` → `20261010081740`
+   - `20261010103000_grant_authenticated_factory_profile_updates.sql` → `20261010082541`
+   - `20261010104000_grant_authenticated_factory_asset_writes.sql` → `20261010082706`
+   - `20261010110000_harden_organization_membership_rls.sql` → `20261010103936`
+   - `20261010120000_revoke_public_structural_table_privileges.sql` → `20261010104457`
+   - `20261010130000_scope_membership_update_policy.sql` → `20261010104942`
+
+### Interpretation and limits
+
+This is a **migration identity/version drift plus two unapplied-or-unrecorded schema changes**, and a bootstrap migration that is not represented by its repository prefix. The comparison does **not** prove why the versions differ, whether the bootstrap's effects were applied through another path, or whether the two missing migrations were intentionally withheld. The live migration names are evidence of likely correspondence, not cryptographic proof that the SQL bodies match. The database's current objects, constraints, grants, triggers, policies and function definitions must be compared with the exact repository SQL before any remediation.
+
+### Required safe next step
+
+- Fetch and review the full SQL body of the bootstrap migration and both missing-column migrations, plus the seven repository migrations whose live version IDs differ.
+- Compare their intended effects with current live schema and privilege/function metadata using read-only queries.
+- Confirm the repository commit/branch and migration runner's behavior for already-recorded renamed versions.
+- Prepare a reconciliation matrix for an authorized database operator and independent reviewer. Use a recovery point and explicit stop conditions before any production DDL.
+- Do **not** blindly replay the bootstrap or earlier migrations, alter migration history manually, or backfill fabricated historical timestamps/hashes. Keep production **NO-GO** until reviewed reconciliation and authenticated acceptance tests pass.
+
+This section supersedes any earlier wording that implied the only discrepancy was two missing columns or simple migration-head lag. No production mutation was performed during this comparison.
