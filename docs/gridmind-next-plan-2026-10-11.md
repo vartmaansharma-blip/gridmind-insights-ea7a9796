@@ -356,7 +356,7 @@ A factory saving only ₹2,000–₹3,000 per month may not support a viable Gri
 
 This is now a **critical commercial thesis risk**. A real problem is not automatically a good business. Do not defend the concept by inflating savings, inventing a higher-value use case, or treating a prototype as proof. If the economics are weak, narrow or abandon the candidate and test another one.
 
-The scorecard now includes a commercial economics gate: [GridMind Initial Commercial Wedge Scorecard](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md#commercial-economics-gate--required-before-choosing-a-wedge).
+The scorecard now includes a commercial economics gate: [GridMind Initial Commercial Wedge Scorecard](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md#commercial-economics-gate-required-before-choosing-a-wedge).
 
 ### Revised next milestone
 
