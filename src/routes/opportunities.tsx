@@ -29,7 +29,7 @@ function Opps() {
   if (!active) return <EmptyState />;
   if (active.isDemo) {
     if (!analysis?.hasData || !analysis.latest) return <EmptyState />;
-    return <OpportunityWorkspace factory={active} analysis={analysis} />;
+    return <OpportunityWorkspace key={`${active.id}-${analysis.latest?.month ?? "no-latest"}-${analysis.rows.length}`} factory={active} analysis={analysis} />;
   }
   if (query.isLoading) return <p className="text-sm text-muted-foreground">Loading canonical opportunities…</p>;
   if (query.error) return <p className="text-sm text-danger">{query.error.message}</p>;
