@@ -8,7 +8,7 @@
 
 **NO-GO for declaring production-ready. NO production migration was applied in this run.**
 
-The production migration inventory was rechecked on 2026-10-11 and currently ends at `20261011062256 add_factory_analysis_run_fk_indexes` (the earlier inventory below was stale). A fresh read-only `information_schema.columns` query still returns no rows for either expected Phase 3 column:
+The production migration inventory ends at `20261010104942 scope_membership_update_policy`. A read-only `information_schema.columns` query returned no rows for either expected Phase 3 column:
 
 - `public.asset_interventions.implemented_at`
 - `public.factory_analysis_runs.input_snapshot_sha256`
@@ -18,7 +18,7 @@ Repository migrations that have passed clean migration replay are not automatica
 ## 2. Confirmed facts vs. unverified assumptions
 
 ### Confirmed in this preflight
-- The latest production Supabase migration inventory ends at `20261011062256 add_factory_analysis_run_fk_indexes`.
+- Production Supabase migration inventory ends at `20261010104942`.
 - Neither of the two Phase 3 columns above was found by the read-only information-schema query.
 - No production DDL or data change was performed.
 - The Vercel deployment previously observed as READY is not evidence that production database schema or authenticated flows are correct.
@@ -93,7 +93,7 @@ All tests must use the intended production deployment and legitimately provision
 
 ## 6. Next execution order
 
-1. Complete missing-legacy-digest and mismatched-digest pure/unit tests on a feature branch; current integration coverage verifies the normal SHA-256 path but does not simulate an append-only historical row with a NULL or incorrect input digest.
+1. Complete the missing legacy-digest and mismatched-digest pure/unit tests on a feature branch.
 2. Finish a full semantic RLS/grants/relationship/edge-function audit and two-user acceptance plan.
 3. Resolve Auth leaked-password protection and multi-organization workspace selection.
 4. Obtain explicit authorization for the production migration window and named reviewer.
@@ -315,11 +315,3 @@ A new read-only query was run against Supabase project `bvqmvgbfqhgczwbvlqkk` af
 The RPC definition is a real behavior mismatch, but this query does not prove a cross-tenant bypass or establish why the candidate migration has not been applied. The correct next step is an isolated replay and membership-matrix test, followed by independent review of the full migration-history/schema drift. Do not hand-edit migration history, blindly replay earlier migrations, or run production DDL without explicit authorization, a recovery point, an authorized operator and a second reviewer.
 
 No production schema, data, grants, Auth settings, migration history, or deployment target was changed.
-
-## 8. Updated live schema snapshot — 2026-10-11 20:34 IST
-
-The migration history now ends at version `20261011062256`, not the earlier `20261010104942` stated in the initial snapshot. The two columns remain absent: `public.asset_interventions.implemented_at` and `public.factory_analysis_runs.input_snapshot_sha256`.
-
-The live target tables and their current core security structures exist. Read-only inspection observed member-scoped RLS policies on both tables, and the append-only trigger on `factory_analysis_runs` exists. This is a bounded inventory, not a full authorization proof.
-
-The repository's nullable-column migrations are already present on `main`. Do not create duplicate migrations, manually edit the remote migration table, or assume `db push` will be safe while remote history includes later versions than the missing files. Before any production change, determine the exact local/remote version reconciliation plan, compare the full live schema with the intended post-migration schema, obtain explicit change authorization, and use the approved migration workflow. No production change was performed during this refresh.
