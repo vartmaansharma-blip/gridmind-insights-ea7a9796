@@ -43,3 +43,30 @@ export function equipmentFieldsFromAssetMetadata(value: unknown): {
     loadFactor: boundedNumber(metadata.loadFactor, 0, 0, 1),
   };
 }
+
+
+export type EquipmentMetadataInput = {
+  category: string;
+  quantity: number;
+  hoursPerMonth: number;
+  loadFactor: number;
+};
+
+/**
+ * Build the persisted asset_metadata payload for the legacy electricity
+ * workspace while retaining metadata owned by other GridMind workflows.
+ */
+export function assetMetadataFromEquipmentInput(
+  input: EquipmentMetadataInput,
+  existingMetadata: unknown,
+): Record<string, unknown> {
+  return {
+    ...record(existingMetadata),
+    category: input.category,
+    quantity: input.quantity,
+    hoursPerMonth: input.hoursPerMonth,
+    loadFactor: input.loadFactor,
+    lifecycle_status: "active",
+    application_contract_version: 2,
+  };
+}
