@@ -18,6 +18,8 @@ Use the [Documentation Index](docs/README.md) for the canonical reading order. T
 
 ## Current execution priority — 2026-10-11
 
+- [Founder Commitment and 30-Day Validation Gates](docs/gridmind-founder-commitment-and-next-execution-2026-10-11.md) — GridMind remains the leading long-term thesis, conditional on buyer evidence; no validation is claimed.
+
 **Primary milestone:** establish one real manufacturing buyer conversation and test a specific recent operational incident before expanding product scope or public marketing claims. The human-reviewed incident investigation packet is a hypothesis—not a selected or validated wedge. Procurement intelligence and a narrow vertical workflow remain alternatives. No buyer interviews, customer data, measured savings, pricing commitments, or paid pilots are claimed.
 
 - [Problem Failure Analysis and Next Experiments](docs/gridmind-problem-failure-analysis-and-experiments-2026-10-11.md)
