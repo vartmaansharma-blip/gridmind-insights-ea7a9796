@@ -139,3 +139,20 @@ Each includes an interactive control, a distinct visual signature, a claim bound
 5. In parallel, continue validating the initial commercial wedge. The visual exercise does not settle the offer or authorize the full public website.
 
 **Current status:** tangible concepts exist; no winning direction has been validated; production implementation remains gated.
+
+
+## Execution update — reference audit completed (2026-10-11)
+
+Reviewed the previously selected references across industrial AI, visual storytelling, recognizable identity, interactive exploration, and product explanation. The implementation recommendations are recorded in [GridMind Reference Audit — What to Borrow, Adapt, and Build](gridmind-reference-implementation-audit-2026-10-11.md).
+
+**Decision:** keep **Clarity Engineered** as the provisional direction and advance one isolated interactive prototype around **The Cut**: a sharply bounded reveal that exposes relevant context while the underlying illustrative measurement stays fixed. Combine:
+- industrial-context explanation from Cognite;
+- direct operational framing from Braincube and Augury;
+- cinematic pacing from Apple and technical authority from Palantir;
+- consistent visual grammar from Nothing;
+- visitor-controlled exploration from NASA Eyes;
+- concise message hierarchy from Nike and layered explanation from Stripe.
+
+These are principles to translate, not visual assets or claims to copy. The audit explicitly prohibits fabricated results, unverified integrations, fake live telemetry, unsupported causality, and arbitrary savings claims.
+
+**Next execution step:** build the standalone hero-to-investigation prototype in `docs/prototypes/`, with a meaningful context selector, an evidence/uncertainty boundary, responsive and reduced-motion behavior, and a visible synthetic-data disclaimer. Do not alter `src/routes/index.tsx`. This prototype tests visual communication only; it does not validate the initial commercial wedge or authorize a full public-site build.
