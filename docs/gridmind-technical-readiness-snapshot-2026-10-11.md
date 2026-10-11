@@ -162,3 +162,14 @@ A refreshed migration inventory contains two additional migrations absent from t
 **New unresolved finding:** a read-only `pg_default_acl` inspection returned entries for MAINTAIN, TRUNCATE, REFERENCES, and TRIGGER for `anon`, `authenticated`, and `service_role` in the public schema's default table ACL. This conflicts with the intended least-privilege defaults in `harden_public_default_table_privileges`. Do not assume the migration achieved the desired state just because it appears in migration history. Re-query the raw default ACL, identify the creating role and grant source, and test the behavior on a fresh staging table before designing a narrowly scoped correction.
 
 The two missing columns remain absent. The exact function-body comparison for `public.rls_auto_enable()` shows matching behavior in the inspected body (formatting differs), but full ACL/version reconciliation is still pending. Security Advisor still reports the authenticated SECURITY DEFINER RPC `public.create_factory_workspace(text,text,text)` and disabled leaked-password protection. Production remains **NO-GO**.
+
+
+## ACL discrepancy clarification — 2026-10-11
+
+The earlier catalog result was too broad to label a confirmed migration failure. A more precise `pg_default_acl` query identified the creator role for each default ACL:
+- For creator role `postgres`, the public-schema default ACL contains only `postgres` as grantee for MAINTAIN, REFERENCES, TRIGGER, and TRUNCATE. No API-role grantees were returned for the `postgres` creator-role ACL.
+- The entries for `anon`, `authenticated`, and `service_role` are associated with creator role `supabase_admin`, granted by `supabase_admin`.
+
+The repository migration explicitly uses `ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public`, so the `supabase_admin` entries do **not by themselves prove that migration failed**; default privileges are creator-role-specific. They do reveal a coverage question: if `supabase_admin` can create public tables in this environment, its defaults may not have the same least-privilege behavior. Next, verify which role actually creates application tables and whether `supabase_admin` is expected/able to create public tables; reproduce with a harmless staging table created by each relevant role. Do not change provider-managed role defaults blindly.
+
+Therefore classify this as **default-privilege coverage to verify**, not a confirmed production exploit or confirmed migration failure. No production changes were made. Other NO-GO gates remain: missing nullable columns, incomplete authenticated two-tenant and end-to-end tests, and the two Security Advisor warnings.
