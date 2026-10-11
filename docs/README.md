@@ -83,3 +83,8 @@ This directory contains product definitions, engineering contracts, validation p
 ## Founder strategy and opportunity cost
 
 - [Founder Opportunity Cost Review: B2B vs B2C — 2026-10-11](founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md) — cross-category opportunity ranking, parameter scorecards, celebrity-brand counterfactual, and 30-day validation tournament. Directional scores only; no business is declared validated.
+
+
+## Opportunity testing
+
+- [Opportunity Tournament — Test 1: Evidence-Based Desk Test — 2026-10-11](opportunity-tournament-test-1-desk-evidence-2026-10-11.md) — initial public-source comparison of GridMind, B2B service-to-software, and creator-led consumer brand. Explicitly not customer validation; next gate is real-world discovery.
