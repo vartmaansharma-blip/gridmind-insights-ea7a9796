@@ -40,7 +40,7 @@ This directory contains product definitions, engineering contracts, validation p
 - [Repository Decision-Consistency Audit — 2026-10-11](gridmind-repository-decision-consistency-audit-2026-10-11.md) — strategy/status reconciliation; not a full code or production audit.
 - [Problem Failure Analysis and Next Experiments — 2026-10-11](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md) — failure modes, falsification tests, economics and buyer-access blocker.
 - [Manufacturing Workflow Stress Test — 2026-10-11](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md) — synthetic incident workflow, alternatives and proposed bounded test.
-- [Commercial Wedge Scorecard — 2026-10-11](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md) — candidate framework; no candidate is validated.
+- [Commercial Wedge Scorecard — 2026-10-11](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md) — five-opportunity desk comparison, hard gates, conservative economics, and next retrospective experiment; no candidate is validated.
 - [Buyer Discovery Sprint — 2026-10-11](gridmind-buyer-discovery-sprint-2026-10-11.md) — interview/evidence protocol; no interviews are claimed.
 
 - [Tool Operating Model](gridmind-tool-operating-model-2026-10-10.md) — responsibilities for Lovable, optional Figma, GitHub, coding/review agents, Vercel, Supabase and conditional specialist tools.
