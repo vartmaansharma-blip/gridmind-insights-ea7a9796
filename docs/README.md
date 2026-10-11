@@ -7,6 +7,8 @@ This directory contains product definitions, engineering contracts, validation p
 
 ## Start here
 
+- **[GridMind Master Plan — Company, Product, Validation and Execution System](gridmind-master-plan-2026-10-11.md)** — canonical end-to-end plan covering thesis, candidate wedges, discovery, alternatives, offer/pricing, product roadmap, MVP acceptance, data/security/safety, pilot measurement, GTM, metrics, risks, milestones and decision governance. Planning baseline is complete; real-world unknowns remain explicitly open.
+
 - [Bigger Problem Thesis — From Incident Investigation to Industrial Value Realization](gridmind-bigger-problem-thesis-2026-10-11.md) — first-principles problem model, competing explanations, five candidate territories, falsification tests, and conditional platform path; not customer-validated.
 - [Industrial Workflow and Structural-Gap Map](gridmind-industrial-workflow-and-gap-map-2026-10-11.md) — first-pass map of factory workflows, incumbent systems, candidate structural gaps, falsification tests and validation steps; desk research only.
 - [Opportunity Validation and Buyer Evidence Framework](gridmind-opportunity-validation-and-buyer-evidence-framework-2026-10-11.md) — seven-question interview protocol, evidence ladder, segment comparison, tracker fields and go/narrow/pivot/stop criteria; no interviews claimed.
