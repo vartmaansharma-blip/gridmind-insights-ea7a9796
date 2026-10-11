@@ -120,3 +120,11 @@ These SQL checks support the basic non-member visibility boundary, but they are 
 6. Re-run CI, Quality Gate, migration replay, and Supabase advisors after any code or schema fix, and update this audit with the resulting evidence.
 
 **Current gate:** basic live RLS smoke checks and CI/Quality Gate are positive; migration replay and the production authenticated journey remain unverified. GridMind is not yet cleared as production-ready.
+
+
+### Follow-up verification results — 2026-10-11, later check
+- Migration replay run [38118239514](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118239514) subsequently completed with **success** on commit `2d498a01c00716a323a6be7b28f4515327f9cce4`. This is positive evidence that clean migration replay plus the configured SQL/HTTP acceptance suite passed on that commit.
+- After this audit checkpoint was committed, CI and Quality Gate both completed successfully on the newer documentation-only commit `bb0b4386c553dea5f7a908b5ee63295da4e8f8a6`: [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481636) and [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481623).
+- A new migration-replay run on `bb0b4386c553dea5f7a908b5ee63295da4e8f8a6`, [run 38118481616](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481616), was still in progress at the **Start isolated local Supabase stack** step at the time of this check. The previous successful replay is not proof that this newer run has finished; recheck before closing the gate.
+- The deployed homepage returned HTTP 200 and clearly labeled its displayed factory as fictional demo data. The public `/auth` page returned HTTP 200 and describes authenticated private workspace access. This verifies route availability and the demo label, not a successful sign-in or a live authenticated save/reload.
+- Vercel production is `READY` on commit `a078aafd002935865fa5e6b000fe55a26483d05a`; the newer repository changes inspected since that SHA are documentation and database migration files. Vercel reported no grouped runtime errors in the prior 24-hour window.
