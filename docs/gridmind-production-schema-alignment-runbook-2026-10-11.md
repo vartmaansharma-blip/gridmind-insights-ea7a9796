@@ -181,3 +181,19 @@ This is a **migration identity/version drift plus two unapplied-or-unrecorded sc
 - Do **not** blindly replay the bootstrap or earlier migrations, alter migration history manually, or backfill fabricated historical timestamps/hashes. Keep production **NO-GO** until reviewed reconciliation and authenticated acceptance tests pass.
 
 This section supersedes any earlier wording that implied the only discrepancy was two missing columns or simple migration-head lag. No production mutation was performed during this comparison.
+
+
+## Object-level preflight after migration identity comparison — 2026-10-11
+
+Read-only catalog inspection adds important context:
+
+- The live database has event trigger `ensure_rls` enabled for `ddl_command_end`, and `public.rls_auto_enable()` exists as a SECURITY DEFINER event-trigger function. This is consistent with the bootstrap migration's intended capability, even though live migration history has no `20261006030000` entry. The live function definition is not byte-for-byte proven to match the repository file; **do not replay the bootstrap simply to make the version appear**.
+- Live catalog inspection confirms `private.is_org_admin(bigint)`, `private.is_factory_member_v2(bigint)`, `private.reject_factory_analysis_run_mutation()`, and the `factory_analysis_runs_append_only` trigger exist. Relevant live RLS policies were present for factories, organization members, asset interventions, and factory analysis runs. This is existence evidence only; it does not prove grants, predicates, or tenant-isolation behavior are safe.
+- The live `public.create_factory_workspace(text,text,text)` function is SECURITY DEFINER with an empty search path, requires `auth.uid()`, and creates/attaches a factory based on the caller's active owner/admin membership or creates a new organization when none is found. Its code currently selects the first active owner/admin organization by ascending ID when the caller belongs to multiple organizations. This is a concrete behavior to test with a qualified reviewer; it is not by itself proof of an authorization bypass. The existing Security Advisor warning remains open.
+- The two required columns remain absent in the read-only column check.
+
+### Decision
+
+The bootstrap migration is **functionally represented in live objects but not represented by its repository version prefix**. The two nullable column migrations are **not evidenced as applied and their columns are absent**. Seven other migration bodies appear represented under different live version IDs, but body equivalence is not proven. The safe resolution is a per-migration reconciliation matrix (repository SQL hash/content, live version/name, current object effects, differences, disposition), not bulk replay and not manual history edits.
+
+No schema, data, grants, settings, migration history or deployment was changed. Production remains NO-GO pending independent review and authenticated cross-tenant/end-to-end acceptance.
