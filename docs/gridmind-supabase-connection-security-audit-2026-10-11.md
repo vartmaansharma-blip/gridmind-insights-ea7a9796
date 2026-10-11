@@ -62,3 +62,41 @@ The advisor reports 84 unused indexes. Do not drop them solely from this low-tra
 6. Re-run Supabase security/performance advisors and refresh this report with evidence.
 
 **Do not claim production readiness from schema/RLS inspection alone.**
+
+
+## Follow-up execution — 2026-10-11
+
+### GitHub Actions and migration replay
+- The first CI failure was diagnosed from job logs: `docs/gridmind-next-plan-2026-10-11.md` linked to a non-existent anchor `#commercial-economics-gate--required-before-choosing-a-wedge` in the commercial wedge scorecard.
+- Fixed the anchor to `#commercial-economics-gate-required-before-choosing-a-wedge` in commit `f19ac0d6e1ce776b7d84279fb95d4c54fb736c31`.
+- CI passed on that commit: Markdown link audit, TypeScript typecheck, semantic ESLint, unit tests, and production build all succeeded. [CI run](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118189300).
+- The Quality Gate also passed on the same commit, including the Edge Function Deno check. [Quality Gate](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118189276).
+- A clean local migration replay previously passed on commit `a25550be3b37473144c5180d610de5a2d4183d74`, which already contained both new migration files. The latest replay after the anchor fix was still running at the time of this update; final completion must be checked before calling the latest commit fully green. [Latest migration replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118189349).
+- The remote Supabase migration history contains versions `20261011062242` and `20261011062256`, matching the committed migration source filenames. The clean replay result is the reproducibility evidence; remote history alone is not.
+
+### Authenticated RLS smoke test — read-only, rollback-protected
+The live database currently has one Auth user, four factories, three factory memberships, zero assets, zero observations, and zero analysis runs. That means a true two-real-user cross-tenant test and a populated analysis write/reload test cannot yet be completed using existing production data.
+
+Using a transaction with `SET LOCAL ROLE authenticated` and a request user-id claim:
+- The existing authenticated user could see 3 factories through the factories RLS policy.
+- A non-member test UUID could see 0 factories, 0 factory memberships, and 0 observations.
+- An update against a factory as the non-member test UUID affected 0 rows; the transaction was rolled back.
+- The existing user and the non-member test UUID both saw 0 assets because the live asset table currently has no rows. This does not prove asset-level isolation with populated fixtures.
+- A direct SELECT against `public.organizations` was denied because the `authenticated` role has no SELECT table privilege. Do not add that grant merely to make an administrative smoke test pass: the inspected client repository reads factory records and does not need direct organization-table access for the tested path. Preserve this as an intentional least-privilege boundary unless a real application requirement proves otherwise.
+
+These SQL checks support the basic non-member visibility boundary, but they are **not** a substitute for the existing automated two-user migration-replay/HTTP acceptance suite or an authenticated production API test.
+
+### Workspace bootstrap function review
+- Effective ACL check: `authenticated` can execute `public.create_factory_workspace`; `anon` and `PUBLIC` cannot.
+- Function definition has an empty `search_path`, rejects a missing `auth.uid()`, and does not accept an organization ID supplied by the caller. It uses the caller's active owner/admin organization when available, otherwise creates a new organization, then creates a factory and owner membership.
+- No direct privilege bypass was demonstrated by static inspection. The advisor warning remains because the function is SECURITY DEFINER and callable by authenticated users. Multi-organization selection (first owner/admin organization by ID) remains a product/security edge case to test before users can manage multiple organizations.
+
+### Still open
+1. Confirm the latest migration replay run reaches success on the same commit as the passing CI and Quality Gate.
+2. Run the automated two-user tenant-isolation and authenticated Edge Function acceptance suite from Migration Replay; review its final job output.
+3. Complete a production authenticated flow test using the intended owner account: sign-in, create/select workspace, persist an analysis, reload it, and verify retry/idempotency.
+4. Create no production fixtures just to make tests pass; use the isolated local test stack for two-user tests.
+5. Enable leaked-password protection through Supabase Auth settings after reviewing the expected password sign-up/sign-in flow. The available database tools did not change this Auth setting, and the advisor still reports it disabled.
+6. Recheck Vercel deployment SHA and resolve the separate build-rate-limit blocker before asserting that the currently tested source is the deployed source.
+
+**Status update:** CI and Quality Gate passed after the documentation fix. Latest migration replay and live production end-to-end acceptance remain pending. No production business rows were inserted or modified during the RLS smoke tests.
