@@ -34,7 +34,7 @@ This is intentionally a narrow behavior fix. It does not clear the Security Advi
 - [x] GridMind Quality Gate passed — [run 38149577610](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38149577610).
 - [ ] Vercel check: currently blocked by build-rate-limit; no deployment promotion occurred.
 - [x] Self-review of migration semantics and preserved function grants completed; this is not a substitute for independent security review.
-- [ ] Review the UI's handling of AMBIGUOUS_ORGANIZATION_CONTEXT so the user receives a clear selection/recovery path.
+- [x] Repository search found no current frontend or Edge Function caller of create_factory_workspace; there is no existing UI error path to exercise. Before integrating this RPC into onboarding, add an explicit organization-selection/recovery state for AMBIGUOUS_ORGANIZATION_CONTEXT rather than silently retrying.
 - [ ] Qualified independent security review of the SECURITY DEFINER RPC.
 - [ ] Authorized Auth settings owner enables leaked-password protection and tests sign-in/reset/recovery.
 - [ ] Production schema alignment: reconcile migration history and object definitions; secure recovery point, named operator and independent reviewer; obtain explicit production-change authorization; apply only through approved migration workflow; verify columns and old-row integrity.
