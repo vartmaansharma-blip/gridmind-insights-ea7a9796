@@ -217,3 +217,47 @@ A clickable or otherwise testable prototype is ready for review when:
 - User validation, pilot success, product-market fit or production readiness claims.
 
 **Decision:** prototype one complete opportunity workspace before broad visual redesign. Treat the current demo state fix as a prerequisite, not as proof that the full decision journey is complete.
+
+
+## 11. Reference-site recheck and direction decision — 2026-10-11
+
+### Verdict
+
+**The strategic direction is right; the current implementation is not yet visually better.** The current live overview still presents an energy-analysis dashboard. The demo-state correction improves continuity and truthfulness, but it is not a visual redesign and does not prove the intended opportunity workspace is built.
+
+Reference pages reviewed:
+- [Apple](https://www.apple.com/) — product-led hierarchy, controlled reveal, strong visual pacing and clear next steps.
+- [Nike](https://www.nike.com/) and [NIKE, Inc. mission](https://about.nike.com/en/mission) — confident point of view and storytelling rooted in a real user problem; do not imitate sports campaign aesthetics.
+- [Nothing](https://in.nothing.tech/about) — a consistent, ownable visual language and a clear explanation of what makes the product different. Its design ethos explicitly emphasizes revealing what sits beneath the surface; that is a useful conceptual parallel for evidence transparency, not a cue to copy its look.
+- [NASA Eyes](https://science.nasa.gov/eyes/) — complex systems become explorable through real context and data. Borrow navigable system relationships and temporal context, not gratuitous 3D.
+- [Stripe](https://stripe.com/in) and [Stripe products](https://stripe.com/in/products) — explain an unfamiliar infrastructure category through clear product groupings, concrete outcomes, and a legible commercial path.
+- [FluxTheory](https://www.fluxtheory.in/) — retain as an inspiration for distinctive visual moments and expressive product storytelling, but not as a direct visual template. Public designer commentary describes exploring a more expressive interactive version, then simplifying the launched experience to prioritize conversion ([designer commentary](https://www.linkedin.com/posts/siddhita-upare-75475b73_website-ui-ux-activity-7511294203453308928-Gcsu)). The live site itself could not be reliably inspected through the available page-fetch path in this review, so no claim is made about a full interactive walkthrough.
+
+### What this means for GridMind
+
+GridMind should combine the *principles*, not collage the aesthetics:
+1. **Apple:** one clear idea per screen and deliberate reveal.
+2. **Nike:** an assertive promise grounded in an actual operational problem.
+3. **Nothing:** a recognizable GridMind visual signature that reveals engineering/evidence rather than decorating it.
+4. **NASA Eyes:** let people explore the relationship between asset, process, operating conditions, evidence and time.
+5. **Stripe:** translate technical capability into an intelligible commercial outcome and next step.
+6. **FluxTheory:** use one or two memorable expressive moments where they improve understanding or conversion, not constant motion.
+
+### Design correction to the earlier specification
+
+The three interaction names (Context Snap, Layer Cut, Evidence Fold) are useful only if the interactions visibly teach something. They are not the visual concept by themselves. The distinctive GridMind experience should be an **evidence-to-decision instrument**: a stable operational context, a visible chain from measurement to economic interpretation, explicit uncertainty/alternatives, and a decision with a verification plan.
+
+Avoid a generic dashboard of equal-weight cards, a generic dark/neon “AI” aesthetic, a fake real-time 3D factory, and hero animations that are disconnected from product capability. The current demo figures (₹1.68 Cr/year exposure, ₹1.03 Cr/year potential, ₹0 verified) must remain labelled as fictional estimates until real evidence and verification exist.
+
+### Next design test
+
+Before redesigning all routes, prototype one desktop and mobile opportunity screen around a single illustrative finding:
+- Start with the observable signal and comparison context.
+- Reveal the calculation and source inputs.
+- Show at least one alternative explanation and the missing evidence that would distinguish it.
+- Present a human-reviewed next step.
+- Show how success would be measured and when it could become verified value.
+
+Review it against five questions: Is the problem understood in five seconds? Can a plant engineer challenge the reasoning? Can finance distinguish potential from verified value? Does motion explain rather than distract? Does the page still work without motion and on a small screen?
+
+**Status:** reference principles and design direction reviewed; a visual prototype and rendered desktop/mobile review remain outstanding. This is not a claim of user validation or a finished redesign.
