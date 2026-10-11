@@ -1,5 +1,8 @@
 # GridMind next-step decision — 2026-10-10
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful analysis, but its old schedules, candidate letters, gates, engineering priorities, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
+
+
 **Decision status:** Historical decision log with later dated updates below. The current scope is governed by the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md); older action lists in this file are superseded where they conflict with the latest execution decision.  
 **Scope reviewed:** GitHub default branch `main`, latest commits, README, homepage specification, website marketing/sales strategy, system-alignment audit, live-acceptance runbook, real-factory data request, authoritative-analysis design, and release gate.
 
