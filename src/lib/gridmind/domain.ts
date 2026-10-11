@@ -155,6 +155,8 @@ export type GridMindFactorySnapshot = FactoryContext & {
     machineTypeId: number | null;
     ratedPowerKw: number | null;
     processRole: string | null;
+    /** Application-owned equipment inputs stored in factory_assets.asset_metadata. */
+    assetMetadata?: Record<string, unknown>;
   }>;
   observations: ObservationContract[];
   opportunities: OpportunityContract[];
