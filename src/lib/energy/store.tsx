@@ -4,6 +4,7 @@ import { analyze, type Analysis } from "./analysis";
 import { implementedMonthFromTimestamp } from "./intervention-date";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
 import type { Factory, OpportunityStatus } from "./types";
+import { equipmentFieldsFromAssetMetadata } from "./equipment-metadata";
 import { supabase } from "@/integrations/supabase/client";
 import {
   createFactoryWorkspace,
@@ -129,11 +130,8 @@ function snapshotToFactory(snapshot: Awaited<ReturnType<typeof getAuthenticatedF
     equipment: snapshot.assets.map((a) => ({
       id: String(a.id),
       name: a.name,
-      category: "other",
+      ...equipmentFieldsFromAssetMetadata(a.assetMetadata),
       ratedKw: Number(a.ratedPowerKw ?? 0),
-      quantity: 1,
-      hoursPerMonth: 0,
-      loadFactor: 0,
     })),
     interventions,
     opportunityStatus: Object.fromEntries(snapshot.opportunities.map((o) => [String(o.id), o.status as OpportunityStatus])),
