@@ -52,6 +52,9 @@ jobs:
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-security.sql
 
+      - name: Test input snapshot digest integrity contract
+        run: deno test supabase/functions/_shared/input-snapshot-integrity.test.ts
+
       - name: Test workspace bootstrap authentication and organization selection
         shell: bash
         run: |
