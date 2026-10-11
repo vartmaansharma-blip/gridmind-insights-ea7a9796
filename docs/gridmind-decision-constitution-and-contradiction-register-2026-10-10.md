@@ -32,14 +32,18 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 **Out of scope unless evidence changes the decision:** marketplace, autonomous industrial control, broad integrations, multi-site benchmarking, generalized ontology expansion, multiple vertical modules, speculative data-centre offering, and full public-site implementation before offer/claim validation.
 
 ### D3 — First commercial wedge is NOT decided
-**Decision:** No permanent first wedge has been selected. Compare three candidates:
-1. Operational-loss/constraint investigation.
-2. Procurement intelligence for one specific purchasing category.
-3. One narrow vertical operations workflow.
+**Decision:** No permanent first wedge has been selected. The current comparison set is five problem families:
+1. Downtime / production loss.
+2. Quality defects / scrap / rework.
+3. Maintenance recurrence / reliability.
+4. Energy / material inefficiency.
+5. Cross-functional decision / handoff delay.
 
-**Energy-specific clarification:** Energy intensity for a well-bounded asset/process is a detailed provisional candidate and has an existing data contract. That contract is a testable candidate specification—not a decision that energy has won. It must not receive preferential status merely because it is more fully documented.
+Procurement intelligence remains a possible adjacent or alternative opportunity only if discovery narrows it to a specific purchasing category, buyer, recurring decision, and measurable consequence. Energy intensity for a bounded asset/process has an existing candidate data contract; detail does not confer priority.
 
-**Selection evidence:** buyer access, severity/frequency, recent real event, authorized data availability, defensible baseline, qualified reviewer, time-to-useful-result, willingness to pay, delivery burden, repeatability, risk and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
+**Current experiment recommendation:** investigate one real, closed incident retrospectively with explicit organizational permission and qualified human review. Choose the incident based on access and a concrete problem narrative, not a preselected category. This is a low-risk learning experiment, not a permanent wedge selection.
+
+**Selection evidence:** severity/frequency; conservative addressable economics; buyer and budget ownership; current alternatives; authorized data access; credible baseline; qualified reviewer; time-to-useful-result; influenceability; willingness to pay; delivery burden and margin; safety/trust; repeatability; and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
 
 ### D4 — Product readiness and claims
 **Decision:** Repository files, a functioning-looking UI, a green deployment, synthetic examples and completed documentation do not independently establish production readiness or customer value.
@@ -100,7 +104,7 @@ The exact workflow depends on the selected use case. Not every candidate needs a
 
 ## 4. Current execution order
 1. Re-establish current product truth: inspect latest deployed build, authorized workspace flow, persistence, reproducibility and tenant boundaries. Do not mutate production or attach memberships without owner authorization.
-2. Run buyer discovery in parallel: compare the three wedge candidates and seek a recent concrete problem, data owner, reviewer and budget owner.
+2. Run buyer discovery in parallel: compare the five problem families and seek a recent concrete problem, data owner, reviewer and budget owner.
 3. Check data feasibility using only authorized, minimized data.
 4. Choose one bounded offer with deliverables, inputs, exclusions, human-review boundary, timeframe and evaluation criteria.
 5. Build or fix only what blocks that offer; preserve source lineage, deterministic calculations, save/reload and security.
