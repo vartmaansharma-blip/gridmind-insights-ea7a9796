@@ -276,6 +276,7 @@ Review it against five questions: Is the problem understood in five seconds? Can
 - Exposes the current calculation trail, alternative explanations, uncertainty, and missing evidence before a next step is considered.
 - Separates screened impact and potential saving from verified value; verified value remains ₹0 in the synthetic workflow.
 - Adds an explicitly session-only human-review marker. It is not persisted and does not authorize or record a plant action.
+- Resets the demo workspace session when the active factory/analysis context changes, preventing a stale selection or review marker from carrying into a different analysis.
 - Defines an outcome contract from baseline through human-approved intervention, counterfactual comparison, attribution review, and verification.
 - Keeps the synthetic/demo boundary visible and states that the page does not control equipment or create canonical opportunities.
 
