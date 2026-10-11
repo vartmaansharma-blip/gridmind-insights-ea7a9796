@@ -1,3 +1,4 @@
+import type { Json } from "@/integrations/supabase/types";
 import type { EquipmentCategory } from "./types";
 
 const CATEGORIES: readonly EquipmentCategory[] = [
@@ -9,9 +10,9 @@ const CATEGORIES: readonly EquipmentCategory[] = [
   "other",
 ];
 
-const record = (value: unknown): Record<string, unknown> =>
+const record = (value: unknown): Record<string, Json | undefined> =>
   value !== null && typeof value === "object" && !Array.isArray(value)
-    ? value as Record<string, unknown>
+    ? value as Record<string, Json | undefined>
     : {};
 
 function boundedNumber(value: unknown, fallback: number, min: number, max: number): number {
@@ -59,7 +60,7 @@ export type EquipmentMetadataInput = {
 export function assetMetadataFromEquipmentInput(
   input: EquipmentMetadataInput,
   existingMetadata: unknown,
-): Record<string, unknown> {
+): Record<string, Json | undefined> {
   return {
     ...record(existingMetadata),
     category: input.category,
