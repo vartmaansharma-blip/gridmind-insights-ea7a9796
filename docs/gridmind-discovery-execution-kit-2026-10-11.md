@@ -191,3 +191,25 @@ Ask a trusted adult/professional to review and, if appropriate, help send a sing
 ### Guardrails
 
 The founder is a minor. Formal commercial commitments, factory/site access, contracts, payments, and sensitive industrial data handling require appropriate trusted-adult/professional involvement and the organization's authorization. No factory visit without explicit permission, suitable supervision, and site safety approval. No confidential operational data should be placed in a public repository. This document records desk research and a draft only; it does not imply outreach, response, buyer access, or validation.
+
+## Additional official technical-learning route — 2026-10-11
+
+The official MSME Tool Room Jamshedpur (Indo-Danish Tool Room), a Ministry of MSME-supported institution, publishes an Industry Services Enquiry form for manufacturing, design, engineering, and consultancy enquiries. Its listed Jamshedpur main-centre contact route is https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php; the page lists reach@idtr.gov.in and +91 657 2201261/62. Re-check the page before use.
+
+**Why this route matters:** it may be a more appropriate educational/technical-learning route than approaching an individual factory directly. It can be used to ask whether there are public seminars, general learning resources, or an appropriate staff role for a supervised student research conversation. It is not evidence of access to factories, an endorsement, a buyer lead, or willingness to use GridMind.
+
+**Draft inquiry only — not sent:**
+
+> Subject: Student research enquiry about manufacturing problem-solving workflows
+>
+> Hello MSME Tool Room Jamshedpur team,
+>
+> I am a student conducting early-stage research into how manufacturing teams investigate recurring operational problems and evaluate improvement opportunities. I am trying to understand the process, not request confidential company information or promote a finished product.
+>
+> Could you point me toward any public learning resources, events, or an appropriate staff role through which I could learn about manufacturing problem-solving and measurement? Any conversation or further step would be subject to the institution's process and appropriate adult guidance.
+>
+> Thank you.
+
+**Next action:** have a trusted adult/professional review the inquiry and decide whether to use this institutional route or ASIA first. Send at most one initial inquiry after the route and wording are confirmed; record the actual status. Do not submit a form implying an established company or professional designation if that is not accurate.
+
+This source was checked on 2026-10-11: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php. No contact has been made.
