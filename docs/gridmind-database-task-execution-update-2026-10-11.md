@@ -35,7 +35,7 @@ This is intentionally a narrow behavior fix. It does not clear the Security Advi
 - [x] GridMind Quality Gate — [run 38150601299](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38150601299) passed.
 - [ ] Vercel check: currently blocked by build-rate-limit; no deployment promotion occurred.
 - [x] Self-review of migration semantics and preserved function grants completed; this is not a substitute for independent security review.
-- [x] Repository search found no current frontend or Edge Function caller of create_factory_workspace; there is no existing UI error path to exercise. Before integrating this RPC into onboarding, add an explicit organization-selection/recovery state for AMBIGUOUS_ORGANIZATION_CONTEXT rather than silently retrying.
+- [x] The authenticated factory-creation flow calls `create_factory_workspace` through `createFactoryWorkspace` in `src/lib/gridmind/repository.ts`. `AddFactoryDialog` now recognizes `AMBIGUOUS_ORGANIZATION_CONTEXT` and explains that creation was stopped, no factory was created, and an administrator must resolve the intended organization membership before retrying. This is a recovery message, not an organization selector; an explicit selector remains future work.
 - [ ] Qualified independent security review of the SECURITY DEFINER RPC.
 - [ ] Authorized Auth settings owner enables leaked-password protection and tests sign-in/reset/recovery.
 - [ ] Production schema alignment: reconcile migration history and object definitions; secure recovery point, named operator and independent reviewer; obtain explicit production-change authorization; apply only through approved migration workflow; verify columns and old-row integrity.
@@ -65,3 +65,10 @@ The repository already contains the two idempotent nullable-column migrations on
 A fresh read-only function catalog query confirmed the live RPC owner is `postgres`; the owner is not marked superuser in this catalog but does have `BYPASSRLS`. The function has `search_path=""` and its observed ACL is `{postgres=X/postgres,authenticated=X/postgres}`: signed-in users can invoke it, while PUBLIC is not granted EXECUTE. This is a meaningful defense-in-depth baseline, not proof that the privileged function is safe by itself.
 
 Because the function owner bypasses RLS, its body must remain a narrow, fully schema-qualified authorization boundary. The current live body checks `auth.uid()`, but selects the first active owner/admin organization ordered by ID; PR #35 changes that ambiguity into an explicit fail-closed error. The function remains SECURITY DEFINER and still needs independent review of every read/write, grants, role assumptions, and abuse cases before production rollout. Do not switch it to SECURITY INVOKER or remove EXECUTE as a quick way to clear the advisor warning without first implementing and testing an alternative onboarding path.
+
+
+## UI recovery follow-up — 2026-10-11
+
+- Added a specific user-facing recovery message for `AMBIGUOUS_ORGANIZATION_CONTEXT` in `src/components/gm/app-shell.tsx` on PR #35.
+- The change intentionally does not silently retry, choose an organization, or imply that a factory was created. The current RPC contract has no explicit organization selector, so the safe interim behavior is to stop and request membership resolution.
+- Code commit: `834e700d187efcd88ce1dd0ef8a9308993c45f8e`. Fresh CI/Quality Gate validation for this UI change is pending; prior passing workflow results cover the earlier code/test snapshot only.
