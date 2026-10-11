@@ -9,6 +9,9 @@ This directory contains product definitions, engineering contracts, validation p
 
 ## Start here
 
+- [Company Definition and Brand-Name Risk Review — 2026-10-11](gridmind-brand-definition-and-name-risk-2026-10-11.md) — clarifies the industrial decision-intelligence thesis and records public name-conflict signals; not legal clearance.
+
+
 - **[GridMind Master Plan — Company, Product, Validation and Execution System](gridmind-master-plan-2026-10-11.md)** — canonical end-to-end plan covering thesis, candidate wedges, discovery, alternatives, offer/pricing, product roadmap, MVP acceptance, data/security/safety, pilot measurement, GTM, metrics, risks, milestones and decision governance. Planning baseline is complete; real-world unknowns remain explicitly open.
 
 - [Bigger Problem Thesis — From Incident Investigation to Industrial Value Realization](gridmind-bigger-problem-thesis-2026-10-11.md) — first-principles problem model, competing explanations, five candidate territories, falsification tests, and conditional platform path; not customer-validated.
