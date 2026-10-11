@@ -353,3 +353,58 @@ The earlier [Signature Motion Prototype Specification](gridmind-signature-motion
 The broader motion principles in this strategy—motion should reveal meaningful relationships, preserve evidence boundaries, remain accessible and performant, and earn its complexity—remain useful as general constraints. They do not prescribe the rejected visual treatment.
 
 **Next decision:** explore materially different creative directions, beginning with the underlying GridMind idea and target buyer rather than committing to a visual effect. Compare concepts against brand distinctiveness, immediate comprehension, product truth, commercial credibility, accessibility, implementation cost, and fit with the long-term industrial-intelligence thesis. Do not select a replacement until it demonstrates a clear advantage.
+
+
+## 15. Reference breakdown — principles to translate, not imitate (2026-10-11)
+
+This is a desk-research synthesis of documented reference work, not a claim that every live website animation was directly inspected. It informs the next storyboard; it does not approve a visual direction.
+
+### Apple — one visual idea, paced as a story
+**Observed principle:** Apple-oriented motion guidance emphasizes stillness before a reveal, a controlled arrival, and a deliberate hold. NASA/JPL's Eyes on the Solar System case study describes story-driven scrollytelling used to explain complex scientific information while preserving accuracy.  
+**GridMind translation:** Begin with a legible industrial question; reveal only the visual information needed to understand it; hold the evidence long enough to read. Use at most one major scroll-linked sequence, and never make scroll control feel trapped.  
+**Avoid:** A long cinematic intro before the visitor understands the offer.  
+**Reference:** [NASA Eyes design case study](https://www.supersixseven.com/work); [motion graphics documentation](https://github.com/im-oree/Apple-Visual-Design-Documentation/blob/main/docs/12-motion-graphics.md).
+
+### Nike — confidence through a consistent motion grammar
+**Observed principle:** Nike design case studies show how a simple visual rule can become a wider motion language, rather than a collection of unrelated effects.  
+**GridMind translation:** Define a small set of repeatable behaviours for selecting, connecting, focusing, comparing, and resolving evidence. Use decisive typography and deliberate pauses.  
+**Avoid:** Sports-style hype, fast motion for its own sake, or claims that outrun the evidence.  
+**Reference:** [Nike motion and visual-system case study](https://tmr.design/nike/).
+
+### Nothing — distinctive visual consistency
+**Observed principle:** The cited Nothing campaign case describes animation and transitions as the mechanism that unifies different product stories into one visual world.  
+**GridMind translation:** Create an original visual grammar from industrial context, evidence states, relationships, and decisions. Reuse it across hero, walkthrough, and supporting sections.  
+**Avoid:** Copying Nothing's dot matrix, typography, or product-film aesthetic.  
+**Reference:** [FutureDeluxe — Nothing campaign](https://futuredeluxe.com/work/nothing-a).
+
+### NASA Eyes — exploration that teaches
+**Observed principle:** The Eyes on the Solar System case study describes a story mode for making a complex scientific system more accessible without sacrificing technical accuracy.  
+**GridMind translation:** Let a visitor select one component or clue, see only relevant relationships, and inspect the evidence and unknowns. Include a guided path for people who do not want to explore freely.  
+**Avoid:** A huge 3D factory model, decorative node webs, or visual connections that imply unverified causation or integrations.  
+**Reference:** [NASA Eyes](https://eyes.nasa.gov/); [design case study](https://www.supersixseven.com/work).
+
+### Stripe — clarity before spectacle
+**GridMind translation (design hypothesis):** Treat readable hierarchy, clear explanations, explicit assumptions, and a credible CTA as non-negotiable. Animation should clarify the economic question and its evidence, not simulate product maturity.  
+**Reference:** [Stripe](https://stripe.com/).
+
+### Fluxtheory — reference still requires visual verification
+The previously mentioned URL is `https://www.fluxtheory.in/`. Search results surfaced a differently spelled domain, `fluxetheory.com`, which appears to describe a separate brand. These must not be conflated. The live `.in` reference could not be reliably inspected in this research pass, so no specific animation technique is attributed to it. Review the actual page or user-provided screenshots/screen recording before borrowing a technique.
+
+### Resulting GridMind experience — four authored moments, not twelve disconnected effects
+1. **Question:** A crisp opening statement and one striking, legible visual composition.
+2. **Reframe:** The visual reorganizes to make a meaningful industrial relationship understandable.
+3. **Investigate:** Visitor-controlled exploration reveals evidence, assumptions, and competing explanations in a clearly labelled synthetic scenario.
+4. **Resolve:** The story arrives at a possible next investigation or decision, showing what remains unknown and what would verify the outcome.
+
+Navigation, section transitions, and micro-interactions support these four moments; they are not separate spectacles.
+
+### Motion and implementation constraints
+- Every motion beat must have a stated communication purpose and a clear static equivalent.
+- Keep the headline and CTA usable before the hero animation completes.
+- Prefer transform/opacity for routine UI motion; reserve heavier rendering for a demonstrated comprehension benefit.
+- No scroll hijacking, forced scroll, flashing, fake live telemetry, fabricated metrics, or unverified causal claims.
+- Honour reduced-motion preferences and keyboard/touch interaction; provide a guided alternative to free exploration.
+- Prototype the same fictional scenario in materially different compositions before selecting a direction.
+
+### Decision status
+**No reference-derived visual direction is approved yet.** The next artifact should be three distinct hero storyboards, each showing the first frame, reveal sequence, transition into the investigation, mobile/static fallback, and the specific buyer question it helps answer. Choose based on comprehension, credibility, distinctiveness, feasibility, and buyer feedback—not visual spectacle alone.
