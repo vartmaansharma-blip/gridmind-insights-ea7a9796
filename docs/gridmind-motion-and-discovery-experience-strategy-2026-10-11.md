@@ -340,3 +340,16 @@ The broader website page structure and homepage section-by-section specification
 ## 13. Scope of this record
 
 This file captures the decisions and proposals from the motion and Discovery Lab planning conversation. It is **not** a complete master record of every GridMind business, product, security, commercial, or website decision. For those, consult the Decision Constitution and Homepage Specification linked above. If a conflict appears, the Decision Constitution takes precedence.
+
+
+## 14. Decision update — topographic hero concept rejected (2026-10-11)
+
+The proposed slow-drifting neon-lime topographic hero, cursor ripple, and glowing vertical Data → Detect → Quantify → Verify rail are **rejected**. Do not treat them as the approved GridMind visual identity and do not implement them.
+
+Reason: the concept risks communicating energy monitoring or generic animated SaaS rather than GridMind's broader industrial-intelligence ambition. The cursor ripple may be decorative rather than useful, and the process rail may be conventional without proving improved comprehension.
+
+The earlier [Signature Motion Prototype Specification](gridmind-signature-motion-prototype-spec-2026-10-11.md) is retained for decision history only and is explicitly marked rejected. Its implementation sequence and acceptance criteria are not active authorization.
+
+The broader motion principles in this strategy—motion should reveal meaningful relationships, preserve evidence boundaries, remain accessible and performant, and earn its complexity—remain useful as general constraints. They do not prescribe the rejected visual treatment.
+
+**Next decision:** explore materially different creative directions, beginning with the underlying GridMind idea and target buyer rather than committing to a visual effect. Compare concepts against brand distinctiveness, immediate comprehension, product truth, commercial credibility, accessibility, implementation cost, and fit with the long-term industrial-intelligence thesis. Do not select a replacement until it demonstrates a clear advantage.
