@@ -180,3 +180,16 @@ A narrow implementation is in review on [PR #31](https://github.com/vartmaanshar
 - CI status at time of record: typecheck/lint/test/build workflows were still running; no pass result is claimed.
 - Interactive browser testing, responsive inspection and accessibility checks are still outstanding.
 - The PR is deliberately a draft and must not be merged until CI and the manual acceptance path pass.
+
+
+### Preview validation update — 2026-10-11
+
+After the route-state changes on PR #31, direct HTML responses from the branch's READY Vercel preview were fetched again:
+- Preview deployment: `https://gridmind-d8zbmm9n9-vartmaansharma-blips-projects.vercel.app/`
+- `/`: HTTP 200; existing demo overview and ₹0 verified remain visible.
+- `/opportunities`: HTTP 200; “Demo screening opportunities” and synthetic demo badge are present; “No data connected yet” is absent from the route content.
+- `/savings`: HTTP 200; “No outcomes verified yet”, synthetic example intervention and ₹0 verified are present; “No data connected yet” is absent from the route content.
+
+This confirms the intended server-rendered direct-route output on the preview. It is **not** a substitute for interactive browser navigation, client-state testing, screenshots, viewport inspection or accessibility checks.
+
+Latest code commit at the time of this note: `e833de506fd88086015be48330d3d40488f5b5cb`. GitHub CI and GridMind Quality Gate completed successfully after correcting an initial TypeScript failure. Migration Replay was still pending at the time of this note. The draft PR remains unmerged; no production deployment or production data mutation was performed.
