@@ -238,3 +238,14 @@ Produce a complete per-migration disposition table and arrange non-production tw
 ### Reconciliation conclusion
 
 The evidence supports two different classes of mismatch: (a) version identity drift where most inspected effects are already present, and (b) two additive schema changes whose columns and associated check constraint are absent. The bootstrap's live capability is present even though its version prefix is missing. The safe next step is to agree on the canonical migration-history strategy and test it on a restored/staging copy first; never bulk replay migrations or manually manufacture history entries. A complete ACL/function-body diff and authenticated two-tenant tests remain required before production approval.
+
+
+## Follow-up catalog verification — 2026-10-11
+
+A refreshed migration inventory contains two additional migrations absent from the earlier snapshot:
+- `20261011062242_harden_public_default_table_privileges` (recorded live under the same name/version): aims to revoke MAINTAIN/TRUNCATE/REFERENCES/TRIGGER on existing public tables and defaults for future public tables.
+- `20261011062256_add_factory_analysis_run_fk_indexes` (recorded live under the same name/version): both indexes exist in the live catalog.
+
+**New unresolved finding:** a read-only `pg_default_acl` inspection returned entries for MAINTAIN, TRUNCATE, REFERENCES, and TRIGGER for `anon`, `authenticated`, and `service_role` in the public schema's default table ACL. This conflicts with the intended least-privilege defaults in `harden_public_default_table_privileges`. Do not assume the migration achieved the desired state just because it appears in migration history. Re-query the raw default ACL, identify the creating role and grant source, and test the behavior on a fresh staging table before designing a narrowly scoped correction.
+
+The two missing columns remain absent. The exact function-body comparison for `public.rls_auto_enable()` shows matching behavior in the inspected body (formatting differs), but full ACL/version reconciliation is still pending. Security Advisor still reports the authenticated SECURITY DEFINER RPC `public.create_factory_workspace(text,text,text)` and disabled leaked-password protection. Production remains **NO-GO**.
