@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { assetMetadataFromEquipmentInput } from "@/lib/energy/equipment-metadata";
 import type { Database } from "@/integrations/supabase/types";
 import type { AnalysisEconomicContext } from "./analysis-input-adapter";
 import type {
@@ -441,15 +442,7 @@ export async function syncFactoryAssets(factoryId: number, equipment: Array<{
   for (const e of equipment) {
     const numericId = Number(e.id);
     const baseMetadata = Number.isInteger(numericId) ? jsonRecord(existingMap.get(numericId)?.asset_metadata) : {};
-    const metadata = {
-      ...baseMetadata,
-      category: e.category,
-      quantity: e.quantity,
-      hoursPerMonth: e.hoursPerMonth,
-      loadFactor: e.loadFactor,
-      lifecycle_status: "active",
-      application_contract_version: 2,
-    };
+    const metadata = assetMetadataFromEquipmentInput(e, baseMetadata);
     if (Number.isInteger(numericId) && existingMap.has(numericId)) {
       incomingIds.add(numericId);
       const { error } = await supabase.from("factory_assets").update({
