@@ -124,6 +124,7 @@ A fee must make sense against conservative incremental value **and** cover deliv
 
 - Do not weaken existing access controls or use production/customer data to accelerate discovery.
 - The existing draft equipment metadata fix [PR #37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37) is not a reason to expand the roadmap. Keep it draft/parked unless the selected workflow needs the electricity workspace; do not merge without relevant non-production acceptance.
+- The broader [opportunity workspace prototype PR #32](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/32) is explicitly paused/not P0. Do not merge or expand it until a selected candidate and buyer decision justify the slice.
 - Before any selected offer uses the application with real customer data, re-evaluate schema, tenant isolation, persistence, authorization, auditability, and deletion requirements against that specific workflow.
 - Synthetic/offline testing is allowed, but clearly label synthetic data and never present it as customer evidence.
 
