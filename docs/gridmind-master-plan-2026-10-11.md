@@ -757,6 +757,16 @@ This checkpoint records live GitHub/Vercel evidence inspected on 2026-10-11; it 
 4. **Reconcile production schema separately.** CI passing on a clean local database does not prove that the linked production database matches migrations. Inspect the live schema read-only, record exact discrepancies and migration history, and use reviewed, recoverable change control before any DDL.
 5. **Update this record only when a deployment or verification step actually changes state.** Required release evidence: candidate SHA, passing checks, deployment state/target, relevant logs, route/auth smoke tests, and rollback path.
 
+### Re-run verification — 2026-10-11
+
+The two canceled GitHub Actions jobs for candidate commit `b195eee20d68aa12b06cdad1622cd22cd4c8583f` were re-run individually. Both completed successfully:
+
+- [CI run 38148506033](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38148506033): dependency installation, Markdown internal-link audit, typecheck, semantic ESLint, tests, and production build all passed.
+- [GridMind Quality Gate run 38148506034](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38148506034): dependency installation, tests, typecheck, semantic ESLint, Deno setup/typecheck and HTTP acceptance test for the authoritative Edge Function, and production build all passed.
+- The Vercel check for this SHA remains successful, and the feature-branch preview remains a preview rather than a production release.
+
+The original cancellation cause has not been established. The successful re-runs show the candidate can pass these checks; they do not prove production schema parity, production availability, or customer validation. The migration replay run previously inspected was cancelled and returned no job records, so a green migration replay on this exact SHA is still not evidenced by this checkpoint.
+
 ### Current boundary
 
 The isolated migration/isolation integration test is green. Production deployment, public availability, production schema parity, and production authenticated end-to-end behavior remain **unverified** by this checkpoint. No production migration, SSO change, plan upgrade, or release promotion was performed.
