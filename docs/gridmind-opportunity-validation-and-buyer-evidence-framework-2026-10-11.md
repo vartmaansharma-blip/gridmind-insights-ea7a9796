@@ -508,3 +508,100 @@ Messages are drafts only. **No message has been sent and no interviewee has been
 Advance a candidate only if a real interview yields a recent specific incident, a credible consequence, a clearly mapped existing workflow, a material unresolved gap, a plausible data-permission path, and a reachable owner willing to discuss a concrete next step. If these are absent, keep investigating or reject the candidate; do not make up scores to force a decision.
 
 **Next action:** pursue the three recruitment routes and record actual status. Desk research and this comparison do not substitute for interviews.
+
+
+## 11. Outreach preparation and first-interview execution — 2026-10-11
+
+### Verified public route (not contacted)
+
+**ACMA Eastern Region**
+- Official source: https://www.acma.in/contact.php
+- The official page lists an Eastern Region office in Jamshedpur and the role Regional Secretary (ER), with public contact channels including `acmaer@acma.in` and `anjali.nair@acma.in`.
+- Use the generic regional channel first; ask for an appropriate research route or public event rather than assuming an individual will participate.
+- Verification is limited to the public webpage retrieved on 2026-10-11. No message has been sent.
+
+**BEE/SIDHIEE cluster route**
+- Official source: https://sidhiee.beeindia.gov.in/aboutbee
+- The portal documents clusters and sectors including forging, foundry, food processing, textile, and mixed industries, and provides knowledge products and stakeholder information.
+- Use this as a directory to identify an appropriate cluster or organization; do not treat the portal as an endorsement or direct customer lead.
+- No organization has been contacted.
+
+### Three initial outreach actions
+
+1. **Association route:** Send the ACMA Eastern Region request below through the official public channel, with appropriate adult awareness/support.
+2. **Cluster route:** Select one relevant cluster from the official BEE/SIDHIEE pages, identify its legitimate public association/event contact, and request a research introduction.
+3. **Trusted-network route:** Ask a trusted adult or known professional for one introduction to a manufacturing owner/operations leader and one technical professional. Do not invent contact details or send bulk messages.
+
+These actions are prepared, not completed. The tracker must only be changed to “sent” after the founder actually sends a request.
+
+### First message — ACMA Eastern Region
+
+**Subject:** Student research request: manufacturing operations and recurring problems
+
+Hello ACMA Eastern Region team,
+
+I’m a student conducting exploratory research into how manufacturing companies investigate recurring production, maintenance, and quality problems. I’m trying to understand existing workflows and where teams still face difficulty—not to sell a product or request confidential company information.
+
+Would you be able to suggest an appropriate public event, member-facing channel, or professional who might be willing to take part in a brief 20-minute research conversation? I understand participation may not be possible, and I do not imply any endorsement by ACMA.
+
+Thank you for your time.
+
+Regards,  
+GridMind research
+
+### First interview: protocol and record
+
+**Opening:** Explain that this is exploratory research, not a sales pitch. Ask permission to take notes. Do not request confidential data, customer names, personal data, or proprietary documents. If recording is considered, obtain explicit permission first; written notes are sufficient.
+
+**Ask in this order:**
+1. “Can you describe a recent production, maintenance, quality, or energy problem that took meaningful effort to resolve?”
+2. “What happened, and how was it first noticed?”
+3. “Who became involved, and what did each person or system contribute?”
+4. “Which records or tools were used? What information was missing, late, inconsistent, or hard to connect?”
+5. “What did the team decide and do? What alternatives were considered?”
+6. “How was the result checked? Did the problem recur?”
+7. “What was the operational consequence? How was any financial impact calculated, and what is known versus estimated?”
+8. “What remains unresolved, if anything?”
+9. “What would a new tool need to prove before you would trust or pay for it? Who would approve that decision?”
+10. “What existing system, service, or process would this need to outperform?”
+
+**Close:** Ask whether there is a public, non-confidential follow-up source or another role they recommend. Do not ask for factory access or operational records as an initial step.
+
+### Evidence capture template
+
+- Interview ID / date / role (avoid personal identifiers in the shared repository):
+- How the contact was reached and permission to take notes:
+- Incident category and recency:
+- What happened (separate direct account from interpretation):
+- Existing workflow, roles, tools and records:
+- Time/effort consumed (measured, recalled, or unknown):
+- Operational impact:
+- Financial impact and calculation basis:
+- Evidence tier: A record-backed / B reconstructable / C expert estimate / D anecdotal / unknown:
+- Current alternatives and why they were insufficient:
+- Unresolved gap:
+- Data access and permission constraints:
+- Buying authority and budget evidence:
+- What would change the person's decision:
+- Contradictions / disconfirming evidence:
+- Candidate opportunity affected (A–E) and reason:
+- Follow-up permission / next action:
+- Confidence and open questions:
+
+### Interview evidence rules
+
+- One interview is qualitative evidence, not proof of market-wide demand.
+- A financial estimate must identify the formula and assumptions; distinguish revenue from contribution margin and avoid double-counting.
+- Do not attribute an improvement to GridMind without a credible baseline, comparison, and review of other causes.
+- Do not store confidential operational details or identifiable personal information in this public repository.
+- Simulated conversations, hypothetical examples, and desk research must never be entered as customer interviews.
+- Since the founder is a minor, use trusted-adult guidance for introductions, and do not visit a factory or handle its data without explicit organizational permission and required safety approvals.
+
+### Status as of 2026-10-11
+
+- ACMA route: researched; **not contacted**.
+- BEE/SIDHIEE route: researched; **no specific organization contacted**.
+- Trusted-network route: **no introduction confirmed**.
+- Real interviews completed: **0**.
+- Customer evidence: **none yet**.
+- Next action: send one appropriate request through a public channel and update the tracker only after the action occurs.
