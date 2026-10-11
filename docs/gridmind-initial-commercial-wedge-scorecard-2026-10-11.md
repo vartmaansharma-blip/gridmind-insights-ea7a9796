@@ -1,7 +1,7 @@
 # GridMind — Initial Commercial Wedge Scorecard
 
 **Date:** 2026-10-11  
-**Status:** Framework created; candidates are not yet validated. No scores are assigned where supporting evidence is absent.  
+**Status:** Five-opportunity desk comparison recorded; no candidate is validated and no numeric scores are assigned without buyer evidence.  
 **Purpose:** Identify a credible first customer problem that can be delivered honestly with current resources and can expand into a larger industrial intelligence platform.
 
 ## Decision rule
@@ -10,28 +10,44 @@ Do not select a wedge because it is easiest to animate, sounds impressive, or ha
 
 Unknown is not zero. Each candidate must carry a confidence rating and an evidence trail. Do not calculate a meaningful weighted ranking until evidence exists for the inputs.
 
-## Candidates to investigate
+## Five candidate opportunities to compare
 
-### A — Operational-loss / constraint investigation
-- **Hypothesis:** A plant or operations team loses time or output investigating recurring deviations, bottlenecks, or unexplained performance changes.
-- **Possible buyer:** Operations manager, plant manager, continuous-improvement lead; confirm in discovery.
-- **First-deliverable hypothesis:** A bounded, human-reviewed investigation brief that aligns customer-provided records, identifies what is observed versus hypothesized, and proposes checks for the responsible team.
-- **Critical unknowns:** Whether the problem is frequent and costly enough; whether usable records are available; whether customers will share them; whether existing tools or internal teams already solve it; whether a small, manual-first deliverable is valuable.
-- **Risk:** Without trustworthy data and domain review, the product could produce generic explanations or imply causality that has not been established.
+The five categories below replace the earlier three-bucket framing for current wedge selection. Procurement intelligence can return as a candidate if discovery uncovers a concrete, costly purchasing workflow, but it is not treated as directly equivalent to the five industrial problem families until narrowed to a specific category and buyer.
 
-### B — Procurement intelligence for one bounded category
-- **Hypothesis:** A specific industrial buyer struggles to compare supplier, price, specification, lead-time, and availability information for a narrowly defined purchasing category.
-- **Possible buyer:** Procurement/category manager or owner of a smaller industrial operation; confirm in discovery.
-- **First-deliverable hypothesis:** A source-linked comparison and exception brief from permitted documents and customer-defined requirements, with missing fields clearly marked.
-- **Critical unknowns:** Which category has recurring complexity; whether source data can be lawfully and reliably collected; willingness to pay; update burden; whether incumbent ERP/procurement systems already cover the need.
-- **Risk:** Generic web aggregation is easily copied and may be stale; defensibility would require trusted workflow, verified sources, domain-specific normalization, or a differentiated distribution path.
+### A — Downtime / production loss
+- **User / buyer hypotheses:** production manager, operations/plant manager, continuous-improvement lead; economic buyer may be plant leadership or the owner.
+- **Possible first test:** reconstruct one closed stoppage or production deviation and test whether evidence reconciliation improves the current investigation.
+- **Potential strength:** often maps to a concrete event and potentially material operating consequence.
+- **Risks / unknowns:** downtime duration is not automatically lost profit; lost output may be recovered, demand may be absent, another constraint may dominate, and incumbent MES/OEE/maintenance processes may already suffice.
+- **Critical evidence:** recent event, accepted cost method, current workflow bottleneck, actionable intervention, and credible baseline.
 
-### C — Narrow vertical operations workflow
-- **Hypothesis:** One defined industrial sub-sector repeats a costly workflow that is poorly served by its current mix of spreadsheets, messaging, and general-purpose software.
-- **Possible buyer:** To be selected only after a specific vertical and workflow are identified.
-- **First-deliverable hypothesis:** A focused workflow tool or human-assisted service that captures one input, supports one decision, and records one measurable outcome.
-- **Critical unknowns:** Which vertical/workflow has the strongest urgency; buyer access; operational variability; data permission; implementation and support burden; expansion path.
-- **Risk:** “Vertical operations AI” is not a sufficiently specific market. It must be narrowed to a named user, triggering event, workflow, and measurable consequence before scoring.
+### B — Quality defects / scrap / rework
+- **User / buyer hypotheses:** quality manager, production leader, process engineer; buyer authority must be confirmed.
+- **Possible first test:** assemble a source-linked defect or rework case and identify missing/conflicting evidence for qualified review.
+- **Potential strength:** scrap and rework can have traceable quantities and costs when records are reliable.
+- **Risks / unknowns:** QMS/SPC systems may already solve the problem; false causal claims can be costly; records and identifiers may not align.
+- **Critical evidence:** repeat pattern, cost calculation, data rights, qualified reviewer, and proof that GridMind adds more than a summary.
+
+### C — Maintenance recurrence / reliability
+- **User / buyer hypotheses:** reliability engineer, maintenance manager, maintenance/plant leader.
+- **Possible first test:** compare one recurring failure's work orders, event timeline, corrective actions, and recurrence evidence against the existing workflow.
+- **Potential strength:** a closed incident may permit a bounded retrospective test without autonomous control; work orders and maintenance history may provide a practical starting point if available.
+- **Risks / unknowns:** records may omit physical context; root-cause analysis may require inspection or specialist judgment; CMMS/OEM workflows may already be effective.
+- **Critical evidence:** repeated incidents, accessible authorized records, engineer review, and measurable reduction in review effort or improvement in evidence completeness.
+
+### D — Energy / material inefficiency
+- **User / buyer hypotheses:** energy/utility manager, operations leader, owner, process engineer.
+- **Possible first test:** investigate one narrowly defined resource-use anomaly with operating context and a qualified reviewer.
+- **Potential strength:** resource consumption can sometimes be measured and costed; recurring improvements may create measurable value.
+- **Risks / unknowns:** meter and process data may be unavailable; normalization for product mix, output, shift, weather, tariff, and operating hours can be demanding; an energy audit or specialist may be better.
+- **Critical evidence:** suitable meter/process context, defensible baseline, controllable intervention, and net value after implementation cost.
+
+### E — Cross-functional decision / handoff delay
+- **User / buyer hypotheses:** plant/operations manager, owner, continuous-improvement leader.
+- **Possible first test:** map one real case from detection through investigation, approval, action, and closure; measure avoidable waiting and duplicate effort.
+- **Potential strength:** may reveal gaps spanning several systems and teams, aligning with the long-term GridMind thesis.
+- **Risks / unknowns:** too broad as a starting product; root cause may be authority, staffing, incentives, or management discipline rather than information; value attribution can be difficult.
+- **Critical evidence:** named accountable owner, repeatable delay, measurable cost or risk, and a feasible process change GridMind can influence.
 
 ## Weighted rubric
 
@@ -52,7 +68,7 @@ Score each criterion from 1–5 **only when evidence supports the score**. Recor
 
 | Field | Record |
 |---|---|
-| Candidate | A / B / C |
+| Candidate | A / B / C / D / E |
 | Interview date and participant role | |
 | Triggering event / last real occurrence | |
 | Current workaround and alternatives | |
@@ -100,8 +116,59 @@ Avoid leading questions such as “Would you use AI for this?” or “Would thi
 
 **No commercial wedge is selected.** This document creates a disciplined way to learn; it is not market research and does not establish customer demand, willingness to pay, data access, or a defensible moat.
 
-The next meaningful evidence is a real recent problem narrative from a relevant buyer, paired with a practical data path and a specific next-step commitment.
+The next meaningful evidence is a real recent problem narrative from a relevant buyer, paired with a practical data path, a credible comparison against current alternatives, and a specific next-step commitment. The five-opportunity desk comparison below is a prioritization of what to test—not a selection of the commercial wedge.
 
+
+## Five-opportunity comparison — desk-based, not market validation
+
+### Executive decision
+
+**Do not declare a commercial winner from current evidence.** There are zero completed real customer interviews, no confirmed willingness to pay, no authorized factory data, and no measured GridMind outcome. A numeric weighted rank would create false precision.
+
+The most defensible immediate experiment is **one human-reviewed retrospective investigation of a closed, real incident**, selected with a real factory professional and authorized records. The incident could involve downtime, maintenance recurrence, quality, or another category. This experiment tests evidence reconciliation, reviewability, time-to-useful-result, and current-workflow comparison without prematurely choosing the long-term market. It is an experiment design, not a claim that incident investigation is the best business.
+
+### Relative desk assessment
+
+| Candidate | Pain / economic measurability (hypothesis) | Data / first-test feasibility (hypothesis) | Differentiation challenge | Influence over outcome | Repeatability / expansion | Current evidence confidence | Validation priority |
+|---|---|---|---|---|---|---|---|
+| A. Downtime / production loss | Potentially high; actual recoverable margin can be hard to calculate | A closed incident may be reconstructable if logs and production context exist | High: MES/OEE, maintenance systems, engineers and consultants already address parts | Medium: depends on whether the cause and intervention are controllable | High potential across production and reliability, but only if cases share a repeatable workflow | Low; no buyer cases | High for discovery; do not equate downtime with financial loss |
+| B. Quality defects / scrap / rework | Potentially high when quantities, rework, and disposition are recorded | Medium: QMS, production and lot records may be fragmented or sensitive | High: QMS, SPC, process engineering and traceability systems | Medium: root cause and corrective action may require specialist control | High potential across quality and supplier/process context | Low; no buyer cases | High if a qualified quality professional is reachable |
+| C. Maintenance recurrence / reliability | Potentially meaningful when failures recur and corrective actions fail | Medium-to-high for a retrospective test if CMMS/work-order history exists; this is not verified | High: CMMS, OEM, reliability engineers and existing RCA practices | Medium: physical inspection, parts, skills and maintenance windows constrain action | High potential into asset context and recurrence tracking | Low; no buyer cases | High for the bounded retrospective experiment |
+| D. Energy / material inefficiency | Potentially measurable, but normalized net savings are case-dependent | Medium-to-low until suitable meter/process data and operating context are confirmed | High: energy-management platforms, audits, controls vendors and specialists | Medium: requires an authorized intervention and qualified verification | Potentially high across assets/sites if normalization and deployment repeat | Low; existing data contract is only a candidate specification | Medium-high; advance if data access and buyer are readily available |
+| E. Cross-functional handoff / decision delay | Consequence may be real but harder to isolate and attribute | Medium for mapping interviews; lower for proving economic impact | Very high: can become generic workflow software or consulting | Variable; authority, staffing and incentives may dominate | High theoretical breadth, but risk of becoming too broad | Low; no buyer cases | Lower as a standalone first wedge; use as a lens in every interview |
+
+**Interpretation:** These qualitative judgments reflect problem mechanics and likely incumbent categories, not verified prevalence or demand. “High” in expansion potential is not a score for commercial attractiveness. Data feasibility remains unknown until a real case and authorized data owner are identified.
+
+### Hard gates — any one can stop a candidate
+
+A candidate cannot advance to a paid-offer test until:
+1. A real buyer describes a specific recent problem and current workflow.
+2. The consequence is calculated conservatively with sources, assumptions, and double-counting checks.
+3. A named owner can influence the outcome and a qualified reviewer can assess the analysis.
+4. The current alternative is mapped and GridMind's incremental benefit is testable.
+5. A lawful, practical data path and an appropriate security review exist.
+6. A baseline and outcome measure can be agreed before the test.
+7. The likely customer value can exceed fees and adoption costs, and GridMind's delivery effort has a plausible economic path.
+8. The buyer agrees to a concrete next step; compliments alone do not pass.
+
+### The next experiment, step by step
+
+1. Obtain a legitimate introduction to one operations, maintenance/reliability, or quality professional. A trusted adult/professional should support introductions as appropriate; do not request factory access or records at this stage.
+2. Ask about the last real incident without pitching GridMind. Map trigger, current tools, roles, evidence, decision, action, consequence, and verification.
+3. Ask which records would support a retrospective review, who controls them, and what permissions/security checks would be required. Do not accept confidential records until explicit organizational authorization and a safe handling path are established.
+4. If the professional identifies a meaningful case and approves a suitable process, agree the reference assessment, success measures, and stop criteria before comparing outputs.
+5. Compare current workflow versus GridMind-assisted review on total human time, source traceability, material omissions, unsupported claims, reviewer usefulness, and delivery cost.
+6. Record what would falsify the opportunity. If an existing process is as good or better, recommend that process and move on.
+7. After initial interviews, update each candidate's evidence, confidence, and unknowns. Select a wedge only when hard gates pass and a buyer takes a concrete commercial next step.
+
+### What would change the prioritization?
+
+- **Downtime rises** if repeated events have a defensible addressable cost, evidence is available, and investigation delay is the limiting factor.
+- **Quality rises** if repeat defects have traceable costs and a qualified reviewer identifies a material evidence gap not handled by QMS/SPC.
+- **Maintenance rises** if recurrence is common, records are usable, and teams cannot connect corrective actions to repeat failures.
+- **Energy/material rises** if normalized resource-use data is accessible and a buyer can approve and verify an intervention.
+- **Handoff delay rises** if a repeatable delay has an accountable owner and measurable consequences that GridMind can actually influence.
+- **Any candidate falls** if a simple process fix or existing vendor solves the problem at lower total cost, data access is blocked, the buyer lacks authority, or GridMind cannot demonstrate incremental value.
 
 ## Commercial economics gate — required before choosing a wedge
 
