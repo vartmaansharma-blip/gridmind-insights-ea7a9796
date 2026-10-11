@@ -20,7 +20,7 @@ export const Route = createFileRoute("/opportunities")({
 const STATUS = ["detected","quantified","investigating","diagnosed","recommended","accepted","in_progress","awaiting_verification","verified","closed","invalid","insufficient_evidence","not_economically_material","not_actionable","rejected","superseded","unverified"];
 
 function Opps() {
-  const { active, analysis } = useEnergy();
+  const { active, analysis, setOppStatus } = useEnergy();
   const query = useQuery({
     queryKey: ["canonical-opportunities", active?.id],
     queryFn: () => getCanonicalOpportunities(Number(active!.id)),
@@ -45,7 +45,7 @@ function Opps() {
           <article key={o.id} className="panel p-5">
             <div className="flex flex-wrap items-start gap-3">
               <div className="min-w-0 flex-1"><div className="eyebrow">Opportunity #{i + 1}</div><h2 className="mt-1 text-lg font-semibold">{o.title}</h2><p className="mt-1 text-sm text-muted-foreground">{o.scopeType} · {o.scopeId ?? "factory-wide"}</p></div>
-              <Select value={o.status} onValueChange={(v) => { /* Status changes remain on the existing canonical workflow. */ }}>
+              <Select value={o.status} onValueChange={(v) => setOppStatus(String(o.id), v as any)}>
                 <SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{STATUS.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent>
               </Select>
             </div>
@@ -74,7 +74,6 @@ function OpportunityWorkspace({ factory, analysis }: { factory: Factory; analysi
   const selected = opportunities.find((o) => o.id === selectedId) ?? opportunities[0];
   if (!selected) return <EmptyState />;
 
-  const isUnknown = selected.evidenceState === "unknown";
   const layers = [
     { id: "signal" as const, label: "Signal", detail: "What changed?" },
     { id: "economics" as const, label: "Economics", detail: "What might it mean?" },
