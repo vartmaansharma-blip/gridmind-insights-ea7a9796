@@ -161,3 +161,8 @@ The [GridMind Decision Constitution and Contradiction Register](docs/gridmind-de
 ## Cross-category founder opportunity review — 2026-10-11
 
 The [Founder Opportunity Cost Review: B2B vs B2C](docs/founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md) compares GridMind with a creator-led consumer brand, vertical AI, AI services, consumer apps, marketplaces, and other paths. It explicitly treats GridMind as a contender rather than a predetermined winner and proposes a 30-day evidence tournament. Scores are hypotheses, not validated probabilities.
+
+
+## Opportunity tournament — Test 1 (2026-10-11)
+
+The [Opportunity Tournament desk-evidence test](docs/opportunity-tournament-test-1-desk-evidence-2026-10-11.md) compares GridMind with a narrow B2B AI service-to-software path and a creator-led consumer brand. This is public-source desk research, not customer validation. It recommends real buyer discovery before choosing a winner.
