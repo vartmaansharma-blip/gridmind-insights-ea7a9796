@@ -293,3 +293,138 @@ If the buyer, trigger, input data, output, or outcome metric remains vague, the 
 This conceptual contract does not choose energy, downtime, procurement, quality, or any other wedge. It sharpens the criteria by which they will be compared. During validation, do not add broad features or redesign the marketing site to compensate for missing buyer evidence. The next decision is which narrow, buyer-owned job passes discovery, data-feasibility, delivery, and measurement gates.
 
 **Status:** conceptual contract approved for planning; not evidence of implemented behavior, buyer demand, product readiness, or measured customer outcomes.
+
+
+## 14. Refinement 2 — define the product at decision level, not platform level
+
+This refinement resolves a remaining ambiguity: “help make a better decision” is still too broad unless GridMind defines the decision, the economic owner, the alternatives, and the evidence required to change action.
+
+### 14.1 The real problem is a decision gap
+
+GridMind should investigate situations where all four conditions coexist:
+
+1. **Consequential:** the decision affects a meaningful operational or financial outcome.
+2. **Unresolved:** the current process leaves a material question unanswered, answered too slowly, or answered with insufficient confidence.
+3. **Addressable:** a responsible team can change something in response.
+4. **Verifiable:** there is a realistic way to measure whether the decision or intervention improved the result.
+
+A loss alone is not automatically a GridMind opportunity. A loss that cannot be influenced, distinguished from normal variation, accessed through permitted data, or economically justified may be outside the initial product.
+
+### 14.2 Five entities the product must keep distinct
+
+The data model, UI, analytics and commercial language should not collapse these concepts:
+
+- **Signal:** a pattern, event, deviation or reported issue that warrants attention. It is not yet a confirmed problem.
+- **Finding:** a claim supported by identified evidence and explicit limitations.
+- **Opportunity:** a plausible improvement whose addressable value and feasibility are estimated, not yet realized.
+- **Decision/action:** a human-approved choice with an owner, timing, and recorded status.
+- **Outcome:** a measured result against a predeclared baseline and time window, with attribution limits stated.
+
+These are separate lifecycle states, not synonyms. An AI-generated alert cannot silently become a finding; a finding cannot silently become a root cause; an opportunity cannot silently become savings; a recommendation cannot silently become an approved action.
+
+### 14.3 The customer should buy an outcome-oriented workflow, not “AI”
+
+The first offer must be expressed in customer language:
+
+> When [specific event] occurs, help [named role] decide [specific decision] using [permitted evidence], so they can improve [defined metric] within [time window], compared with [current workflow].
+
+If the team cannot complete this sentence with evidence, the use case is not defined well enough to build or sell.
+
+The sales conversation should start with a recent incident and current workflow—not with an AI pitch, a list of features, or a generic promise to “optimize the factory.”
+
+### 14.4 Value equation and honest economics
+
+Use a customer-grounded equation appropriate to the use case:
+
+**Potential gross value = baseline loss or cost × addressable share × plausible improvement rate.**
+
+This is only an estimate and all factors must be independently supported or visibly marked as assumptions. Then estimate:
+
+**Potential net value = potential gross value − implementation cost − operating/change cost − GridMind fees.**
+
+Do not present either equation as realized savings. For any proposed case, report:
+- Measurement unit and period.
+- Source of baseline and data coverage.
+- Normalization needed for production volume, product mix, shift, weather, input prices, maintenance state or other material factors.
+- Addressable share and why it is controllable.
+- Assumptions, ranges and sensitivity to uncertain inputs.
+- Cost and time required to act.
+- Confidence and unresolved confounders.
+- Verification plan and conditions that would count as failure.
+
+If these cannot be estimated credibly, GridMind should report the missing information rather than invent a monetary value.
+
+### 14.5 Initial offer design: manual-first, software-assisted
+
+Until repeatability is demonstrated, the first commercial offer may be a tightly bounded, human-reviewed service supported by software. This is an experiment, not a concession that GridMind must become an agency.
+
+The first offer should define:
+- One workflow and one decision owner.
+- A strict input checklist and permitted data boundary.
+- A fixed analysis scope and explicit exclusions.
+- A named qualified reviewer for domain-sensitive conclusions.
+- A tangible deliverable and acceptance criteria.
+- A time-to-result target.
+- A fixed or bounded delivery effort.
+- A way to measure the customer's outcome.
+- Clear handling of missing data, inconclusive results, and refund/fee terms to be agreed before any paid engagement.
+- What can be reused across customers, and what must remain tenant-specific.
+
+Automate only the repeated, high-friction parts observed in delivery. If each customer requires unique integrations, custom reasoning, or substantial expert time, record that as a threat to software economics.
+
+### 14.6 Wedge selection: hard gates before weighted scores
+
+Weighted scoring can create false precision. Apply fatal-blocker gates first:
+
+**Gate 1 — Buyer:** a specific role experiences the problem and has authority or access to the economic buyer.
+
+**Gate 2 — Event and urgency:** a recent, concrete example and the current response can be described.
+
+**Gate 3 — Addressability:** a controllable intervention or decision exists.
+
+**Gate 4 — Evidence:** required records and context exist and can be shared with permission.
+
+**Gate 5 — Verification:** a credible baseline, outcome metric and measurement window can be agreed.
+
+**Gate 6 — Differentiation:** current software, internal expertise, consultants and a simpler process have been considered; there is a plausible incremental advantage.
+
+**Gate 7 — Delivery:** a small first result can be produced safely with available capabilities and bounded effort.
+
+**Gate 8 — Commercial signal:** the buyer offers a concrete next step, such as introducing the budget owner, reviewing a scoped proposal, arranging authorized data access, or evaluating a paid test.
+
+Only candidates that pass the relevant hard gates should be compared on frequency, economic impact, sales cycle, repeatability, gross margin potential, expansion and defensibility. A “no” or “unknown” at a gate must remain visible; it must not be hidden by a high market score.
+
+### 14.7 The first product boundary
+
+For the first validated use case, GridMind should do only the following:
+1. Receive a defined set of authorized records and operating context.
+2. Validate data identity, completeness, units, time alignment, freshness and consistency.
+3. Produce traceable calculations and a bounded interpretation.
+4. Expose uncertainty, alternative explanations and missing evidence.
+5. Create a reviewable case with proposed next checks or options.
+6. Record a qualified human decision and accountable owner, if the customer chooses to proceed.
+7. Track outcome evidence against the agreed baseline.
+
+Defer broad chat, generic agents, predictive maintenance, autonomous control, all-factory knowledge graphs, cross-customer benchmarking, supplier marketplaces and multi-vertical expansion unless a validated first workflow specifically requires them.
+
+### 14.8 What would disprove the thesis?
+
+We must be prepared to stop or change direction if:
+- The current workflow already answers the decision well enough.
+- The problem is infrequent, low-cost, or has no accountable owner.
+- Better evidence does not change the decision.
+- The necessary records cannot be accessed or aligned at acceptable cost.
+- The result depends on a domain expert whose effort makes delivery uneconomic.
+- The intervention is outside the customer's control.
+- No credible baseline or counterfactual can be established.
+- Buyers value the output but will not fund it, or procurement friction outweighs value.
+- Similar cases do not repeat across facilities or the supposed reusable core fails.
+- A simpler non-AI process provides equal or better value.
+
+### 14.9 Current conceptual decision
+
+**Decision:** Define GridMind as a decision-to-verified-outcome workflow with explicit lifecycle states, not a generalized insight engine. Keep the broader industrial intelligence platform as the long-term architecture hypothesis.
+
+**Still undecided:** initial industry segment, buyer role, first workflow, pricing, implementation model, and whether the best entry point is operational loss, procurement, or another narrow workflow.
+
+**Evidence status:** this is a product-design decision based on first principles. It is not customer validation, a production-readiness claim, or proof of willingness to pay.
