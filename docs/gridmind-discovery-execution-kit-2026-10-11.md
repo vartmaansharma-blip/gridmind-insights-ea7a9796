@@ -213,3 +213,72 @@ The official MSME Tool Room Jamshedpur (Indo-Danish Tool Room), a Ministry of MS
 **Next action:** have a trusted adult/professional review the inquiry and decide whether to use this institutional route or ASIA first. Send at most one initial inquiry after the route and wording are confirmed; record the actual status. Do not submit a form implying an established company or professional designation if that is not accurate.
 
 This source was checked on 2026-10-11: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php. No contact has been made.
+
+
+## Buyer-first experiment — decision-grade interview v1 (2026-10-11)
+
+**Priority correction:** the next commercial milestone is not choosing a preferred product concept. It is getting one legitimate conversation with a relevant operational owner and reconstructing one recent real incident. No wedge is selected, and this interview is not market validation by itself.
+
+### Experiment question
+
+Can a relevant plant/production, quality, maintenance or owner-level participant describe a recent incident that was costly and recurring, identify a meaningful gap left by the best existing alternative, name an accountable owner/budget path, and explain how the minimum necessary evidence could be permissioned and the result measured?
+
+### 20-minute interview — ask in this order
+
+**0–2 min — permission and context**
+- “I’m researching how manufacturing teams handle operational incidents. I’m not assuming software or AI is the answer. Is it okay if I take non-identifying notes? I won’t record or request factory documents.”
+- “What is your role in the process, and which decisions can you make or approve?”
+
+**2–9 min — last real incident (do not pitch)**
+1. “Think of the most recent time downtime, a defect/rework event, a recurring maintenance problem, or an operational handoff caused a meaningful problem. What happened?”
+2. “When was it? What first signaled the issue? Can you walk me through the timeline from detection to resolution?”
+3. “Who did what, and which records/systems/people were used?”
+4. “What did your existing process handle well? Where, if anywhere, did it break down or require repeated manual work?”
+5. “How did you decide the issue was resolved? What evidence supports that conclusion?”
+
+**9–14 min — recurrence and economics**
+6. “How many comparable incidents occurred in the last 3–12 months? What records or experience support that estimate?”
+7. “What consequence was actually observed—lost output, scrap/rework, overtime, delay, extra energy/material, or investigation time?”
+8. “Which numbers are recorded facts and which are estimates? Who calculated them? What other causes could explain the impact?”
+9. “Was any cost recovered or offset? What portion, if any, could a new workflow realistically influence?”
+
+**14–17 min — alternatives, ownership and buying**
+10. “What tools, ERP/MES/SCADA/CMMS/QMS, spreadsheets, OEMs, consultants or Lean/SMED processes were already used?”
+11. “What did you try before? Why was the current approach retained? What remains unsolved, if anything?”
+12. “Who owns this metric operationally? Who could approve spending, and what budget/procurement path would apply?”
+
+**17–19 min — data permission and repeatability**
+13. “Which minimum records would be needed to reconstruct the event credibly, who owns them, and what approvals would be required?”
+14. “Could this be reviewed using a redacted timeline or a small approved export, or are the records unavailable? Please do not share files now.”
+15. “If someone reviewed one case manually, roughly how many expert hours would it take? Which steps repeat across incidents, and which require specialist judgment?”
+
+**19–20 min — disconfirmation and next step**
+16. “What would make an independent review not worth doing?”
+17. “Who else would have a different view—such as finance, maintenance, quality, IT/OT or the system owner?”
+18. “If appropriate, is there a low-risk next step: another role interview, a public workflow description, or a separately approved test? No commitment is assumed.”
+
+### Evidence to capture immediately after
+
+Record the participant's role (use an alias in public notes), permission to take notes, incident timeline, recurrence and its source, measured facts vs estimates, counterfactuals/confounders, incumbent alternatives, residual gap, user/owner/buyer/budget approver, data owner and approval path, estimated manual delivery hours, strongest disconfirming evidence, and the exact next step actually agreed.
+
+Grade every key statement A/B/C/D using the existing evidence ladder. General opinions and compliments are D. A credible story is useful but does not by itself prove willingness to pay, data access, repeatability or causality.
+
+### Decision rules after the first conversation
+
+- **Do not select a wedge yet** from one interview. Use it to identify the next most informative independent role/account and falsify the strongest hypothesis.
+- **Advance a candidate** only if the account gives a concrete incident, a traceable consequence or a credible route to quantify it, an explicit unresolved gap versus the incumbent, an identifiable owner/buyer path, a feasible permissioned evidence route, and a plausible bounded delivery method.
+- **Hold or reject** if the current alternative already works, consequence is immaterial/unmeasurable, no accountable owner or budget path exists, data cannot be lawfully accessed, or each case requires unbounded specialist work.
+- Never infer root cause or savings from a single interview. Any eventual case needs a qualified reviewer, source provenance, alternative explanations, an agreed baseline and a defensible outcome method.
+
+### Shortlist: legitimate Jamshedpur recruitment routes
+
+These are published organizational routes to ask for a suitable event, research contact or general learning opportunity—not buyer leads, endorsements or permission to access a factory. Recheck the official page before use.
+
+1. **Adityapur Small Industries Association (ASIA)** — general contact route: https://asiajamshedpur.com/contact/ ; published email `deargsasia@gmail.com`, phones `+91 87090 14720` and `+91 90608 10588`. Best first association route because the organization represents the local Adityapur industrial cluster. Ask only for an appropriate public networking route or a willing professional.
+2. **ACMA Eastern Region** — official contact page: https://www.acma.in/contact.php ; the page lists its Jamshedpur Eastern Region office and `acmaer@acma.in` / `anjali.nair@acma.in`. Ask about a public event or an appropriate research-networking process, not a member list.
+3. **MSME Tool Room Jamshedpur (Indo-Danish Tool Room)** — official industry-services enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php ; `reach@idtr.gov.in`, `+91 657 2201261/62`. Use as an educational/technical-learning route to ask about public resources or suitable staff roles.
+4. **Jharkhand Small Industry Association (JSIA)** — affiliated-bodies directory: https://www.jsia.co.in/affiliated-bodies.php ; useful as a secondary route to identify the correct association process, not to harvest personal details.
+
+**Recommended first move:** have a trusted adult/professional review the ASIA inquiry and help determine whether to send one short, truthful request. Because the founder is a minor, keep an appropriate adult involved in outreach and any follow-up; no factory visit, commercial commitment or industrial-data handling without explicit permission and supervision. No message has been sent, and no contact or interview is established by this document.
+
+Sources checked 2026-10-11: ASIA official contact page, ACMA official contact page, IDTR official industry-services enquiry page, and JSIA official affiliated-bodies directory.
