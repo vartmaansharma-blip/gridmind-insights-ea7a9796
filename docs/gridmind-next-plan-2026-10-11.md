@@ -1,9 +1,13 @@
 # GridMind Next Plan — Creative Direction to Comparable Visual Exploration
 
 **Date:** 2026-10-11  
-**Status:** Active execution plan; creative direction and reference audit recorded; three-concept comparison exists; interactive The Cut prototype and commercial validation remain pending.  
+**Status:** Active plan with commercial validation as the primary milestone; creative exploration is bounded and secondary. The interactive The Cut prototype is committed but browser/device validation remains pending. No first commercial wedge is validated.  
 **Authority:** The GridMind Decision Constitution and Contradiction Register takes precedence.  
-**Scope:** Creative direction and bounded concept exploration. This does not authorize a full public-site build or changes to the existing product route.
+**Scope:** Coordinate the current decision sequence: validate one narrow buyer problem and product truth first; continue only bounded visual exploration that supports that work. This does not authorize a full public-site build or changes to the existing product route.
+
+## Current execution priority — updated 2026-10-11
+
+**Commercial discovery is the primary gate.** The creative-direction sections below preserve the rationale and acceptance criteria for visual exploration, but they must not be read as the highest-priority work. The first wedge remains undecided. The incident-investigation-packet idea is a hypothesis only; procurement intelligence and a narrow vertical workflow remain candidates. No buyer interview, customer data, willingness-to-pay evidence, or paid commitment is claimed. See the [Problem Failure Analysis](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md), [Manufacturing Workflow Stress Test](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md), and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md).
 
 ## Executive decision
 
