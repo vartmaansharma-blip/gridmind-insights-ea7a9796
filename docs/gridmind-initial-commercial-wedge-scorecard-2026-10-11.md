@@ -101,3 +101,103 @@ Avoid leading questions such as “Would you use AI for this?” or “Would thi
 **No commercial wedge is selected.** This document creates a disciplined way to learn; it is not market research and does not establish customer demand, willingness to pay, data access, or a defensible moat.
 
 The next meaningful evidence is a real recent problem narrative from a relevant buyer, paired with a practical data path and a specific next-step commitment.
+
+
+## Commercial economics gate — required before choosing a wedge
+
+**Reason for this gate:** a product can solve a real problem and still be a bad business if the value created is too small relative to the customer's effort to adopt it and GridMind's cost to sell, deliver, and support it. The concern that a factory might save only ₹2,000–₹3,000 per month is therefore a serious viability warning, not a minor pricing question.
+
+A ₹2,000–₹3,000 monthly benefit is generally a weak basis for a high-touch industrial enterprise offer: even a modest fee, staff time, onboarding, procurement, and support can consume the benefit. It is not an automatic rejection in every business model. It might work if delivery and acquisition costs are exceptionally low, the workflow is highly self-serve, usage can be aggregated at scale, or the verified benefit is larger than the first estimate. Those conditions must be demonstrated, not assumed. Do not set a universal minimum savings threshold before understanding the buyer and business model.
+
+### 1. Calculate customer value conservatively
+
+For every candidate, estimate a range (low / base / high) and show the evidence behind each input.
+
+- **Baseline:** what happens today, using the buyer's current process and existing tools.
+- **Gross problem cost:** direct and indirect cost of the recurring problem (for example, documented downtime, scrap, expediting, rework, investigation hours, or avoidable delay). Avoid double-counting overlapping costs.
+- **Incremental value attributable to GridMind:** only the part plausibly caused by the proposed deliverable, after accounting for what the customer already does and what other changes are required. Separate measured facts from assumptions.
+- **Frequency:** how often the problem occurs, how many sites/lines/users experience it, and whether the value is recurring or episodic.
+- **Confidence and realization:** probability the improvement can actually be achieved, time to realize it, and who must act on the output.
+- **Customer adoption cost:** implementation, data preparation, integration, staff time, training, workflow change, approvals, security review, and ongoing operating effort.
+- **Customer net benefit:** conservative incremental value minus the fee and adoption/operating costs.
+- **Buyer hurdle:** the minimum return, payback period, risk reduction, or strategic value the specific budget owner requires. Ask the buyer; do not invent it.
+
+Use explicit calculations, such as:
+
+- Annualized incremental value = conservative verified value per occurrence × credible occurrences per year, adjusted for attribution and realization.
+- First-year customer net benefit = expected incremental value − GridMind fees − one-time implementation/adoption costs − customer-side ongoing costs.
+- Customer ROI = (expected incremental value − total customer costs) ÷ total customer costs.
+- Payback period = one-time adoption costs ÷ credible monthly net benefit after recurring fees and operating costs.
+
+If a term cannot be estimated credibly, mark it **unknown** and state what evidence would resolve it. Do not turn illustrative assumptions into claims.
+
+### 2. Calculate GridMind delivery economics
+
+A valuable customer problem is not sufficient if GridMind cannot serve it profitably.
+
+For each candidate, estimate:
+- one-time sales and qualification effort;
+- onboarding and implementation hours;
+- expert/domain-review hours per delivery;
+- ongoing support and account-management time;
+- data acquisition, hosting, inference, integration, and third-party costs;
+- rework, error handling, and quality-assurance effort;
+- expected contract value and payment timing;
+- renewal/retention logic and the frequency at which value recurs;
+- whether delivery becomes more efficient with each customer or stays bespoke.
+
+Track the following separately:
+- **Gross profit per customer** = revenue − direct delivery and support costs.
+- **Gross margin** = gross profit ÷ revenue.
+- **Contribution after acquisition** = gross profit − customer acquisition cost, using a stated period and allocation method.
+- **Founder bottleneck:** hours of specialist/founder effort required per customer and whether that burden can plausibly scale.
+
+Do not claim attractive margins or scalability until the cost drivers are observed in a real or transparently simulated delivery run. Label estimates and assumptions.
+
+### 3. Illustrative examples — arithmetic only, not market evidence
+
+These examples show why small nominal savings can fail commercially. They are hypothetical and do not represent GridMind customer results or industry benchmarks.
+
+- **Weak economics:** a proposed workflow appears to create ₹3,000/month in incremental value, while the fee is ₹2,000/month and customer-side adoption/operating effort costs another ₹1,500/month equivalent. The buyer's estimated net benefit is negative (₹3,000 − ₹2,000 − ₹1,500 = −₹500/month), before uncertainty. Do not sell this as a savings product.
+- **Potentially viable, pending proof:** a recurring problem is credibly estimated to create ₹1,00,000/month of addressable cost, but only 20% is realistically attributable to the intervention. The expected incremental value is ₹20,000/month before GridMind fees and adoption costs. Viability still depends on confidence, buyer hurdle, delivery cost, and willingness to pay; the gross problem cost is not the product's value.
+- **High-value but poor GridMind business:** a customer could benefit materially, but each delivery needs many days of bespoke expert work and expensive integrations. The opportunity may support a consultancy but not yet a scalable software business. Test packaging, repeatability, and delivery cost before calling it SaaS.
+
+### 4. Hard decision rules
+
+A candidate cannot pass the commercial gate merely because it has a large theoretical market or an impressive demo.
+
+**Pass to a scoped offer test only when:**
+1. A named buyer describes a recent, concrete problem and its current workaround.
+2. Frequency and economic consequence are estimated with a transparent method and conservative range.
+3. The likely incremental value is material against the buyer's fees, adoption burden, and required return.
+4. A lawful, practical data path and a credible delivery process exist.
+5. The budget owner, purchase process, and a real next step are identified.
+6. GridMind's delivery and support burden has a plausible route to sustainable margins.
+7. The buyer gives a behavioral willingness-to-pay signal (for example, agreeing to a scoped paid-pilot discussion, sharing permitted sample data, or involving the budget owner)—not just praise.
+
+**Reject, narrow, or redesign when:**
+- the benefit is only a few thousand rupees per month and the offer requires high-touch enterprise selling or implementation, unless a specific low-cost/aggregate model is evidenced;
+- the value is mostly theoretical, cannot be attributed, or depends on unsupported causal claims;
+- the issue occurs too rarely to support recurring revenue and no appropriate project-based model exists;
+- the customer can solve it adequately with existing tools at lower total cost;
+- data access, domain review, or customer action makes the promised result impractical;
+- cost-to-serve consumes the likely contract value.
+
+### 5. Add these fields to every evidence-register entry
+
+| Field | Record |
+|---|---|
+| Conservative incremental value per event / month / year | |
+| Evidence source, calculation, range, and confidence | |
+| Frequency and recurrence pattern | |
+| Share plausibly attributable to the proposed intervention | |
+| Customer fee tolerance and buyer's required return/payback | |
+| One-time and ongoing customer adoption costs | |
+| Existing alternative cost and performance | |
+| GridMind sales/onboarding/delivery/support cost estimate | |
+| Direct cost, gross profit, gross margin, and assumptions | |
+| Recurring revenue rationale vs one-off project rationale | |
+| Unit-economics failure condition | |
+| Next evidence needed and owner/date | |
+
+**Updated conclusion:** no candidate passes this gate yet. There are no real customer economics, interviews, pricing commitments, or delivery-cost observations recorded in this document. The gate is a framework for collecting them, not evidence that the opportunity is viable.
