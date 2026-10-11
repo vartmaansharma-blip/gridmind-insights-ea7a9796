@@ -5,7 +5,9 @@
 
 ## 1. The concise definition
 
-**GridMind is an evidence-backed industrial intelligence and value-realization platform that helps factories identify economically important problems, understand what the evidence supports, prioritize and coordinate interventions, and verify the outcomes.**
+**GridMind helps an industrial team make one consequential operating decision better by turning authorized, imperfect operational evidence into a traceable finding, a reviewed next action, and a measurable outcome.**
+
+The company-level ambition is to expand this repeatable decision loop across industrial workflows. The product must earn that breadth case by case; the phrase “industrial intelligence platform” is the destination, not a sufficiently specific first product.
 
 Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation—not simply a dashboard, an isolated AI agent, an energy-monitoring tool, or a marketplace.
 
@@ -192,3 +194,102 @@ The repository's system-alignment audit dated 2026-10-10 is the current constrai
 **GridMind aims to become the trusted intelligence and coordination layer for industrial value creation: understanding how facilities operate, identifying where measurable value may be created, helping customers decide and mobilize the right resources, and learning from outcomes that have been verified under clear evidence and data-governance rules.**
 
 The ambition is broad; the execution must remain narrow, evidence-led and commercially disciplined.
+
+
+## 13. Conceptual contract: what GridMind must actually do
+
+The earlier platform definition was directionally useful but too broad to guide a first product by itself. This section makes the operational contract explicit.
+
+### 13.1 The customer job
+
+Help a named person responsible for an industrial outcome answer one consequential question they cannot answer quickly or confidently with their current workflow:
+
+- What changed, and what evidence supports that conclusion?
+- Which issue or opportunity deserves attention first, and why?
+- What should a qualified person check or decide next?
+- Did the approved intervention improve the outcome, relative to a defensible baseline?
+
+These are candidate jobs, not a promise that every current build can answer them. The selected first workflow must focus on one question and one decision owner.
+
+### 13.2 The unit of value
+
+The unit of value is **not a dashboard, alert, generated report, AI answer, or detected anomaly**. It is a decision-ready, evidence-traceable case that helps a responsible team take an appropriate action and determine whether the intended outcome occurred.
+
+A case is only decision-ready when it identifies:
+1. The decision owner and operational context.
+2. The question being investigated and why it matters.
+3. The authorized source records, time window, units, and data limitations.
+4. Observations separately from hypotheses and causal claims.
+5. Economic consequence with formula, assumptions, and uncertainty—or an explicit statement that it cannot yet be quantified.
+6. Alternative explanations and checks that could disprove the leading interpretation.
+7. The human reviewer, accountable action owner, and approval boundary.
+8. The baseline and verification method defined before intervention.
+9. The post-action result, including no improvement or inconclusive results.
+
+A case that cannot meet the evidence requirements must say what is missing, not fill the gap with confident prose.
+
+### 13.3 Minimum product loop
+
+**Question → permissioned evidence → quality checks → bounded analysis → human review → approved action → outcome verification → reusable learning.**
+
+- **Question:** a specific operational or economic decision, not an open-ended request to “find insights.”
+- **Permissioned evidence:** only records the customer is authorized to provide and GridMind is authorized to process.
+- **Quality checks:** validate identity, time, units, completeness, freshness, operating context, comparability, and source lineage.
+- **Bounded analysis:** use transparent calculations and constrained analytical methods; label model-generated explanations as hypotheses unless independently supported.
+- **Human review:** a qualified person checks material conclusions and determines whether action is appropriate.
+- **Approved action:** GridMind does not autonomously control industrial equipment or bypass the customer's safety/change-control process.
+- **Outcome verification:** compare against a pre-agreed baseline and account for relevant confounders; do not attribute all observed change to GridMind.
+- **Reusable learning:** retain only data and derived information that the customer contract, permissions, security controls, and applicable law allow.
+
+### 13.4 Product boundaries
+
+GridMind is not initially:
+- A universal factory brain that claims to understand every process.
+- A generic chatbot placed over factory files.
+- A replacement for ERP, MES, CMMS, QMS, SCADA, historians, or qualified engineers.
+- An autonomous industrial-control system.
+- A guarantee of root cause, savings, safety, or improved production.
+- A marketplace whose recommendations can be distorted by undisclosed supplier incentives.
+
+GridMind may integrate with existing systems when a validated workflow requires it. It should recommend a simpler existing tool or process improvement when that is sufficient.
+
+### 13.5 First-product definition template
+
+No candidate is selected until this can be completed with evidence:
+
+- **Initial user:** [named role]
+- **Economic buyer:** [named role / budget authority]
+- **Triggering event:** [specific recent event]
+- **Decision to improve:** [one decision]
+- **Current method:** [tools, people, elapsed time, existing spend]
+- **Failure in current method:** [observed gap, not assumed]
+- **Required inputs:** [specific permitted records and context]
+- **First useful output:** [one bounded deliverable]
+- **Human approval:** [qualified reviewer and action boundary]
+- **Outcome metric:** [measurable metric, baseline, time window]
+- **Value calculation:** [formula, assumptions, uncertainty]
+- **Time to first value:** [observed or explicitly estimated]
+- **Delivery effort:** [hours and dependencies]
+- **Willingness-to-pay evidence:** [actual behavior or commitment]
+- **Reason to choose GridMind over alternatives:** [demonstrated incremental advantage]
+
+If the buyer, trigger, input data, output, or outcome metric remains vague, the concept is not ready to build.
+
+### 13.6 Architecture principles that follow from the concept
+
+1. **Evidence before inference:** every material output must link to source facts and transformations.
+2. **Deterministic economics:** financial calculations use tested, versioned formulas; language models may explain but must not invent numeric inputs.
+3. **Tenant and permission boundaries first:** every query, record, artifact, and analysis run is scoped to the authorized organization/factory and actor.
+4. **Explicit uncertainty:** missing or contradictory evidence reduces confidence or blocks a conclusion.
+5. **Reproducibility:** preserve input snapshot/version, calculation/algorithm version, assumptions, exclusions, and output.
+6. **Human control:** recommendations are advisory; the customer owns operational decisions and approved interventions.
+7. **Measurement before claims:** estimates, opportunities, approved actions, and realized outcomes are separate states.
+8. **Smallest useful workflow:** do not generalize a component until at least two validated cases show what genuinely repeats.
+9. **Failure is a valid output:** “insufficient evidence,” “existing method is adequate,” and “no measurable improvement” must be representable outcomes.
+10. **Commercial discipline:** every product capability must connect to a user job, buyer value, acceptance test, and maintenance cost.
+
+### 13.7 What this changes now
+
+This conceptual contract does not choose energy, downtime, procurement, quality, or any other wedge. It sharpens the criteria by which they will be compared. During validation, do not add broad features or redesign the marketing site to compensate for missing buyer evidence. The next decision is which narrow, buyer-owned job passes discovery, data-feasibility, delivery, and measurement gates.
+
+**Status:** conceptual contract approved for planning; not evidence of implemented behavior, buyer demand, product readiness, or measured customer outcomes.
