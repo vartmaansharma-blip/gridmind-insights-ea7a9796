@@ -3,6 +3,7 @@
 This directory contains product definitions, engineering contracts, validation procedures, historical audits, and strategy records. Read this index before opening individual documents.
 
 - [Supabase Connection & Security Audit — 2026-10-11](gridmind-supabase-connection-security-audit-2026-10-11.md) — verified database checks, least-privilege changes, index fixes, open security and end-to-end connection tests.
+- [Secure Operation & Factory Value Milestone — 2026-10-11](gridmind-secure-operation-and-factory-value-milestone-2026-10-11.md) — current live security evidence, end-to-end acceptance gates, and a preregistered first-factory pilot protocol; neither production workflow nor commercial value is claimed as proven.
 
 ## Start here
 
