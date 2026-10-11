@@ -126,3 +126,17 @@ All tests must use the intended production deployment and legitimately provision
 7. If inventory, definitions, data, constraints, or security behavior differ from expectation, stop and follow the approved recovery plan. Do not improvise a destructive rollback.
 
 **No production migration, setting change, deployment, or data mutation was performed as part of this read-only reconciliation. Production remains NO-GO until the authorized remediation and acceptance tests pass.**
+
+
+## 8. Fresh read-only production recheck — 2026-10-11 (execution follow-up)
+
+A fresh read-only Supabase check was performed after the earlier repository documentation update.
+
+- Project ID confirmed: `bvqmvgbfqhgczwbvlqkk`; project status `ACTIVE_HEALTHY`; region `ap-south-1`; PostgreSQL 17.11.
+- Current migration inventory now includes `20261011062242 harden_public_default_table_privileges` and `20261011062256 add_factory_analysis_run_fk_indexes`. Therefore the earlier report's production migration head `20261010104942` was stale by this follow-up.
+- The latest live migration version observed is `20261011062256`, still earlier than repository migrations `20261010140000_add_intervention_implemented_at.sql` and `20261010150000_add_analysis_input_snapshot_sha256.sql` when comparing their intended migration chronology.
+- A fresh `information_schema.columns` query again returned zero rows for both `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256`.
+
+**Updated conclusion:** the two expected columns are still absent in the currently inspected project, and the migration inventory does not show the two corresponding repository migrations as applied. This confirms the schema gap is still present; it does not reveal why those migrations were not applied. Before production change, reconcile timestamp/name conventions against the complete current repository migration directory and Supabase migration history to avoid version-order mistakes. Do not infer safety from the earlier stale migration head.
+
+No production migration or other mutation was performed. Continue to require fresh preflight, reviewed exact migration content, backup/recovery point, authorized operator, independent reviewer, and stop conditions before applying any DDL.
