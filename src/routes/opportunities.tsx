@@ -34,7 +34,9 @@ function Opps() {
       return (
         <>
           <PageHeader eyebrow="Demo screening" title="Demo analysis unavailable" actions={<DemoBadge />} />
-          <Panel title="No screening result available" desc="This fictional factory has no usable screening result in the current session. Return to Overview or reload the demo example; no customer or persisted opportunity data is implied." />
+          <Panel title="No screening result available" desc="This fictional factory has no usable screening result in the current session. Return to Overview or reload the demo example; no customer or persisted opportunity data is implied.">
+            <p className="text-sm text-muted-foreground">No screening findings are available to inspect in this state. This does not indicate a real factory has no opportunities.</p>
+          </Panel>
           <Button asChild variant="outline" className="mt-4"><Link to="/">Back to overview</Link></Button>
         </>
       );
@@ -49,7 +51,9 @@ function Opps() {
           actions={<DemoBadge />}
         />
         <ProcessRail active={5} />
-        <Panel title="How to interpret this view" desc="The example is designed to demonstrate how a signal can lead to an investigation. Equipment assumptions, likely causes and financial values require site evidence and human review. Nothing here is marked as realized or verified value." />
+        <Panel title="How to interpret this view" desc="The example is designed to demonstrate how a signal can lead to an investigation. Equipment assumptions, likely causes and financial values require site evidence and human review. Nothing here is marked as realized or verified value.">
+          <p className="text-sm text-muted-foreground">Use this page to inspect the logic and evidence gaps, not to treat the example as an approved recommendation. Confirm operating conditions and measurements before acting.</p>
+        </Panel>
         <div className="mt-4 grid gap-5">
           {screeningOpportunities.map((o, i) => (
             <article key={o.id} className="panel p-4 sm:p-5">
