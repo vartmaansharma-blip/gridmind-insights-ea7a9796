@@ -128,3 +128,34 @@ For each candidate, decide one of:
 ## Current truth boundary
 
 No interviews, customers, operational records, savings, pricing commitments, or paid pilots are represented as having occurred. This document is an execution protocol. Its completion requires actual observations and a recorded decision.
+
+
+## Execution activation update — 2026-10-11
+
+The isolated two-user analysis persistence/isolation suite has completed successfully in GitHub Actions: [migration replay and HTTP integration run](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481616). This clears a meaningful engineering risk in the test environment; it does not establish buyer demand or authorize use of production factory data.
+
+### Seven-day fieldwork target
+
+**Goal:** obtain three real discovery conversations, not three compliments or hypothetical feature requests.
+
+- **Day 1:** make a list of up to five *real, reachable* contacts in plant operations, maintenance/continuous improvement, or energy/utility management. Record why each person is relevant and the legitimate contact path. If no contacts are reachable, record buyer access as the blocker rather than inventing leads.
+- **Days 2–4:** request 20–30 minutes for problem discovery. Ask about the last concrete occurrence, current workaround, frequency, evidence, cost, decision owner, and prior tools. Do not lead with an AI pitch or promise savings.
+- **Days 4–5:** request permission to review a redacted example or a list of available data fields only if the owner sees a credible reason to continue. Do not ask anyone to send confidential files through ordinary email or public repositories.
+- **Days 5–6:** compare the candidates using urgency, recurrence, conservative addressable value, data access, intervention feasibility, incumbent alternatives, and delivery effort.
+- **Day 7:** advance one candidate only if the owner, measurable problem, authorized data path, and concrete next step exist. Otherwise document the blocker and continue discovery; do not force a pilot.
+
+### Outreach message draft
+
+> Hello [Name] — I’m researching how industrial teams identify and investigate recurring operational losses. I’m not assuming I know the problem or pitching a finished product. Would you be open to a 20-minute conversation about the last time a production, maintenance, energy, or process issue required investigation—how it was handled, what evidence was available, and what remained unresolved? I won’t ask for confidential records or use any operational data without your explicit approval. If a useful test emerges, I can first share a narrow scope and data-handling plan for review.
+
+### Pilot entry criteria
+
+Do not call the work a pilot until all are true:
+- A named factory owner confirms the problem is real and material.
+- The factory identifies the person authorized to approve data use and any intervention.
+- A minimum baseline is possible from existing, permissioned records.
+- One primary normalized metric and safety/quality/throughput guardrails are agreed in advance.
+- The relevant production authentication/access workflow and secure data-handling path have passed review.
+- The factory accepts the observation window, stop criteria, and review of results.
+
+**Truth boundary:** as of this update, no discovery interview, customer commitment, factory permission, data transfer, intervention, or savings result has occurred. The next external dependency is access to a real factory owner; the next technical dependency is a verified authenticated production workflow plus resolution or explicit owner acceptance of the Vercel build-rate-limit status.
