@@ -658,3 +658,68 @@ These findings update the execution order: keep product/production claims gated;
 - Decision (select/narrow/test/pivot/partner/stop):
 - Next action, owner and date:
 - Source links and related commit:
+
+
+## Execution contract — 30-day sprint (effective 2026-10-11; target review 2026-11-10)
+
+**Purpose:** replace broad planning with two parallel evidence-producing tracks: (A) technical trust/release readiness and (B) real buyer/problem validation. These are targets and work instructions, not claims of completed work. Do not start another strategy-document cycle unless a specific decision or execution gap requires it.
+
+### Outcome targets by 2026-11-10
+1. Complete 10 qualified manufacturing discovery conversations, or document the access failure and the recruitment experiments attempted.
+2. Identify one buyer-owned operational incident that passes the hard gates in this plan—or explicitly reject/narrow the hypothesis.
+3. If organizational permission and a qualified reviewer are available, evaluate one bounded retrospective investigation using approved records; otherwise document the blocker and do not substitute synthetic data for customer proof.
+4. Produce a technical release decision with linked test evidence and a list of residual blockers.
+5. Make a recorded continue / narrow / pivot / stop decision. No target is represented as achieved until its evidence exists.
+
+### Workstream A — technical trust (parallel; production remains NO-GO)
+**Accountable owner:** project maintainer for code/test artifacts; an authorized production operator owns production changes; a second qualified reviewer approves security/schema changes. Do not assume the AI assistant or student founder has production authorization.
+
+| Order | Deliverable | Acceptance criteria | Dependency / stop condition |
+|---|---|---|---|
+| A0 | Schema-contract reconciliation | Compare repository migrations, application queries/types, runbooks and live schema for `asset_interventions.implemented_at` and `factory_analysis_runs.input_snapshot_sha256`; record expected definitions, migration state, constraints/indexes/triggers/policies and the exact discrepancy. | Read-only first. If the repository contract is ambiguous, stop and resolve it before drafting DDL. |
+| A1 | Reviewed migration proposal | Proposed migration is additive/minimal where appropriate, idempotency and existing-row behavior are explicit, and migration order/rollback or recovery approach is reviewed. | No production mutation without named authorized operator, explicit approval, recovery point/backup, second-person review, change window and stop conditions. Never guess/backfill historical timestamps or hashes. |
+| A2 | RPC authorization tests | In isolated non-production fixtures, test authenticated owner, unrelated user, unauthenticated request, organization-attachment abuse and deterministic workspace selection for `create_factory_workspace`. | Any unauthorized success is a release blocker; do not “fix” by disabling RLS or broadly granting access. |
+| A3 | Auth protection and recovery | Authorized project owner reviews/enables leaked-password protection and tests sign-in/reset/recovery. | Requires project-setting authority; record before/after evidence. |
+| A4 | Tenant-isolation matrix | Two distinct test identities and at least two isolated factory fixtures; positive owner access and negative cross-tenant read/write tests across applicable REST/RPC/Edge Function/view/storage paths. | Empty tables or RLS-enabled flags are not proof. Any cross-tenant access is NO-GO. |
+| A5 | End-to-end persistence acceptance | Sign-in → workspace/factory → asset → analysis → durable persistence → reload/new-session read; verify server-side membership, exactly-one/idempotent retry, conflicting-input rejection, denial paths and safe logs. | Must run on the exact candidate SHA with clean build/typecheck/lint/tests/migration replay and deployment identity recorded. |
+| A6 | Release decision | Evidence-linked PASS/FAIL/NOT RUN for each gate and verified current application/deployment SHA. | READY deployment status alone is insufficient. Keep production NO-GO until all required gates pass. |
+
+**Known baseline blockers from the 2026-10-11 read-only snapshot:** both named columns were absent from the inspected live schema; the workspace-bootstrap SECURITY DEFINER RPC warning and disabled leaked-password protection were open; live counts were 1 Auth user, 4 factories, 8 assets, 0 observations and 0 analysis runs; authenticated UI and two-user isolation tests had not run; inspected READY deployment was built from app commit `50c57c89e48b80162ddb33599467ab61a973aeab`. Recheck before acting; these are dated observations, not assertions about the current live state. See [Technical Readiness Snapshot](gridmind-technical-readiness-snapshot-2026-10-11.md) and [Production Schema Alignment Runbook](gridmind-production-schema-alignment-runbook-2026-10-11.md).
+
+### Workstream B — commercial evidence (starts immediately; no factory data needed)
+**Accountable owner:** founder/project maintainer for recruitment, notes and follow-up. A trusted adult/professional should support formal commitments, site access and sensitive-data decisions because the founder is a minor. Interviewees own permission for their records; the organization’s authorized data owner must explicitly approve any record use.
+
+| Order | Deliverable | Acceptance criteria | Stop condition |
+|---|---|---|---|
+| B0 | Real contact route | Record actual person/role, legitimate introduction/source, and permission-appropriate contact route. Do not invent names or count a directory as a lead. | If no legitimate route exists, document the attempt and test another recruitment path. |
+| B1 | Discovery request | Send a truthful 20-minute request focused on a recent operational problem, not a product pitch or unverified claim. | Never claim messages were sent unless sent by a human and recorded. |
+| B2 | Incident reconstruction | Record trigger, timeline, workflow, people, systems/records, workaround, outcome and missing evidence from a real recent incident. | General enthusiasm or hypothetical answers do not count as qualified incident evidence. |
+| B3 | Alternatives and buyer map | Identify current alternatives, residual gap, user, operational owner, budget/purchase owner, approval path, adoption barriers and data owner. | If an incumbent/process already solves the issue adequately, recommend it or reject the wedge. |
+| B4 | Economic test | Separate measured facts from estimates; show formula, sources, assumptions and uncertainty; estimate incremental value and GridMind delivery/adoption cost including human review. | No broad industry benchmark is presented as GridMind savings. No double-counting. |
+| B5 | Permissioned retrospective | Only after explicit organizational authorization, minimum necessary data, suitable redaction and qualified human review; label sourced facts, calculations, hypotheses, counter-evidence and unknowns. | No confidential data upload or factory/site access without authorization and safety approval. |
+| B6 | Decision record | Evidence for/against, unknowns, hard gates, next action/date, and advance/narrow/pivot/stop. | Do not select a wedge solely from desk research or synthetic simulations. |
+
+### First-week schedule (2026-10-11 through 2026-10-17)
+- **Day 1 — Oct 11:** Read the technical snapshot and migration/runbook evidence; open a schema-contract discrepancy checklist. In parallel, choose the first legitimate recruitment route and prepare a contact tracker with no fabricated entries.
+- **Day 2 — Oct 12:** Compare migrations, application contract and live schema read-only; document the precise two-column discrepancy and proposed safe review path. Prepare RPC/tenant-isolation test cases. No production DDL.
+- **Day 3 — Oct 13:** Begin a small batch of personalized, truthful discovery requests through legitimate routes; record actual sends and responses only.
+- **Day 4 — Oct 14:** Hold the first available conversation; reconstruct a recent incident and current workflow. If no interview is secured, record the access blocker and try the next legitimate route.
+- **Day 5 — Oct 15:** Map alternatives, user/owner/buyer, approval and data permissions; separate observed facts, estimates, hypotheses and unknowns.
+- **Day 6 — Oct 16:** If a real incident and permission path exist, design a bounded retrospective test with baseline, outcome measures, reviewer and labor/cost accounting. Do not process records until authorized. Otherwise identify the smallest next recruitment or evidence test.
+- **Day 7 — Oct 17:** Publish a one-page evidence review: conversations actually completed, incident evidence, contradictions, technical gates/tests completed, blockers, and next actions with owners/dates. Do not label activity as traction.
+
+### Cadence and reporting
+- Daily: update GitHub issue/task status only for work actually performed; capture evidence links, owner and next action.
+- Weekly: review both tracks together; resolve dependencies but do not let one track become an excuse to avoid the other.
+- By 2026-11-10: ten qualified conversations is the target, not a fabricated commitment. If fewer occur, report the actual count and what recruitment experiments were tried.
+- Keep one source of truth: this plan plus the linked technical report, discovery kit, issue tracker and per-conversation evidence records. Avoid duplicate plans.
+
+### Hard decision gates
+**Commercial advance:** a real recent incident; material consequence supported by evidence; accountable owner and plausible buyer; a residual gap after comparing existing alternatives; authorized data path; baseline/outcome agreed; conservative incremental value plausibly exceeds fee/adoption cost; delivery labor and repeatability plausible; concrete next step accepted.
+
+**Technical advance:** schema contract reconciled through reviewed change control; workspace authorization and cross-tenant denial proven with dedicated test identities; auth/recovery checks complete; end-to-end persistence and failure paths pass; exact candidate SHA and deployment verified.
+
+**Stop / narrow / pivot:** any critical security failure; no permissioned data path; problem not consequential/frequent enough; incumbent solution is adequate; no credible buyer/approval route; value below total adoption/delivery cost; reviewer cannot verify output; or manual delivery is not economically repeatable. Record the reason rather than rationalizing around the gate.
+
+### Immediate next action
+Create and complete two small artifacts today: **(1)** a read-only reconciliation checklist for the two missing live-schema columns against the exact repository migrations/application contract, and **(2)** the first legitimate manufacturing introduction route in the contact tracker. These can proceed in parallel. No outreach, schema change, interview or customer validation is claimed until it actually occurs.
