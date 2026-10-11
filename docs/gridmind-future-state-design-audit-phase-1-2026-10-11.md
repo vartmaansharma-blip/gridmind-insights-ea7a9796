@@ -192,4 +192,4 @@ After the route-state changes on PR #31, direct HTML responses from the branch's
 
 This confirms the intended server-rendered direct-route output on the preview. It is **not** a substitute for interactive browser navigation, client-state testing, screenshots, viewport inspection or accessibility checks.
 
-Latest code commit at the time of this note: `e833de506fd88086015be48330d3d40488f5b5cb`. GitHub CI and GridMind Quality Gate completed successfully after correcting an initial TypeScript failure. Migration Replay was still pending at the time of this note. The draft PR remains unmerged; no production deployment or production data mutation was performed.
+Latest code commit at the time of this note: `e833de506fd88086015be48330d3d40488f5b5cb`. GitHub CI and GridMind Quality Gate completed successfully after correcting an initial TypeScript failure. Migration Replay initially hit a GitHub Actions release-resolution rate limit; the retry completed successfully. CI, GridMind Quality Gate and Migration Replay are all green for the reviewed code commit. The draft PR remains unmerged; no production deployment or production data mutation was performed.
