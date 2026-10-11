@@ -123,3 +123,16 @@ This dated update applies the hierarchy above to the latest problem-failure anal
 - **Decision rule:** advance, narrow, change wedge, or stop. If existing tools/process solve the problem, or data access, material value, trust, buyer commitment, or delivery economics fail, do not force the AI thesis.
 
 Supporting records: [Problem Failure Analysis](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md), [Manufacturing Workflow Stress Test](gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md), [Commercial Wedge Scorecard](gridmind-initial-commercial-wedge-scorecard-2026-10-11.md), and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md).
+
+
+## Strategic expansion — bigger than the first incident workflow (2026-10-11)
+
+The incident-investigation packet is only one possible entry point, not GridMind's ultimate problem. The larger hypothesis is that industrial businesses may lose value between shop-floor events, recorded evidence, managerial decisions, coordinated interventions, and verified outcomes.
+
+**Long-term thesis:** GridMind aims to become a trusted industrial decision-and-improvement layer that helps teams identify costly operational losses or decision bottlenecks, establish evidence, coordinate human-approved interventions, and verify outcomes. This is a platform ambition, not a current capability claim.
+
+The first wedge remains undecided. Compare: (1) industrial loss detection and verified recovery; (2) cross-system operational decision intelligence; (3) recurrence prevention/corrective-action effectiveness; (4) quality escapes and supplier-to-customer traceability; and (5) energy/material/productivity optimization. Select using buyer evidence, not theoretical market size or prototype convenience.
+
+Evaluate buyer-owned consequence, recurrence, baseline/counterfactual, permitted data access, time to result, superiority to current tools and simple process fixes, reviewer trust, delivery burden, repeatability, and expansion potential. Potential long-term advantages—industrial context resolution, traceable evidence, permissioned intervention/outcome data, repeatable workflows, integration know-how, governance, and distribution—must be earned rather than assumed.
+
+See [Bigger Problem Thesis](gridmind-bigger-problem-thesis-2026-10-11.md). No territory or wedge is validated by this strategic analysis.
