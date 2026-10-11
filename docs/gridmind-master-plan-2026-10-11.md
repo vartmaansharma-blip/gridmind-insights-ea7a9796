@@ -846,3 +846,33 @@ Decision not to guess the winner: customer discovery must decide whether the fir
 3. Design a small, explicit client/server engine parity contract after the buyer workflow is selected. Include the same source inputs, units, missing-vs-zero rules, reference window, uncertainty, refusal states, formula/version, and output semantics in tests.
 4. Keep tenant isolation, migration-history/schema reconciliation and production release gates separate. No production writes or promotion were made in this inspection.
 
+
+
+## Verification update: isolated migration replay and security checks passed — 2026-10-11
+
+This update supersedes the earlier “migration replay in progress” status above. The workflow completed successfully after that note was written.
+
+### Verified GitHub workflow results on PR #37 head
+
+- **CI** run [38152262864](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152262864): passed.
+- **GridMind Quality Gate** run [38152262668](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152262668): passed.
+- **GridMind Migration Replay** run [38152262737](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38152262737): passed. Its completed job confirms: isolated local Supabase stack startup; replay of every migration from an empty database; canonical analysis persistence schema contract; tenant isolation, direct-table denial and append-only persistence checks; local Auth test-user setup; isolated tenant fixtures; authenticated Edge Function end-to-end exercise; and no pending local migrations.
+
+### What this answers—and what it does not
+
+- **Answered for the isolated CI environment:** migrations replay cleanly; the tested persistence schema contract matches expectations; the named tenant-isolation/direct-table-denial/append-only checks pass; the authenticated Edge Function path passes its integration exercise.
+- **Not established:** production schema parity, production tenant isolation under live deployment, authenticated UI equipment save → reload, production deployment readiness, or any customer outcome.
+- PR #37 remains a **draft and unmerged**. The client hydration fix still requires a controlled authenticated UI save → reload verification before merge.
+- The Vercel build-rate-limit result remains a separate environment/account constraint, not a code-failure diagnosis.
+
+### Next engineering acceptance test
+
+Using a controlled non-production account and factory:
+1. Edit equipment category, quantity, hours/month, and load factor to distinctive non-default values.
+2. Save and confirm the save operation succeeds.
+3. Reload the page or restart the session.
+4. Confirm all four values match exactly and the resulting screening inputs remain stable.
+5. Repeat with a second isolated test tenant and verify no cross-tenant visibility.
+6. Capture test environment, steps, result, and any console/network errors. Do not use production data or relax access controls to perform the test.
+
+**Decision:** automated isolated CI evidence has improved, but do not merge PR #37 or promote a deployment based on these results alone.
