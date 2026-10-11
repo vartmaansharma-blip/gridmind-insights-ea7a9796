@@ -204,3 +204,12 @@ Therefore classify this as **default-privilege coverage to verify**, not a confi
 Obtain an authorized isolated Supabase test environment, replay the current repository migration set there, and execute the test matrix before designing a production migration/history repair. Then resolve the RPC behavior and leaked-password setting through reviewed changes, and run end-to-end authenticated acceptance against the exact release candidate. Never use production as the scratch environment, invent historical hashes/timestamps, edit migration history manually, or treat a Vercel READY status as acceptance evidence.
 
 No production mutation, deployment, settings change, or outreach was performed in this pass.
+
+
+## Execution update — isolated test environment blocker (2026-10-11)
+
+Attempted to create Supabase development branch `gridmind-readiness-test` after retrieving and confirming the displayed branch price of **$0.01344/hour**. Supabase rejected the request with: `Branching is supported only on the Pro plan or above`. No branch was created and no production database change occurred.
+
+The immediate next step is to run the existing repository-local migration replay and integration tests, and capture their current-head result. This is a useful CI gate but **does not replace** a live isolated Supabase environment for testing provider-specific roles, two-user cross-tenant access, or authenticated production acceptance. Do not upgrade the plan or mutate production automatically; first use an already-authorized staging project if one exists, otherwise keep those checks explicitly blocked.
+
+Issue #27 records this blocker and the execution pivot. Production remains **NO-GO / HOLD**.
