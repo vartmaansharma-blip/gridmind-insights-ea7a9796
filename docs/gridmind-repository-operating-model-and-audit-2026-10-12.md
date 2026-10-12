@@ -15,7 +15,7 @@ Do not perform a mass folder migration or delete historical documents before ref
 - Main commit inspected: `1c7cf1b0999254dce6e6b44c00c4a4af6511c309`.
 - Git tree: 301 paths, including 80 Markdown files under `docs/`; 58 document filenames contain a date.
 - Four workflow files exist: `ci.yml`, `quality.yml`, `migration-replay.yml`, and `pilot-intake-validator.yml`.
-- Ten pull requests were open in the search result: #38, #35, #32, #37, #36, #31, #14, #6, #13, #2, and #1 (11 items; the open-PR search returned 11, so the earlier ten-PR estimate is superseded).
+- The initial audit found 11 open PRs. Follow-up triage closed #35 and #13 as superseded/unmerged, leaving 9 open PRs from that set plus the fresh remediation PR #41. Current open PRs are #41, #38, #32, #37, #36, #31, #14, #6, #2, and #1 (10 open PRs at the latest check).
 - The branch listing returned 38 branches. The API's branch objects reported `protected: false`; the connected integration could not read the branch-protection endpoint (403), so effective repository rulesets/branch protection are **not verified**.
 - Root `roadmap.md` still lists broad product redesign tasks as unchecked work. This conflicts with the discovery-first Master Plan unless explicitly labelled as parked/reference work.
 - No customer wedge is selected. C1 downtime/production-loss investigation and C4 energy/material inefficiency remain discovery probes, not build commitments.
@@ -66,9 +66,10 @@ No PR should be merged merely to reduce the open count. Review each diff, checks
 | PR | Initial action | Reason / required check |
 |---|---|---|
 | [#38](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/38) | Keep draft; narrow or split | Documentation reconciliation is already on main; separately review the remaining energy-analysis code and regression tests; base is stale/non-mergeable. |
-| [#35](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/35) | Compare with #13 | Both address ambiguous workspace/organization bootstrap. Select one authoritative implementation only after comparing SQL, grants, and tests. |
-| [#13](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/13) | Compare with #35 | Likely overlapping bootstrap hardening; non-mergeable status requires diagnosis. |
-| [#36](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/36) | Hold for migration review | Migration filename/history changes can affect replay assumptions. Require read-only reconciliation and isolated replay; never infer production safety. |
+| [#41](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/41) | Keep draft; exact-head validation and independent security review required | Fresh workspace-bootstrap and snapshot-integrity remediation. Its body was corrected to state that #36 remains open/unmerged. Exact-head CI/replay currently fails before steps; do not merge. |
+| [#35](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/35) | Closed unmerged as superseded | Superseded by fresh PR #41. Closure is not a completion claim. |
+| [#13](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/13) | Closed unmerged as superseded | Same workspace-bootstrap path now proposed in #41; closure is not a completion claim. |
+| [#36](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/36) | Still open and unmerged; hold for migration review | Seven migration filename/history changes can affect replay assumptions. A comment or a dependent PR description does not mean this change is on main. Require read-only reconciliation and isolated replay; never infer production safety. |
 | [#37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37) | Keep for focused review | Equipment metadata disappearing after reload is a concrete persistence defect; confirm regression tests and authenticated workflow. |
 | [#31](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/31) | Compare with #32 | Demo opportunity/verification states may overlap with the broader opportunity workspace prototype. Preserve truthful demo-vs-persisted distinctions. |
 | [#32](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/32) | Defer unless current plan justifies it | Broad product prototype should not outrun discovery; retain as a candidate, not a build commitment. |
@@ -78,6 +79,13 @@ No PR should be merged merely to reduce the open count. Review each diff, checks
 | [#1](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/1) | Park as reference until wedge is selected | Large diagnostic catalog is explicitly unvalidated; it must not be mistaken for field-validated knowledge or drive premature product breadth. |
 
 This is a triage queue, not a completed PR audit. The next pass must compare exact patches and checks, then record a merge/revise/close decision for each PR.
+
+## Updates after initial audit
+
+- Root `roadmap.md` is now explicitly parked and linked from the documentation index; the Master Plan remains the only execution plan.
+- PR #35 and PR #13 were closed unmerged as superseded by PR #41. Their closure does not mean the workspace-bootstrap defect is fixed.
+- PR #41's description was corrected because it previously implied PR #36 had aligned migration filenames on `main`; GitHub confirms #36 remains open and unmerged.
+- The documentation index now links this operating-model audit.
 
 ## CI failure finding
 
