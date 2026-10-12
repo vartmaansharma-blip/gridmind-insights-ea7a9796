@@ -8,8 +8,9 @@
 1. **[Master Plan](gridmind-master-plan-2026-10-11.md)** — the sole company execution plan: current objective, candidate register, next gates, safety boundaries, and decision dates.
 2. **[Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md)** — the sole live customer-access and discovery tracker. Record real events here; do not create a parallel tracker.
 3. **[Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md)** — binding strategic, evidence, security, and safety guardrails; includes durable decisions and the rationale for changes.
-4. **[Repository Verification Audit](gridmind-verification-audit-2026-10-12.md)** — point-in-time audit; recheck live services and CI before relying on operational findings.
-5. **[Repository Operating Model and Structural Audit](gridmind-repository-operating-model-and-audit-2026-10-12.md)** — source-of-truth rules, document classification, initial PR triage, and execution-readiness gates.
+4. **[Problem-Solving Constitution](gridmind-problem-solving-constitution.md)** — mandatory task workflow, verification standards, scoring rubric, and task-specific lessons for future work.
+5. **[Repository Verification Audit](gridmind-verification-audit-2026-10-12.md)** — point-in-time audit; recheck live services and CI before relying on operational findings.
+6. **[Repository Operating Model and Structural Audit](gridmind-repository-operating-model-and-audit-2026-10-12.md)** — source-of-truth rules, document classification, initial PR triage, and execution-readiness gates.
 
 ## Current state — verified as of this review
 
