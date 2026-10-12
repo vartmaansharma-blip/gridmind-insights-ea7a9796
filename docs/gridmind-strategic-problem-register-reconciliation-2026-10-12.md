@@ -158,3 +158,63 @@ The existing reference analysis documents functional overlap with machine-monito
 5. The next decision-changing input is a substantive conversation with a relevant industrial professional; if access remains unavailable, record that as an access blocker rather than inventing demand.
 
 **Evidence class:** public-source facts above; implications are strategic inferences; the existence and commercial importance of any residual gap remain unknown.
+
+
+## Phase 2 expanded — public evidence and candidate stress-test (2026-10-12)
+
+**Purpose:** Improve the quality of questions we take into customer discovery. Public research can identify incumbents, existing support, and plausible barriers; it cannot establish that a target factory has an unmet need or will pay.
+
+### Evidence-backed landscape
+
+| Candidate | What public sources establish | Strategic implication | What remains unknown |
+|---|---|---|---|
+| **C1 — downtime / production-loss investigation** | OpeEye publicly describes machine-level status, piece counts, downtime reasons, OEE, shift reports, offline logging, and pricing of ₹399/machine/month on its product pages. [Product page](https://opeeye.com/cnc-machine-monitoring-software), [production tracking](https://opeeye.com/production-tracking-software). | Do not compete merely on recording stoppages, reporting OEE, or producing another dashboard. A possible wedge must be narrower than monitoring and tied to a consequential unresolved investigation/follow-up job. | Whether the target factory already has adequate monitoring; whether incident investigation remains a bottleneck; whether evidence can be lawfully accessed; whether the gap matters enough to fund. |
+| **C3 — recurring maintenance failures** | A 2023 study reports a review and survey of 216 Indian organisations to examine barriers to implementing maintenance practices in northern Indian SMEs. [Journal of Quality in Maintenance Engineering / ScienceDirect](https://www.sciencedirect.com/org/science/article/pii/S1355251123000030). | Maintenance barriers may involve organisational practice and implementation, not only software. Treat this as a reason to investigate the workflow and people, not evidence that GridMind can solve it. | Which barriers apply to the target cluster and segment; frequency/cost of recurring failures; existing maintenance routines and tools; available qualified reviewer; willingness to change. |
+| **C4 — energy / resource inefficiency** | BEE describes ADEETIE as an MSME energy-efficiency programme covering 60 industrial clusters and 14 energy-intensive sectors, with technical guidance, energy audits, project planning, implementation, and monitoring. [BEE ADEETIE](https://beeindia.gov.in/show_content.php?lang=1&level=1&lid=384&ls_id=234); [SIDHIEE programme details](https://sidhiee.beeindia.gov.in/ProjectComponent/ADEETIE). | A generic energy audit or savings-opportunity report is not an obvious differentiated offer. GridMind would need to discover a specific unmet job alongside existing auditors, schemes, vendors, and factory teams. | Whether the target cluster/sector is covered or eligible; which support is actually accessible; whether implementation follow-through is inadequate; baseline and measurement availability; buyer authority. |
+
+**Source quality note:** BEE is an official government source for scheme descriptions. OpeEye is a vendor's own product marketing and establishes what the vendor claims to offer, not independently verified product performance or market share. The maintenance paper's abstract establishes its stated scope and method; do not generalise its findings to every factory without reviewing the full study and segment fit.
+
+### Candidate decision logic — no invented scores
+
+Use these as qualitative gates rather than a numerical weighted score while evidence is missing.
+
+| Gate | Evidence needed to advance a candidate | Stop / reopen signal |
+|---|---|---|
+| **1. Specific recurring job** | A relevant participant describes a recent, concrete event or recurring workflow and the steps taken. | Only broad complaints, hypothetical interest, or no identifiable event. |
+| **2. Residual gap** | The participant explains what current staff, systems, consultants, vendors, or schemes did—and what still remained unresolved. | Existing approach is adequate, or the supposed gap is merely a feature GridMind has not built. |
+| **3. Material consequence** | The factory's own method supports a credible consequence estimate, with uncertainty and no double counting. | Consequence cannot be estimated or is not important to the decision-maker. |
+| **4. Actionability and authority** | A named role can approve the next step; a qualified person can review technical conclusions. | No route to decision authority, no feasible intervention, or no qualified reviewer. |
+| **5. Evidence access and permissions** | The factory can lawfully share a minimal, appropriate evidence set, with an agreed handling and retention approach. | Confidentiality, customer/OEM restrictions, missing provenance, or unsafe data handling blocks access. |
+| **6. Testable outcome** | A baseline and a proportionate result measure can be defined before work starts. | No credible baseline or no way to distinguish GridMind's contribution from other changes. |
+| **7. Delivery economics** | Work can be bounded; reviewer time, preparation, travel, rework, and follow-up can be estimated. | Bespoke expert effort makes delivery implausible or the customer has no credible next-step interest. |
+
+A candidate advances only when the relevant gates have supporting evidence. Unknown remains **unknown**; it is not a zero and should not be replaced by a guessed score. No candidate wins based on the public-source table alone.
+
+### Discovery questions to test the hypotheses
+
+Ask about the participant's real process, not whether they like GridMind or AI. Avoid requesting confidential records or sensitive operational details at the exploratory stage.
+
+1. “Could you describe the most recent time this problem occurred, at a high level?”
+2. “What happened first, and how did the team work out what was going on?”
+3. “Which records, people, or systems were used? Which were most trustworthy?”
+4. “What did your existing process handle well?”
+5. “What remained uncertain or unresolved after the team finished?”
+6. “What was the consequence, and how does the factory estimate it?”
+7. “How often has something similar happened? What makes you confident in that estimate?”
+8. “What has already been tried, and why was it kept, changed, or abandoned?”
+9. “Who owns the problem, who reviews the technical conclusion, and who can authorise a change?”
+10. “If the team wanted to examine one example safely, what permission and data-handling steps would be required?”
+11. “What evidence would convince you that a different approach was useful?”
+12. “What would make you decide not to change the current process?”
+
+**Recording discipline:** Separate direct statements, observed artefacts (only if explicitly authorised), calculations, interpretations, and unknowns. Record the role and context, not unnecessary personal details. Do not describe a conversation as customer validation if it only expresses general interest. A meaningful signal includes a concrete example, current alternative, unresolved gap, credible consequence, decision authority, and a specific authorised next step.
+
+### What changed after this phase
+
+- **C1:** narrowed from “downtime tool” to a hypothesis about incident investigation and follow-through after existing monitoring/records have done their job.
+- **C3:** retained as a conditional alternative, not promoted based on one general maintenance study.
+- **C4:** narrowed from “energy savings” to a hypothesis about a specific residual gap beyond existing audit and implementation support.
+- **Wedge decision:** remains **OPEN**. No customer-specific evidence was added by desk research.
+- **Next action:** use the existing [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) to seek an appropriate conversation through a legitimate introduction route. Given the founder is under 18, any formal factory engagement, site visit, data handling, payment, or commercial commitment must have appropriate adult and professional oversight.
+
+**Phase 2 exit condition:** public research has sharpened the questions and exposed obvious overlap; it has not passed the customer-evidence gate. Phase 3 should not begin as a product build until a target workflow and its evaluation criteria are specified. A bounded synthetic test may be designed for technical feasibility, but it cannot be counted as demand or customer impact.
