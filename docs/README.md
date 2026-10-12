@@ -4,11 +4,11 @@
 
 ## Only active execution documents
 
-1. **[GridMind Master Plan](gridmind-master-plan-2026-10-11.md)** — sole execution authority: objective, stable candidate IDs, access funnel, Oct 17 kill date, two-tier gates, resource model, economics discipline, engineering priority and Nov 10 decision.
+1. **[GridMind Master Plan](gridmind-master-plan-2026-10-11.md)** — sole execution authority: objective, stable candidate IDs, stage-by-stage access funnel, exposure-based Oct 17 review, two-tier gates, pricing probes, resource model, safety boundaries and Nov 10 decision.
 2. **[Buyer Discovery Sprint — Live Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md)** — sole live evidence/funnel tracker: contact routes, non-sent outreach drafts, interview protocol, per-conversation records, decision gates and next actions.
 3. **[Decision Constitution and Contradiction Register](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md)** — binding safety/strategy guardrails and decision history. The 2026-10-11 execution amendment resolves older planning conflicts.
 
-**Current state:** No outreach has been sent; no calls are booked or held; no buyer/data permissions or paid demand are confirmed. C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) are the two discovery probes only—not a selected wedge. The target is 30 warm introduction requests by 2026-10-17, with a route/offer change if zero calls are booked.
+**Current state:** No outreach has been sent; no calls are booked or held; no buyer/data permissions or paid demand are confirmed. C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) are the two discovery probes only—not a selected wedge. The provisional target is up to 12 warm introduction requests plus two parallel direct public-route asks, subject to confirmed capacity. Oct 17 is an exposure-based funnel review, not an automatic kill for zero booked calls. Commercial validation requires three independent buyers describing the same material problem and at least one defined follow-up; fixed-fee willingness-to-pay probes start after call three.
 
 ## Technical truth and engineering controls
 
