@@ -131,3 +131,30 @@ The audit suggests the next business problem is still **Problem 5 — selecting 
 - Some statuses rely on the canonical documents' latest reported state; operational systems and CI should be rechecked before relying on historical snapshots.
 - The original uploaded Markdown is a conversation attachment; this audit preserves its problem numbers and titles but does not replace or modify the source attachment.
 - Reassess statuses when a PR merges, fresh evidence arrives, or the master plan changes.
+
+
+## Phase 1–2 desk-research checkpoint (2026-10-12)
+
+This checkpoint records public-source findings that affect the candidate comparison. It does **not** select a commercial wedge and is not customer validation.
+
+### C4 — energy/resource inefficiency: the generic audit offer is not differentiated
+
+The Bureau of Energy Efficiency's current ADEETIE scheme describes support across 60 industrial clusters and 14 energy-intensive sectors, including technical guidance, investment-grade energy audits, project planning, technology selection, commissioning, and monitoring/verification. The BEE's SIDHIEE portal also lists audit support, implementation hand-holding, technology suppliers, performance benchmarking, and post-implementation support. Sources: [BEE ADEETIE overview](https://beeindia.gov.in/show_content.php?lang=1&level=1&lid=384&ls_id=234), [SIDHIEE](https://sidhiee.beeindia.gov.in/), [BEE SME programme](https://saathee.beeindia.gov.in/sme-programme/).
+
+**Implication:** “We audit energy use,” “we find energy-saving opportunities,” or “we verify implementation” is not, by itself, a defensible differentiation claim. Those capabilities already exist in the wider ecosystem. C4 remains worth probing only if discovery identifies a specific customer segment/workflow with a material residual gap, such as an unmet need that existing auditors, vendors, schemes, and internal teams do not adequately address. Whether such a gap exists in Adityapur–Jamshedpur is unknown.
+
+### C1 — downtime/production-loss investigation: recording downtime is not enough
+
+The existing reference analysis documents functional overlap with machine-monitoring/OEE tools, including OpeEye's published description of machine monitoring, production tracking, downtime reasons, and OEE: [OpeEye overview](https://opeeye.com/about).
+
+**Implication:** GridMind must not position itself as differentiated merely because it records downtime or displays production metrics. A possible research question is whether a specific buyer has an unresolved, consequential gap in reconstructing an incident from authorised records, separating facts from hypotheses, assigning follow-up, or verifying whether corrective action worked. That is a hypothesis, not evidence of a market gap.
+
+### What this research changes
+
+1. Keep C1 and C4 as discovery probes; do not score a winner from desk research alone.
+2. Test the current workflow and existing provider/system first, not whether the customer owns a dashboard.
+3. Ask for one recent example, what the current approach did well, what remained unresolved, what that gap cost, and who could authorise a change.
+4. Do not claim that existing energy-efficiency programmes or OEE tools are inadequate without customer-specific evidence.
+5. The next decision-changing input is a substantive conversation with a relevant industrial professional; if access remains unavailable, record that as an access blocker rather than inventing demand.
+
+**Evidence class:** public-source facts above; implications are strategic inferences; the existence and commercial importance of any residual gap remain unknown.
