@@ -16,6 +16,10 @@ The staged expansion strategy is in the [GridMind Expansion Architecture](docs/g
 
 Use the [GridMind Master Plan](docs/gridmind-master-plan-2026-10-11.md) as the complete operating plan for company strategy, validation, product, security, commercial model, milestones and decision rules. The [Documentation Index](docs/README.md) provides the full reading order. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs binding commitments and conflict resolution.
 
+## Independent verification audit — 2026-10-12
+
+The [GridMind Verification Audit](docs/gridmind-verification-audit-2026-10-12.md) checks the canonical plan, live discovery tracker, open execution issues, current Supabase schema/security signals, and inspected Vercel deployment. Conclusion: customer demand remains unvalidated and production remains NO-GO. This is a focused verification, not a full penetration test or end-to-end acceptance run.
+
 ## Current execution priority — 2026-10-11
 
 - [Fresh Technical Readiness Snapshot](docs/gridmind-technical-readiness-snapshot-2026-10-11.md) — current read-only checks; production readiness remains NO-GO due to schema mismatch, open security warnings, and unverified authenticated acceptance.
