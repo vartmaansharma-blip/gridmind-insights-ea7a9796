@@ -204,3 +204,38 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 | 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
+
+## 12. Immediate access execution card — 2026-10-12
+
+**Purpose:** turn the existing route list into a small, honest access experiment without inventing contacts, treating public-route emails as warm introductions, or implying market validation.
+
+### Step A — reconcile the already-sent ASIA inquiry
+
+1. Check the actual sent message and inbox/thread; preserve the sent date as 2026-10-12 only if the sent record confirms it.
+2. Record only an actual reply, referral, event invitation, or explicit next step. Silence is not a rejection and is not evidence of buyer demand.
+3. If there is no reply and a follow-up remains appropriate, send at most one brief follow-up around **2026-10-19**. Do not send repeated reminders or ask for a member list.
+4. Do not count the ASIA inquiry as one of the 3–5 warm-introduction requests. It is a separate public-route inquiry.
+
+### Step B — prepare the next route, not a mass campaign
+
+- **Preferred next public route:** ACMA Eastern Region (R3), because its published regional office is relevant to automotive components and located in Jamshedpur. This establishes route relevance only, not access to a buyer.
+- Before any external message, have an appropriate adult/professional review the wording and support the engagement. Ask only for a public learning opportunity or the proper process for requesting one willing professional conversation. Do not imply affiliation, endorsement, or commercial readiness.
+- If R3 is not suitable or produces no useful path, consider R4 (IDTR) next. Use one route at a time and log the real response before activating another.
+- Separately, identify up to three genuine people already reachable through the founder's existing network who could decide whether to make an introduction. Do not scrape directories, infer personal contact details, or populate the ledger with hypothetical names. If none exist, record **access capacity blocker** rather than manufacturing a funnel.
+
+### Draft — one-time ASIA follow-up
+
+> Hello, I’m following up once on my message from 12 October about a short research conversation on how manufacturing teams investigate production or operating-cost problems. If there is an appropriate public event or a professional who would voluntarily consider a 20-minute conversation, I’d be grateful for guidance on the right process. I am not requesting member details, plant records, an endorsement, or a sales meeting. If this is not suitable, no further action is needed. Thank you.
+
+**Send status:** draft only; not sent by this document or assistant. Check the original thread and obtain appropriate adult/professional review before deciding whether to send.
+
+### Daily stop conditions
+
+- No outreach without a legitimate recipient and appropriate oversight.
+- No claim that a conversation, introduction, meeting, or validation occurred until it actually does.
+- No requests for confidential plant data, site access, payments, contracts, or operational commitments at this stage.
+- Stop route activity if the recipient declines, asks not to be contacted, or the route is inappropriate.
+
+### Access experiment status update
+
+As of this edit, the only confirmed action is the previously reported ASIA public-route inquiry. No named warm connector, reply, referral, meeting, interview, qualified reviewer, customer-data permission, or buyer commitment is confirmed. The Oct 19 checkpoint remains a review date, not a quota to be met by inventing activity.
