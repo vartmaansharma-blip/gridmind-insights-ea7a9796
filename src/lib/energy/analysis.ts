@@ -12,15 +12,14 @@ import { inr, num, pct, monthLabel } from "./format";
 import { validateMonths, type PipelineResult } from "./pipeline";
 import { buildReference, type Reference } from "./reference";
 
-// All assumptions in one place so the engine is transparent and auditable.
+// Screening assumptions are explicit, but they are not validated tariff rules or
+// customer-specific recoverability factors. Customer-facing monetary findings
+// require qualified review of the applicable tariff, evidence and assumptions.
 export const ASSUMPTIONS = {
-  minBillingDemandPct: 0.85, // billed demand floor as share of contract demand
-  contractHeadroom: 1.1, // recommended contract = max peak x headroom
-  excessDemandPenaltyMultiplier: 1, // extra charge on kVA above contract (i.e. billed at 2x)
-  pfTarget: 0.95,
-  pfPenaltyPerPoint: 0.01, // 1% of bill per 0.01 PF below target
-  secRecoverableShare: 0.4, // share of SEC drift considered recoverable
-  apfcCostPerKvar: 1200,
+  minBillingDemandPct: 0.85, // screening assumption; verify against the applicable billing rules
+  contractHeadroom: 1.1, // screening assumption: recommended contract = max peak x headroom
+  excessDemandPenaltyMultiplier: 1, // screening assumption; verify against the applicable billing rules
+  secRecoverableShare: 0.4, // unvalidated scenario assumption; not a verified saving fraction
   secAlertThreshold: 1.08,
 };
 
@@ -223,39 +222,9 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
     }
   }
 
-  // 3. Power factor
-  const pfRows = rows.filter((r) => Number.isFinite(r.powerFactor) && (r.powerFactor ?? 0) > 0);
-  const pfCoverageComplete = pfRows.length === rows.length;
-  const hoursCoverageComplete = rows.every((r) => Number.isFinite(r.operatingHours) && r.operatingHours > 0);
-  if (pfRows.length && pfCoverageComplete && hoursCoverageComplete) {
-    const avgPf = pfRows.reduce((s, r) => s + (r.powerFactor ?? 0), 0) / pfRows.length;
-    if (avgPf < ASSUMPTIONS.pfTarget) {
-      const penaltyShare = ((ASSUMPTIONS.pfTarget - avgPf) / 0.01) * ASSUMPTIONS.pfPenaltyPerPoint;
-      const loss = (totalCost * annualFactor) * penaltyShare;
-      const avgKw = totalKwh / Math.max(1, rows.reduce((s, r) => s + r.operatingHours, 0));
-      const kvar = avgKw * (Math.tan(Math.acos(avgPf)) - Math.tan(Math.acos(0.98)));
-      const inv = Math.round(kvar * ASSUMPTIONS.apfcCostPerKvar);
-      opps.push({
-        id: "power-factor",
-        title: "Low power factor",
-        category: "tariff",
-        problem: `Average power factor ${avgPf.toFixed(3)} is below the ${ASSUMPTIONS.pfTarget} target.`,
-        cause: "Inductive loads (motors, induction furnaces) without adequate or healthy capacitor compensation.",
-        action: `Service/upgrade APFC panel — roughly ${num(kvar)} kVAr to reach 0.98.`,
-        impactAnnual: loss,
-        savingAnnual: loss,
-        investment: inv,
-        paybackMonths: loss > 0 ? inv / (loss / 12) : null,
-        confidence: "medium",
-        calc: [
-          `Avg PF = ${avgPf.toFixed(3)} across ${pfRows.length} months`,
-          `Assumed tariff penalty ${pct(ASSUMPTIONS.pfPenaltyPerPoint)} of bill per 0.01 below ${ASSUMPTIONS.pfTarget} → ${pct(penaltyShare, 1)}`,
-          `Avg load ≈ ${num(avgKw)} kW → kVAr = kW × (tan φ₁ − tan φ₂) = ${num(kvar)}`,
-          `Investment at ${inr(ASSUMPTIONS.apfcCostPerKvar)}/kVAr = ${inr(inv)}`,
-        ],
-      });
-    }
-  }
+  // Power factor remains a screening signal only. Do not calculate a penalty,
+  // APFC investment, payback or saving from a generic rate: the applicable tariff
+  // and customer-specific bill line items have not been established by this model.
 
   // 4. Specific energy drift
   if (baselineSec > 0 && reference.high !== null) {
@@ -365,7 +334,7 @@ function buildAlerts(f: Factory, rows: MonthRow[], baselineSec: number, avgRate:
     }
     if (r.powerFactor && r.powerFactor < 0.92) {
       out.push({ id: `pf-${r.month}`, severity: "warning", month: r.month, title: "Low power factor",
-        detail: `PF ${r.powerFactor.toFixed(2)} in ${ml} — likely attracting PF penalty.` });
+        detail: `PF ${r.powerFactor.toFixed(2)} in ${ml} — check the applicable tariff and actual bill line items before estimating financial impact.` });
     }
   });
   const rank = { critical: 0, warning: 1, info: 2 };
