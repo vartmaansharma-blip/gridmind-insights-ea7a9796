@@ -9,6 +9,7 @@
 2. **[Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md)** — the sole live customer-access and discovery tracker. Record real events here; do not create a parallel tracker.
 3. **[Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md)** — binding strategic, evidence, security, and safety guardrails; includes durable decisions and the rationale for changes.
 4. **[Repository Verification Audit](gridmind-verification-audit-2026-10-12.md)** — point-in-time audit; recheck live services and CI before relying on operational findings.
+5. **[Repository Operating Model and Structural Audit](gridmind-repository-operating-model-and-audit-2026-10-12.md)** — source-of-truth rules, document classification, initial PR triage, and execution-readiness gates.
 
 ## Current state — verified as of this review
 
@@ -54,7 +55,7 @@ These documents explain product concepts and candidate workflows. They do **not*
 
 ## Research, strategy history, and design
 
-Files in this group are supporting research, historical audits, alternatives, or deferred design concepts. Their dated targets and recommendations are not active instructions unless the Master Plan and Decision Constitution explicitly adopt them.
+Files in this group are supporting research, historical audits, alternatives, or deferred design concepts. Their dated targets and recommendations are not active instructions unless the Master Plan and Decision Constitution explicitly adopt them. The root [`roadmap.md`](../roadmap.md) is a parked product-design reference, not a second execution plan; re-entry requires explicit prioritization in the Master Plan and a scoped GitHub Issue.
 
 - [Bigger Problem Thesis](gridmind-bigger-problem-thesis-2026-10-11.md)
 - [Industrial Venture Strategy Research](gridmind-industrial-venture-strategy-research-2026-10-10.md)
