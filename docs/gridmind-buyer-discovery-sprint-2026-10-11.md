@@ -1,7 +1,7 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-11  
-**Status:** No outreach sent; no calls booked or held; no customer data or buyer commitment.  
+**Last updated:** 2026-10-12  
+**Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
 ## 1. Sprint objective and dates
@@ -53,7 +53,7 @@ The listed institutions are public routes to investigate, not verified leads, en
 | Route ID | Route | Intended ask | Status | Owner / next action |
 |---|---|---|---|---|
 | **R1** | Warm introduction through existing trusted professional/family network | One introduction to a production/operations or energy/utility professional | **Not activated; no connector named** | Founder: identify reachable introducers with trusted adult/professional support |
-| **R2 — first public route** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/; published email `deargsasia@gmail.com`, phones `+91 87090 14720` / `+91 90608 10588` (re-check before use) | Ask for a public event or a willing professional for a 20-minute research conversation; do not request a member list | Not contacted | Founder + trusted adult/professional review; use if no warm connector is named by Oct 12 |
+| **R2 — first public route** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/; published email `deargsasia@gmail.com`, phones `+91 87090 14720` / `+91 90608 10588` (re-check before use) | Ask for a public event or a willing professional for a 20-minute research conversation; do not request a member list | **Initial inquiry sent 2026-10-12; reply/referral not confirmed** | Founder: check for reply; follow up once after 4–5 business days if appropriate (around Oct 19) |
 | **R3** | ACMA Eastern Region official contact: https://www.acma.in/contact.php; published `acmaer@acma.in`, `anjali.nair@acma.in` (re-check before use) | Ask about public events / proper introduction process; no member-list request | Not contacted | Secondary route if ASIA does not produce a suitable path |
 | **R4** | Indo-Danish Tool Room industry enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php; published `reach@idtr.gov.in`, `+91 657 2201261/62` (re-check before use) | Ask about public technical learning / suitable research contacts | Not contacted | Secondary technical-learning route |
 | **R5** | JSIA affiliated bodies directory: https://www.jsia.co.in/affiliated-bodies.php | Identify an official public route, not scrape personal details | Not contacted | Secondary route |
@@ -199,4 +199,6 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 | 2026-10-11 | C1 and C4 selected as the two discovery probes only; neither is the product wedge | Active probe choice |
 | 2026-10-11 | Two-tier gates separate interview evidence from customer-data/pilot acceptance | Active |
 | 2026-10-11 | 30 warm asks and Oct 17 kill date adopted as a testable access experiment | Planned, not executed |
-| 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment is claimed | Confirmed current state |
+| 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
+| 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
+| 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
