@@ -72,11 +72,11 @@ No PR should be merged merely to reduce the open count. Review each diff, checks
 | [#36](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/36) | Still open and unmerged; hold for migration review | Seven migration filename/history changes can affect replay assumptions. A comment or a dependent PR description does not mean this change is on main. Require read-only reconciliation and isolated replay; never infer production safety. |
 | [#37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37) | Keep for focused review | Equipment metadata disappearing after reload is a concrete persistence defect; confirm regression tests and authenticated workflow. |
 | [#31](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/31) | Compare with #32 | Demo opportunity/verification states may overlap with the broader opportunity workspace prototype. Preserve truthful demo-vs-persisted distinctions. |
-| [#32](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/32) | Defer unless current plan justifies it | Broad product prototype should not outrun discovery; retain as a candidate, not a build commitment. |
+| [#32](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/32) | Closed unmerged as deferred scope | Preserve the diff for reconsideration only after customer/problem evidence or a recorded strategic decision prioritizes this workflow. |
 | [#2](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/2) | Focused review after base/check diagnosis | Truthful screening and regression gates are strategically relevant; inspect the full 16-file diff and what has since landed on main. |
 | [#14](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/14) | Defer or review against pilot gate | Intake provenance and economic completeness matter for a future authorized pilot; confirm current scope and whether it is already covered elsewhere. |
 | [#6](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/6) | Compare with canonical release docs | Documentation-only readiness checklist may duplicate existing release-gate/runbook material. Keep only distinct, useful content. |
-| [#1](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/1) | Park as reference until wedge is selected | Large diagnostic catalog is explicitly unvalidated; it must not be mistaken for field-validated knowledge or drive premature product breadth. |
+| [#1](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/1) | Closed unmerged as deferred/unvalidated | Preserve the diff, but do not treat its broad diagnostic hypotheses as field-validated knowledge or use them to imply root-cause accuracy. Reconsider only after a specific workflow is selected and qualified review/validation criteria exist. |
 
 This is a triage queue, not a completed PR audit. The next pass must compare exact patches and checks, then record a merge/revise/close decision for each PR.
 
@@ -84,6 +84,7 @@ This is a triage queue, not a completed PR audit. The next pass must compare exa
 
 - Root `roadmap.md` is now explicitly parked and linked from the documentation index; the Master Plan remains the only execution plan.
 - PR #35 and PR #13 were closed unmerged as superseded by PR #41. Their closure does not mean the workspace-bootstrap defect is fixed.
+- PR #32 (broad opportunity-workspace prototype) and PR #1 (broad diagnostic catalog) were closed unmerged as deferred scope. Their diffs remain available; neither closure claims the ideas are permanently rejected or validated.
 - PR #41's description was corrected because it previously implied PR #36 had aligned migration filenames on `main`; GitHub confirms #36 remains open and unmerged.
 - The documentation index now links this operating-model audit.
 
