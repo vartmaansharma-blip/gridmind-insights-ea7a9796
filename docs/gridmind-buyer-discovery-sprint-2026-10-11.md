@@ -1,17 +1,17 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
 **Last updated:** 2026-10-12  
-**Status:** No outreach sent; no calls booked or held; no customer data or buyer commitment.  
+**Status:** ASIA initial email sent 2026-10-12; no reply, referral, or meeting confirmed. No buyer conversation, customer-data permission, or commercial commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
 ## 1. Sprint objective and dates
 
 - **Sprint:** 2026-10-11 through 2026-11-10.
-- **Capacity-adjusted target:** up to 12 warm introduction requests by **2026-10-17**, plus two direct asks through official public professional/association channels in parallel. This is provisional under an unconfirmed five-hour weekly cap.
+- **Initial access test:** 3–5 genuine warm-introduction requests by **2026-10-19**, subject to actual capacity, plus the ASIA public inquiry already sent on Oct 12. Expand only if the initial test reveals a credible route and the weekly time budget is confirmed. The former 12-request target is not the immediate commitment.
 - **Funnel stages:** request sent → connector agrees → introduction made → recipient replies → call booked → call held. Log each separately; do not count a connector agreement as a booked call.
 - **Planning assumption only:** approximately 10% end-to-end conversion is an untested rough guess, implying around 1–2 calls from 12 warm asks, not 10 calls from 30 asks. Direct asks are measured separately and may convert differently. The current funnel may not yield three substantive buyer conversations by Nov 10; if it does not, report **insufficient evidence** and do not interpret it as proof of no demand. Keep the no-new-build gate until a bounded follow-up is justified.
-- **Oct 17 rule:** this is an early funnel-movement review, not a five-business-day decision gate. Because the sprint starts Oct 12, requests sent during this sprint cannot all have five business days to mature by Oct 17. Review stage movement and response quality only; do not infer failure from immature requests or no bookings alone. Run the mature-exposure check on Oct 20 or later only if at least 10 requests have each had five business days to mature. If fewer than two positive next steps occurred (connector agreement, introduction accepted, or recipient reply), change source/message/give for seven days. If exposure is insufficient, record that and continue the parallel route through Oct 24.
-- **Oct 24 access trigger:** if fewer than one substantive call has been held across warm and direct routes, change the access method and reset the forecast. This is an access warning, not proof that the problem is invalid. Never invent prospects or completed activity.
+- **Oct 19 review:** review actual stage movement across the first 3–5 warm requests and the ASIA inquiry. Do not infer market failure from immature requests, silence, or zero bookings alone. If no credible access path is emerging, change the source/message/give rather than simply increasing volume.
+- **Access decision:** if the initial warm test and ASIA route yield no credible next step after reasonable exposure, activate one secondary official industry/technical route. Treat this as an access problem to solve, not proof that the underlying customer problem is invalid.
 - **30-day outcome:** GO TO BOUNDED TEST / NARROW / PIVOT / STOP. A paid pilot and verified savings are not required within 30 days.
 
 ## 2. Stable candidate register
@@ -62,9 +62,9 @@ The listed institutions are public routes to investigate, not verified leads, en
 
 | Route ID | Route | Intended ask | Status | Owner / next action |
 |---|---|---|---|---|
-| **R1** | Warm introduction through existing trusted professional/family network | One introduction to a production/operations or energy/utility professional | **Not activated; no connector named** | Founder: identify reachable introducers; record connector agreement separately from introduction and recipient reply |
-| **R2 — activate Oct 12** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/; published channels are listed here for re-check before use | Ask for a public event or a willing professional for a 20-minute research conversation; do not request a member list | Not contacted | Founder: activate in parallel today if no warm connector is named; log reply and introduction as separate hops |
-| **R3 — parallel direct ask** | ACMA Eastern Region official contact: https://www.acma.in/contact.php; verify official channel before use | Ask about public events / appropriate research-introduction process; no member-list request | Not contacted | Founder: run in parallel with R2 by Oct 14; no endorsement implied |
+| **R1** | Potential warm introduction through trusted adult/professional | One introduction to a production/operations or energy/utility professional | **Possible route; no specific connector or agreement confirmed** | Founder: identify one suitable person and ask whether they are comfortable making an introduction |
+| **R2 — ASIA** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/ | Ask for a public event or willing professional for a 20-minute research conversation; no member-list request | **Initial email sent 2026-10-12; reply/referral/meeting unconfirmed** | Do not resend initial email; if no response, consider one polite follow-up on Oct 19 |
+| **R3 — secondary public route** | ACMA Eastern Region official contact: https://www.acma.in/contact.php; verify official channel before use | Ask about public events / appropriate research-introduction process; no member-list request | Not contacted | Activate only if the warm route is inactive or ASIA yields no useful next step after reasonable exposure |
 | **R4** | Indo-Danish Tool Room industry enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php; published `reach@idtr.gov.in`, `+91 657 2201261/62` (re-check before use) | Ask about public technical learning / suitable research contacts | Not contacted | Secondary technical-learning route |
 | **R5** | JSIA affiliated bodies directory: https://www.jsia.co.in/affiliated-bodies.php | Identify an official public route, not scrape personal details | Not contacted | Secondary route |
 
@@ -74,11 +74,11 @@ Update only with actual counts. Do not fill planned counts as completed.
 
 | Metric | Current actual | Target / trigger | Notes |
 |---|---:|---|---|
-| Warm introduction requests sent | 0 | Up to 12 by Oct 17, within confirmed time cap | No outreach sent |
+| Warm introduction requests sent | 0 | Initial test: 3–5 by Oct 19, if capacity permits | Potential connector exists; no named person/request confirmed |
 | Connector agreements | 0 | Track actual | Separate from a completed introduction |
 | Introductions made | 0 | Track actual | Separate from recipient reply |
-| Direct public-route asks | 0 | 2 by Oct 14 (ASIA + ACMA/IDTR) | Not contacted; verify official channel before use |
-| Recipient replies / positive next steps | 0 | Oct 17 exposure-based review | Do not treat untested conversion rates as benchmarks |
+| Direct public-route asks | 1 | ASIA initial inquiry sent Oct 12; one secondary route only if needed | Reply/referral/meeting unconfirmed |
+| Recipient replies / positive next steps | 0 | Review by Oct 19, allowing reasonable exposure | Do not treat silence as market evidence |
 | Calls booked | 0 | Rough planning estimate 1–2 from 12 warm asks at 10% end-to-end; not a commitment | Track direct-route conversion separately |
 | Calls held | 0 | Oct 24: fewer than 1 across all routes → change access method | No conversations claimed |
 | C1 substantive cases | 0 | Probe deeply | — |
@@ -210,10 +210,10 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 
 | Priority | Task | Owner | Due | Status |
 |---|---|---|---|---|
-| **P0** | Activate ASIA public route and one parallel direct public route; identify up to 12 warm asks within the time cap | Founder | Oct 12–17 | Not started |
-| **P0** | Recruit a retired plant/energy advisor; do not make technical residual-gap judgements without review | Founder | By second substantive call | Not started |
-| **P0** | Confirm real weekly hours and log all funnel stages | Founder | Oct 12 | Not confirmed |
-| **P0** | Run the exposure-based funnel review; no public Lovable link in first contact | Founder | Oct 17 | Not started |
+| **P0** | Manage the ASIA inquiry already sent; follow up once only if appropriate after five business days | Founder | Review Oct 19 | In progress; reply unconfirmed |
+| **P0** | Identify one specific trusted introducer and make 3–5 genuine requests if capacity permits | Founder + trusted adult/professional support | Oct 19 | Not started; connector not identified |
+| **P0** | Confirm real weekly hours; update tracker only when a meaningful stage changes | Founder | Before expanding outreach | Not confirmed |
+| **P1** | Consider one secondary public route only if ASIA/warm route yields no useful next step | Founder | After reasonable exposure | Not started |
 | P1 | Hold and document conversations using C1/C4 IDs | Founder | Through Nov 10 | Waiting for access |
 | P2 | Scope an offline retrospective test only if Tier 1 evidence and a buyer request justify it | Founder + named reviewer/customer owner | After evidence | Blocked on people/evidence |
 | Parked | Broad schema/RPC changes, workspace redesign, new modules, public-site polish, rename, trademark work | — | Until evidence changes priority | Not P0 |
@@ -224,7 +224,7 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 |---|---|---|
 | 2026-10-11 | C1 and C4 selected as the two discovery probes only; neither is the product wedge | Active probe choice |
 | 2026-10-11 | Two-tier gates separate interview evidence from customer-data/pilot acceptance | Active |
-| 2026-10-12 | Capacity-adjusted 12 warm asks plus two parallel public-route asks; 10% end-to-end conversion is a rough untested estimate | Planned, not executed |
-| 2026-10-12 | Commercial bar restored: three independent buyers describe same material problem; one defined follow-up; fixed-fee probe from call 4 | Planned, not executed |
+| 2026-10-12 | Start with 3–5 warm-introduction requests and the ASIA inquiry already sent; expand only after reviewing access evidence and confirming capacity | Active plan |
+| 2026-10-12 | Commercial bar: three independent buyers describe the same material problem and at least one defined follow-up; test a costed, consistent offer when appropriate, without a rigid call-count rule | Active decision gate |
 | 2026-10-12 | No public Lovable prototype link in first-contact messages; peer-insight give only after enough permissioned conversations | Active guardrail |
-| 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment is claimed | Confirmed current state |
+| 2026-10-12 | ASIA initial email sent; no reply/referral/meeting confirmed. No interview, customer data, qualified reviewer, or commercial commitment is claimed | Outreach only; no demand validation |

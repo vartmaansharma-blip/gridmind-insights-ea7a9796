@@ -219,3 +219,12 @@ This amendment resolves execution contradictions in older planning material. If 
 - **Safety boundary:** no OT/SCADA/PLC/MES connection, control commands, writes, or remote access during discovery or the first pilot. Use a customer-approved controlled export; any later read-only path requires explicit authorization, least privilege, logging, and qualified site/security review.
 - **Capacity/runway:** five hours/week is provisional until confirmed. On Nov 10, if no candidate meets the evidence bar, no-go on new GridMind build; choose a bounded narrow test, pivot to the ranked narrow B2B AI service-to-software/productized-service alternative, or stop. Confirm actual time, runway, and near-term income requirement before committing another sprint.
 - **Source of truth:** the master plan is the sole execution plan; the buyer-discovery sprint is the sole live tracker. Supporting strategy docs are reference material, not competing plans.
+
+
+## Appendix — Strategic record hygiene (decision, 2026-10-12)
+
+**Decision:** GitHub is GridMind's durable strategic memory, not a diary of routine work.
+
+Preserve in the canonical documents: company definition and long-term ambition; major strategic decisions and their evidence; the current execution plan and decision gates; durable customer evidence that changes a decision; material risks, safety/data guardrails, milestones, and unresolved strategic questions.
+
+Do not create separate issues or documents for routine emails, reminders, individual follow-ups, minor edits, intermediate thoughts, or repetitive status updates. Keep live operational stages in the existing discovery tracker only when they materially change; avoid duplicating them across documents. Remove redundant plans from the working tree when their durable content is already preserved in canonical records; Git history remains available. Before adding a new plan, first update the existing canonical plan and record why a separate document is genuinely necessary.
