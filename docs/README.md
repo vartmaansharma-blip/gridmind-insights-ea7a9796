@@ -43,6 +43,8 @@ The following files retain useful desk research, hypotheses, design concepts, hi
 - [Opportunity Validation Framework](gridmind-opportunity-validation-and-buyer-evidence-framework-2026-10-11.md)
 - [Discovery Execution Kit](gridmind-discovery-execution-kit-2026-10-11.md)
 - [Founder Opportunity Cost Review: B2B vs B2C](founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md)
+- [Founder Commitment and Next Execution](gridmind-founder-commitment-and-next-execution-2026-10-11.md) — historical commitment and alternative-path context; not a live task queue.
+- [Industrial Venture Strategy Research](gridmind-industrial-venture-strategy-research-2026-10-10.md) — public-source opportunity context; ratings do not select the initial wedge.
 - [Next Plan / Creative Exploration](gridmind-next-plan-2026-10-11.md)
 - [Strategic Leverage Map](gridmind-strategic-leverage-map-2026-10-11.md)
 - [Data Advantage Strategy](gridmind-data-advantage-strategy.md)
