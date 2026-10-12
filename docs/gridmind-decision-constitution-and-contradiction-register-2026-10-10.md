@@ -241,3 +241,11 @@ This entry preserves the strategic decisions made during the Phase 1–3 plannin
 
 ### Reconciliation rule
 This dated entry clarifies the discussion; it does not override the master plan's two active probes, the two-tier evidence/access gates, or the discovery-only P0. If later evidence changes any of those decisions, update the master plan and tracker alongside this register, preserving the prior decision and reason for change.
+
+## 2026-10-12 repository and access-test clarification
+
+- The initial ASIA public-route inquiry was reported sent on 2026-10-12. No response, referral, meeting, customer-data permission, or customer validation is confirmed.
+- The immediate access experiment is a bounded 3–5 genuine warm-introduction-request effort by 2026-10-19, only if legitimate contacts and actual capacity are available. This supersedes the previous 30-request / Oct 17 planning target for the immediate test; it does not establish a statistically meaningful funnel or validate market demand.
+- Do not invent contacts, infer demand from an immature sample, or count planned requests as sent. If suitable contacts are not available, record access as a constraint and seek legitimate public or professional routes.
+- The repository's README and documentation index are navigation aids. The Master Plan remains the sole execution plan; the Buyer Discovery Sprint remains the sole live tracker; this Constitution remains the binding guardrail and durable decision register.
+- Repository cleanup should preserve useful history, avoid deleting files before checking inbound links, and not merge open PRs until their diff, current base, tests, migration effects, and security impact are reviewed.
