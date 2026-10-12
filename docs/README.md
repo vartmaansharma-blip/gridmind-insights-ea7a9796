@@ -12,6 +12,15 @@
 5. **[Repository Verification Audit](gridmind-verification-audit-2026-10-12.md)** — point-in-time audit; recheck live services and CI before relying on operational findings.
 6. **[Repository Operating Model and Structural Audit](gridmind-repository-operating-model-and-audit-2026-10-12.md)** — source-of-truth rules, document classification, initial PR triage, and execution-readiness gates.
 
+## Repository change standards
+
+- [Contribution standards](../CONTRIBUTING.md) define how work is prioritized, validated, documented, and reviewed.
+- [Pull request template](../.github/PULL_REQUEST_TEMPLATE.md) requires acceptance evidence and explicit security/data/migration impact.
+- [Bug report template](../.github/ISSUE_TEMPLATE/bug_report.md) captures reproduction and regression evidence.
+- [Work item template](../.github/ISSUE_TEMPLATE/work_item.md) captures scope, evidence, acceptance criteria, dependencies, and validation.
+
+Use these standards to improve consistency; they do not override the Master Plan, Decision Constitution, or technical release gates.
+
 ## Current state — verified as of this review
 
 - GridMind's commercial wedge is **not selected**.
