@@ -15,7 +15,7 @@ Do not perform a mass folder migration or delete historical documents before ref
 - Main commit inspected: `1c7cf1b0999254dce6e6b44c00c4a4af6511c309`.
 - Git tree: 301 paths, including 80 Markdown files under `docs/`; 58 document filenames contain a date.
 - Four workflow files exist: `ci.yml`, `quality.yml`, `migration-replay.yml`, and `pilot-intake-validator.yml`.
-- The initial audit found 11 open PRs. Follow-up triage closed #35 and #13 as superseded/unmerged, leaving 9 open PRs from that set plus the fresh remediation PR #41. Current open PRs are #41, #38, #32, #37, #36, #31, #14, #6, #2, and #1 (10 open PRs at the latest check).
+- At the initial audit snapshot, 11 PRs were open. That count and the per-PR table below are historical triage context, not a live queue. Subsequent triage closed #35 and #13 as superseded, then #32 and #1 as deferred/unmerged. A fresh live query on 2026-10-12 found eight open PRs: #41, #38, #37, #36, #31, #14, #6, and #2.
 - The branch listing returned 38 branches. The API's branch objects reported `protected: false`; the connected integration could not read the branch-protection endpoint (403), so effective repository rulesets/branch protection are **not verified**.
 - Root `roadmap.md` still lists broad product redesign tasks as unchecked work. This conflicts with the discovery-first Master Plan unless explicitly labelled as parked/reference work.
 - No customer wedge is selected. C1 downtime/production-loss investigation and C4 energy/material inefficiency remain discovery probes, not build commitments.
@@ -131,3 +131,18 @@ The repository is not “ready” because folders are tidy. It is ready when:
 - [ ] Technical, customer, and commercial claims remain limited to what the evidence proves.
 
 **Current conclusion:** repository organization is improved, but full execution readiness is not established. The next critical gate is Actions diagnosis plus PR-by-PR reconciliation; broad product implementation remains subordinate to customer discovery.
+
+
+## Repository standards follow-up — 2026-10-12
+
+The repository now has a consistent entry point for changes:
+
+- `CONTRIBUTING.md` defines source-of-truth hierarchy, work intake, branch/commit discipline, validation expectations, industrial-data/security boundaries, document lifecycle, and PR completion criteria.
+- `.github/PULL_REQUEST_TEMPLATE.md` requires linked scope, exact validation results, risk classification, data/safety review, and reviewer focus.
+- `.github/ISSUE_TEMPLATE/bug_report.md` captures reproduction, impact, evidence, regression coverage, and safety notes.
+- `.github/ISSUE_TEMPLATE/work_item.md` captures problem evidence, scope, acceptance criteria, dependencies, risk, and validation.
+- Root `README.md` and `docs/README.md` link to these standards.
+
+This follow-up deliberately does not physically move the large set of dated strategy/research documents: their inbound references and historical uniqueness have not been fully mapped. It also does not change workflows, branch protection, labels, database/schema, or product behavior.
+
+**Current limits:** the CI job-start issue #42 remains open pending the actual Actions infrastructure error; effective branch protection/rulesets remain unverified through the connected interface. The current PR list is a point-in-time query and must be refreshed before making PR decisions.
