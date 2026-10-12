@@ -65,12 +65,14 @@ The listed institutions are public routes to investigate, not verified leads, en
 Update only with actual counts. Do not fill planned counts as completed.
 
 | Metric | Current actual | Target / trigger | Notes |
-|---|---:|---:|---|
-| Warm introduction requests sent | 0 | 30 by Oct 17 | No outreach sent |
-| Replies received | 0 | Track actual | — |
-| Introductions offered | 0 | Track actual | — |
-| Calls booked | 0 | 10 over sprint; kill rule Oct 17 | — |
-| Calls held | 0 | 10 over sprint | No conversations claimed |
+|---|---:|---|---|
+| Warm introduction requests sent | 0 | Up to 12 by Oct 17, within confirmed time cap | No outreach sent |
+| Connector agreements | 0 | Track actual | Separate from a completed introduction |
+| Introductions made | 0 | Track actual | Separate from recipient reply |
+| Direct public-route asks | 0 | 2 by Oct 14 (ASIA + ACMA/IDTR) | Not contacted; verify official channel before use |
+| Recipient replies / positive next steps | 0 | Oct 17 exposure-based review | Do not treat untested conversion rates as benchmarks |
+| Calls booked | 0 | Rough planning estimate 1–2 from 12 warm asks at 10% end-to-end; not a commitment | Track direct-route conversion separately |
+| Calls held | 0 | Oct 24: fewer than 1 across all routes → change access method | No conversations claimed |
 | C1 substantive cases | 0 | Probe deeply | — |
 | C4 substantive cases | 0 | Probe deeply | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |
