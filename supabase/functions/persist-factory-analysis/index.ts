@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2.117.2";
 import { buildAnalysisInputFromCanonical, type AnalysisEconomicContext } from "../_shared/analysis-input-adapter.ts";
 import { readBoundedJsonBody } from "../_shared/request-body.ts";
+import { inputSnapshotDigestMatches } from "../_shared/input-snapshot-integrity.ts";
 import {
   analyzeFactoryLoop,
   canonicalize,
@@ -357,8 +358,10 @@ runtime.serve(async (request: Request): Promise<Response> => {
     }
     const recomputedFingerprint = reproducibilityFingerprint(recomputed);
     const recomputedInputSnapshotFingerprint = await inputSnapshotSha256((stored as StoredAnalysisRun).input_snapshot);
-    const inputSnapshotIntegrity = typeof (stored as StoredAnalysisRun).input_snapshot_sha256 === "string" &&
-      (stored as StoredAnalysisRun).input_snapshot_sha256 === recomputedInputSnapshotFingerprint;
+    const inputSnapshotIntegrity = inputSnapshotDigestMatches(
+      (stored as StoredAnalysisRun).input_snapshot_sha256,
+      recomputedInputSnapshotFingerprint,
+    );
     return reply({
       stored: stored as StoredAnalysisRun,
       recomputed,

@@ -20,6 +20,8 @@
 
 ## Engineering and release controls
 
+- [Supabase Readiness Remediation — 2026-10-12](gridmind-supabase-readiness-remediation-2026-10-12.md) — current scorecard, security/migration blockers, validation gates, and production-change boundaries.
+
 - [Technical Readiness Snapshot](gridmind-technical-readiness-snapshot-2026-10-11.md) — historical, read-only snapshot; verify current live state.
 - [Supabase Connection & Security Audit](gridmind-supabase-connection-security-audit-2026-10-11.md)
 - [Secure Operation & Factory Value Milestone](gridmind-secure-operation-and-factory-value-milestone-2026-10-11.md)
