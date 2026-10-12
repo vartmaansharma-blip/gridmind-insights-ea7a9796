@@ -1,6 +1,6 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-11  
+**Last updated:** 2026-10-12  
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
@@ -13,7 +13,7 @@ Find one reachable industrial workflow where a specific buyer has recurring or h
 ## 2. Current truth
 
 - Commercial wedge: **undecided**.
-- No customer conversations, customer commitments, buyer-approved data, or factory access are confirmed.
+- One initial inquiry to ASIA was sent by the founder on 2026-10-12. No reply, referral, conversation, customer commitment, buyer-approved data, or factory access is confirmed.
 - The long-term thesis remains: authorized evidence → traceable finding → human-reviewed decision → approved action → measured outcome → retained learning.
 - The first offer is a service experiment, not a claim that GridMind's current software can autonomously diagnose causes, prescribe interventions, or verify savings.
 - Do not make production-readiness, customer, accuracy, ROI, savings, endorsement, or integration claims without evidence.
@@ -159,4 +159,47 @@ Do not write as if an unassigned reviewer has approved anything. A missing role 
 
 ## 13. Current next action
 
-Get the first legitimate warm introduction request reviewed and sent by the founder with appropriate adult/professional support. In parallel, prepare the 30-ask route list without scraping or inventing contacts. Record actual funnel numbers in the tracker. **Do not start another planning cycle.**
+The initial ASIA public-route inquiry was sent on 2026-10-12; the next action is to log any actual reply and follow up once after 4–5 business days if appropriate (target around 2026-10-19). This is an access experiment, not a customer lead or evidence of demand. In parallel, prepare legitimate warm-introduction requests with appropriate adult/professional support, without scraping or inventing contacts. Record actual funnel numbers in the tracker. **Do not start another planning cycle.**
+
+## 14. Phase decisions consolidated — 2026-10-12
+
+This section records decisions from the Phase 1 foundation and the subsequent opportunity-validation discussion. It clarifies existing strategy; it does not replace the candidate register or claim customer validation.
+
+### Company and product definition
+
+- **Working definition:** GridMind is an industrial intelligence and performance-improvement company that helps manufacturers investigate operational problems, make evidence-backed decisions, implement improvements with their teams, and verify results.
+- **Long-term ambition:** a trusted industrial decision-and-improvement layer. This is a destination, not a current capability or market-leadership claim.
+- **Core loop:** authorized evidence → traceable finding → qualified human review → customer-approved action → measured outcome → reusable learning where rights and permissions allow.
+- **Immediate execution priority:** establish one consequential customer problem and its residual gap before committing to a commercial offer or expanding product scope.
+- **Commercial approach:** a human-reviewed, service-led experiment may test value before automation. This does not commit GridMind to a consulting-only business model.
+
+### Opportunity selection and current research
+
+- **No first commercial wedge is selected.**
+- The canonical sprint probes remain **C1 (downtime/production-loss investigation)** and **C4 (energy/material inefficiency)**. C3 (maintenance recurrence/reliability) remains in the stable candidate register and may be compared as a research alternative, but it is not promoted to an active sprint probe unless evidence materially weakens C1/C4 or a qualified participant introduces a stronger concrete case.
+- Existing machine monitoring, maintenance-management, root-cause analysis, and energy-audit offerings mean that feature descriptions alone cannot establish differentiation.
+- A missing feature on a public website is not evidence that the vendor lacks that capability. Vendor claims must be labeled as vendor claims until independently tested.
+- The decisive question is whether a specific buyer has a consequential unresolved problem after their current staff, tools, experts, and processes are considered.
+- Public research, customer evidence, and experimental evidence must remain distinct. Public research cannot establish willingness to pay; synthetic tests cannot establish customer demand or real-world impact.
+
+### Research and prototype rules
+
+- First compare actual workflows and alternatives using source-linked evidence. Mark unknowns visibly; do not manufacture scores for unknown criteria or use weighted scores to hide fatal blockers.
+- A scorecard is a decision aid, not a substitute for evidence. Do not select a winner merely to maintain momentum.
+- Any technical experiment stays bounded and synthetic/offline until customer access, data rights, security, reviewer, baseline, and outcome-measurement gates are satisfied.
+- A synthetic evidence-to-action test may evaluate evidence coverage, provenance/traceability, separation of fact from hypothesis, handling of missing or contradictory evidence, unsupported conclusions, effort, decision usefulness, action ownership, and verification design. Passing it demonstrates only performance on the defined test cases.
+- Valid outcomes include “insufficient evidence,” “existing process is adequate,” “not economically justified,” and “no measurable improvement.”
+- No unsupported claims about root-cause accuracy, savings, customer results, production readiness, or a data moat.
+
+### Customer-access status
+
+- An initial ASIA inquiry was sent on 2026-10-12. No reply, introduction, booked conversation, or customer validation is confirmed as of this update.
+- The ASIA inquiry is a route experiment only. Follow up once after 4–5 business days if appropriate; continue legitimate warm-introduction work without inventing prospects or counting planned requests as sent.
+- Customer/site access, formal engagement, confidential data, payments, and technical interpretation require appropriate authorization and adult/professional oversight.
+
+### Decision discipline
+
+- Preserve one canonical master plan, one live discovery tracker, and this decision constitution; do not create duplicate plans.
+- Record durable decisions, their evidence, confidence, unresolved assumptions, and conditions that would change them.
+- Separate **analysis quality**, **plan quality**, and **actual business progress**. A well-written plan is not validation or execution.
+- Reopen a decision only when new evidence, a failed test, a material constraint, or an explicit risk review warrants it; document the reason and affected records.
