@@ -39,7 +39,7 @@ C1 and C4 are **discovery probes, not chosen wedges**. Probe these two to avoid 
 
 Ask trusted people in the founder's existing professional/family network to introduce one relevant manufacturing professional at a time. The current network is a possible route, **not a verified prospect list**. No contact has agreed to help yet.
 
-**Ask target by 2026-10-17:** 30 warm introduction requests across reachable, legitimate contacts. Planning funnel only—not historical conversion data: assume ~40% book (12) and ~80% of booked calls occur (about 10). Track actual rates; do not treat them as benchmarks.
+**Initial access test by 2026-10-19:** make 3–5 genuine warm-introduction requests, only if legitimate contacts and actual capacity are available. This replaces the previous 30-request planning target for the immediate test. Do not invent contacts or use an assumed conversion rate. Review responses and route quality before deciding whether to expand.
 
 ### Offer something useful without overclaiming
 
@@ -51,7 +51,7 @@ For C4, do **not** promise a technical electricity-bill review unless a qualifie
 
 Use one public industry/technical-network route in parallel to ask about appropriate public events or a legitimate research introduction—not member lists or endorsements. Existing public route references in the discovery kit include ASIA Jamshedpur, ACMA Eastern Region, IDTR, and JSIA; verify the official channel and relevance before use.
 
-**Concrete route trigger:** if no trusted connector is identified by **2026-10-12**, use the ASIA Jamshedpur official contact route as the first public inquiry (contact details are in the tracker) while building the warm-ask list. ACMA Eastern Region and IDTR are named fallback routes, not buyer leads. **Kill date: 2026-10-17.** If zero substantive calls are booked after 30 warm asks, stop repeating the same route. Review the actual funnel, change the introduction source and/or offer, and run a new 7-day test through the public association/technical-learning route. If 30 warm asks cannot be assembled, record access as a blocker instead of inflating the funnel.
+**Access status and next step:** the ASIA public-route inquiry was sent on 2026-10-12. No reply, referral, or conversation is confirmed. Follow up once after 4–5 business days if appropriate (around 2026-10-19). In parallel, make a deliberate 3–5 genuine warm-introduction requests by 2026-10-19 if actual capacity and legitimate contacts exist. This is a small access experiment, not a rigid funnel or market-demand test. If suitable contacts cannot be identified, record the access constraint; do not invent prospects. ACMA Eastern Region and IDTR are possible public-route research channels, not buyer leads.
 
 No outreach is sent automatically. A trusted adult/professional must review and support external industrial outreach and any formal engagement. No factory visit, commercial commitment, payment arrangement, or non-public data handling without the appropriate authorization and oversight.
 
@@ -87,8 +87,8 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 
 ## 6. 30-day operating calendar
 
-- **Oct 11–12:** Freeze this plan and tracker; assemble an initial list of legitimate warm introduction routes; have the outreach offer reviewed.
-- **Oct 12–17:** Make up to 30 warm asks; track sent/response/booked/held; run the public-route backup. Apply the kill rule on Oct 17.
+- **Oct 11–12:** Freeze the plan and tracker; send the ASIA public-route inquiry; identify legitimate warm-introduction routes.
+- **Oct 12–19:** Log any ASIA response; follow up once after 4–5 business days if appropriate; make 3–5 genuine warm-introduction requests if actual capacity permits. Record real funnel movement; do not treat the small test as statistically conclusive.
 - **Oct 18–24:** Conduct conversations where booked. Probe C1 and C4 deeply, reconstruct actual incidents, and capture disconfirming evidence. Do not pitch a full platform.
 - **Oct 25–31:** Compare the two probes on buyer pain, residual gap, buyer path, commercial signal, and bounded-service feasibility. If a candidate is promising, ask whether the buyer wants a scoped retrospective test; do not request records before Tier 2.
 - **Nov 1–7:** If and only if permissions and reviewers exist, prepare a written offline test protocol. Otherwise continue discovery or record the access/reviewer blocker.
@@ -99,7 +99,7 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 **Provisional planning cap:** 5 founder hours/week, ₹0 incremental spend, using existing tools and human conversations. This is an explicit planning assumption, not a claim about the founder's actual availability. If the cap is unrealistic, reduce the activity target and reset the dates; do not silently exceed it. Do not run this alongside speculative site redesign, new modules, brand renaming, or unrelated growth experiments.
 
 Stop or change course if:
-- **Oct 17:** zero calls booked after 30 warm asks → change access route/offer for seven days.
+- **Oct 19:** review response quality from the ASIA route and the 3–5-request access test; decide whether to continue, change the route, or record access as the current blocker. Do not infer absent market demand from a small or immature sample.
 - **Oct 24:** fewer than three substantive conversations held → stop treating the ten-call target as on track; revise channel/funnel assumptions and dates.
 - After five substantive conversations: neither C1 nor C4 produces a concrete incident with a credible consequence and an unresolved gap → open the candidate register once and choose the next probe based on evidence, not intuition.
 - By Nov 10: no candidate has a credible buyer path and explicit next step → **NO-GO on product build**, document the blocker, and decide whether to pivot or stop.
