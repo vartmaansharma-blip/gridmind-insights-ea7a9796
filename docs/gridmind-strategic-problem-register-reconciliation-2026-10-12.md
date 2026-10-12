@@ -218,3 +218,49 @@ Ask about the participant's real process, not whether they like GridMind or AI. 
 - **Next action:** use the existing [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) to seek an appropriate conversation through a legitimate introduction route. Given the founder is under 18, any formal factory engagement, site visit, data handling, payment, or commercial commitment must have appropriate adult and professional oversight.
 
 **Phase 2 exit condition:** public research has sharpened the questions and exposed obvious overlap; it has not passed the customer-evidence gate. Phase 3 should not begin as a product build until a target workflow and its evaluation criteria are specified. A bounded synthetic test may be designed for technical feasibility, but it cannot be counted as demand or customer impact.
+
+
+## Phase 3 preflight — technical experiment readiness (prepared, not executed)
+
+The register's Phase 3 is a technical experiment. The canonical Master Plan controls whether and when that experiment can run. Because the commercial wedge is still undecided, this section prepares the evaluation contract without starting a product build or pretending that synthetic data validates demand.
+
+### Decision
+
+**Phase 3 execution status: NOT AUTHORIZED YET.** Prepare only the reusable test protocol. Run a workflow-specific synthetic experiment only after the master plan's candidate-comparison gate identifies a concrete workflow to test, or explicitly authorises a narrow candidate-neutral experiment. Do not pull the dates forward just because the research document is ready.
+
+### Minimum experiment contract
+
+Before writing code or evaluating outputs, record:
+
+1. **Question:** one narrow task the system should perform, not “understand a factory.”
+2. **Input contract:** exact fields, units, time windows, source identity, provenance, and what may be missing.
+3. **Synthetic case design:** clearly fabricated records, including at least one missing field, one conflicting record, and one ambiguous or non-causal relationship. Never use realistic customer identifiers or copied customer records.
+4. **Expected answer / reference label:** independently written expected findings and the evidence supporting each; state where the correct answer is “unknown” or “insufficient evidence.”
+5. **Required output:** source-linked timeline or calculation, facts separated from inferences, alternative explanations, contradiction/missing-evidence list, confidence limitations, and an explicit human-review boundary.
+6. **Failure cases:** plausible but unsupported root-cause narrative, unit/time mismatch, missing-as-zero error, double-counted economic impact, incorrect arithmetic, and a recommendation exceeding the evidence.
+7. **Acceptance criteria:** each material statement traceable to an input; calculations independently reproducible; no unsupported causal claim; missing/conflicting evidence surfaced; no action framed as approved without a human decision.
+8. **Review:** a qualified domain reviewer checks technical correctness before any operational interpretation is offered.
+
+### What this experiment can and cannot prove
+
+| It can test | It cannot prove |
+|---|---|
+| Data-contract behaviour on defined synthetic inputs | That a factory has the problem or will buy a solution |
+| Whether provenance and missing/conflicting evidence are represented correctly | Root-cause accuracy in real operations |
+| Whether deterministic calculations reproduce expected results | Verified savings, ROI, causal impact, or customer value |
+| Whether the interface makes uncertainty and human review visible | Security approval for production data or permission to deploy |
+| Whether a bounded task is technically feasible under test conditions | Repeatable delivery economics or product-market fit |
+
+### Phase 3 entry gate
+
+Do not execute the experiment until all are true:
+
+- A single workflow question is stated clearly and tied to the candidate register.
+- The relevant source/field semantics and expected outputs are defined.
+- Acceptance and failure criteria are written before seeing the output.
+- Synthetic data are labelled as synthetic and contain no customer-derived information.
+- A qualified reviewer is identified for any domain-specific conclusion.
+- The result will be recorded as a technical test only, separate from customer evidence.
+
+If these conditions are not met, the correct action is to keep the product build paused and continue discovery/access work under the canonical Buyer Discovery Sprint. This is a deliberate dependency, not a project delay to conceal.
+
