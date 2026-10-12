@@ -214,3 +214,30 @@ This amendment resolves execution contradictions in older planning material. If 
 - **Economics:** no $20k ACV, 95% precision, 90% recall, or other ungrounded target is an active acceptance criterion. Define task-specific metrics and economics from buyer evidence.
 - **People:** reviewer roles are explicitly unassigned until a real candidate requires them. A trusted adult/professional must review and support external industrial outreach and formal engagement; customer data, site access, contracts, and payments require appropriate authorization and oversight.
 - **Source of truth:** the master plan is the sole execution plan; the buyer-discovery sprint is the sole live tracker. Supporting strategy docs are reference material, not competing plans.
+
+
+## Consolidated conversation decisions — 2026-10-12
+
+This entry preserves the strategic decisions made during the Phase 1–3 planning discussion and clarifies their status against the existing binding decisions above.
+
+### Company definition and ambition
+- **Working definition:** GridMind is an industrial intelligence and performance-improvement company that helps manufacturers investigate operational problems, make evidence-backed decisions, implement improvements with their teams, and verify results.
+- The long-term industrial-intelligence ambition remains a destination, not a claim that the current product already delivers every capability.
+- The operating loop remains authorized evidence → traceable finding → human review → customer-approved action → measured outcome → reusable learning only where permission and rights allow.
+
+### Opportunity and differentiation
+- No commercial wedge is selected.
+- The live discovery sprint's active probes remain C1 (downtime/production loss) and C4 (energy/material inefficiency), consistent with D3 and the master plan. C3 (maintenance recurrence/reliability) remains a comparison candidate, not a newly activated probe. Change the active probes only when new evidence meets the existing change rule.
+- Existing alternatives already cover portions of machine monitoring, maintenance management, root-cause analysis, and energy auditing. GridMind must demonstrate a specific residual gap; it must not assume that a competitor lacks a capability because its website does not mention it.
+- A candidate must be evaluated against actual customer pain, current alternatives, residual gap, consequence, buyer path, authorized evidence, safe delivery, incremental value, and a concrete next step. Unknowns remain unknown; a numerical score must not conceal missing evidence or a fatal blocker.
+- Public research identifies plausible hypotheses, not customer demand or willingness to pay. Customer accounts, synthetic experiments, and vendor statements must be labeled as distinct evidence types.
+
+### Prototype and execution
+- A bounded synthetic/offline experiment may test whether GridMind produces a more traceable, uncertainty-aware investigation brief than a defined baseline. It cannot prove customer demand, causal impact, general accuracy, or verified savings.
+- Do not process non-public customer data until the relevant authorization, data-rights/security, qualified-reviewer, baseline/outcome, effort/cost, and stop-condition gates are met.
+- No first-wedge decision, pricing, ACV, market-size, savings, accuracy, or defensible-moat claim is validated by the conversation alone.
+- The ASIA public-route inquiry was sent on 2026-10-12; this corrects the former “not contacted/no outreach sent” state. No response, introduction, meeting, or buyer signal is confirmed. The buyer-discovery tracker is the live record for actual funnel counts.
+- The research phase must produce a decision or a clearly stated evidence/access blocker, not an endless cycle of strategy documents. Do not add duplicate planning documents.
+
+### Reconciliation rule
+This dated entry clarifies the discussion; it does not override the master plan's two active probes, the two-tier evidence/access gates, or the discovery-only P0. If later evidence changes any of those decisions, update the master plan and tracker alongside this register, preserving the prior decision and reason for change.
