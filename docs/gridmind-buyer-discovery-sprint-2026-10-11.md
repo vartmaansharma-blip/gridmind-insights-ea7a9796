@@ -197,12 +197,13 @@ The fee must be defensible against conservative incremental value and cover deli
 
 ## 9. Decision dates and stop rules
 
-- **Oct 12:** if no warm connector is named, activate ASIA Jamshedpur route today while continuing warm asks.
-- **Oct 14:** make the second direct public ask through ACMA or IDTR; track separately.
-- **Oct 17:** exposure-based funnel review; change source/message/give only if the stated request-exposure and positive-next-step trigger is met.
-- **Oct 24:** if fewer than one substantive call has been held across warm and direct routes, change the access method and reset the forecast.
+- **Oct 12:** ASIA initial email sent; no reply/referral/meeting confirmed. Do not resend the initial inquiry.
+- **By Oct 19:** make 3–5 genuine warm-introduction requests if capacity permits; review the first test and current ASIA status.
+- **Oct 19:** if ASIA has not replied after five business days, consider one polite follow-up. Activate one secondary public route only if the warm route remains inactive or ASIA yields no useful next step after reasonable exposure.
+- **After initial route test:** change the source/message/give if no credible access path emerges; do not treat this as evidence that the underlying customer problem is invalid.
 - **After five conversations:** if neither C1 nor C4 yields a concrete event with credible consequence and a residual gap, revisit the stable candidate register once and choose the next probe from evidence.
 - **Nov 10:** decide GO TO BOUNDED TEST / NARROW / PIVOT / STOP. Commercial validation requires three independent buyers with the same material problem and one defined follow-up. If no candidate passes, no-go on new GridMind product build; choose a bounded two-week narrow test, pivot to the ranked narrow B2B AI service-to-software/productized-service alternative, or stop. Before committing another sprint, confirm actual weekly hours, cash runway and near-term income requirement; do not assume GridMind will produce income before a safe test and measurement cycle can finish.
+- **By Nov 15 (target, not guarantee):** aim for at least one substantive manufacturing conversation held or a concrete, credible next step to one, if access and evidence permit. This does not imply a pilot, revenue, or validated savings.
 
 A paid pilot is desirable, not required to declare the discovery sprint complete. No verified-savings claim is possible without the later observation period and agreed attribution method.
 
