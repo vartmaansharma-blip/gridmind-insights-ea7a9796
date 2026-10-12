@@ -64,11 +64,11 @@ Update only with actual counts. Do not fill planned counts as completed.
 
 | Metric | Current actual | Target / trigger | Notes |
 |---|---:|---:|---|
-| Warm introduction requests sent | 0 | 30 by Oct 17 | No outreach sent |
+| Warm introduction requests sent | 0 | Initial test: 3–5 by Oct 19, if feasible | ASIA email is a separate public-route inquiry |
 | Replies received | 0 | Track actual | — |
 | Introductions offered | 0 | Track actual | — |
-| Calls booked | 0 | 10 over sprint; kill rule Oct 17 | — |
-| Calls held | 0 | 10 over sprint | No conversations claimed |
+| Calls booked | 0 | Track actual; no forecast target | — |
+| Calls held | 0 | Seek substantive evidence; no fixed quota | No conversations claimed |
 | C1 substantive cases | 0 | Probe deeply | — |
 | C4 substantive cases | 0 | Probe deeply | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |
@@ -174,8 +174,8 @@ The fee must be defensible against conservative incremental value and cover deli
 
 ## 9. Decision dates and stop rules
 
-- **Oct 17:** 30 warm asks; if zero calls booked, change route/offer for a seven-day experiment.
-- **Oct 24:** if fewer than three substantive conversations have been held, reset the ten-call forecast and fix access before making product assumptions.
+- **Oct 19:** review the ASIA route and the 3–5-request access test; adjust route if evidence supports it. A small sample cannot establish demand or its absence.
+- **After the first substantive conversations:** update the access plan from observed route quality and buyer evidence; do not forecast a fixed call count without a credible funnel.
 - **After five conversations:** if neither C1 nor C4 yields a concrete event with credible consequence and a residual gap, revisit the stable candidate register once and choose the next probe from evidence.
 - **Nov 10:** decide GO TO BOUNDED TEST / NARROW / PIVOT / STOP. If no candidate has a credible buyer path and explicit next step, no-go on new product build.
 
@@ -185,9 +185,9 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 
 | Priority | Task | Owner | Due | Status |
 |---|---|---|---|---|
-| **P0** | Identify legitimate warm introducers and prepare 30-request route list; do not invent names or scrape lists | Founder, with trusted adult/professional support | Oct 12 | Not started |
+| **P0** | Identify 3–5 legitimate warm-introduction routes; do not invent names or scrape lists | Founder, with appropriate adult/professional support | Oct 19 | In progress / capacity-dependent |
 | **P0** | Review the two short outreach drafts and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
-| **P0** | Start actual funnel logging and run the access experiment | Founder | Oct 17 kill date | Not started |
+| **P0** | Log actual funnel movement and review the small access experiment | Founder | Oct 19 review | In progress |
 | P1 | Hold and document conversations using C1/C4 IDs | Founder | Through Nov 10 | Waiting for access |
 | P2 | Scope an offline retrospective test only if Tier 1 evidence and a buyer request justify it | Founder + named reviewer/customer owner | After evidence | Blocked on people/evidence |
 | Parked | Broad schema/RPC changes, workspace redesign, new modules, public-site polish, rename, trademark work | — | Until evidence changes priority | Not P0 |
@@ -198,7 +198,7 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 |---|---|---|
 | 2026-10-11 | C1 and C4 selected as the two discovery probes only; neither is the product wedge | Active probe choice |
 | 2026-10-11 | Two-tier gates separate interview evidence from customer-data/pilot acceptance | Active |
-| 2026-10-11 | 30 warm asks and Oct 17 kill date adopted as a testable access experiment | Planned, not executed |
+| 2026-10-12 | Earlier 30-ask / Oct 17 access plan superseded by a bounded 3–5-request test by Oct 19, subject to capacity | Current access test; not market validation |
 | 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
