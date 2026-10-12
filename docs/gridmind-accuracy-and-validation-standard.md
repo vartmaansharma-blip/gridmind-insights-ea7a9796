@@ -3,7 +3,7 @@
 > **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful analysis, but its old schedules, candidate letters, gates, engineering priorities, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
 
 
-**Status:** Required engineering and pilot policy. Thresholds below are proposed release gates to be reviewed against the selected use case; they are not achieved performance claims. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs scope; validation targets do not imply that a pilot, generalized accuracy claim, or product launch is currently authorized.
+**Status:** Reference-only validation principles. The active execution authority is the [GridMind Master Plan](gridmind-master-plan-2026-10-11.md), and the active discovery record is the [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). No numeric accuracy target is active until the exact task, risk, labeling rubric, comparison method and representative evaluation set are defined and approved for a selected workflow.
 
 ## 1. Accuracy is a system property
 
@@ -30,7 +30,7 @@ A reviewer must distinguish a false positive, a missed issue, a valid refusal, a
 
 ## 3. Proposed release gates
 
-These are initial conservative targets to test and ratify before a real pilot; they must not be described as achieved until measured.
+The deterministic integrity checks below are candidate engineering acceptance checks. They do not establish analytical accuracy or customer value. Define any task-specific acceptance criteria before a selected workflow is tested.
 
 ### Gate A — deterministic and data integrity
 - 100% of supported unit conversions and reference calculation fixtures pass.
@@ -41,15 +41,14 @@ These are initial conservative targets to test and ratify before a real pilot; t
 - No silent imputation, unit guessing, timestamp inference, or unsupported asset-level allocation.
 
 ### Gate B — expert-reviewed case set
-- Evaluate a minimum of 30 independently adjudicated cases before making any generalized accuracy claim; include positive findings, negative cases, ambiguous/incomplete data and relevant operating variations. Thirty cases is a starting smoke-test, not enough to prove broad industrial generalization.
-- Pre-register the target problem, inclusion/exclusion criteria, reviewer rubric and success thresholds before scoring.
-- On the defined test set, target at least 95% precision for material findings asserted as evidence-supported; report exact counts and uncertainty intervals, not just the percentage.
-- Target at least 90% recall for material issues within the explicitly evaluated scope, with every miss reviewed for severity and root cause.
-- For unsupported or ambiguous inputs, target 100% correct refusal on the defined refusal suite.
+- Define a representative case set appropriate to the exact claim; there is no universal case-count threshold that proves industrial generalization.
+- Pre-register the target problem, inclusion/exclusion criteria, reviewer rubric, error severity, and acceptance thresholds before scoring.
+- Report observed false positives, misses, valid refusals, unresolved cases, reviewer disagreement, sample limitations and uncertainty. Do not choose a percentage target without a defined task and risk rationale.
+- Evaluate unsupported or ambiguous inputs against a defined refusal suite; set the required threshold before testing based on the consequences of an incorrect answer.
 - Any safety-critical, high-consequence, or potentially damaging recommendation requires qualified human approval regardless of aggregate metrics.
 - If the sample is too small or unrepresentative, report the result as preliminary and do not generalize to other assets, factories or industries.
 
-These are proposed gates, not a promise that 95% precision or 90% recall is currently achievable. If they are not met, narrow the supported use case, improve the method, or refuse to claim readiness.
+These principles are not evidence that GridMind currently meets any accuracy level. If evidence is insufficient or errors exceed the pre-agreed risk tolerance, narrow the supported use case, improve the method, or refuse to claim readiness.
 
 ### Gate C — comparative value
 - Compare GridMind with the existing engineering process on the same cases and with a pre-agreed review method.
