@@ -264,3 +264,71 @@ Do not execute the experiment until all are true:
 
 If these conditions are not met, the correct action is to keep the product build paused and continue discovery/access work under the canonical Buyer Discovery Sprint. This is a deliberate dependency, not a project delay to conceal.
 
+
+
+## Phase 3 dry-run — synthetic evidence packet and reference answer (2026-10-12)
+
+**Scope:** A documentation-only dry-run of evidence discipline using wholly invented values. It does not select C1 as the wedge, validate demand, test software, or authorise customer-data work. It tests whether the proposed method refuses to overstate what a small evidence packet can establish.
+
+### Fictional packet
+
+Everything below is fabricated for this test.
+
+| Record ID | Record | What it directly states | Limitation |
+|---|---|---|---|
+| R-01 | Shift log | Fictional Line L-7 stopped at 10:14 and restarted at 10:32. | Operator-entered; no independent time source supplied. |
+| R-02 | Maintenance note | “Sensor signal intermittent”; note created at 10:41. | Does not establish when the issue began or prove it caused the stop. |
+| R-03 | Production summary | 18 units below the shift target. | Does not establish that all 18 units were lost because of this stop. |
+| R-04 | Event export | Stop time listed as 10:19; restart time is blank. | Conflicts with R-01; time source and clock alignment unknown. |
+| R-05 | Cost worksheet | “₹12,000 impact” entered by an unknown author. | Formula, unit basis, included cost categories, and approval are absent. |
+
+No real factory, employee, equipment, customer, or incident is represented.
+
+### Reference answer — what a disciplined system should say
+
+**Supported observations**
+- R-01 reports a stop interval of 18 minutes (10:14–10:32), based on its own timestamps.
+- R-04 reports a different stop time (10:19) and no restart time.
+- R-02 records an intermittent sensor signal in a note created at 10:41.
+- R-03 reports an 18-unit shortfall against a target.
+- R-05 contains a ₹12,000 impact entry without a reproducible calculation.
+
+**Unresolved / not established**
+- The authoritative stop and restart times are not established because R-01 and R-04 conflict and clock/source quality is unknown.
+- The sensor issue is a possible lead, not a proven root cause.
+- The 18-unit target shortfall cannot be attributed entirely to the stop from these records alone.
+- The ₹12,000 figure is unverified and must not be reported as GridMind-estimated loss or savings.
+- The packet does not establish recurrence, buyer urgency, willingness to pay, or whether the current factory process is inadequate.
+
+**Appropriate next evidence (if this were a real, authorised investigation)**
+- Confirm source ownership, timestamp definitions, clock alignment, and which record is authoritative.
+- Establish the stop/restart event from an authorised source and reconcile it with shift records.
+- Ask a qualified reviewer whether the maintenance note supports any causal inference and what alternatives remain.
+- Request the formula and source inputs behind the ₹12,000 entry before using it.
+- Define the question and approval boundary with the responsible factory owner before recommending any action.
+
+### Dry-run pass/fail criteria
+
+| Criterion | Pass condition | Dry-run result |
+|---|---|---|
+| Provenance | Every observation references a record ID. | Pass in this written reference answer. |
+| Conflict handling | R-01/R-04 conflict is surfaced, not silently reconciled. | Pass. |
+| Missing data | Blank restart time is stated as missing, not imputed. | Pass. |
+| Causality | Sensor note is not presented as confirmed root cause. | Pass. |
+| Economic integrity | ₹12,000 is not treated as verified impact or savings. | Pass. |
+| Attribution | The 18-unit shortfall is not fully attributed to the stop. | Pass. |
+| Commercial inference | No demand, ROI, or willingness-to-pay claim is made. | Pass. |
+
+**Limit of this result:** These passes mean the written reference answer follows the protocol. They are not automated test results, independent expert review, software accuracy, or evidence of real-world reliability. An independent reviewer and an implementation-level test remain outstanding.
+
+### Phase 3 disposition
+
+- **Documentation/method dry-run:** completed for this one fabricated packet.
+- **Software implementation test:** not run.
+- **Independent domain review:** not obtained.
+- **Customer validation / real-world test:** not performed.
+- **Production/customer-data use:** not authorised.
+
+### Correction to Phase 2 candidate framing
+
+C3 maintenance recurrence is included only as a **conditional landscape comparator** because the canonical sprint parks C3 unless discovery redirects. The active discovery probes remain **C1 and C4**. The public maintenance study does not promote C3, establish local prevalence, or justify expanding the sprint. This distinction preserves the canonical candidate register and prevents research breadth from becoming scope creep.
