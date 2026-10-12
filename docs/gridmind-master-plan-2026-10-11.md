@@ -1,6 +1,6 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-11  
+**Last updated:** 2026-10-12  
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
@@ -39,21 +39,21 @@ C1 and C4 are **discovery probes, not chosen wedges**. Probe these two to avoid 
 
 Ask trusted people in the founder's existing professional/family network to introduce one relevant manufacturing professional at a time. The current network is a possible route, **not a verified prospect list**. No contact has agreed to help yet.
 
-**Ask target by 2026-10-17:** 30 warm introduction requests across reachable, legitimate contacts. Planning funnel only—not historical conversion data: assume ~40% book (12) and ~80% of booked calls occur (about 10). Track actual rates; do not treat them as benchmarks.
+**Capacity-adjusted target by 2026-10-17:** up to 12 legitimate warm requests, plus two direct asks through official public professional/association channels in parallel. This is a provisional target under the unconfirmed 5-hour/week cap; confirm actual available hours before treating it as a commitment. Funnel stages must be logged separately: request sent → connector agrees → introduction made → recipient replies → call booked → call held. The 10% end-to-end conversion estimate is an untested planning guess, not a benchmark; 12 warm asks imply roughly 1 call on that guess, not 10. Do not pad counts or treat a connector agreement as a booked call.
 
 ### Offer something useful without overclaiming
 
-Invite a 20-minute conversation about one recent incident. In return, offer a **free, one-page workflow/decision map** based only on what the participant chooses to share verbally: steps, handoffs, evidence used, unresolved questions, and possible next questions. It is not an engineering audit, root-cause diagnosis, energy audit, or savings claim. No confidential records are needed. Share the summary only with their permission.
+Invite a 20-minute conversation about one recent incident. The give should be a concise **peer-insight summary** of patterns heard across multiple conversations, anonymized and shared only where participants have permitted use; never imply statistical representativeness. Until enough permissioned conversations exist, offer the participant a one-page workflow/decision map based only on what they choose to share verbally. This is not an engineering audit, root-cause diagnosis, energy audit, or savings claim. No confidential records are needed. Do not send the public Lovable prototype link in first-contact messages: it depicts a fictional factory and is not validated as a live workflow.
 
-For C4, do **not** promise a technical electricity-bill review unless a qualified energy reviewer has explicitly agreed to review it. Until then, offer the same workflow map, not an unqualified technical service.
+For C4, the electricity-bill review remains a possible hook, but do not promise or deliver a technical bill/tariff review until a qualified energy reviewer agrees to the scope. Ask whether a review would be useful; clearly label it as a future, conditional offer, not a current capability.
 
 ### Secondary route and kill date
 
 Use one public industry/technical-network route in parallel to ask about appropriate public events or a legitimate research introduction—not member lists or endorsements. Existing public route references in the discovery kit include ASIA Jamshedpur, ACMA Eastern Region, IDTR, and JSIA; verify the official channel and relevance before use.
 
-**Concrete route trigger:** if no trusted connector is identified by **2026-10-12**, use the ASIA Jamshedpur official contact route as the first public inquiry (contact details are in the tracker) while building the warm-ask list. ACMA Eastern Region and IDTR are named fallback routes, not buyer leads. **Kill date: 2026-10-17.** If zero substantive calls are booked after 30 warm asks, stop repeating the same route. Review the actual funnel, change the introduction source and/or offer, and run a new 7-day test through the public association/technical-learning route. If 30 warm asks cannot be assembled, record access as a blocker instead of inflating the funnel.
+**Fallback trigger: 2026-10-12.** If no warm connector is named today, activate the ASIA Jamshedpur official public-contact route in parallel with the warm-ask list; do not wait for the warm route to fail. Make a separate direct public ask through one additional appropriate route (ACMA Eastern Region or IDTR), without implying endorsement or scraping contacts. **Oct 17 is a funnel review, not an automatic kill based on zero booked calls.** Review stage-by-stage conversion and exposure time. If at least 10 requests have had five business days to mature and fewer than two positive next steps have occurred (connector agreement, introduction accepted, or recipient reply), change the source/message/give for seven days. If that exposure threshold is not met, record insufficient exposure and continue the parallel route through Oct 24. On Oct 24, if fewer than one substantive call has been held from the warm and direct routes combined, change the access method and reset the forecast; this is an access warning, not evidence that the customer problem is false. If legitimate asks cannot be assembled, record access as a blocker.
 
-No outreach is sent automatically. A trusted adult/professional must review and support external industrial outreach and any formal engagement. No factory visit, commercial commitment, payment arrangement, or non-public data handling without the appropriate authorization and oversight. The access routes below are unactivated hypotheses, not a secured path to buyers: no connector is named, no association has been contacted, and no introduction is confirmed. If 30 legitimate warm asks cannot be assembled, record the access blocker and activate the public-route experiment rather than implying the funnel is available.
+No outreach is sent automatically. A named advisor is not yet in place; recruit a retired plant/energy professional or experienced manufacturing advisor, aiming to have one available by the second substantive call. Advisor review is not a universal gate on a low-risk, non-confidential public research request; use appropriate advice for claims and outreach context, and require customer/site authorization and any applicable legal/safety oversight before site visits, contracts, payments, or data access. Founder age/capacity is not independently verified in this repository; do not infer it from legacy documents. The access routes remain unactivated hypotheses: no connector is named, no association has been contacted, and no introduction is confirmed.
 
 ## 5. Two-tier decision gates
 
@@ -67,6 +67,7 @@ Use interviews and non-confidential evidence to assess:
 4. **Ownership and access:** identifiable operational owner and credible route to the economic buyer; plausible source and authorized owner for any future evidence.
 5. **Commercial signal:** explicit willingness to continue, introduce the budget owner, review a scoped proposal, or discuss a paid test—not merely “interesting.”
 6. **Service feasibility:** a bounded first deliverable that can be produced honestly with available time and capability.
+7. **Independent repetition bar:** before declaring a candidate a strong commercial problem, seek at least three independent buyers describing substantially the same costly problem; at least one must agree to a defined next step with scope, date/owner, or a proposal review. A free follow-up alone is not proof of willingness to pay.
 
 A candidate can advance to a **test-design stage** when evidence is promising and major blockers are understood. Baseline quality, causal incrementality, production security, and verified outcomes are not interview-only gates and must not be falsely marked passed.
 
@@ -87,9 +88,9 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 
 ## 6. 30-day operating calendar
 
-- **Oct 11–12:** Freeze this plan and tracker; assemble an initial list of legitimate warm introduction routes; have the outreach offer reviewed.
-- **Oct 12–17:** Make up to 30 warm asks; track sent/response/booked/held; run the public-route backup. Apply the kill rule on Oct 17.
-- **Oct 18–24:** Conduct conversations where booked. Probe C1 and C4 deeply, reconstruct actual incidents, and capture disconfirming evidence. Do not pitch a full platform.
+- **Oct 12–14:** Run the ASIA Jamshedpur public inquiry and one other direct public route in parallel with warm introductions; track each funnel hop. Recruit a retired plant/energy advisor.
+- **Oct 12–17:** Make up to 12 warm asks under the provisional time cap; review rates and exposure on Oct 17, without treating zero bookings alone as a kill trigger.
+- **Oct 18–24:** Conduct booked conversations where possible. Probe C1 and C4 deeply, reconstruct actual incidents, and capture disconfirming evidence. If fewer than one substantive call has been held across the warm and direct routes by Oct 24, change access method and reset the forecast.
 - **Oct 25–31:** Compare the two probes on buyer pain, residual gap, buyer path, commercial signal, and bounded-service feasibility. If a candidate is promising, ask whether the buyer wants a scoped retrospective test; do not request records before Tier 2.
 - **Nov 1–7:** If and only if permissions and reviewers exist, prepare a written offline test protocol. Otherwise continue discovery or record the access/reviewer blocker.
 - **Nov 8–10:** Synthesize evidence and decide **GO TO BOUNDED TEST / NARROW / PIVOT / STOP**. Do not require verified savings within this sprint; verified outcomes belong to a later, agreed observation period.
@@ -99,10 +100,11 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 **Provisional planning cap:** 5 founder hours/week, ₹0 incremental spend, using existing tools and human conversations. This is an explicit planning assumption, not a claim about the founder's actual availability. If the cap is unrealistic, reduce the activity target and reset the dates; do not silently exceed it. Do not run this alongside speculative site redesign, new modules, brand renaming, or unrelated growth experiments.
 
 Stop or change course if:
-- **Oct 17:** zero calls booked after 30 warm asks → change access route/offer for seven days.
-- **Oct 24:** fewer than three substantive conversations held → stop treating the ten-call target as on track; revise channel/funnel assumptions and dates.
-- After five substantive conversations: neither C1 nor C4 produces a concrete incident with a credible consequence and an unresolved gap → open the candidate register once and choose the next probe based on evidence, not intuition.
-- By Nov 10: no candidate has a credible buyer path and explicit next step → **NO-GO on product build**, document the blocker, and decide whether to pivot or stop.
+- **Oct 17:** review funnel rates and exposure. If at least 10 requests have had five business days to mature and fewer than two positive next steps occurred, change source/message/give for seven days; otherwise do not infer failure from immature replies.
+- **Oct 24:** if fewer than one substantive call has been held across warm and direct routes, change the access method; do not conclude that the problem itself is invalid.
+- After five substantive conversations, if neither C1 nor C4 yields a credible event and residual gap, reopen the candidate register once.
+- Commercial bar: before calling a problem validated, require three independent buyers to describe substantially the same problem and at least one defined follow-up. Beginning with call 4, ask willingness-to-pay and test one fixed-fee offer; no fee or demand is validated until responses are recorded.
+- By Nov 10, if no candidate meets the evidence bar, **NO-GO on new GridMind product build**. Choose among a tightly bounded 2-week narrow test, pivot to the ranked narrow B2B AI service-to-software/productized-service alternative, or stop GridMind work. Before choosing another sprint, explicitly confirm available hours, cash runway, and whether near-term income is required; if income is needed sooner than a valid industrial pilot can deliver, prioritize a separately scoped paid service/income path rather than assuming GridMind will generate revenue.
 - Any request for unsafe access, unauthorized data, autonomous control, unsupported causal claims, or unbounded unpaid customization → decline or pause.
 
 ## 8. Economics: no unsupported ACV story
@@ -127,28 +129,39 @@ A fee must make sense against conservative incremental value **and** cover deliv
 - The broader [opportunity workspace prototype PR #32](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/32) is explicitly paused/not P0. Do not merge or expand it until a selected candidate and buyer decision justify the slice.
 - Before any selected offer uses the application with real customer data, re-evaluate schema, tenant isolation, persistence, authorization, auditability, and deletion requirements against that specific workflow.
 - Synthetic/offline testing is allowed, but clearly label synthetic data and never present it as customer evidence.
+- **Operational-technology boundary:** no connection to PLC/SCADA/DCS/MES/OT networks, no control commands, writes, remote actuation, credentials, or production-system changes in discovery or the first pilot. If a later customer-approved workflow needs operational data, use a controlled export or explicitly authorized read-only path, least privilege, segmentation, logging, and a qualified site/security review. No OT integration is implied by a read-only database or API claim.
+
+### Minimum acceptance contract before any MVP/pilot build
+
+Do not build beyond a throwaway/offline artifact until a selected buyer and workflow define: (1) named user and decision; (2) permitted input sources and data owner; (3) source-linked output and explicit unknowns; (4) refusal behavior for missing, conflicting, stale, incomparable or unauthorized inputs; (5) qualified human review and no autonomous operational action; (6) baseline/current-process comparison; (7) time/quality/economic metrics and acceptance thresholds set before seeing results; (8) reproducible inputs/version/output and audit trail; (9) retention/deletion and security requirements; (10) bounded delivery cost, owner and stop rule. For a first retrospective case, acceptance is workflow feasibility and evidence traceability—not verified savings or generalized accuracy.
 
 ## 10. Named roles and gates
 
 | Role | Owner status | When required |
 |---|---|---|
 | Founder / discovery lead | Founder | All discovery; owns evidence log and time cap |
-| Trusted adult/professional | **Not yet named** | Review/support external industrial outreach and formal engagement |
+| Manufacturing/energy advisor | **Not yet named; recruit by second substantive call** | Review domain interpretation; not a universal gate for low-risk, non-confidential outreach |
+| External-engagement advisor | **Not yet named** | Consult when outreach context, claims, site/customer access or formal engagement makes review appropriate |
 | Qualified domain reviewer | **Not yet named** | Before technical interpretation or any customer-data test |
 | Customer operational owner and data approver | **Not yet identified** | Before any customer-specific test or data access |
 | Customer security/privacy approver | **Not yet identified** | Before any non-public data is transferred or processed |
 | Supabase/security practitioner | **Not assigned; not a current discovery gate** | Only if a selected workflow requires production data/security changes |
-| Founder contracting capacity / eligibility | **Not resolved in this plan; do not infer from legacy prose** | Before any formal contract, payment, incorporation, equity, or other binding commitment; does not block no-data discovery with appropriate oversight |\n| Trademark/legal counsel | **Not assigned; not a current sprint gate** | Before material trademark spend, formal legal claims, or contracts that need counsel |
+| Founder contracting capacity / eligibility | **Not independently verified; do not infer from legacy prose** | Before binding contracts, payments, incorporation, equity, or other commitments; does not block no-data discovery |
+| Trademark/legal counsel | **Not assigned; not a current sprint gate** | Before material trademark spend, formal legal claims, or contracts that need counsel |
 
 Do not write as if an unassigned reviewer has approved anything. A missing role blocks only the stage that requires that role; it must not prevent offline interviews.
 
-## 11. Trust and measurement rules
+## 11. Trust, risk and measurement rules
 
 - Separate source-backed facts, participant recollections, estimates, hypotheses, recommendations, approved actions, and verified outcomes.
 - Do not set 95% precision/90% recall or any other accuracy threshold before defining the task, label protocol, risk, and sample. Remove those figures from active acceptance criteria; any historical accuracy proposal is reference-only.
 - One retrospective case can test workflow feasibility, not establish general accuracy, causal impact, repeatability, or product-market fit.
 - No cross-customer learning or retention of derived customer information without explicit legal basis, permission, and safeguards.
 - “No finding,” “existing process is adequate,” and “insufficient evidence” are valid results.
+- **Attribution:** define baseline, outcome window, relevant confounders and comparison method before analysis; distinguish gross change from incremental effect; never attribute savings to GridMind solely from before/after movement. Report uncertainty and what cannot be attributed.
+- **Risk register (live risks):** access route unavailable (owner: founder; mitigate with parallel warm/direct routes); no qualified domain reviewer (recruit by call 2; do not make technical judgements without one); unauthorized/confidential data or OT access (owner: founder/customer approver; do not accept until written scope and controls); false causal/savings claims (owner: founder + reviewer; evidence labels and pre-registered attribution); excessive unpaid delivery (owner: founder; fixed scope/time cap and fee probe); runway/capacity mismatch (owner: founder; confirm hours and income need before Nov 10 decision); unsafe/unauthorized site access (owner: customer/site authority; no visit without explicit approval and site requirements).
+- **Pilot protocol:** before any customer-data test, write a one-case protocol covering question, scope, permission/data rights, source inventory, baseline/current method, output rubric, qualified reviewer, comparison, confounders, success/failure/inconclusive criteria, cost/time cap, retention/deletion, and stop conditions. Use the existing [first-use-case data contract](gridmind-first-use-case-data-contract.md) and [pilot comparison scorecard](gridmind-pilot-comparison-scorecard.md); do not create another document.
+- The [accuracy and validation standard](gridmind-accuracy-and-validation-standard.md) is reference-only for legacy targets. The 95% precision/90% recall figures are retired, not active acceptance criteria.
 
 ## 12. Source-of-truth map
 
@@ -159,4 +172,4 @@ Do not write as if an unassigned reviewer has approved anything. A missing role 
 
 ## 13. Current next action
 
-Get the first legitimate warm introduction request reviewed and sent by the founder with appropriate adult/professional support. In parallel, prepare the 30-ask route list without scraping or inventing contacts. Record actual funnel numbers in the tracker. **Do not start another planning cycle.**
+Today, activate the ASIA Jamshedpur public route in parallel with one other direct public route and warm introductions; recruit a plant/energy advisor; confirm the actual weekly time cap; and log each funnel stage. Do not send the public Lovable prototype link in first contact. **Do not start another planning cycle.**
