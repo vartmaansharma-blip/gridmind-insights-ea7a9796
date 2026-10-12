@@ -249,3 +249,17 @@ This dated entry clarifies the discussion; it does not override the master plan'
 - Do not invent contacts, infer demand from an immature sample, or count planned requests as sent. If suitable contacts are not available, record access as a constraint and seek legitimate public or professional routes.
 - The repository's README and documentation index are navigation aids. The Master Plan remains the sole execution plan; the Buyer Discovery Sprint remains the sole live tracker; this Constitution remains the binding guardrail and durable decision register.
 - Repository cleanup should preserve useful history, avoid deleting files before checking inbound links, and not merge open PRs until their diff, current base, tests, migration effects, and security impact are reviewed.
+
+## 2026-10-12 preservation-first repository rule
+
+Before reconciling existing branches or changing canonical documentation, preserve the current state and evidence:
+
+1. Inspect the current `main`, the full proposed diff, and the relevant canonical documents before editing. Compare file-by-file; do not infer that a change is redundant from its title or summary alone.
+2. Do not delete, overwrite, mass-move, or rewrite history to simplify the repository. First inventory the affected files, identify unique decisions/evidence/rationale, and check inbound links and references.
+3. When content is superseded, preserve useful historical evidence and point readers to the authoritative replacement. Update the existing canonical document rather than creating another master plan, live tracker, or decision register.
+4. Keep preservation checkpoints and decisions in version-controlled repository files/commits, not only in issue or PR comments. Comments are discussion records, not commits.
+5. Do not merge a stale or non-mergeable PR until its current-base diff, affected files, tests, migration effects, security implications, and required independent review have been checked. Preserve existing commit history; prefer a focused, reviewable change.
+6. No production database/schema mutation, deployment, or non-public customer-data processing is authorized by a documentation or preservation change. Those actions require their own explicit authorization and verified safeguards.
+7. Report the exact commit/PR and verification performed. Distinguish completed work from open, blocked, unverified, and historical work; never claim tests, migrations, links, customer validation, or deployment passed unless observed on the relevant exact revision/environment.
+
+This rule protects continuity and data integrity. It does not approve any open PR, declare technical readiness, or change GridMind's discovery-first scope.
