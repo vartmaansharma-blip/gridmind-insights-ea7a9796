@@ -2,7 +2,6 @@
 name: Bug or regression
 about: Record a reproducible defect with evidence and impact
 title: "bug: "
-labels: bug
 assignees: ""
 ---
 
