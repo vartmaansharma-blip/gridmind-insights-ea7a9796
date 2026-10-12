@@ -7,9 +7,9 @@
 ## 1. Sprint objective and dates
 
 - **Sprint:** 2026-10-11 through 2026-11-10.
-- **Near-term access test:** 30 warm introduction requests by **2026-10-17**.
-- **Planning funnel (untested assumption):** 30 asks × 40% booking rate × 80% attendance ≈ 10 held conversations. These are planning assumptions, not benchmarks.
-- **Kill rule:** zero calls booked by Oct 17 after 30 asks → change introduction route and/or the concrete give for a seven-day test. If 30 legitimate asks cannot be assembled, record access as the blocker; do not invent prospects.
+- **Near-term access test:** 3–5 genuine warm-introduction requests by **2026-10-19**, only if legitimate contacts and actual capacity are available.
+- **No conversion-rate assumption:** the earlier 30-ask funnel is superseded for this immediate test. Do not use an unvalidated booking/attendance percentage to forecast results.
+- **Review rule:** assess the actual quality of routes, responses, and next steps after the small test. A small or immature sample cannot establish market demand or prove absence of demand. If suitable contacts cannot be identified, record access as the blocker; do not invent prospects.
 - **30-day outcome:** GO TO BOUNDED TEST / NARROW / PIVOT / STOP. A paid pilot and verified savings are not required within 30 days.
 
 ## 2. Stable candidate register
