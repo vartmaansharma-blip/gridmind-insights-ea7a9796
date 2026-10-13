@@ -144,5 +144,6 @@
 - Public-source claims, customer statements, and controlled experimental results are distinct evidence classes.
 - Unknowns stay unknown; do not invent conversion rates, prospects, customer demand, root causes, accuracy, ROI, or savings.
 - The Master Plan is the only execution plan. The Buyer Discovery Sprint is the only live discovery tracker. GitHub Issues track actionable work.
+- Every plan/artifact must have one distinct job and an explicit lifecycle status: canonical authority, active supporting control, reference/experiment, or historical snapshot. The 2026-10-13 structural audit is recorded in the Master Plan §17; no bulk deletion is authorized without checking unique evidence and inbound references.
 - Preserve useful history. Before moving/deleting documents, check inbound Markdown links, issue/PR references, workflows, and unique evidence. Prefer banners to destructive cleanup when uncertain.
 - Do not merge a PR until its current diff, exact-head checks, migration implications, and security impact have been reviewed.
