@@ -332,3 +332,82 @@ No real factory, employee, equipment, customer, or incident is represented.
 ### Correction to Phase 2 candidate framing
 
 C3 maintenance recurrence is included only as a **conditional landscape comparator** because the canonical sprint parks C3 unless discovery redirects. The active discovery probes remain **C1 and C4**. The public maintenance study does not promote C3, establish local prevalence, or justify expanding the sprint. This distinction preserves the canonical candidate register and prevents research breadth from becoming scope creep.
+
+## Phase 4 preflight — offer, acquisition, and economics (2026-10-13)
+
+**Purpose:** Resolve what can be made precise from existing work for Problems 15–20, while making the remaining customer-evidence requirements explicit. This is a supporting audit checkpoint, not a second execution plan. The canonical Master Plan remains the execution authority; the Buyer Discovery Sprint remains the only live access/discovery tracker.
+
+### Phase 4 status by problem
+
+| Problem | What can be clarified now | What remains unproven | Current disposition |
+|---:|---|---|---|
+| **15 — Initial offer** | Separate the no-data research give from any paid or technical service. The research give is a 20-minute conversation and, if useful, an optional one-page non-technical workflow/decision map based only on voluntary verbal information. A possible later paid offer is a tightly bounded, human-reviewed investigation of one defined operational incident. | Whether the target buyer has the problem, wants the deliverable, can provide lawful evidence, trusts the method, and will authorize a next step. The paid offer is not approved or validated. | **Offer architecture clarified; commercial offer remains a hypothesis.** |
+| **16 — Pricing and delivery economics** | Establish a cost model and a rule for deciding whether a case is economically viable. Keep price, time, reviewer availability, and margin as separate variables. | Actual investigator/reviewer hours, travel, data-preparation effort, rework, buyer budget, willingness to pay, and repeatable delivery cost. | **Model defined; no price validated.** |
+| **17 — Customer acquisition** | Treat ASIA as one public-route access experiment, not a warm introduction or buyer lead. Use one legitimate route at a time and log actual outcomes in the live tracker. | A reply, referral, booked conversation, genuine warm-introduction requests, conversion rate, or repeatable access channel. | **Access route unproven; follow the existing tracker.** |
+| **18 — First engagement to repeat business** | Define the stages that would need evidence: discovery → qualified case → scoped proposal → authorized evidence → delivery/review → buyer decision → follow-up or repeat. Do not assume that one stage automatically converts to the next. | Actual stage conversion, buyer procurement steps, repeat demand, referral behavior, and evidence that a second case can be delivered consistently. | **Progression map only; no validated funnel.** |
+| **19 — Delivery economics and repeatability** | Record effort and direct costs per case from the beginning, including work that is easy to overlook: coordination, waiting, preparation, corrections, qualified review, travel, reporting, and follow-up. | Measured delivery time/cost, contribution, rework, customer acquisition effort, repeatability, and a viable route to covering overhead. | **Measurement method defined; operating economics unknown.** |
+| **20 — Service versus software** | Use a manual, human-reviewed service as a learning method only if a specific case qualifies and the work can be delivered safely. Automate only recurring steps whose inputs, outputs, and failure modes are understood. | Whether buyers prefer a service, software, or a hybrid; which steps repeat; and whether software materially improves quality, speed, or economics. | **Service-led is a testable hypothesis, not a settled business model.** |
+
+### Offer boundary — do not mix research with a commercial promise
+
+**Current research give (no customer data):**
+- A short, voluntary conversation about one past workflow or incident.
+- An optional one-page workflow/decision map based on non-confidential verbal information.
+- No diagnosis, energy audit, root-cause conclusion, quantified savings, plant visit, confidential records, or implementation commitment.
+
+**Possible later paid offer (not yet authorized or validated):**
+- One tightly scoped, human-reviewed investigation of a specific operational problem, only after discovery establishes a meaningful residual gap and a feasible, authorized evidence path.
+- A written brief separating source-backed observations, reconstructed events, hypotheses, contradictions, unknowns, and recommended next checks.
+- Explicit exclusions, customer review, change control, delivery-hour tracking, and a stop condition if evidence or qualified expertise is insufficient.
+
+The [detailed offer hypothesis in PR #50](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/50) is a draft supporting specification, not a selected wedge or a claim that the service is ready to sell. C1 and C4 remain discovery probes. Do not present the provisional Production Loss Investigation as the approved GridMind product.
+
+### First-principles delivery economics
+
+For each future qualified case, capture the following using actual observations rather than defaults:
+
+- **Fee (F):** the price explicitly offered to and accepted or rejected by the buyer.
+- **Direct delivery cost (C):** investigator hours × an explicit internal cost rate, plus qualified reviewer time/cost, data preparation, coordination, travel/on-site time where necessary, software/operating costs, rework, and delivery-related administration.
+- **Contribution before acquisition and overhead:** **F − C**.
+- **Contribution margin:** **(F − C) ÷ F**, only when F is positive and the cost basis is stated.
+- **Customer-side net value hypothesis:** conservative incremental benefit attributable to the intervention, less the fee and the customer's implementation cost. This must not be calculated from gross exposure alone; the benefit and attribution method need evidence.
+
+Do not substitute a guessed hourly rate, reviewer fee, conversion rate, or customer-loss number. Record ranges and assumptions when exact inputs are unavailable. Distinguish direct costs from acquisition effort and general overhead rather than hiding them. If the work requires scarce specialist effort, uncontrolled data cleaning, repeated site visits, or extensive bespoke analysis, that burden is part of the offer economics—not free labor.
+
+The previously discussed **₹15,000** and **5–10 working days** are hypotheses only. They are not an approved price, market benchmark, service-level promise, demonstrated delivery time, or willingness-to-pay signal. No margin or customer ROI can be claimed until actual fee, delivery cost, baseline, and outcome evidence exist.
+
+### Acquisition and commercial evidence ladder
+
+Use these as evidence categories, not a forecast or conversion funnel:
+
+1. **Route attempted:** an actual message/request is sent through a legitimate channel.
+2. **Route response:** a real reply or useful next step is received.
+3. **Relevant conversation:** a willing, relevant professional discusses a specific past workflow.
+4. **Qualified problem:** evidence indicates a material problem, current alternatives, a residual gap, an identifiable owner, and a plausible next step.
+5. **Scoped proposal:** a defined deliverable, exclusions, required inputs, timeline, review, and price are presented to an appropriate decision-maker.
+6. **Buyer decision:** the buyer explicitly accepts, declines, or requests changes at the stated scope/price.
+7. **Paid delivery and use:** payment and delivery occur, and the customer can describe how the result informed a decision.
+8. **Repeatability:** a later case can be delivered with a stable method, acceptable quality, and measured economics.
+
+Never infer later stages from earlier ones. An email sent is not a response; a response is not a buyer conversation; a positive conversation is not a purchase commitment; one paid case is not repeatable demand.
+
+### Current access truth and safe next action
+
+The current tracker reports the ASIA inquiry as sent on 2026-10-12, with no reply, referral, booked/held conversation, customer-data permission, or buyer commitment confirmed. The separate 3–5 warm-introduction-request experiment remains capacity-dependent; it must not be recorded as completed unless genuine requests were actually sent. The ASIA inquiry is not to be counted as one of those warm requests.
+
+The next action remains the one in the [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md): check the real message thread, use at most one appropriate follow-up if still suitable, and pursue only legitimate routes with appropriate adult/professional support. If no genuine warm connector is available, record an access-capacity blocker. Do not invent contacts, send messages on the founder's behalf, request factory records, or promise a technical audit.
+
+### Phase 4 decision gates
+
+A bounded commercial test should not be proposed until all relevant conditions are supported:
+
+- A specific recent problem and residual gap are supported by real conversations.
+- A relevant operational owner and plausible economic-buyer/procurement path are identified.
+- The customer can state what decision the deliverable would inform.
+- Required data can be accessed lawfully and safely, with explicit scope and handling terms.
+- Any technical conclusion has an appropriate qualified reviewer.
+- The scope, exclusions, success/failure criteria, delivery effort, and stop conditions are explicit.
+- A price is tested with a real buyer; actual delivery cost and customer-side value are measured separately.
+- No claim depends on unverified savings, unsupported causal attribution, or a hypothetical conversion rate.
+
+**Phase 4 disposition:** the offer boundary, economics equations, and evidence ladder can be specified now; customer acquisition, buyer willingness to pay, delivery economics, repeatability, and service-versus-software fit cannot be solved by desk analysis alone. They remain open until actual evidence exists. This does not authorize a product build or customer-data test, and it does not change the canonical 2026-11-10 decision gate.
