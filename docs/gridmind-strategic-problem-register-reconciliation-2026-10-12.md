@@ -498,3 +498,133 @@ Do not represent this checklist as completed site research. No factory visit or 
 - **Commercial validation:** still separate and dependent on real buyer evidence.
 
 **Exit condition:** a reproducible, workflow-specific demonstration passes predeclared criteria, with independent review where needed. This exit does not authorise production use; customer permission, release/security gates, and operational oversight remain separate requirements.
+
+
+## Phase 6 — Decision discipline, progress measures, and expansion gates (Problems 31–34, 2026-10-13)
+
+**Purpose:** Make the existing strategy executable without creating a second roadmap, inventing targets, or treating documentation as customer progress. The Master Plan remains the sole execution plan; the Buyer Discovery Sprint remains the sole live tracker; the Decision Constitution remains the durable guardrail and decision record.
+
+### Problem 31 — Stop conditions and decision rights
+
+**Finding:** The canonical Master Plan already defines dated review points and the 2026-11-10 decision gate. This problem is not “solved forever”: the risk is that stop conditions are ignored, silently changed, or confused with success metrics.
+
+**Binding operating rule:**
+- Only the Master Plan can change the active business priority, discovery decision date, candidate-probe strategy, or product-build gate. Update the live tracker and relevant decision record in the same change when a durable decision changes.
+- At each existing review point, record: evidence available, evidence still missing, resource/time-cap status, decision taken, rationale, and next action/owner/date.
+- Use only the four outcomes already adopted: **GO TO BOUNDED TEST / NARROW / PIVOT / STOP**. Define the exact meaning for the current candidate; do not treat “continue researching” as a decision without a named question and evidence-producing next step.
+- **GO TO BOUNDED TEST** means evidence justifies designing a bounded test, not permission to use customer data, deploy to production, claim savings, or build a broad platform.
+- **NARROW** means reduce the target workflow, buyer, evidence requirement, or delivery scope while preserving the core problem hypothesis.
+- **PIVOT** means the evidence materially weakens the current candidate or access route and supports testing a different candidate/route. Preserve the disconfirming evidence.
+- **STOP** means cease the current candidate or product-build effort when the stated conditions are met; record what evidence would justify reopening it.
+- Safety, authorisation, data-rights, or critical security failures trigger an immediate pause regardless of calendar date or commercial attractiveness.
+- Never interpret a missed outreach target or a small number of conversations as proof that market demand is absent. Diagnose access quality, participant fit, and the maturity of evidence separately.
+
+**Status:** Stop gates are documented in canonical sources; enforcement is an execution responsibility. Reopen this problem only if a live gate conflicts with another source or is not applied when due.
+
+### Problem 32 — Assumption register and review discipline
+
+**Finding:** Facts, hypotheses, unknowns, and decisions are already distinguished, but that distinction alone does not make assumptions actively managed. Use the following compact register in the existing canonical sources; do not create a competing assumptions spreadsheet.
+
+| ID | Assumption / hypothesis | Current status | Evidence needed to update it | Decision affected |
+|---|---|---|---|---|
+| A1 | An independent manufacturer in the Jamshedpur–Adityapur area has a recurring/high-consequence workflow worth investigating. | **Unvalidated segment hypothesis** | Specific recent case, consequence, recurrence, current process, and participant context. | ICP and candidate choice |
+| A2 | C1 downtime/production-loss investigation exposes a material residual gap. | **Active probe, unvalidated** | Actual incident reconstruction, current alternatives, unresolved gap, and a concrete next step. | C1 advancement/rejection |
+| A3 | C4 energy/material inefficiency exposes a material residual gap. | **Active probe, unvalidated** | Actual billing/usage decision process, context and units, current review method, gap, and buyer consequence. | C4 advancement/rejection |
+| A4 | A reachable operational owner can introduce the right problem owner and plausible economic buyer. | **Unvalidated** | Actual referral/response, roles, decision rights, and purchasing path. | Acquisition route and ICP |
+| A5 | A human-reviewed incident/evidence brief is useful enough to earn a concrete next step or payment. | **Offer hypothesis** | Buyer reaction to a clearly scoped deliverable, requested next step, price test with a real buyer, and follow-through. | Offer and commercial model |
+| A6 | The required evidence can be obtained and interpreted responsibly. | **Unknown** | Named sources, lawful access/approval route, completeness, reliability, units/timestamps, and reviewer assessment. | Test feasibility and data gate |
+| A7 | A qualified reviewer can make the service safe and credible at sustainable effort/cost. | **Unknown; reviewer not named** | Reviewer availability, competence/scope, review time/cost, corrections, and liability boundaries. | Delivery model and economics |
+| A8 | The workflow is repeatable enough to support a business rather than bespoke consulting only. | **Unvalidated** | Comparable cases, stable delivery steps, effort variance, exception rate, and repeat/buying evidence. | Service-to-software and expansion |
+| A9 | GridMind's evidence traceability and uncertainty handling materially improve on the customer's best realistic alternative. | **Moat hypothesis** | Side-by-side comparison against the actual workflow, with reviewer/customer assessment and task-specific errors. | Differentiation and defensibility |
+| A10 | Current tooling can meet a selected workflow's security, isolation, persistence, and auditability requirements. | **Unverified technical hypothesis** | Exact-commit tests, authenticated multi-user/non-empty-data isolation, unauthorized-access tests, migration/deployment verification, and independent security review as applicable. | Any customer-data use |
+
+**Review cadence and change control:**
+1. Update an assumption only when new evidence arrives, a test fails, a key person declines/commits, an access route changes, a technical blocker is confirmed/resolved, or an existing review gate is reached.
+2. At the existing weekly sprint review, inspect only assumptions that affect the next decision. Record the evidence link, prior status, new status, and consequence in the Master Plan/tracker or relevant issue/PR.
+3. Use confidence labels, not unsupported percentages: **unvalidated → supported by one case → corroborated across independent cases → tested within a stated scope**. These are evidence states, not automatic proof of generality or causality.
+4. Preserve disconfirming evidence and the previous status. Do not promote a hypothesis to fact because it is repeated in multiple documents or produced by AI.
+5. If an assumption does not affect the next decision, leave it parked rather than creating analysis work for its own sake.
+
+**Status:** A usable assumption register and update rule are now specified. Customer/technical evidence remains open; this register does not validate any assumption.
+
+### Problem 33 — Credible progress measures
+
+**Finding:** Progress must measure reduction of consequential uncertainty and demonstrated capability, not repository activity, number of documents, features, messages drafted, website polish, or raw outreach volume.
+
+#### Business evidence scorecard
+
+Record actual values in the existing Buyer Discovery Sprint tracker; do not create a parallel dashboard.
+
+| Measure | Definition | Current known state | What counts as progress |
+|---|---|---|---|
+| Access | Genuine outreach requests actually sent; replies; introductions offered. | One ASIA inquiry sent; no response/referral confirmed. ACMA route verified, draft not sent. | A real response or introduction that creates a legitimate path to a relevant participant. |
+| Conversations | Substantive manufacturing conversations booked and held, separately counted. | 0 held/confirmed in the current evidence record. | A completed conversation with a relevant participant and a documented specific workflow/case. |
+| Case evidence | Specific events with timeline, current method, consequence, recurrence, and evidence source captured with correct labels. | None confirmed. | A reconstructable case, including uncertainty and disconfirming evidence—not a generic opinion. |
+| Residual gap | Cases where current alternatives leave a material, specific gap. | Unknown. | Gap described against the real existing workflow, not competitor marketing assumptions. |
+| Buyer path | Operational owner, economic buyer, data approver and purchasing path distinguished where applicable. | No relevant buyer path confirmed. | Named roles and an explicit, plausible next decision/approval step. |
+| Commitment | Concrete next step accepted by the participant (follow-up, introduction, scoped question, or buyer-requested test). | None confirmed. | An action with a participant, owner and agreed next step—not compliments or vague interest. |
+| Commercial signal | Real price/budget discussion and observed follow-through, distinct from hypothetical willingness. | None confirmed. | A real buyer's response to a defined scope and a recorded consequence for the offer. |
+| Data/reviewer readiness | Permissioned evidence route and appropriate reviewer availability. | No customer data authorised; no reviewer named. | Explicit authorisation and named reviewer for the stage requiring them. |
+
+#### Technical evidence scorecard
+
+Track against existing technical Issue #29 and relevant PRs, not in the customer funnel:
+- CI/Quality Gate/migration replay status on the **exact candidate commit**, distinguishing runner-start failures from executed test failures.
+- Authenticated two-user/two-factory isolation with distinct non-empty data.
+- Unauthorized read/write denial, persistence/reload, error/retry behavior, and authorization boundaries.
+- Schema/migration alignment, auth safeguards, and independent security review where applicable.
+- Reproducible workflow-specific test results and known failure modes.
+
+**Current technical state:** Production/customer-data use remains **NO-GO**. Issue #29 remains open; Issue #42 documents the Actions runner-start/billing restriction. Neither successful documentation edits nor prior tests on older commits count as current release verification.
+
+#### Reporting rule
+
+At each existing decision gate, report (1) actual observation, (2) evidence quality/limitations, (3) which uncertainty changed, (4) decision consequence, and (5) next action. Report zero honestly. Do not combine business and technical measures into one “readiness score”; strong technical results cannot compensate for absent customer demand, and positive buyer interest cannot compensate for security failures.
+
+**Status:** The progress definitions are operationally specified; baseline values remain low/unknown as shown. No success target or forecast has been invented.
+
+### Problem 34 — Long-term expansion logic
+
+**Finding:** GridMind's long-term ambition must remain broad, but expansion should be earned by evidence from a narrow workflow. “Infrastructure intelligence” is a strategic direction, not permission to ship every adjacent feature.
+
+#### Conditional expansion sequence
+
+1. **Discover:** Identify a specific operational workflow, participant, decision, consequence, existing alternative, and residual gap. No new product scope is implied.
+2. **Bounded offline test:** Only after the Master Plan's Tier 1 evidence supports a candidate, define the input contract, expected output, failure/abstention cases, qualified review, effort cap, and pass/fail criteria. Use synthetic or specifically authorised non-confidential material as appropriate.
+3. **Authorised retrospective test:** Only after all Tier 2 data, reviewer, security, baseline/outcome, economics, and customer approval gates pass. Production readiness is a separate gate.
+4. **Repeatable service:** Advance only if multiple independently documented cases show that the workflow recurs, delivery steps and reviewer effort can be bounded, buyers take meaningful next steps, and the output changes a decision or improves the process relative to the best realistic alternative.
+5. **Software assistance:** Automate only the repeated, stable, testable parts of the proven service. Keep human review for ambiguous evidence, consequential interpretation, and customer-authorised decisions. Require a measured reduction in effort/error or improvement in consistency without degrading trust.
+6. **Adjacent workflow expansion:** Add a second workflow only when the initial workflow is deliverable and commercially credible within a defined scope, and the adjacent workflow shares a demonstrated capability or buyer route. Re-evaluate data rights, reviewer needs, unit economics, and acceptance tests.
+7. **Cross-site / cross-customer intelligence:** Pursue only with explicit contractual/legal rights, privacy protection, sufficient comparability, and demonstrated customer value. No customer data or derived learning may be reused by default.
+
+#### Expansion vetoes
+
+Do not advance a stage when:
+- The customer pain or buyer path is still hypothetical.
+- The next stage depends on unapproved data, unsafe access, or autonomous operational control.
+- The current stage has unresolved critical correctness/security failures.
+- Claimed economic value relies on double counting, unverified attribution, or a speculative price/ACV.
+- Delivery is unbounded, depends on unassigned expertise, or cannot be delivered responsibly.
+- Expansion adds breadth but does not improve a customer decision, measurable outcome, repeatability, or defensibility.
+
+**Status:** Expansion logic is now conditional and evidence-gated. This is not a forecast, market-size claim, or commitment to build the entire platform.
+
+### Cross-problem consistency check
+
+- **Master Plan remains sole execution plan:** unchanged; no new dates, call quotas, or parallel work queue introduced.
+- **Buyer Discovery Sprint remains sole live tracker:** all live funnel values belong there.
+- **C1/C4 remain the only active probes:** neither is selected as the commercial wedge.
+- **Customer access and technical readiness remain separate:** neither substitutes for the other.
+- **Production/customer-data use remains NO-GO:** Issues #29 and #42 remain active blockers; this phase does not change their status.
+- **2026-11-10 remains the existing decision gate:** Phase 6 creates no replacement date.
+- **Earlier phases preserved:** this section extends the register; it does not delete or rewrite the original 34 problems or Phases 0–5.
+
+### Phase 6 disposition
+
+- Problem 31: **Documented; application at each gate must be monitored.**
+- Problem 32: **Assumption register and change discipline specified; assumptions remain unvalidated until evidence changes them.**
+- Problem 33: **Progress measures defined; customer and technical baseline values remain as explicitly recorded.**
+- Problem 34: **Conditional expansion sequence and vetoes specified; no expansion authorised.**
+- Automated CI, technical release, customer validation, pricing, unit economics, and production readiness were **not verified by this documentation change**.
+
+**Phase 6 exit condition:** durable decision rules, assumptions, progress definitions, and expansion gates are mutually consistent with the canonical sources. This section passes a content/cross-reference inspection only; it does not claim that execution gates have been passed.
