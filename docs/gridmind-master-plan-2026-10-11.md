@@ -700,7 +700,7 @@ The primary institutional route identified through official public sources is JR
 
 Created [Issue #51 — Secure qualified review of GridMind Economic Discovery method](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/51) to track the actual next step and prevent the reviewer plan from remaining a passive document.
 
-Current public-source check: JREDA's official contact page lists `info@jreda.com` and `0651-3502645`; BEE's current accredited energy-auditor directory lists Shri Shankhajeet Kumar Sinha (AEA-0028 / EA-4896) in Ranchi with steel/power-plant sectors. The linked Form IV includes a related auditor profile dated 12 March 2026. This is a reasonable candidate route, not confirmation of availability, willingness, or engagement.
+Current public-source check: JREDA's official contact page lists `info@jreda.com` and `0651-3502645`; BEE's current accredited energy-auditor directory lists Shri Shankhajeet Kumar Sinha in Ranchi with steel/power-plant sectors. The linked Form IV includes a related auditor profile dated 12 March 2026. This is a reasonable candidate route, not confirmation of availability, willingness, or engagement.
 
 The reviewer brief now reflects that updated evidence. Draft outreach remains unsent; no one has been contacted, no reviewer has been secured, and no fee is approved. Appropriate adult/professional oversight is required before external contact. The planned review is synthetic-only and must not be described as an audit, certification, or endorsement.
 

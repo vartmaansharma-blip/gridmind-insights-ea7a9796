@@ -69,7 +69,7 @@ Jharkhand Renewable Energy Development Agency (JREDA) states that it is Jharkhan
 The BEE accredited-auditor directory lists **Shri Shankhajeet Kumar Sinha**, Bhagwat Technologies & Energy Conservation Pvt. Ltd., Ranchi, with steel and power-plant sectors. The directory page is the source for the listing:
 https://beeindia.gov.in/show_content.php?lang=1&level=2&lid=56&ls_id=203
 
-**Updated verification (2026-10-13):** the current BEE accredited-auditor directory lists Shri Shankhajeet Kumar Sinha (AEA-0028 / EA-4896), Bhagwat Technologies & Energy Conservation Pvt. Ltd., Ranchi, with steel and power-plant sectors. The linked Form IV PDF includes a related auditor profile dated **12 March 2026**, listing B.E. Mechanical Engineering (BIT Mesra), energy-auditor registration EA-4896, and audit experience including steel and power plants. This is stronger and more recent evidence than the older Form III record; however, GridMind has not independently confirmed the individual's present availability, current authorization for this particular review, or willingness to participate. Verify these directly before engagement. The BEE directory currently publishes `sinhashankhajeet@gmail.com` and mobile numbers `9431106004`, `8335053700`, and `8102506037`; use official directory details respectfully, preferably after adult/professional review of the request.
+**Updated verification (2026-10-13):** the current BEE accredited-auditor directory lists Shri Shankhajeet Kumar Sinha (listed in the directory), Bhagwat Technologies & Energy Conservation Pvt. Ltd., Ranchi, with steel and power-plant sectors. The linked Form IV PDF includes a related auditor profile dated **12 March 2026**, listing B.E. Mechanical Engineering (BIT Mesra), an energy-auditor registration number, and audit experience including steel and power plants. This is stronger and more recent evidence than the older Form III record; however, GridMind has not independently confirmed the individual's present availability, current authorization for this particular review, or willingness to participate. Verify these directly before engagement. The BEE directory publishes contact details for this listing; take them from the directory page linked above rather than copying them into this repository, and use them respectfully, preferably after an adviser has reviewed the request.
 
 ### Alternative regional route
 
@@ -92,7 +92,7 @@ We are seeking critical feedback, including reasons the method may be unsuitable
 Thank you,  
 GridMind project team
 
-**Supervision note:** Because this is external professional outreach, review and send this message with a parent/guardian, teacher, or appropriate adult/professional adviser. Do not attach anything beyond the public synthetic fixture and do not share private contact details or customer data.
+**Internal note (not part of the message; delete before sending):** Because this is external professional outreach, have a mentor or other appropriate adviser review this message before it is sent. Do not attach anything beyond the public synthetic fixture and do not share private contact details or customer data.
 
 ## 7. Selection checklist
 

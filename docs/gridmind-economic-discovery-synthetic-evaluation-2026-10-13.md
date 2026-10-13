@@ -48,6 +48,7 @@ Each test mutates the base fixture. The required behavior is conservative: surfa
 | T10 — Contradictory records | Provide two different March bills for SYN-003 with no credit/rebill explanation. | Source conflict. | Record both, request reconciliation, and suspend cost-based conclusions until resolved. |
 | T11 — Baseline sensitivity | Compare March against January only, then against a hypothetical 3-month median after adding suitable comparable synthetic periods. | Reference period materially affects result. | Report baseline choice and sensitivity; do not choose the baseline that maximizes an apparent opportunity. A median is not automatically valid if periods are not comparable. |
 | T12 — No material opportunity | After qualified review, the apparent change is explained by documented product mix and the adjusted comparison shows no actionable residual gap. | Original signal is explained or not material. | Return “no material opportunity established” rather than inventing follow-up work. |
+| T13 — Billing basis and fixed charges | Re-express the bill in kVAh with a power factor below 1.0 and add a fixed/demand charge based on contract demand, so the bill is no longer ₹9 × kWh. | Billing unit (kVAh vs kWh), power-factor effect, and fixed-charge share of the bill. | Separate fixed from variable components and state which unit the tariff bills in before computing any per-kWh rate. A drop in volume raises the effective per-unit cost even when nothing about efficiency changed. Do not attribute that rise to waste. Verify the actual tariff order and bill components before any interpretation. |
 
 ### Tariff-change arithmetic for T03
 
@@ -62,6 +63,8 @@ This isolates only the arithmetic effect of the changed assumed variable rate. I
 - Recorded March: 12,000,000 kWh × ₹9 = ₹108,000,000 under the simplified fixture.
 - Recorded bill: ₹1,080,000.
 - The order-of-magnitude mismatch is a data-quality stop signal. The workflow must not decide which field is wrong without source verification.
+
+**Real-bill caution (added in PR review):** the flat ₹9/kWh base fixture is arithmetic scaffolding only. Jharkhand industrial tariffs in the FY2026-27 JSERC order are expressed per kVAh with a per-kVA monthly fixed charge, so a real bill has fixed and variable parts and a power-factor effect. T13 exists to make the method handle this before any real-data trial. Confirm current rates from the original tariff order, not from this document.
 
 ## 3. Universal output contract
 
@@ -109,6 +112,7 @@ Also record: number of records; missing/conflicting fields; findings retained/re
 - T08 removes the unsupported savings claim.
 - T11 discloses baseline sensitivity rather than cherry-picking.
 - T12 permits a valid “no opportunity” conclusion.
+- T13 separates fixed and variable bill components and states the billing unit; it does not read a volume-driven rise in effective rate as inefficiency.
 - All valid calculations are reproducible; missing data is not silently zero-filled.
 - The brief distinguishes screening signal, estimated potential, implemented change, realized result, and verified/sustained value.
 - Effort is recorded honestly, including founder time and any reviewer time/cost.
@@ -143,7 +147,7 @@ A pass would show only that the defined offline method handles these synthetic e
 | Commercial wedge | Not selected |
 | Existing 2026-11-10 decision gate | Unchanged |
 
-**Scenario assertion run (2026-10-13):** all 12 simplified synthetic logic assertions passed in-session (12/12). Checks covered gap detection, explicit MWh-to-kWh normalization while preserving raw values, tariff-effect arithmetic, duplicate IDs, bill/energy inconsistency, non-comparable operating context, unsupported causality, unsupported savings language, missing denominator, conflicting bill values, baseline sensitivity, and a valid no-opportunity outcome. Base intensity and tariff arithmetic checks also passed. These assertions validate the stated fixture logic and expected arithmetic only; they do not execute GridMind application code, prove a production workflow, or substitute for independent domain review. No delivery effort or reviewer time was measured in this run.
+**Scenario assertion run (2026-10-13):** 12 simplified synthetic logic assertions were run in-session and reported as passing. The assertion script was not saved to the repository, so this result is **not reproducible from this repo** and should be treated as an unverified working-session note until a script is committed. Checks covered gap detection, explicit MWh-to-kWh normalization while preserving raw values, tariff-effect arithmetic, duplicate IDs, bill/energy inconsistency, non-comparable operating context, unsupported causality, unsupported savings language, missing denominator, conflicting bill values, baseline sensitivity, and a valid no-opportunity outcome. The base intensity and tariff arithmetic stated in §1 and §2 was independently rechecked by hand during PR review and is correct. These assertions validate the stated fixture logic and expected arithmetic only; they do not execute GridMind application code, prove a production workflow, or substitute for independent domain review. No delivery effort or reviewer time was measured in this run.
 
 **Next action:** use the fixture for a structured human-reviewed offline walkthrough and log actual effort. If a future implementation is created, translate these cases into automated tests only after the manual workflow and intended data model are stable. Do not build a new application module just to make this document look complete.
 
