@@ -119,3 +119,24 @@ Before confirming a reviewer:
 - Master Plan decision gate: **2026-11-10**, unchanged.
 
 **Next action:** Have an appropriate adult/professional adviser review the draft, then request a referral through JREDA. In parallel, verify any individual auditor's current qualifications directly. Do not claim review completion until written feedback has actually been received and recorded.
+
+
+## 9. Direct candidate email (prepared, not sent)
+
+**To:** sinhashankhajeet@gmail.com  
+**Subject:** Request for brief synthetic-method review — industrial energy analysis
+
+Dear Mr. Sinha,
+
+I found your profile in the Bureau of Energy Efficiency's public accredited energy-auditor directory, which lists experience in the steel and power-plant sectors. I am developing GridMind, an early-stage industrial-intelligence project, and am seeking critical technical feedback before considering any real factory data.
+
+Would you be open to reviewing a short synthetic-only example and its data-quality/claim-handling rules? The request is limited to a brief critique of the arithmetic, assumptions, comparability limits, and the conditions under which the method should refuse to draw a conclusion. It is not a request for an energy audit, site visit, certification, endorsement, or guaranteed-savings assessment.
+
+If this falls within your expertise and you have availability, could you share whether a short review is feasible, the approximate time required, your fee, and any limitations you would want stated? We would agree the scope and fee in writing before proceeding. The public fixture contains only invented values; no customer information is involved.
+
+Thank you for considering it.
+
+Regards,  
+GridMind project team
+
+**Status:** this is a prepared draft only. It has not been sent, and no response or engagement is implied. Verify the current contact details and review this message with an appropriate adult/professional adviser before sending.
