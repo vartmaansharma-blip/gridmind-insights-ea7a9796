@@ -1,6 +1,6 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-12  
+**Last updated:** 2026-10-13  
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
@@ -93,6 +93,10 @@ Update only with actual counts. Do not fill planned counts as completed.
 
 Ask about one real, recent event. Do not ask “Would AI help?” or lead the participant toward a preferred answer.
 
+**Opening script:** “I’m trying to understand how teams handle a real operational issue today. I’m not selling a finished product, and I won’t ask for confidential records. You can skip any question or stop at any time. May I take non-confidential notes?” If note-taking permission is not given, do not retain identifiable notes. Avoid recording audio/video unless separately and explicitly agreed with appropriate oversight.
+
+**Interview discipline:** Ask for the most recent concrete example before discussing general opinions. Let the participant describe their process in their own words; ask “What happened next?” and “How do you know?” Do not suggest a cause, savings estimate, feature, or desired answer. Do not pitch a solution during the evidence-gathering portion. Record exact short phrases only when necessary and non-confidential; label recollection separately from records. End with one low-pressure, specific next-step question and accept “no.”
+
 1. What was the last production-loss or energy/material-cost issue that required investigation?
 2. What triggered it? Walk me through what happened and the order of decisions.
 3. Who was involved, and who owned the final decision?
@@ -118,6 +122,9 @@ Copy this section once per conversation into the notes area below, or record a l
 - Permission to retain non-confidential notes: not yet asked
 - Introduction route ID:
 - **Recent event and timeline:**
+- **Permission / note-taking boundary actually agreed:**
+- **Exact participant wording (short, non-confidential; optional):**
+- **Source behind each important claim:** participant recollection / record described but not seen / authorized record reviewed / estimate / unknown:
 - **Current process / tools / people:**
 - **What worked well in the current process:**
 - **Residual gap (if any):**
@@ -143,6 +150,41 @@ Copy this section once per conversation into the notes area below, or record a l
 - **Disconfirming evidence:** information that weakens the candidate, including a strong existing process or lack of buyer urgency.
 
 Do not transform recollection into fact or an estimated gross loss into GridMind-addressable value.
+
+
+### Candidate-comparison rubric — use only after substantive conversations
+
+Score each candidate (currently C1 and C4) against the same dimensions. This is a decision aid, not a statistical model. Keep evidence references beside every score; do not score from intuition or desk research alone.
+
+| Dimension | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| **Pain and consequence** | No concrete case | Vague / low consequence | Specific case with credible consequence | Specific, material consequence supported by strong records or converging accounts |
+| **Recurrence / urgency** | No recurrence or urgency | Rare or low priority | Repeated or time-sensitive | Repeated and actively prioritized by accountable owner |
+| **Residual gap** | Current process is adequate | Dissatisfaction without a specific gap | Clear unresolved delay, uncertainty, or cost | Material gap remains after credible alternatives were used |
+| **Buyer path** | No identifiable owner/buyer | Role guessed; no route | Operational owner and plausible budget route identified | Buyer or budget owner takes a concrete next step |
+| **Evidence feasibility** | No plausible source/permission route | Sources unclear or fragmented | Relevant source and approver identified, permission not yet granted | Evidence appears feasible and an authorized path is explicitly confirmed |
+| **Bounded delivery feasibility** | Unsafe, out of capability, or unbounded | Major unknowns block a credible scope | A bounded human-reviewed deliverable appears feasible with named dependencies | Scope, reviewer path, effort and limitations are clear enough to design a test |
+
+**Scoring rules**
+- Use **U (unknown)** rather than 0 when the interview did not establish the answer. Zero means evidence supports the lowest score.
+- Never convert a U to a number to make the comparison look complete.
+- Do not total scores while any dimension is U for either candidate. First identify the cheapest ethical way to resolve the missing information.
+- After enough evidence exists, show both the score and the supporting evidence; do not use a one-point difference as a false-precision verdict.
+- A strong score does not waive Tier 2 safeguards, qualified review, or customer authorization.
+
+### Disconfirmation and stop rules
+
+Actively look for evidence that makes the opportunity unattractive. Examples include:
+- The current ERP, CMMS, QMS, energy consultant, or established team process already resolves the problem adequately.
+- The problem is infrequent, immaterial, or not a current priority.
+- No accountable operational owner exists, or no credible route to the economic buyer can be identified.
+- The buyer will not take a concrete next step after describing a supposedly serious problem.
+- The necessary records do not exist, cannot be linked, or cannot be lawfully/appropriately accessed.
+- A useful answer requires technical judgment or data access that GridMind cannot responsibly provide.
+- Delivery effort, reviewer cost, liability, or customization is disproportionate to conservative incremental value.
+- The only evidence of interest is praise, curiosity about AI, or willingness to accept a free item.
+
+**Interpretation:** one weak interview does not disprove a market. Repeated evidence across independent relevant participants can justify narrowing or rejecting a candidate. If the sample is too small or biased, record “inconclusive,” not “validated” or “no demand.”
 
 ## 7. Two-tier decision gates
 
@@ -206,6 +248,20 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 | P1 | Hold and document conversations using C1/C4 IDs | Founder | Through Nov 10 | Waiting for access |
 | P2 | Scope an offline retrospective test only if Tier 1 evidence and a buyer request justify it | Founder + named reviewer/customer owner | After evidence | Blocked on people/evidence |
 | Parked | Broad schema/RPC changes, workspace redesign, new modules, public-site polish, rename, trademark work | — | Until evidence changes priority | Not P0 |
+
+### Decision-gate output format — 2026-11-10
+
+The gate record must state:
+1. Number of substantive conversations held and participant roles (minimum necessary detail); distinguish booked from held.
+2. For each candidate, strongest supporting evidence, strongest disconfirming evidence, and unresolved unknowns.
+3. Whether the problem is specific, material, recurring, and still unresolved after existing alternatives.
+4. Whether an operational owner, credible economic-buyer path, and explicit buyer next step exist.
+5. Whether a bounded service is feasible with the current capability boundary and qualified-review dependencies.
+6. Access, consent, data, security, reviewer, effort, cost, and safety blockers.
+7. Decision: **GO TO BOUNDED TEST / NARROW / PIVOT / STOP**, with rationale and the next action owner/date.
+8. What evidence would change the decision.
+
+A “GO TO BOUNDED TEST” authorizes only preparation of a written test design. It does not authorize receiving data, visiting a factory, promising savings, building a new module, or starting a paid pilot. Tier 2 gates and separate appropriate authorization still apply.
 
 ## 11. Decision log
 
