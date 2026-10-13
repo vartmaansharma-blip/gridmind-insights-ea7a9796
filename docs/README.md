@@ -51,6 +51,7 @@
 | [`gridmind-live-acceptance-runbook.md`](gridmind-live-acceptance-runbook.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-migration-history.md`](gridmind-migration-history.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-pilot-comparison-scorecard.md`](gridmind-pilot-comparison-scorecard.md) | Supporting control/specification; does not override the Master Plan |
+| [`gridmind-pilot-security-readiness-gate.md`](gridmind-pilot-security-readiness-gate.md) | Historical NO-GO security/readiness snapshot; recheck live controls before relying on it |
 | [`gridmind-product-definition.md`](gridmind-product-definition.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-product-truth-audit-2026-10-11.md`](gridmind-product-truth-audit-2026-10-11.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-production-schema-alignment-runbook-2026-10-11.md`](gridmind-production-schema-alignment-runbook-2026-10-11.md) | Supporting control/specification; does not override the Master Plan |
