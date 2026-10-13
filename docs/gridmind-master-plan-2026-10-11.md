@@ -22,7 +22,7 @@ The intended capability progression is:
 5. **Execute bounded workflows:** automate only well-defined, reversible tasks where authority, safety, monitoring, and rollback are established.
 6. **Learn from verified outcomes:** improve future decisions only with lawful, permissioned evidence and credible measurement.
 
-This sequence is a **long-term direction, not a delivery commitment**. Each stage requires evidence that the prior stage works in a real workflow. No autonomy, broad cross-industry expansion, or customer-outcome claim is authorized by this ambition alone.
+This sequence is a **long-term direction, not a delivery commitment**. Each stage requires evidence that the prior stage works in a real workflow. No autonomy, broad cross-industry expansion, or customer-outcome claim is authorized by this ambition alone. **Baseline rule:** do not connect the broader ambition to near-term product scope yet. Start from the existing GridMind baseline and complete the current evidence-led industrial discovery cycle first. Keep the wider goal as the intended destination; revisit expansion only after the current baseline produces credible evidence and the relevant decision gate explicitly authorizes it.
 
 ### Working definition and positioning
 For the current discovery cycle, GridMind is an **evidence-first industrial investigation service**: it aims to turn a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
