@@ -628,3 +628,96 @@ Do not advance a stage when:
 - Automated CI, technical release, customer validation, pricing, unit economics, and production readiness were **not verified by this documentation change**.
 
 **Phase 6 exit condition:** durable decision rules, assumptions, progress definitions, and expansion gates are mutually consistent with the canonical sources. This section passes a content/cross-reference inspection only; it does not claim that execution gates have been passed.
+
+
+## Phase 7 — Desk research and manufacturer-side stress test (2026-10-13)
+
+> **Evidence boundary:** This phase uses public institutional material and published manufacturer/operations case studies because no direct manufacturer interview is currently available. It is desk research, not customer validation. Case studies are selected examples, often published because they show successful practice; they do not establish prevalence, current conditions in Adityapur/Jamshedpur, buyer willingness to pay, or GridMind's differentiation.
+
+### 7.1 Public evidence ledger
+
+| Source | Publicly documented point | What it supports for GridMind | What it does not establish |
+|---|---|---|---|
+| NIST, *Connecting, Deploying, and Using the Smart Manufacturing Systems Test Bed* (2020): https://www.nist.gov/publications/connecting-deploying-and-using-smart-manufacturing-systems-test-bed | Smart manufacturing data collection, curation, reuse, protocols, information systems, and automation require deliberate integration work. | Data interoperability and trustworthy evidence are genuine engineering concerns; a factory workflow cannot assume clean, joined-up data. | That a target MSME has this pain acutely, lacks a solution, or would buy a GridMind service. |
+| NIST, Smart Manufacturing Operations Planning and Control: https://www.nist.gov/programs-projects/smart-manufacturing-operations-planning-and-control-program | NIST identifies complex interactions, data-integrity concerns, interoperability, and security as challenges for connected manufacturing systems. | Treat context, data provenance, authorization, and safe integration as core requirements, not polish. | That an AI diagnosis or broad cross-system platform is the right first product. |
+| Lean Enterprise Institute, Delphi Plant 1, *Build Your “House” of Production on a Stable Foundation* (2006): https://www.lean.org/the-lean-post/articles/build-your-house-of-production-on-a-stable-foundation/ | The published case describes a downtime improvement effort built around rigorous problem solving, finding causes, and stable standardized work. | Existing Lean/TPM/RCA practices are credible substitutes. GridMind must find a residual gap beyond the method itself. | That manufacturers generally fail at root-cause analysis or need an additional software tool. |
+| U.S. Department of Energy, HARBEC energy case (2014): https://www.energy.gov/cmei/amo/articles/harbecs-52000-annual-energy-savings-under-sep-described-new-case-study | The published case describes a small specialist manufacturer using an energy-management system, with measured performance improvement and investment/payback reporting. | Energy value can be established, but credible measurement and implementation—not a bill summary alone—matter. | That the reported savings generalize to another factory or can be attributed to GridMind. |
+| U.S. Department of Energy, Cummins Rocky Mount Engine Plant case (2015): https://stage.energy.gov/cmei/amo/articles/cummins-case-study-shows-126-improvement-energy-performance-sep | The case describes a formal energy-management programme and energy-performance measurement; the source reports production-normalized performance improvement and financial results. | Baselines and normalization matter; energy use must be interpreted alongside production and other relevant variables. | That GridMind can produce equivalent outcomes or that the case is comparable to a small Indian component supplier. |
+| ISO 50001:2018 overview (current edition confirmed by ISO in 2024): https://www.iso.org/cms/%20render/live/en/sites/isoorg/contents/data/standard/06/94/69426.html | ISO describes a management-system approach using baselines, energy-performance indicators, monitoring, and continual improvement. | Energy analysis is a management and implementation workflow, not simply a calculation from monthly bills. | That certification or a new energy platform is needed at every target factory. |
+| Bureau of Energy Efficiency / SIDHIEE MSME Energy Management Centres: https://sidhiee.beeindia.gov.in/emc | The programme describes cluster-level energy audits, portable instruments, technical assistance, implementation support, and case-study replication; its page reports programme outputs. | Indian MSMEs already have potential access to energy-audit expertise and implementation channels. GridMind must complement these or address a distinct gap. | Current availability in a particular cluster, service quality at a given unit, or demand for GridMind. |
+| BEE, SME energy-efficiency programme: https://www.beeindia.gov.in/small-medium-scale-enterprises-sme.php | BEE describes cluster-specific assessments, energy-efficiency manuals, technology demonstration, capacity building, and local support. | A generic “we find energy savings” offer faces established public/technical alternatives and must prove why another service is worthwhile. | That all MSMEs know about or use these programmes, or that they fully solve every operational problem. |
+| DOE, *M&V Case Studies* (2017): https://www.energy.gov/cmei/amo/articles/mv-case-studies | HARBEC and Cummins faced different energy-performance modelling challenges because energy sources and production/weather variables differed. | Even energy measurement can require site-specific modelling and qualified review. | That a generic rules engine can reliably normalize every factory's data. |
+
+**Source-selection note:** Institutional sources and named case studies support the existence of practices, constraints, and examples. They are not a representative survey. Reported savings belong to the cited facilities and methods only; GridMind must not reuse them as its expected savings, ROI, accuracy, or market-size claim.
+
+### 7.2 Manufacturer-side first-principles stress test
+
+A manufacturer does not buy “intelligence” in the abstract. A plant manager has to protect safe production, customer delivery, quality, throughput, cost, and staff time. A proposed service competes with the current way of working: supervisors and operators, maintenance/quality/energy specialists, shift handovers, whiteboards, spreadsheets, ERP/MES/CMMS reports, Lean/TPM/RCA routines, equipment vendors, consultants, and the option to tolerate a loss if the fix costs more than it is worth.
+
+For any candidate case, the actual job is therefore:
+
+1. **Detect a decision-worthy event:** distinguish a meaningful operational loss from normal variation, schedule changes, planned maintenance, or a cost movement that is not avoidable.
+2. **Reconstruct the event:** establish the timeline, affected process/product/asset, operating conditions, and who knew what when. Preserve conflicting accounts rather than silently choosing one.
+3. **Check evidence fitness:** identify which records exist, their owners, units, time basis, missing intervals, identity mismatches, and whether the evidence is good enough for the proposed conclusion.
+4. **Separate event, cause, and economics:** an event may be observed while its cause is uncertain; a gross exposure is not necessarily avoidable; an avoidable cost is not necessarily recoverable; and a change after an intervention is not automatically attributable to GridMind.
+5. **Compare with the best realistic alternative:** ask whether the existing team could reach the same decision at similar speed, cost, confidence, and effort. If yes, do not invent a gap.
+6. **Name the decision and owner:** a finding without an accountable owner, feasible next step, and approval path is just another report.
+7. **Close the loop only when authorized:** any intervention stays under the customer's qualified personnel and change-control process. Measure outcomes against an appropriate baseline and record confounders; do not promise a result before this exists.
+
+### 7.3 Opportunity cost — what choosing one entry workflow sacrifices
+
+This is a qualitative comparison of strategic trade-offs, **not a validated ranking or wedge selection**.
+
+| If GridMind prioritizes… | Potential advantage to test | Opportunity cost / what gets deferred | Main reason it could fail | Evidence that would justify advancing it |
+|---|---|---|---|---|
+| **C1: downtime / production-loss investigation** | The case may be tied to a recent, concrete incident and a time-sensitive production decision; an evidence brief could be scoped to one event. | Less early attention to recurring utility costs, tariff/energy normalization, and resource-efficiency programmes (C4). | Existing supervisors, maintenance systems, Lean/TPM, or root-cause routines already solve the issue; records may be incomplete; a suspected cause may not be provable. | Multiple independent cases show a recurring unresolved investigation gap, a clear owner, a better next decision, manageable review effort, and concrete buyer follow-through. |
+| **C4: energy / material inefficiency** | Utility/resource costs can be tracked over periods and potentially compared with output; public cases show that measured improvements can matter economically. | Less attention to production incidents, line-level recovery, and the time-sensitive operational decisions in C1. | Established audits/consultants and BEE support may be better alternatives; bills alone cannot localize causes; production mix, shifts, tariff changes, weather, and operating hours can confound comparisons. | A buyer identifies a specific recurring decision not handled by existing audits/tools, the required variables/data are available and authorized, a qualified reviewer is available, and a credible measurement plan exists. |
+| **C2: quality / scrap / rework** | Quality loss can be material and linked to scrap, rework, escapes, and customer consequences. | Delays learning whether C1/C4 are more accessible or easier to scope in the current discovery sprint. | Quality traceability and cause analysis can require specialist expertise, lot/process context, and sensitive customer data. | Direct evidence shows a stronger, more urgent residual gap than C1/C4 and an accessible qualified owner. |
+| **C3: maintenance recurrence / reliability** | Recurring equipment failure may connect maintenance history, operating conditions, and production impact. | Less attention to the broader event-to-decision brief and energy/resource workflows. | CMMS/TPM routines, OEM expertise, and maintenance engineers may already cover the problem; safe diagnosis requires qualified expertise. | A repeat failure has a documented unresolved gap and an accountable maintenance owner who wants a bounded, reviewable next step. |
+| **C5: cross-team handoffs / delayed decisions** | Could span departments and potentially become a reusable coordination capability. | Delays testing a more concrete, economically attributable incident or cost case. | Too broad to qualify, measure, price, or deliver as an initial service; may become generic workflow software. | Specific repeated handoff failure is tied to a named operational consequence and decision owner, and can be bounded to one workflow. |
+
+**Opportunity-cost decision rule:** Do not choose C1 simply because it is currently the main service hypothesis, or C4 because energy savings look measurable. Choose only after comparing the actual residual gap, accessible evidence, accountable buyer, value, best alternative, qualified delivery effort, and commercial next step. The current evidence does not settle this choice.
+
+### 7.4 Provisional service design: a decision-support artifact, not a diagnosis product
+
+If desk research must guide the next internal exercise before interviews become possible, use this narrow *design hypothesis*:
+
+**For one past operational incident, prepare a human-reviewed evidence-and-decision brief that shows what is known, what is disputed or missing, what economic exposure can and cannot be supported, which current process was used, and what questions an accountable factory owner should resolve next.**
+
+Minimum sections:
+- Event and scope: site/process/asset or cost category, time window, and boundary.
+- Timeline: event, detection, response, recovery, and source for each timestamp.
+- Evidence ledger: source, owner, unit/time basis, completeness, confidence/limitations, and contradictions.
+- Separation of observed event, candidate causes, and unverified hypotheses.
+- Economic logic: recorded quantity and cost basis; gross exposure; any justified avoidable portion; explicit exclusions and double-counting checks.
+- Current-process assessment: what the team already did well, why it was or was not sufficient, and the strongest evidence against needing GridMind.
+- Decision map: open question, accountable role, evidence needed, safe/authorized next step, and a clear stop/abstain condition.
+- Review record: reviewer qualifications, corrections, unresolved uncertainty, and permission boundary.
+
+**Do not represent this as the approved offer or selected wedge.** The existing free one-page verbal workflow map remains the no-data discovery give. The incident brief is only a later bounded-test design candidate, gated by actual evidence, a qualified reviewer, and appropriate authorization. Do not request factory records or perform a real customer-data test while existing release and data-governance gates remain open.
+
+### 7.5 Falsification tests — reasons GridMind should not proceed
+
+Reject or materially narrow this service hypothesis if credible evidence shows any of the following:
+- The existing team already produces an equally useful, timely, traceable investigation at acceptable cost.
+- The recurring issue is mainly a lack of authority, parts, staffing, process discipline, or investment—not lack of evidence organization.
+- The needed evidence cannot be accessed lawfully, reliably, or at reasonable collection cost.
+- The brief does not change the decision, shorten the investigation, improve traceability, or reduce meaningful effort versus the current method.
+- Qualified review is unavailable, too costly, or too slow for the decision window.
+- Economic value cannot be bounded without speculative assumptions or unsupported causal attribution.
+- Every case requires a unique bespoke investigation, preventing repeatable delivery economics.
+- The economic buyer has no credible reason or process to fund the work, even after a well-scoped case is presented.
+
+### 7.6 Next research action and interpretation boundary
+
+Until a direct conversation is possible, continue only **desk research and synthetic/offline design work**. Do not inflate the discovery funnel or treat this phase as customer evidence. A later interview should explicitly test the strongest counter-hypothesis: *the factory's current people and methods already handle the incident adequately, and an extra GridMind artifact would add work rather than value.*
+
+This phase changes no candidate status: **C1 and C4 remain probes; the commercial wedge remains undecided; customer discovery remains P0; production/customer-data use remains NO-GO pending existing technical and authorization gates.** The 2026-11-10 decision gate is unchanged.
+
+### Phase 7 disposition
+
+- Public evidence collected and interpreted with source limitations: **documented**.
+- Manufacturer-side workflow and opportunity-cost comparison: **desk-research hypothesis only**.
+- Initial decision-support artifact design: **candidate for future bounded test, not an approved offer**.
+- Representative customer demand, local factory conditions, buyer willingness, price, delivery economics, and product differentiation: **not established**.
+- No interviews, outreach, code changes, customer data, deployment, CI pass, or production readiness are claimed by this phase.
