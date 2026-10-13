@@ -209,7 +209,7 @@ This amendment resolves execution contradictions in older planning material. If 
 
 - **Only two active discovery probes:** C1 downtime/production-loss investigation and C4 energy/material inefficiency. Both are probes, not selected wedges. The canonical tracker defines stable IDs C1–C5.
 - **Two-tier gates:** Tier 1 selects a candidate for test design using pain, materiality/recurrence, residual gap, owner/buyer path, plausible evidence route, service feasibility, and a concrete next step. Tier 2 gates any non-public customer-data test: authorization, data rights/security, qualified reviewer, baseline, incrementality, delivery economics, and stop criteria.
-- **Access test:** 30 warm introduction requests by 2026-10-17 is a planning target, not a completed funnel. If zero calls are booked, change the route/offer for seven days. Funnel conversion assumptions are untested.
+- **Historical access target — superseded:** the earlier 30 warm-introduction requests by 2026-10-17 was a planning target only and is no longer active. The current bounded access test is 3–5 genuine requests by 2026-10-19 only if legitimate contacts, actual capacity, and appropriate adult/professional support are available. The tracker is authoritative for actual sends/replies/bookings; do not infer demand from this small sample.
 - **Engineering:** discovery is the only P0. Preserve existing safeguards; defer broad schema/RPC/tenant-isolation work until a chosen offer demonstrates the need. No customer data in an unaccepted workflow.
 - **Economics:** no $20k ACV, 95% precision, 90% recall, or other ungrounded target is an active acceptance criterion. Define task-specific metrics and economics from buyer evidence.
 - **People:** reviewer roles are explicitly unassigned until a real candidate requires them. A trusted adult/professional must review and support external industrial outreach and formal engagement; customer data, site access, contracts, and payments require appropriate authorization and oversight.
@@ -263,3 +263,21 @@ Before reconciling existing branches or changing canonical documentation, preser
 7. Report the exact commit/PR and verification performed. Distinguish completed work from open, blocked, unverified, and historical work; never claim tests, migrations, links, customer validation, or deployment passed unless observed on the relevant exact revision/environment.
 
 This rule protects continuity and data integrity. It does not approve any open PR, declare technical readiness, or change GridMind's discovery-first scope.
+
+
+## Strategic foundation freeze — 2026-10-13
+
+This is the binding reconciliation for the planned 2026-10-15 freeze. It consolidates current decisions; it does not select a commercial wedge or claim validation.
+
+- **Company definition:** GridMind is an industrial intelligence and performance-improvement company helping manufacturers investigate operational problems, make evidence-backed decisions, implement improvements with their teams, and verify results. The long-term ambition is not a claim about present product capability.
+- **Current execution priority:** customer/workflow discovery (P0). The next access route and all actual funnel movement live only in the Buyer Discovery Sprint tracker.
+- **Active probes:** C1 downtime/production-loss investigation and C4 energy/material inefficiency. Both remain hypotheses; neither is a selected wedge. No alternative probe becomes active without recording the evidence and reason for the change in the Master Plan and tracker.
+- **Offer status:** a human-reviewed, evidence-first investigation brief is a working service hypothesis, not a validated offer. Proposed pricing, turnaround, savings, accuracy, and scalability remain unvalidated.
+- **Evidence standard:** separate observed facts, participant recollection, estimates, hypotheses, unknowns, and disconfirming evidence. Public research, synthetic experiments, and internal tests do not equal customer validation.
+- **Tier 1:** may authorize only candidate selection and written test design when the problem, consequence, residual gap, buyer path, evidence feasibility, bounded delivery, and next step are supported.
+- **Tier 2:** no non-public customer data, factory access, paid pilot, or savings promise until the applicable authorization, data-rights/security, qualified-review, baseline/outcome, delivery-economics, and stop-condition gates pass.
+- **Engineering boundary:** preserve essential security/correctness; otherwise do not expand features or infrastructure unless the chosen evidence-gathering step demonstrates a specific need.
+- **Dates:** Oct 15 foundation freeze; Oct 19 access-route review; Oct 31 discovery target; Nov 10 evidence-based decision gate; Nov 15 phase close/handoff. These are decision/process milestones, not guaranteed customer or product outcomes.
+- **External engagement:** because the founder is a minor, external industrial outreach and formal engagement require appropriate adult/professional support. Do not send messages or share data without the required oversight and authorization.
+
+**Contradiction rule:** this section, the current Master Plan, and the current Buyer Discovery Sprint supersede older dated targets and stale execution text. Preserve superseded decisions as historical context, but label them as such. If these canonical records disagree, stop the affected action and reconcile the documents before proceeding.
