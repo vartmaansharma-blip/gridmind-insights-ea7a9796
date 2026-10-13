@@ -78,21 +78,65 @@ Update only with actual counts. Do not fill planned counts as completed.
 
 ## 5. Interview protocol (20 minutes)
 
-Ask about one real, recent event. Do not ask “Would AI help?” or lead the participant toward a preferred answer.
+**Purpose:** reconstruct one real event and learn how the factory currently handles it. This is discovery, not a product pitch, technical diagnosis, or attempt to obtain confidential data. Ask permission before taking notes; the participant may skip any question. Do not record names or identifying operational details unless genuinely necessary and permitted.
 
-1. What was the last production-loss or energy/material-cost issue that required investigation?
-2. What triggered it? Walk me through what happened and the order of decisions.
-3. Who was involved, and who owned the final decision?
-4. How often has something similar happened recently? What evidence would confirm the frequency?
-5. What was the consequence? Separate recorded figures from estimates and recollection.
-6. What systems, spreadsheets, people, vendors, or experts were used?
-7. What did the current process resolve well? What, if anything, remained uncertain or delayed?
-8. What alternatives were tried? What would show that the existing process is already good enough?
-9. Which evidence would be needed to investigate the issue, and who has authority to approve its use?
-10. Who owns the budget and what is the actual purchase/approval path?
-11. What would make a new service or tool not worth adopting?
-12. Would a specific next step be useful—another conversation, introduction to the budget owner, review of a scoped proposal, or consideration of a paid test? It is acceptable to say no.
+### Run of show
 
+- **0–2 min — Set context:** “I’m researching how manufacturing teams investigate operational problems. GridMind is early; I haven’t selected a product. I’d like to understand one past example, not sell you anything. Please avoid confidential details. Is it okay if I take non-confidential notes?”
+- **2–12 min — Reconstruct one event:** start with the most recent relevant incident the participant is comfortable discussing. Follow the sequence below; let the participant tell the story rather than forcing every question.
+- **12–17 min — Test the current alternative:** understand how the team actually investigates, what works, what remains unresolved, and what would make a new approach unnecessary.
+- **17–20 min — Ownership and next step:** identify roles, approval/data constraints, and whether any concrete follow-up is warranted. A “no” is useful evidence.
+
+### Six core questions
+
+1. **Event:** “Think of the most recent time this happened. What happened, and roughly when?”
+2. **Sequence:** “What happened next? Who did what, and how did the team decide what to do?”
+3. **Evidence:** “What information did you use? What was missing, late, inconsistent, or hard to trust?”
+4. **Current alternative:** “How did the team investigate it, using which people, systems, vendors, spreadsheets, or routines? What worked well?”
+5. **Consequence and unresolved gap:** “What was the operational consequence, and how do you know? What, if anything, remained unresolved or took longer than it should have?”
+6. **Decision and ownership:** “Who owned the issue and final decision? If the team wanted to improve this process, who else would need to agree?”
+
+Use neutral follow-ups only when needed: “Can you walk me through an example?”, “How do you know?”, “Is that recorded or estimated?”, “What happened the last time?”, and “What would show that the current process is already good enough?” Do not imply that an AI tool, GridMind, or a new dashboard is the answer.
+
+### Candidate-specific probes — use only the relevant branch
+
+**C1 — Downtime / production loss**
+- What event marked the start and end of the loss, and how were those times established?
+- Was production actually lost, recovered later, delayed, scrapped, or merely shifted? Keep these outcomes separate.
+- How did the team distinguish the observed event from its suspected cause?
+- Was the loss calculated from records or estimated? What assumptions or possible double counting matter?
+- What existing maintenance, production, quality, or improvement process was already used?
+
+**C4 — Energy / material inefficiency**
+- What specific recurring cost or event prompted attention, and over what period?
+- Which bill, meter, production, shift, tariff, or material records would normally be checked? Do not request copies.
+- How did the team account for production volume, operating hours, product mix, weather/tariff changes, or other plausible explanations?
+- Was the issue a confirmed avoidable loss, a cost change, a billing question, or only a suspicion?
+- Who is qualified and authorised to interpret the records or approve an intervention?
+
+If a participant raises a stronger problem outside C1/C4, capture it accurately as a possible redirect; do not silently change the sprint's candidate scope on the basis of one anecdote.
+
+### Commercial signal: record behavior, not enthusiasm
+
+At the end, ask only if the discussion supports it: “Would a specific follow-up be useful—for example, another conversation, an introduction to the person who owns this decision, or reviewing a narrowly scoped proposal?” Record the exact answer and any action agreed. Treat these signals differently:
+
+- **Weak:** praise, curiosity, “interesting,” or hypothetical interest in AI.
+- **Stronger:** participant volunteers a relevant introduction, requests a defined follow-up, identifies an approval/budget path, or offers to review a scoped proposal.
+- **Still unproven:** willingness to pay, repeatable delivery, measurable value, and product-market fit. These require further evidence; do not infer them from a positive interview.
+
+### After the call — 5-minute evidence discipline
+
+Immediately separate:
+- **Observed in the conversation:** what the participant directly said or showed.
+- **Participant recollection:** their account of what happened.
+- **Estimate:** approximate cost, frequency, time, or impact.
+- **Inference/hypothesis:** our interpretation, including any suspected cause.
+- **Unknown/disconfirming evidence:** what we could not establish, what worked well already, and what would make the opportunity not worth pursuing.
+
+Write one sentence each for: the strongest evidence of pain; the strongest evidence against GridMind needing to exist for this case; the biggest unanswered question; and the next action actually agreed. Do not convert recollection into a verified fact, calculate unsupported savings, or use one interview to claim market-wide demand.
+
+**Stop rule:** if no concrete past event can be discussed, the participant lacks relevant direct knowledge, or the conversation drifts into speculation, do not force a case. Record the limitation and either ask for the appropriate role (with permission) or end politely. Do not request confidential records, factory access, or customer data as a next step. Any later data-based work requires the existing authorization, reviewer, governance, and technical gates.
+ 
 ## 6. Conversation evidence record
 
 Copy this section once per conversation into the notes area below, or record a link to a private note with appropriate permission. Avoid unnecessary personal data.
