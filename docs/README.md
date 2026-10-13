@@ -146,3 +146,23 @@
 - The Master Plan is the only execution plan. The Buyer Discovery Sprint is the only live discovery tracker. GitHub Issues track actionable work.
 - Preserve useful history. Before moving/deleting documents, check inbound Markdown links, issue/PR references, workflows, and unique evidence. Prefer banners to destructive cleanup when uncertain.
 - Do not merge a PR until its current diff, exact-head checks, migration implications, and security impact have been reviewed.
+
+## Root-level file responsibilities
+
+The repository root is for project entry points, contributor instructions, configuration, and executable tooling—not for a second set of strategy documents.
+
+| File or location | Responsibility | Must not become |
+|---|---|---|
+| `README.md` | Public-facing project overview, setup, and links into the documentation system | A second detailed execution plan |
+| `AGENTS.md` | Instructions for agents and contributors working in this repository | A competing product roadmap or a substitute for the canonical records |
+| `CONTRIBUTING.md` | Work intake, branch/history rules, validation, safety, and PR acceptance standards | A duplicate task tracker |
+| `roadmap.md` | Parked product-design reference; re-entry only through a prioritized issue and the Master Plan | An active roadmap, implementation authorization, or second backlog |
+| `docs/README.md` | Documentation navigation, authority hierarchy, and document lifecycle inventory | An execution queue |
+| `docs/gridmind-master-plan-2026-10-11.md` | Sole execution plan | A replacement for the live discovery evidence ledger |
+| `docs/gridmind-buyer-discovery-sprint-2026-10-11.md` | Sole live customer-access and discovery tracker | A general engineering backlog |
+| `docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md` | Durable strategic decisions, guardrails, and contradiction resolution | A dated implementation schedule |
+| GitHub Issues and PRs | Actionable work, acceptance criteria, change review, and execution evidence | A replacement for the strategic authorities above |
+
+When a root-level document appears to create a new priority or contradicts a canonical record, do not infer which one wins from its date or filename. Stop and reconcile the conflict in the canonical record, then update the affected reference. Do not move or delete files until inbound links, issue/PR references, and unique historical evidence have been checked.
+
+**Validation status:** this authority map is a documentation change only. It does not mean repository-wide Markdown links, application checks, migrations, or release gates have passed. Record those results only after the corresponding check actually runs.
