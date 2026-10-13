@@ -732,3 +732,56 @@ Current public-source check: JREDA's official contact page lists `info@jreda.com
 The reviewer brief now reflects that updated evidence. Draft outreach remains unsent; no one has been contacted, no reviewer has been secured, and no fee is approved. Appropriate adult/professional oversight is required before external contact. The planned review is synthetic-only and must not be described as an audit, certification, or endorsement.
 
 **Next execution gate:** obtain an actual response and a written scope/fee for a short synthetic-method critique. Until qualified review, authorized data handling, and existing technical security gates pass, customer-data use remains NO-GO. Commercial wedge remains unselected; C1/C4 remain candidates; pricing and delivery time remain unvalidated; the 2026-11-10 decision gate is unchanged.
+
+
+## 17. Plan and repository structure audit — 2026-10-13
+
+This section is an operating decision register, not another work queue. The Master Plan remains the only execution plan; the Buyer Discovery Sprint remains the only live discovery tracker; the Decision Constitution remains the durable policy/contradiction authority.
+
+### Structural decisions: keep, improve, archive, delete
+
+| Plan/artifact class | Required? | Decision | Why / how it should work |
+|---|---|---|---|
+| Master Plan | Yes | **Keep; improve as the single execution contract.** | It must state the current objective, one priority, gates, owners/role gaps, deadlines, and stop conditions. Detailed historical implementation notes must not create new active commitments. |
+| Buyer Discovery Sprint | Yes | **Keep; improve as the live operating tracker.** | It records actual outreach, conversations, evidence, unknowns, and next actions. Never duplicate its funnel or interview ledger in another plan. |
+| Decision Constitution | Yes | **Keep; update only when a durable decision or contradiction changes.** | It resolves strategy/scope conflicts; it is not a daily task list. |
+| README / docs index | Yes | **Keep; improve navigation and disposition clarity.** | Every document should have one identifiable purpose and a clear authority status. |
+| GitHub issues | Yes, for actionable blockers | **Keep; use for work that needs an owner, completion condition, or external dependency.** | An issue is not a substitute for the plan or evidence ledger. Close only when its stated acceptance condition is verified. |
+| Product/data/security specifications | Conditionally | **Keep the current versions as controlled references; activate only when the selected workflow requires them.** | They may protect future correctness/security, but are not permission to build unused features or claim production readiness. Revalidate dated snapshots before reliance. |
+| Research, design, strategy and opportunity documents | Useful as reference; not all active | **Keep unique evidence; mark non-current documents as reference/experiment/historical. Do not turn them into parallel plans.** | They can be reused if a real decision needs them. No new strategy document during this sprint unless it replaces, rather than duplicates, an existing authority. |
+| Historical audits and phase plans | Yes as history, not as current instructions | **Archive by status in the index; do not delete in bulk.** | Preserve evidence and traceability. Remove a file only after checking unique content, inbound links, issue/PR references, and whether the current authority fully supersedes it. |
+| The one inventory item labelled “Uncertain, kept” | Review required | **Do not rely on it as authority. Compare it against the canonical plan and either classify it as reference or extract unique evidence into the proper authority.** | Uncertainty is a review task, not a permanent lifecycle status. |
+| Duplicate schedules, scorecards, and repeated summaries | No, if they add no unique evidence | **Retire or clearly mark superseded after link/reference checks.** | Keep one live calendar, one candidate register, one decision gate, and one evidence ledger. Preserve a historical record only where it explains a decision or its evidence. |
+
+**Deletion rule:** no bulk deletion in this pass. The repository index already preserves a historical trail, and deleting documents without a file-by-file dependency check risks losing evidence. The immediate improvement is to make status and authority unambiguous and stop historical documents from being mistaken for current instructions.
+
+### Timeline decision: why, when, and how
+
+| Date | Required outcome | Completion evidence | If it is missed |
+|---|---|---|---|
+| **Oct 15** | Freeze the strategic foundation for this sprint: definition, current scope, candidate probes, evidence rules, Tier 1/Tier 2 gates, and no-build boundary. | Master Plan and Decision Constitution agree; unresolved contradictions are listed explicitly. A freeze does not mean the commercial wedge is chosen. | Fix contradictions that affect safe execution; do not extend the date to polish wording or add strategy. |
+| **Oct 19** | Review the access routes and actual response to the ASIA inquiry; attempt 3–5 genuine warm-introduction requests only if legitimate contacts, capacity, and adult/professional support exist. | Tracker records sends, replies, introductions, bookings, and blockers separately. | Record access as a constraint; do not invent contacts or infer market demand from a tiny sample. |
+| **Oct 31** | Target 3 substantive manufacturing conversations and at least one explicit buyer next step. | Completed conversation records and a specific next-step statement in the tracker. | Report the gap honestly and adjust route assumptions; the target is not evidence of demand. |
+| **Nov 10** | Make the formal **GO TO BOUNDED TEST / NARROW / PIVOT / STOP** decision. | Written evidence comparison, disconfirming evidence, economics, delivery feasibility, and unresolved gates. | If evidence is insufficient, do not force a winner or authorize product expansion. |
+| **Nov 15** | Close the discovery phase administratively: consolidate evidence, reconcile open issues/PRs, and record the next approved phase or continued discovery. | One decision record, updated tracker status, and a small set of explicit next actions. | Do not treat Nov 15 as a second commercial gate or an automatic build deadline. If Nov 10 yields no-go/insufficient evidence, Nov 15 records that result and the justified next step. |
+
+These dates are complementary, not competing deadlines: **Oct 15 is a strategy freeze; Oct 19 is an access review; Oct 31 is a discovery target; Nov 10 is the evidence-based decision gate; Nov 15 is phase closure and handoff.** None guarantees customer access, product readiness, or a paid pilot.
+
+### Weekly operating review
+
+Once per week, update the existing tracker and answer only:
+1. What new evidence was actually obtained?
+2. Which assumption became stronger, weaker, or remained unknown—and why?
+3. What is the main blocker now?
+4. What is the single highest-value next action, who owns it, and by when?
+5. What activity should stop because it does not support the current gate?
+
+The weekly review updates the existing plan/tracker; it does not create a new report. If no customer evidence arrived, say so and focus on the real access or reviewer blocker.
+
+### Scope and dependency rule
+
+Until the Nov 10 decision, discovery remains P0. Engineering is permitted only when it verifies existing product truth, preserves security/correctness, or enables a specific evidence-gathering step. No feature, integration, public claim, commercial offer, or data trial becomes authorized merely because a supporting specification exists. Customer-data work remains NO-GO until the Tier 2 gates and relevant technical/security acceptance pass.
+
+### Review limitation
+
+This is a structural audit of the canonical planning system and the document lifecycle/index, not a claim that every historical specification, application workflow, PR, or security control has been re-tested. Historical snapshots must be revalidated before operational reliance.
