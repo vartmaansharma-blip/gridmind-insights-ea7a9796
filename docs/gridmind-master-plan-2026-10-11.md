@@ -461,3 +461,188 @@ Continue the current discovery sprint exactly as recorded in the [Master Plan](g
 
 As of this record, this detailed offer design is a planning hypothesis. It does not establish that interviews occurred, any buyer has approved the offer, a pilot is feasible, ₹15,000 is acceptable, the delivery time is achievable, a qualified reviewer is available, or any customer value/savings have been produced.
 
+
+## 16. Economic Discovery Offer — Operating Specification v1 (provisional, 2026-10-13)
+
+This section makes the proposed first engagement operational. It supplements, but does not replace, the canonical Master Plan, live discovery tracker, or Decision Constitution. It is not proof of demand and does not authorize customer-data processing.
+
+### 16.1 Decision and positioning
+
+**Offer format to test:** a bounded, human-reviewed Economic Discovery for one manufacturing site: investigate one agreed economic question using existing records and return an evidence-ranked decision brief.
+
+**Lead use-case hypothesis:** energy and utility economics, because the customer-facing proof framework proposes this entry point and bills/tariff records may permit a lower-intrusion start than machine connectivity. This is a provisional offer variant, not a selected commercial wedge. C4 remains a discovery probe alongside C1. If discovery shows that the strongest unresolved problem is downtime/production loss, adapt the same bounded-engagement structure rather than forcing an energy analysis. The canonical status remains “no wedge selected” until real evidence passes Tier 1.
+
+The customer buys a bounded investigation and decision-ready evidence package—not a dashboard, generic AI analysis, formal energy audit, engineering certification, guaranteed savings, or autonomous control.
+
+### 16.2 Target customer and qualification
+
+Before a customer-specific quote, require:
+- A named operational sponsor and an identifiable economic buyer or credible route to one.
+- A specific decision/economic question and site boundary.
+- A customer able to authorize the proposed records and supply relevant operating context.
+- A qualified domain reviewer who explicitly agrees to review the scope and conclusions.
+- Agreement that the result may be “no defensible opportunity found.”
+- A delivery scope that can be bounded safely and economically.
+
+Positive fit indicators include meaningful utility spend; measurable output; usable historical bills and applicable tariff information; production and operating-calendar context where needed; a team able to investigate or act; and a genuine question not already adequately answered by the current process. These are hypotheses, not universal thresholds. Data-history requirements depend on seasonality, tariff, production mix, and the question.
+
+Disqualify, defer, or narrow if there is no decision owner, data rights are unclear, evidence is inadequate, likely value is immaterial, a qualified reviewer is unavailable, or the customer expects guaranteed savings before analysis.
+
+### 16.3 Unit of work and scope
+
+The base unit is **one site + one agreed question + one historical window + one written decision brief**.
+
+For the provisional energy/utility variant:
+- Review agreed utility bills or equivalent records, applicable tariff/rate information, and production/output and operating-calendar context where available and authorized.
+- Reconcile units, billing periods, site/meter coverage, tariff assumptions, missing periods, production denominators, and material anomalies.
+- Identify only deviations/questions supported by the records.
+- Estimate exposure or potential only when the formula, inputs, assumptions, exclusions, and uncertainty can be shown.
+- Rank follow-up checks by evidence strength, plausible economic importance, actionability, and effort.
+- Obtain qualified review before customer delivery.
+
+Excluded: full plant energy audit; machine-level or root-cause diagnosis; power-quality assessment; electrical-panel inspection; equipment installation; live monitoring; real-time OT connectivity; tariff/legal advice; guaranteed savings; and safety-critical instructions. These require separate scope, competence, permissions, and measurement. No physical or electrical work is included.
+
+### 16.4 Customer inputs and intake acceptance
+
+Request only the information needed for the agreed question. A starting checklist is:
+1. Written question, decision owner, site boundary, and period.
+2. Utility bills or equivalent records, with dates and units legible.
+3. Applicable tariff/rate schedule and demand-charge/contract-demand context where relevant.
+4. Production/output totals and operating days/shifts if production-adjusted comparisons are proposed.
+5. Known shutdowns, product-mix/order changes, equipment changes, holidays, tariff changes, and other context that may confound comparisons.
+6. Existing analysis/audits/actions, if the customer chooses to share them.
+7. A contact who can clarify records and correct factual misunderstandings.
+
+Intake is not accepted until scope, period, source ownership, units, missing records, comparison basis, permitted use, retention/deletion date, recipients, and reviewer are recorded. Missing data means “unknown,” never silently zero. Do not request credentials, broad system exports, unrelated confidential information, or machine-control access.
+
+### 16.5 Workflow and timing hypothesis
+
+| Stage | Work | Exit condition |
+|---|---|---|
+| Qualification | Confirm decision, boundary, sponsor/buyer route, evidence, and current alternative. | Fit/no-fit recorded. |
+| Scope and permissions | Agree question, records, period, roles, handling, exclusions, and stop conditions. | Written scope and permission. |
+| Intake/data health | Check provenance, coverage, units, dates, duplicates, missingness, and comparability. | Gaps resolved, accepted, or scope narrowed. |
+| Analysis | Run transparent calculations; test plausible explanations and alternatives. | Reproducible calculations and stated limits. |
+| Domain review | Challenge technical plausibility, tariff interpretation, causal language, and actionability. | Review comments resolved or retained as uncertainty. |
+| Customer review | Walk through findings and invite factual corrections/context. | Corrections and disagreements logged. |
+| Closeout | Deliver brief and ledger; record usefulness, effort, costs, and next-step decision. | Delivery and outcome status recorded. |
+
+**Timing hypothesis:** 5–10 working days after accepted intake for a suitably narrow case. This is not an SLA and must not be advertised as guaranteed until dry-runs and reviewer availability support it. Missing context, review delays, or scope changes pause the clock and require an agreed reset or re-quote.
+
+### 16.6 Required deliverables
+
+Every engagement produces:
+1. **Decision brief (target 3–6 pages):** question, scope, conclusion, material findings, limits, and decision/next step supported.
+2. **Opportunity/evidence ledger:** finding ID, source/period, observed facts, calculation, assumptions, data-quality flags, confidence rationale, counter-evidence, next discriminating check, owner role, and status.
+3. **Reproducible calculation workbook or equivalent:** source references, units, formulas, exclusions, period alignment, and separation of source data from derived values.
+4. **Data-health note:** coverage, missing/stale/inconsistent values, comparability problems, and conclusions that cannot be drawn.
+5. **Ranked next-step list:** investigation/action, rationale, evidence needed, responsible role, likely effort/constraints, and success measure.
+6. **Review/correction record:** reviewer role, material challenges, customer corrections, unresolved disagreement, and final disposition.
+7. **Commercial closeout:** hours by role, direct costs, usefulness feedback, and whether a next paid step was proposed/accepted/declined.
+
+A report is not successful merely because it contains many opportunities. “No material opportunity,” “existing process is adequate,” “insufficient evidence,” and “not economically justified” are valid outcomes.
+
+### 16.7 Evidence and economic-calculation standard
+
+Use explicit states: **Observed / Calculated / Estimated / Hypothesis / Recommended / Implemented / Realized / Verified / Sustained**. Never collapse them.
+
+For every material economic estimate:
+- State source, period, units, formula, and assumptions.
+- Separate gross exposure from addressable opportunity and incremental value plausibly influenced by GridMind.
+- Include intervention cost, implementation constraints, operational risk, and customer effort where known.
+- Avoid double counting overlapping loss categories.
+- Compare with the best realistic alternative—existing staff, process, software, or consultant—not “doing nothing” unless that is the true alternative.
+- Use ranges or qualitative priorities when precision is unsupported.
+- Do not infer cause from correlation or one unusual bill.
+- Do not call an opportunity “savings” before action and appropriate measurement.
+- Claim verified/sustained value only with a pre-agreed baseline/reference, observation window, adjustment for material confounders, and defensible measurement method.
+
+An arithmetically correct estimate may still be commercially irrelevant. A potential opportunity matters only if it is plausible, addressable, actionable, and worth pursuing relative to effort and alternatives.
+
+### 16.8 Roles, data governance, and safety
+
+- **Founder/discovery lead:** coordinate scope, evidence ledger, calculations within competence, delivery tracking, and truthful labels.
+- **Qualified energy/engineering reviewer:** validate technical/tariff interpretation and challenge claims. This role is not yet named or confirmed; no customer-specific technical energy analysis may be delivered until secured.
+- **Customer sponsor/data approver:** authorize records, confirm context, and nominate decision owner.
+- **Customer qualified personnel:** decide and perform interventions under their normal safety systems.
+- **Appropriate adult/professional support:** review/support outreach and formal engagement.
+
+Before receiving non-public data, require written scope/permission, data minimization, approved transfer/storage/access, named recipients, retention/deletion date, incident contact, and confirmation that the customer may share the records. Never put customer records in public repositories, issue trackers, public AI tools, or synthetic examples. Use a secure approved environment only after controls are checked. Customer data stays outside this documentation repository.
+
+No live OT access, credentials, control writes, electrical work, panel inspection, or safety-critical instruction is included. Physical inspection must be separately authorized and performed by qualified personnel. Stop if authorization or safety is unclear.
+
+### 16.9 Pricing method and willingness-to-pay test
+
+**No fixed price is approved.** ₹15,000 remains an unvalidated discussion hypothesis—not a quote, market rate, or evidence of willingness to pay.
+
+Calculate expected delivery cost using actual assumptions:
+Delivery cost = founder hours × explicit internal rate + reviewer hours/fee + data preparation + travel/site cost + tools/processing + other direct costs.
+
+Minimum viable fee = delivery cost + required contribution toward overhead, risk, and future product development.
+
+Do not assume founder labour or specialist review is free. Do not invent a margin target without recording it as an assumption. Include acquisition/onboarding and likely rework. A price is not viable if it depends on unpaid specialist work or unbounded founder time.
+
+Test willingness to pay in this order:
+1. Learn what the customer currently spends—in money, staff time, audits, consultants, or delayed decisions—to address the same question.
+2. Explain the bounded deliverables and exclusions without leading with speculative savings.
+3. Identify the budget owner and approval process.
+4. Quote only after reviewer availability, input feasibility, and delivery cost are understood.
+5. Record the real response: accepted; counter-offer; procurement/approval needed; free-only request; interest without buyer; declined; or no decision.
+6. Treat an approved purchase process or payment as stronger evidence than compliments or hypothetical answers.
+
+Do not anchor all learning to ₹15,000. Do not offer a performance fee until attribution, baseline, measurement, contract terms, and risk allocation are workable.
+
+### 16.10 Success, failure, and stop rules
+
+Operational success requires:
+- The agreed question is answered within evidence limits—or the evidence gap is diagnosed.
+- Material claims are traceable and reviewed.
+- The customer can state what decision, if any, changes.
+- Factual corrections are confirmed or disagreements recorded.
+- Actual delivery hours and direct costs are measured.
+- A concrete next step is agreed, or no further work is documented as appropriate.
+
+A useful report alone does not prove a repeatable business. Stop/narrow/decline if evidence cannot support a responsible conclusion; existing analysis is adequate; findings are not actionable; no reviewer is available; expected benefit cannot justify fee/effort/risk; certainty or guaranteed savings are demanded; work exceeds scope or authorized use; economics are implausible; or the workflow is so bespoke that repeatability is unlikely.
+
+### 16.11 Closeout options
+
+Offer only the next step supported by evidence:
+- No further work, where no opportunity or residual gap is established.
+- A customer-led check for a specific missing measurement or hypothesis.
+- A bounded follow-up investigation with named owner, reviewer, scope, and fee.
+- Measurement and verification only after an intervention, baseline, observation window, and measurement method are agreed.
+- Recurring monitoring/subscription discussion only if a repeated decision need, maintainable inputs, action ownership, and economic usefulness are demonstrated.
+
+Do not turn every discovery into a subscription pitch.
+
+### 16.12 Preflight checklist before quote or data intake
+
+A customer-specific quote/data engagement is NO-GO until:
+- [ ] A real operational problem and decision have been described by a relevant participant.
+- [ ] Current alternatives and residual gap are understood.
+- [ ] Sponsor/buyer path and data approver are identifiable.
+- [ ] Scope, records, period, deliverables, exclusions, and acceptance criteria are written.
+- [ ] A qualified reviewer has explicitly agreed and costed their role.
+- [ ] Data rights, transfer, access, storage, retention, and deletion are approved.
+- [ ] Calculation/review method is feasible for the actual evidence.
+- [ ] Delivery hours, direct costs, risk, and fee are estimated.
+- [ ] Baseline/measurement design is agreed if an outcome claim is planned.
+- [ ] Customer approved the bounded scope and applicable terms.
+- [ ] Required technical release gates pass before the application handles real customer data.
+
+Until these gates pass, use public sources and synthetic/offline examples only. This document does not authorize customer data, a factory visit, production changes, or a paid commitment.
+
+### 16.13 Synthetic dry-run and acceptance tests
+
+Before any customer-data engagement, run a synthetic case and record inputs, formulas, reviewer challenge, effort, and outputs. Include deliberate defects: missing billing periods, mixed units, tariff change, production/shift changes, duplicate records, implausible values, and a candidate “opportunity” without causal support.
+
+Pass only if missing information is surfaced; calculations are reproducible; gross exposure is not presented as addressable/verified savings; alternative explanations are visible; “insufficient evidence/no opportunity” is available; recommendations specify next evidence and responsible role; reviewer and delivery effort are measured; and the brief states what cannot be established. A pass validates only the defined synthetic workflow—not customer relevance, real-world accuracy, savings, willingness to pay, or product-market fit.
+
+### 16.14 Decision/status reconciliation
+
+- The offer format is specified sufficiently for offline testing and transparent discussion as a hypothesis.
+- **No commercial wedge is selected.** Energy/utility is the lead offer variant to test because the customer-facing framework proposes it; C4 remains a probe and C1 remains an active comparator. Real evidence determines the winner.
+- The existing access sprint and **2026-11-10 decision gate** remain unchanged.
+- ₹15,000 and 5–10 working days remain unvalidated hypotheses; no public price or SLA is approved.
+- No reviewer, buyer, customer-data permission, pilot, revenue, savings, or production capability is asserted.
+- Next execution is a synthetic/offline dry-run alongside the existing discovery/access work—not another planning cycle or a new application module.
