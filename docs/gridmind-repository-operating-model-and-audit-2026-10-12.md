@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **Status: HISTORICAL SNAPSHOT — NOT A CURRENT EXECUTION AUTHORITY (reviewed 2026-10-13).** This document is preserved for context and evidence. Its dated ratings, status claims, recommendations, and next steps may be stale; do not treat them as current instructions or proof of present readiness. Follow the [canonical Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and current linked GitHub issues for present decisions and blockers. No historical findings below have been deleted or rewritten.
+
 # GridMind Repository Operating Model and Structural Audit
 
 **Review date:** 2026-10-12  
@@ -146,3 +149,14 @@ The repository now has a consistent entry point for changes:
 This follow-up deliberately does not physically move the large set of dated strategy/research documents: their inbound references and historical uniqueness have not been fully mapped. It also does not change workflows, branch protection, labels, database/schema, or product behavior.
 
 **Current limits:** the CI job-start issue #42 remains open pending the actual Actions infrastructure error; effective branch protection/rulesets remain unverified through the connected interface. The current PR list is a point-in-time query and must be refreshed before making PR decisions.
+
+## Documentation lifecycle completion pass — 2026-10-13
+
+A content-level review of all 26 entries under the `Historical / superseded snapshots` section of [`docs/README.md`](README.md) found that several dated ratings, readiness audits, phase trackers, critiques, and repository audits lacked an unmistakable top-of-file warning that they were not current execution authorities. This pass adds non-destructive status banners to those files and clarifies the Phase 2 technical tracker. The original findings remain intact; no file was deleted or moved.
+
+- Change set: [PR #65 — finish historical document lifecycle labels](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/65).
+- Manual review: all 26 entries in that README section now have explicit top-level historical/reference status language.
+- Newly added local links were checked against the repository paths for the canonical Master Plan, Decision Constitution, and technical release gate.
+- The official `bun run docs:links` was not executed in this environment. The full repository-wide link-check acceptance criterion remains open until the script actually runs and its output is reviewed. CI runner/billing restrictions remain separately tracked in [Issue #42](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/42).
+
+This pass improves document authority signaling; it does not certify application readiness, security, or customer-data suitability.
