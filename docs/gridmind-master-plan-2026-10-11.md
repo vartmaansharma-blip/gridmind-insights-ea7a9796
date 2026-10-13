@@ -674,3 +674,14 @@ The reusable offline edge-case fixture is documented in [GridMind Economic Disco
 The base fixture arithmetic was recalculated: 10.00, 11.00, and 13.333… kWh/unit; March intensity is 33.33% above January, consumption is 20% higher, and output is 10% lower. In the simplified tariff mutation, changing the assumed variable rate from ₹9 to ₹10/kWh at 120,000 kWh changes the arithmetic bill by ₹120,000. All 12 scenario-level synthetic logic assertions passed in-session against the stated expected outcomes.
 
 **Status boundary:** this was a lightweight synthetic logic/assertion run, not a repository test suite and not an execution of GridMind application code. No independent energy/engineering review, delivery-time measurement, manufacturer/customer validation, or willingness-to-pay test has occurred. The next action is a human-reviewed offline walkthrough with actual effort logged. Do not call the offer commercially or technically validated. All prior guardrails, the no-wedge-selected status, and the 2026-11-10 decision gate remain unchanged.
+
+
+### 16.17 Structured walkthrough and newly identified blockers — 2026-10-13
+
+A case-by-case internal AI-assisted desk walkthrough of T01–T12 is recorded in §8 of [the synthetic evaluation fixture](gridmind-economic-discovery-synthetic-evaluation-2026-10-13.md). This is not an independent human/domain review and did not execute application code. Actual elapsed time was not instrumented and is explicitly recorded as not measured.
+
+The walkthrough confirms that the fixture's conservative intent is appropriate, but identified operating-specification gaps: expected-period/coverage rules; full raw-to-normalized provenance and unit handling; composite duplicate review; real invoice component reconciliation; qualified comparability/normalization boundaries; claim-to-evidence traceability; mandatory financial-claim approval; output-denominator definitions; baseline-selection rationale; and explicit inconclusive/reviewer-disagreement outcomes.
+
+**Decision:** NO-GO for customer-data use remains. Before any real-data trial, close the eight readiness gates in §8 of the fixture, obtain a qualified reviewer for the proposed scope, and pass the existing technical/security gates. Do not present this internal walkthrough as independent review or commercial validation. The next practical blocker is reviewer availability and the ability to test the workflow with legitimate, authorized evidence—not further product development.
+
+The commercial wedge remains unselected; C1/C4 remain discovery candidates; ₹15,000 and 5–10 working days remain unvalidated hypotheses; the 2026-11-10 decision gate is unchanged.
