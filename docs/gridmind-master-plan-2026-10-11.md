@@ -203,3 +203,261 @@ This section records decisions from the Phase 1 foundation and the subsequent op
 - Record durable decisions, their evidence, confidence, unresolved assumptions, and conditions that would change them.
 - Separate **analysis quality**, **plan quality**, and **actual business progress**. A well-written plan is not validation or execution.
 - Reopen a decision only when new evidence, a failed test, a material constraint, or an explicit risk review warrants it; document the reason and affected records.
+
+## 15. Detailed initial-offer design hypothesis — 2026-10-13
+
+**Classification:** Supporting-level offer design hypothesis recorded in the canonical plan. This section does not select C1 as the commercial wedge, replace C4 as an active discovery probe, authorize a customer-data test, or claim that the current application already delivers this service. The commercial wedge remains undecided. Use this specification to guide questions and, only after the existing decision gates pass, a possible bounded test. If this section conflicts with the current discovery calendar, candidate register, safety rules, or two-tier gates above, those canonical controls prevail.
+
+### 15.1 Company definition, fundamental problem, and destination
+
+**Working company definition:** GridMind is an industrial intelligence and performance-improvement company intended to help manufacturers understand operations, investigate consequential problems using evidence, make better-informed decisions, coordinate customer-approved improvements, and measure outcomes.
+
+**Fundamental problem hypothesis:** Some industrial businesses may struggle to turn fragmented, imperfect operational information into a reliable explanation and a useful next decision about a costly problem. The gap may be evidence fragmentation, slow investigation, uncertainty, cross-team coordination, lack of actionability, or weak outcome measurement. It must not be assumed that every factory problem is an information problem; the cause may already be known while action is constrained by people, parts, capital, capacity, process, or management decisions.
+
+**Long-term destination:** an industrial intelligence and value-realization layer. This is an ambition, not a claim of current capability, market leadership, or a validated moat. The company should earn expansion from one demonstrated workflow and reusable methods, not build a universal platform before validating a customer problem.
+
+**Operating loop:** authorized evidence → traceable finding → qualified human review → customer-approved decision/action → measured outcome → retained learning only where explicit rights and permissions allow.
+
+### 15.2 Candidate customer and buyer — provisional, not validated
+
+The initial geography/segment hypothesis discussed is independent, owner-run manufacturers in the Jamshedpur–Adityapur industrial area, initially automotive-component manufacturers and related machining operations. This is a research focus, not a confirmed ideal-customer profile or an assertion of market size.
+
+- **Operational participants to explore:** Plant Head, Production Manager, Operations Head; Maintenance Manager or Quality Manager where the actual incident warrants it.
+- **Potential economic buyer:** owner, Managing Director, or another person with actual budget authority.
+- **Required for a qualified case:** a specific operational question; material consequence; a current investigation or decision gap; relevant evidence that can be accessed lawfully; a knowledgeable participant; a realistic decision the findings could inform; and appropriate time/technical review.
+- **Not sufficient:** a factory having machines, dashboards, downtime, high bills, or a general interest in AI. The buyer must describe a concrete workflow and a gap relative to existing alternatives.
+
+The existing sprint's active probes remain C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency). Quality/rework (C2), recurring maintenance/reliability (C3), and cross-team handoff/decision delay (C5) remain in the stable register but are not promoted to active probes without evidence. The proposed Production Loss Investigation below is a candidate offer to use when asking about C1; it is not a decision that C1 has won.
+
+### 15.3 Provisional offer card
+
+**Working name:** GridMind Production Loss Investigation (name is provisional).
+
+**Offer hypothesis:** GridMind would help a manufacturer examine one specific, economically significant production interruption or recurring production-loss pattern that the existing investigation process has not adequately explained or resolved. Using customer-authorized evidence, a defined question, and qualified human review, the work would reconstruct what is known, assess plausible explanations and contradictions, document uncertainty, and identify the next checks or actions justified by the evidence.
+
+**Customer is buying:** a bounded, traceable investigation and a better-informed next decision—not an AI model, dashboard, guaranteed root cause, guaranteed savings, or an automatic machine diagnosis.
+
+**Initial outcome hypothesis:** the work produces a useful, evidence-linked decision brief that helps the customer determine what to verify, investigate, change, or leave unresolved. A finding of “insufficient evidence,” “existing process is adequate,” or “no defensible finding” can be a valid result.
+
+**Three distinct value pathways:**
+1. Investigation efficiency: less time spent collecting, reconciling, and summarizing information.
+2. Decision quality: better-grounded choice among explanations or next tests.
+3. Operational improvement: an approved intervention changes an outcome.
+These must be measured separately. A better brief does not prove a better decision; a better decision does not prove realized savings; a post-intervention improvement does not by itself establish that GridMind caused it.
+
+### 15.4 Case qualification before accepting work
+
+A case should have:
+1. A specific incident, repeated pattern, or operational question and a defined time window.
+2. A credible description of operational/economic significance, separating measured facts from estimates.
+3. A residual gap: what the existing staff, systems, consultant, maintenance/quality process, or investigation has not resolved.
+4. A clear question and decision that the findings could inform.
+5. At least one relevant, lawfully accessible evidence source and a person who can explain its context.
+6. Customer authority to share/use the records for the stated purpose.
+7. A bounded scope and feasible review path.
+8. Appropriate expertise or an identified qualified reviewer.
+9. A safe path that does not require unauthorized machine/control access or unqualified safety-critical work.
+10. A plausible route to a buyer and a willingness to discuss the commercial terms of a defined service.
+
+**Proposed screening heuristic only:** score seven dimensions 0–2 each—economic significance, investigative gap, evidence availability, bounded scope, customer participation, actionability, and delivery feasibility. A possible initial threshold is at least 10/14, with no zero for evidence availability, customer participation, or feasibility. This score is not validated, must not override fatal safety/data/expertise blockers, and should be revised after real cases. It is a case-screening aid, not a customer-demand score.
+
+**Decline, defer, or narrow** cases with no defined decision, no credible evidence path, unauthorized data, unbounded scope, unsupported guarantees, unavailable necessary expertise, unsafe requests, or a problem that existing methods already resolve adequately. Do not accept work merely to obtain a pilot.
+
+### 15.5 Proposed deliverable: Production Loss Investigation Brief
+
+If a suitable case is authorized, the proposed deliverable is one concise brief with these components:
+
+A. **Executive findings:** question, scope, why it matters, what is established, what remains unresolved, and the next decision.
+B. **Event reconstruction:** a timeline of material events and records. Preserve the difference between when an event occurred and when it was entered into a system.
+C. **Evidence register:** evidence ID, source/system/person, relevant period/timestamp, event/question addressed, source status, units/context where relevant, transformation, limitation, permission/handling status, and conflicting records.
+D. **Findings and competing explanations:** each statement separated into observation, reconstruction, hypothesis, expert judgment, or verified result; show supporting and contradictory evidence, alternative explanations, missing data, and what would distinguish the hypotheses.
+E. **Prioritized next steps:** a specific inspection, measurement, question, or approved action; rationale; proposed owner/role; required resources; safety/approval requirements; and a way to evaluate the result.
+F. **Economic assessment, only where justified:** interruption duration, affected output, documented rework/scrap or other costs, estimated exposure, calculation method, assumptions, exclusions, and uncertainty.
+G. **Follow-up/closure plan:** baseline, metric, observation window, operating conditions, confounders, outcome owner, and criteria for calling a result observed, implemented, or verified.
+
+Economic terms must remain distinct:
+- **Gross exposure:** estimated or recorded total cost associated with the event.
+- **Potentially avoidable loss:** the portion plausibly addressable by an intervention, with assumptions and constraints.
+- **Realized benefit:** observed change after action under a stated measurement method.
+- **GridMind-attributable benefit:** incremental change credibly attributable to GridMind versus what would otherwise have happened, accounting for confounders and the limits of the design.
+Do not present these as interchangeable.
+
+### 15.6 Explicit initial exclusions and change control
+
+The hypothetical initial service does not include:
+- continuous factory/machine monitoring or always-on connectivity;
+- connecting to every machine, PLC, SCADA, MES, ERP, CMMS, QMS, or control system;
+- autonomous machine operation/control or automatic safety-critical decisions;
+- guaranteed root cause, accuracy, ROI, or savings;
+- safety, statutory, regulatory, or engineering certification;
+- replacement of an existing CMMS, QMS, ERP, maintenance, or quality process;
+- a complete factory digital twin or generalized predictive-maintenance platform;
+- unlimited data cleaning, unrestricted consulting, or open-ended investigation;
+- implementing every recommendation or guaranteeing that the customer will implement it;
+- retaining or reusing customer records/derived information for cross-customer learning without explicit rights and permissions.
+
+A scope change must be agreed in writing, including the new question, inputs, deliverable, time, review needs, price/cost, and implications. Do not silently expand the work.
+
+### 15.7 Evidence, records, and minimum-data discipline
+
+Potential sources, depending on the actual case, include production/shift logs, machine alarms, maintenance work orders, production schedules, operator observations, shift handovers, quality records, relevant process measurements, and existing incident reports. No source is automatically reliable merely because it is digital.
+
+**Minimum viable evidence package:** (1) a defined problem, (2) a credible significance estimate, (3) timing or enough information to reconstruct the event, (4) at least one relevant operational source, (5) access to a knowledgeable person, (6) permission for the stated use, and (7) a specific decision the work may inform. If this package is not available, continue non-confidential discovery, request a suitable source, narrow the question, or stop.
+
+For every material source:
+- retain provenance and an immutable source reference where feasible;
+- record period, units, time zone/clock assumptions, entry time versus event time, missing intervals, and transformations;
+- normalize only when justified, document the transformation, and preserve the original values;
+- investigate material contradictions; otherwise report them explicitly;
+- do not infer missing values, asset mappings, causes, or costs silently;
+- collect each item only when it addresses a defined unanswered question and its value justifies access and processing effort.
+
+**Data governance:** obtain named customer authorization and purpose limitation before accepting non-public records; minimize collection; agree transfer/storage, access roles, recipients, retention/deletion, incident response, and any third-party use; separate customer workspaces and permissions; never commit real customer/factory records to GitHub; do not use records or derived data for public demos, model training, benchmarks, or cross-customer learning without explicit rights and appropriate safeguards. Never promise a technical privacy guarantee that has not been established by the actual architecture and workflow.
+
+### 15.8 Delivery workflow and service boundaries
+
+Proposed case workflow:
+0. Non-confidential discovery and question definition.
+1. Case qualification and explicit stop/go decision.
+2. Written scope, roles, input list, handling terms, review needs, and completion criteria.
+3. Authorized evidence intake and source register.
+4. Timeline/event reconstruction and discrepancy log.
+5. Investigation of competing explanations, with tests that could distinguish or falsify them.
+6. Qualified technical review appropriate to the actual domain and risk.
+7. Customer factual/context review.
+8. Final brief, limitations, and next-decision discussion.
+9. Agreed follow-up measurement if an intervention occurs.
+10. Case retrospective: usefulness, errors, delivery time/cost, scope changes, repeatability, and commercial signal.
+
+Customer review can correct context or source facts; customer disagreement alone does not prove a conclusion wrong or right. Material disagreement should be reconciled against evidence or recorded as unresolved.
+
+**Turnaround hypothesis:** 5–10 working days after scope approval and receipt of the required evidence, excluding customer delays, reviewer availability, and agreed scope changes. This is an internal planning target only; it is not a public service-level promise until measured over real cases.
+
+Written scoping should specify the problem/question, time period, permitted sources, customer owner, data approver, submission deadline, clarification rounds, reviewer role, deliverable, exclusions, change process, and what counts as completion.
+
+### 15.9 Evidence and conclusion standards
+
+Use these conclusion levels consistently:
+1. **Observed:** a source directly records a measurement/event or a participant reports it (label the source type).
+2. **Reconstructed:** multiple sources support a sequence or interpretation, with conflicts/limits noted.
+3. **Hypothesized:** an explanation is plausible but alternatives remain; it is not a confirmed cause.
+4. **Verified within stated limits:** an explanation or outcome has been tested adequately for the defined case and conditions, with method, scope, and limits recorded.
+
+For each material hypothesis, record its statement, expected observations, supporting evidence, contradictory evidence, alternative explanations, missing data, a discriminating test, and evidence that would weaken/falsify it. A model-generated answer cannot promote a hypothesis to verified status.
+
+**Proposed quality standards for any bounded test:**
+- 100% of material factual claims have a source or are explicitly labelled as reported, assumed, estimated, or uncertain.
+- 100% of material calculations receive an independent check.
+- Zero knowingly unsupported claims are presented as verified causes or outcomes.
+- All material contradictions are resolved or disclosed.
+- All customer material factual corrections are addressed and their disposition recorded.
+- Every recommended next step includes rationale and an evaluation method.
+- Agreed deliverables are completed, except documented and mutually agreed exclusions.
+- Customer data is never used outside the authorized purpose.
+These are process requirements/targets, not a guarantee of zero errors. Errors must be recorded, corrected, and considered for downstream impact.
+
+### 15.10 Economics, pricing, and willingness-to-pay evidence
+
+The initial commercial model to test is a **fixed fee for a tightly bounded investigation**, if buyers demonstrate interest and direct delivery cost can be estimated. Do not assume recurring SaaS revenue or a scalable software margin at the start.
+
+Price must account for investigator hours, qualified review, data preparation, coordination, on-site/travel time if necessary, software/operating cost, rework, customer acquisition, overhead, tax, and administrative burden. Compare the fee with conservative incremental value and the buyer's actual budget/approval path. A high gross exposure number does not mean the same amount is recoverable or that the buyer will pay GridMind.
+
+**₹15,000 is a previously discussed price hypothesis only—not an approved price, observed willingness to pay, or market benchmark.** A prior illustrative arithmetic example (₹15,000 revenue less ₹7,500 assumed direct cost = ₹7,500 contribution / 50% before acquisition and overhead) is purely hypothetical and must not be presented as actual unit economics. Recalculate from observed hours and actual costs.
+
+Do not default to free investigations. A free discovery conversation or non-technical workflow map may be used as described in the canonical discovery sprint. Any discounted/free pilot must have a bounded scope, explicit purpose, required inputs, success criteria, time cap, and disclosure that it is not evidence of full-price demand. Do not offer a technical energy/bill audit unless an appropriately qualified reviewer has explicitly agreed.
+
+Commercial evidence gets stronger along this chain: general interest → specific recent problem → permission to discuss a defined case → scoped proposal → authorized evidence → explicit buyer decision at a stated price → payment → findings used in a decision → repeat purchase/referral. Praise and curiosity are weak signals. One paid case is meaningful but does not establish repeatable demand.
+
+### 15.11 Metrics and measurement plan
+
+For each qualified case, capture only metrics relevant to the question, and preserve denominators, units, period, and evidence source.
+
+- **Problem:** incident frequency, duration, affected output, recurrence, consequence, time to detect/investigate/decide, resolution status.
+- **Evidence quality:** source traceability, missingness, timestamp/period quality, unresolved contradictions, transformations, and limitations.
+- **Investigation quality:** claims with source/label, independent calculation checks, critical factual corrections, hypothesis alternatives, useful next tests, qualified review, and customer-reported usefulness.
+- **Delivery:** calendar time, founder/investigator hours, data-preparation time, reviewer hours/cost, customer wait time, coordination, travel, rework, scope changes, and specialist dependencies.
+- **Commercial:** qualified opportunities, substantive conversations, proposals, buyer decisions, paid engagements, fee, direct cost, contribution before acquisition/overhead, acquisition effort, repeat/referral.
+- **Outcome:** baseline and follow-up values, observation period, volume/schedule/product mix, operating conditions, other interventions, changes in recording, and attribution limits.
+
+Do not invent targets or report a metric without a definition. The existing 10-conversation/30-day ambition discussed in earlier work is not a claim of achievement; the canonical plan's current near-term access experiment and Nov 10 decision gate remain controlling. If no suitable case emerges, record the actual blocker and adapt the route rather than fabricate activity.
+
+### 15.12 On-site operating reality
+
+Assume factory evidence may be in paper logs, spreadsheets, separate systems, inconsistent labels, alarms with clock drift, or staff recollection; network connectivity and system access may be restricted, and staff time may be scarce. These are planning considerations to check in each factory, not universal claims.
+
+Use a hybrid model when appropriate: non-confidential discussion → bounded question → authorized existing records → remote analysis/review → site visit only when it adds necessary context → findings review → follow-up. Do not require a visit for appearances, and do not claim a remote analysis is sufficient when the question requires physical inspection.
+
+No unqualified machine operation, unauthorized access to control systems, safety-critical testing, production setting changes, or electrical/industrial work. Site procedures and authorized qualified personnel govern. If the required expertise, safe access, or evidence is unavailable, narrow, involve an appropriate reviewer, request a customer-run test, or decline.
+
+### 15.13 Software support and automation boundary
+
+Do not build a new module merely because the offer has been written down. First inspect existing GridMind capabilities and prove the case workflow manually/offline with authorized information. If recurring case work justifies internal tooling, candidate workflow objects may include case ID, scope, source register, intake status, timeline/discrepancies, hypotheses/evidence, calculations/assumptions, reviewer comments, customer factual corrections, brief generation, follow-up, delivery hours/cost, access controls, and retention/deletion state.
+
+Keep ambiguous-record interpretation, technical hypotheses, risk-sensitive recommendations, economic claims, and uncertainty human-reviewed initially. Automate only after repeated cases show stable inputs/outputs, acceptable error tolerance, understood failure modes, a validation method, and net time/quality benefit. Any use of the current application with real customer data must pass the existing technical release, tenant-isolation, authorization, persistence, privacy, and deletion gates first.
+
+### 15.14 Defensibility and scale — hypotheses, not current assets
+
+Potential long-term advantages may include a repeatable investigation method, high-quality evidence lineage, domain expertise, validated workflow templates, integrations with existing systems, trusted distribution, and a permissioned history of decisions/interventions/outcomes. None is an established moat today.
+
+The intended progression, only if evidence supports it, is:
+1. Manual, human-reviewed service to validate pain and usefulness.
+2. Standardized case method and quality checks.
+3. Software-assisted repeatable investigation.
+4. Integrations/workflow coordination where they demonstrably reduce friction.
+5. Adjacent workflows using a proven shared core.
+6. Broader industrial intelligence only when repeatability, buyer demand, data rights, delivery economics, and measurable outcomes support expansion.
+
+To avoid becoming bespoke consulting, record which steps repeat, which require scarce specialist judgment, which inputs are consistently unavailable, and where delivery time/cost grows. Standardize the repeatable parts before automating; reject cases that cannot be delivered responsibly or economically.
+
+### 15.15 Principal failure modes and response
+
+| Failure mode | Response |
+|---|---|
+| Pain is low priority or no budget exists | Verify consequence, buyer ownership, timing, and explicit next step; reconsider the candidate or segment. |
+| Existing process already resolves the problem | Record that honestly; do not invent a gap. |
+| Records are unavailable, incomplete, or contradictory | Narrow the question, request discriminating evidence, report limits, or stop. |
+| Cause requires specialist inspection beyond GridMind's capability | Involve qualified expertise, propose a customer-run test, narrow scope, or decline. |
+| Customer cannot implement recommendations | Treat action constraints as part of the problem; do not equate diagnosis with realized value. |
+| Delivery hours/reviewer costs exceed feasible fee | Standardize/narrow, change pricing with buyer evidence, choose another workflow, or stop. |
+| No willingness to pay | Separate product usefulness from commercial viability; test buyer/budget/offer/price before building. |
+| Existing software, engineers, consultants, or process changes outperform the offer | Compare against them fairly; integrate or stop rather than claim novelty. |
+| Outcomes are hard to attribute | Define baseline, observation window, confounders, and limits before making impact claims. |
+| Customer-specific work never repeats | Measure commonality; avoid premature platformization; reassess scale potential. |
+| Data is used beyond rights or mishandled | Stop processing, follow incident procedures, notify required parties, correct controls, and do not reuse it. |
+| Website claims outrun evidence | Remove or qualify claims; use clearly labelled illustrative examples and tie claims to demonstrated capability. |
+
+### 15.16 Decision gates for a future bounded test
+
+These gates supplement—not replace—the current Master Plan's Tier 1 and Tier 2 gates:
+
+- **Problem validity:** substantive conversations and concrete examples show a meaningful recurring/significant problem and a residual investigation/decision gap. The current sprint's 10-conversation ambition, where still feasible, is a proposed learning target rather than a reason to fabricate or overstate evidence.
+- **Access feasibility:** at least one genuine operational participant and credible buyer route; no inference from planned outreach.
+- **Data feasibility:** one appropriately authorized case, relevant records, knowledgeable context, agreed handling terms, and a clear question.
+- **Technical credibility:** qualified reviewer and a method capable of producing traceable findings within the defined scope.
+- **Decision usefulness:** customer can state what decision the brief informed and which findings/actions were useful or not; record corrections and unresolved items.
+- **Commercial credibility:** explicit buyer decision on a defined scope/price; payment is stronger evidence than interest.
+- **Delivery economics:** actual hours and costs recorded; plausible contribution after direct costs and a realistic path to acquisition/overhead considered.
+- **Repeatability:** a second suitable case can use the core method without complete redesign while maintaining quality. One case does not prove repeatability or product-market fit.
+- **Outcome credibility:** where an operational result is claimed, define and execute an appropriate baseline/follow-up method; do not attribute results automatically to GridMind.
+
+If a gate fails, classify the failure—problem urgency, buyer/budget, access/trust, data quality, method/expertise, decision usefulness, pricing, delivery economics, implementation constraints, or alternative solution—before choosing to narrow, pivot, or stop. Do not persist merely because the idea is appealing; do not abandon it after one weak conversation without considering sample quality and access constraints.
+
+### 15.17 Proposed operating principles
+
+1. Every investigation starts with a defined question and decision.
+2. Every material finding has traceable evidence or an explicit uncertainty label.
+3. Every recommendation has a rationale, responsible role, and evaluation method.
+4. Every financial estimate states its source, assumptions, and limits.
+5. Every engagement has explicit scope, permissions, exclusions, and change control.
+6. Human authority remains with the customer and qualified personnel.
+7. Every engagement records both usefulness and delivery economics.
+8. No customer-data reuse without rights and permission.
+9. No capability, accuracy, root-cause, ROI, or savings claim without matching evidence.
+10. Every major strategic change is recorded in the existing canonical documents and linked issue/PR; do not create competing plans.
+
+### 15.18 Immediate next action and truth boundary
+
+Continue the current discovery sprint exactly as recorded in the [Master Plan](gridmind-master-plan-2026-10-11.md) and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). Reconcile the previously reported ASIA inquiry in the existing tracker; do not count it as a new contact or assume a response. Pursue only legitimate, appropriately supported introductions and non-confidential research conversations. Do not request factory records, offer technical diagnosis, or run a customer-data test before the existing authorization, reviewer, data-handling, baseline, and technical gates pass.
+
+As of this record, this detailed offer design is a planning hypothesis. It does not establish that interviews occurred, any buyer has approved the offer, a pilot is feasible, ₹15,000 is acceptable, the delivery time is achievable, a qualified reviewer is available, or any customer value/savings have been produced.
+
