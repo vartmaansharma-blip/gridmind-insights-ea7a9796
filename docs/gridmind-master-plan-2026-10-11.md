@@ -540,7 +540,7 @@ Request only the information needed for the agreed question. A starting checklis
 6. Existing analysis/audits/actions, if the customer chooses to share them.
 7. A contact who can clarify records and correct factual misunderstandings.
 
-Intake is not accepted until scope, period, source ownership, units, missing records, comparison basis, permitted use, retention/deletion date, recipients, and reviewer are recorded. Missing data means “unknown,” never silently zero. Do not request credentials, broad system exports, unrelated confidential information, or machine-control access.
+Intake is not accepted until scope, period, source ownership/provenance, site and meter boundary, units, expected-versus-received period coverage, missing/conflicting records, comparison basis, permitted use, retention/deletion date, recipients, and reviewer are recorded. Preserve raw values and units separately from normalized values. Missing data means “unknown,” never silently zero. Do not request credentials, broad system exports, unrelated confidential information, or machine-control access. Potential duplicate invoices must be quarantined for source review using a composite key (site/meter, utility, invoice ID, billing period, amount); invoice ID alone is not enough to auto-delete a record.
 
 ### 16.5 Workflow and timing hypothesis
 
@@ -548,7 +548,7 @@ Intake is not accepted until scope, period, source ownership, units, missing rec
 |---|---|---|
 | Qualification | Confirm decision, boundary, sponsor/buyer route, evidence, and current alternative. | Fit/no-fit recorded. |
 | Scope and permissions | Agree question, records, period, roles, handling, exclusions, and stop conditions. | Written scope and permission. |
-| Intake/data health | Check provenance, coverage, units, dates, duplicates, missingness, and comparability. | Gaps resolved, accepted, or scope narrowed. |
+| Intake/data health | Check provenance, site/meter boundary, expected-versus-received period coverage, units, dates, possible duplicates, missing/conflicting values, and comparability. | Gaps are reconciled, explicitly accepted as limitations, or cause the scope to narrow/stop. |
 | Analysis | Run transparent calculations; test plausible explanations and alternatives. | Reproducible calculations and stated limits. |
 | Domain review | Challenge technical plausibility, tariff interpretation, causal language, and actionability. | Review comments resolved or retained as uncertainty. |
 | Customer review | Walk through findings and invite factual corrections/context. | Corrections and disagreements logged. |
@@ -574,13 +574,16 @@ A report is not successful merely because it contains many opportunities. “No 
 Use explicit states: **Observed / Calculated / Estimated / Hypothesis / Recommended / Implemented / Realized / Verified / Sustained**. Never collapse them.
 
 For every material economic estimate:
-- State source, period, units, formula, and assumptions.
+- State source, period, units, formula, assumptions, raw-to-normalized transformations, and baseline/comparison rationale.
+- Keep a claim register for each customer-facing financial claim: claim ID and wording, amount/range, status, source inputs, formula, baseline, exclusions, attribution method, uncertainty, reviewer and approval status, and customer-approved wording. If any required field or approval is missing, do not make the financial claim.
 - Separate gross exposure from addressable opportunity and incremental value plausibly influenced by GridMind.
 - Include intervention cost, implementation constraints, operational risk, and customer effort where known.
 - Avoid double counting overlapping loss categories.
 - Compare with the best realistic alternative—existing staff, process, software, or consultant—not “doing nothing” unless that is the true alternative.
 - Use ranges or qualitative priorities when precision is unsupported.
+- Treat monthly energy/output ratios as screening signals only unless production units, product mix, operating hours, process, shift, meter boundary, and other material context are sufficiently comparable. Do not mathematically adjust for context without a reviewed method and suitable inputs.
 - Do not infer cause from correlation or one unusual bill.
+- Use explicit outcome states: screening signal; inconclusive / more evidence required; no material opportunity established; potential opportunity; implemented; realized; verified/sustained. Preserve reviewer dissent and unresolved customer corrections rather than forcing a positive conclusion.
 - Do not call an opportunity “savings” before action and appropriate measurement.
 - Claim verified/sustained value only with a pre-agreed baseline/reference, observation window, adjustment for material confounders, and defensible measurement method.
 
