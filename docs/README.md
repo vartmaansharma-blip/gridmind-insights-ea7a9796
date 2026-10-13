@@ -133,11 +133,11 @@
 | [`gridmind-technical-readiness-snapshot-2026-10-11.md`](gridmind-technical-readiness-snapshot-2026-10-11.md) | Historical snapshot; not a live execution plan |
 | [`gridmind-verification-audit-2026-10-12.md`](gridmind-verification-audit-2026-10-12.md) | Historical snapshot; not a live execution plan |
 
-### Uncertain, kept pending closer content review
+### Reference-only analysis (not execution authority)
 
 | File | Disposition / authority |
 |---|---|
-| [`gridmind-problem-failure-analysis-and-experiments-2026-10-11.md`](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md) | Uncertain, kept; review content before relying on it |
+| [`gridmind-problem-failure-analysis-and-experiments-2026-10-11.md`](gridmind-problem-failure-analysis-and-experiments-2026-10-11.md) | **Reference only; superseded for execution.** Retain its unique failure analysis and falsification ideas. Its own banner defers execution to the Master Plan and Buyer Discovery Sprint; do not use its old “Immediate execution plan” as a separate queue. |
 
 ## Repository change and evidence discipline
 
@@ -147,3 +147,24 @@
 - Every plan/artifact must have one distinct job and an explicit lifecycle status: canonical authority, active supporting control, reference/experiment, or historical snapshot. The 2026-10-13 structural audit is recorded in the Master Plan §17; no bulk deletion is authorized without checking unique evidence and inbound references.
 - Preserve useful history. Before moving/deleting documents, check inbound Markdown links, issue/PR references, workflows, and unique evidence. Prefer banners to destructive cleanup when uncertain.
 - Do not merge a PR until its current diff, exact-head checks, migration implications, and security impact have been reviewed.
+
+
+## Root-level file responsibilities
+
+The repository root is for project entry points, contributor instructions, configuration, and executable tooling—not for a second set of strategy documents.
+
+| File or location | Responsibility | Must not become |
+|---|---|---|
+| `README.md` | Public-facing project overview, setup, and links into the documentation system | A second detailed execution plan |
+| `AGENTS.md` | Instructions for agents and contributors working in this repository | A competing product roadmap or a substitute for canonical records |
+| `CONTRIBUTING.md` | Work intake, branch/history rules, validation, safety, and PR acceptance standards | A duplicate task tracker |
+| `roadmap.md` | Parked product-design reference; re-entry only through a prioritized issue and the Master Plan | An active roadmap, implementation authorization, or second backlog |
+| `docs/README.md` | Documentation navigation, authority hierarchy, and document lifecycle inventory | An execution queue |
+| `docs/gridmind-master-plan-2026-10-11.md` | Sole execution plan | A replacement for the live discovery evidence ledger |
+| `docs/gridmind-buyer-discovery-sprint-2026-10-11.md` | Sole live customer-access and discovery tracker | A general engineering backlog |
+| `docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md` | Durable strategic decisions, guardrails, and contradiction resolution | A dated implementation schedule |
+| GitHub Issues and PRs | Actionable work, acceptance criteria, change review, and execution evidence | A replacement for the strategic authorities above |
+
+When a root-level document appears to create a new priority or contradicts a canonical record, do not infer which one wins from its date or filename. Reconcile the conflict in the canonical record, then update the affected reference. Do not move or delete files until inbound links, issue/PR references, and unique historical evidence have been checked.
+
+**Validation status:** this authority map is a documentation change only. It does not mean repository-wide Markdown links, application checks, migrations, or release gates have passed.
