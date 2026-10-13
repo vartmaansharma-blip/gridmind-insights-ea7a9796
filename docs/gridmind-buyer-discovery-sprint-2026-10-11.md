@@ -217,3 +217,26 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 | 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
+
+
+## 12. Aligned phase timeline and weekly review — 2026-10-13
+
+This tracker follows the dates in the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md). It does not establish a second schedule.
+
+| Date | Purpose | What must be recorded | Failure response |
+|---|---|---|---|
+| **Oct 15** | Strategic foundation freeze | Confirm definition, sprint scope, C1/C4 probe status, evidence labels, two-tier gates, and no-build boundary agree across the Master Plan and Decision Constitution. The wedge remains unselected. | Resolve only contradictions that affect execution; no more strategy expansion. |
+| **Oct 19** | Access-route review | Actual ASIA follow-up/response and genuine warm requests, replies, referrals, meetings, and access constraints. | Record route failure or insufficient access honestly; do not infer market demand from a small sample. |
+| **Oct 31** | Discovery target checkpoint | Target: 3 substantive conversations held and at least one explicit buyer next step. Evidence must be in the conversation records. | Mark target missed if unmet and explain why. Do not convert planned calls into completed research. |
+| **Nov 10** | Formal decision gate | GO TO BOUNDED TEST / NARROW / PIVOT / STOP, supported by evidence, disconfirming evidence, buyer path, feasibility, and open safeguards. | No forced winner or product build if evidence is insufficient. |
+| **Nov 15** | Discovery-phase close and handoff | Consolidated decision, status of unresolved issues/PRs, and the next approved phase or explicit continued-discovery decision. | This is administrative closure, not a second gate or automatic build deadline. |
+
+### Weekly review — update this tracker, do not create another report
+
+- What evidence was actually added?
+- What assumption changed, and why?
+- What is the main blocker?
+- What is the one highest-value next action, owner, due date, and completion condition?
+- What should stop because it is not required for the current decision?
+
+If there was no new customer evidence, record that plainly. Public research, synthetic tests, planned outreach, and internal AI-assisted walkthroughs must not be represented as customer validation. Product/data work remains bounded by the Master Plan's scope and Tier 2 safeguards.
