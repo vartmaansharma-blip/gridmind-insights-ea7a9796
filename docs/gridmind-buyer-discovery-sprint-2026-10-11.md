@@ -12,6 +12,19 @@
 - **Review rule:** assess the actual quality of routes, responses, and next steps after the small test. A small or immature sample cannot establish market demand or prove absence of demand. If suitable contacts cannot be identified, record access as the blocker; do not invent prospects.
 - **30-day outcome:** GO TO BOUNDED TEST / NARROW / PIVOT / STOP. A paid pilot and verified savings are not required within 30 days.
 
+## Public desk context — 2026-10-13
+
+These are **public-source facts for research orientation**, not customer evidence, demand proof, or a validated commercial wedge.
+
+| Topic | Source-backed observation | What it does and does not mean |
+|---|---|---|
+| Adityapur industrial base | The official [JIADA Adityapur page](https://jiada.jharkhand.gov.in/adityapur) currently lists **1,533 total industrial units** for the Adityapur regional area. | Establishes a sizable industrial setting; does not identify active, reachable, right-sized buyers or their pain. |
+| Automotive-component listings | The [ASIA automotive-components directory](https://asiajamshedpur.com/single-category/automotive-components-and-assemblies/) displays **116 directory items** in that category at the time of this review. | This is an association directory count, not a census or a percentage of all Adityapur units. Do not repeat “85% auto parts” without a credible, current source and a clear denominator. |
+| Electricity tariff | [JBVNL's official tariff page](https://jbvnl.co.in/tariff) lists FY 2026–27 tariff material; the [JSERC tariff-order index](https://jserc.org/tariff.aspx) lists the FY 2026–27 JBVNL tariff determination dated **25 March 2026**. | Tariff impact varies by consumer category, demand, kVAh/kWh billing, fixed/demand charges, and other components. No blanket “tariff rose 8%” claim is accepted here; compare the relevant category and prior-year order before quantifying. |
+| Power/production disruptions | No specific, independently sourced recent factory disruption has been established in this desk pass. | Ask participants about a recent event and how it was handled. Do not present a hypothetical shutdown or a public headline as a validated target-customer problem. |
+
+**Segment hypothesis, not a desk fact:** owner-run or mid-size manufacturers (roughly 50–300 staff) in the Jamshedpur–Adityapur belt may be accessible enough for bounded discovery. Confirm firm size, role, buyer route, current alternatives, and actual pain during conversations.
+
 ## 2. Stable candidate register
 
 Use only these IDs across notes and decisions. Never use “Hypothesis A/B” without the ID.
