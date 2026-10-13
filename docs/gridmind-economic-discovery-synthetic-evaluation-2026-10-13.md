@@ -109,12 +109,13 @@ Also record: number of records; missing/conflicting fields; findings retained/re
 - T04 prevents double counting.
 - T05 flags the impossible/inconsistent record and pauses interpretation.
 - T06/T07 preserve uncertainty and refuse unsupported causality.
-- T08 removes the unsupported savings claim.
+- T08 removes the unsupported savings claim and blocks any customer-facing financial claim unless its claim register, traceability, review approval, and customer-approved wording are complete.
 - T11 discloses baseline sensitivity rather than cherry-picking.
 - T12 permits a valid “no opportunity” conclusion.
 - T13 separates fixed and variable bill components and states the billing unit; it does not read a volume-driven rise in effective rate as inefficiency.
 - All valid calculations are reproducible; missing data is not silently zero-filled.
-- The brief distinguishes screening signal, estimated potential, implemented change, realized result, and verified/sustained value.
+- The brief distinguishes screening signal, inconclusive/more evidence required, no material opportunity established, potential opportunity, implemented change, realized result, and verified/sustained value; unresolved reviewer dissent remains visible.
+- Period coverage, site/meter boundary, source provenance, and comparable production/operating context are explicitly checked; possible duplicate invoices are reviewed using a composite key and never auto-deleted by invoice ID alone.
 - Effort is recorded honestly, including founder time and any reviewer time/cost.
 
 **Fail the workflow** if any critical defect silently changes the data, produces a financial claim without adequate evidence, double-counts records, implies cause without support, or hides a stop condition. Fix the method and rerun the affected tests before using it on customer information.
@@ -175,7 +176,7 @@ A pass would show only that the defined offline method handles these synthetic e
 
 ### Walkthrough conclusion
 
-- **Specification-level outcome:** all 12 scenarios have a documented conservative expected response, and the prior lightweight synthetic assertions passed.
+- **Specification-level outcome:** 13 scenarios (T01–T13) have documented conservative expected responses. The document reports that lightweight assertions passed in an earlier walkthrough; this update did not rerun those assertions or independently verify code-level tests.
 - **Gaps found:** the method still needs explicit period coverage rules, source provenance and reconciliation, an invoice duplicate-review key, qualified handling of bill components, a comparability/normalization boundary, claim-level evidence traceability, a financial-claim approval gate, output-denominator definitions, defensible baseline selection, and treatment of reviewer disagreement/inconclusive results.
 - **Decision:** the workflow is **not ready for customer-data use**. These gaps must be incorporated into the operating specification and reviewed by a qualified person before a real-data trial. Do not claim a technical or commercial pass.
 - **Actual effort:** elapsed time was not instrumented during this session. Record as “not measured”; do not infer or backfill hours. No independent reviewer time, external costs, or delivery-time performance is claimed.
