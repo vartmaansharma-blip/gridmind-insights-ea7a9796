@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **Status: HISTORICAL SNAPSHOT — NOT A CURRENT EXECUTION AUTHORITY (reviewed 2026-10-13).** This document is preserved for context and evidence. Its dated ratings, status claims, recommendations, and next steps may be stale; do not treat them as current instructions or proof of present readiness. Follow the [canonical Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and current linked GitHub issues for present decisions and blockers. No historical findings below have been deleted or rewritten.
+
 # Phase 1 execution baseline — 2026-10-10
 
 **Purpose:** close the first stabilization phase with repository/CI evidence and explicitly record what remains blocked. This is an engineering baseline, not a production-readiness certification.
