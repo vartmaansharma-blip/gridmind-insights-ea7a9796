@@ -146,3 +146,46 @@ A pass would show only that the defined offline method handles these synthetic e
 **Scenario assertion run (2026-10-13):** all 12 simplified synthetic logic assertions passed in-session (12/12). Checks covered gap detection, explicit MWh-to-kWh normalization while preserving raw values, tariff-effect arithmetic, duplicate IDs, bill/energy inconsistency, non-comparable operating context, unsupported causality, unsupported savings language, missing denominator, conflicting bill values, baseline sensitivity, and a valid no-opportunity outcome. Base intensity and tariff arithmetic checks also passed. These assertions validate the stated fixture logic and expected arithmetic only; they do not execute GridMind application code, prove a production workflow, or substitute for independent domain review. No delivery effort or reviewer time was measured in this run.
 
 **Next action:** use the fixture for a structured human-reviewed offline walkthrough and log actual effort. If a future implementation is created, translate these cases into automated tests only after the manual workflow and intended data model are stable. Do not build a new application module just to make this document look complete.
+
+
+## 8. Structured walkthrough record — 2026-10-13
+
+**Review mode:** internal AI-assisted desk walkthrough against the documented synthetic fixtures and expected behaviors. This is not an independent human review, an energy engineer's sign-off, or execution of GridMind application code. No external reviewer participated. Actual elapsed time was not instrumented; no minutes or reviewer hours are claimed.
+
+### Case-by-case walkthrough
+
+| Test | Walkthrough outcome | Gap identified in current specification | Required tightening before a real-data trial |
+|---|---|---|---|
+| T01 — Missing period | Expected conservative outcome is clear: disclose the gap and do not silently interpolate. | The fixture does not define an expected-period calendar, grace period, or how to handle partial billing cycles. | Record expected periods, received periods, coverage ratio, partial-cycle status, and who approved any exclusion. Default to pause if period coverage could change the conclusion. |
+| T02 — Mixed units | The explicit 110 MWh → 110,000 kWh conversion is correct; raw value/unit must remain visible. | Unit conversion is only a simple example; unknown units and meter multipliers are not fully specified. | Maintain raw value, raw unit, normalized value/unit, conversion factor, source, and conversion rule. Unknown unit or uncertain multiplier = stop that calculation. |
+| T03 — Tariff change | At fixed synthetic quantity, the simplified variable-rate arithmetic difference is ₹120,000. | Real bills can include demand charges, fixed charges, time-of-day rates, taxes, adjustments, and billing-period differences; simple rate decomposition is not sufficient for a real invoice. | Reconcile bill components and dates separately. Label this calculation as an isolated illustrative variable-rate effect only. Require qualified review before interpreting a real bill. |
+| T04 — Duplicate invoice | Same invoice ID appears twice; double-counting must be prevented. | Invoice ID alone may not be globally unique; credits, corrected bills, split invoices, or repeated IDs can be legitimate. | Use a composite review key (site/meter, utility, invoice ID, billing period, amount) and quarantine possible duplicates for source confirmation. Never auto-delete based only on matching ID. |
+| T05 — Implausible value | Under the simplified ₹9/kWh assumption, 12,000,000 kWh implies ₹108,000,000 versus a recorded ₹1,080,000 bill; reconciliation is required. | No calibrated anomaly threshold exists; bill reconciliation itself may be invalid if bill amount excludes or combines components differently. | Treat this as a conspicuous contradiction fixture, not a universal threshold. Compare only like-for-like components; record source and unit checks before deciding which field is wrong. |
+| T06 — Changed operating context | A different product family/process/shift pattern prevents a straightforward causal interpretation. | No validated normalization model or rule for deciding whether periods are comparable exists. | Present raw metrics and context side-by-side. Do not mathematically adjust unless the model and inputs are reviewed by a qualified domain professional; otherwise stop at a screening signal. |
+| T07 — Unsupported cause | “Compressor caused increase” has no evidence attached and must remain a hypothesis. | An empty evidence list is a toy representation and does not define evidence quality or the evidence required to discriminate among causes. | Require a claim-to-evidence map: supporting evidence, contradictory evidence, alternative explanations, and next discriminating check. No root-cause wording without reviewable evidence. |
+| T08 — Unsupported savings claim | The ₹270,000 claim is unsupported by the synthetic baseline and must be rejected as a savings claim. | The specification needs a clear approval gate for any customer-facing financial claim. | Add a mandatory claim register with amount, status, formula, baseline, exclusions, attribution method, reviewer, and customer-approved wording. Default to no savings claim if any required field is missing. |
+| T09 — Missing denominator | Energy intensity cannot be computed without valid positive output. | The denominator may be wrong even when present: mixed product units, rejects, outsourced production, or inconsistent output definitions can invalidate comparison. | Define output unit and inclusion rules per case; verify consistency across periods. Missing/ambiguous/incomparable denominator blocks intensity analysis. |
+| T10 — Conflicting bill values | Two different amounts for the same invoice key must block cost conclusions until reconciled. | Corrected invoices and credit notes may explain the difference; a conflict flag alone cannot determine which record is authoritative. | Preserve both records and their provenance; obtain source-document/credit-note reconciliation and log which version is authoritative. Do not silently overwrite. |
+| T11 — Baseline sensitivity | Different reference choices can change the apparent magnitude; the baseline must be disclosed. | The current illustrative assertion uses an arbitrary sensitivity threshold and a hypothetical alternative baseline; it is not a defensible baseline-selection rule. | Remove any universal 1%/other threshold as an acceptance rule. Report results for plausible comparable baselines and explain selection; domain review decides comparability. |
+| T12 — No material opportunity | A valid process must allow “no material opportunity established.” | The synthetic case assumes qualified review has occurred; it does not test how reviewer disagreement, uncertainty, or insufficient evidence is handled. | Add a status for “inconclusive / more evidence required,” record reviewer dissent, and permit no-opportunity only when the defined scope was adequately assessed. |
+
+### Walkthrough conclusion
+
+- **Specification-level outcome:** all 12 scenarios have a documented conservative expected response, and the prior lightweight synthetic assertions passed.
+- **Gaps found:** the method still needs explicit period coverage rules, source provenance and reconciliation, an invoice duplicate-review key, qualified handling of bill components, a comparability/normalization boundary, claim-level evidence traceability, a financial-claim approval gate, output-denominator definitions, defensible baseline selection, and treatment of reviewer disagreement/inconclusive results.
+- **Decision:** the workflow is **not ready for customer-data use**. These gaps must be incorporated into the operating specification and reviewed by a qualified person before a real-data trial. Do not claim a technical or commercial pass.
+- **Actual effort:** elapsed time was not instrumented during this session. Record as “not measured”; do not infer or backfill hours. No independent reviewer time, external costs, or delivery-time performance is claimed.
+
+### Updated readiness gates
+
+Before any real customer-data trial, require all of:
+1. Written scope and data authorization, approved secure handling and retention/deletion rules.
+2. Qualified reviewer identified and available for the specific scope.
+3. Input provenance, coverage, units, meter/site boundary, and invoice reconciliation documented.
+4. Comparability and baseline rationale recorded; unsupported adjustment is prohibited.
+5. Every financial claim traceable to formulas, inputs, assumptions, exclusions, and review approval.
+6. Clear outcomes for “screening signal,” “inconclusive,” “no material opportunity,” and any supported next step.
+7. Actual task time and direct/reviewer costs measured prospectively.
+8. Existing technical security gates pass before customer data is entered into GridMind's application.
+
+The commercial wedge remains unselected; C1/C4 remain discovery candidates; ₹15,000 and 5–10 working days remain unvalidated; the 2026-11-10 decision gate is unchanged.
