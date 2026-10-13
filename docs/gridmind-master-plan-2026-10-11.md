@@ -685,3 +685,12 @@ The walkthrough confirms that the fixture's conservative intent is appropriate, 
 **Decision:** NO-GO for customer-data use remains. Before any real-data trial, close the eight readiness gates in §8 of the fixture, obtain a qualified reviewer for the proposed scope, and pass the existing technical/security gates. Do not present this internal walkthrough as independent review or commercial validation. The next practical blocker is reviewer availability and the ability to test the workflow with legitimate, authorized evidence—not further product development.
 
 The commercial wedge remains unselected; C1/C4 remain discovery candidates; ₹15,000 and 5–10 working days remain unvalidated hypotheses; the 2026-11-10 decision gate is unchanged.
+
+
+### 16.18 Qualified-reviewer referral route and outreach boundary — 2026-10-13
+
+The [Qualified Reviewer Brief and Referral Plan](gridmind-qualified-reviewer-brief-and-referral-plan-2026-10-13.md) defines a synthetic-only technical review, review questions, selection criteria, and an unsent referral-request draft.
+
+The primary institutional route identified through official public sources is JREDA, which describes itself as Jharkhand's State Designated Agency for BEE energy-efficiency work. The plan asks for a referral to an appropriately qualified industrial energy professional; it does not ask JREDA to endorse GridMind. The BEE directory also lists a potential Ranchi-based candidate with steel/power-sector experience, but the linked individual Form III is dated 2013 and is insufficient by itself to confirm current accreditation. Current qualifications must be verified before any reviewer is represented as currently accredited.
+
+**Status:** no outreach sent, no reviewer contacted or secured, no fee approved, and no independent review completed. External outreach requires appropriate adult/professional oversight. The current request is a synthetic-method critique only; no factory visit or customer data is needed. Customer-data use remains NO-GO until qualified review, authorized evidence handling, and existing technical security gates pass. Commercial wedge, pricing, delivery-time hypothesis, and 2026-11-10 decision gate remain unchanged.
