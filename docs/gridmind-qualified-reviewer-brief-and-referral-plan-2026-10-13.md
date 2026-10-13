@@ -69,7 +69,7 @@ Jharkhand Renewable Energy Development Agency (JREDA) states that it is Jharkhan
 The BEE accredited-auditor directory lists **Shri Shankhajeet Kumar Sinha**, Bhagwat Technologies & Energy Conservation Pvt. Ltd., Ranchi, with steel and power-plant sectors. The directory page is the source for the listing:
 https://beeindia.gov.in/show_content.php?lang=1&level=2&lid=56&ls_id=203
 
-Important caveat: the linked individual Form III record is dated **26 February 2013**. This is not adequate proof by itself that accreditation is current in 2026. Do not describe this person as currently accredited until status and scope are verified through BEE or the individual. The published directory contact details should be rechecked before use.
+**Updated verification (2026-10-13):** the current BEE accredited-auditor directory lists Shri Shankhajeet Kumar Sinha (AEA-0028 / EA-4896), Bhagwat Technologies & Energy Conservation Pvt. Ltd., Ranchi, with steel and power-plant sectors. The linked Form IV PDF includes a related auditor profile dated **12 March 2026**, listing B.E. Mechanical Engineering (BIT Mesra), energy-auditor registration EA-4896, and audit experience including steel and power plants. This is stronger and more recent evidence than the older Form III record; however, GridMind has not independently confirmed the individual's present availability, current authorization for this particular review, or willingness to participate. Verify these directly before engagement. The BEE directory currently publishes `sinhashankhajeet@gmail.com` and mobile numbers `9431106004`, `8335053700`, and `8102506037`; use official directory details respectfully, preferably after adult/professional review of the request.
 
 ### Alternative regional route
 
