@@ -134,7 +134,7 @@ A pass would show only that the defined offline method handles these synthetic e
 | Fixture version | v1, 2026-10-13 |
 | Data | Synthetic only |
 | Base arithmetic independently recalculated in the working session | Yes: intensities 10.00, 11.00, 13.333… kWh/unit; March +33.33% vs January; consumption +20%; output −10%; simplified tariff effect T03 ₹120,000 |
-| Mutation cases fully executed by an automated test runner | **No** — this document defines test cases and expected outcomes; it is not a software test suite |
+| Mutation cases fully executed by an automated test runner | **No** — 12 scenario-level logic assertions were executed in-session against synthetic inputs; this is not a repository/application test suite |
 | Independent energy/engineering review | Not performed |
 | Manufacturer/customer validation | Not performed |
 | Delivery-time validation | Not performed |
@@ -143,4 +143,6 @@ A pass would show only that the defined offline method handles these synthetic e
 | Commercial wedge | Not selected |
 | Existing 2026-11-10 decision gate | Unchanged |
 
-**Next action:** use this fixture for a structured manual/offline walkthrough; record each T01–T12 result and actual effort. If a future implementation is created, translate these cases into automated tests only after the manual workflow and intended data model are stable. Do not build a new application module just to make this document look complete.
+**Scenario assertion run (2026-10-13):** all 12 simplified synthetic logic assertions passed in-session (12/12). Checks covered gap detection, explicit MWh-to-kWh normalization while preserving raw values, tariff-effect arithmetic, duplicate IDs, bill/energy inconsistency, non-comparable operating context, unsupported causality, unsupported savings language, missing denominator, conflicting bill values, baseline sensitivity, and a valid no-opportunity outcome. Base intensity and tariff arithmetic checks also passed. These assertions validate the stated fixture logic and expected arithmetic only; they do not execute GridMind application code, prove a production workflow, or substitute for independent domain review. No delivery effort or reviewer time was measured in this run.
+
+**Next action:** use the fixture for a structured human-reviewed offline walkthrough and log actual effort. If a future implementation is created, translate these cases into automated tests only after the manual workflow and intended data model are stable. Do not build a new application module just to make this document look complete.
