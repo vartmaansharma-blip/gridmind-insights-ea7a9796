@@ -646,3 +646,23 @@ Pass only if missing information is surfaced; calculations are reproducible; gro
 - ₹15,000 and 5–10 working days remain unvalidated hypotheses; no public price or SLA is approved.
 - No reviewer, buyer, customer-data permission, pilot, revenue, savings, or production capability is asserted.
 - Next execution is a synthetic/offline dry-run alongside the existing discovery/access work—not another planning cycle or a new application module.
+
+### 16.15 Synthetic dry-run — initial result (illustrative only)
+
+**Purpose:** check whether the proposed offer distinguishes a visible anomaly from a defensible economic opportunity. All values below are invented solely for workflow testing; they are not manufacturer evidence.
+
+| Synthetic month | Electricity use | Output | Bill | Implied energy intensity | Bill per output unit |
+|---|---:|---:|---:|---:|---:|
+| January | 100,000 kWh | 10,000 units | ₹900,000 | 10.00 kWh/unit | ₹90/unit |
+| February | 110,000 kWh | 10,000 units | ₹990,000 | 11.00 kWh/unit | ₹99/unit |
+| March | 120,000 kWh | 9,000 units | ₹1,080,000 | 13.33 kWh/unit | ₹120/unit |
+
+For this deliberately simplified fixture, the bill is assumed to equal consumption multiplied by a flat ₹9/kWh; fixed charges, demand charges, taxes, power-factor effects, and other bill components are omitted by construction. March use is 20% above January while output is 10% lower; the ratio of kWh per output unit is approximately 33.3% higher. This is a **screening signal**, not proof of waste or cause.
+
+A naïve reference calculation using January's 10 kWh/unit against March's 9,000 units gives 90,000 kWh expected versus 120,000 kWh observed, a 30,000 kWh difference or ₹270,000 at the assumed flat rate. The workflow must **not** label ₹270,000 as savings, verified exposure, or a credible opportunity: January is only one reference month, product mix/operating hours/working days and meter boundary are unknown, and comparability has not been established. The arithmetic is a sensitivity illustration, not a defensible estimate.
+
+**Correct brief conclusion:** “Energy intensity is higher in the synthetic March record. The current evidence does not establish why, whether periods are comparable, or whether the difference is addressable. No savings claim is made.”
+
+**Required next checks:** validate source bills and meter/site boundary; reconcile all tariff components; compare working days and shifts; check product mix/output definition and operating hours; review shutdowns and equipment/process changes; compare a longer suitable reference period; ask the responsible plant/energy professional whether the signal is physically plausible; then recalculate with documented exclusions and uncertainty.
+
+**Dry-run acceptance:** PASS for detecting and describing the ratio change and for refusing to claim savings from inadequate evidence. NOT YET TESTED for independent reviewer agreement, full bill/tariff calculations, realistic delivery time, customer usefulness, willingness to pay, real-world accuracy, or savings. A subsequent fixture should include missing periods, mixed units, a tariff change, duplicate records, and an implausible value before any customer-data test is considered.
