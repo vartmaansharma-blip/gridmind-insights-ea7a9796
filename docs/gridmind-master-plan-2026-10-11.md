@@ -1,8 +1,34 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-12  
+**Last updated:** 2026-10-13  
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
+
+## Executive operating summary — 2026-10-13
+
+**This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
+
+### Working definition and positioning
+GridMind is an **evidence-first industrial investigation service**: it turns a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
+
+### Decisions D1–D8
+| ID | Current decision | Boundary |
+|---|---|---|
+| **D1 — Positioning** | Evidence-first investigation service for one consequential manufacturing question. | Not a generic AI platform or dashboard; no autonomous diagnosis or unsupported savings claims. |
+| **D2 — Initial segment** | Explore owner-run and mid-size manufacturers in the Jamshedpur–Adityapur belt; 50–300 staff is a working segment hypothesis. | Validate size, buyer access, and fit through discovery. Do not present cluster counts or Tata dependence as proof of buyer demand. |
+| **D3 — Sequencing lens** | Compare the electricity-bill and power-disruption entry route first, alongside C1 downtime/production loss and C4 energy/resource inefficiency. | This is a research sequence, not a selected wedge. The 2026-11-10 gate still decides. Do not repeat an unverified blanket “8% tariff rise” claim; use the applicable tariff category/order only after checking it. |
+| **D4 — Offer ladder** | (0) Free one-page workflow/decision map from an interview; (1) bounded paid, human-reviewed brief; (2) recurring monitoring only after evidence. | ₹15,000 and 5–10 working days remain unvalidated hypotheses, not approved pricing or an SLA. |
+| **D5 — Evidence hierarchy** | Public-source facts, participant statements, and controlled experiments stay in separate evidence classes. | Simulated interviews, synthetic fixtures, and desk-only hypotheses never enter the customer evidence ledger. |
+| **D6 — Reviewer dependency** | A qualified reviewer is not required to hold non-technical discovery interviews. | A suitable reviewer remains a gate before technical interpretation or any customer-data test. External outreach still requires appropriate adult/professional support. |
+| **D7 — Scope freeze** | Until the 2026-11-10 decision, no new strategy documents, speculative modules, or feature PRs. | Exception only for necessary infrastructure, correctness, security, and safety fixes. Keep existing controls; do not weaken CI. |
+| **D8 — 2026-10-31 checkpoint** | Target at least 3 substantive manufacturing conversations held and at least 1 explicit next step from a buyer (e.g., introduction to budget owner or request to review a scoped proposal). | If missed, record the actual access constraint and revise the plan honestly. No invented funnel rates or evidence. Real bills/data remain prohibited until Tier 2 gates pass. |
+
+### Current state and next action
+- Commercial wedge: **not selected**. C1 and C4 remain the two active probes.
+- Customer conversations held: **0 confirmed**; buyer next steps: **0 confirmed**; authorized customer data: **0**; reviewer secured: **no**.
+- The ASIA public-route inquiry was sent 2026-10-12; no reply or referral is confirmed. Follow up once around 2026-10-19 if appropriate.
+- The next execution priority is to make 3–5 genuine warm-introduction requests by 2026-10-19 **only where legitimate contacts and capacity exist**, with appropriate adult/professional support. Name that adviser before external outreach.
+- No real bill, factory visit, commercial commitment, or customer-data trial is authorized by this plan. Do not start another planning cycle.
 
 ## 1. Objective
 
@@ -159,7 +185,8 @@ Do not write as if an unassigned reviewer has approved anything. A missing role 
 
 ## 13. Current next action
 
-The initial ASIA public-route inquiry was sent on 2026-10-12; the next action is to log any actual reply and follow up once after 4–5 business days if appropriate (target around 2026-10-19). This is an access experiment, not a customer lead or evidence of demand. In parallel, prepare legitimate warm-introduction requests with appropriate adult/professional support, without scraping or inventing contacts. Record actual funnel numbers in the tracker. **Do not start another planning cycle.**
+Stop expanding the plan and focus on access. The ASIA public-route inquiry was sent on 2026-10-12; no reply, referral, or conversation is confirmed. Check for an actual response and follow up once around 2026-10-19 if appropriate. In parallel, make 3–5 genuine warm-introduction requests by 2026-10-19 only if legitimate contacts and actual capacity exist. Appropriate adult/professional support is required before external outreach; name the adviser in §10 first. Log actual messages, replies, introductions, calls booked/held, and explicit buyer next steps in the Buyer Discovery Sprint tracker. Do not count planned activity as completed, infer demand from a small sample, or start another planning cycle. The checkpoint is 3 substantive conversations and at least one explicit buyer next step by 2026-10-31; the formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains 2026-11-10.
+
 
 ## 14. Phase decisions consolidated — 2026-10-12
 
