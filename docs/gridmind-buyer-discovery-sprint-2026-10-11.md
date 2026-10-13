@@ -239,3 +239,37 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 ### Access experiment status update
 
 As of this edit, the only confirmed action is the previously reported ASIA public-route inquiry. No named warm connector, reply, referral, meeting, interview, qualified reviewer, customer-data permission, or buyer commitment is confirmed. The Oct 19 checkpoint remains a review date, not a quota to be met by inventing activity.
+
+## 13. Execution update — ACMA route prepared, not sent (2026-10-13)
+
+**Verified public route:** ACMA's official contact page currently lists its Eastern Region office at Room No. 4, Centre for Excellence, Jubilee Road, Jamshedpur, and publishes `acmaer@acma.in` and `anjali.nair@acma.in`. Source: [ACMA official contact page](https://acma.in/contact.php) (checked 2026-10-13). This verifies the public channel only; it does not establish a relationship, referral, or willingness to help.
+
+**Status:** The following message is prepared as a draft only. It has **not been sent**. External industrial outreach must first be reviewed and supported by an appropriate trusted adult/professional. No outreach is being sent by this workflow.
+
+**Subject:** Request for the appropriate route for a short manufacturing-operations research conversation
+
+**Draft:**
+
+> Hello ACMA Eastern Region team,
+>
+> I’m working on GridMind, an early project exploring how manufacturing teams investigate recurring production or operating-cost problems. We have not selected a product or made savings claims; the aim is to understand existing workflows before deciding what, if anything, should be built.
+>
+> Could you advise whether there is an appropriate public learning event or process through which I could request a short research conversation with a willing production/operations or energy/utility professional? I am not asking for a member list, endorsement, plant access, or confidential information. The conversation would focus on one past example and the process used to investigate it.
+>
+> Thank you for pointing me to the appropriate channel.
+>
+> Regards,  
+> GridMind
+
+**Send checklist (must be completed before sending):**
+1. Review the wording and decision to contact with an appropriate trusted adult/professional.
+2. Re-open the official contact page on the day of contact and use only a published channel.
+3. Send only if the reviewer agrees the contact is appropriate; do not imply that GridMind represents a school, employer, association, or customer.
+4. Record the actual send date and channel only after it is sent. Until then, count it as **0 sent**.
+5. Log any reply exactly as received and record the concrete next step; a reply is not customer validation.
+
+**Next actions:**
+- ASIA: inspect the actual sent thread/inbox; if no reply and still appropriate, prepare/send at most one follow-up around 2026-10-19 after review. The tracker cannot verify inbox state.
+- ACMA: draft prepared; awaiting review; not sent.
+- Warm introductions: no contacts or requests invented. If no legitimate introducers can be identified, record an access-capacity blocker rather than manufacture a funnel.
+- Current actuals remain unchanged until evidence is supplied: warm introduction requests sent = 0; replies confirmed = 0; introductions offered = 0; calls booked/held = 0; customer data authorized = 0.
