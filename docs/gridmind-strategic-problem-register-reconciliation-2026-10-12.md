@@ -411,3 +411,90 @@ A bounded commercial test should not be proposed until all relevant conditions a
 - No claim depends on unverified savings, unsupported causal attribution, or a hypothetical conversion rate.
 
 **Phase 4 disposition:** the offer boundary, economics equations, and evidence ladder can be specified now; customer acquisition, buyer willingness to pay, delivery economics, repeatability, and service-versus-software fit cannot be solved by desk analysis alone. They remain open until actual evidence exists. This does not authorize a product build or customer-data test, and it does not change the canonical 2026-11-10 decision gate.
+
+
+## Phase 5 preflight — prototype scope and technical trust (Problems 21–30, 2026-10-13)
+
+**Purpose:** Resolve the parts of Problems 21–30 that can be made precise without pretending a customer workflow has been validated. This is a supporting audit checkpoint, not permission to resume broad product development. The canonical Master Plan still makes discovery the only P0; the commercial wedge remains undecided; no customer or production data may be used.
+
+### Decision before implementation
+
+**Do not build a new prototype slice yet.** The missing input is not another feature specification: it is evidence of which customer workflow deserves to be supported. A synthetic/offline test protocol can be prepared, and existing code/security gaps can be tracked, but neither substitutes for customer evidence. Re-enter implementation only when the Master Plan identifies a bounded workflow requirement or when a narrowly scoped safety/reliability fix is needed to preserve the existing system.
+
+### Problem-by-problem disposition
+
+| Problem | What can be resolved now | What remains unresolved | Disposition |
+|---:|---|---|---|
+| **21 — Prototype scope not locked to a validated workflow** | Define a scope-entry gate: one named user, one operational decision, one input boundary, one output, one human approval point, and one observable success/failure condition. | Which workflow and user are justified by customer evidence. | **Blocked on discovery; no new feature work.** |
+| **22 — Prototype evaluation criteria** | Establish the protocol below before any implementation test: fixed fixtures, expected outputs, explicit failure cases, traceability, and separate technical/commercial claims. | Exact workflow-specific labels and domain acceptance limits; these require a chosen workflow and appropriate reviewer. | **Protocol drafted; workflow-specific evaluation not yet authorised.** |
+| **23 — Incomplete, inconsistent, or contradictory evidence** | Require the system to preserve source provenance, distinguish missing from zero, surface conflicting timestamps/units, and refuse to silently resolve ambiguity. Include explicit negative tests. | Actual end-to-end implementation coverage on an exact commit; no claim is made that existing behavior passes. | **Requirements clarified; code verification outstanding.** |
+| **24 — Economic-impact calculation** | Require every value to identify units, period, source, formula, currency, assumptions, included cost categories, and uncertainty. Separate gross exposure from addressable and attributable impact; prevent double counting. | A workflow-specific economic model, independent review, and defensible baseline/outcome evidence. | **Calculation contract clarified; no validated impact method or savings claim.** |
+| **25 — Technical reliability/security gates** | Preserve the existing release gate and dependencies. The release issue requires authenticated two-user/two-factory isolation with non-empty data, unauthorized read/write denial, persistence/reload, migration/schema reconciliation, auth safeguards, exact-commit tests, and deployment verification. | The GitHub Actions billing/spending-limit blocker (Issue #42), exact-head CI/migration replay, live workflow verification, independent security review, and unresolved schema/auth items. | **NO-GO for production/customer-data use. Blocked; do not weaken checks or mutate production.** |
+| **26 — Role of AI** | Limit AI to organising evidence, drafting hypotheses, surfacing inconsistencies, and proposing questions. Every material statement must link to its source; causal conclusions and operational recommendations require qualified human review and customer approval. | Task-specific error rates, reviewer workload, failure thresholds, and whether AI adds value over the current workflow. | **Boundary defined; value and reliability unproven.** |
+| **27 — Actual factory constraints** | Turn unknowns into an observation checklist: record systems, manual handoffs, timestamps/clocks, unit conventions, missingness, connectivity, shift boundaries, access approvals, staff time, production constraints, and permissible review windows. | Actual site conditions; these cannot be inferred from desk research or a synthetic packet. | **Unknown; validate through a willing participant before designing around it.** |
+| **28 — Required professional expertise** | Match review to claim type: production/downtime interpretation needs an appropriately experienced operations/industrial professional; energy calculations need a qualified energy reviewer; security/data architecture needs a qualified security practitioner. | Named, available reviewers, scope of competence, review time/cost, and conflict-of-interest handling. | **Role requirements clarified; reviewers not appointed.** |
+| **29 — Data ownership, confidentiality, and reuse** | Adopt least-data-by-default: verbal/non-confidential discovery first; no customer records until written scope, data owner approval, permitted purpose, transfer/storage controls, retention/deletion, access list, and reuse restrictions are agreed. No cross-customer learning by default. | Actual customer permissions, terms, approved infrastructure, and deletion evidence for any future engagement. | **Guardrail documented; customer-data processing remains prohibited until gates pass.** |
+| **30 — Technical vs commercial validation** | Use separate verdicts in every report: (A) protocol/documentation dry-run, (B) software test on an exact commit, (C) independent domain review, (D) customer workflow validation, (E) production/security readiness, and (F) measured outcome. Passing one never implies another. | Actual software, expert, customer, and outcome evidence. | **Distinction documented; must be enforced in future reporting.** |
+
+### Minimum synthetic/offline evaluation protocol
+
+This protocol is deliberately workflow-neutral until a customer problem is evidenced. Once a workflow is selected, replace generic examples with a fixed, versioned test fixture and an independently reviewed expected answer before running the test.
+
+1. **Freeze the task contract.** State the user, decision, input schema, source-of-truth rules, units, time semantics, output format, human approval point, and explicit out-of-scope conclusions.
+2. **Build a small adversarial fixture set.** Include a clean case; missing fields; explicit numeric zero; contradictory timestamps; incompatible units; duplicated records; ambiguous asset/factory identity; unsupported cause; untraceable cost entry; overlapping/double-counted loss; and insufficient evidence. All values must be invented and visibly labelled synthetic.
+3. **Write expected results before execution.** For each case specify which facts may be reported, which fields must be flagged, which calculations are reproducible, which claims must be withheld, and whether the correct result is “insufficient evidence.”
+4. **Require traceability.** Every material observation points to an input record/field. Every calculation exposes formula, unit, period, source values, and assumptions. No silent imputation, unit conversion, conflict resolution, or missing-as-zero behavior.
+5. **Require abstention and escalation.** Contradictory or inadequate evidence must trigger a visible limitation and a specific evidence request—not a confident narrative. Causal conclusions, safety-relevant advice, and operational changes must not be autonomously approved.
+6. **Measure task-specific behavior.** Record case-level pass/fail, false claims, missed conflicts, calculation differences, unsupported causal statements, traceability completeness, abstention correctness, reviewer corrections, and effort. Do not adopt a universal “95% accuracy” target before defining the task, labels, consequence of error, and sample.
+7. **Reproduce the run.** Record repository commit, fixture version/hash, configuration, evaluator/reviewer, environment, results, and known limitations. A test on one commit does not validate another.
+8. **Review failure before expanding.** Any unsupported material claim, hidden conflict, incorrect unit/economic calculation, cross-factory data exposure, or unapproved action is a blocking failure for the relevant scope. Do not average a critical failure away with a high overall score.
+
+### Economic calculation contract
+
+Any future impact estimate must keep these quantities separate:
+
+- **Observed quantity:** what the source actually records (e.g., recorded stop duration or measured kWh).
+- **Gross exposure:** a transparent calculation based on stated rates and periods, with assumptions labelled.
+- **Addressable portion:** the share plausibly affected by a defined intervention, with evidence for the mechanism.
+- **Incremental effect:** improvement beyond what the customer would likely have achieved through the current process or alternative.
+- **Verified outcome:** an observed post-action result over an agreed period, adjusted or qualified for relevant confounders.
+- **GridMind-attributable value:** only the portion supported by a defensible attribution method; do not infer this from temporal sequence alone.
+
+Do not add downtime cost, lost production value, contribution margin, scrap, and overhead together unless the accounting definitions prove they are distinct. Do not equate units below target with units caused by one event. Do not equate gross exposure with recoverable savings, or savings with revenue for GridMind.
+
+### Required factory-constraint observation sheet
+
+For the first authorised conversation or visit, capture only what the participant is willing to share:
+
+- How the event/problem was first noticed and who owns the record.
+- Which systems, paper logs, spreadsheets, machine displays, or people supply evidence.
+- Whether clocks, units, asset names, shifts, and reporting periods agree.
+- Where data are absent, entered manually, delayed, overwritten, or disputed.
+- Which handoffs and approvals determine whether the investigation proceeds.
+- How the current team checks the explanation and decides on action.
+- Which conditions would make a proposed workflow unusable (network access, device restrictions, shift workload, language, production windows, IT approval).
+- Who can authorise access, interpretation, and any action.
+- What evidence would change the participant’s decision, and what evidence cannot be shared.
+
+Do not represent this checklist as completed site research. No factory visit or observation is currently confirmed.
+
+### Re-entry and stop gates
+
+**A bounded synthetic software test may be proposed only after** a single workflow question, source semantics, fixture, expected results, pass/fail criteria, and appropriate reviewer are identified. It must remain separate from customer validation.
+
+**Any real customer-data test remains NO-GO until** the applicable Issue #29 release gates pass on the exact candidate deployment; a named customer owner and data approver authorise the scope in writing; data minimisation/retention/deletion and permitted-use terms are documented; qualified review is available; and baseline, outcome, and stop criteria are agreed. The present GitHub Actions runner-start/billing blocker in Issue #42 must be resolved by the account owner before CI can be treated as meaningful evidence. Do not edit workflows to conceal it.
+
+**Implementation re-entry requires** a customer-evidenced workflow and an explicit Master Plan decision. Until then, work on broad analytics, new modules, autonomous diagnosis, machine connectivity, dashboards, and production integration remains deferred.
+
+### Phase 5 disposition
+
+- **Requirements/protocol:** clarified in this document.
+- **Synthetic documentation dry-run:** previously completed for one fictional incident packet; not repeated or upgraded by this checkpoint.
+- **Software test suite on an exact current commit:** not run as part of this phase.
+- **Independent domain review:** not obtained.
+- **Customer workflow/site validation:** not performed.
+- **Production/security readiness:** **NO-GO**; release issue #29 and runner-start blocker #42 remain open.
+- **Customer-data use:** not authorised.
+- **Commercial validation:** still separate and dependent on real buyer evidence.
+
+**Exit condition:** a reproducible, workflow-specific demonstration passes predeclared criteria, with independent review where needed. This exit does not authorise production use; customer permission, release/security gates, and operational oversight remain separate requirements.
