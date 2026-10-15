@@ -1,4 +1,8 @@
 const baseUrl = Deno.env.get("SUPABASE_URL") ?? "http://127.0.0.1:54321";
+// This suite writes synthetic fixtures and must never target a hosted project.
+if (!["localhost", "127.0.0.1", "[::1]"].includes(new URL(baseUrl).hostname)) {
+  throw new Error("HTTP acceptance tests require an isolated loopback Supabase URL");
+}
 const anonKey = Deno.env.get("SUPABASE_ANON_KEY");
 if (!anonKey) throw new Error("SUPABASE_ANON_KEY is required");
 

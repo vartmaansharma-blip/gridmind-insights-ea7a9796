@@ -1,9 +1,9 @@
+import { inputSnapshotSha256, verifyStoredAnalysis } from "../_shared/analysis-verification.ts";
 import { createClient } from "npm:@supabase/supabase-js@2.117.2";
 import { buildAnalysisInputFromCanonical, type AnalysisEconomicContext } from "../_shared/analysis-input-adapter.ts";
 import { readBoundedJsonBody } from "../_shared/request-body.ts";
 import {
   analyzeFactoryLoop,
-  canonicalize,
   reproducibilityFingerprint,
   type AnalysisInput,
   type AnalysisResult,
@@ -78,23 +78,6 @@ async function readBoundedRows<T>(
     if (values.length < to - from + 1) return { rows, error: null, tooMany: false };
   }
   return { rows, error: null, tooMany: rows.length > maxRows };
-}
-async function inputSnapshotSha256(input: AnalysisInput): Promise<string> {
-  const bytes = new TextEncoder().encode(canonicalize(input));
-  const digest = await crypto.subtle.digest("SHA-256", bytes);
-  const hex = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
-  return `sha256:${hex}`;
-}
-
-function reproducible(stored: StoredAnalysisRun, factoryId: number, result: AnalysisResult): boolean {
-  return stored.factory_id === factoryId &&
-    stored.input_snapshot.factoryId === factoryId &&
-    stored.input_snapshot.current.assetId === String(stored.asset_id) &&
-    stored.algorithm_version === result.algorithmVersion &&
-    stored.analysis_status === result.status &&
-    canonicalize(stored.refusal_codes) === canonicalize(result.reasonCodes) &&
-    stored.result_fingerprint === reproducibilityFingerprint(result) &&
-    canonicalize(stored.result) === canonicalize(result);
 }
 
 runtime.serve(async (request: Request): Promise<Response> => {
@@ -349,24 +332,12 @@ runtime.serve(async (request: Request): Promise<Response> => {
     if (storedError) return reply({ error: "ANALYSIS_RUN_RELOAD_FAILED" }, 500);
     if (!stored) return reply({ error: "ANALYSIS_RUN_NOT_FOUND" }, 404);
 
-    let recomputed: AnalysisResult;
     try {
-      recomputed = analyzeFactoryLoop((stored as StoredAnalysisRun).input_snapshot);
+      const verification = await verifyStoredAnalysis(stored as StoredAnalysisRun, factoryId);
+      return reply({ stored: stored as StoredAnalysisRun, ...verification });
     } catch {
       return reply({ error: "STORED_ANALYSIS_INPUT_INVALID", reproducible: false }, 409);
     }
-    const recomputedFingerprint = reproducibilityFingerprint(recomputed);
-    const recomputedInputSnapshotFingerprint = await inputSnapshotSha256((stored as StoredAnalysisRun).input_snapshot);
-    const inputSnapshotIntegrity = typeof (stored as StoredAnalysisRun).input_snapshot_sha256 === "string" &&
-      (stored as StoredAnalysisRun).input_snapshot_sha256 === recomputedInputSnapshotFingerprint;
-    return reply({
-      stored: stored as StoredAnalysisRun,
-      recomputed,
-      recomputedFingerprint,
-      recomputedInputSnapshotFingerprint,
-      inputSnapshotIntegrity,
-      reproducible: inputSnapshotIntegrity && reproducible(stored as StoredAnalysisRun, factoryId, recomputed),
-    });
   } catch {
     return reply({ error: "INTERNAL_SERVER_ERROR" }, 500);
   }

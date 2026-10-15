@@ -49,6 +49,10 @@ begin
 
   insert into public.factory_members (factory_id, user_id, organization_id, role)
   values (factory_a, user_a, org_a, 'owner'), (factory_b, user_b, org_b, 'owner');
+  -- Capture the forbidden target before assuming the API role. Organizations
+  -- intentionally has no authenticated SELECT grant; testing membership denial
+  -- must not depend on granting unrelated administrative table access.
+  perform set_config('gridmind.test_org_b', org_b::text, true);
 end;
 $$;
 
@@ -136,7 +140,7 @@ begin
   -- User A must not be able to promote, modify, or add members in organization B.
   update public.organization_members
     set role = 'owner'
-    where organization_id = (select id from public.organizations where name = 'gridmind-ci-org-b')
+    where organization_id = current_setting('gridmind.test_org_b')::bigint
       and user_id = 'b2222222-2222-4222-8222-222222222222';
   if found then
     raise exception 'CROSS_TENANT_MEMBERSHIP_UPDATE_WAS_ALLOWED';
@@ -144,8 +148,7 @@ begin
 
   begin
     insert into public.organization_members (organization_id, user_id, role, status)
-    select id, 'a1111111-1111-4111-8111-111111111111', 'owner', 'active'
-    from public.organizations where name = 'gridmind-ci-org-b';
+    values (current_setting('gridmind.test_org_b')::bigint, 'a1111111-1111-4111-8111-111111111111', 'owner', 'active');
     if found then
       raise exception 'CROSS_TENANT_MEMBERSHIP_INSERT_WAS_ALLOWED';
     end if;
@@ -232,6 +235,21 @@ begin
      'a1111111-1111-4111-8111-111111111111')
   returning id into run_id;
 
+  if (select input_snapshot_sha256 from public.factory_analysis_runs where id = run_id) is not null then
+    raise exception 'LEGACY_ANALYSIS_DIGEST_WAS_FABRICATED';
+  end if;
+
+  begin
+    insert into public.factory_analysis_runs
+      (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, input_snapshot_sha256, result,
+       result_fingerprint, analysis_status, refusal_codes, created_by)
+    select factory_id, asset_id, 'invalid-digest', algorithm_version, input_snapshot, 'sha256:INVALID', result,
+       result_fingerprint, analysis_status, refusal_codes, created_by
+    from public.factory_analysis_runs where id = run_id;
+    raise exception 'INVALID_DIGEST_FORMAT_WAS_ACCEPTED';
+  exception when check_violation then null;
+  end;
+
   begin
     insert into public.factory_analysis_runs
       (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,
@@ -290,3 +308,6 @@ end;
 $$;
 
 rollback;
+
+-- psql resolves this path relative to this SQL file, including in Migration Replay.
+\ir workspace-bootstrap-security.sql

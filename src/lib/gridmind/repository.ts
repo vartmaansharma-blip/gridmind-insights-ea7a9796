@@ -350,7 +350,12 @@ export async function createFactoryWorkspace(input: { name: string; location?: s
   const { data, error } = await supabase.rpc("create_factory_workspace", {
     p_name: input.name, p_location: input.location, p_industry: input.industry,
   });
-  if (error) throw error;
+  if (error) {
+    if (error.message.includes("WORKSPACE_ORGANIZATION_AMBIGUOUS")) {
+      throw new Error("You manage multiple organizations. Factory creation needs an explicit organization selection; contact your workspace administrator.");
+    }
+    throw error;
+  }
   return Number(data);
 }
 

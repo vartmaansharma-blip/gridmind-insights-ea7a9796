@@ -2,7 +2,7 @@
 
 **Status:** Preflight confirmed a production/repository schema mismatch. This document is an execution runbook, not authorization to mutate production.
 **Environment:** Supabase project `bvqmvgbfqhgczwbvlqkk`; Vercel project `gridmind`.
-**Authority:** Follow the GridMind Decision Constitution and the Phase 1, 2, and 3 trackers. Security, evidence integrity, and human approval override release pressure.
+**Authority:** Follow the canonical Master Plan, Decision Constitution, Issue #29, and technical release gate. Historical Phase 1, 2, and 3 trackers are reference evidence. Security, evidence integrity, and human approval override release pressure.
 
 ## 1. Decision
 
@@ -315,3 +315,8 @@ A new read-only query was run against Supabase project `bvqmvgbfqhgczwbvlqkk` af
 The RPC definition is a real behavior mismatch, but this query does not prove a cross-tenant bypass or establish why the candidate migration has not been applied. The correct next step is an isolated replay and membership-matrix test, followed by independent review of the full migration-history/schema drift. Do not hand-edit migration history, blindly replay earlier migrations, or run production DDL without explicit authorization, a recovery point, an authorized operator and a second reviewer.
 
 No production schema, data, grants, Auth settings, migration history, or deployment target was changed.
+
+
+## Candidate implementation — 2026-10-15
+
+The [Supabase checkpoint](gridmind-supabase-connection-security-audit-2026-10-11.md#supabase-implementation-checkpoint-2026-10-15) records the fresh SELECT-only preflight, the additive workspace ambiguity migration, digest/security tests, native PostgreSQL replay, and unfulfilled release requirements. Use `scripts/check-supabase-migration-drift.mjs` to compare exported migration identities and `supabase/tests/gridmind-schema-preflight.sql` to capture live columns, constraints, triggers, policies, and ACLs. These tools perform no repair or production mutation. Existing missing-column SQL remains unchanged; seven version aliases still require operator review before any migration runner is used on production.
