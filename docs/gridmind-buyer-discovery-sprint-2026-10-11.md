@@ -1,6 +1,6 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-15 (protocol revision; no new customer evidence)
+**Last updated:** 2026-10-15 (dad nominated as supporting adult; no new buyer evidence)
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
@@ -67,7 +67,7 @@ For C4, do not promise an electricity-bill/tariff audit unless a qualified energ
 
 | Item | Actual name/private reference | Consent/role confirmed | Owner | Checkpoint | State and next action |
 |---|---|---|---|---|---|
-| Primary adult/professional outreach supporter | **UNASSIGNED** | No | Founder | Before any outreach; review Oct 19 | Request support from a trusted adult/professional; no external action before accepted |
+| Primary adult/professional outreach supporter | **Dad nominated by founder Oct 15** | Not confirmed | Founder | Before any outreach; review Oct 19 | Confirm dad's agreement and scope; no external action before accepted |
 | Backup supporter / qualified referral route | **UNASSIGNED** | No | Founder | Oct 19–24 | If primary unavailable, ask a separate trusted adult/professional; no assumed acceptance |
 | First warm introducer | **NOT IDENTIFIED** | No | Founder + accepted supporter | Oct 19 | Identify 3–5 actual legitimate contacts if possible; only then record individual requests |
 | Public route (ASIA) | R2; initial inquiry sent Oct 12 (founder report) | No response confirmed | Founder + accepted supporter for follow-up | Oct 19 | Check actual reply, follow up once if appropriate |
@@ -81,13 +81,23 @@ The listed institutions are public routes to investigate, not verified leads, en
 
 | Route ID | Route | Intended ask | Status | Owner / next action |
 |---|---|---|---|---|
-| **R1** | Warm introduction through existing trusted professional/family network | One introduction to a production/operations or energy/utility professional | **Not activated; no connector named** | Founder: identify reachable introducers with trusted adult/professional support |
+| **R1** | Warm introduction through existing trusted professional/family network; founder identified dad on Oct 15 | Confirm support, then ask whether he knows one suitable manufacturing professional or introducer | **Dad nominated; agreement and relevant connections unknown; no introduction request sent is claimed** | Founder: review the draft with dad and record an actual route only if one exists |
 | **R2 — first public route** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/; published email `deargsasia@gmail.com`, phones `+91 87090 14720` / `+91 90608 10588` (re-check before use) | Ask for a public event or a willing professional for a 20-minute research conversation; do not request a member list | **Initial inquiry sent 2026-10-12; reply/referral not confirmed** | Founder: check for reply; follow up once after 4–5 business days if appropriate (around Oct 19) |
 | **R3** | ACMA Eastern Region official contact: https://www.acma.in/contact.php; official page lists `acmaer@acma.in` and `anjali.nair@acma.in` (verified 2026-10-12) | Ask about public events / proper introduction process; no member-list request | Official contact page re-checked 2026-10-12; **not contacted** | **Preferred secondary route** if ASIA does not produce a suitable path: directly relevant automotive-component association with an Eastern Region office in Jamshedpur. This is a route, not a buyer lead or endorsement. |
 | **R4** | Indo-Danish Tool Room / MSME Tool Room Jamshedpur industry-services enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php; official page lists `reach@idtr.gov.in`, `+91 657 2201261/62` (verified 2026-10-12) | Ask about public technical learning / suitable research contacts; do not ask for private plant data or endorsement | Official industry-enquiry page re-checked 2026-10-12; **not contacted** | Alternate technical-learning route if ACMA is unsuitable or unresponsive. This is a service/contact route, not a confirmed buyer introduction. |
 | **R5** | JSIA affiliated bodies directory: https://www.jsia.co.in/affiliated-bodies.php | Identify an official public route, not scrape personal details | Not contacted | Secondary route |
 
 **Route verification note — 2026-10-12:** The official ACMA contact page lists its Eastern Region office in Jamshedpur and the regional emails above; the official IDTR industry-services page accepts manufacturing/design/engineering/consultancy enquiries. These sources establish that the routes exist, not that either organisation will introduce a buyer. Use one route at a time, with appropriate adult/professional review, and log only actual messages and replies.
+
+### First access action — prepared, not sent
+
+**Founder-provided input, Oct 15:** “dad.” This identifies a proposed supporting adult/first family route only; no agreement, qualification, contact network or completed outreach is inferred.
+
+**Private conversation draft for dad:** “Can you help me review a short GridMind research request and, if you know someone suitable, introduce me to one manufacturing owner or operations/energy professional? I want to understand one recent costly operational issue in a 20-minute conversation. We would ask for no bills, confidential records or factory visit, and make no sales or savings promise.”
+
+Before using the existing external draft in §3, record dad's agreement, the proposed role/relationship of the actual introducer, why the route is appropriate, and review of the specific message. Keep private names/contact details out of the repository unless appropriately agreed; a route ID and relationship description are enough. Do not create fictitious prospect rows to reach 3–5. If dad cannot identify a route, record that result and consider the existing secondary route with his support.
+
+Use the existing conversation record for each genuine introduction. Minimum access-entry fields: route ID; relationship/target role; permission/oversight status; intended ask; actual send date or “not sent”; reply; introduction; booking; next action/owner/date. An introduction is not a held conversation.
 
 ### Funnel ledger
 
@@ -259,6 +269,25 @@ For each promising case, capture:
 
 The fee must be defensible against conservative incremental value and cover delivery cost. Service-led is a valid experiment, not proof of scalable software economics. If the value pool is too small, delivery too bespoke, or buyer unwilling to pay, reject or narrow the candidate rather than inventing a $20k ACV.
 
+### Per-case cost worksheet — complete only after a concrete case exists
+
+No case is qualified yet. The fields below are a reusable record within this ledger, not estimated costs or approved prices. Copy for a real case only; unknown costs prevent a credible quote.
+
+| Input | Value now | Evidence needed |
+|---|---|---|
+| Case ID / buyer decision / current alternative | Unknown | Discovery record and accountable buyer |
+| Founder hours: acquisition, intake, analysis, coordination, corrections and closeout | Unknown | Task estimates initially; actual timed work later |
+| Founder replacement-cost rate | Unknown | Explicit approved internal assumption, not zero by default |
+| Reviewer scope, fee basis, hours/total fee and availability | Unknown | Written response; distinguish hourly rate from a total quote |
+| Tools, transfer, travel and other direct delivery costs | Unknown | Applicable itemized costs; exclusions stated |
+| Overhead/risk contribution required | Unknown | Explicit assumption and rationale |
+| Conservative incremental buyer benefit and implementation/measurement costs | Unknown | Case evidence, uncertainty and current-alternative comparison |
+| Proposed fee / buyer net benefit / purchase decision | Unknown | Costed scope and actual buyer response; no quote approved |
+
+Calculation: founder labor = total founder hours × stated internal rate. Reviewer cost = agreed total fee **or** agreed hours × rate, never both. Expected case cost = founder labor + reviewer cost + other direct costs; avoid counting the same intake/rework hours again. Required fee floor = expected case cost + stated overhead/risk contribution. Buyer net benefit = conservative incremental gross benefit − implementation/measurement costs − proposed fee, with overlapping items removed. Unknowns remain unknown; do not calculate a margin from missing inputs. Payment timing and evidence uncertainty must be reviewed separately from accounting contribution.
+
+**Reviewer preparation:** reuse the [existing reviewer brief and unsent drafts](gridmind-qualified-reviewer-brief-and-referral-plan-2026-10-13.md); do not create another outreach packet. Request only a synthetic-method review scope, timing and fee after appropriate message review. A public directory listing does not establish acceptance. No paid review or customer-data handling is approved by this worksheet.
+
 ## 9. Decision dates and stop rules
 
 **Precommitted 2026-11-10 classification (refer to [Master Plan §14](gridmind-master-plan-2026-10-11.md) for definitions):** GO to **bounded-test design** requires **≥3 held substantive interviews**, **≥2 independent ownership groups**, **≥2 specific recent cases favoring the same candidate with a residual gap vs current alternative**, **≥1 explicit budget-owner path and attributable buyer next step**, and a plausible bounded/safe delivery scope. **All must hold.** These are small-sample *operating gates*, not statistical market validation; Tier 2 permissions/expert review/secure handling remain separate and cannot be waived.
@@ -283,7 +312,7 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 
 | Priority | Task | Owner | Due | Status |
 |---|---|---|---|---|
-| **P0 — BLOCKED** | Obtain consent from real adult/professional outreach supporter before new external approach | Founder + trusted adult/professional | Before any send; Oct 19 review | Not assigned; public/offline preparation only |
+| **P0 — BLOCKED** | Obtain consent from real adult/professional outreach supporter before new external approach | Founder + trusted adult/professional | Before any send; Oct 19 review | Dad nominated; agreement pending; public/offline preparation only |
 | **P0** | Identify 3–5 legitimate warm-introduction routes; do not invent names or scrape lists | Founder, with appropriate adult/professional support | Oct 19 | In progress / capacity-dependent |
 | **P0** | Review the two short outreach drafts and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
 | **P0** | Log actual funnel movement and review the small access experiment | Founder | Oct 19 review | In progress |
@@ -316,6 +345,7 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
 | 2026-10-15 | External proposals reviewed in Master Plan §19: retain C1/C4, distinguish energy question types, track buyer behavior and case economics, use a bounded intermediary fallback, and preserve existing gates | Protocol change only; no new contacts, interviews, data, reviewer or commercial result |
+| 2026-10-15 | Founder identified “dad” when asked for supporting adult and introduction routes | Nomination only; agreement, network, sends and introductions remain unconfirmed |
 
 
 ## 12. Aligned phase timeline and weekly review — 2026-10-13
