@@ -147,7 +147,9 @@ test("asset read failures are visible and a recovered connection can reload real
     }
   });
   await page.goto("/machines");
-  await expect(page.getByText("Could not load assets: Synthetic asset read failure", { exact: true })).toBeVisible();
+  // Both the SDK and TanStack Query retry transient 503s. Keep their real policy
+  // enabled and wait for the final failure rather than racing the retry window.
+  await expect(page.getByText("Could not load assets: Synthetic asset read failure", { exact: true })).toBeVisible({ timeout: 60_000 });
   await expect(page.getByRole("link", { name: "gridmind-http-asset-a", exact: true })).toHaveCount(0);
   await page.unroute("**/rest/v1/factory_assets?**");
   await page.reload();
