@@ -2,6 +2,38 @@
 
 ## Purpose and safety boundary
 
+### Isolated browser acceptance (2026-10-15)
+
+The Migration Replay workflow also runs `e2e/authenticated-flow.pw.ts` against
+runner-local Supabase and the actual Vite application. These synthetic checks
+cover browser sign-in, populated assets, authoritative analysis persistence,
+a lost response after server commit followed by an idempotent retry, stored
+result verification after refresh and re-login, and a second user's denied
+cross-factory read/write. A separate browser context prevents shared sessions.
+Additional checks exercise a non-empty persisted opportunity (USD currency,
+null gross loss, zero net value and canonical status) across refresh, and an
+explicit asset-read failure followed by recovery.
+
+The test-only Playwright package and lockfile live in `e2e/`; application
+dependencies and Lovable's generated integrations are unchanged. The config
+refuses non-local Supabase endpoints. No service-role key is passed to the app
+or browser. Browser traces/session files are not retained. To run locally,
+prepare the same disposable stack/users/fixtures as the replay workflow, install
+both frozen Bun lockfiles and Chromium, then run `bun run test` in `e2e/` with
+the local `SUPABASE_URL` and `SUPABASE_ANON_KEY`.
+
+These tests verify the stored run through the authenticated browser's API after
+refresh; the current asset page does not automatically restore the prior run's
+summary panel. They do not establish production deployment acceptance, real
+factory data quality, customer demand, or verified savings. Record actual run
+results in Issues #82/#68 before marking this gate passed.
+
+References: [Supabase application and RLS testing](https://supabase.com/docs/guides/local-development/testing/overview),
+[Playwright best practices](https://playwright.dev/docs/best-practices), and
+[Playwright CI setup](https://playwright.dev/docs/ci-intro).
+The sign-in form disables input/submission until hydration attaches React's
+handlers, following [Playwright's hydration guidance](https://playwright.dev/docs/navigations#hydration).
+
 Use this runbook to prepare one real asset for a controlled GridMind analysis. The readiness SQL is read-only; it does not create memberships, write observations, apply migrations, or deploy code.
 
 **Never fill gaps with invented factory measurements.** Use actual meter/SCADA/PLC/production records, documented operating logs, and the factory's tariff/invoice and intervention-cost evidence. If an input is estimated or unverified, retain that quality/origin and treat the resulting analysis as provisional.

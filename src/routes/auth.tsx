@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -24,6 +24,10 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  // SSR displays the form before React attaches its event handlers. Do not
+  // accept input that hydration could discard or submit without a listener.
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => setHydrated(true), []);
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -73,25 +77,25 @@ function AuthPage() {
           <form className="grid gap-4" onSubmit={submit}>
             <div className="grid gap-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} />
+              <Input id="email" type="email" autoComplete="email" required disabled={!hydrated || busy} value={email} onChange={(event) => setEmail(event.target.value)} />
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" autoComplete={mode === "sign-in" ? "current-password" : "new-password"} minLength={8} required value={password} onChange={(event) => setPassword(event.target.value)} />
+              <Input id="password" type="password" autoComplete={mode === "sign-in" ? "current-password" : "new-password"} minLength={8} required disabled={!hydrated || busy} value={password} onChange={(event) => setPassword(event.target.value)} />
             </div>
             {error && <p role="alert" className="text-sm text-danger">{error}</p>}
-            <Button type="submit" variant="cta" disabled={busy}>
+            <Button type="submit" variant="cta" disabled={!hydrated || busy}>
               {busy ? "Working…" : mode === "sign-in" ? "Sign in" : "Create account"}
             </Button>
           </form>
 
           <div className="mt-4 text-center text-sm text-muted-foreground">
             {mode === "sign-in" ? (
-              <button type="button" className="font-medium text-foreground underline-offset-4 hover:underline" onClick={() => setMode("sign-up")}>
+              <button type="button" disabled={!hydrated || busy} className="font-medium text-foreground underline-offset-4 hover:underline" onClick={() => setMode("sign-up")}>
                 Create an account
               </button>
             ) : (
-              <button type="button" className="font-medium text-foreground underline-offset-4 hover:underline" onClick={() => setMode("sign-in")}>
+              <button type="button" disabled={!hydrated || busy} className="font-medium text-foreground underline-offset-4 hover:underline" onClick={() => setMode("sign-in")}>
                 Already have an account? Sign in
               </button>
             )}
