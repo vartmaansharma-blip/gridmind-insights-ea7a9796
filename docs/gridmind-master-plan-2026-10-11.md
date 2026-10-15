@@ -8,8 +8,24 @@
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
 
+### Company-level ambition: industrial entry point → operational intelligence
+
+**The company ambition is larger than GridMind's first product or first industrial workflow.** The long-term opportunity is to build AI employees for specific industries: systems that understand a real operating context, investigate exceptions, assemble evidence, coordinate decisions, and perform bounded workflows under appropriate human oversight. The broader company thesis is AI-powered operational intelligence—not a generic chatbot, a collection of unrelated AI features, or a promise of fully autonomous operations.
+
+**GridMind is the industrial starting point.** Manufacturing is the initial environment in which to learn how organizations actually operate, where decisions break down, what evidence exists, which workflows buyers value, and how an AI system can deliver a trustworthy result. The first workflow is an entry point into the larger company, not the limit of the ambition.
+
+The intended capability progression is:
+1. **Understand:** organize authorized operational context and distinguish facts, estimates, and unknowns.
+2. **Investigate:** trace a specific incident or performance question to evidence-backed findings, including an explicit “insufficient evidence” outcome.
+3. **Recommend:** compare options and surface trade-offs for a responsible human decision-maker.
+4. **Coordinate:** prepare or route approved work across existing people and systems, with permissions and audit trails.
+5. **Execute bounded workflows:** automate only well-defined, reversible tasks where authority, safety, monitoring, and rollback are established.
+6. **Learn from verified outcomes:** improve future decisions only with lawful, permissioned evidence and credible measurement.
+
+This sequence is a **long-term direction, not a delivery commitment**. Each stage requires evidence that the prior stage works in a real workflow. No autonomy, broad cross-industry expansion, or customer-outcome claim is authorized by this ambition alone. **Baseline rule:** do not connect the broader ambition to near-term product scope yet. Start from the existing GridMind baseline and complete the current evidence-led industrial discovery cycle first. Keep the wider goal as the intended destination; revisit expansion only after the current baseline produces credible evidence and the relevant decision gate explicitly authorizes it.
+
 ### Working definition and positioning
-GridMind is an **evidence-first industrial investigation service**: it turns a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
+For the current discovery cycle, GridMind is an **evidence-first industrial investigation service**: it aims to turn a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
 
 ### Decisions D1–D8
 | ID | Current decision | Boundary |

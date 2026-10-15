@@ -13,9 +13,11 @@
 5. **[Contribution standards](../CONTRIBUTING.md)** — work intake, branch/history preservation, validation, and review requirements.
 6. **[Technical release gate](release-gate.md)** and [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) — mandatory before customer-data workflows.
 
-## Current operating state
+## Company ambition and current operating state
 
-- Positioning: evidence-first, human-reviewed industrial investigation service (working hypothesis).
+**Company-level ambition:** build AI employees for specific industries through AI-powered operational intelligence—systems that understand context, investigate problems, coordinate decisions, and eventually execute bounded workflows under human oversight. **GridMind is the industrial starting point, not the full company ambition.** See the Master Plan and Decision Constitution for the staged capability path and boundaries.
+
+- Current GridMind positioning: evidence-first, human-reviewed industrial investigation service (working hypothesis).
 - Initial segment: owner-run/mid-size manufacturers in Jamshedpur–Adityapur (working hypothesis; fit still to validate).
 - C1 downtime/production-loss and C4 energy/resource inefficiency remain probes; no commercial wedge is selected.
 - The target checkpoint is **3 substantive manufacturing conversations and at least one explicit buyer next step by 2026-10-31**. The formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains **2026-11-10**.

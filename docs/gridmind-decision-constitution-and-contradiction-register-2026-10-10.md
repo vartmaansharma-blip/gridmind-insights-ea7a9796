@@ -20,9 +20,13 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 ## 2. Canonical decisions
 
 ### D1 — Long-term company thesis
-**Decision:** GridMind's long-term ambition is one industrial intelligence and value-realization platform: contextualize operations, qualify evidence, investigate, prioritize decisions, coordinate approved action and verify outcomes.
+**Decision:** The company-level ambition is to build AI employees for specific industries through an AI-powered operational-intelligence capability: systems that understand a real operating context, investigate exceptions, assemble evidence, coordinate decisions, and eventually execute bounded workflows under appropriate human oversight. GridMind is the industrial starting point and learning environment for this ambition—not the entirety of the company.
 
-**Interpretation:** This is the destination, not a promise that every capability exists. Build the shared core incrementally where real cases prove reuse. Do not treat it as a mandate to implement a universal factory ontology or every industrial vertical now.
+**Strategic logic:** Begin in manufacturing because operational problems have concrete consequences, observable workflows, identifiable owners, and evidence that can be examined. Use the first industrial workflow to learn what context must be captured, what evidence supports a conclusion, where human judgment is required, and which actions can be safely coordinated. Expand only when repeated cases demonstrate that capabilities, data structures, evaluation methods, and delivery economics transfer.
+
+**Capability progression:** (1) understand authorized context; (2) investigate a specific question with traceable evidence; (3) recommend options and trade-offs; (4) coordinate human-approved work; (5) execute narrowly defined workflows only with explicit permissions, safeguards, monitoring, and rollback; (6) learn from permissioned, credibly measured outcomes.
+
+**Boundary:** This is a long-term thesis, not a claim about present product capabilities or customer demand. It does not authorize a broad platform build, autonomous industrial control, unrelated vertical expansion, unsupported accuracy/ROI claims, or processing customer data before the relevant gates pass. The current Master Plan and discovery evidence continue to govern near-term work.
 
 ### D2 — Immediate scope
 **Decision:** For this 30-day cycle, establish current product truth and validate one narrow customer problem—not expand the platform or polish the marketing website.
