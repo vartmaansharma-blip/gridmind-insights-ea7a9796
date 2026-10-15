@@ -359,3 +359,11 @@ This reconstruction uses migration history and synthetic fixtures, not a product
 - Security Advisor still reports disabled leaked-password protection and authenticated execution of the intentionally privileged workspace RPC. Preserve onboarding authorization; do not suppress the RPC warning by weakening or arbitrarily revoking its contract. Auth safeguards require an authorized settings change and regression testing.
 
 **Status: reconciliation analysis and local remediation rehearsal completed; production changes and full acceptance remain HOLD.**
+
+### Authenticated dashboard verification — 2026-10-15
+
+After the owner signed in, the GridMind production dashboard confirmed the organization is on **Free**. The scheduled-backups page explicitly states that Free does not include project backups and offers Pro for up to seven days of scheduled backups. No usable dashboard recovery point was available to verify. A separately approved manual backup and restore test, or an owner-approved plan change followed by verification of an actual backup, is still needed.
+
+The Email provider settings confirm leaked-password protection is disabled and **only available on Pro and above**. This is a plan dependency, not an overlooked free toggle. No billing or Auth setting was changed. The organization also contains MmaFarms; an organization-wide upgrade must not be treated as a GridMind-only change.
+
+PR #72 currently has no submitted reviews. Required independent review, full isolated HTTP acceptance, and a verified recovery point remain outstanding. Signing in resolved dashboard access only; it did not resolve these release gates.
