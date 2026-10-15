@@ -50,4 +50,10 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    // Lovable owns this generated file. Keep semantic checks, but do not rewrite
+    // its delayed timer declaration to satisfy a declaration-style preference.
+    files: ["src/integrations/supabase/previewAuthStorage.ts"],
+    rules: { "prefer-const": "off" },
+  },
 );
