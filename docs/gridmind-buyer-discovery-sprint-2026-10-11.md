@@ -1,6 +1,6 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-13  
+**Last updated:** 2026-10-15 (protocol revision; no new customer evidence)
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
@@ -61,6 +61,22 @@ For C4, do not promise an electricity-bill/tariff audit unless a qualified energ
 
 ## 4. Access route log
 
+**Current critical blocker (2026-10-15):** no trusted adult/professional outreach supporter, qualified technical reviewer, warm-introduction recipient, booked interview or economic buyer is confirmed. The founder must privately record an actual consenting supporter before any new external industrial outreach; **do not enter a fictional name merely to clear the board**. An outreach supporter assists external research contacts; the qualified domain reviewer is a different, later gate for technical interpretation and customer-data testing.
+
+### Access ownership and escalation ledger — record only actual events
+
+| Item | Actual name/private reference | Consent/role confirmed | Owner | Checkpoint | State and next action |
+|---|---|---|---|---|---|
+| Primary adult/professional outreach supporter | **UNASSIGNED** | No | Founder | Before any outreach; review Oct 19 | Request support from a trusted adult/professional; no external action before accepted |
+| Backup supporter / qualified referral route | **UNASSIGNED** | No | Founder | Oct 19–24 | If primary unavailable, ask a separate trusted adult/professional; no assumed acceptance |
+| First warm introducer | **NOT IDENTIFIED** | No | Founder + accepted supporter | Oct 19 | Identify 3–5 actual legitimate contacts if possible; only then record individual requests |
+| Public route (ASIA) | R2; initial inquiry sent Oct 12 (founder report) | No response confirmed | Founder + accepted supporter for follow-up | Oct 19 | Check actual reply, follow up once if appropriate |
+| **Fallback (independent intermediary)** | R3 ACMA official route **candidate only** | Not activated | Founder + accepted supporter | **Oct 24** | If zero held/firmly booked conversations or warm path fails, verify official channel and make one appropriately supported introduction/event inquiry |
+| Technical reviewer for customer-data case | **UNASSIGNED** | No | Founder after Tier 1 GO | Before Tier 2 | Identify scope-appropriate professional; title/referral alone is not a technical sign-off |
+
+**Stop logic:** without a consenting adviser, mark outreach **BLOCKED** and continue only public research/interview preparation. If no credible access after both suitable routes by Nov 10, report **ACCESS FAILURE / PAUSE**; do not label industrial market demand absent. Never record ASIA's Oct 12 inquiry as a warm introduction or a completed buyer interview.
+
+
 The listed institutions are public routes to investigate, not verified leads, endorsers, or confirmed introductions. Verify official channels before contacting.
 
 | Route ID | Route | Intended ask | Status | Owner / next action |
@@ -83,7 +99,7 @@ Update only with actual counts. Do not fill planned counts as completed.
 | Replies received | 0 | Track actual | — |
 | Introductions offered | 0 | Track actual | — |
 | Calls booked | 0 | Track actual; no forecast target | — |
-| Calls held | 0 | Seek substantive evidence; no fixed quota | No conversations claimed |
+| Calls held | 0 | Oct 31 target: 3 substantive manufacturing conversations | Target only; no conversations claimed |
 | C1 substantive cases | 0 | Probe deeply | — |
 | C4 substantive cases | 0 | Probe deeply | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |
@@ -110,6 +126,14 @@ Ask about one real, recent event. Do not ask “Would AI help?” or lead the pa
 11. What would make a new service or tool not worth adopting?
 12. Would a specific next step be useful—another conversation, introduction to the budget owner, review of a scoped proposal, or consideration of a paid test? It is acceptable to say no.
 
+**Optional follow-ups from the Oct 15 review:** choose only those relevant to the incident; do not turn the 20-minute interview into a checklist of proposed businesses.
+- Which decision would a faster, trustworthy answer have changed? What prevented action last time?
+- For C4, is the unresolved question invoice correctness, supply economics, physical consumption, or material loss? Who already checks it, and what remains unresolved?
+- What did the team actually spend or do to solve the last case? What would make the current alternative sufficient?
+- How do people exchange records today, and in which language? Ask about the process without requesting records or promising an intake channel.
+- Has an actual customer requirement or vendor claim created a decision deadline? Record the request and source as described, without assuming a compliance obligation.
+- Who could appropriately review this scope, and what next step would the decision owner personally take?
+
 ## 6. Conversation evidence record
 
 Copy this section once per conversation into the notes area below, or record a link to a private note with appropriate permission. Avoid unnecessary personal data.
@@ -128,15 +152,21 @@ Copy this section once per conversation into the notes area below, or record a l
 - **Current process / tools / people:**
 - **What worked well in the current process:**
 - **Residual gap (if any):**
+- **Decision a better answer would change / action owner:**
+- **C4 question type, if applicable:** invoice reconciliation / procurement economics / physical efficiency / material loss / unknown
 - **Consequence:** measured / participant recollection / estimate / unknown
 - **Recurrence evidence:**
 - **Operational owner / economic buyer / data approver:**
 - **Existing spend or budget process:**
 - **Possible evidence source and access authority:**
 - **Commercial signal / exact next step:**
+- **Commitment owner / due date / completed or pending:**
+- **Commercial evidence level:** courtesy interest / free map accepted / introduction / scoped proposal requested / paid scope accepted / payment received (record only what occurred)
 - **Strongest disconfirming evidence:**
 - **What would falsify the opportunity:**
 - **Founder time required for follow-up:**
+- **Estimated delivery/reviewer effort and cost / basis / unknowns:**
+- **Network dependence or sampling bias:**
 - **Decision:** continue probe / narrow / reject / access blocker
 - **Next action, owner, due date:**
 
@@ -231,6 +261,17 @@ The fee must be defensible against conservative incremental value and cover deli
 
 ## 9. Decision dates and stop rules
 
+**Precommitted 2026-11-10 classification (refer to [Master Plan §14](gridmind-master-plan-2026-10-11.md) for definitions):** GO to **bounded-test design** requires **≥3 held substantive interviews**, **≥2 independent ownership groups**, **≥2 specific recent cases favoring the same candidate with a residual gap vs current alternative**, **≥1 explicit budget-owner path and attributable buyer next step**, and a plausible bounded/safe delivery scope. **All must hold.** These are small-sample *operating gates*, not statistical market validation; Tier 2 permissions/expert review/secure handling remain separate and cannot be waived.
+
+If the GO conjunction fails: **NARROW/INCONCLUSIVE** where a relevant case exists but access, independence, buyer action or feasibility is incomplete; **PIVOT** only where meaningful interview evidence weakens both probes and supports a named alternative; **STOP/PAUSE** for exhausted legitimate access routes, missing outreach supporter or a disqualifying safety/rights/economic barrier. Clearly label **channel failure versus product failure**. Precommit the rule before interpreting interviews; never silently lower cutoffs to force GO.
+
+**2026-10-24 access fallback:** if **0 substantive conversations held or firmly scheduled**, or no credible warm route exists, test one distinct supported intermediary (R3 first if suitable); log actually sent, reply, introduction and relevant conflicts, not mere intent. If external adviser remains unassigned, do **not** send; record the adviser as a blocker instead.
+
+**Balanced sample and C1/C4 decision:** log ownership group, supplier/anchor-customer chain, intermediary and candidate without storing unnecessary private identifiers. Two firms in one dependent network do not make a representative sample. Keep the same questions/scorecard for both candidate probes and mark software/migration sunk costs as **excluded** from the score.
+
+**Capacity/runway checkpoint:** provisional founder budget is **5 h/week and ₹0 incremental spend through Nov 10**; allocate 60m access/scheduling, 120m interviews and notes, 45m adviser/domain route, 45m follow-ups, 30m evidence/decision. Record actuals weekly; if impossible, mark targets missed and reset openly rather than inventing completed work. No engineer workstream competes for that budget except essential safety/correctness repair authorized separately. Before any funded trial, explicitly record authorized cash allocation, estimated cash burn, responsible contracting adult, and financial stop date; current private runway is **unknown**, not infinite.
+
+
 - **Oct 19:** review the ASIA route and the 3–5-request access test; adjust route if evidence supports it. A small sample cannot establish demand or its absence.
 - **After the first substantive conversations:** update the access plan from observed route quality and buyer evidence; do not forecast a fixed call count without a credible funnel.
 - **After five conversations:** if neither C1 nor C4 yields a concrete event with credible consequence and a residual gap, revisit the stable candidate register once and choose the next probe from evidence.
@@ -242,6 +283,7 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 
 | Priority | Task | Owner | Due | Status |
 |---|---|---|---|---|
+| **P0 — BLOCKED** | Obtain consent from real adult/professional outreach supporter before new external approach | Founder + trusted adult/professional | Before any send; Oct 19 review | Not assigned; public/offline preparation only |
 | **P0** | Identify 3–5 legitimate warm-introduction routes; do not invent names or scrape lists | Founder, with appropriate adult/professional support | Oct 19 | In progress / capacity-dependent |
 | **P0** | Review the two short outreach drafts and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
 | **P0** | Log actual funnel movement and review the small access experiment | Founder | Oct 19 review | In progress |
@@ -273,6 +315,7 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 | 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
+| 2026-10-15 | External proposals reviewed in Master Plan §19: retain C1/C4, distinguish energy question types, track buyer behavior and case economics, use a bounded intermediary fallback, and preserve existing gates | Protocol change only; no new contacts, interviews, data, reviewer or commercial result |
 
 
 ## 12. Aligned phase timeline and weekly review — 2026-10-13
@@ -283,6 +326,7 @@ This tracker follows the dates in the [Canonical Master Plan](gridmind-master-pl
 |---|---|---|---|
 | **Oct 15** | Strategic foundation freeze | Confirm definition, sprint scope, C1/C4 probe status, evidence labels, two-tier gates, and no-build boundary agree across the Master Plan and Decision Constitution. The wedge remains unselected. | Resolve only contradictions that affect execution; no more strategy expansion. |
 | **Oct 19** | Access-route review | Actual ASIA follow-up/response and genuine warm requests, replies, referrals, meetings, and access constraints. | Record route failure or insufficient access honestly; do not infer market demand from a small sample. |
+| **Oct 24** | Adviser/access fallback checkpoint | Count *held or firmly booked* conversations, independently credible warm access and whether an actual outreach supporter accepted. | With proper support, test R3 or another distinct legitimate intermediary if warm/ASIA routes stall; if no supporter, pause external activity and record blocker. |
 | **Oct 31** | Discovery target checkpoint | Target: 3 substantive conversations held and at least one explicit buyer next step. Evidence must be in the conversation records. | Mark target missed if unmet and explain why. Do not convert planned calls into completed research. |
 | **Nov 10** | Formal decision gate | GO TO BOUNDED TEST / NARROW / PIVOT / STOP, supported by evidence, disconfirming evidence, buyer path, feasibility, and open safeguards. | No forced winner or product build if evidence is insufficient. |
 | **Nov 15** | Discovery-phase close and handoff | Consolidated decision, status of unresolved issues/PRs, and the next approved phase or explicit continued-discovery decision. | This is administrative closure, not a second gate or automatic build deadline. |
@@ -294,5 +338,8 @@ This tracker follows the dates in the [Canonical Master Plan](gridmind-master-pl
 - What is the main blocker?
 - What is the one highest-value next action, owner, due date, and completion condition?
 - What should stop because it is not required for the current decision?
+- Actual founder hours versus the provisional five-hour cap; reviewer capacity/cost unknowns; direct versus intermediary route results; commitment due dates versus completed actions.
+
+**Oct 15 access clarification:** the current target remains 3–5 legitimate requests by Oct 19, not 30 names or an assumed LinkedIn funnel. If direct access stalls at the Oct 19–24 review, test one relevant intermediary category with appropriate support and log the route in the existing access log. Do not create a second contact tracker. Low replies indicate a channel constraint; they do not select C4 or disprove C1. The Oct 31 three-conversation/one-next-step target and Nov 10 gate remain unchanged. There is no fixed ₹2 lakh pain cutoff; assess conservative incremental value and feasible delivery economics using the existing rubric and ledger.
 
 If there was no new customer evidence, record that plainly. Public research, synthetic tests, planned outreach, and internal AI-assisted walkthroughs must not be represented as customer validation. Product/data work remains bounded by the Master Plan's scope and Tier 2 safeguards.
