@@ -41,6 +41,8 @@ bun run build
 bun run check
 ```
 
+`bun run check` runs documentation links, typecheck, repository-wide semantic lint, Vitest, and production build. Formatting is checked separately with `bun run format:check`; do not confuse legacy formatting debt with semantic lint failures. See the [release gate](docs/release-gate.md) for Python, Deno, migration, and enforcement responsibilities.
+
 Do not report a check as passed unless it actually ran. A successful build, synthetic fixture, local mock, or documentation change is not proof of production readiness, customer demand, root-cause accuracy, or verified savings. If CI infrastructure fails before steps start, report it as an infrastructure blocker and do not weaken the checks to obtain a green status.
 
 ## 5. Database, security, and industrial safety

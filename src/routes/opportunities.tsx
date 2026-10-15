@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { CANONICAL_OPPORTUNITY_STATUSES, isCanonicalOpportunityStatus } from "@/lib/gridmind/opportunity-status";
 import { getCanonicalOpportunities } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
-import { inr, inrCompact } from "@/lib/energy/format";
+import { currencyAmount } from "@/lib/energy/format";
 import { EmptyState, PageHeader } from "@/components/gm/bits";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
@@ -11,7 +12,6 @@ export const Route = createFileRoute("/opportunities")({
   component: Opps,
 });
 
-const STATUS = ["detected","quantified","investigating","diagnosed","recommended","accepted","in_progress","awaiting_verification","verified","closed","invalid","insufficient_evidence","not_economically_material","not_actionable","rejected","superseded","unverified"];
 
 function Opps() {
   const { active, setOppStatus } = useEnergy();
@@ -35,16 +35,16 @@ function Opps() {
           <article key={o.id} className="panel p-5">
             <div className="flex flex-wrap items-start gap-3">
               <div className="min-w-0 flex-1"><div className="eyebrow">Opportunity #{i + 1}</div><h2 className="mt-1 text-lg font-semibold">{o.title}</h2><p className="mt-1 text-sm text-muted-foreground">{o.scopeType} · {o.scopeId ?? "factory-wide"}</p></div>
-              <Select value={o.status} onValueChange={(v) => setOppStatus(String(o.id), v as any)}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{STATUS.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
+              <Select value={o.status} onValueChange={(v) => { if (isCanonicalOpportunityStatus(v)) setOppStatus(String(o.id), v); }}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{CANONICAL_OPPORTUNITY_STATUSES.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
             </div>
             <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
-              <Metric label="Recoverable opportunity" value={o.recoverableOpportunity} />
-              <Metric label="Expected recovery" value={o.expectedRecovery} />
-              <Metric label="Expected net value" value={o.expectedNetValue} />
-              <Metric label="Payback" value={o.expectedPaybackMonths == null ? null : o.expectedPaybackMonths} suffix=" months" />
+              <Metric label="Recoverable opportunity" value={o.recoverableOpportunity} currency={o.currency} />
+              <Metric label="Expected recovery" value={o.expectedRecovery} currency={o.currency} />
+              <Metric label="Expected net value" value={o.expectedNetValue} currency={o.currency} />
+              <Metric label="Payback" value={o.expectedPaybackMonths == null ? null : o.expectedPaybackMonths} currency={o.currency} suffix=" months" />
             </div>
             <div className="mt-4 grid gap-3 border-t border-border pt-4 text-xs text-muted-foreground sm:grid-cols-4">
-              <span>Gross loss: {money(o.grossLoss)}</span><span>Avoidable: {money(o.avoidableLoss)}</span><span>Intervention: {money(o.interventionCost)}</span><span>Priority: {o.priorityScore ?? "—"}</span>
+              <span>Gross loss: {currencyAmount(o.grossLoss, o.currency)}</span><span>Avoidable: {currencyAmount(o.avoidableLoss, o.currency)}</span><span>Intervention: {currencyAmount(o.interventionCost, o.currency)}</span><span>Priority: {o.priorityScore ?? "—"}</span>
             </div>
             <div className="mt-3 text-xs text-muted-foreground">Evidence bundle: {o.evidenceBundleId ?? "not linked"} · Deviation: {o.deviationId ?? "not linked"} · Confidence: measurement {o.measurementConfidence ?? "—"}, baseline {o.baselineConfidence ?? "—"}, causal {o.causalConfidence ?? "—"}, economic {o.economicConfidence ?? "—"}</div>
           </article>
@@ -54,7 +54,6 @@ function Opps() {
   );
 }
 
-function money(v: number | null) { return v == null ? "—" : inr(v); }
-function Metric({ label, value, suffix = "" }: { label: string; value: number | null; suffix?: string }) {
-  return <div className="rounded-lg bg-muted/40 p-3"><div className="text-xs text-muted-foreground">{label}</div><div className="num mt-1 text-base font-semibold">{value == null ? "—" : (suffix ? value.toFixed(1) + suffix : inrCompact(value))}</div></div>;
+function Metric({ label, value, currency, suffix = "" }: { label: string; value: number | null; currency: string; suffix?: string }) {
+  return <div className="rounded-lg bg-muted/40 p-3"><div className="text-xs text-muted-foreground">{label}</div><div className="num mt-1 text-base font-semibold">{value == null ? "—" : (suffix ? value.toFixed(1) + suffix : currencyAmount(value, currency, true))}</div></div>;
 }

@@ -1,5 +1,7 @@
 import { supabase } from "@/integrations/supabase/client";
+import { assetMetadataFromEquipmentInput } from "@/lib/energy/equipment-metadata";
 import type { Database } from "@/integrations/supabase/types";
+import { opportunityToDomain, verifiedOutcomeToDomain } from "./row-mappers";
 import type { AnalysisEconomicContext } from "./analysis-input-adapter";
 import type {
   FactoryContext,
@@ -8,7 +10,6 @@ import type {
   OperatingContextContract,
   OpportunityContract,
   InterventionContract,
-  VerifiedOutcomeContract,
 } from "./domain";
 
 type FactoryRow = Database["public"]["Tables"]["factories"]["Row"];
@@ -122,9 +123,10 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
       machineTypeId: x.machine_type_id,
       ratedPowerKw: x.rated_power_kw,
       processRole: x.process_role,
+      assetMetadata: jsonRecord(x.asset_metadata),
     })),
     observations: (observationsResult.data ?? []).filter((x) => x.factory_id === factory.id).map(observationToDomain),
-    opportunities: (opportunitiesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as OpportunityContract),
+    opportunities: (opportunitiesResult.data ?? []).filter((x) => x.factory_id === factory.id).map(opportunityToDomain),
     interventions: (interventionsResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x): InterventionContract => ({
       id: x.id,
       factoryId: x.factory_id,
@@ -138,7 +140,7 @@ export async function getAuthenticatedFactorySnapshots(): Promise<GridMindFactor
       expectedSavingInr: x.expected_saving_inr,
       verificationMethod: jsonRecord(x.verification_method),
     })),
-    verifiedOutcomes: (outcomesResult.data ?? []).filter((x) => x.factory_id === factory.id).map((x) => x as unknown as VerifiedOutcomeContract),
+    verifiedOutcomes: (outcomesResult.data ?? []).filter((x) => x.factory_id === factory.id).map(verifiedOutcomeToDomain),
   }));
 }
 
@@ -269,11 +271,11 @@ export async function getCanonicalAnalysisEconomicContext(
 export async function getCanonicalOpportunities(factoryId: number): Promise<OpportunityContract[]> {
   const { data, error } = await supabase
     .from("opportunities")
-    .select("id,factory_id,title,status,scope_type,scope_id,deviation_id,evidence_bundle_id,gross_loss,avoidable_loss,recoverable_opportunity,expected_recovery,intervention_cost,expected_net_value,expected_roi,expected_payback_months,measurement_confidence,baseline_confidence,causal_confidence,economic_confidence,priority_score,urgency")
+    .select("id,factory_id,title,currency,status,scope_type,scope_id,deviation_id,evidence_bundle_id,gross_loss,avoidable_loss,recoverable_opportunity,expected_recovery,intervention_cost,expected_net_value,expected_roi,expected_payback_months,measurement_confidence,baseline_confidence,causal_confidence,economic_confidence,priority_score,urgency")
     .eq("factory_id", factoryId)
     .order("priority_score", { ascending: false, nullsFirst: false });
   if (error) throw error;
-  return (data ?? []).map((x) => x as unknown as OpportunityContract);
+  return (data ?? []).map(opportunityToDomain);
 }
 
 export async function getCanonicalDeviations(factoryId: number): Promise<CanonicalDeviation[]> {
@@ -446,15 +448,7 @@ export async function syncFactoryAssets(factoryId: number, equipment: Array<{
   for (const e of equipment) {
     const numericId = Number(e.id);
     const baseMetadata = Number.isInteger(numericId) ? jsonRecord(existingMap.get(numericId)?.asset_metadata) : {};
-    const metadata = {
-      ...baseMetadata,
-      category: e.category,
-      quantity: e.quantity,
-      hoursPerMonth: e.hoursPerMonth,
-      loadFactor: e.loadFactor,
-      lifecycle_status: "active",
-      application_contract_version: 2,
-    };
+    const metadata = assetMetadataFromEquipmentInput(e, baseMetadata);
     if (Number.isInteger(numericId) && existingMap.has(numericId)) {
       incomingIds.add(numericId);
       const { error } = await supabase.from("factory_assets").update({
