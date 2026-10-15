@@ -282,3 +282,20 @@ This is the binding reconciliation for the planned 2026-10-15 freeze. It consoli
 - **External engagement:** because the founder is a minor, external industrial outreach and formal engagement require appropriate adult/professional support. Do not send messages or share data without the required oversight and authorization.
 
 **Contradiction rule:** this section, the current Master Plan, and the current Buyer Discovery Sprint supersede older dated targets and stale execution text. Preserve superseded decisions as historical context, but label them as such. If these canonical records disagree, stop the affected action and reconcile the documents before proceeding.
+
+## External proposal reconciliation — 2026-10-15
+
+**Decision and evidence:** at the founder's request, the two external PDF proposals were reviewed against the existing canonical records. [Master Plan §19](gridmind-master-plan-2026-10-11.md) records the judgments and operating refinements; [Issue #84](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/84) tracks this documentation revision. The PDFs supply hypotheses and recommendations, not new customer evidence or execution authority.
+
+Binding refinements:
+- Select a specific buyer decision and residual evidence gap using C1/C4 discovery evidence. Document accessibility, limited founder time or policy headlines do not select a wedge.
+- Keep invoice reconciliation, procurement economics and physical efficiency distinct. A reconciled invoice does not prove recoverable value; a lower next bill does not prove causal savings. Claims require scope-appropriate review, adjustments and verification.
+- Keep pricing unvalidated. A fixed scoped fee is the simplest initial pricing hypothesis to test after qualification; contingency requires measurable attributable value, financeable collection timing and appropriate written terms. Neither is a commercial commitment.
+- Evaluate buyer benefit relative to the existing alternative and all-in delivery economics. Do not use gross spend or arbitrary annual-pain thresholds as a substitute. Record actual commitments and their completion separately from interest.
+- Preserve the current access target, capacity cap and gates. One bounded intermediary fallback may refine access; it does not authorize outreach. No profile/network claim in a PDF is treated as verified.
+- Before later software investment, seek repetition in an additional independent case and identify a measured reusable step. This is a minimum learning gate, not proof of scale or product-market fit.
+- Preserve essential correctness/security work; do not treat workflow consolidation, branch cleanup, speculative tariff engines, funding applications or carbon modules as automatically authorized tasks.
+
+**Alternatives and trade-offs:** immediately committing to bill auditing would simplify the pitch but could optimize for accessible records rather than buyer value. Launching all suggested channels/products would increase breadth and exceed current capacity. Keep two probes and tighten the next evidence step instead.
+
+**Risks and reconsideration:** the current sample and economics remain unknown; discovery can be slow or biased. Revisit these choices when actual buyer behavior, reviewer feasibility, delivery costs or a specific legal/technical requirement supplies new evidence. Existing human oversight, Tier 1/Tier 2 safeguards, Oct 31 checkpoint and Nov 10 decision date remain binding.

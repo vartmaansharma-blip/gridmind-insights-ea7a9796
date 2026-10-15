@@ -1,12 +1,14 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-13  
+**Last updated:** 2026-10-15 (planning revision; customer evidence unchanged)
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
-## Executive operating summary — 2026-10-13
+## Executive operating summary — 2026-10-15
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
+
+**Latest revision:** §19 evaluates the two external proposals and tightens the existing discovery experiment. Choose a specific buyer decision with an unresolved, economically material gap; the easiest document to obtain is an entry route, not sufficient reason to choose a business. C1 and C4 remain open. Discovery remains P0; engineering work must resolve an evidenced correctness/security blocker or enable the selected evidence step. This documentation revision does not authorize implementation or external outreach.
 
 ### Working definition and positioning
 GridMind is an **evidence-first industrial investigation service**: it turns a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
@@ -126,7 +128,7 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 
 Stop or change course if:
 - **Oct 19:** review response quality from the ASIA route and the 3–5-request access test; decide whether to continue, change the route, or record access as the current blocker. Do not infer absent market demand from a small or immature sample.
-- **Oct 24:** fewer than three substantive conversations held → stop treating the ten-call target as on track; revise channel/funnel assumptions and dates.
+- **Oct 24:** review booked/held conversations and route quality against the Oct 31 target of three held conversations; revise access assumptions if the target is at risk. There is no active ten-call quota.
 - After five substantive conversations: neither C1 nor C4 produces a concrete incident with a credible consequence and an unresolved gap → open the candidate register once and choose the next probe based on evidence, not intuition.
 - By Nov 10: no candidate has a credible buyer path and explicit next step → **NO-GO on product build**, document the blocker, and decide whether to pivot or stop.
 - Any request for unsafe access, unauthorized data, autonomous control, unsupported causal claims, or unbounded unpaid customization → decline or pause.
@@ -793,6 +795,8 @@ This is a structural audit of the canonical planning system and the document lif
 
 **Status: Plan 1 complete.** This is a reconciliation of the existing canonical records, not a new strategy or customer-validation claim.
 
+**Historical next-step boundary:** this section records the Oct 13 audit. Its Plan 2 / Issue #44 instruction below does not supersede the current executive summary, discovery priority, or §19 revision.
+
 ### Records checked
 - This Master Plan (execution authority).
 - [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) (durable decisions and guardrails).
@@ -821,3 +825,75 @@ This is a structural audit of the canonical planning system and the document lif
 No strategic contradiction was found that justifies changing the long-term ambition, selecting a wedge, changing price, or expanding product scope. The only targeted wording reconciliation was to make the initial segment's hypothesis status explicit in the Decision Constitution. Plan 1 is therefore complete as a document/decision audit—not as market validation. Proceed to Plan 2 only: finish the remaining documentation-governance verification already tracked in Issue #44. Do not create another strategy document or begin a new product build from this audit.
 
 **Audit boundary:** this was a content-level strategic consistency review of the listed canonical records and the already-reviewed Claude recommendations. It is not a full review of every historical file, a successful repository-wide link check, an engineering validation, or customer research.
+
+## 19. External proposal review and strategic revision — 2026-10-15
+
+**Scope and authority:** planning-only revision requested by the founder; tracked in [Issue #84](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/84). Sources reviewed: *GridMind — Improvement Scopes and Plan* (8 pages, Oct 15) and *Missing angles and Plan v2* (12 pages). Their recommendations are proposals, not instructions, verified repository findings, or buyer evidence. This section refines the existing plan; the live tracker remains the sole evidence ledger. No new commercial wedge, fee, customer claim, engineering implementation, or data access is approved.
+
+### 19.1 Judgment on the recommendations
+
+The central diagnosis is sound: buyer access, problem selection, responsible delivery and payment determine viability before additional software breadth. The proposals are useful as an option inventory, but over-sequence engineering, underestimate its effort, and sometimes confuse an accessible input with a valuable offer. The repository already contains capacity limits, stop rules, an economics ledger, two-tier permissions and a reviewer route; improve those records rather than create substitutes. Overall numerical business ratings are subjective judgments, not measurements.
+
+| Recommendation | Decision | Strategic reason / condition |
+|---|---|---|
+| Use existing personal/professional introductions | Adopt within the current 3–5-request access test | Map reachable roles and legitimate introduction paths. Follower counts, a TEDx role and family access asserted in the PDF are unverified; do not turn them into assumed buyer access or a 30-name quota. |
+| Explore electricity bills as an entry | Modify | Test the buyer's unresolved decision first. A recomputable invoice may support reconciliation, but does not establish recoverable money, physical waste, or willingness to pay. |
+| Try accountants, electrical contractors, auditors and associations | Adopt as a bounded fallback | Test one intermediary route if direct access stalls. Identify whether the intermediary introduces, buys, delivers, or competes; those are different models. No referral-fee arrangement or endorsement is presumed. |
+| Prefer fee-on-savings / no upfront fee | Defer as a default | It transfers funding, attribution and collection risk to GridMind and can bias an independent investigation toward positive findings. Compare it later with a fixed scoped fee; neither price model is validated. |
+| Set reply counts and ₹2 lakh annual-pain kill thresholds | Modify | Small-sample nonresponse diagnoses a channel; gross annual pain does not establish addressable value. Use the existing evidence rubric and case economics. |
+| Use WhatsApp/Hindi where buyers prefer them | Test preference only | Ask about current working language and document movement. Convenience does not authorize customer records on an unapproved channel; do not build an intake integration now. |
+| Verification, measurement-gap maps and reviewer bench | Adopt narrowly | Use the existing free non-technical workflow map and qualified-review route. A faculty member, intern or retired engineer needs scope-appropriate qualifications; title alone is insufficient. |
+| Consolidate CI, reduce replay timeout, clean branches/docs | Re-sequence | Preserve necessary correctness/security work; workflow count alone is not a defect. Recheck current configuration and exact-head failures before changes. No automatic refactor, branch deletion or document move. |
+| Carbon, funding, supply switching, cluster aggregation and broad benchmarks | Park | Activate only when a concrete buyer obligation or selected case requires them, with official-source and specialist checks. A policy program or tariff difference is not proof of an accessible market. |
+| Expand machine taxonomy, monitoring or dashboards | Keep frozen | Build only the smallest repeated workflow supported by buyer and delivery evidence. A catalog, hash trail or AI feature is not a demonstrated moat. |
+
+### 19.2 First-principles selection rule
+
+The unit of selection is **one segment + one accountable buyer + one recurring decision + one unresolved evidence gap + one feasible paid deliverable**. A large expense becomes an opportunity only if GridMind can improve a decision beyond the current staff, spreadsheet, auditor or vendor at acceptable effort and risk.
+
+For each promising interview, reconstruct the last incident, what decision was delayed or wrong, who could act, the best current alternative, what evidence was missing, and what the buyer actually did next. Ask what an earlier trustworthy answer would have changed. If it changes no action, timing, risk or resource allocation, more analysis may have little incremental value.
+
+Do not choose C4 merely because bills are available, founder time is scarce, or a tariff increased. Do not choose C1 merely because its headline losses sound larger. Compare the existing rubric with evidence references. Keep unknowns visible; use a focused follow-up to resolve a decision-changing unknown rather than a speculative weighted total.
+
+### 19.3 Separate three energy questions
+
+These are distinctions inside the C4 probe, not three new active products.
+
+| Buyer question | Necessary evidence | What can be concluded / boundary |
+|---|---|---|
+| Was this invoice calculated correctly? | Applicable utility/category/order and effective dates; invoice components; readings, multipliers, demand/time-of-day/reactive charges and adjustments where relevant | Reconcile components and explain residuals under reviewed rules. A difference is a question to resolve, not automatically an overcharge or recoverable refund. |
+| Is another supply arrangement economically feasible? | Eligibility and contract constraints; all-in delivered charges, duties, losses, reliability, transition/capital costs and specialist review | A scoped procurement comparison only after separate qualification. Historical ₹/kWh headlines cannot establish feasibility or net benefit. |
+| Did an intervention reduce physical energy use or production loss? | Defined boundary; reliable baseline/reporting data; output, mix, hours and other relevant drivers; intervention timing; adjustments and uncertainty | An agreed measurement and verification method. Monthly bills alone cannot identify a machine fault or prove causation. |
+
+**Verification correction:** the next bill is a possible observation, not proof of savings. Separate cash refund/credit, recurring billing correction, adjusted energy reduction and avoided production loss. Do not add overlapping value pools. Refunds require actual credit/receipt and agreement on attribution; efficiency claims require an appropriate adjusted comparison. See [EVO's M&V overview](https://www.evo-world.org/en/807-main-menu/m-v) and [IPMVP overview](https://evo-world.org/en/products-services-mainmenu-en/protocols/ipmvp).
+
+For a future invoice-reconciliation evaluation, compare individual components with an independently reviewed expected result and declared rounding tolerance; report coverage, unexplained residuals and unsupported cases. A synthetic specimen can test implementation, not real invoice accuracy or generalization. Keep rules/source versions and independent holdout cases; do not claim accuracy from examples used to construct the rules. No tariff engine build is initiated by this revision.
+
+### 19.4 Access and learning within the existing capacity cap
+
+Keep the provisional five founder hours/week and ₹0 incremental-spend cap; confirm actual availability before treating them as commitments. As a planning allocation, reserve about three hours for access/interviews/notes, one for qualified-reviewer feasibility, and one for review or necessary correctness work. Reallocate only against the current blocker. If capacity is lower, reduce activities or explicitly reset dates; do not select a wedge from convenience.
+
+- **By Oct 19:** identify 3–5 legitimate warm-introduction routes and the required adult/professional support; make requests only where those conditions exist. Log actual sends, replies, introductions, bookings and held calls separately. Use existing personal/professional networks without assuming audience size implies relevance.
+- **Oct 19–24 review:** if direct access produces no substantive route, test one relevant intermediary category through existing legitimate contacts or an appropriate official route. A missing reply is an access result, not a market verdict. Record who the intermediary serves, their role, conflicts and whether a real introduction results.
+- **By Oct 31:** retain the target of three substantive manufacturing conversations and one explicit buyer next step. Seek independent plant perspectives where feasible; label referrals within one network and avoid treating them as independent market confirmation. Ask about recent behavior before presenting a fee model.
+- **By Nov 10:** choose GO TO BOUNDED TEST / NARROW / PIVOT / STOP using the existing Tier 1 criteria. If evidence is insufficient, record no-go on build and distinguish access failure, weak pain, adequate alternatives, infeasible delivery and absent commercial commitment. Do not collapse all five into “no demand.”
+
+A buyer introduction or proposal review supports further discovery; it is weaker evidence than acceptance of a defined paid scope. Record the exact commitment, owner, date and whether it happened. A friendly reply or acceptance of a free map is not willingness to pay. Reviewer feasibility may be investigated in parallel through existing [Issue #51](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/51), without blocking interviews or promising free professional work.
+
+### 19.5 Economics, pricing and the service-to-software test
+
+Before a quote, estimate conservative incremental buyer benefit relative to the best realistic alternative, then subtract implementation, disruption and measurement costs. Separately estimate GridMind's acquisition, intake, founder/reviewer labor at a stated replacement-cost rate, tools, corrections, support, collection delay and liability. The plausible fee must cover delivery and leave the buyer a credible surplus. Gross electricity spend, gross annual loss and a percentage of a hypothetical value pool cannot establish this.
+
+Test a fixed scoped fee first as the simplest commercial hypothesis to explain and cost, after problem qualification and the existing engagement gates. Retainers require evidence of a recurring valuable decision. Consider contingency only when value is independently measurable, collection timing is financeable, and written baseline, attribution, exclusions, fee cap, payment trigger, dispute and termination terms are appropriate. “No finding” must remain an acceptable honest outcome. No model is risk-free and no price is approved here.
+
+After any separately authorized bounded test, record hours and cost by delivery stage, rework, review disagreements, null findings, buyer use and payment status. Before a feature or expansion decision, seek the same decision/evidence pattern in at least one further independent case and show which step can be reused with less effort without lowering quality. This is a minimum repeatability signal, not product-market fit or permission to scale. Automate a measured bottleneck only when expected repeated labor saved exceeds build/maintenance cost. Reviewer capability and permissioned outcome learning are candidate advantages to earn, not existing defensibility.
+
+### 19.6 Engineering and external-claim boundaries
+
+Necessary correctness/security incidents can interrupt discovery; optional repository tidiness cannot become a second P0. The PDFs' PR failures, branch counts, plan restrictions, green runs and effort estimates are dated observations with stated access limitations. Recheck them before relying on them. Existing issues retain ownership: [release gate #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29), [enforcement #46](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/46), and [browser acceptance #82](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/82).
+
+Pinning tested tool versions and correcting demonstrated stale status are sensible bounded changes. A single aggregate required check is one possible design, not a requirement to merge four workflows. If adopted later, it must fail on required-job failure/cancellation/missing results, skip jobs only for proven irrelevant changes, and cover workflow, dependency, shared code and test changes. GitHub distinguishes a skipped workflow that leaves required checks pending from a skipped job reported as successful; see [official status-check guidance](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks). Do not shorten database/browser timeouts from a few warm runs; measure cold runs and preserve diagnostic headroom. Keep history-preservation rules intact.
+
+Do not adopt the PDFs' legal/tax/privacy commencement dates, subsidy eligibility, cluster statistics, old tariff quotes, profile details or claims of absent competitors without current primary-source verification relevant to the selected case. A consent sentence is not a complete data-handling arrangement. BEE's [official ADEETIE brochure](https://beeindia.gov.in/sites/default/files/ADEETIE_Brochure.pdf) describes verification by empanelled auditors; it does not establish that GridMind is eligible, has a paying channel, or can act as a scheme verifier. Paid verification of vendors also requires disclosure of funding/conflicts and reviewer independence.
+
+**Revision acceptance:** review is complete when these judgments, the tracker prompts and durable decision rules agree and Markdown links pass. Customer evidence, reviewer engagement, commercial economics and application readiness remain unverified. The next real-world priority remains the supported access experiment in the tracker, not another strategy revision.

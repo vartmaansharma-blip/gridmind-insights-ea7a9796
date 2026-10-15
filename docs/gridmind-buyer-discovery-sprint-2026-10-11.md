@@ -1,6 +1,6 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-13  
+**Last updated:** 2026-10-15 (protocol revision; no new customer evidence)
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
@@ -110,6 +110,14 @@ Ask about one real, recent event. Do not ask “Would AI help?” or lead the pa
 11. What would make a new service or tool not worth adopting?
 12. Would a specific next step be useful—another conversation, introduction to the budget owner, review of a scoped proposal, or consideration of a paid test? It is acceptable to say no.
 
+**Optional follow-ups from the Oct 15 review:** choose only those relevant to the incident; do not turn the 20-minute interview into a checklist of proposed businesses.
+- Which decision would a faster, trustworthy answer have changed? What prevented action last time?
+- For C4, is the unresolved question invoice correctness, supply economics, physical consumption, or material loss? Who already checks it, and what remains unresolved?
+- What did the team actually spend or do to solve the last case? What would make the current alternative sufficient?
+- How do people exchange records today, and in which language? Ask about the process without requesting records or promising an intake channel.
+- Has an actual customer requirement or vendor claim created a decision deadline? Record the request and source as described, without assuming a compliance obligation.
+- Who could appropriately review this scope, and what next step would the decision owner personally take?
+
 ## 6. Conversation evidence record
 
 Copy this section once per conversation into the notes area below, or record a link to a private note with appropriate permission. Avoid unnecessary personal data.
@@ -128,15 +136,21 @@ Copy this section once per conversation into the notes area below, or record a l
 - **Current process / tools / people:**
 - **What worked well in the current process:**
 - **Residual gap (if any):**
+- **Decision a better answer would change / action owner:**
+- **C4 question type, if applicable:** invoice reconciliation / procurement economics / physical efficiency / material loss / unknown
 - **Consequence:** measured / participant recollection / estimate / unknown
 - **Recurrence evidence:**
 - **Operational owner / economic buyer / data approver:**
 - **Existing spend or budget process:**
 - **Possible evidence source and access authority:**
 - **Commercial signal / exact next step:**
+- **Commitment owner / due date / completed or pending:**
+- **Commercial evidence level:** courtesy interest / free map accepted / introduction / scoped proposal requested / paid scope accepted / payment received (record only what occurred)
 - **Strongest disconfirming evidence:**
 - **What would falsify the opportunity:**
 - **Founder time required for follow-up:**
+- **Estimated delivery/reviewer effort and cost / basis / unknowns:**
+- **Network dependence or sampling bias:**
 - **Decision:** continue probe / narrow / reject / access blocker
 - **Next action, owner, due date:**
 
@@ -273,6 +287,7 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 | 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
+| 2026-10-15 | External proposals reviewed in Master Plan §19: retain C1/C4, distinguish energy question types, track buyer behavior and case economics, use a bounded intermediary fallback, and preserve existing gates | Protocol change only; no new contacts, interviews, data, reviewer or commercial result |
 
 
 ## 12. Aligned phase timeline and weekly review — 2026-10-13
@@ -294,5 +309,8 @@ This tracker follows the dates in the [Canonical Master Plan](gridmind-master-pl
 - What is the main blocker?
 - What is the one highest-value next action, owner, due date, and completion condition?
 - What should stop because it is not required for the current decision?
+- Actual founder hours versus the provisional five-hour cap; reviewer capacity/cost unknowns; direct versus intermediary route results; commitment due dates versus completed actions.
+
+**Oct 15 access clarification:** the current target remains 3–5 legitimate requests by Oct 19, not 30 names or an assumed LinkedIn funnel. If direct access stalls at the Oct 19–24 review, test one relevant intermediary category with appropriate support and log the route in the existing access log. Do not create a second contact tracker. Low replies indicate a channel constraint; they do not select C4 or disprove C1. The Oct 31 three-conversation/one-next-step target and Nov 10 gate remain unchanged. There is no fixed ₹2 lakh pain cutoff; assess conservative incremental value and feasible delivery economics using the existing rubric and ledger.
 
 If there was no new customer evidence, record that plainly. Public research, synthetic tests, planned outreach, and internal AI-assisted walkthroughs must not be represented as customer validation. Product/data work remains bounded by the Master Plan's scope and Tier 2 safeguards.
