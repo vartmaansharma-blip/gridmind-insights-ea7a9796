@@ -28,7 +28,7 @@ async function signIn(page: Page, user: "a" | "b") {
   await page.goto("/auth");
   await page.getByLabel("Email", { exact: true }).fill(`gridmind-http-${user}@example.test`);
   await page.getByLabel("Password", { exact: true }).fill(password);
-  const authResponse = page.waitForResponse((response) => response.url().includes("/auth/v1/token") && response.request().method() === "POST");
+  const authResponse = page.waitForResponse((response) => response.url().includes("/auth/v1/token") && response.request().method() === "POST", { timeout: 15_000 });
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
   expect((await authResponse).status()).toBe(200);
   await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();

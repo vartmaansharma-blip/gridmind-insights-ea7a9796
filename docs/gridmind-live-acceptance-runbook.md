@@ -31,6 +31,8 @@ results in Issues #82/#68 before marking this gate passed.
 References: [Supabase application and RLS testing](https://supabase.com/docs/guides/local-development/testing/overview),
 [Playwright best practices](https://playwright.dev/docs/best-practices), and
 [Playwright CI setup](https://playwright.dev/docs/ci-intro).
+The sign-in form disables input/submission until hydration attaches React's
+handlers, following [Playwright's hydration guidance](https://playwright.dev/docs/navigations#hydration).
 
 Use this runbook to prepare one real asset for a controlled GridMind analysis. The readiness SQL is read-only; it does not create memberships, write observations, apply migrations, or deploy code.
 
