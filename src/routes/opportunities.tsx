@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
+import { CANONICAL_OPPORTUNITY_STATUSES, isCanonicalOpportunityStatus } from "@/lib/gridmind/opportunity-status";
 import { getCanonicalOpportunities } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
 import { inr, inrCompact } from "@/lib/energy/format";
@@ -11,7 +12,6 @@ export const Route = createFileRoute("/opportunities")({
   component: Opps,
 });
 
-const STATUS = ["detected","quantified","investigating","diagnosed","recommended","accepted","in_progress","awaiting_verification","verified","closed","invalid","insufficient_evidence","not_economically_material","not_actionable","rejected","superseded","unverified"];
 
 function Opps() {
   const { active, setOppStatus } = useEnergy();
@@ -35,7 +35,7 @@ function Opps() {
           <article key={o.id} className="panel p-5">
             <div className="flex flex-wrap items-start gap-3">
               <div className="min-w-0 flex-1"><div className="eyebrow">Opportunity #{i + 1}</div><h2 className="mt-1 text-lg font-semibold">{o.title}</h2><p className="mt-1 text-sm text-muted-foreground">{o.scopeType} · {o.scopeId ?? "factory-wide"}</p></div>
-              <Select value={o.status} onValueChange={(v) => setOppStatus(String(o.id), v as any)}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{STATUS.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
+              <Select value={o.status} onValueChange={(v) => { if (isCanonicalOpportunityStatus(v)) setOppStatus(String(o.id), v); }}><SelectTrigger className="w-[190px]"><SelectValue /></SelectTrigger><SelectContent>{CANONICAL_OPPORTUNITY_STATUSES.map((s) => <SelectItem key={s} value={s}>{s.replace(/_/g, " ")}</SelectItem>)}</SelectContent></Select>
             </div>
             <div className="mt-4 grid gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
               <Metric label="Recoverable opportunity" value={o.recoverableOpportunity} />

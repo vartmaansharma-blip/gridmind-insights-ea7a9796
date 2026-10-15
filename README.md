@@ -62,6 +62,8 @@ bun run build
 bun run check
 ```
 
+`check` includes the link audit and all core application checks above. Formatting is separate (`bun run format:check`); migration/security, Deno, and Python checks have their own workflows described in the [release gate](docs/release-gate.md).
+
 Run the relevant checks before proposing a merge. Record the exact commit and results; do not claim a check passed unless it was actually run. Review [Release Gate](docs/release-gate.md) and the relevant technical runbooks before any live or customer-data workflow.
 
 ## Engineering and safety principles
