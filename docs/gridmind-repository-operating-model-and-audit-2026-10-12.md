@@ -160,3 +160,52 @@ A content-level review of all 26 entries under the `Historical / superseded snap
 - The official `bun run docs:links` was not executed in this environment. The full repository-wide link-check acceptance criterion remains open until the script actually runs and its output is reviewed. CI runner/billing restrictions remain separately tracked in [Issue #42](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/42).
 
 This pass improves document authority signaling; it does not certify application readiness, security, or customer-data suitability.
+
+## Repository completion and convergence check (2026-10-15)
+
+**Point-in-time maintenance evidence; not an execution authority or production certification.** The owner authorized verified repository improvements to be merged into main and specified that Lovable owns design while Codex owns backend/repository work. This section preserves that maintenance record; the Master Plan remains discovery-first.
+
+### Completed on main
+
+| Change | Evidence | Limit |
+|---|---|---|
+| Repository-wide semantic lint and consistent core checks | [PR #69](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/69), merged | Actions infrastructure and effective branch enforcement remain separate blockers |
+| Equipment reload and explicit canonical row mappings | [PR #37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37), merged; 73 application tests passed locally | Synthetic repository-boundary tests are not live browser/RLS proof; #68 retains live acceptance |
+| Intake provenance, factory identity, and economic completeness | [PR #14](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/14), merged; 21 Python tests passed | Preflight only; no data upload or customer-data authorization |
+| Transitive dependency repair | [PR #73](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/73), merged; fresh Bun audit returned no advisories | Six existing lockfile entries changed within compatible ranges; this is not general security certification |
+
+The source snapshot for each candidate was compared with the GitHub tree. Core typecheck, semantic lint, tests, production build, and Deno typechecks passed locally. Eight existing Fast Refresh warnings and legacy formatting debt remain visible. Current migrations and generated Lovable integrations were preserved. Published histories were integrated with merge commits.
+
+### Repository essentials and compatibility
+
+- `SECURITY.md`, `SUPPORT.md`, `.github/CODEOWNERS`, `CHANGELOG.md`, editor/line-ending defaults, and issue contact links define ownership and operation without introducing an application framework.
+- The development environment template uses neutral placeholders; no production credentials or customer records are included. The project still uses Bun 1.3.5 and the existing Lovable/TanStack Start/React/Vite/Supabase stack.
+- Dependabot proposes Bun and GitHub Action updates for review, with bounded open-PR limits and no automatic merging. Routine major application updates are excluded.
+- Actions are pinned to verified commit SHAs; Deno typechecking is pinned to the locally tested 2.9.6. The migration workflow's Supabase CLI still uses `latest`: select and validate a fixed CLI version during the first restored replay, rather than claiming it is already reproducible.
+- The earlier `.lovable/plan.md` is explicitly a design reference under the canonical authorities. No visual redesign or broad product scope change is made by this pass.
+- The documentation inventory has no missing, repeated, or nonexistent file entries. The official link checker ran successfully, closing the previous execution gap; re-run it on future edits.
+- Private/proprietary status is explicit; no open-source license or ownership of third-party dependencies is invented.
+
+### Preserved open proposals and blockers
+
+The changed-file inventories and relevant patches were inspected for scope and overlap. This table does not claim a completed semantic/security audit or acceptance of every historical proposal. No branch or unique proposal was deleted.
+
+| Work | Disposition after this maintenance pass |
+|---|---|
+| [#2](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/2) | Preserve and narrow: some CSV/lifecycle fixes have landed elsewhere; analysis-quality and save-error handling need current-base correctness review. Generated integration rewrites and visual changes must not be merged wholesale. |
+| [#31](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/31) | Parked demo/UI proposal; coordinate any future visual changes through Lovable and keep synthetic state separate from persisted outcomes. |
+| [#36](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/36) | Hold migration filename/history changes for read-only reconciliation and isolated replay. Repository tidiness is not authority to rewrite deployed migration history. |
+| [#41](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/41) | Hold workspace authorization/snapshot security changes for exact-head replay and independent security review. |
+| [#56](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/56) | Strategic thesis proposal remains unmerged; repository maintenance does not authorize a company-thesis or scope change. |
+| [#62](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/62) | Preserve synthetic readiness workpaper. Pending tests document missing capabilities; they are not implemented safeguards. |
+| [#63](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/63) | Preserve the isolated, unintegrated source-intake proposal; no evidence-based product requirement yet authorizes integrating a new module. |
+| [#66](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/66) | Preserve audit workpaper; do not create another live execution queue or imply its inventory is a completed system audit. |
+| [#42](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/42) | Owner-level Actions billing/runner blocker; jobs observed with runner ID zero and no steps. No remote pass is claimed. |
+| [#46](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/46) | Effective branch/ruleset enforcement still requires owner/admin verification after Actions is restored; a ruleset API read returned a private-plan restriction. |
+| [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) and [#68](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/68) | Live isolated database/browser acceptance and release evidence remain incomplete. No Docker runtime was available in this validation environment. |
+
+### Does the process converge on a valuable product?
+
+Engineering risk has decreased; commercial validation remains unknown. The canonical tracker still reports no confirmed buyer conversations, selected wedge, authorized customer-data trial, qualified reviewer, or verified savings. A clean repository cannot establish those outcomes.
+
+Keep this maintenance pass bounded. Future work must fix an evidenced correctness/security defect, enable a named discovery/evaluation step, or serve a validated customer need. Do not optimize for document count, feature count, test count, or architectural breadth. The next commercial priority remains the existing bounded C1/C4 discovery process and evidence-based gates. No outreach is sent or counted by this repository work.

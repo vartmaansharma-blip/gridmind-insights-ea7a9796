@@ -14,7 +14,8 @@
     "check": "bun run docs:links && bun run typecheck && bun run lint && bun run test && bun run build",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "docs:links": "node scripts/check-markdown-links.mjs"
+    "docs:links": "bun scripts/check-markdown-links.mjs",
+    "test:intake": "python3 -m unittest discover -s tests -v"
   },
   "overrides": {
     "rolldown": "1.2.1"

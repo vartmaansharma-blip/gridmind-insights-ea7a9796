@@ -35,3 +35,9 @@ dist-ssr
 .env
 .env.*
 !.env.example
+
+# Local test and coverage artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+coverage/

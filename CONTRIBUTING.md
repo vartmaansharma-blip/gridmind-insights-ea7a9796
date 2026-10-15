@@ -76,3 +76,11 @@ A PR is ready only when:
 - required independent review is complete for security-sensitive changes.
 
 Keep a PR in draft while any material criterion remains unresolved. Do not merge merely to reduce the open-PR count.
+
+## 8. Lovable handoff and outcome discipline
+
+Lovable handles design; Codex handles backend and repository tasks. Follow the collaboration rules in [AGENTS.md](AGENTS.md). Keep the existing app/template dependencies and generated integrations compatible with Lovable. Ordinary Markdown, TypeScript, Python, SQL, and GitHub configuration remain editable source; do not add a second framework or an opaque build layer.
+
+Each work item must name the observed defect or customer/evidence need, the expected improvement, and the evidence that would justify completion. Necessary security/correctness repairs can proceed during the discovery-first freeze; speculative modules and visual redesign cannot become priorities merely because a proposal exists. Keep the engineering pass bounded and return to the canonical discovery priority when essential controls are in place.
+
+[CODEOWNERS](.github/CODEOWNERS) routes responsibility. [Security reporting](SECURITY.md), [support](SUPPORT.md), and the [change history](CHANGELOG.md) have distinct purposes. Dependency PRs require review and Lovable compatibility checks; they are never automatically merged. Major application upgrades are excluded from routine dependency updates and require a separate explicit compatibility decision. Bun and GitHub Actions update configuration follows the [GitHub supported ecosystems](https://docs.github.com/en/code-security/reference/supply-chain-security/supported-ecosystems-and-repositories).

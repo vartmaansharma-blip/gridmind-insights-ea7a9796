@@ -1,6 +1,7 @@
 # GridMind repository guide
 
-**Last reviewed:** 2026-10-13  
+**Last reviewed:** 2026-10-15
+
 **Purpose:** One navigation point for the canonical decisions and a complete document inventory.  
 **Inventory rule:** Every file under `docs/` is listed exactly once below. No document was deleted or moved in this pass. "Uncertain, kept" means its content was not reviewed deeply enough to assign a stronger status; it remains preserved and must not be treated as an authority.
 
@@ -168,3 +169,7 @@ The repository root is for project entry points, contributor instructions, confi
 When a root-level document appears to create a new priority or contradicts a canonical record, do not infer which one wins from its date or filename. Reconcile the conflict in the canonical record, then update the affected reference. Do not move or delete files until inbound links, issue/PR references, and unique historical evidence have been checked.
 
 **Validation status:** this authority map is a documentation change only. It does not mean repository-wide Markdown links, application checks, migrations, or release gates have passed.
+
+## Repository maintenance evidence — 2026-10-15
+
+The existing [repository operating-model audit](gridmind-repository-operating-model-and-audit-2026-10-12.md#repository-completion-and-convergence-check-2026-10-15) records merged maintenance, compatibility checks, preserved proposals, and unresolved verification. This is a dated evidence record, not a new execution plan. Root-level [security](../SECURITY.md), [support](../SUPPORT.md), [change history](../CHANGELOG.md), and [Lovable/Codex rules](../AGENTS.md#lovable-and-codex-collaboration) have distinct operating responsibilities. Discovery remains the canonical P0; maintenance does not select a wedge or establish product readiness.
