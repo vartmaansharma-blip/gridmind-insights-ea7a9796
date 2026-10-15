@@ -10,6 +10,9 @@ cover browser sign-in, populated assets, authoritative analysis persistence,
 a lost response after server commit followed by an idempotent retry, stored
 result verification after refresh and re-login, and a second user's denied
 cross-factory read/write. A separate browser context prevents shared sessions.
+Additional checks exercise a non-empty persisted opportunity (USD currency,
+null gross loss, zero net value and canonical status) across refresh, and an
+explicit asset-read failure followed by recovery.
 
 The test-only Playwright package and lockfile live in `e2e/`; application
 dependencies and Lovable's generated integrations are unchanged. The config

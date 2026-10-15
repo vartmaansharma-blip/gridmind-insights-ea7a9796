@@ -3,11 +3,34 @@ import { test, expect, type Page } from "@playwright/test";
 const password = "gridmind-ci-password"; // Synthetic, ephemeral local users only.
 const functionPath = "/functions/v1/persist-factory-analysis";
 
+test.beforeEach(async ({ page }) => {
+  page.on("pageerror", (error) => console.error("Browser exception:", error.message));
+  page.on("response", async (response) => {
+    const url = new URL(response.url());
+    if (url.hostname === "127.0.0.1" && response.status() >= 400) {
+      console.error("Local request failed:", response.status(), url.pathname);
+      if (url.pathname.startsWith("/rest/v1/")) {
+        const body = await response.json().catch(() => ({}));
+        console.error("Database error:", body.code, body.message);
+      }
+    }
+  });
+});
+
+test.afterEach(async ({ page }, info) => {
+  if (info.status !== info.expectedStatus) {
+    // Only synthetic local fixture content; no cookies, passwords or tokens.
+    console.error("Browser visible state:", (await page.locator("body").innerText()).slice(0, 5000));
+  }
+});
+
 async function signIn(page: Page, user: "a" | "b") {
   await page.goto("/auth");
   await page.getByLabel("Email", { exact: true }).fill(`gridmind-http-${user}@example.test`);
   await page.getByLabel("Password", { exact: true }).fill(password);
+  const authResponse = page.waitForResponse((response) => response.url().includes("/auth/v1/token") && response.request().method() === "POST");
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  expect((await authResponse).status()).toBe(200);
   await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();
   await expect(page.getByRole("combobox")).toContainText(`gridmind-http-factory-${user}`);
 }
@@ -21,7 +44,7 @@ async function browserApi(page: Page, path: string, body?: Record<string, unknow
     if (!session?.access_token) throw new Error("Browser has no authenticated session.");
     const response = await fetch(`http://127.0.0.1:54321${path}`, {
       method: body ? "POST" : "GET",
-      headers: { apikey: key!, Authorization: `Bearer ${session.access_token}`, "Content-Type": "application/json" },
+      headers: { apikey: key!, Authorization: `Bearer ${session.access_token}`, "Content-Type": "application/json", Prefer: "return=representation" },
       ...(body ? { body: JSON.stringify(body) } : {}),
     });
     return { status: response.status, body: await response.json() };
@@ -85,6 +108,50 @@ test("sign-in, authoritative save, lost-response retry, refresh and re-login pre
     expect(verified.body.recomputed.economics.estimatedNetValueInr).toBe(1500);
     expect(verified.body.recomputed.provenance.inputObservationIds).toHaveLength(15);
   }
+});
+
+test("non-empty persisted opportunity values preserve currency, null, zero and status after refresh", async ({ page }) => {
+  await signIn(page, "a");
+  const factories = await browserApi(page, "/rest/v1/factories?select=id,name");
+  const title = `Synthetic browser opportunity ${crypto.randomUUID()}`;
+  const created = await browserApi(page, "/rest/v1/opportunities", {
+    factory_id: factories.body[0].id, scope_type: "factory", title,
+    currency: "USD", recoverable_opportunity: 1234.5, expected_recovery: 1200,
+    expected_net_value: 0, intervention_cost: 0, gross_loss: null,
+    status: "not_material", measurement_confidence: 0.75,
+  });
+  expect(created.status).toBe(201);
+  await page.goto("/opportunities");
+  for (const refresh of [false, true]) {
+    if (refresh) await page.reload();
+    const card = page.getByRole("article").filter({ has: page.getByRole("heading", { name: title, exact: true }) });
+    await expect(card).toBeVisible();
+    await expect(card.getByRole("combobox")).toHaveText("not material");
+    await expect(card).toContainText("1,234.50 USD");
+    await expect(card).toContainText("0.00 USD");
+    await expect(card).toContainText("Gross loss: —");
+    await expect(card).toContainText("measurement 0.75");
+    await expect(card).not.toContainText("₹");
+  }
+});
+
+test("asset read failures are visible and a recovered connection can reload real data", async ({ page }) => {
+  await signIn(page, "a");
+  await page.route("**/rest/v1/factory_assets?**", async (route) => {
+    // Fail only the asset page's scoped query, not initial snapshot loading.
+    const scope = new URL(route.request().url()).searchParams.get("factory_id");
+    if (scope?.startsWith("eq.")) {
+      await route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ message: "Synthetic asset read failure" }) });
+    } else {
+      await route.continue();
+    }
+  });
+  await page.goto("/machines");
+  await expect(page.getByText("Could not load assets: Synthetic asset read failure", { exact: true })).toBeVisible();
+  await expect(page.getByRole("link", { name: "gridmind-http-asset-a", exact: true })).toHaveCount(0);
+  await page.unroute("**/rest/v1/factory_assets?**");
+  await page.reload();
+  await expect(page.getByRole("link", { name: "gridmind-http-asset-a", exact: true })).toBeVisible();
 });
 
 test("separate authenticated users cannot read or analyze each other's populated assets", async ({ page, browser }) => {
