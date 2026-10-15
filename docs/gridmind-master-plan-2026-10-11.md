@@ -8,7 +8,7 @@
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
 
-**Latest revision:** §19 evaluates the two external proposals and tightens the existing discovery experiment. Choose a specific buyer decision with an unresolved, economically material gap; the easiest document to obtain is an entry route, not sufficient reason to choose a business. C1 and C4 remain open. Discovery remains P0; engineering work must resolve an evidenced correctness/security blocker or enable the selected evidence step. This documentation revision does not authorize implementation or external outreach.
+**Latest revision:** §14 consolidates the buyer-access fallbacks, decision rules, scoped long-term direction and operating corrections. **Founder capacity corrected on 2026-10-15:** the founder reports **5 hours per day**, not 5 hours per week. C1 and C4 remain undecided. Discovery remains P0, with the same professional-support, permission and technical release gates. This documentation correction does not authorize additional product modules or external outreach.
 
 ### Working definition and positioning
 GridMind is an **evidence-first industrial investigation service**: it turns a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
@@ -124,7 +124,7 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 
 ## 7. Resource model and stop conditions
 
-**Provisional planning cap:** 5 founder hours/week, ₹0 incremental spend, using existing tools and human conversations. This is an explicit planning assumption, not a claim about the founder's actual availability. If the cap is unrealistic, reduce the activity target and reset the dates; do not silently exceed it. Do not run this alongside speculative site redesign, new modules, brand renaming, or unrelated growth experiments.
+**Founder-reported availability (corrected 2026-10-15):** **5 hours/day**, **not 5 hours/week**. A practical planning baseline is **25 hours/week over five chosen days**; 35 hours/week is possible only if seven days are actually available and appropriate, **not** a target or obligation. Preserve school, sleep and rest; track actual hours and revise the schedule if necessary. Incremental cash spend remains **₹0** through the Nov 10 decision unless separately approved. Extra time enables better discovery preparation, buyer conversations, domain learning and evidence review; it does **not** waive the discovery-first freeze, support requirements, buyer-access dependency or technical/data gates.
 
 Stop or change course if:
 - **Oct 19:** review response quality from the ASIA route and the 3–5-request access test; decide whether to continue, change the route, or record access as the current blocker. Do not infer absent market demand from a small or immature sample.
@@ -226,7 +226,7 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 
 ### 14.4 Capacity, financial runway and engineering limits
 
-**Current provisional allocation (5 founder hours/week, ₹0 incremental cash spend through Nov 10):** 60 min supported outreach/scheduling; 120 min interviews plus notes; 45 min adviser/reviewer-route coordination; 45 min follow-ups; 30 min tracker/evidence review. **No speculative product engineering is budgeted in these five hours.** If access fails or time differs, reduce activity goals and document a changed capacity assumption; do not silently exceed the cap.
+**Current planning allocation (founder reports 5 hours/day; example 25 hours over five chosen days, ₹0 incremental cash spend through Nov 10):** 6 h supported access/introductions/scheduling; 7 h genuine interviews plus permissioned non-confidential notes (reallocate to preparation when no interviews are booked); 4 h adviser/domain-expert route and relevant industrial learning; 4 h evidence review and fair C1/C4 comparison; 2 h tracker, follow-ups and operating review; **up to 2 h necessary technical correctness/security maintenance only**, otherwise return those hours to discovery. **Total: 25 h/week illustrative allocation, not an obligation or confirmed hours worked.** No speculative product engineering, unrelated dashboard polish or additional vendor purchases are authorized. Buyer access, adult/professional support, customer-data rights and reviewer requirements remain hard dependencies; actual hours must fit alongside school, sleep and rest.
 
 **Runway:** founder cash budget remains **₹0 incremental** for this sprint (not an assertion about personal finances). Time runway is the remaining founder hours to the Nov 10 decision; record actual weekly usage and decisions. Before authorizing any paid trial, record approved project funds, expected weekly cash burn, opportunity cost and a latest go/no-go date; calculate cash runway only from *actual allocated funds*, not estimated family resources. Do not promise paid experts or software subscriptions without approval.
 
