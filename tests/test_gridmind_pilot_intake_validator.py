@@ -51,7 +51,7 @@ class IntakeValidatorTests(unittest.TestCase):
             "factory_id":"F1", "context_name":"tariff-2026",
             "effective_from":"2026-01-01T00:00:00+05:30",
             "effective_until":"", "currency":"INR",
-            "tariff_inr_per_kwh":"8.5", "recoverable_fraction":"", "intervention_cost_inr":"",
+            "tariff_inr_per_kwh":"8.5", "recoverable_fraction":"0.6", "intervention_cost_inr":"500",
             "source_system":"invoice", "source_record_id":"bill-1",
             "source_reference":"controlled://bills/bill-1", "notes":""
         }
@@ -94,6 +94,16 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, blockers = validator.validate(self.obs, self.ops, self.eco)
         self.assertEqual(errors, [])
         self.assertTrue(any("tariff is absent" in b for b in blockers))
+
+    def test_missing_recovery_fraction_or_intervention_cost_blocks_financial_quantification(self):
+        for field in ("recoverable_fraction", "intervention_cost_inr"):
+            with self.subTest(field=field):
+                obs, op, eco = self.valid_rows()
+                eco[field] = ""
+                self.write_all([obs], [op], [eco])
+                errors, blockers = validator.validate(self.obs, self.ops, self.eco)
+                self.assertEqual(errors, [])
+                self.assertTrue(any(f"{field} is absent" in blocker for blocker in blockers))
 
     def test_overlapping_same_role_periods_are_rejected(self):
         obs, op, eco = self.valid_rows()
@@ -170,6 +180,53 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, _ = validator.validate(self.obs, self.ops, self.eco)
         self.assertTrue(any("must use value_text" in error for error in errors))
         self.assertTrue(any("require value_text" in error for error in errors))
+
+    def test_duplicate_source_record_in_operating_contexts_is_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(op, operating_state="idle", source_record_id=op["source_record_id"])
+        self.write_all([obs], [op, second], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("duplicate source_system/source_record_id in operating contexts" in error for error in errors))
+
+    def test_duplicate_source_record_in_economic_contexts_is_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(eco, context_name="duplicate-source", source_record_id=eco["source_record_id"])
+        self.write_all([obs], [op], [eco, second])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("duplicate source_system/source_record_id in economic contexts" in error for error in errors))
+
+    def test_asset_cannot_belong_to_multiple_factories_across_intake_files(self):
+        obs, op, eco = self.valid_rows()
+        op["factory_id"] = "F2"
+        self.write_all([obs], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("asset 'A1' is assigned to multiple factories" in error for error in errors))
+
+    def test_same_source_record_can_support_distinct_evidence_classes(self):
+        obs, op, eco = self.valid_rows()
+        for row in (obs, op, eco):
+            row["source_system"] = "synthetic-shared-record"
+            row["source_record_id"] = "shared-1"
+        self.write_all([obs], [op], [eco])
+        errors, blockers = validator.validate(self.obs, self.ops, self.eco)
+        self.assertEqual(errors, [])
+        self.assertEqual(blockers, [])
+
+    def test_duplicate_observation_source_record_is_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(obs, period_start="2026-02-01T00:00:00+05:30", period_end="2026-03-01T00:00:00+05:30")
+        self.write_all([obs, second], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("duplicate source_system/source_record_id in observations" in error for error in errors))
+
+    def test_explicit_zero_economic_inputs_are_not_absent(self):
+        obs, op, eco = self.valid_rows()
+        for field in ("tariff_inr_per_kwh", "recoverable_fraction", "intervention_cost_inr"):
+            eco[field] = "0"
+        self.write_all([obs], [op], [eco])
+        errors, blockers = validator.validate(self.obs, self.ops, self.eco)
+        self.assertEqual(errors, [])
+        self.assertEqual(blockers, [])
 
 if __name__ == "__main__":
     unittest.main()

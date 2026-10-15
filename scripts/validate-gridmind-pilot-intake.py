@@ -85,16 +85,35 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     operating = read_csv(ops_path, OPS, errors)
     economics = read_csv(eco_path, ECO, errors)
 
-    source_ids: set[tuple[str, str]] = set()
+    source_ids: dict[str, set[tuple[str, str]]] = {
+        "observations": set(),
+        "operating_contexts": set(),
+        "economic_contexts": set(),
+    }
     intervals: dict[tuple[str, str, str], list[tuple[datetime, datetime, str]]] = defaultdict(list)
     observation_periods: list[tuple[str, str, datetime, datetime, str]] = []
     valid_context_coverage: list[tuple[str, str, datetime, datetime, str]] = []
     economic_coverage: list[tuple[str, datetime, datetime | None, str, float | None, str]] = []
     factories: set[str] = set()
+    asset_factories: dict[str, str] = {}
+
+    def register_asset_factory(factory_id: str, asset_id: str, label: str) -> None:
+        if not factory_id or not asset_id:
+            return
+        prior_factory = asset_factories.get(asset_id)
+        if prior_factory is not None and prior_factory != factory_id:
+            errors.append(
+                f"{label}: asset {asset_id!r} is assigned to multiple factories "
+                f"({prior_factory!r} and {factory_id!r}); resolve identity before analysis"
+            )
+        else:
+            asset_factories[asset_id] = factory_id
+
     for i, row in enumerate(observations, 2):
         label = f"{obs_path.name}:{i}"
         required(row, ["factory_id", "asset_id", "period_start", "period_end", "role", "metric", "unit", "quality_status", "is_estimated", "source_system", "source_record_id", "source_reference"], label, errors)
         factories.add(row.get("factory_id", ""))
+        register_asset_factory(row.get("factory_id", ""), row.get("asset_id", ""), label)
         role = row.get("role", "")
         metric = row.get("metric", "")
         if role and role not in ROLES:
@@ -138,9 +157,9 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
         sid = row.get("source_record_id", "")
         if sid:
             key = (row.get("source_system", ""), sid)
-            if key in source_ids:
-                errors.append(f"{label}: duplicate source_system/source_record_id {key!r}")
-            source_ids.add(key)
+            if key in source_ids["observations"]:
+                errors.append(f"{label}: duplicate source_system/source_record_id in observations {key!r}")
+            source_ids["observations"].add(key)
 
     for key, rows in intervals.items():
         rows.sort(key=lambda x: x[0])
@@ -152,7 +171,14 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     for i, row in enumerate(operating, 2):
         label = f"{ops_path.name}:{i}"
         required(row, ["factory_id", "asset_id", "start_time", "end_time", "status", "source_system", "source_record_id", "source_reference"], label, errors)
+        sid = row.get("source_record_id", "")
+        if sid:
+            key = (row.get("source_system", ""), sid)
+            if key in source_ids["operating_contexts"]:
+                errors.append(f"{label}: duplicate source_system/source_record_id in operating contexts {key!r}")
+            source_ids["operating_contexts"].add(key)
         factories.add(row.get("factory_id", ""))
+        register_asset_factory(row.get("factory_id", ""), row.get("asset_id", ""), label)
         start = parse_time(row.get("start_time", ""), f"{label}: start_time", errors)
         end = parse_time(row.get("end_time", ""), f"{label}: end_time", errors)
         if start and end:
@@ -189,6 +215,12 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
     for i, row in enumerate(economics, 2):
         label = f"{eco_path.name}:{i}"
         required(row, ["factory_id", "context_name", "effective_from", "currency", "source_system", "source_record_id", "source_reference"], label, errors)
+        sid = row.get("source_record_id", "")
+        if sid:
+            key = (row.get("source_system", ""), sid)
+            if key in source_ids["economic_contexts"]:
+                errors.append(f"{label}: duplicate source_system/source_record_id in economic contexts {key!r}")
+            source_ids["economic_contexts"].add(key)
         factory = row.get("factory_id", "")
         factories.add(factory)
         economic_rows_by_factory[factory].append(row)
@@ -204,6 +236,10 @@ def validate(obs_path: Path, ops_path: Path, eco_path: Path) -> tuple[list[str],
                 parsed = number(row[field], f"{label}: {field}", errors, low=low, high=high)
                 if field == "tariff_inr_per_kwh":
                     tariff_value = parsed
+            else:
+                blockers.append(
+                    f"{label}: {field} is absent; do not quantify financial impact until the source value is documented"
+                )
         currency = row.get("currency", "").upper()
         if row.get("tariff_inr_per_kwh") and currency != "INR":
             errors.append(f"{label}: tariff_inr_per_kwh requires currency INR; do not mix currencies or silently convert")
