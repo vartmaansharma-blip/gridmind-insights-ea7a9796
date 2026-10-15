@@ -107,6 +107,7 @@
 
 | File | Disposition / authority |
 |---|---|
+| [`gridmind-historical-planning-appendices-2026-10-15.md`](gridmind-historical-planning-appendices-2026-10-15.md) | Historical archive preserving former Master Plan §§14–19, including PR #85's external review and PR #88's conditional five-stage direction; nonbinding, not an active queue |
 | [`business-thesis-ratings-2026-10-10.md`](business-thesis-ratings-2026-10-10.md) | Historical snapshot; not a live execution plan |
 | [`founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md`](founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md) | Historical snapshot; not a live execution plan |
 | [`gridmind-10-year-strategy-and-30-day-execution-2026-10-11.md`](gridmind-10-year-strategy-and-30-day-execution-2026-10-11.md) | Historical snapshot; not a live execution plan |
