@@ -1,9 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { getCanonicalOpportunities } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
 import { inr, inrCompact } from "@/lib/energy/format";
-import { EmptyState, PageHeader } from "@/components/gm/bits";
+import { DemoBadge, EmptyState, PageHeader, Panel, ProcessRail } from "@/components/gm/bits";
+import { FindingFlow, FindingHeader } from "@/components/gm/finding";
+import { buildIntelligenceOpportunities } from "@/lib/energy/intelligence";
+import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export const Route = createFileRoute("/opportunities")({
@@ -14,14 +17,62 @@ export const Route = createFileRoute("/opportunities")({
 const STATUS = ["detected","quantified","investigating","diagnosed","recommended","accepted","in_progress","awaiting_verification","verified","closed","invalid","insufficient_evidence","not_economically_material","not_actionable","rejected","superseded","unverified"];
 
 function Opps() {
-  const { active, setOppStatus } = useEnergy();
+  const { active, analysis, setOppStatus } = useEnergy();
   const query = useQuery({
     queryKey: ["canonical-opportunities", active?.id],
     queryFn: () => getCanonicalOpportunities(Number(active!.id)),
     enabled: Boolean(active && !active.isDemo),
   });
 
-  if (!active || active.isDemo) return <EmptyState />;
+  if (!active) return <EmptyState />;
+
+  // Demo screening calculations are intentionally not written to the canonical
+  // opportunity model. Show them as a distinct, synthetic state rather than
+  // making the user's demo findings disappear into the generic no-data flow.
+  if (active.isDemo) {
+    if (!analysis?.hasData || !analysis.latest) {
+      return (
+        <>
+          <PageHeader eyebrow="Demo screening" title="Demo analysis unavailable" actions={<DemoBadge />} />
+          <Panel title="No screening result available" desc="This fictional factory has no usable screening result in the current session. Return to Overview or reload the demo example; no customer or persisted opportunity data is implied.">
+            <p className="text-sm text-muted-foreground">No screening findings are available to inspect in this state. This does not indicate a real factory has no opportunities.</p>
+          </Panel>
+          <Button asChild variant="outline" className="mt-4"><Link to="/">Back to overview</Link></Button>
+        </>
+      );
+    }
+    const screeningOpportunities = buildIntelligenceOpportunities(active, analysis);
+    return (
+      <>
+        <PageHeader
+          eyebrow="Economic intelligence · demo"
+          title="Demo screening opportunities"
+          desc="These findings are calculated from a fictional factory dataset. They are screening estimates—not canonical persisted opportunities, customer evidence, or verified savings."
+          actions={<DemoBadge />}
+        />
+        <ProcessRail active={5} />
+        <Panel title="How to interpret this view" desc="The example is designed to demonstrate how a signal can lead to an investigation. Equipment assumptions, likely causes and financial values require site evidence and human review. Nothing here is marked as realized or verified value.">
+          <p className="text-sm text-muted-foreground">Use this page to inspect the logic and evidence gaps, not to treat the example as an approved recommendation. Confirm operating conditions and measurements before acting.</p>
+        </Panel>
+        <div className="mt-4 grid gap-5">
+          {screeningOpportunities.map((o, i) => (
+            <article key={o.id} className="panel p-4 sm:p-5">
+              <FindingHeader o={o} rank={i + 1} />
+              <FindingFlow o={o} />
+              <div className="mt-3 text-xs text-muted-foreground">
+                Screening estimate: {inrCompact(o.savingAnnual)}/yr potential · Evidence state: {o.evidenceState} · Verification: {o.verificationState}
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button asChild variant="outline"><Link to="/">Return to overview</Link></Button>
+          <Button asChild variant="outline"><Link to="/savings">View verification state</Link></Button>
+        </div>
+      </>
+    );
+  }
+
   if (query.isLoading) return <p className="text-sm text-muted-foreground">Loading canonical opportunities…</p>;
   if (query.error) return <p className="text-sm text-danger">{query.error.message}</p>;
 
