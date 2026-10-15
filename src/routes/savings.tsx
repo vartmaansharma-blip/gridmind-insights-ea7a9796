@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { getCanonicalMachineSnapshots, getCanonicalVerification, createCanonicalIntervention } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
-import { inrCompact } from "@/lib/energy/format";
+import { currencyAmount } from "@/lib/energy/format";
 import { EmptyState, PageHeader, Panel } from "@/components/gm/bits";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,7 +45,7 @@ function SavingsPage() {
           {v.outcomes.length === 0 ? <p className="text-sm text-muted-foreground">No verified outcomes yet. Improvement after an intervention is not treated as a verified economic result.</p> : v.outcomes.map((o) => (
             <div key={o.id} className="border-b border-border py-3 last:border-0">
               <div className="flex flex-wrap justify-between gap-2"><b>Outcome #{o.id}</b><span className="text-xs uppercase">{o.verification_status}</span></div>
-              <div className="mt-1 text-sm">Economic value: {o.economic_value == null ? "—" : inrCompact(Number(o.economic_value))} · Net value: {o.net_value == null ? "—" : inrCompact(Number(o.net_value))}</div>
+              <div className="mt-1 text-sm">Economic value: {o.economic_value == null ? "—" : currencyAmount(o.economic_value, o.currency, true)} · Net value: {o.net_value == null ? "—" : currencyAmount(o.net_value, o.currency, true)}</div>
               <div className="mt-1 text-xs text-muted-foreground">Intervention #{o.intervention_id} · Verification run #{o.verification_run_id ?? "—"} · attribution {o.attribution_method ?? "—"}</div>
             </div>
           ))}

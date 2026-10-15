@@ -95,6 +95,7 @@ export type OpportunityContract = {
   id: OpportunityId;
   factoryId: FactoryId;
   title: string;
+  currency: string;
   status: string;
   scopeType: string;
   scopeId: number | null;
@@ -130,22 +131,23 @@ export type InterventionContract = {
   verificationMethod: Record<string, unknown>;
 };
 
+/** Outcome fields actually persisted by verified_outcomes, not verification-run estimates. */
 export type VerifiedOutcomeContract = {
   id: number;
   factoryId: FactoryId;
-  interventionId: number;
-  verificationRunId: number | null;
+  interventionId: InterventionId | null;
+  verificationRunId: number;
   verificationStatus: string;
-  attributedEffect: number | null;
-  physicalValue: number | null;
+  physicalEffect: number | null;
   economicValue: number | null;
+  implementationCost: number | null;
   netValue: number | null;
+  currency: string;
+  attributionMethod: string | null;
   uncertaintyLower: number | null;
   uncertaintyUpper: number | null;
-  measurementConfidence: number | null;
-  baselineConfidence: number | null;
-  attributionConfidence: number | null;
-  economicConfidence: number | null;
+  verifiedAt: string | null;
+  verifiedBy: string | null;
 };
 
 export type GridMindFactorySnapshot = FactoryContext & {
@@ -155,6 +157,8 @@ export type GridMindFactorySnapshot = FactoryContext & {
     machineTypeId: number | null;
     ratedPowerKw: number | null;
     processRole: string | null;
+    /** Application-owned equipment inputs stored in factory_assets.asset_metadata. */
+    assetMetadata?: Record<string, unknown>;
   }>;
   observations: ObservationContract[];
   opportunities: OpportunityContract[];
