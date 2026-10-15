@@ -35,3 +35,10 @@ export function nextMonth(m: string) {
   const d = new Date(Date.UTC(y, mo, 1));
   return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
 }
+
+/** Preserve the stored unit; never relabel non-INR financial evidence as rupees. */
+export function currencyAmount(value: number | null, currency: string, compact = false): string {
+  if (value === null) return "—";
+  if (currency === "INR") return compact ? inrCompact(value) : inr(value);
+  return `${num(value, 2)} ${currency.trim() || "(currency unknown)"}`;
+}

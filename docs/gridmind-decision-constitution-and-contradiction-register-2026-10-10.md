@@ -41,7 +41,7 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 
 Procurement intelligence remains a possible adjacent or alternative opportunity only if discovery narrows it to a specific purchasing category, buyer, recurring decision, and measurable consequence. Energy intensity for a bounded asset/process has an existing candidate data contract; detail does not confer priority.
 
-**Current experiment recommendation:** investigate one real, closed incident retrospectively with explicit organizational permission and qualified human review. Choose the incident based on access and a concrete problem narrative, not a preselected category. This is a low-risk learning experiment, not a permanent wedge selection.
+**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading ten conversations across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
 
 **Selection evidence:** severity/frequency; conservative addressable economics; buyer and budget ownership; current alternatives; authorized data access; credible baseline; qualified reviewer; time-to-useful-result; influenceability; willingness to pay; delivery burden and margin; safety/trust; repeatability; and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
 
@@ -96,21 +96,19 @@ The exact workflow depends on the selected use case. Not every candidate needs a
 | Expansion docs describe procurement, maintenance, energy, data centres and networks vs stop adding breadth | The expansion map is an option tree, not a simultaneous roadmap. | No module is authorized until customer demand and shared-core reuse pass a gate. |
 | Homepage spec says “build-ready” vs current instruction not to build the site first | “Build-ready” describes specification completeness, not current execution priority. | Do not implement full public site until offer and claim validation gates pass. |
 | Marketing hero recommends hidden-loss curiosity vs multiple positioning options remain | The recommended hero is a hypothesis, not a final market decision. | Test with buyers; do not optimize only for aesthetics or clicks. |
-| Accuracy document proposes 95% precision / 90% recall and 30 cases vs one bounded case in the 30-day plan | One case tests workflow feasibility; 30 adjudicated cases is an initial smoke-test gate for broader accuracy claims, not proof of generalization. | Never make a broad accuracy claim from one case or a tiny sample. |
+| Accuracy document proposes 95% precision / 90% recall and 30 cases vs one bounded case in the 30-day plan | The task, label protocol, risk, and sample are not defined for a valid target yet. | Remove 95%/90% from active acceptance criteria. Define any threshold with a qualified reviewer only after the task and evaluation set are specified. |
 | Master thesis says GridMind can coordinate actions vs human-review rules | Coordination means recording and supporting approved actions, not autonomous control. | Customer retains authority; consequential actions require qualified human approval. |
 | “Data moat” ambition vs no validated permissioned dataset yet | A moat is a hypothesis until lawful, repeatable data advantage exists. | No claim of an existing data moat; test whether reuse is permitted and produces measurable advantage. |
-| 30-day plan contains customer work and engineering work vs technical defects may block a pilot | Discovery and authorized read-only auditing can proceed in parallel; live data use or customer pilot depends on safety/readiness gates. | Do not put customer data into a workflow that has not passed required checks. |
+| Engineering plan puts schema/RPC/isolation work at P0 before offer selection | This contradicts D6 and there are no validated tenants or observations. | Discovery is the only P0. Preserve existing safeguards; defer new engineering until a selected offer demonstrates the specific blocker. |
 | More documentation vs actual execution | Documents support decisions but do not create validation. | After this consolidation, prioritize executing tests/interviews and recording results rather than generating more strategy documents. |
 
 ## 4. Current execution order
-1. Re-establish current product truth: inspect latest deployed build, authorized workspace flow, persistence, reproducibility and tenant boundaries. Do not mutate production or attach memberships without owner authorization.
-2. Run buyer discovery in parallel: compare the five problem families and seek a recent concrete problem, data owner, reviewer and budget owner.
-3. Check data feasibility using only authorized, minimized data.
-4. Choose one bounded offer with deliverables, inputs, exclusions, human-review boundary, timeframe and evaluation criteria.
-5. Build or fix only what blocks that offer; preserve source lineage, deterministic calculations, save/reload and security.
-6. Evaluate against baseline; report failures, reviewer disagreement, time, cost and uncertainty.
-7. Update website claims only after product truth and offer are clear.
-8. At Day 30, make GO / NARROW / PIVOT / STOP decision and define the next cycle.
+1. Run the access experiment and buyer discovery first, using stable IDs C1–C5; C1 and C4 are the only active probes for this sprint.
+2. Offer a free, one-page non-technical workflow/decision map in exchange for a 20-minute conversation; do not request confidential records or promise an unqualified technical audit.
+3. Use Tier 1 evidence to decide whether a candidate deserves a bounded test. Tier 2 data, baseline, incrementality, reviewer, security, and delivery gates apply before a customer-data test.
+4. Keep engineering at minimum safe maintenance until the selected offer proves a specific technical blocker. No new schema/RPC/isolation project is P0.
+5. At Day 30, decide GO TO BOUNDED TEST / NARROW / PIVOT / STOP; do not require verified savings inside the discovery window.
+6. Update this constitution only when new evidence changes a binding decision; use the master plan and live tracker for day-to-day execution.
 
 ## 5. Decision-change protocol
 Record future strategic changes in a dated decision record with:
@@ -203,3 +201,84 @@ The product must be willing to report “insufficient evidence,” “existing p
 **Unchanged:** first commercial wedge remains undecided. The next action is evidence-led buyer and workflow discovery, not broad feature expansion.
 
 **Canonical detail:** [Product Definition — sections 13–14](gridmind-product-definition.md). No customer validation or product readiness is implied by this conceptual refinement.
+
+
+## Execution amendment — 2026-10-11 (binding)
+
+This amendment resolves execution contradictions in older planning material. If an older paragraph conflicts with this amendment, this amendment and the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) govern.
+
+- **Only two active discovery probes:** C1 downtime/production-loss investigation and C4 energy/material inefficiency. Both are probes, not selected wedges. The canonical tracker defines stable IDs C1–C5.
+- **Two-tier gates:** Tier 1 selects a candidate for test design using pain, materiality/recurrence, residual gap, owner/buyer path, plausible evidence route, service feasibility, and a concrete next step. Tier 2 gates any non-public customer-data test: authorization, data rights/security, qualified reviewer, baseline, incrementality, delivery economics, and stop criteria.
+- **Historical access target — superseded:** the earlier 30 warm-introduction requests by 2026-10-17 was a planning target only and is no longer active. The current bounded access test is 3–5 genuine requests by 2026-10-19 only if legitimate contacts, actual capacity, and appropriate adult/professional support are available. The tracker is authoritative for actual sends/replies/bookings; do not infer demand from this small sample.
+- **Engineering:** discovery is the only P0. Preserve existing safeguards; defer broad schema/RPC/tenant-isolation work until a chosen offer demonstrates the need. No customer data in an unaccepted workflow.
+- **Economics:** no $20k ACV, 95% precision, 90% recall, or other ungrounded target is an active acceptance criterion. Define task-specific metrics and economics from buyer evidence.
+- **People:** reviewer roles are explicitly unassigned until a real candidate requires them. A trusted adult/professional must review and support external industrial outreach and formal engagement; customer data, site access, contracts, and payments require appropriate authorization and oversight.
+- **Source of truth:** the master plan is the sole execution plan; the buyer-discovery sprint is the sole live tracker. Supporting strategy docs are reference material, not competing plans.
+
+
+## Consolidated conversation decisions — 2026-10-12
+
+This entry preserves the strategic decisions made during the Phase 1–3 planning discussion and clarifies their status against the existing binding decisions above.
+
+### Company definition and ambition
+- **Working definition:** GridMind is an industrial intelligence and performance-improvement company that helps manufacturers investigate operational problems, make evidence-backed decisions, implement improvements with their teams, and verify results.
+- The long-term industrial-intelligence ambition remains a destination, not a claim that the current product already delivers every capability.
+- The operating loop remains authorized evidence → traceable finding → human review → customer-approved action → measured outcome → reusable learning only where permission and rights allow.
+
+### Opportunity and differentiation
+- No commercial wedge is selected.
+- The live discovery sprint's active probes remain C1 (downtime/production loss) and C4 (energy/material inefficiency), consistent with D3 and the master plan. C3 (maintenance recurrence/reliability) remains a comparison candidate, not a newly activated probe. Change the active probes only when new evidence meets the existing change rule.
+- Existing alternatives already cover portions of machine monitoring, maintenance management, root-cause analysis, and energy auditing. GridMind must demonstrate a specific residual gap; it must not assume that a competitor lacks a capability because its website does not mention it.
+- A candidate must be evaluated against actual customer pain, current alternatives, residual gap, consequence, buyer path, authorized evidence, safe delivery, incremental value, and a concrete next step. Unknowns remain unknown; a numerical score must not conceal missing evidence or a fatal blocker.
+- Public research identifies plausible hypotheses, not customer demand or willingness to pay. Customer accounts, synthetic experiments, and vendor statements must be labeled as distinct evidence types.
+
+### Prototype and execution
+- A bounded synthetic/offline experiment may test whether GridMind produces a more traceable, uncertainty-aware investigation brief than a defined baseline. It cannot prove customer demand, causal impact, general accuracy, or verified savings.
+- Do not process non-public customer data until the relevant authorization, data-rights/security, qualified-reviewer, baseline/outcome, effort/cost, and stop-condition gates are met.
+- No first-wedge decision, pricing, ACV, market-size, savings, accuracy, or defensible-moat claim is validated by the conversation alone.
+- The ASIA public-route inquiry was sent on 2026-10-12; this corrects the former “not contacted/no outreach sent” state. No response, introduction, meeting, or buyer signal is confirmed. The buyer-discovery tracker is the live record for actual funnel counts.
+- The research phase must produce a decision or a clearly stated evidence/access blocker, not an endless cycle of strategy documents. Do not add duplicate planning documents.
+
+### Reconciliation rule
+This dated entry clarifies the discussion; it does not override the master plan's two active probes, the two-tier evidence/access gates, or the discovery-only P0. If later evidence changes any of those decisions, update the master plan and tracker alongside this register, preserving the prior decision and reason for change.
+
+## 2026-10-12 repository and access-test clarification
+
+- The initial ASIA public-route inquiry was reported sent on 2026-10-12. No response, referral, meeting, customer-data permission, or customer validation is confirmed.
+- The immediate access experiment is a bounded 3–5 genuine warm-introduction-request effort by 2026-10-19, only if legitimate contacts and actual capacity are available. This supersedes the previous 30-request / Oct 17 planning target for the immediate test; it does not establish a statistically meaningful funnel or validate market demand.
+- Do not invent contacts, infer demand from an immature sample, or count planned requests as sent. If suitable contacts are not available, record access as a constraint and seek legitimate public or professional routes.
+- The repository's README and documentation index are navigation aids. The Master Plan remains the sole execution plan; the Buyer Discovery Sprint remains the sole live tracker; this Constitution remains the binding guardrail and durable decision register.
+- Repository cleanup should preserve useful history, avoid deleting files before checking inbound links, and not merge open PRs until their diff, current base, tests, migration effects, and security impact are reviewed.
+
+## 2026-10-12 preservation-first repository rule
+
+Before reconciling existing branches or changing canonical documentation, preserve the current state and evidence:
+
+1. Inspect the current `main`, the full proposed diff, and the relevant canonical documents before editing. Compare file-by-file; do not infer that a change is redundant from its title or summary alone.
+2. Do not delete, overwrite, mass-move, or rewrite history to simplify the repository. First inventory the affected files, identify unique decisions/evidence/rationale, and check inbound links and references.
+3. When content is superseded, preserve useful historical evidence and point readers to the authoritative replacement. Update the existing canonical document rather than creating another master plan, live tracker, or decision register.
+4. Keep preservation checkpoints and decisions in version-controlled repository files/commits, not only in issue or PR comments. Comments are discussion records, not commits.
+5. Do not merge a stale or non-mergeable PR until its current-base diff, affected files, tests, migration effects, security implications, and required independent review have been checked. Preserve existing commit history; prefer a focused, reviewable change.
+6. No production database/schema mutation, deployment, or non-public customer-data processing is authorized by a documentation or preservation change. Those actions require their own explicit authorization and verified safeguards.
+7. Report the exact commit/PR and verification performed. Distinguish completed work from open, blocked, unverified, and historical work; never claim tests, migrations, links, customer validation, or deployment passed unless observed on the relevant exact revision/environment.
+
+This rule protects continuity and data integrity. It does not approve any open PR, declare technical readiness, or change GridMind's discovery-first scope.
+
+
+## Strategic foundation freeze — 2026-10-13
+
+This is the binding reconciliation for the planned 2026-10-15 freeze. It consolidates current decisions; it does not select a commercial wedge or claim validation.
+
+- **Company definition:** GridMind is an industrial intelligence and performance-improvement company helping manufacturers investigate operational problems, make evidence-backed decisions, implement improvements with their teams, and verify results. The long-term ambition is not a claim about present product capability.
+- **Current execution priority:** customer/workflow discovery (P0). The next access route and all actual funnel movement live only in the Buyer Discovery Sprint tracker.
+- **Initial segment hypothesis:** explore owner-run and mid-size manufacturers in Jamshedpur–Adityapur; 50–300 staff is a working segment hypothesis only. The initial segment is not validated or finally selected; customer access, buyer fit, and willingness to pay remain unknown.
+- **Active probes:** C1 downtime/production-loss investigation and C4 energy/material inefficiency. Both remain hypotheses; neither is a selected wedge. No alternative probe becomes active without recording the evidence and reason for the change in the Master Plan and tracker.
+- **Offer status:** a human-reviewed, evidence-first investigation brief is a working service hypothesis, not a validated offer. Proposed pricing, turnaround, savings, accuracy, and scalability remain unvalidated.
+- **Evidence standard:** separate observed facts, participant recollection, estimates, hypotheses, unknowns, and disconfirming evidence. Public research, synthetic experiments, and internal tests do not equal customer validation.
+- **Tier 1:** may authorize only candidate selection and written test design when the problem, consequence, residual gap, buyer path, evidence feasibility, bounded delivery, and next step are supported.
+- **Tier 2:** no non-public customer data, factory access, paid pilot, or savings promise until the applicable authorization, data-rights/security, qualified-review, baseline/outcome, delivery-economics, and stop-condition gates pass.
+- **Engineering boundary:** preserve essential security/correctness; otherwise do not expand features or infrastructure unless the chosen evidence-gathering step demonstrates a specific need.
+- **Dates:** Oct 15 foundation freeze; Oct 19 access-route review; Oct 31 discovery target; Nov 10 evidence-based decision gate; Nov 15 phase close/handoff. These are decision/process milestones, not guaranteed customer or product outcomes.
+- **External engagement:** because the founder is a minor, external industrial outreach and formal engagement require appropriate adult/professional support. Do not send messages or share data without the required oversight and authorization.
+
+**Contradiction rule:** this section, the current Master Plan, and the current Buyer Discovery Sprint supersede older dated targets and stale execution text. Preserve superseded decisions as historical context, but label them as such. If these canonical records disagree, stop the affected action and reconcile the documents before proceeding.

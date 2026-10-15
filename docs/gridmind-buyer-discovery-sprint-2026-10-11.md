@@ -1,188 +1,298 @@
-# GridMind — Buyer Discovery Sprint
+# GridMind Buyer Discovery Sprint — Live Tracker
 
-**Date:** 2026-10-11  
-**Status:** Ready to execute; no interviews or customer access are claimed.  
-**Purpose:** Find out whether one narrowly defined industrial problem is urgent, economically material, accessible with permitted data, and commercially deliverable.
+**Last updated:** 2026-10-13  
+**Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
+**This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
-## The decision this sprint must answer
+## 1. Sprint objective and dates
 
-Can GridMind identify one real, recurring or high-consequence industrial workflow where:
-1. the current workaround is demonstrably inadequate;
-2. the conservative incremental value is material relative to fees and adoption effort;
-3. the required data can be accessed with permission;
-4. a credible first deliverable can be produced with explicit human review; and
-5. a real buyer is willing to take a concrete commercial next step?
+- **Sprint:** 2026-10-11 through 2026-11-10.
+- **Near-term access test:** 3–5 genuine warm-introduction requests by **2026-10-19**, only if legitimate contacts and actual capacity are available.
+- **No conversion-rate assumption:** the earlier 30-ask funnel is superseded for this immediate test. Do not use an unvalidated booking/attendance percentage to forecast results.
+- **Review rule:** assess the actual quality of routes, responses, and next steps after the small test. A small or immature sample cannot establish market demand or prove absence of demand. If suitable contacts cannot be identified, record access as the blocker; do not invent prospects.
+- **30-day outcome:** GO TO BOUNDED TEST / NARROW / PIVOT / STOP. A paid pilot and verified savings are not required within 30 days.
 
-If not, the output is a documented blocker or rejection—not a forced product idea.
+## Public desk context — 2026-10-13
 
-## Initial buyer hypotheses — not confirmed customer segments
+These are **public-source facts for research orientation**, not customer evidence, demand proof, or a validated commercial wedge.
 
-Start with reachable people rather than a broad industry list. These are roles to investigate, not proof that they are accessible or that the problems exist.
+| Topic | Source-backed observation | What it does and does not mean |
+|---|---|---|
+| Adityapur industrial base | The official [JIADA Adityapur page](https://jiada.jharkhand.gov.in/adityapur) currently lists **1,533 total industrial units** for the Adityapur regional area. | Establishes a sizable industrial setting; does not identify active, reachable, right-sized buyers or their pain. |
+| Automotive-component listings | The [ASIA automotive-components directory](https://asiajamshedpur.com/single-category/automotive-components-and-assemblies/) displays **116 directory items** in that category at the time of this review. | This is an association directory count, not a census or a percentage of all Adityapur units. Do not repeat “85% auto parts” without a credible, current source and a clear denominator. |
+| Electricity tariff | [JBVNL's official tariff page](https://jbvnl.co.in/tariff) lists FY 2026–27 tariff material; the [JSERC tariff-order index](https://jserc.org/tariff.aspx) lists the FY 2026–27 JBVNL tariff determination dated **25 March 2026**. | Tariff impact varies by consumer category, demand, kVAh/kWh billing, fixed/demand charges, and other components. No blanket “tariff rose 8%” claim is accepted here; compare the relevant category and prior-year order before quantifying. |
+| Power/production disruptions | No specific, independently sourced recent factory disruption has been established in this desk pass. | Ask participants about a recent event and how it was handled. Do not present a hypothetical shutdown or a public headline as a validated target-customer problem. |
 
-| Hypothesis | Who to speak with first | Problem trigger to investigate | Economic evidence to request | Main disqualifier |
+**Segment hypothesis, not a desk fact:** owner-run or mid-size manufacturers (roughly 50–300 staff) in the Jamshedpur–Adityapur belt may be accessible enough for bounded discovery. Confirm firm size, role, buyer route, current alternatives, and actual pain during conversations.
+
+## 2. Stable candidate register
+
+Use only these IDs across notes and decisions. Never use “Hypothesis A/B” without the ID.
+
+| ID | Candidate | Status this sprint | Evidence to seek |
+|---|---|---|---|
+| **C1** | Downtime / production-loss investigation | Probe deeply | Last real event, production consequence, investigation timeline, existing systems/process, unresolved gap, accountable owner |
+| **C2** | Quality defects / scrap / rework / escapes | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
+| **C3** | Maintenance recurrence / reliability | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
+| **C4** | Energy / material inefficiency | Probe deeply | Last real event or recurring cost, bills/process evidence available, tariff/operating context, current review process, residual gap, accountable owner |
+| **C5** | Cross-team handoff / delayed operational decisions | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
+
+C1 and C4 are discovery probes, not selected product wedges. Do not compare five candidates shallowly. Procurement intelligence, consumer products, broad platforms, brand renaming, and other concepts are out of this sprint unless evidence triggers a formal change in the master plan.
+
+## 3. Concrete give and conversation invitation
+
+**Offer:** a free, one-page workflow/decision map based only on what the participant chooses to share verbally. It will summarize the steps, handoffs, evidence currently used, unresolved questions, and possible next questions. It is not a technical audit, root-cause diagnosis, engineering recommendation, or savings claim. No confidential records are needed. Share the summary only with the participant's permission.
+
+For C4, do not promise an electricity-bill/tariff audit unless a qualified energy reviewer has explicitly agreed to review it. Until then, offer the workflow map only.
+
+### Outreach draft — warm introduction request
+
+> Hi — I’m working on GridMind, an early project exploring how manufacturing teams investigate recurring operational problems. I’m trying to understand the current process before deciding what, if anything, to build.
+>
+> Could you introduce me to one production/operations or energy/utility professional who might be open to a 20-minute research conversation about a recent issue and how the team investigated it? I can share a free one-page workflow map afterward, based only on what they choose to discuss. This is not a sales pitch or a technical audit, and I won’t request confidential records or use operational data. If it is not relevant, no problem.
+>
+> Please only introduce someone if you think the conversation is appropriate.
+
+### Outreach draft — public association / technical-learning route
+
+> Hello — I’m researching how manufacturing teams investigate recurring production and operating-cost problems as part of an early project called GridMind. I’m not asking for a member list or endorsement. Is there a public event, learning session, or appropriate process through which I could request a short research conversation with a relevant operations or energy professional? I can return a concise, non-confidential workflow map to any participant who finds the conversation useful. I will not ask for plant records or confidential information.
+
+**Oversight:** Have a trusted adult/professional review and support external industrial outreach and any formal engagement. Do not send automatically. No factory visit, payment/contract commitment, or non-public data handling without appropriate authorization and oversight.
+
+## 4. Access route log
+
+The listed institutions are public routes to investigate, not verified leads, endorsers, or confirmed introductions. Verify official channels before contacting.
+
+| Route ID | Route | Intended ask | Status | Owner / next action |
 |---|---|---|---|---|
-| A. Operational-loss / constraint investigation | Plant/operations manager, production manager, continuous-improvement lead | A recurring deviation, bottleneck, unexplained output change, repeated investigation, or handover gap | Frequency; documented lost production/rework/delay; staff-hours spent investigating; what is already recovered by the current process | Problem is rare/low-cost, already solved, or requires inaccessible live/process data |
-| B. Bounded procurement intelligence | Procurement/category manager, purchase lead, owner of a smaller industrial business | Repeated comparison of supplier quotations, specifications, lead times, substitutions, or availability | Time per purchase; cost of errors/expediting; purchase frequency; current software/vendor cost; evidence of meaningful avoidable difference | Existing ERP/process solves it well, information is unreliable/unshareable, or value is only administrative convenience |
-| C. Narrow vertical workflow | Owner/operations lead in one specific industrial sub-sector, selected only after access is mapped | A repeated workflow handled through spreadsheets, email, or messaging that causes a measurable delay/error | Event frequency; labor and delay; consequences; workflow volume; cost of current tools and workarounds | “AI workflow” is the only problem definition; no clear buyer, trigger, or measurable consequence |
+| **R1** | Warm introduction through existing trusted professional/family network | One introduction to a production/operations or energy/utility professional | **Not activated; no connector named** | Founder: identify reachable introducers with trusted adult/professional support |
+| **R2 — first public route** | ASIA Jamshedpur official contact: https://asiajamshedpur.com/contact/; published email `deargsasia@gmail.com`, phones `+91 87090 14720` / `+91 90608 10588` (re-check before use) | Ask for a public event or a willing professional for a 20-minute research conversation; do not request a member list | **Initial inquiry sent 2026-10-12; reply/referral not confirmed** | Founder: check for reply; follow up once after 4–5 business days if appropriate (around Oct 19) |
+| **R3** | ACMA Eastern Region official contact: https://www.acma.in/contact.php; official page lists `acmaer@acma.in` and `anjali.nair@acma.in` (verified 2026-10-12) | Ask about public events / proper introduction process; no member-list request | Official contact page re-checked 2026-10-12; **not contacted** | **Preferred secondary route** if ASIA does not produce a suitable path: directly relevant automotive-component association with an Eastern Region office in Jamshedpur. This is a route, not a buyer lead or endorsement. |
+| **R4** | Indo-Danish Tool Room / MSME Tool Room Jamshedpur industry-services enquiry: https://www.idtr.gov.in/idtr/contacts/industry-enquiry.php; official page lists `reach@idtr.gov.in`, `+91 657 2201261/62` (verified 2026-10-12) | Ask about public technical learning / suitable research contacts; do not ask for private plant data or endorsement | Official industry-enquiry page re-checked 2026-10-12; **not contacted** | Alternate technical-learning route if ACMA is unsuitable or unresponsive. This is a service/contact route, not a confirmed buyer introduction. |
+| **R5** | JSIA affiliated bodies directory: https://www.jsia.co.in/affiliated-bodies.php | Identify an official public route, not scrape personal details | Not contacted | Secondary route |
 
-## How to choose whom to approach
+**Route verification note — 2026-10-12:** The official ACMA contact page lists its Eastern Region office in Jamshedpur and the regional emails above; the official IDTR industry-services page accepts manufacturing/design/engineering/consultancy enquiries. These sources establish that the routes exist, not that either organisation will introduce a buyer. Use one route at a time, with appropriate adult/professional review, and log only actual messages and replies.
 
-Before sending outreach, create a real prospect list with these fields:
-- name and role, only if already known or publicly available;
-- company and relevant operating context;
-- relationship/source and legitimate contact path;
-- reason this person matches one hypothesis;
-- what we do not yet know;
-- outreach date/status and next action.
+### Funnel ledger
 
-Do not invent contacts, imply existing relationships, or represent a conversation as completed before it happens. If no qualified buyer is reachable, record **buyer access is the current blocker** and investigate a legitimate path to access before product development expands.
+Update only with actual counts. Do not fill planned counts as completed.
 
-## Interview protocol (20–30 minutes)
+| Metric | Current actual | Target / trigger | Notes |
+|---|---:|---:|---|
+| Warm introduction requests sent | 0 | Initial test: 3–5 by Oct 19, if feasible | ASIA email is a separate public-route inquiry |
+| Replies received | 0 | Track actual | — |
+| Introductions offered | 0 | Track actual | — |
+| Calls booked | 0 | Track actual; no forecast target | — |
+| Calls held | 0 | Seek substantive evidence; no fixed quota | No conversations claimed |
+| C1 substantive cases | 0 | Probe deeply | — |
+| C4 substantive cases | 0 | Probe deeply | — |
+| Explicit commercial next steps | 0 | Evidence required for GO | — |
+| Authorized customer-data paths | 0 | Tier 2 only | No customer data requested |
 
-### Opening
-“I’m researching how industrial teams handle [specific workflow]. I’m trying to understand the current process and its limitations, not pitch a finished product. Could I ask about the last time this happened?”
+## 5. Interview protocol (20 minutes)
 
-### Core questions
-1. Walk me through the last real occurrence, from trigger to resolution.
-2. What triggered it? Who became responsible, and what decision needed to be made?
-3. How many times has this happened in the last week/month/quarter? What records could confirm that?
-4. What did the team do, step by step? Which systems, spreadsheets, vendors, or people were involved?
-5. What remained unresolved, and why?
-6. What consequence occurred: delay, output loss, scrap, rework, expedited purchasing, labor time, risk, or something else?
-7. Which parts of that consequence are directly measured? Which are estimates? Could the same cost be counted elsewhere?
-8. What changed because the issue was investigated or resolved? What would likely have happened otherwise?
-9. Who owns this problem and budget? What does approval for a new tool or service involve?
-10. What data or records would be required to investigate it? Who owns them? What permissions, confidentiality, or security restrictions apply?
-11. What have you already tried or purchased? Why was that not enough?
-12. What would a minimally useful result look like, and what evidence would you require before trusting it?
-13. If the problem were addressed, how would you measure the result and over what period?
-14. Would you be willing to take a specific next step—such as involving the budget owner, reviewing a scoped proposal, or discussing a paid, bounded pilot? What would need to be true first?
+Ask about one real, recent event. Do not ask “Would AI help?” or lead the participant toward a preferred answer.
 
-Do not ask “Would you use AI?” as the main validation question. Do not suggest a savings figure before the buyer describes the problem. Ask permission before collecting or retaining any operational information.
+**Opening script:** “I’m trying to understand how teams handle a real operational issue today. I’m not selling a finished product, and I won’t ask for confidential records. You can skip any question or stop at any time. May I take non-confidential notes?” If note-taking permission is not given, do not retain identifiable notes. Avoid recording audio/video unless separately and explicitly agreed with appropriate oversight.
 
-## Economics worksheet
+**Interview discipline:** Ask for the most recent concrete example before discussing general opinions. Let the participant describe their process in their own words; ask “What happened next?” and “How do you know?” Do not suggest a cause, savings estimate, feature, or desired answer. Do not pitch a solution during the evidence-gathering portion. Record exact short phrases only when necessary and non-confidential; label recollection separately from records. End with one low-pressure, specific next-step question and accept “no.”
 
-Complete one worksheet per real problem. Keep measured values, buyer estimates, and GridMind assumptions in separate columns.
+1. What was the last production-loss or energy/material-cost issue that required investigation?
+2. What triggered it? Walk me through what happened and the order of decisions.
+3. Who was involved, and who owned the final decision?
+4. How often has something similar happened recently? What evidence would confirm the frequency?
+5. What was the consequence? Separate recorded figures from estimates and recollection.
+6. What systems, spreadsheets, people, vendors, or experts were used?
+7. What did the current process resolve well? What, if anything, remained uncertain or delayed?
+8. What alternatives were tried? What would show that the existing process is already good enough?
+9. Which evidence would be needed to investigate the issue, and who has authority to approve its use?
+10. Who owns the budget and what is the actual purchase/approval path?
+11. What would make a new service or tool not worth adopting?
+12. Would a specific next step be useful—another conversation, introduction to the budget owner, review of a scoped proposal, or consideration of a paid test? It is acceptable to say no.
 
-| Input | Low | Base | High | Evidence / confidence |
-|---|---:|---:|---:|---|
-| Occurrences per period | | | | |
-| Cost per occurrence today | | | | |
-| Portion plausibly addressable | | | | |
-| Portion plausibly attributable to proposed intervention | | | | |
-| Realization probability / confidence adjustment | | | | |
-| Annualized incremental value | | | | |
-| One-time customer implementation/adoption cost | | | | |
-| Ongoing customer effort/cost | | | | |
-| Fee buyer could consider | | | | |
-| First-year customer net benefit | | | | |
-| Buyer-required ROI/payback | | | | |
-| GridMind sales and onboarding effort | | | | |
-| GridMind direct delivery/support cost | | | | |
-| Expected gross margin and assumptions | | | | |
-| Founder/specialist hours per customer | | | | |
+## 6. Conversation evidence record
 
-### Calculation discipline
+Copy this section once per conversation into the notes area below, or record a link to a private note with appropriate permission. Avoid unnecessary personal data.
 
-- Do not treat total problem cost as value GridMind can capture.
-- Subtract the workarounds and improvements the customer already uses.
-- Do not attribute all improvement to GridMind if operators, maintenance, suppliers, or other changes are also responsible.
-- Avoid double-counting labor savings and the same labor capacity as separate financial benefits.
-- Convert freed staff time into financial value only when the buyer explains how that time is used or avoided.
-- If value is episodic, test whether a paid investigation/project is more honest than recurring SaaS.
-- If value is only ₹2,000–₹3,000/month, calculate whether a truly low-cost, low-touch model could still work; otherwise reject or redefine the problem.
-- Do not publish illustrative calculations as customer outcomes.
+### Conversation [ID: not yet assigned]
 
-## Evidence quality ladder
+- Date / duration:
+- Role and industry context (minimum necessary):
+- Candidate ID: C1 / C4 / other with reason:
+- Permission to retain non-confidential notes: not yet asked
+- Introduction route ID:
+- **Recent event and timeline:**
+- **Permission / note-taking boundary actually agreed:**
+- **Exact participant wording (short, non-confidential; optional):**
+- **Source behind each important claim:** participant recollection / record described but not seen / authorized record reviewed / estimate / unknown:
+- **Current process / tools / people:**
+- **What worked well in the current process:**
+- **Residual gap (if any):**
+- **Consequence:** measured / participant recollection / estimate / unknown
+- **Recurrence evidence:**
+- **Operational owner / economic buyer / data approver:**
+- **Existing spend or budget process:**
+- **Possible evidence source and access authority:**
+- **Commercial signal / exact next step:**
+- **Strongest disconfirming evidence:**
+- **What would falsify the opportunity:**
+- **Founder time required for follow-up:**
+- **Decision:** continue probe / narrow / reject / access blocker
+- **Next action, owner, due date:**
 
-From weakest to strongest:
-1. General opinion or compliment.
-2. A hypothetical statement that the buyer might use/pay.
-3. A concrete recent example with an identified workaround.
-4. Records or a credible calculation of frequency and consequence.
-5. Confirmation of budget ownership and the buying process.
-6. Permissioned sample data and agreement on a measurable test.
-7. A specific paid-pilot/proposal step or actual commercial commitment.
+### Evidence labels
 
-Record the strongest evidence actually obtained. Do not jump up the ladder based on enthusiasm.
+- **Observed fact:** directly supported by a source we were authorized to use.
+- **Participant recollection:** what the interviewee remembers; not independently verified.
+- **Estimate:** calculation with assumptions visible.
+- **Hypothesis:** plausible but unconfirmed interpretation.
+- **Unknown:** not established.
+- **Disconfirming evidence:** information that weakens the candidate, including a strong existing process or lack of buyer urgency.
 
-## End-of-sprint decision
-
-For each candidate, decide one of:
-- **Advance:** real pain, material conservative value, reachable buyer, data path, feasible delivery, and credible commercial next step.
-- **Narrow:** pain is real but only a specific sub-workflow or customer type has plausible economics.
-- **Test further:** one key assumption remains unresolved and there is a clear low-cost test.
-- **Reject:** value is too small, alternatives are adequate, data is inaccessible, delivery cost is excessive, or no buyer urgency exists.
-- **Blocked:** the necessary buyer/data access has not been obtained. State the blocker and the next legitimate access path.
-
-## Immediate actions
-
-1. Identify actual people who could speak about A, B, or C; record how each is reachable. Do not fabricate a prospect list.
-2. Prioritize the hypothesis for which a real buyer and a specific recent event are easiest to access—not the one with the best-sounding technology.
-3. Conduct the first interview without showing the prototype.
-4. Record the narrative, evidence, unknowns, and next step immediately afterward.
-5. Complete the economics worksheet only with explicit sources and assumptions.
-6. Update the commercial wedge scorecard; leave scores blank where evidence is missing.
-7. Do not build a feature or promise savings until the first problem and data path are credible.
-
-## Current truth boundary
-
-No interviews, customers, operational records, savings, pricing commitments, or paid pilots are represented as having occurred. This document is an execution protocol. Its completion requires actual observations and a recorded decision.
+Do not transform recollection into fact or an estimated gross loss into GridMind-addressable value.
 
 
-## Execution activation update — 2026-10-11
+### Candidate-comparison rubric — use only after substantive conversations
 
-The isolated two-user analysis persistence/isolation suite has completed successfully in GitHub Actions: [migration replay and HTTP integration run](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38118481616). This clears a meaningful engineering risk in the test environment; it does not establish buyer demand or authorize use of production factory data.
+Score each candidate (currently C1 and C4) against the same dimensions. This is a decision aid, not a statistical model. Keep evidence references beside every score; do not score from intuition or desk research alone.
 
-### Seven-day fieldwork target
+| Dimension | 0 | 1 | 2 | 3 |
+|---|---|---|---|---|
+| **Pain and consequence** | No concrete case | Vague / low consequence | Specific case with credible consequence | Specific, material consequence supported by strong records or converging accounts |
+| **Recurrence / urgency** | No recurrence or urgency | Rare or low priority | Repeated or time-sensitive | Repeated and actively prioritized by accountable owner |
+| **Residual gap** | Current process is adequate | Dissatisfaction without a specific gap | Clear unresolved delay, uncertainty, or cost | Material gap remains after credible alternatives were used |
+| **Buyer path** | No identifiable owner/buyer | Role guessed; no route | Operational owner and plausible budget route identified | Buyer or budget owner takes a concrete next step |
+| **Evidence feasibility** | No plausible source/permission route | Sources unclear or fragmented | Relevant source and approver identified, permission not yet granted | Evidence appears feasible and an authorized path is explicitly confirmed |
+| **Bounded delivery feasibility** | Unsafe, out of capability, or unbounded | Major unknowns block a credible scope | A bounded human-reviewed deliverable appears feasible with named dependencies | Scope, reviewer path, effort and limitations are clear enough to design a test |
 
-**Goal:** obtain three real discovery conversations, not three compliments or hypothetical feature requests.
+**Scoring rules**
+- Use **U (unknown)** rather than 0 when the interview did not establish the answer. Zero means evidence supports the lowest score.
+- Never convert a U to a number to make the comparison look complete.
+- Do not total scores while any dimension is U for either candidate. First identify the cheapest ethical way to resolve the missing information.
+- After enough evidence exists, show both the score and the supporting evidence; do not use a one-point difference as a false-precision verdict.
+- A strong score does not waive Tier 2 safeguards, qualified review, or customer authorization.
 
-- **Day 1:** make a list of up to five *real, reachable* contacts in plant operations, maintenance/continuous improvement, or energy/utility management. Record why each person is relevant and the legitimate contact path. If no contacts are reachable, record buyer access as the blocker rather than inventing leads.
-- **Days 2–4:** request 20–30 minutes for problem discovery. Ask about the last concrete occurrence, current workaround, frequency, evidence, cost, decision owner, and prior tools. Do not lead with an AI pitch or promise savings.
-- **Days 4–5:** request permission to review a redacted example or a list of available data fields only if the owner sees a credible reason to continue. Do not ask anyone to send confidential files through ordinary email or public repositories.
-- **Days 5–6:** compare the candidates using urgency, recurrence, conservative addressable value, data access, intervention feasibility, incumbent alternatives, and delivery effort.
-- **Day 7:** advance one candidate only if the owner, measurable problem, authorized data path, and concrete next step exist. Otherwise document the blocker and continue discovery; do not force a pilot.
+### Disconfirmation and stop rules
 
-### Outreach message draft
+Actively look for evidence that makes the opportunity unattractive. Examples include:
+- The current ERP, CMMS, QMS, energy consultant, or established team process already resolves the problem adequately.
+- The problem is infrequent, immaterial, or not a current priority.
+- No accountable operational owner exists, or no credible route to the economic buyer can be identified.
+- The buyer will not take a concrete next step after describing a supposedly serious problem.
+- The necessary records do not exist, cannot be linked, or cannot be lawfully/appropriately accessed.
+- A useful answer requires technical judgment or data access that GridMind cannot responsibly provide.
+- Delivery effort, reviewer cost, liability, or customization is disproportionate to conservative incremental value.
+- The only evidence of interest is praise, curiosity about AI, or willingness to accept a free item.
 
-> Hello [Name] — I’m researching how industrial teams identify and investigate recurring operational losses. I’m not assuming I know the problem or pitching a finished product. Would you be open to a 20-minute conversation about the last time a production, maintenance, energy, or process issue required investigation—how it was handled, what evidence was available, and what remained unresolved? I won’t ask for confidential records or use any operational data without your explicit approval. If a useful test emerges, I can first share a narrow scope and data-handling plan for review.
+**Interpretation:** one weak interview does not disprove a market. Repeated evidence across independent relevant participants can justify narrowing or rejecting a candidate. If the sample is too small or biased, record “inconclusive,” not “validated” or “no demand.”
 
-### Pilot entry criteria
+## 7. Two-tier decision gates
 
-Do not call the work a pilot until all are true:
-- A named factory owner confirms the problem is real and material.
-- The factory identifies the person authorized to approve data use and any intervention.
-- A minimum baseline is possible from existing, permissioned records.
-- One primary normalized metric and safety/quality/throughput guardrails are agreed in advance.
-- The relevant production authentication/access workflow and secure data-handling path have passed review.
-- The factory accepts the observation window, stop criteria, and review of results.
+### Tier 1 — Candidate may proceed to test design
 
-**Truth boundary:** as of this update, no discovery interview, customer commitment, factory permission, data transfer, intervention, or savings result has occurred. The next external dependency is access to a real factory owner; the next technical dependency is a verified authenticated production workflow plus resolution or explicit owner acceptance of the Vercel build-rate-limit status.
+A candidate can advance when the evidence shows:
+- A specific recent incident or recurring workflow;
+- Material consequence and recurrence credible enough to investigate;
+- A meaningful residual gap after current alternatives;
+- An identifiable operational owner and plausible economic-buyer path;
+- A plausible source of evidence and a route to permission (not permission already granted);
+- A concrete next step beyond compliments;
+- A bounded service deliverable that is feasible within current resources.
+
+Tier 1 does not require a completed baseline, proven incrementality, a security review of a nonexistent data transfer, or months of outcome data. Record those as unknown and move them to Tier 2.
+
+### Tier 2 — Customer-data retrospective test
+
+Do not receive or process non-public data until all are documented:
+- Customer owner, authorized data approver, written scope and data rights;
+- Data minimization, secure transfer/storage, permitted recipients, retention/deletion;
+- Qualified domain reviewer for the selected workflow;
+- Defined question, sources, alternatives, uncertainty and human-review boundary;
+- Baseline, outcome measure, measurement window and relevant confounders;
+- Incrementality method appropriate to the claim;
+- Bounded effort/cost and safe delivery process;
+- Buyer-approved result-use, success/failure criteria, and stop conditions.
+
+No named reviewer or customer owner currently exists. Missing roles block only the stage that requires them; they do not block no-data interviews.
+
+## 8. Economics ledger
+
+No price, ACV, addressable-value number, or unit economics is validated.
+
+For each promising case, capture:
+- Customer's total loss/cost and evidence source;
+- Portion plausibly addressable by the proposed workflow;
+- Incremental improvement versus the best realistic alternative;
+- Confidence range and assumptions;
+- Founder hours, qualified reviewer hours/cost, onboarding, tools, support and liability;
+- Buyer budget/process and explicit fee response.
+
+The fee must be defensible against conservative incremental value and cover delivery cost. Service-led is a valid experiment, not proof of scalable software economics. If the value pool is too small, delivery too bespoke, or buyer unwilling to pay, reject or narrow the candidate rather than inventing a $20k ACV.
+
+## 9. Decision dates and stop rules
+
+- **Oct 19:** review the ASIA route and the 3–5-request access test; adjust route if evidence supports it. A small sample cannot establish demand or its absence.
+- **After the first substantive conversations:** update the access plan from observed route quality and buyer evidence; do not forecast a fixed call count without a credible funnel.
+- **After five conversations:** if neither C1 nor C4 yields a concrete event with credible consequence and a residual gap, revisit the stable candidate register once and choose the next probe from evidence.
+- **Nov 10:** decide GO TO BOUNDED TEST / NARROW / PIVOT / STOP. If no candidate has a credible buyer path and explicit next step, no-go on new product build.
+
+A paid pilot is desirable, not required to declare the discovery sprint complete. No verified-savings claim is possible without the later observation period and agreed attribution method.
+
+## 10. Current execution queue
+
+| Priority | Task | Owner | Due | Status |
+|---|---|---|---|---|
+| **P0** | Identify 3–5 legitimate warm-introduction routes; do not invent names or scrape lists | Founder, with appropriate adult/professional support | Oct 19 | In progress / capacity-dependent |
+| **P0** | Review the two short outreach drafts and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
+| **P0** | Log actual funnel movement and review the small access experiment | Founder | Oct 19 review | In progress |
+| P1 | Hold and document conversations using C1/C4 IDs | Founder | Through Nov 10 | Waiting for access |
+| P2 | Scope an offline retrospective test only if Tier 1 evidence and a buyer request justify it | Founder + named reviewer/customer owner | After evidence | Blocked on people/evidence |
+| Parked | Broad schema/RPC changes, workspace redesign, new modules, public-site polish, rename, trademark work | — | Until evidence changes priority | Not P0 |
+
+### Decision-gate output format — 2026-11-10
+
+The gate record must state:
+1. Number of substantive conversations held and participant roles (minimum necessary detail); distinguish booked from held.
+2. For each candidate, strongest supporting evidence, strongest disconfirming evidence, and unresolved unknowns.
+3. Whether the problem is specific, material, recurring, and still unresolved after existing alternatives.
+4. Whether an operational owner, credible economic-buyer path, and explicit buyer next step exist.
+5. Whether a bounded service is feasible with the current capability boundary and qualified-review dependencies.
+6. Access, consent, data, security, reviewer, effort, cost, and safety blockers.
+7. Decision: **GO TO BOUNDED TEST / NARROW / PIVOT / STOP**, with rationale and the next action owner/date.
+8. What evidence would change the decision.
+
+A “GO TO BOUNDED TEST” authorizes only preparation of a written test design. It does not authorize receiving data, visiting a factory, promising savings, building a new module, or starting a paid pilot. Tier 2 gates and separate appropriate authorization still apply.
+
+## 11. Decision log
+
+| Date | Decision / evidence | Status |
+|---|---|---|
+| 2026-10-11 | C1 and C4 selected as the two discovery probes only; neither is the product wedge | Active probe choice |
+| 2026-10-11 | Two-tier gates separate interview evidence from customer-data/pilot acceptance | Active |
+| 2026-10-12 | Earlier 30-ask / Oct 17 access plan superseded by a bounded 3–5-request test by Oct 19, subject to capacity | Current access test; not market validation |
+| 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
+| 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
+| 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
 
 
-## Warm-introduction execution path — 2026-10-11
+## 12. Aligned phase timeline and weekly review — 2026-10-13
 
-Prior project context indicates the founder may have access to a network of approximately 10–20 industrial facilities around Jamshedpur/Adityapur, spanning steel, engineering, automotive, fabrication, and ancillary manufacturing. This is a potential access route, **not a verified prospect list or confirmed permission**. No individual contacts or specific facilities have been named in the available record.
+This tracker follows the dates in the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md). It does not establish a second schedule.
 
-### First move: ask for one introduction, not a factory data dump
+| Date | Purpose | What must be recorded | Failure response |
+|---|---|---|---|
+| **Oct 15** | Strategic foundation freeze | Confirm definition, sprint scope, C1/C4 probe status, evidence labels, two-tier gates, and no-build boundary agree across the Master Plan and Decision Constitution. The wedge remains unselected. | Resolve only contradictions that affect execution; no more strategy expansion. |
+| **Oct 19** | Access-route review | Actual ASIA follow-up/response and genuine warm requests, replies, referrals, meetings, and access constraints. | Record route failure or insufficient access honestly; do not infer market demand from a small sample. |
+| **Oct 31** | Discovery target checkpoint | Target: 3 substantive conversations held and at least one explicit buyer next step. Evidence must be in the conversation records. | Mark target missed if unmet and explain why. Do not convert planned calls into completed research. |
+| **Nov 10** | Formal decision gate | GO TO BOUNDED TEST / NARROW / PIVOT / STOP, supported by evidence, disconfirming evidence, buyer path, feasibility, and open safeguards. | No forced winner or product build if evidence is insufficient. |
+| **Nov 15** | Discovery-phase close and handoff | Consolidated decision, status of unresolved issues/PRs, and the next approved phase or explicit continued-discovery decision. | This is administrative closure, not a second gate or automatic build deadline. |
 
-Send this to the trusted person who can make the introduction:
+### Weekly review — update this tracker, do not create another report
 
-> Hi — I’m working on GridMind, an early project exploring how industrial teams investigate recurring operational problems and verify whether improvements actually work. I’m not looking to sell a finished product or request factory data at this stage. Could you introduce me to one plant/operations manager, maintenance or continuous-improvement lead, or energy/utility owner who might be willing to have a 20-minute discovery conversation? I’d only ask about a recent problem and the current investigation process. No confidential information or factory records are needed. If there is no fit, that is completely fine.
+- What evidence was actually added?
+- What assumption changed, and why?
+- What is the main blocker?
+- What is the one highest-value next action, owner, due date, and completion condition?
+- What should stop because it is not required for the current decision?
 
-### Qualification rule for the introduction
-
-Prioritize a person who can describe a specific recent incident and current workflow, not simply someone with a senior title. A useful first contact should have direct experience of production/maintenance/energy operations or be able to introduce the operational owner. The first conversation is discovery only; no recommendation, data collection, or intervention.
-
-### Prospect tracker — fill only with real information
-
-| Status | Contact | Role / facility | Warm-intro source | Why qualified | Next action |
-|---|---|---|---|---|---|
-| Awaiting real introduction | Not yet identified | Jamshedpur/Adityapur industrial operations | Founder’s existing network; individual not recorded | No contact has been verified | Ask one trusted connection for an introduction |
-
-Do not populate this row with guessed names. Once a real contact is identified, record only information needed for the outreach and follow-up. Do not send messages or represent an interview as booked unless it actually happens.
-
-### First-call outcome to capture
-
-Immediately after the conversation, record: the last concrete incident, frequency, existing workaround, evidence/source records, consequence, decision owner, current alternatives, access restrictions, and the exact agreed next step. If the person cannot identify a material recurring problem or cannot reach the owner, mark the lead as unqualified and move on.
+If there was no new customer evidence, record that plainly. Public research, synthetic tests, planned outreach, and internal AI-assisted walkthroughs must not be represented as customer validation. Product/data work remains bounded by the Master Plan's scope and Tier 2 safeguards.

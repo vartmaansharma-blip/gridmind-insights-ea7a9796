@@ -1,5 +1,8 @@
 # GridMind — Bigger Problem Thesis: From Incident Investigation to Industrial Value Realization
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document preserves strategic analysis, not an independent schedule, candidate list, gate system, or execution commitment. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files.
+
+
 **Date:** 2026-10-11  
 **Status:** Strategic hypothesis and research agenda; not customer-validated.  
 **Authority:** The Decision Constitution remains canonical. This expands the ambition but does not select the first commercial wedge.

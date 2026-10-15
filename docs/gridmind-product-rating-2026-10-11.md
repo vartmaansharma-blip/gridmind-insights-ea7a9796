@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **Status: HISTORICAL SNAPSHOT — NOT A CURRENT EXECUTION AUTHORITY (reviewed 2026-10-13).** This document is preserved for context and evidence. Its dated ratings, status claims, recommendations, and next steps may be stale; do not treat them as current instructions or proof of present readiness. Follow the [canonical Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and current linked GitHub issues for present decisions and blockers. No historical findings below have been deleted or rewritten.
+
 # GridMind Product Rating — 2026-10-11
 
 **Review type:** Evidence-based desk review of the current repository, documented readiness snapshot, recent GitHub Actions results, and latest deployment metadata.

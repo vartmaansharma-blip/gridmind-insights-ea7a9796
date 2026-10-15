@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **Status: HISTORICAL SNAPSHOT — NOT A CURRENT EXECUTION AUTHORITY (reviewed 2026-10-13).** This document is preserved for context and evidence. Its dated ratings, status claims, recommendations, and next steps may be stale; do not treat them as current instructions or proof of present readiness. Follow the [canonical Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and current linked GitHub issues for present decisions and blockers. No historical findings below have been deleted or rewritten.
+
 # Business thesis ratings — 2026-10-10
 
 These are strategic judgment scores for prioritization, not validated market data or success probabilities. Score out of 10. “Start-now fit” emphasizes a small founder's practical ability to reach a buyer, prove value and deliver without excessive capital. “Long-term ceiling” emphasizes possible scale and defensibility if execution succeeds. Confidence is low-to-medium until customer interviews and data access are tested.

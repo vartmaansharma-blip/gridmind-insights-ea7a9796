@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **Status: HISTORICAL TECHNICAL TRACKER — NOT A CURRENT EXECUTION AUTHORITY (reviewed 2026-10-13).** The dated status below is a historical engineering snapshot; it is not a security certification or proof of current production state. Do not follow its old branch/phase sequence as a live task queue. Use the [canonical Master Plan](gridmind-master-plan-2026-10-11.md), [technical release gate](release-gate.md), and current GitHub issues for current priorities and acceptance. Historical findings are preserved.
+
 # GridMind Phase 2 — security and factory-isolation execution tracker
 
 **Date:** 2026-10-10  

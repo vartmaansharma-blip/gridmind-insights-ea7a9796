@@ -1,193 +1,82 @@
-## Bigger problem thesis — 2026-10-11
-
-GridMind's long-term hypothesis is not merely incident reporting: it is a trusted industrial decision-and-improvement layer that helps identify costly operational losses, establish evidence, coordinate interventions, and verify economic outcomes. The first commercial wedge is still undecided. Read the [Bigger Problem Thesis](docs/gridmind-bigger-problem-thesis-2026-10-11.md) for the territories, falsification tests, and staged path.
-
 # GridMind Insights
 
 > **Being built to turn industrial evidence into better decisions and verified improvement.**
 
-GridMind is being built to help industrial teams identify economically important operational problems, understand what the available evidence supports, prioritize interventions, coordinate the people and resources needed to act, and verify whether the outcome improved.
+GridMind is being developed as an industrial intelligence and performance-improvement company. The long-term ambition is to help manufacturers investigate operational problems, make evidence-backed decisions, coordinate approved improvements, and verify outcomes. This is an ambition, not a claim that all capabilities exist today.
 
-GridMind is not intended to be merely an energy dashboard, anomaly detector, generic AI assistant, or supplier marketplace. Its long-term ambition is to become a trusted intelligence and coordination layer for industrial value creation. That ambition must be earned through repeatable customer outcomes.
+## Current truth
 
-The staged expansion strategy is in the [GridMind Expansion Architecture](docs/gridmind-expansion-architecture-2026-10-10.md). The provisional business scores are in the [Business Thesis Ratings](docs/business-thesis-ratings-2026-10-10.md). The broader venture choice is documented in the [Industrial Venture Strategy Research](docs/gridmind-industrial-venture-strategy-research-2026-10-10.md). Its conclusion is to preserve GridMind as a long-term industrial thesis while testing GridMind, narrow procurement intelligence, and a specific vertical operations workflow against real buyer pain before committing the next major build.
+- **Commercial wedge:** undecided.
+- **Discovery probes:** C1 — downtime/production-loss investigation; C4 — energy/material inefficiency. These are probes, not product commitments.
+- **Access:** the founder reports an initial public-route inquiry to ASIA was sent on 2026-10-12. No reply, buyer conversation, customer-data permission, factory access, paid demand, or verified savings is confirmed.
+- **Next access test:** a small 3–5 genuine warm-introduction-request effort by 2026-10-19, only if legitimate contacts and actual capacity are available.
+- **Product/release status:** consult the current technical evidence and release gates; a successful build or synthetic test is not proof of production readiness or customer demand.
 
 ## Start here
 
-Use the [GridMind Master Plan](docs/gridmind-master-plan-2026-10-11.md) as the complete operating plan for company strategy, validation, product, security, commercial model, milestones and decision rules. The [Documentation Index](docs/README.md) provides the full reading order. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs binding commitments and conflict resolution.
+1. [Documentation index](docs/README.md) — repository map and reading order.
+2. [Contribution standards](CONTRIBUTING.md) — source-of-truth rules, issue-to-PR workflow, validation, and safety requirements.
+3. [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) and [issue templates](.github/ISSUE_TEMPLATE/) — consistent scope, acceptance evidence, risk, and review records.
+4. [Canonical Master Plan](docs/gridmind-master-plan-2026-10-11.md) — the only company execution plan.
+5. [Live Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) — the only live customer-access and discovery tracker.
+6. [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — binding strategic, safety, evidence, and scope guardrails.
+7. [Verification Audit](docs/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
 
-## Current execution priority — 2026-10-11
+## Product and operating model
 
-- [Fresh Technical Readiness Snapshot](docs/gridmind-technical-readiness-snapshot-2026-10-11.md) — current read-only checks; production readiness remains NO-GO due to schema mismatch, open security warnings, and unverified authenticated acceptance.
-- [Discovery Execution Kit](docs/gridmind-discovery-execution-kit-2026-10-11.md) — prepared outreach drafts, recruitment routes, interview guide and empty tracker; no outreach or interviews claimed.
+GridMind's proposed operating loop is:
 
-- [Founder Commitment and 30-Day Validation Gates](docs/gridmind-founder-commitment-and-next-execution-2026-10-11.md) — GridMind remains the leading long-term thesis, conditional on buyer evidence; no validation is claimed.
+**Authorized evidence → traceable findings → qualified human review → customer-approved action → measured outcome → retained learning only where rights permit.**
 
-**Primary milestone:** establish one real manufacturing buyer conversation and test a specific recent operational incident before expanding product scope or public marketing claims. The human-reviewed incident investigation packet is a hypothesis—not a selected or validated wedge. Procurement intelligence and a narrow vertical workflow remain alternatives. No buyer interviews, customer data, measured savings, pricing commitments, or paid pilots are claimed.
+The initial commercial offer must be selected from real buyer evidence. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
 
-- [Problem Failure Analysis and Next Experiments](docs/gridmind-problem-failure-analysis-and-experiments-2026-10-11.md)
-- [Manufacturing Workflow Stress Test](docs/gridmind-manufacturing-expert-simulation-and-wedge-stress-test-2026-10-11.md)
-- [Commercial Wedge Scorecard](docs/gridmind-initial-commercial-wedge-scorecard-2026-10-11.md)
-- [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md)
-- [Repository Decision-Consistency Audit](docs/gridmind-repository-decision-consistency-audit-2026-10-11.md)
-- [GitHub validation milestone #27](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/27)
+Read the [Product Definition](docs/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
 
-## Execution discipline
+## Repository layout
 
-The [Strategic Reality Check](docs/gridmind-strategic-reality-check-2026-10-10.md) records the current course correction: prove the live authenticated workflow, select the first problem from customer evidence, and complete one auditable real-factory proof loop before broadening the platform or making superiority/savings claims.
+- `src/` — application code.
+- `tests/` — automated application tests.
+- `supabase/` — database migrations, configuration, and Edge Functions.
+- `data/` — versioned data contracts and schemas.
+- `scripts/` — validation and development utilities.
+- `docs/` — canonical operating documents, technical runbooks, and reference material.
+- `.github/workflows/` — CI and specialised validation workflows.
 
-## Product definition
+## Local development
 
-**GridMind is being designed as a decision-to-verified-outcome workflow for industrial teams:** turn authorized, imperfect evidence into a traceable finding, help a responsible person evaluate an action, and measure the result against an agreed baseline. The first buyer, workflow and commercial wedge remain unvalidated and undecided. Its long-term ambition is a broader industrial intelligence and value-realization platform, earned workflow by workflow—not a claim that broad capabilities already exist.
+The project uses Bun. Install the pinned package manager version from `package.json`, then run:
 
-The [Product Definition and Conceptual Contract](docs/gridmind-product-definition.md) defines the customer job, unit of value, minimum product loop, product boundaries, evidence states, and requirements for selecting the first use case.
+```bash
+bun install --frozen-lockfile
+bun run dev
+```
 
-A finding is not automatically a root-cause diagnosis. A quantified opportunity is not realized savings. A recommendation is not proof that an intervention is safe, appropriate, or effective. GridMind must preserve those distinctions throughout the product.
+Useful validation commands:
 
-## Customer outcome
+```bash
+bun run docs:links
+bun run typecheck
+bun run lint
+bun run test
+bun run build
+bun run check
+```
 
-Help a factory answer, with traceable evidence:
+`check` includes the link audit and all core application checks above. Formatting is separate (`bun run format:check`); migration/security, Deno, and Python checks have their own workflows described in the [release gate](docs/release-gate.md).
 
-- Where may it be losing money, energy, production capacity, quality, or equipment reliability?
-- What changed, over which comparable period, and how trustworthy is the evidence?
-- What is observed, what is estimated, and what remains a hypothesis?
-- Which opportunity is worth investigating first, considering value, confidence, cost, risk, downtime, and time to benefit?
-- What evidence, people, equipment, services, or purchasing decisions are needed to act?
-- Did the intervention actually improve the outcome, after accounting for relevant operating changes?
+Run the relevant checks before proposing a merge. Record the exact commit and results; do not claim a check passed unless it was actually run. Review [Release Gate](docs/release-gate.md) and the relevant technical runbooks before any live or customer-data workflow.
 
-## Core operating loop
+## Engineering and safety principles
 
-**CONTEXTUALIZE → QUALIFY EVIDENCE → DETECT → INVESTIGATE → PRIORITIZE → DECIDE → COORDINATE → VERIFY → LEARN**
-
-The loop is the product's organizing principle. Energy analysis, machine intelligence, maintenance workflows, procurement, supplier discovery, and implementation coordination are potential capabilities within this loop—not independent features to add without a demonstrated customer need.
-
-## Initial wedge and expansion rule
-
-The first commercial wedge is **not permanently fixed to energy**. Energy and utility losses are a promising candidate because they can sometimes be quantified, but the initial use case must be selected through customer discovery and real-data access. Compare candidate problems by severity and frequency of economic pain, access to trustworthy authorized data, ability to establish a defensible baseline and measure outcomes, urgency and willingness to pay, delivery cost and time, repeatability, and operational risk.
-
-Start with one narrow problem and one defined customer profile. Do not expand until the evidence-to-action-to-verification workflow has been demonstrated with real data, reviewed by a qualified domain expert, and repeated at another facility.
-
-## Data advantage strategy
-
-GridMind's long-term product model is the [Factory Value-Chain Intelligence Model](docs/gridmind-factory-value-chain-intelligence.md): connect process flow, assets, materials, utilities, quality, maintenance, logistics and economics through evidence-backed relationships. This is a target architecture, not a claim that every domain is implemented.
-
-The [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md) defines proposed release gates for input integrity, expert-reviewed finding quality, correct refusal, reproducibility and responsible performance claims.
-
-The immediate execution artifact is the [First-Use-Case Data Contract](docs/gridmind-first-use-case-data-contract.md), which specifies a provisional pilot question, evidence schema, quality/refusal gates, independent review rubric and permission boundaries.
-
-GridMind's data strategy is to build a permissioned, traceable, context-rich learning system—not simply accumulate rows or scrape documents. The [Data Advantage Strategy](docs/gridmind-data-advantage-strategy.md) defines six data assets, source priorities, the learning flywheel, quality controls, measurable data-moat metrics, and the first real-factory validation sequence. The strategy is a plan, not a claim that these assets or advantages are already validated.
-
-## Evidence and economic model
-
-GridMind distinguishes between:
-
-- **Observed** — directly supported by supplied measurements or records.
-- **Estimated** — calculated from available evidence and explicit assumptions.
-- **Hypothesis** — a possible explanation requiring validation.
-- **Recommended** — a proposed action for qualified human review.
-- **Implemented** — an intervention recorded as having occurred.
-- **Verified** — an outcome supported by appropriate post-intervention evidence and a defensible comparison.
-
-Synthetic/demo data must never be represented as real factory measurements or verified customer outcomes. Missing data is not zero. An observation is not a diagnosis; an estimate is not realized savings; a hypothesis is not a fact.
-
-Economic prioritization should account for expected value, evidence confidence, intervention cost, operational disruption, safety and implementation risk, time to benefit, and verification feasibility. Financial outputs must preserve their inputs, assumptions, source lineage, currency and calculation method. Do not claim realized savings without post-intervention measurement and review.
-
-## Expansion architecture
-
-Expansion should follow customer evidence and reuse of the same trusted context and verification loop:
-
-1. **Prove one use case:** authorized real data, repeatable analysis, independent domain review, a useful intervention decision, and measured post-intervention outcome.
-2. **Deepen the facility workflow:** add adjacent energy, utility, asset, maintenance, reliability, quality or production-loss workflows only where data and customer problems justify them.
-3. **Connect decisions to execution:** support repair-versus-replace decisions, lifecycle economics, quote comparison, supplier qualification and implementation coordination when these are natural next steps from validated opportunities.
-4. **Build a permissioned industrial network:** connect factories with qualified service providers, OEMs, distributors and specialists; preserve customer choice, transparent incentives, confidentiality and auditability.
-5. **Scale across sites and industrial segments:** offer repeatable multi-facility workflows and carefully governed benchmarks only when evidence is comparable and customers have granted appropriate data rights.
-
-This is a set of conditional expansion options, not a forecast or commitment to deliver every layer.
-
-## Website, marketing and sales strategy
-
-The main website is a separate future-facing marketing project, not the current deployed application. Its purpose is to attract relevant industrial buyers, explain GridMind's value proposition, demonstrate its evidence-first approach, address commercial and technical objections, and generate qualified discovery conversations.
-
-- [Website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md)
-- [Main website homepage specification](docs/gridmind-main-website-homepage-spec.md)
-
-The homepage specification defines the draft copy, section order, hero alternatives, product walkthrough, conversion paths, visual system, responsive behavior, accessibility, analytics, claim review, acceptance criteria and next steps. It is a specification, not an implemented website.
-
-## Product and trust principles
-
-- Evidence-first, with traceable provenance and explicit uncertainty.
-- Fail closed when required evidence is missing, invalid, stale, incomparable or unauthorized.
-- Distinguish instrumentation/data-quality issues from possible physical equipment issues.
-- Keep initial operational-technology integrations read-only unless a separately reviewed and explicitly authorized control design exists.
-- Require qualified human review for consequential operational recommendations.
-- Never let supplier commissions or partner incentives secretly determine recommendations.
-- Do not reuse or share customer data across facilities without appropriate permission and contractual rights.
-- Prefer a repeatable, auditable workflow over feature breadth or an impressive demo.
-
-## Current status and release discipline
-
-**GridMind's long-term product direction is a strategy; it is not evidence of present readiness.** The repository audit dated 2026-10-10 states that feature expansion should pause and GridMind should not be described as pilot-ready until the end-to-end evidence-to-action-to-verification path is demonstrated on real factory evidence. Its recorded live-readiness figures are a historical snapshot and must be refreshed before operational decisions.
-
-The immediate product priority is to refresh read-only readiness, establish legitimate customer-authorized access, obtain traceable real-factory data, qualify it, run the analysis, obtain independent domain review, and—if the evidence justifies action—measure and verify the result. Then repeat the process at a second facility.
-
-The immediate website task is limited to claim and offer validation. Full public-site implementation remains gated until product truth is refreshed, the initial offer and exclusions are clear, and relevant buyer evidence justifies the scope.
-
-See:
-- [GridMind product definition and strategy](docs/gridmind-product-definition.md)
-- [GridMind website marketing and sales strategy](docs/gridmind-website-marketing-sales-strategy.md)
-- [GridMind homepage specification](docs/gridmind-main-website-homepage-spec.md)
-- [System-alignment audit](docs/gridmind-system-alignment-audit.md)
-- [Release gate](docs/release-gate.md)
-
-## Production application
-
-https://gridmind-insights.lovable.app
-
-## Repository
-
-https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
-
-The project is developed with [Lovable](https://lovable.dev). Changes should preserve the evidence hierarchy, data-quality safeguards, deterministic calculations, security boundaries, and separation between synthetic/demo data and real measured data.
-
-
-## Current execution priorities
-
-See the [GridMind Improvement Priorities](docs/gridmind-improvement-priorities-2026-10-10.md) for P0/P1/P2 work, acceptance criteria, and the first 30-day validation sequence.
-
-
-## 30-day execution plan
-
-The [GridMind 30-Day Build and Validation Plan](docs/gridmind-30-day-execution-plan-2026-10-10.md) defines daily actions, build scope, customer questions, acceptance gates, and Day 30 decision criteria.
-
+- Preserve factory and tenant isolation; do not expose one customer's data to another.
+- Use customer or production data only with explicit authorization, appropriate rights, and a tested workflow.
+- Separate observed facts, hypotheses, recommendations, and verified outcomes.
+- Keep synthetic tests distinct from real-factory evidence.
+- Avoid schema expansion, product redesign, and new modules unless justified by the current plan and evidence.
+- Link implementation PRs to actionable issues and acceptance criteria. Review migrations, security effects, and validation results before merging.
 
 ## Decision authority
 
-The [GridMind Decision Constitution and Contradiction Register](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) is the canonical guide for resolving conflicts among strategy, product, use-case, website and execution documents. It distinguishes long-term ambition from current commitments and defines how future decisions supersede prior ones.
+The Master Plan controls execution, the Buyer Discovery Sprint records live discovery events, and the Decision Constitution records binding guardrails and durable decisions. Reference documents preserve useful history and analysis but do not create competing task queues.
 
-
-## Cross-category founder opportunity review — 2026-10-11
-
-The [Founder Opportunity Cost Review: B2B vs B2C](docs/founder-opportunity-cost-review-b2b-vs-b2c-2026-10-11.md) compares GridMind with a creator-led consumer brand, vertical AI, AI services, consumer apps, marketplaces, and other paths. It explicitly treats GridMind as a contender rather than a predetermined winner and proposes a 30-day evidence tournament. Scores are hypotheses, not validated probabilities.
-
-
-## Opportunity tournament — Test 1 (2026-10-11)
-
-The [Opportunity Tournament desk-evidence test](docs/opportunity-tournament-test-1-desk-evidence-2026-10-11.md) compares GridMind with a narrow B2B AI service-to-software path and a creator-led consumer brand. This is public-source desk research, not customer validation. It recommends real buyer discovery before choosing a winner.
-
-
-## Opportunity tournament — Test 2 (2026-10-11)
-
-The [Customer Discovery Kit](docs/opportunity-tournament-test-2-customer-discovery-kit-2026-10-11.md) contains interview scripts, outreach messages, evidence rules, a tracker, and decision gates for GridMind, B2B service-to-software, and a creator-led consumer brand. It is prepared for outreach; no interviews or messages are claimed.
-
-
-## Product rating — 2026-10-11
-
-The [Current Product Rating](docs/gridmind-product-rating-2026-10-11.md) scores current maturity at 4/10 and production readiness at 2/10 (NO-GO), with evidence limits, blockers, and the highest-leverage next step. This is a desk review, not a live usability study or production acceptance test.
-
-## Current execution plan — 2026-10-11
-
-The [30-Day GridMind Execution Plan](docs/gridmind-execution-plan-30-day-2026-10-11.md) defines technical release gates, buyer-discovery targets, a permissioned test path, weekly milestones, and day-30 go/no-go decisions. Targets are not claims of completed work; production remains NO-GO until the documented gates pass.
-
-## Strategic leverage map — 2026-10-11
-
-The [GridMind Strategic Leverage Map](docs/gridmind-strategic-leverage-map-2026-10-11.md) covers product direction, out-of-the-box distribution, a selective app/tool stack, potential investor and non-dilutive funding routes, advisors, defensibility, and a 90-day roadmap. These are hypotheses and targets—not claims of customer, investor, or partner commitments.
+Do not create another master plan or discovery tracker. Update the canonical records when material evidence changes a decision.

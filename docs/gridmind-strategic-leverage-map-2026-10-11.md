@@ -1,5 +1,8 @@
 # GridMind Strategic Leverage Map — 2026-10-11
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document preserves supporting analysis, not an independent schedule or work queue. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files.
+
+
 **Purpose:** Broaden GridMind's strategy beyond application development: product architecture, customer access, distribution, defensibility, partners, tools, capital, talent, and operating discipline.
 **Status:** Strategic hypotheses and recommendations; not evidence that any partnership, investor conversation, customer pilot, or funding application has occurred.
 **Decision rule:** Preserve the long-term industrial-intelligence ambition while only scaling claims and scope when evidence supports them.

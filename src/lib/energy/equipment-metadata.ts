@@ -12,7 +12,7 @@ const CATEGORIES: readonly EquipmentCategory[] = [
 
 const record = (value: unknown): Record<string, Json | undefined> =>
   value !== null && typeof value === "object" && !Array.isArray(value)
-    ? value as Record<string, Json | undefined>
+    ? (value as Record<string, Json | undefined>)
     : {};
 
 function boundedNumber(value: unknown, fallback: number, min: number, max: number): number {
@@ -36,15 +36,15 @@ export function equipmentFieldsFromAssetMetadata(value: unknown): {
   const metadata = record(value);
   const category = metadata.category;
   return {
-    category: typeof category === "string" && CATEGORIES.includes(category as EquipmentCategory)
-      ? category as EquipmentCategory
-      : "other",
+    category:
+      typeof category === "string" && CATEGORIES.includes(category as EquipmentCategory)
+        ? (category as EquipmentCategory)
+        : "other",
     quantity: boundedNumber(metadata.quantity, 1, 0, 1_000_000),
     hoursPerMonth: boundedNumber(metadata.hoursPerMonth, 0, 0, 744),
     loadFactor: boundedNumber(metadata.loadFactor, 0, 0, 1),
   };
 }
-
 
 export type EquipmentMetadataInput = {
   category: string;

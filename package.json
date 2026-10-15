@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "check": "bun run typecheck && bun run lint && bun run test && bun run build",
+    "check": "bun run docs:links && bun run typecheck && bun run lint && bun run test && bun run build",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "docs:links": "node scripts/check-markdown-links.mjs"

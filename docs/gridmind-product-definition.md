@@ -1,5 +1,8 @@
 # GridMind Product Definition and Strategic Evolution
 
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document preserves strategic analysis, not an independent schedule, candidate list, gate system, or execution commitment. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files.
+
+
 **Status:** Strategy and decision framework, not a claim of current product readiness. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs immediate scope and any conflicting strategic instruction.  
 **Last updated:** 2026-10-11
 

@@ -1,4 +1,10 @@
+> [!IMPORTANT]
+> **Status: HISTORICAL / SUPERSEDED AS AN EXECUTION PLAN (2026-10-13).** This file is preserved for history and context; it is not a live task queue. Follow the [canonical Master Plan](gridmind-master-plan-2026-10-11.md) for priorities and dates and the [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) for current access status. No historical content below has been deleted or rewritten in this status update.
+
 # GridMind Next Plan — Creative Direction to Comparable Visual Exploration
+
+> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful analysis, but its old schedules, candidate letters, gates, engineering priorities, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
+
 
 **Date:** 2026-10-11  
 **Status:** Active plan with commercial validation as the primary milestone; creative exploration is bounded and secondary. The interactive The Cut prototype is committed but browser/device validation remains pending. No first commercial wedge is validated.  
