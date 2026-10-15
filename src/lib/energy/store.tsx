@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { analyze, type Analysis } from "./analysis";
 import { implementedMonthFromTimestamp } from "./intervention-date";
 import { createDemoFactory, DEMO_FACTORY_ID } from "./demo-data";
+import type { CanonicalOpportunityStatus } from "../gridmind/opportunity-status";
 import type { Factory, OpportunityStatus } from "./types";
 import { supabase } from "@/integrations/supabase/client";
 import {
@@ -45,7 +46,7 @@ type Ctx = {
   deleteFactory: (id: string) => void;
   loadDemo: () => void;
   runAnalysis: () => void;
-  setOppStatus: (oppId: string, s: OpportunityStatus) => void;
+  setOppStatus: (oppId: string, s: CanonicalOpportunityStatus) => void;
 };
 
 const StoreCtx = createContext<Ctx | null>(null);

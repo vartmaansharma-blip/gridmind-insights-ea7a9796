@@ -1,3 +1,5 @@
+import type { CanonicalOpportunityStatus } from "../gridmind/opportunity-status";
+
 // Core domain types. Data sources (manual entry, CSV, future meter integrations)
 // all normalise into these shapes before analysis.
 
@@ -31,7 +33,8 @@ export type Intervention = {
   cost: number;
 };
 
-export type OpportunityStatus = "open" | "planned" | "in_progress" | "implemented";
+// Legacy screening states and persisted canonical states remain distinct values.
+export type OpportunityStatus = "open" | "planned" | "implemented" | CanonicalOpportunityStatus;
 
 export type Factory = {
   id: string;
