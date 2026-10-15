@@ -41,7 +41,7 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 
 Procurement intelligence remains a possible adjacent or alternative opportunity only if discovery narrows it to a specific purchasing category, buyer, recurring decision, and measurable consequence. Energy intensity for a bounded asset/process has an existing candidate data contract; detail does not confer priority.
 
-**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading ten conversations across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
+**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading limited discovery capacity across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
 
 **Selection evidence:** severity/frequency; conservative addressable economics; buyer and budget ownership; current alternatives; authorized data access; credible baseline; qualified reviewer; time-to-useful-result; influenceability; willingness to pay; delivery burden and margin; safety/trust; repeatability; and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
 
@@ -282,3 +282,37 @@ This is the binding reconciliation for the planned 2026-10-15 freeze. It consoli
 - **External engagement:** because the founder is a minor, external industrial outreach and formal engagement require appropriate adult/professional support. Do not send messages or share data without the required oversight and authorization.
 
 **Contradiction rule:** this section, the current Master Plan, and the current Buyer Discovery Sprint supersede older dated targets and stale execution text. Preserve superseded decisions as historical context, but label them as such. If these canonical records disagree, stop the affected action and reconcile the documents before proceeding.
+
+## External proposal reconciliation — 2026-10-15
+
+**Decision and evidence:** at the founder's request, the two external PDF proposals were reviewed against the existing canonical records. [Master Plan §19](gridmind-master-plan-2026-10-11.md) records the judgments and operating refinements; [Issue #84](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/84) tracks this documentation revision. The PDFs supply hypotheses and recommendations, not new customer evidence or execution authority.
+
+Binding refinements:
+- Select a specific buyer decision and residual evidence gap using C1/C4 discovery evidence. Document accessibility, limited founder time or policy headlines do not select a wedge.
+- Keep invoice reconciliation, procurement economics and physical efficiency distinct. A reconciled invoice does not prove recoverable value; a lower next bill does not prove causal savings. Claims require scope-appropriate review, adjustments and verification.
+- Keep pricing unvalidated. A fixed scoped fee is the simplest initial pricing hypothesis to test after qualification; contingency requires measurable attributable value, financeable collection timing and appropriate written terms. Neither is a commercial commitment.
+- Evaluate buyer benefit relative to the existing alternative and all-in delivery economics. Do not use gross spend or arbitrary annual-pain thresholds as a substitute. Record actual commitments and their completion separately from interest.
+- Preserve the current access target, capacity cap and gates. One bounded intermediary fallback may refine access; it does not authorize outreach. No profile/network claim in a PDF is treated as verified.
+- Before later software investment, seek repetition in an additional independent case and identify a measured reusable step. This is a minimum learning gate, not proof of scale or product-market fit.
+- Preserve essential correctness/security work; do not treat workflow consolidation, branch cleanup, speculative tariff engines, funding applications or carbon modules as automatically authorized tasks.
+
+**Alternatives and trade-offs:** immediately committing to bill auditing would simplify the pitch but could optimize for accessible records rather than buyer value. Launching all suggested channels/products would increase breadth and exceed current capacity. Keep two probes and tighten the next evidence step instead.
+
+**Risks and reconsideration:** the current sample and economics remain unknown; discovery can be slow or biased. Revisit these choices when actual buyer behavior, reviewer feasibility, delivery costs or a specific legal/technical requirement supplies new evidence. Existing human oversight, Tier 1/Tier 2 safeguards, Oct 31 checkpoint and Nov 10 decision date remain binding.
+
+
+## Execution risk correction — 2026-10-15 (binding clarification)
+
+**Decision / evidence basis:** External critique of the strategy plus a read of open PRs #85 and #88 found practical gaps: no named buyer-access supporter, undecided access route, ambiguous November classification and overlapping Section 19 changes. No new buyer, professional supporter, domain reviewer, customer permission, paid engagement or verified outcome is established by this record.
+
+**Priority and ownership:** Discovery is P0, with the founder accountable for accurate tracking. A **real, consenting trusted adult/professional** must support external industrial outreach. If absent, external outreach is **blocked**; public/offline preparation can continue. A **qualified technical reviewer** is separately required before any technical conclusion/customer-data test; the two roles need not be the same person. Do not record an individual as committed without consent.
+
+**Precommitted threshold (not statistical validation):** The November 10 gate is GO **only to bounded-test design** if all apply: at least **3 held substantive interviews**, **2 independently owned companies**, **2 recent specific examples supporting the same C1/C4 candidate with unresolved gaps vs best existing options**, **1 identifiable economic-buyer path and explicit attributable buyer next step**, and a feasible bounded service under known constraints. If underpowered or ambiguous, decide **NARROW/INCONCLUSIVE**; pivot only to a buyer-supported alternative; **STOP/PAUSE** on inability to access, unsafe handling or fatal economics. Missing sample is not evidence of zero demand. The [Master Plan §14](gridmind-master-plan-2026-10-11.md) and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) hold exact execution rules. These numeric targets may be revised only through a dated, prospective evidence-backed decision, not after outcomes are known.
+
+**Access/capacity:** By October 19 review actual qualified introductions and adviser status; by October 24 if no substantive conversation held/firmly booked or no credible warm path, test one separate appropriate supported intermediary route, otherwise record the adviser blockade. Preserve the provisional 5 hours/week and ₹0 incremental cash spend through November 10; real financial runway remains unknown until explicitly allocated. Target misses must be recorded, not claimed as customer rejection.
+
+**Selection neutrality and rights:** Energy-shaped legacy code is sunk cost, not C4 evidence. Compare C1 and C4 with identical questions and disconfirming evidence. Record ownership/anchor-customer overlap and sampling bias. Permit non-confidential verbal process maps and public or synthetic exercises before Tier 2, but never bypass written rights, reviewer approval or security for real customer data.
+
+**Governance resolution:** The former Sections 14–19 of the Master Plan and the long-range PR #88 appendix are preserved as [historical analysis](gridmind-historical-planning-appendices-2026-10-15.md). The consolidated active Master Plan §14 alone summarizes near-term operating corrections and optional five-stage direction. Do not treat historical proposal dates, pricing, vendors or audits as live commitments. Outstanding branch protection and production-readiness issues are independent of restored Actions execution on October 15 (Issue #42).
+
+**Trade-off and review:** The tighter GO minimum reduces post-hoc choice but may leave evidence inconclusive on November 10. Accept **NARROW/INCONCLUSIVE** rather than force a chosen wedge or build. Review the rule's practicality only using independent buyer-access evidence and the dated decision-change protocol above; no interview result yet justifies relaxing safety or access gates.
