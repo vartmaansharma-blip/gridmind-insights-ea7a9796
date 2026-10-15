@@ -845,6 +845,66 @@ No strategic contradiction was found that justifies changing the long-term ambit
 - **Stage 3:** Prefer customer-authorized spreadsheet/export and read-only API imports before OT connections. Only for a proven integration case, evaluate OPC UA, AWS IoT SiteWise/Greengrass or suitable industrial alternatives and qualified onsite integrators. No direct control-network access or hardware installation by unqualified personnel.
 - **Stages 4–5:** Evaluate specialized data storage/analytics (e.g. S3, Glue, Athena), PostGIS or other context models, and enterprise identity/reliability controls when real cross-system scale requires them. Do not preselect future cloud migrations, AI foundation models, expensive digital twins, or autonomous equipment actions.
 
+### The economic engine: prove value and delivery leverage before platform scale
+
+**Investment thesis (unvalidated):** A factory pays for a better consequential decision, not for an AI-generated report or dashboard. A bounded, expert-reviewed investigation is the learning unit. Standardized methods should lower marginal delivery effort *only if* real cases demonstrate repeatable value. Subscriptions, integrations and enterprise contracts are possible later offers, never an assumed automatic conversion.
+
+For **each authorized engagement** after the Tier 2 gate, maintain a case-level ledger (in the authorized business record, not a new generic tracker) with:
+
+| Evidence dimension | Minimum observations | Interpretation / discipline |
+|---|---|---|
+| Buyer and decision | Named decision owner, budget owner, triggering problem, agreed deliverable, next decision | An enthusiastic user without a buyer is not a commercial win. |
+| Baseline and alternatives | Current staff/expert/tool process, cost, timing, known limitations, counterfactual and confounders | Compare GridMind against the strongest realistic alternative, including doing nothing or a simpler fix. |
+| Customer value | Customer-approved action or decision change; estimated avoidable loss; cost of action; measured outcome only when comparable evidence exists | A flagged anomaly, gross loss or potential opportunity is **not** incremental value or verified savings. |
+| Revenue and collection | Agreed price, discount, invoiced amount, amount actually collected, payment timing, repeat commitment | Never substitute a verbal interest signal or unpaid pilot for revenue. |
+| Direct delivery costs | Founder/analyst hours at a reasonable shadow rate, qualified reviewer hours, travel/site visits, tools/compute, document processing, direct support and rework | Include onsite labor and outsourced expertise even when initially donated. |
+| Quality and risk | Evidence completeness, reviewer corrections, customer disputes, error/rework rate, secure data handling and limits of conclusions | Lower apparent cost achieved by skipping review or safety is not scale. |
+| Repeatability | Which workflow steps recur, time per comparable step/case, customization, training and exceptional cases | An average across non-comparable factories or problem types can conceal rising service complexity. |
+| Customer acquisition | Relationship/introduction path, sales hours and spend, lead-to-commissioned-case progression | Include founder acquisition time; do not assume zero CAC because outreach was free. |
+
+**Case contribution (working metric)** = collected or realistically collectible contracted engagement revenue less direct delivery costs, explicitly stating the timing basis. Report separately: contribution before allocated overhead, cash collection, allocated overhead, and full operating profitability. **Do not** confuse positive case contribution with company profit. For a continuing service, calculate recurring fee less the *actual* monthly review, support, data/integration and delivery costs; measure renewal and cancellation once real contracts exist. The [Factory Economic Model](factory-economic-model-v1.md) describes *customer-side* impact and evidence lineage; it does not substitute for GridMind's own service economics.
+
+**Automation investment test:** automate only a demonstrated repeated bottleneck where a narrow, testable software change reduces verified time/cost or errors without weakening reviewer accountability. Compare the change against a checklist, spreadsheet, qualified specialist or existing product. Preserve a manual fallback until the automated workflow has passed task-specific quality checks.
+
+**Early business-model falsification:** if customers will only buy unbounded bespoke consulting, reviewer capacity is scarce or expensive, evidence is consistently unavailable, outcomes cannot be differentiated from the current process, or recurring review adds no new decisions, *do not force a software/subscription thesis*. Narrow, reprice, partner, change workflow, or stop. A smaller profitable specialist service may be an acceptable outcome; calling it a scalable platform without proof is not.
+
+### Defensibility: advantages to test, not moats to claim
+
+| Potential advantage | How it could compound lawfully | What would disprove it |
+|---|---|---|
+| Domain-specific investigation playbooks | Versioned methods, reviewer corrections, reproducible calculation and evidence-quality standards developed through authorized cases | Every case needs unique expert reasoning; generic tools or incumbent specialists are equivalent at lower cost. |
+| Trusted onsite access and distribution | Permission-based introductions, accountable delivery, local technical partners and repeat buyer relationships | Buyers treat GridMind as interchangeable, acquisition remains referral-dependent without replication, or trust requires unsustainable founder presence. |
+| Integration and workflow know-how | Reusable, documented connectors and deployment controls for recurring customer-approved systems | Deployment is bespoke each time or simpler exports accomplish the same outcome. |
+| Measured decision/outcome loop | Customer-authorized links from evidence to reviewed decision, approved intervention and outcome; progressively more reliable methods | There is no reliable baseline or customer's operations never change because of the work. |
+| Customer workflow embedment | Useful follow-up, responsible owners, records of action and renewal earned by measurable value | Customer stops using it after the report or can switch without practical loss. |
+
+**Data-rights boundary:** customers retain rights to their information as established by contract. No pooling, model training, benchmarking, embeddings, external sharing, or cross-customer derivatives by default. Any retained learning must have a lawful basis, customer permission where required, minimization and documented rights; use independently developed generic methods when permission is absent. **A data moat or network effect does not exist today.** Valuable confidential industrial data is not automatically GridMind IP.
+
+Every moat claim needs a *comparison test*: same scoped problem versus the customer's best available option (internal analyst, engineer, incumbent software, consultant, or general AI). Measure decision usefulness, turnaround, quality/rework, full cost and buyer preference. A prettier interface alone is insufficient.
+
+### Stage advancement scorecard (conditional proposal, not a funded delivery schedule)
+
+Review each proposed transition in the existing decision process. **No fabricated precision:** numeric thresholds require baseline evidence and explicit approval after real pilots, not arbitrary commitments in this appendix.
+
+| Proposed transition | Minimum defensible evidence | Hold, narrow or stop trigger | Decision accountability |
+|---|---|---|---|
+| **Discovery → bounded Stage 1 test** | Tier 1 concrete recent pain, credible buyer path, residual gap and scoped usefulness; then all Tier 2 written rights, qualified reviewer, safe handling and baseline/outcome protocol | No reachable buyer; current alternative already sufficient; absent permissions/reviewer; unacceptable risk | Founder records evidence; qualified adviser/reviewer and customer approver authorize their respective boundaries. |
+| **Stage 1 → Stage 2 recurring service** | Independently confirmed paid demand across customers, acceptable case contribution including expert/site costs, reproducible investigation quality, repeat or renewal demand, clear customer decision value | Cases require continually increasing bespoke hours; review quality declines; buyer only purchases a single report | Founder/business owner with financial/technical review; update canonical plan by dated decision. |
+| **Stage 2 → Stage 3 connected operations** | Evidence that periodic exports are insufficient; specific integration buyer and funded use case; read-only data rights; qualified OT/security plan; improvement exceeding added build/maintenance/site cost | CSV/export is adequate; integration disrupts operations; data mapping is unreliable or unit economics worsen | Customer IT/OT authority, qualified integrator/security reviewer and GridMind business owner. |
+| **Stage 3 → Stage 4 adjacent infrastructure** | One adjacent buyer's independent problem/value evidence, transferable core capability, expert coverage, authorization/regulatory readiness, economic case versus deepening current vertical | Different customer demands defeat reuse; security/regulatory cost dominates; no viable distribution | Leadership/business owner with sector/domain and legal/security review. |
+| **Stage 4 → Stage 5 enterprise platform** | Multi-site/sector deployment proof, sustainable contracts, operational reliability, resilience/governance, repeatable onboarding, clear unit economics and capacity to fund commitments | Enterprise customization explodes; platform reliability or data rights fail; expansion destroys margins | Accountable leadership with enterprise customer, engineering, security and financial sign-off. |
+
+**Operating review questions for each gate:** (1) What are the strongest customer-specific facts? (2) What would falsify our claim? (3) What is the cheapest responsible next experiment? (4) Does it beat the incumbent alternative after *all* costs? (5) What will we *not* build? (6) Which responsible human approves advancement? (7) Is the release/data/security gate separately satisfied?
+
+### Ownership, capital discipline and next proof
+
+- **Current P0:** Existing discovery sprint only. Adviser and reviewer remain **unassigned until genuinely secured**; do not imply staffing, partnerships, customer consent or bill access.
+- **Founder responsibility:** Record interview facts, disconfirming evidence, next buyer action and decision date in the sole discovery tracker. A trusted adult/professional supports external outreach and formal industrial engagement as required by current guardrails.
+- **Next commercial proof, not next software feature:** an identified buyer with a recent expensive unresolved decision, a comparison to the current process and an explicit next step. No priced offer is approved today.
+- **Engineering responsibility only after a GO:** Review current repository and release gates; implement the smallest authorized vertical slice. Avoid feature-count, dashboard-page-count, AI accuracy, number of connected assets or model complexity as vanity milestones.
+- **Capital allocation:** Prefer existing low-cost stack and qualified expertise. Every proposed subscription, contractor, sensor, gateway, AWS service or data platform requires an actual workflow need, price/total-cost comparison, data-rights/security assessment, acceptance test and stop condition.
+- **Stop-loss discipline:** Maintain visibility of founder/reviewer hours, unpaid customization, cash collection and operational risk. If the case cannot be bounded or the incremental economics are unattractive, do not scale it to improve a presentation metric.
+
 ### Explicit gates and operating sequence
 
 1. **Now through 2026-11-10:** Only the live Buyer Discovery Sprint is P0. Explore C1 (downtime/production loss) and C4 (energy/resource inefficiency). The electricity-cost route is a *probe*, **not a chosen product**. Make genuine, supported introductions; run non-confidential interviews; log actual evidence and disconfirming findings.
