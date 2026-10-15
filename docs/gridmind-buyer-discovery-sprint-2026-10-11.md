@@ -83,7 +83,7 @@ Update only with actual counts. Do not fill planned counts as completed.
 | Replies received | 0 | Track actual | — |
 | Introductions offered | 0 | Track actual | — |
 | Calls booked | 0 | Track actual; no forecast target | — |
-| Calls held | 0 | Seek substantive evidence; no fixed quota | No conversations claimed |
+| Calls held | 0 | Oct 31 target: 3 substantive manufacturing conversations | Target only; no conversations claimed |
 | C1 substantive cases | 0 | Probe deeply | — |
 | C4 substantive cases | 0 | Probe deeply | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |

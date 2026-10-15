@@ -41,7 +41,7 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 
 Procurement intelligence remains a possible adjacent or alternative opportunity only if discovery narrows it to a specific purchasing category, buyer, recurring decision, and measurable consequence. Energy intensity for a bounded asset/process has an existing candidate data contract; detail does not confer priority.
 
-**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading ten conversations across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
+**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading limited discovery capacity across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
 
 **Selection evidence:** severity/frequency; conservative addressable economics; buyer and budget ownership; current alternatives; authorized data access; credible baseline; qualified reviewer; time-to-useful-result; influenceability; willingness to pay; delivery burden and margin; safety/trust; repeatability; and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
 

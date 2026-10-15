@@ -59,7 +59,7 @@ Use these IDs everywhere. Do not use letters such as “Hypothesis A” as short
 | **C4** | Energy / material inefficiency | Energy/utility owner; plant finance/operations | **Probe deeply** |
 | **C5** | Cross-team handoff / delayed operational decisions | Operations excellence; process owner | Parked unless discovery redirects |
 
-C1 and C4 are **discovery probes, not chosen wedges**. Probe these two to avoid spreading ten conversations across five families. Reopen another candidate only when specific evidence contradicts both probes or a qualified buyer introduces a stronger concrete case. Procurement intelligence, consumer brands, broad multi-vertical platforms, and renaming are parked for this sprint.
+C1 and C4 are **discovery probes, not chosen wedges**. Probe these two to avoid spreading limited discovery capacity across five families. Reopen another candidate only when specific evidence contradicts both probes or a qualified buyer introduces a stronger concrete case. Procurement intelligence, consumer brands, broad multi-vertical platforms, and renaming are parked for this sprint.
 
 ## 4. The access plan and concrete give
 
