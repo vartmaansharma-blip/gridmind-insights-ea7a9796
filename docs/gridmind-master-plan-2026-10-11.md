@@ -8,7 +8,16 @@
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
 
-**Latest revision:** §19 evaluates the two external proposals and tightens the existing discovery experiment. Choose a specific buyer decision with an unresolved, economically material gap; the easiest document to obtain is an entry route, not sufficient reason to choose a business. C1 and C4 remain open. Discovery remains P0; engineering work must resolve an evidenced correctness/security blocker or enable the selected evidence step. This documentation revision does not authorize implementation or external outreach.
+**This week's operating view:** choose a specific buyer decision with a material unresolved gap. C1 and C4 remain open; discovery is P0. Use the table below for action, the tracker for actual results, and §19 for the rationale.
+
+| Next step | Owner / dependency | Done when |
+|---|---|---|
+| Confirm supporting adult and first access route | Founder nominated dad on Oct 15; his agreement and relevant connections are not yet confirmed | Dad agrees to support the specific outreach and helps identify at least one appropriate introducer/contact. |
+| Run the existing access experiment by Oct 19 | Founder + supporting adult; 3–5 requests only if real routes/capacity exist | Actual requests, replies, introductions and bookings are recorded separately in the tracker; zero remains zero until an action occurs. |
+| Hold discovery conversations toward Oct 31 checkpoint | Founder; willing manufacturing participants | Three substantive conversations and one explicit buyer next step are targeted; records contain incident, residual gap, decision owner and disconfirming evidence. |
+| Establish qualified-review and delivery feasibility before a quote/data test | Founder + appropriate reviewer; existing reviewer brief | Written review scope, availability and fee are obtained, and the tracker economics worksheet is filled from case-specific evidence. |
+
+**Current human input:** dad is nominated, not recorded as having accepted an engagement. No manufacturing contact, message, reviewer agreement or fee is inferred from that nomination. Reviewer preparation may proceed alongside access; it does not delay no-data discovery interviews. This view does not authorize outreach, customer data, implementation or commercial commitments.
 
 ### Working definition and positioning
 GridMind is an **evidence-first industrial investigation service**: it turns a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
@@ -29,7 +38,7 @@ GridMind is an **evidence-first industrial investigation service**: it turns a m
 - Commercial wedge: **not selected**. C1 and C4 remain the two active probes.
 - Customer conversations held: **0 confirmed**; buyer next steps: **0 confirmed**; authorized customer data: **0**; reviewer secured: **no**.
 - The ASIA public-route inquiry was sent 2026-10-12; no reply or referral is confirmed. Follow up once around 2026-10-19 if appropriate.
-- The next execution priority is to make 3–5 genuine warm-introduction requests by 2026-10-19 **only where legitimate contacts and capacity exist**, with appropriate adult/professional support. Name that adviser before external outreach.
+- The next execution priority is to confirm dad's support and identify actual introduction routes, then make 3–5 genuine warm-introduction requests by 2026-10-19 **only where legitimate contacts and capacity exist**, with appropriate adult/professional support.
 - No real bill, factory visit, commercial commitment, or customer-data trial is authorized by this plan. Do not start another planning cycle.
 
 ## 1. Objective
@@ -161,7 +170,7 @@ A fee must make sense against conservative incremental value **and** cover deliv
 | Role | Owner status | When required |
 |---|---|---|
 | Founder / discovery lead | Founder | All discovery; owns evidence log and time cap |
-| Trusted adult/professional | **Not yet named** | Review/support external industrial outreach and formal engagement |
+| Trusted adult/professional | **Dad nominated by founder on 2026-10-15; agreement and scope not yet confirmed** | Review/support external industrial outreach and formal engagement |
 | Qualified domain reviewer | **Not yet named** | Before technical interpretation or any customer-data test |
 | Customer operational owner and data approver | **Not yet identified** | Before any customer-specific test or data access |
 | Customer security/privacy approver | **Not yet identified** | Before any non-public data is transferred or processed |
@@ -187,7 +196,7 @@ Do not write as if an unassigned reviewer has approved anything. A missing role 
 
 ## 13. Current next action
 
-Stop expanding the plan and focus on access. The ASIA public-route inquiry was sent on 2026-10-12; no reply, referral, or conversation is confirmed. Check for an actual response and follow up once around 2026-10-19 if appropriate. In parallel, make 3–5 genuine warm-introduction requests by 2026-10-19 only if legitimate contacts and actual capacity exist. Appropriate adult/professional support is required before external outreach; name the adviser in §10 first. Log actual messages, replies, introductions, calls booked/held, and explicit buyer next steps in the Buyer Discovery Sprint tracker. Do not count planned activity as completed, infer demand from a small sample, or start another planning cycle. The checkpoint is 3 substantive conversations and at least one explicit buyer next step by 2026-10-31; the formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains 2026-11-10.
+Stop expanding the plan and focus on access. The ASIA public-route inquiry was sent on 2026-10-12; no reply, referral, or conversation is confirmed. Check for an actual response and follow up once around 2026-10-19 if appropriate. In parallel, make 3–5 genuine warm-introduction requests by 2026-10-19 only if legitimate contacts and actual capacity exist. Appropriate adult/professional support is required before external outreach; confirm the nominated supporting adult's agreement and scope in §10 first. Log actual messages, replies, introductions, calls booked/held, and explicit buyer next steps in the Buyer Discovery Sprint tracker. Do not count planned activity as completed, infer demand from a small sample, or start another planning cycle. The checkpoint is 3 substantive conversations and at least one explicit buyer next step by 2026-10-31; the formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains 2026-11-10.
 
 
 ## 14. Phase decisions consolidated — 2026-10-12
