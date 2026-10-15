@@ -55,3 +55,11 @@ Confirm:
 - no unsupported machine-failure or savings claim has been introduced
 
 For consequential industrial workflows, correctness and evidence take priority over visual completeness.
+
+## Lovable-compatible repository maintenance
+
+Preserve the existing app/template stack and generated integrations. Lovable owns design; Codex owns backend and repository controls. A data-contract repair may require a minimal display adapter, with no visual redesign. Check the current package manager, Vite wrapper, `.lovable/project.json`, generated files, types, queries, and relevant tests before declaring compatibility preserved.
+
+Workflow actions are pinned to verified SHAs, checkout does not retain credentials, and Deno checks use 2.9.6. Dependabot proposals require review. The migration CLI remains a moving `latest` version until a fixed version is selected and verified during restored isolated replay; that limitation is not hidden by a successful local app build.
+
+On 2026-10-15 the owner explicitly authorized the documented maintenance merges using exact-candidate local validation while Actions was blocked before execution. This exception is recorded in the PRs. It does not mark remote checks as passed, create a blanket future bypass, or approve production/customer-data use. Restore Actions and verify actual required-check names and effective branch rules before relying on automated merge enforcement.

@@ -44,7 +44,15 @@ Read the [Product Definition](docs/gridmind-product-definition.md), [Accuracy an
 
 ## Local development
 
-The project uses Bun. Install the pinned package manager version from `package.json`, then run:
+Use **Bun 1.3.5**, as pinned in `package.json`. Keep the committed lockfile and install with frozen resolution. The app remains TanStack Start/React/Vite with Lovable's existing configuration wrapper.
+
+For interactive development, copy the environment template and replace its placeholders with an isolated development project's URL and publishable key. Keep both server and `VITE_*` client values pointed at that same development project. Client variables are public; never put a service-role or secret key there. `.env.local` is ignored by Git. Do not point a local experiment at production or process customer data before the release/data-rights gates pass.
+
+```bash
+cp .env.example .env.local
+```
+
+Then install and run:
 
 ```bash
 bun install --frozen-lockfile
@@ -65,6 +73,17 @@ bun run check
 `check` includes the link audit and all core application checks above. Formatting is separate (`bun run format:check`); migration/security, Deno, and Python checks have their own workflows described in the [release gate](docs/release-gate.md).
 
 Run the relevant checks before proposing a merge. Record the exact commit and results; do not claim a check passed unless it was actually run. Review [Release Gate](docs/release-gate.md) and the relevant technical runbooks before any live or customer-data workflow.
+
+## Working in Lovable and Codex
+
+Lovable handles design and visual implementation; Codex handles backend behavior, data contracts, tests, security, and repository operations. Keep shared changes in plain, editable code and preserve the existing stack, generated integrations, and published history. See [AGENTS.md](AGENTS.md) for the handoff rules.
+
+## Repository maintenance
+
+- [Contribution workflow](CONTRIBUTING.md), [ownership routing](.github/CODEOWNERS), [support](SUPPORT.md), and [security reporting](SECURITY.md).
+- [Change history](CHANGELOG.md) records completed repository work; it is not a production-release claim.
+- Dependabot proposes compatible Bun updates and GitHub Action updates for review. It does not automatically merge them or prove an update is safe for Lovable.
+- This is a private repository with no open-source license selected. Access does not establish permission to redistribute original GridMind code; request the owner's permission. Third-party dependencies retain their own licenses.
 
 ## Engineering and safety principles
 

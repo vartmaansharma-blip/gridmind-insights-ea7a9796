@@ -21,10 +21,12 @@ jobs:
     timeout-minutes: 15
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Deno
-        uses: denoland/setup-deno@v2
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          deno-version: v2.x
+          persist-credentials: false
+      - name: Setup Deno
+        uses: denoland/setup-deno@22d081ff2d3a40755e97629de92e3bcbfa7cf2ed # v2
+        with:
+          deno-version: v2.9.6
       - name: Typecheck authoritative Edge Function and HTTP acceptance test
         run: deno check supabase/functions/persist-factory-analysis/index.ts supabase/tests/factory-analysis-integration.deno.ts

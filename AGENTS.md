@@ -34,3 +34,12 @@ Supporting research, dated audits, prototypes, and `roadmap.md` do not override 
 - Preserve authentication, row-level security, and tenant isolation. Never weaken checks to obtain a green result.
 - Run relevant checks and report the exact commit/results. If Actions fails before runner steps, record it as an infrastructure blocker; do not claim application tests passed.
 - Never force-push, rebase, amend, or squash commits already published to the Lovable-connected history. Preserve that history with new commits.
+
+## Lovable and Codex collaboration
+
+- Lovable owns product design, layout, styling, and visual interactions. Codex owns backend behavior, database/data contracts, validation, tests, security, and repository operations.
+- Preserve TanStack Start, React, Vite, Bun, the existing Lovable configuration wrapper, `.lovable/project.json`, and generated Supabase integrations. Do not introduce Next.js, an alternative app framework, opaque code generation, or tooling Lovable cannot edit. Defer incompatible additions until the owner explicitly chooses them.
+- Do not hand-edit generated integrations or the route tree. Fix their source configuration or coordinate the generator change through Lovable. A narrowly documented style exception for generated source must not disable its semantic/security checks.
+- A necessary data-contract fix may require a minimal UI adapter; keep visual design unchanged and document the handoff. Review the corresponding types, queries, and tests together.
+- Before modifying shared files, refresh the GitHub head and compare the current diff. Preserve published commits; integrate concurrent work with merge commits, never force pushes or history rewriting.
+- A repository improvement must fix an evidenced defect, protect correctness/security, enable a named evidence-gathering step, or serve a validated customer need. Completing repository maintenance does not validate a commercial wedge or authorize product expansion.

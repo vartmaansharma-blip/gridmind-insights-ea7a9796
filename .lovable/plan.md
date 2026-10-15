@@ -1,3 +1,5 @@
+> **Design reference only.** This earlier Lovable plan is preserved for visual/product context. It is not an active execution backlog and does not override the [Master Plan](../docs/gridmind-master-plan-2026-10-11.md), [discovery tracker](../docs/gridmind-buyer-discovery-sprint-2026-10-11.md), or [collaboration rules](../AGENTS.md). Lovable owns design; Codex owns backend and repository tasks. Do not infer completed functionality from this proposal.
+
 # GridMind product overhaul
 
 ## Goal
