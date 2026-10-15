@@ -202,5 +202,31 @@ class IntakeValidatorTests(unittest.TestCase):
         errors, _ = validator.validate(self.obs, self.ops, self.eco)
         self.assertTrue(any("asset 'A1' is assigned to multiple factories" in error for error in errors))
 
+    def test_same_source_record_can_support_distinct_evidence_classes(self):
+        obs, op, eco = self.valid_rows()
+        for row in (obs, op, eco):
+            row["source_system"] = "synthetic-shared-record"
+            row["source_record_id"] = "shared-1"
+        self.write_all([obs], [op], [eco])
+        errors, blockers = validator.validate(self.obs, self.ops, self.eco)
+        self.assertEqual(errors, [])
+        self.assertEqual(blockers, [])
+
+    def test_duplicate_observation_source_record_is_rejected(self):
+        obs, op, eco = self.valid_rows()
+        second = dict(obs, period_start="2026-02-01T00:00:00+05:30", period_end="2026-03-01T00:00:00+05:30")
+        self.write_all([obs, second], [op], [eco])
+        errors, _ = validator.validate(self.obs, self.ops, self.eco)
+        self.assertTrue(any("duplicate source_system/source_record_id in observations" in error for error in errors))
+
+    def test_explicit_zero_economic_inputs_are_not_absent(self):
+        obs, op, eco = self.valid_rows()
+        for field in ("tariff_inr_per_kwh", "recoverable_fraction", "intervention_cost_inr"):
+            eco[field] = "0"
+        self.write_all([obs], [op], [eco])
+        errors, blockers = validator.validate(self.obs, self.ops, self.eco)
+        self.assertEqual(errors, [])
+        self.assertEqual(blockers, [])
+
 if __name__ == "__main__":
     unittest.main()

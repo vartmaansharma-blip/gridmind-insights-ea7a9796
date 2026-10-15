@@ -83,11 +83,20 @@ Deno.test("persist-factory-analysis enforces auth, tenant scope, server-owned in
   });
   if (noAuth.response.status < 400) throw new Error("Unauthenticated request unexpectedly succeeded");
 
-  const crossTenant = await runAnalysis(userB.access_token, {
-    action: "persist", factoryId: factoryA, assetId: assetA, idempotencyKey: "cross-tenant",
-  });
-  if (crossTenant.response.status !== 403) {
-    throw new Error(`Cross-tenant factory access should be 403, got ${crossTenant.response.status}: ${JSON.stringify(crossTenant.body)}`);
+  // Probe the boundary repeatedly to expose intermittent gateway/runtime failures.
+  // Every attempt must independently preserve the same 403 security contract.
+  for (let attempt = 1; attempt <= 10; attempt += 1) {
+    const crossTenant = await runAnalysis(userB.access_token, {
+      action: "persist",
+      factoryId: factoryA,
+      assetId: assetA,
+      idempotencyKey: `cross-tenant-${attempt}`,
+    });
+    if (crossTenant.response.status !== 403) {
+      throw new Error(
+        `Cross-tenant factory access attempt ${attempt}/10 should be 403, got ${crossTenant.response.status}: ${JSON.stringify(crossTenant.body)}`,
+      );
+    }
   }
 
   const injectedInput = await runAnalysis(userA.access_token, {
@@ -173,6 +182,16 @@ Deno.test("persist-factory-analysis enforces auth, tenant scope, server-owned in
   });
   if (verification.response.status !== 200 || verification.body.reproducible !== true) {
     throw new Error(`Reload/recompute verification failed: ${verification.response.status} ${JSON.stringify(verification.body)}`);
+  }
+  if (verification.body.inputSnapshotIntegrity !== true ||
+      typeof verification.body.recomputedInputSnapshotFingerprint !== "string" ||
+      !/^sha256:[0-9a-f]{64}$/.test(verification.body.recomputedInputSnapshotFingerprint)) {
+    throw new Error(`Input snapshot SHA-256 verification failed: ${JSON.stringify(verification.body)}`);
+  }
+  const storedRun = verification.body.stored as Json;
+  if (typeof storedRun.input_snapshot_sha256 !== "string" ||
+      storedRun.input_snapshot_sha256 !== verification.body.recomputedInputSnapshotFingerprint) {
+    throw new Error("Stored input snapshot digest does not match the recomputed SHA-256 digest");
   }
 
   const foreignAsset = await runAnalysis(userA.access_token, {

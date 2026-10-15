@@ -38,6 +38,13 @@ jobs:
       - name: Replay every migration from an empty local database
         run: supabase db reset --local
 
+      - name: Verify canonical analysis persistence schema contract
+        shell: bash
+        run: |
+          DB_URL="$(supabase status -o env | sed -n 's/^DB_URL=\"\(.*\)\"$/\1/p')"
+          test -n "$DB_URL"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-schema-contract.sql
+
       - name: Test tenant isolation, direct-table denial, and append-only persistence
         shell: bash
         run: |
@@ -81,15 +88,37 @@ jobs:
           EOF
           supabase functions serve persist-factory-analysis --env-file /tmp/gridmind-functions.env > /tmp/gridmind-functions.log 2>&1 &
           FUNCTION_PID=$!
-          trap 'kill "$FUNCTION_PID" 2>/dev/null || true' EXIT
+          on_exit() {
+            status=$?
+            if [ "$status" -ne 0 ]; then
+              echo "Edge Function integration failed; sanitized server log follows:"
+              if [ -f /tmp/gridmind-functions.log ]; then
+                sed -E 's/(SUPABASE_(ANON|SERVICE_ROLE)_KEY=).*/\\1[REDACTED]/' /tmp/gridmind-functions.log | tail -n 250
+              else
+                echo "Function server log was not created."
+              fi
+            fi
+            kill "$FUNCTION_PID" 2>/dev/null || true
+            exit "$status"
+          }
+          trap on_exit EXIT
+          # The gateway can respond before the Edge Function runtime is ready.
+          # Only the function's own OPTIONS handler (HTTP 200) proves readiness;
+          # a gateway 502 must be retried, not mistaken for a ready endpoint.
+          READY_CODE="000"
           for attempt in $(seq 1 60); do
-            CODE="$(curl --silent --output /dev/null --write-out '%{http_code}' "$SUPABASE_URL/functions/v1/persist-factory-analysis" || true)"
-            if [ "$CODE" != "000" ]; then break; fi
+            READY_CODE="$(curl --silent --output /dev/null --write-out '%{http_code}' \
+              --request OPTIONS \
+              "$SUPABASE_URL/functions/v1/persist-factory-analysis" || true)"
+            if [ "$READY_CODE" = "200" ]; then
+              echo "Local Edge Function ready after attempt $attempt"
+              break
+            fi
             sleep 2
           done
-          if [ "${CODE:-000}" = "000" ]; then
+          if [ "$READY_CODE" != "200" ]; then
+            echo "Local Edge Function did not become ready; last HTTP status: $READY_CODE"
             cat /tmp/gridmind-functions.log
-            echo "Local Edge Function did not become ready"
             exit 1
           fi
           deno test --allow-env --allow-net supabase/tests/factory-analysis-integration.deno.ts

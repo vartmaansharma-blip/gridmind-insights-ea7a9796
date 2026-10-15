@@ -11,7 +11,22 @@ declare
   factory_a bigint;
   factory_b bigint;
   asset_a bigint;
+  asset_b bigint;
+  implemented_at_column record;
 begin
+  select is_nullable, column_default, data_type
+    into implemented_at_column
+  from information_schema.columns
+  where table_schema = 'public'
+    and table_name = 'asset_interventions'
+    and column_name = 'implemented_at';
+
+  if not found
+    or implemented_at_column.is_nullable <> 'YES'
+    or implemented_at_column.column_default is not null
+    or implemented_at_column.data_type <> 'timestamp with time zone' then
+    raise exception 'INTERVENTION_IMPLEMENTED_AT_MUST_BE_NULLABLE_TIMESTAMPTZ_WITHOUT_GUESSED_DEFAULT';
+  end if;
   insert into auth.users (id, aud, role, email, created_at, updated_at, raw_app_meta_data, raw_user_meta_data)
   values
     (user_a, 'authenticated', 'authenticated', 'gridmind-ci-a@example.test', now(), now(), '{}'::jsonb, '{}'::jsonb),
@@ -29,6 +44,8 @@ begin
   values (org_b, 'gridmind-ci-factory-b') returning id into factory_b;
   insert into public.factory_assets (factory_id, name)
   values (factory_a, 'gridmind-ci-asset-a') returning id into asset_a;
+  insert into public.factory_assets (factory_id, name)
+  values (factory_b, 'gridmind-ci-asset-b') returning id into asset_b;
 
   insert into public.factory_members (factory_id, user_id, organization_id, role)
   values (factory_a, user_a, org_a, 'owner'), (factory_b, user_b, org_b, 'owner');
@@ -50,6 +67,91 @@ begin
   if visible_factories <> 1 then
     raise exception 'TENANT_ISOLATION_FAILED: user A sees % test factories, expected exactly one', visible_factories;
   end if;
+
+  if (select count(*) from public.factory_assets where name like 'gridmind-ci-asset-%') <> 1 then
+    raise exception 'CROSS_TENANT_ASSET_READ_WAS_ALLOWED';
+  end if;
+
+  if not has_function_privilege('authenticated', 'public.create_factory_workspace(text,text,text)', 'execute')
+    or has_function_privilege('anon', 'public.create_factory_workspace(text,text,text)', 'execute') then
+    raise exception 'WORKSPACE_BOOTSTRAP_FUNCTION_GRANTS_ARE_NOT_LEAST_PRIVILEGE';
+  end if;
+
+  if has_table_privilege('anon', 'public.organization_members', 'truncate')
+    or has_table_privilege('authenticated', 'public.organization_members', 'truncate')
+    or has_table_privilege('service_role', 'public.organization_members', 'truncate')
+    or has_table_privilege('anon', 'public.organization_members', 'references')
+    or has_table_privilege('authenticated', 'public.organization_members', 'references')
+    or has_table_privilege('anon', 'public.organization_members', 'trigger')
+    or has_table_privilege('authenticated', 'public.organization_members', 'trigger') then
+    raise exception 'UNNECESSARY_ORGANIZATION_MEMBERSHIP_TABLE_PRIVILEGES_REMAIN';
+  end if;
+
+  -- RLS does not protect TRUNCATE; no API role should have structural privileges
+  -- on any public base or partitioned table.
+  if exists (
+    select 1
+    from pg_class c
+    join pg_namespace n on n.oid = c.relnamespace
+    where n.nspname = 'public'
+      and c.relkind in ('r', 'p')
+      and (
+        has_table_privilege('anon', c.oid, 'truncate')
+        or has_table_privilege('authenticated', c.oid, 'truncate')
+        or has_table_privilege('service_role', c.oid, 'truncate')
+        or has_table_privilege('anon', c.oid, 'references')
+        or has_table_privilege('authenticated', c.oid, 'references')
+        or has_table_privilege('service_role', c.oid, 'references')
+        or has_table_privilege('anon', c.oid, 'trigger')
+        or has_table_privilege('authenticated', c.oid, 'trigger')
+        or has_table_privilege('service_role', c.oid, 'trigger')
+      )
+  ) then
+    raise exception 'UNNECESSARY_STRUCTURAL_PRIVILEGES_REMAIN_ON_PUBLIC_TABLES';
+  end if;
+
+  if not exists (
+    select 1 from pg_proc p
+    join pg_namespace n on n.oid = p.pronamespace
+    where n.nspname = 'public'
+      and p.proname = 'create_factory_workspace'
+      and p.pronargs = 3
+      and coalesce(array_to_string(p.proconfig, ','), '') like '%search_path=""%'
+  ) then
+    raise exception 'WORKSPACE_BOOTSTRAP_SEARCH_PATH_NOT_PINNED';
+  end if;
+
+  if not exists (
+    select 1
+    from pg_policies
+    where schemaname = 'public'
+      and tablename = 'organization_members'
+      and policyname = 'admins update organization_members'
+      and cmd = 'UPDATE'
+      and roles = array['authenticated']::name[]
+  ) then
+    raise exception 'ORGANIZATION_MEMBERS_UPDATE_POLICY_NOT_SCOPED_TO_AUTHENTICATED';
+  end if;
+
+  -- User A must not be able to promote, modify, or add members in organization B.
+  update public.organization_members
+    set role = 'owner'
+    where organization_id = (select id from public.organizations where name = 'gridmind-ci-org-b')
+      and user_id = 'b2222222-2222-4222-8222-222222222222';
+  if found then
+    raise exception 'CROSS_TENANT_MEMBERSHIP_UPDATE_WAS_ALLOWED';
+  end if;
+
+  begin
+    insert into public.organization_members (organization_id, user_id, role, status)
+    select id, 'a1111111-1111-4111-8111-111111111111', 'owner', 'active'
+    from public.organizations where name = 'gridmind-ci-org-b';
+    if found then
+      raise exception 'CROSS_TENANT_MEMBERSHIP_INSERT_WAS_ALLOWED';
+    end if;
+  exception
+    when insufficient_privilege then null;
+  end;
 
   if has_table_privilege(current_user, 'public.factory_analysis_runs', 'select')
     or has_table_privilege(current_user, 'public.factory_analysis_runs', 'insert')
@@ -110,12 +212,14 @@ declare
   factory_a bigint;
   factory_b bigint;
   asset_a bigint;
+  asset_b bigint;
   run_id bigint;
   trigger_message text;
 begin
   select id into strict factory_a from public.factories where name = 'gridmind-ci-factory-a';
   select id into strict factory_b from public.factories where name = 'gridmind-ci-factory-b';
   select id into strict asset_a from public.factory_assets where name = 'gridmind-ci-asset-a';
+  select id into strict asset_b from public.factory_assets where name = 'gridmind-ci-asset-b';
 
   insert into public.factory_analysis_runs
     (factory_id, asset_id, idempotency_key, algorithm_version, input_snapshot, result,

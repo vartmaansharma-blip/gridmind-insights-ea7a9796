@@ -1,88 +1,82 @@
 # GridMind Insights
 
-> **Intelligence for energy-intensive physical infrastructure.**
+> **Being built to turn industrial evidence into better decisions and verified improvement.**
 
-GridMind Insights is an industrial intelligence platform designed to help factories understand energy performance, machine behaviour, operational losses, and improvement opportunities.
+GridMind is being developed as an industrial intelligence and performance-improvement company. The long-term ambition is to help manufacturers investigate operational problems, make evidence-backed decisions, coordinate approved improvements, and verify outcomes. This is an ambition, not a claim that all capabilities exist today.
 
-## Production
+## Current truth
 
-**Live production application:** https://gridmind-insights.lovable.app
+- **Commercial wedge:** undecided.
+- **Discovery probes:** C1 — downtime/production-loss investigation; C4 — energy/material inefficiency. These are probes, not product commitments.
+- **Access:** the founder reports an initial public-route inquiry to ASIA was sent on 2026-10-12. No reply, buyer conversation, customer-data permission, factory access, paid demand, or verified savings is confirmed.
+- **Next access test:** a small 3–5 genuine warm-introduction-request effort by 2026-10-19, only if legitimate contacts and actual capacity are available.
+- **Product/release status:** consult the current technical evidence and release gates; a successful build or synthetic test is not proof of production readiness or customer demand.
 
-The production application provides the current deployed GridMind experience.
+## Start here
 
-## What GridMind does
+1. [Documentation index](docs/README.md) — repository map and reading order.
+2. [Contribution standards](CONTRIBUTING.md) — source-of-truth rules, issue-to-PR workflow, validation, and safety requirements.
+3. [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) and [issue templates](.github/ISSUE_TEMPLATE/) — consistent scope, acceptance evidence, risk, and review records.
+4. [Canonical Master Plan](docs/gridmind-master-plan-2026-10-11.md) — the only company execution plan.
+5. [Live Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) — the only live customer-access and discovery tracker.
+6. [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — binding strategic, safety, evidence, and scope guardrails.
+7. [Verification Audit](docs/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
 
-GridMind follows an evidence-first workflow:
+## Product and operating model
 
-**DATA → BASELINE → DETECT → EXPLAIN → QUANTIFY → RECOMMEND → VERIFY → LEARN**
+GridMind's proposed operating loop is:
 
-It is designed to help industrial teams answer:
+**Authorized evidence → traceable findings → qualified human review → customer-approved action → measured outcome → retained learning only where rights permit.**
 
-- Where is the factory losing money or usable capacity?
-- What changed in energy or machine performance?
-- What evidence supports the finding?
-- What may be causing the abnormal behaviour?
-- What action should be investigated or taken?
-- What improvement was actually achieved after an intervention?
+The initial commercial offer must be selected from real buyer evidence. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
 
-## Core capabilities
+Read the [Product Definition](docs/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
 
-- Factory energy intelligence
-- Machine and asset intelligence
-- Machine passports and retrofit assessment
-- Energy, demand and production analysis
-- Data-quality monitoring
-- Diagnostic rules and anomaly detection
-- Opportunity identification and financial impact analysis
-- Intervention tracking
-- Savings measurement and verification
-- Synthetic factory/data scenarios for development and testing
+## Repository layout
 
-## Evidence model
+- `src/` — application code.
+- `tests/` — automated application tests.
+- `supabase/` — database migrations, configuration, and Edge Functions.
+- `data/` — versioned data contracts and schemas.
+- `scripts/` — validation and development utilities.
+- `docs/` — canonical operating documents, technical runbooks, and reference material.
+- `.github/workflows/` — CI and specialised validation workflows.
 
-GridMind distinguishes between:
+## Local development
 
-- **Observed** — directly supported by supplied measurements
-- **Estimated** — calculated from available data
-- **Hypothesis** — a possible explanation requiring validation
-- **Recommended** — a proposed next action
-- **Verified** — supported by post-intervention evidence
+The project uses Bun. Install the pinned package manager version from `package.json`, then run:
 
-Synthetic/demo data must not be presented as real factory measurements or verified customer savings.
+```bash
+bun install --frozen-lockfile
+bun run dev
+```
 
-## Product architecture
+Useful validation commands:
 
-The platform is being developed around a factory-to-asset intelligence model:
+```bash
+bun run docs:links
+bun run typecheck
+bun run lint
+bun run test
+bun run build
+bun run check
+```
 
-**Factory → Systems/Areas → Machines → Sensors → Measurements → Findings → Opportunities → Interventions → Verification**
+`check` includes the link audit and all core application checks above. Formatting is separate (`bun run format:check`); migration/security, Deno, and Python checks have their own workflows described in the [release gate](docs/release-gate.md).
 
-For legacy industrial equipment, the intended approach is a retrofit sensing layer and gateway rather than requiring every machine to have native digital connectivity.
+Run the relevant checks before proposing a merge. Record the exact commit and results; do not claim a check passed unless it was actually run. Review [Release Gate](docs/release-gate.md) and the relevant technical runbooks before any live or customer-data workflow.
 
-## Safety and reliability principles
+## Engineering and safety principles
 
-GridMind is designed to:
+- Preserve factory and tenant isolation; do not expose one customer's data to another.
+- Use customer or production data only with explicit authorization, appropriate rights, and a tested workflow.
+- Separate observed facts, hypotheses, recommendations, and verified outcomes.
+- Keep synthetic tests distinct from real-factory evidence.
+- Avoid schema expansion, product redesign, and new modules unless justified by the current plan and evidence.
+- Link implementation PRs to actionable issues and acceptance criteria. Review migrations, security effects, and validation results before merging.
 
-- fail closed when evidence is insufficient
-- distinguish sensor/data problems from machine problems
-- reject invalid, stale, duplicate or impossible measurements
-- avoid unsupported financial claims
-- preserve calculation and diagnostic traceability
-- keep initial OT integrations read-only
-- verify savings rather than assuming them
+## Decision authority
 
-## Current status
+The Master Plan controls execution, the Buyer Discovery Sprint records live discovery events, and the Decision Constitution records binding guardrails and durable decisions. Reference documents preserve useful history and analysis but do not create competing task queues.
 
-The repository contains the current GridMind application and its supporting product architecture. Development is ongoing toward a production-ready industrial intelligence platform.
-
-Repository quality gates now run automatically on `main`, `develop`, and pull requests targeting either branch. The required automated gate is TypeScript typecheck → ESLint → production build. See [`docs/release-gate.md`](docs/release-gate.md) for the release standard.
-
-## Repository
-
-GitHub: https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796
-
-## Development
-
-The project should be treated as an industrial intelligence product rather than a generic analytics dashboard. Changes should preserve the evidence hierarchy, data-quality safeguards, deterministic calculations, and separation between synthetic/demo data and real measured data.
-
-The project is developed with [Lovable](https://lovable.dev).
-
+Do not create another master plan or discovery tracker. Update the canonical records when material evidence changes a decision.

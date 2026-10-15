@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>GridMind — The Cut / Interactive concept prototype</title>
+<style>
+:root{--paper:#f3f0e9;--paper2:#e8e4da;--ink:#222522;--muted:#686b65;--line:#c9c7bd;--accent:#e34e32;--green:#637567;--max:1240px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}
+a{color:inherit}
+button{font:inherit}
+.shell{max-width:var(--max);margin:auto;padding:0 32px}
+.topbar{height:74px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.brand{display:flex;gap:12px;align-items:center;font-weight:800;letter-spacing:.16em}
+.brand-mark{width:25px;height:25px;border:2px solid var(--ink);display:grid;place-items:center;position:relative}
+.brand-mark:before{content:"";width:9px;height:9px;background:var(--accent);display:block}
+.top-note{color:var(--muted)}
+.disclosure{margin:22px 0 0;display:inline-flex;align-items:center;gap:9px;border:1px solid #b7a99a;padding:7px 10px;font-size:10px;font-weight:750;letter-spacing:.1em;text-transform:uppercase;color:#65392e;background:#f7e9df}
+.disclosure:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hero{padding:66px 0 44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,.88fr);gap:48px;align-items:center}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-weight:750}
+h1{font-size:clamp(48px,7vw,91px);line-height:.94;letter-spacing:-.075em;font-weight:650;margin:20px 0 24px;max-width:700px}
+h1 em{font-family:Georgia,serif;font-weight:400;letter-spacing:-.07em}
+.lede{max-width:490px;font-size:17px;color:#555951;line-height:1.65}
+.hero-meta{display:flex;gap:22px;margin-top:32px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero-meta span{display:flex;gap:8px;align-items:center}.tiny-square{width:7px;height:7px;background:var(--accent)}
+.visual{border:1px solid var(--line);background:#e9e6dd;position:relative;min-height:355px;overflow:hidden}
+.visual-head{display:flex;justify-content:space-between;padding:15px 17px;border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.visual svg{display:block;width:100%;height:auto;min-height:285px}
+.visual-caption{position:absolute;bottom:15px;left:17px;right:17px;display:flex;justify-content:space-between;gap:12px;font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.section-rule{border-top:1px solid var(--line);margin-top:12px}
+.experience{padding:56px 0 68px}
+.section-intro{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:30px}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.03;letter-spacing:-.055em;font-weight:620;margin:10px 0 0}
+.section-intro p{max-width:460px;color:var(--muted);margin:0}
+.workbench{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,.8fr);border:1px solid var(--line);background:#eeebe3}
+.scene{min-width:0;border-right:1px solid var(--line)}
+.scene-top{display:flex;justify-content:space-between;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+.context-tabs{display:flex;gap:7px;flex-wrap:wrap;padding:17px 20px 0}
+.context-tabs button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 12px;font-size:12px;cursor:pointer;transition:background .2s,border-color .2s}
+.context-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.context-tabs button:focus-visible,.next-button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.chart-wrap{padding:12px 16px 0;position:relative}
+.chart-wrap svg{width:100%;height:auto;display:block}
+.aperture-label{display:flex;justify-content:space-between;padding:4px 20px 18px;font-size:11px;color:var(--muted);gap:14px}
+.aperture-label strong{color:var(--accent);font-weight:750}
+.cut-slider{padding:0 20px 22px}
+.cut-slider label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px}
+input[type=range]{width:100%;accent-color:var(--accent);cursor:ew-resize}
+.slider-hint{font-size:10px;color:var(--muted);margin-top:6px}
+.evidence{padding:23px 22px;display:flex;flex-direction:column;gap:20px}
+.evidence h3{font-size:21px;line-height:1.15;letter-spacing:-.04em;margin:5px 0 0;font-weight:620}
+.evidence-block{border-top:1px solid var(--line);padding-top:12px}
+.evidence-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;display:flex;align-items:center;gap:8px}
+.evidence-label:before{content:"";width:7px;height:7px;background:var(--green)}
+.evidence-block.hypothesis .evidence-label:before{background:#bd8b42}
+.evidence-block.missing .evidence-label:before{background:var(--accent)}
+.evidence-block p{font-size:13px;color:#555951;margin:8px 0 0;line-height:1.6}
+.evidence-block ul{font-size:13px;color:#555951;padding-left:17px;margin:8px 0 0}
+.next-step{background:var(--ink);color:var(--paper);padding:30px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+.next-step .eyebrow{color:#c5c5b9}
+.next-step h3{font-size:clamp(22px,3vw,34px);line-height:1.15;letter-spacing:-.04em;margin:10px 0 0;font-weight:550;max-width:740px}
+.next-button{background:var(--accent);color:#fff;border:0;padding:14px 17px;font-size:12px;font-weight:750;cursor:pointer;white-space:nowrap}
+.next-result{grid-column:1/-1;border-top:1px solid #575a54;padding-top:16px;color:#d9d8ce;font-size:13px;display:none}
+.next-result.open{display:block}
+.note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:28px 0 60px}
+.note{border-top:2px solid var(--ink);padding-top:12px}
+.note b{font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.note p{font-size:13px;color:var(--muted);margin:8px 0 0}
+.footer{border-top:1px solid var(--line);padding:20px 0 34px;display:flex;justify-content:space-between;gap:24px;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.motion-item{transition:opacity .25s ease,transform .25s ease}
+@media(max-width:850px){.hero{grid-template-columns:1fr;gap:30px;padding-top:42px}.visual{min-height:300px}.section-intro{grid-template-columns:1fr;gap:15px}.workbench{grid-template-columns:1fr}.scene{border-right:0;border-bottom:1px solid var(--line)}.evidence{display:grid;grid-template-columns:1fr 1fr;gap:18px}.evidence>div:first-child{grid-column:1/-1}.evidence-block{margin:0}.next-step{grid-template-columns:1fr}.next-button{justify-self:start}.note-grid{grid-template-columns:1fr;gap:18px}}
+@media(max-width:520px){.shell{padding:0 17px}.topbar{height:62px}.top-note{max-width:130px;text-align:right;font-size:9px}.disclosure{font-size:8px;letter-spacing:.06em;line-height:1.5;align-items:flex-start}.hero{padding:36px 0 32px}h1{font-size:clamp(48px,15vw,70px)}.lede{font-size:15px}.hero-meta{gap:13px;flex-wrap:wrap}.visual{min-height:260px}.visual svg{min-height:230px}.experience{padding:38px 0 40px}.context-tabs{padding:12px 12px 0}.context-tabs button{font-size:11px;padding:9px}.scene-top{padding:14px 12px}.chart-wrap{padding:8px 5px 0}.aperture-label{padding:5px 12px 15px;font-size:10px}.cut-slider{padding:0 12px 18px}.evidence{padding:20px 14px;grid-template-columns:1fr}.evidence>div:first-child{grid-column:auto}.next-step{padding:22px 17px}.footer{flex-direction:column;gap:8px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="shell topbar">
+  <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>GRIDMIND</span></div>
+  <div class="top-note">Industrial intelligence / concept study 01</div>
+</header>
+<main class="shell">
+  <div class="disclosure">Illustrative scenario · Synthetic data · Not live GridMind output</div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <div class="eyebrow">Clarity engineered / An interaction study</div>
+      <h1 id="hero-title">A number is<br>not the <em>whole</em><br>story.</h1>
+      <p class="lede">Operational signals become useful when you can see the context around them. Explore how one unchanged measurement can raise different questions as the surrounding evidence changes.</p>
+      <div class="hero-meta"><span><i class="tiny-square" aria-hidden="true"></i> Context, not conclusion</span><span>01 / Investigation concept</span></div>
+    </div>
+    <div class="visual" aria-label="Illustrative industrial process diagram">
+      <div class="visual-head"><span>System sketch / illustrative</span><span>Fig. 01</span></div>
+      <svg viewBox="0 0 520 320" role="img" aria-labelledby="diagram-title diagram-desc">
+        <title id="diagram-title">A simplified industrial process</title><desc id="diagram-desc">Three process stages connected by lines, with a measurement marker and an orange aperture revealing one contextual detail.</desc>
+        <defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#d4d0c5" stroke-width=".7"/></pattern><clipPath id="hero-cut"><rect x="275" y="78" width="128" height="157"/></clipPath></defs>
+        <rect width="520" height="320" fill="url(#grid)"/>
+        <g fill="none" stroke="#555b54" stroke-width="1.5">
+          <path d="M45 157H117M177 157H236M296 157H356M416 157H475"/>
+          <rect x="47" y="124" width="70" height="66" rx="2"/><rect x="177" y="124" width="59" height="66" rx="2"/><rect x="296" y="124" width="60" height="66" rx="2"/><rect x="416" y="124" width="59" height="66" rx="2"/>
+          <path d="M64 140h35m-35 12h35m-35 12h35M190 140h32m-32 12h32m-32 12h32M309 140h33m-33 12h33m-33 12h33M428 140h33m-33 12h33m-33 12h33"/>
+        </g>
+        <g fill="#656a61" font-size="9" letter-spacing="1.2"><text x="48" y="110">INPUT</text><text x="177" y="110">PROCESS</text><text x="296" y="110">CHECK</text><text x="416" y="110">OUTPUT</text></g>
+        <g stroke="#e34e32" fill="none" stroke-width="2"><path d="M266 70V238"/><path d="M257 80l9-10 9 10M257 228l9 10 9-10"/></g>
+        <rect x="254" y="144" width="24" height="26" fill="#e34e32"/><text x="266" y="161" fill="#fff" text-anchor="middle" font-size="10" font-weight="700">M</text>
+        <g fill="#222522" font-size="10"><text x="286" y="65">MEASUREMENT POINT</text><text x="44" y="224">Context can change the question.</text></g>
+        <path d="M44 245H476" stroke="#c9c7bd"/><text x="44" y="264" fill="#686b65" font-size="10">SCHEMATIC ONLY — NO REAL FACTORY OR SENSOR DATA</text>
+      </svg>
+      <div class="visual-caption"><span>Same measurement</span><span>Different context → better questions</span></div>
+    </div>
+  </section>
+  <div class="section-rule"></div>
+  <section class="experience" aria-labelledby="experience-title">
+    <div class="section-intro">
+      <div><div class="eyebrow">The Cut / Interactive prototype</div><h2 id="experience-title">Change the context.<br>Keep the signal fixed.</h2></div>
+      <p>Select a context to reveal a different layer of the same synthetic scenario. The marker and its illustrative value do not change. The interpretation stays open until more evidence is checked.</p>
+    </div>
+    <div class="workbench">
+      <div class="scene">
+        <div class="scene-top"><span>Illustrative process signal</span><span id="state-counter">View 01 / 03</span></div>
+        <div class="context-tabs" role="group" aria-label="Choose contextual evidence">
+          <button type="button" data-state="production" aria-pressed="true">Production state</button>
+          <button type="button" data-state="shift" aria-pressed="false">Shift boundary</button>
+          <button type="button" data-state="quality" aria-pressed="false">Quality check</button>
+        </div>
+        <div class="chart-wrap">
+          <svg id="chart" viewBox="0 0 680 340" role="img" aria-labelledby="chart-title chart-desc">
+            <title id="chart-title">Synthetic illustrative measurement with a contextual aperture</title>
+            <desc id="chart-desc">A fixed illustrative measurement of 72 units. Use the context buttons to reveal different annotations. This is not live data.</desc>
+            <defs>
+              <pattern id="chart-grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#d4d0c5" stroke-width=".8"/></pattern>
+              <clipPath id="cut-clip"><rect id="cut-window" x="210" y="38" width="235" height="250"/></clipPath>
+            </defs>
+            <rect x="0" y="0" width="680" height="340" fill="url(#chart-grid)"/>
+            <g stroke="#b8b7ad" stroke-width="1"><path d="M58 35V286H642"/></g>
+            <g fill="#77796f" font-size="10"><text x="17" y="40">100</text><text x="24" y="101">80</text><text x="24" y="162">60</text><text x="24" y="223">40</text><text x="24" y="284">20</text><text x="58" y="310">08:00</text><text x="205" y="310">10:00</text><text x="352" y="310">12:00</text><text x="500" y="310">14:00</text><text x="610" y="310">16:00</text></g>
+            <path d="M58 151H642" stroke="#e34e32" stroke-width="1.5" stroke-dasharray="4 5"/>
+            <text x="576" y="141" fill="#e34e32" font-size="11" font-weight="700">72 units</text>
+            <g id="base-line" fill="none" stroke="#555b54" stroke-width="2"><path d="M58 190L95 184L130 178L165 185L202 170L239 176L276 160L313 167L350 157L387 166L424 159L461 170L498 162L535 176L572 168L609 173L642 166"/></g>
+            <g id="context-layer" clip-path="url(#cut-clip)">
+              <rect id="layer-tint" x="210" y="38" width="235" height="250" fill="#e34e32" opacity=".06"/>
+              <path id="context-band" d="M210 80H445V122H210Z" fill="#e34e32" opacity=".15"/>
+              <path id="context-line" d="M210 122H445" stroke="#e34e32" stroke-width="1.5" stroke-dasharray="3 4"/>
+              <g id="context-annotations" fill="#a43d2a" font-size="11" font-weight="700"><text x="222" y="69">STATE CHANGE</text><text x="222" y="105">context window</text></g>
+            </g>
+            <rect id="cut-border" x="210" y="38" width="235" height="250" fill="none" stroke="#e34e32" stroke-width="2"/>
+            <path d="M327 138V164M314 151H340" stroke="#222522" stroke-width="1.5"/>
+            <circle cx="327" cy="151" r="6" fill="#e34e32" stroke="#f3f0e9" stroke-width="2"/>
+            <rect x="342" y="169" width="111" height="26" fill="#222522"/>
+            <text x="352" y="186" fill="#f3f0e9" font-size="10" font-weight="700">72 · FIXED VALUE</text>
+            <g fill="#686b65" font-size="10"><text x="58" y="22">INDEXED SIGNAL / ARBITRARY UNITS</text><text x="472" y="22">SYNTHETIC EXAMPLE</text></g>
+          </svg>
+        </div>
+        <div class="aperture-label"><span><strong id="context-name">Production state</strong> — revealed context</span><span>Illustrative value held constant: <b>72</b></span></div>
+        <div class="cut-slider">
+          <label for="cut-position"><span>Move the reveal aperture</span><span id="position-label">Position 50%</span></label>
+          <input id="cut-position" type="range" min="15" max="85" value="50" aria-describedby="slider-help">
+          <div class="slider-hint" id="slider-help">The aperture moves the focus; it does not change the underlying signal.</div>
+        </div>
+      </div>
+      <aside class="evidence" aria-live="polite" aria-atomic="true">
+        <div><div class="eyebrow">Reading the evidence</div><h3 id="evidence-title">A state transition may matter.</h3></div>
+        <div class="evidence-block observed"><div class="evidence-label">Observed in this synthetic scenario</div><p id="observed-text">The illustrative signal is 72 units. A production-state boundary is shown nearby in time.</p></div>
+        <div class="evidence-block hypothesis"><div class="evidence-label">Possible explanation — unproven</div><p id="hypothesis-text">A state transition could be relevant context. This view does not establish that it caused the measurement.</p></div>
+        <div class="evidence-block missing"><div class="evidence-label">Missing evidence / next check</div><p id="missing-text">Check the event timestamp, operating definition, repeatability, and comparable runs before drawing a conclusion.</p></div>
+      </aside>
+    </div>
+  </section>
+  <section class="next-step" aria-labelledby="next-title">
+    <div><div class="eyebrow">Do not jump to a conclusion</div><h3 id="next-title">What evidence would distinguish a coincidence from a useful lead?</h3></div>
+    <button class="next-button" id="next-button" type="button" aria-expanded="false" aria-controls="next-result">Reveal next checks ↗</button>
+    <div class="next-result" id="next-result">1. Confirm both timestamps use the same clock and time zone.<br>2. Define what the measurement represents and how it is collected.<br>3. Compare repeated events and a baseline period.<br>4. Ask an accountable operator whether the context is operationally meaningful.<br><br>These are investigation prompts for this synthetic scenario—not an automated GridMind recommendation.</div>
+  </section>
+  <section class="note-grid" aria-label="Prototype principles">
+    <div class="note"><b>01 / Stable reference</b><p>The measurement remains unchanged while context is selected, preventing the interaction from implying that the value itself changed.</p></div>
+    <div class="note"><b>02 / Evidence boundary</b><p>Observed details, possible explanations, and missing checks are explicitly separated.</p></div>
+    <div class="note"><b>03 / Honest scope</b><p>This is a visual communication experiment, not a working analytics product or evidence of commercial demand.</p></div>
+  </section>
+</main>
+<footer class="shell footer"><span>GridMind / Clarity Engineered / Prototype 01</span><span>Concept only · No live systems connected</span></footer>
+<script>
+(function(){
+  const scenarios={
+    production:{
+      name:"Production state",counter:"View 01 / 03",title:"A state transition may matter.",
+      observed:"The illustrative signal is 72 units. A production-state boundary is shown nearby in time.",
+      hypothesis:"A state transition could be relevant context. This view does not establish that it caused the measurement.",
+      missing:"Check the event timestamp, operating definition, repeatability, and comparable runs before drawing a conclusion.",
+      band:"M 210 80 H 445 V 122 H 210 Z",line:122,labels:["STATE CHANGE","context window"]
+    },
+    shift:{
+      name:"Shift boundary",counter:"View 02 / 03",title:"A handover is a question, not an answer.",
+      observed:"The illustrative signal remains 72 units. A synthetic shift-boundary marker is placed in the selected window.",
+      hypothesis:"A handover may coincide with a change in procedure or recording. No operator action or causal link is established here.",
+      missing:"Compare handover notes, process settings, timestamp alignment, and equivalent periods across several shifts.",
+      band:"M 210 172 H 445 V 214 H 210 Z",line:214,labels:["SHIFT BOUNDARY","handover window"]
+    },
+    quality:{
+      name:"Quality check",counter:"View 03 / 03",title:"A quality event needs its own evidence.",
+      observed:"The illustrative signal remains 72 units. A synthetic quality-check window is highlighted as separate context.",
+      hypothesis:"A quality check may help explain what to inspect next, but this view contains no result proving a quality issue.",
+      missing:"Verify the inspection record, sample identity, acceptance criteria, and whether the check is comparable to this measurement.",
+      band:"M 210 226 H 445 V 268 H 210 Z",line:268,labels:["QUALITY CHECK","inspection window"]
+    }
+  };
+  const buttons=[...document.querySelectorAll("[data-state]")];
+  const ids=["evidence-title","observed-text","hypothesis-text","missing-text","context-name","state-counter"];
+  function setState(key){
+    const s=scenarios[key]; if(!s)return;
+    buttons.forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.state===key)));
+    document.getElementById("evidence-title").textContent=s.title;
+    document.getElementById("observed-text").textContent=s.observed;
+    document.getElementById("hypothesis-text").textContent=s.hypothesis;
+    document.getElementById("missing-text").textContent=s.missing;
+    document.getElementById("context-name").textContent=s.name;
+    document.getElementById("state-counter").textContent=s.counter;
+    document.getElementById("context-band").setAttribute("d",s.band);
+    document.getElementById("context-line").setAttribute("d","M210 "+s.line+"H445");
+    const texts=document.querySelectorAll("#context-annotations text");
+    texts[0].textContent=s.labels[0];texts[1].textContent=s.labels[1];
+    texts[0].setAttribute("y",String(s.line-53));texts[1].setAttribute("y",String(s.line-17));
+    document.getElementById("chart-desc").textContent="A fixed illustrative measurement of 72 units. The selected contextual annotation is "+s.name+". This is not live data.";
+  }
+  buttons.forEach(b=>b.addEventListener("click",()=>setState(b.dataset.state)));
+  const slider=document.getElementById("cut-position");
+  slider.addEventListener("input",()=>{
+    const v=Number(slider.value),x=680*v/100,w=235;
+    const left=Math.max(58,Math.min(642-w,x-w/2));
+    document.getElementById("cut-window").setAttribute("x",left);
+    document.getElementById("cut-border").setAttribute("x",left);
+    document.getElementById("context-band").setAttribute("transform","translate("+(left-210)+" 0)");
+    document.getElementById("context-line").setAttribute("transform","translate("+(left-210)+" 0)");
+    document.getElementById("context-annotations").setAttribute("transform","translate("+(left-210)+" 0)");
+    document.getElementById("position-label").textContent="Position "+v+"%";
+  });
+  document.getElementById("next-button").addEventListener("click",function(){
+    const panel=document.getElementById("next-result"),open=!panel.classList.contains("open");
+    panel.classList.toggle("open",open);this.setAttribute("aria-expanded",String(open));this.textContent=open?"Hide next checks ↑":"Reveal next checks ↗";
+  });
+  setState("production");
+})();
+</script>
+</body>
+</html>

@@ -163,3 +163,45 @@ Track these as gates, not vanity metrics:
 ## Bottom line
 
 The strategic direction remains coherent. The current failure mode is **premature parallelization**: several useful components are being improved, but the single authoritative path has not yet been proven from real source data through independently reviewed, verified economic outcome. Align contracts and release gates first; then finish one real pilot before expanding the product.
+
+## Competitive bar — outperform a conventional on-site assessment
+
+**Commercial thesis:** GridMind must not compete on “AI” or prettier reporting. It must outperform a conventional engineer-led assessment on a defined set of jobs while preserving the engineer's physical inspection, process knowledge, and safety judgment. Software cannot infer physical conditions that are absent from its evidence.
+
+### The target operating model
+
+1. **See more continuously:** join authorized energy, production, operating-state, tariff, maintenance and equipment evidence across time, rather than rely only on a periodic visit. Missing feeds must be explicit.
+2. **Diagnose more rigorously:** detect deviations and rank plausible explanations using operating context, but label these as hypotheses until corroborated by measurements, inspection, or a qualified reviewer.
+3. **Quantify defensibly:** calculate the economic significance only from traceable, period-appropriate tariffs, comparable baselines and documented assumptions. Separate observed facts, inferred hypotheses, estimated opportunity and realized outcome.
+4. **Prioritize better:** rank next investigations/actions by expected value, confidence, implementation cost, downtime, safety/quality risk, feasibility and evidence gaps—not savings estimate alone.
+5. **Close the loop:** assign an owner, record the intervention and its cost, collect comparable post-action evidence, and verify whether the result persisted.
+6. **Learn across sites responsibly:** reuse methods and anonymized patterns only where contracts, consent, data rights and context permit; never assume one factory's operating relationships transfer to another.
+
+### Head-to-head acceptance scorecard
+
+For each pilot, compare GridMind plus the plant expert against the plant's existing assessment process. Record the conventional baseline first; do not manufacture a favorable comparison.
+
+- **Coverage:** proportion of relevant assets/processes and periods with usable, traceable evidence.
+- **Time to a defensible finding:** elapsed analyst time and calendar time, including data cleaning and review.
+- **Finding quality:** independent expert adjudication of true positives, false positives, missed material issues and unsupported causal claims.
+- **Economic accuracy:** difference between pre-action estimate and independently measured outcome, with uncertainty and operating-condition normalization.
+- **Actionability:** proportion of findings accepted for investigation, rejected with reasons, or converted into approved interventions.
+- **Verification:** proportion of implemented actions with adequate post-action evidence and an independently reviewed result.
+- **Repeatability:** onboarding effort and performance on a second materially different site.
+- **Trust and usability:** plant-team agreement that evidence, assumptions, uncertainty and next steps are understandable and auditable.
+
+Set thresholds with the pilot customer before examining results. A faster report is not a win if it misses important problems or creates false positives. Do not claim GridMind beats an engineer until the blinded or independently adjudicated comparison supports that claim.
+
+### Product capability ladder
+
+- **Level 1 — Evidence integrity:** authorized data access, source lineage, unit/period/quality checks, explicit insufficiency, reliable persistence.
+- **Level 2 — Context-aware screening:** comparable-period analysis with production, operating-state and tariff context; explainable exclusions and uncertainty.
+- **Level 3 — Engineer-grade investigation support:** competing hypotheses, the measurements/inspection needed to discriminate between them, and qualified human review. This level requires industrial domain expertise and validated methods, not merely generated text.
+- **Level 4 — Verified economic outcomes:** tracked interventions, normalized measurement and verification, and evidence separating forecast value from realized savings.
+- **Level 5 — Continuous multi-site intelligence:** reliable connectors, drift/data-quality monitoring, site-specific calibration, secure fleet comparisons, and learning from verified outcomes.
+
+The next target is **not Level 5**. Prove Level 1 end-to-end and one narrow Level 2/3 use case with a real factory, then measure against the existing engineer-led process. Do not imply the current product has reached a level merely because code or a UI exists.
+
+### Immediate execution target
+
+Within the first controlled pilot, select one asset/process and one costly recurring question; obtain authorized source records and expert access; define a baseline assessment; run the same case through GridMind; compare findings independently; investigate the strongest candidate physically; and, only if the factory approves an intervention, measure the post-action result. The pilot succeeds if it produces a defensible, useful decision—or correctly refuses an unsupported claim—and establishes whether the workflow deserves a paid repeat engagement.
