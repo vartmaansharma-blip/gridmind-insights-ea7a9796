@@ -1,5 +1,7 @@
 # GridMind historical planning appendices (preserved 2026-10-15)
 
+**Historical correction (2026-10-15):** All older references below to **five founder hours per week** or a five-hour weekly cap are superseded. The founder clarified availability as **five hours per day**, subject to school and rest. Historical text is preserved for audit; the live [Master Plan](gridmind-master-plan-2026-10-11.md), [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md), and [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) carry the current capacity assumption.
+
 **Lifecycle: historical and nonbinding.** These dated appendices were moved from the canonical Master Plan to make its live execution guidance shorter. References to §14–§19 in earlier discussions point here. Earlier analysis, illustrative prices and detailed future technology proposals DO NOT approve work. In a conflict, the [current Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) and [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) take precedence. Relative links remain at the same docs/ directory level.
 
 ## Preserved legacy appendices (from PR #85)
