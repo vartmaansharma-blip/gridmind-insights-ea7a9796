@@ -1,6 +1,6 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-13  
+**Last updated:** 2026-10-15  
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
@@ -821,3 +821,38 @@ This is a structural audit of the canonical planning system and the document lif
 No strategic contradiction was found that justifies changing the long-term ambition, selecting a wedge, changing price, or expanding product scope. The only targeted wording reconciliation was to make the initial segment's hypothesis status explicit in the Decision Constitution. Plan 1 is therefore complete as a document/decision audit—not as market validation. Proceed to Plan 2 only: finish the remaining documentation-governance verification already tracked in Issue #44. Do not create another strategy document or begin a new product build from this audit.
 
 **Audit boundary:** this was a content-level strategic consistency review of the listed canonical records and the already-reviewed Claude recommendations. It is not a full review of every historical file, a successful repository-wide link check, an engineering validation, or customer research.
+
+
+## 19. Conditional Five-Stage Development Roadmap — reference only (2026-10-15)
+
+**Status:** Long-horizon strategic option map; **not** an active sprint, approved product backlog, procurement request, staffing commitment, commercial forecast, or override of D1–D8. The discovery-first decisions in the executive operating summary and Sections 1–13 take precedence. This section captures the founder's five-stage vision without authorizing new modules or changes before the 2026-11-10 decision. A future stage is not earned by the calendar.
+
+**Common operating thesis:** authorized evidence → traceable findings → qualified human review → customer-approved actions → appropriately measured outcomes. GridMind is an onsite/expert-supported industrial decision business, not merely an online SaaS dashboard.
+
+| Stage | Proposed timeframe (scenario, not commitment) | Capability and commercial progression | Entry/exit evidence required |
+|---|---|---|---|
+| **1. Industrial Investigation** | Discovery: Oct–Nov 2026; conditional bounded test thereafter | Interview relevant manufacturers; select one consequential C1/C4 question only from buyer evidence; provide a bounded human-reviewed investigation where rights, expert review and security permit. Possible fixed-fee assessment; no approved fee yet. | Tier 1 buyer/problem/access/commercial evidence for test design; Tier 2 written permissions, domain review, secure handling, baseline, deliverable and stop criteria before customer data. First authorized case establishes case-level feasibility only. |
+| **2. Industrial Intelligence** | Indicative 2027+ | Standardize repeated evidence-to-decision engagements; add restricted customer reporting and periodic monitoring only when real recurring value exists. | Multiple distinct paying customers, repeatable workflows, credible incremental value vs alternatives, sustainable delivery economics and repeat demand. |
+| **3. Operational Intelligence** | Indicative 2028–2029+ | Add selectively authorized imports, read-only operational integrations and validated exception analysis where cheaper periodic review is insufficient. | Proven integration economics, data quality, customer demand, qualified OT-security review, reliable operations and defensible measurement. |
+| **4. Infrastructure Intelligence** | Indicative 2030–2032+ | Validate one adjacent infrastructure market at a time (industrial energy, renewables, data-center supporting systems, utilities are only candidates). | Independent buyer validation, specialists, appropriate regulatory/security readiness, delivery advantage and profitable commercial path. |
+| **5. Infrastructure Decision Platform** | Indicative 2033+ | Unify context, evidence, investigations, decision-support and outcomes across multiple authorized physical systems; never imply autonomous industrial control. | Demonstrated multi-site/sector business value, enterprise reliability and governance, sustainable distribution, contractual data rights and funding capacity. |
+
+### Technology adoption sequence (candidate platforms, not purchase approvals)
+
+- **Stage 1, current stack:** Preserve existing TanStack Start / React / TypeScript / Vite application, Bun, Lovable integration, GitHub, Vercel and Supabase PostgreSQL/Auth/Storage. Use GitHub's existing Master Plan, Buyer Discovery Sprint and Decision Constitution rather than a new tracker. Codex may support controlled engineering, and Figma may support design when justified. Maintain safety, authorization, expert review and release gates. New speculative modules remain frozen until the wedge decision; technical repairs only when necessary.
+- **Stage 1, conditional analysis:** Only after a selected, permissioned workflow exists, evaluate server-side deterministic calculations, versioned evidence/provenance, limited AI-assisted document extraction with human verification, report generation and an internal investigation vertical slice. No model-generated conclusion is self-validating.
+- **Stage 2:** Keep the existing core platform while validated needs may justify a customer portal, repeat-case workflow, HubSpot or other CRM, Zoho Books or other accounting, n8n or equivalent approved automation, and PostHog or equivalent privacy-reviewed usage analytics. Select based on measured volume and cost, not tool availability.
+- **Stage 3:** Prefer customer-authorized spreadsheet/export and read-only API imports before OT connections. Only for a proven integration case, evaluate OPC UA, AWS IoT SiteWise/Greengrass or suitable industrial alternatives and qualified onsite integrators. No direct control-network access or hardware installation by unqualified personnel.
+- **Stages 4–5:** Evaluate specialized data storage/analytics (e.g. S3, Glue, Athena), PostGIS or other context models, and enterprise identity/reliability controls when real cross-system scale requires them. Do not preselect future cloud migrations, AI foundation models, expensive digital twins, or autonomous equipment actions.
+
+### Explicit gates and operating sequence
+
+1. **Now through 2026-11-10:** Only the live Buyer Discovery Sprint is P0. Explore C1 (downtime/production loss) and C4 (energy/resource inefficiency). The electricity-cost route is a *probe*, **not a chosen product**. Make genuine, supported introductions; run non-confidential interviews; log actual evidence and disconfirming findings.
+2. **2026-10-19 access check / 2026-10-31 checkpoint:** Apply existing Section 6 and operating-summary targets; adjust honestly when unmet. The founder's target of ten conversations by 2026-11-15 is aspirational and does not supersede the 2026-11-10 GO TO BOUNDED TEST / NARROW / PIVOT / STOP decision.
+3. **After a GO only:** Draft one scoped service protocol and identify qualified reviewer, customer approver, written data rights and safe transfer/storage. Verify actual release gates, CI, tenant isolation, auditability, lifecycle/deletion and production readiness before using private customer data.
+4. **First authorized service:** Use the smallest sufficient workflow: intake → records/evidence → reviewable analysis → qualified review → report → customer-approved follow-up. Prefer a human-led offline method until software provides measured added value.
+5. **Commercialize and expand:** Instrument delivery hours/cost, willingness to pay, realized customer value and repeat demand. Approve new dashboard modules, integrations and adjacent markets via a dated decision record with evidence, owners, acceptance gates and affected code/docs.
+
+**Guardrails:** no verified customers or revenue may be inferred; no ₹15,000 price or turnaround SLA is approved; no claims of savings, causal certainty or production readiness without evidence; no customer-data trial without Tier 2; no manufactured telemetry, invented case studies or automatic industrial interventions. The current GitHub Actions/release-gate issue remains separate and must be reverified before releases.
+
+**Decision status:** This section records a conditional development direction only. It does **not** change the current wedge, the discovery scope freeze, approved budget or Master Plan execution order. Future adoption requires customer and technical evidence plus the decision-change protocol in the Decision Constitution.
