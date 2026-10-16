@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Bar, CartesianGrid, ComposedChart, Line, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { useEnergy } from "@/lib/energy/store";
-import { inrCompact, monthLabel, num } from "@/lib/energy/format";
+import { inrCompact, monthLabel } from "@/lib/energy/format";
 import { EmptyState, PageHeader, Panel } from "@/components/gm/bits";
 
 export const Route = createFileRoute("/energy")({
@@ -22,7 +22,7 @@ function EnergyPage() {
   const { active, analysis: a } = useEnergy();
   if (!active || !a?.hasData) return <EmptyState />;
   const data = a.rows.map((r) => ({ ...r, m: monthLabel(r.month), sec: +r.sec.toFixed(3), rate: +r.costPerKwh.toFixed(2) }));
-  const floor = active.contractDemandKva * 0.85;
+
   return (
     <>
       <PageHeader eyebrow="Energy" title="Consumption, cost & demand" desc="Each chart pairs usage with what drives money: production efficiency, effective tariff and billed demand." />
@@ -43,13 +43,13 @@ function EnergyPage() {
               <Line yAxisId="r" dataKey="rate" name="₹/kWh" stroke="var(--chart-2)" strokeWidth={2.5} dot={false} />
             </ComposedChart></ResponsiveContainer></div>
         </Panel>
-        <Panel className="lg:col-span-2" title="Peak demand vs contract" desc={`Gap between peak and the ${num(floor)} kVA billing floor is demand you pay for but never use.`}>
+        <Panel className="lg:col-span-2" title="Peak demand vs contract" desc="Recorded peaks against contract demand. Billed demand and any minimum floor must be reconciled to the actual bill, utility, tariff class and effective period.">
           <div className="h-64"><ResponsiveContainer>
             <ComposedChart data={data}><CartesianGrid stroke="var(--border)" vertical={false} />
               <XAxis dataKey="m" tick={ax} /><YAxis tick={ax} domain={[0, Math.ceil(active.contractDemandKva * 1.1)]} /><Tooltip />
               <Bar dataKey="peakKva" name="Peak kVA" fill="var(--chart-1)" radius={[3, 3, 0, 0]} />
               <ReferenceLine y={active.contractDemandKva} stroke="var(--danger)" strokeDasharray="4 4" label={{ value: "Contract", fontSize: 11, fill: "var(--danger)" }} />
-              <ReferenceLine y={floor} stroke="var(--chart-2)" strokeDasharray="4 4" label={{ value: "85% billing floor", fontSize: 11, fill: "var(--warning)" }} />
+
             </ComposedChart></ResponsiveContainer></div>
         </Panel>
       </div>
