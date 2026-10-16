@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "test": "playwright test",
-    "test:synthetic": "playwright test --config synthetic.config.ts"
+    "test:synthetic": "playwright test --config synthetic.config.ts",
+    "test:google-auth": "playwright test --config google-auth.config.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1"
