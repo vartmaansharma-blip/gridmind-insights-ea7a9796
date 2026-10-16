@@ -40,6 +40,7 @@ type Ctx = {
   analysis: Analysis | null;
   authenticated: boolean;
   loading: boolean;
+  refresh: () => Promise<void>;
   setActive: (id: string) => void;
   addFactory: (f: Pick<Factory, "name" | "location" | "sector" | "contractDemandKva" | "demandChargePerKva">) => Promise<void>;
   updateFactory: (id: string, fn: (f: Factory) => Factory) => void;
@@ -117,6 +118,8 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
   });
   const persistTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
   const persistQueues = useRef(new Map<string, Promise<void>>());
+  const pendingOpportunityWrites = useRef(0);
+  const editGeneration = useRef(0);
 
   useEffect(() => {
     let cancelled = false;
@@ -194,6 +197,7 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const updateFactory = useCallback((id: string, fn: (f: Factory) => Factory) => {
+    editGeneration.current += 1;
     setState((s) => {
       const factories = s.factories.map((f) => {
         if (f.id !== id) return f;
@@ -205,12 +209,45 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     });
   }, [schedulePersist]);
 
+  // Refetch from the authenticated, RLS-scoped source without navigating or
+  // replacing unsaved optimistic edits. The selected factory is preserved.
+  const refresh = useCallback(async () => {
+    const generation = editGeneration.current;
+    if (persistTimers.current.size || persistQueues.current.size || pendingOpportunityWrites.current) {
+      throw new Error("Please wait until your changes finish saving before refreshing.");
+    }
+    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError) throw sessionError;
+    if (!sessionData.session) {
+      throw new Error("Your session has ended. Sign in again to refresh your factory.");
+    }
+    const snapshots = await getAuthenticatedFactorySnapshots();
+    if (editGeneration.current !== generation ||
+        persistTimers.current.size || persistQueues.current.size || pendingOpportunityWrites.current) {
+      throw new Error("Your data changed during refresh. Try again after it finishes saving.");
+    }
+    const refreshed = snapshots.map(snapshotToFactory);
+    setState((prev) => {
+      // A sign-out that races the network response must never restore old data.
+      if (!prev.authenticated) return prev;
+      return {
+        ...prev,
+        factories: refreshed,
+        activeId: refreshed.some((factory) => factory.id === prev.activeId)
+          ? prev.activeId
+          : refreshed[0]?.id ?? null,
+        loading: false,
+      };
+    });
+  }, []);
+
   const value: Ctx = {
     factories: state.factories,
     active,
     analysis,
     authenticated: state.authenticated,
     loading: state.loading,
+    refresh,
     setActive: (id) => setState((s) => ({ ...s, activeId: id })),
     addFactory: async (input) => {
       const factoryId = await createFactoryWorkspace(input);
@@ -240,7 +277,11 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
         console.warn("[GridMind] ignored non-canonical opportunity id", oppId);
         return;
       }
-      void updateOpportunityStatus(id, status).catch((error) => console.error("[GridMind] canonical opportunity update failed", error));
+      editGeneration.current += 1;
+      pendingOpportunityWrites.current += 1;
+      void updateOpportunityStatus(id, status)
+        .catch((error) => console.error("[GridMind] canonical opportunity update failed", error))
+        .finally(() => { pendingOpportunityWrites.current -= 1; });
       setState((s) => ({
         ...s,
         factories: s.factories.map((f) => f.id === active?.id ? { ...f, opportunityStatus: { ...f.opportunityStatus, [oppId]: status } } : f),
