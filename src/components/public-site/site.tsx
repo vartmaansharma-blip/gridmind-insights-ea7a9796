@@ -208,7 +208,8 @@ function Sequence() {
     const pr = p2.getBoundingClientRect();
     // Measure the bill in its resting place, independent of its current scroll transform.
     const wrap = b.closest<HTMLElement>(".gm-bill-wrap");
-    const offset = wrap ? (wrap.getBoundingClientRect().top - (wrap.offsetParent?.getBoundingClientRect().top ?? 0)) - wrap.offsetTop : 0;
+    const tf = wrap ? getComputedStyle(wrap).transform : "none";
+    const offset = tf && tf !== "none" ? new DOMMatrixReadOnly(tf).m42 : 0;
     const ax = ar.left + ar.width / 2 - sr.left, ay = ar.top + ar.height / 2 - sr.top;
     const bx = br.right - sr.left, by = br.top + br.height / 2 - sr.top - offset;
     const px = pr.left - sr.left;
