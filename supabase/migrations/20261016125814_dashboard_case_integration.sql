@@ -98,10 +98,11 @@ begin
  end if;
  if _op='list' then
   select coalesce(jsonb_agg(to_jsonb(x)),'[]') into result from (
-   select c.id,c.factory_id as "factoryId",c.revision,private.portal_access(c.id,_actor) as role,
-    r.snapshot->>'title' as title,r.snapshot#>>'{scope,site}' as site,r.snapshot->>'candidate' as candidate
-   from public.investigation_cases c join public.investigation_revisions r on r.case_id=c.id and r.revision=c.revision
-   where private.portal_access(c.id,_actor) is not null order by c.created_at desc limit 100) x;
+   select listed_case.id,listed_case.factory_id as "factoryId",listed_case.revision,private.portal_access(listed_case.id,_actor) as role,
+    listed_revision.snapshot->>'title' as title,listed_revision.snapshot#>>'{scope,site}' as site,listed_revision.snapshot->>'candidate' as candidate
+   from public.investigation_cases listed_case join public.investigation_revisions listed_revision
+    on listed_revision.case_id=listed_case.id and listed_revision.revision=listed_case.revision
+   where private.portal_access(listed_case.id,_actor) is not null order by listed_case.created_at desc limit 100) x;
   return jsonb_build_object('cases',result);
  end if;
  cid:=(_args->>'caseId')::uuid;

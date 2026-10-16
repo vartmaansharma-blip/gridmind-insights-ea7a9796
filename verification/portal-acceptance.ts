@@ -53,6 +53,7 @@ export async function verifyPortal(
       to: "2026-03-31",
     },
   };
+  assert.deepEqual(await run(customer, { action: "list" }), { cases: [] });
   await run(customer, submit);
   await run(customer, submit);
   assert.equal(
@@ -97,6 +98,18 @@ export async function verifyPortal(
       })) as { caseId: string }
     ).caseId,
     caseId,
+  );
+  const list = (await run(customer, { action: "list" })) as {
+    cases: { id: string; role: string }[];
+  };
+  assert.equal(list.cases.length, 1);
+  assert.equal(list.cases[0].id, caseId);
+  assert.equal(list.cases[0].role, "customer");
+  assert.deepEqual(await run(other, { action: "list" }), { cases: [] });
+  assert(
+    ((await run(owner, { action: "list" })) as { cases: { id: string }[] }).cases.some(
+      (c) => c.id === caseId,
+    ),
   );
   let view = (await run(customer, { action: "load", caseId })) as PortalCase;
   assert.equal(view.publication, null);
