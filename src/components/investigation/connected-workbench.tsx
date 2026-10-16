@@ -7,36 +7,15 @@ import { RecordForm, type Field } from "./record-form";
 import { textField, recordFields, periodFields, eventFields, findingFields } from "./fields";
 import { caseSchema, type Investigation } from "@/lib/investigation/schema";
 import {
-  caseCommandSchema,
   storedCaseSchema,
   type CaseCommand,
   type StoredCase,
 } from "@/lib/investigation/connected-contract";
+import { authenticatedCommand } from "@/lib/investigation/command-client";
 import { evaluateCase } from "@/lib/investigation/engine";
 import { decisionBrief, internalEconomics, statementOfWork } from "@/lib/investigation/brief";
 
-async function call(command: CaseCommand): Promise<unknown> {
-  caseCommandSchema.parse(command);
-  const { data, error } = await supabase.auth.getSession();
-  if (error || !data.session) throw new Error("Sign in before using connected cases.");
-  const response = await fetch("/api/investigations", {
-    method: "POST",
-    credentials: "omit",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${data.session.access_token}`,
-    },
-    body: JSON.stringify(command),
-  });
-  const body: unknown = await response.json();
-  if (!response.ok)
-    throw new Error(
-      typeof body === "object" && body && "error" in body
-        ? String(body.error)
-        : "Case request failed",
-    );
-  return body;
-}
+const call = (command: CaseCommand) => authenticatedCommand("/api/investigations", command);
 function exportText(name: string, text: string) {
   const url = URL.createObjectURL(new Blob([text], { type: "text/markdown" }));
   const a = document.createElement("a");
@@ -126,6 +105,7 @@ export function ConnectedInvestigationWorkbench({
   const run = async (command: CaseCommand) => {
     retry.current = command;
     const result = await call(command);
+    retry.current = null;
     if (typeof result === "object" && result && "snapshot" in result) {
       const parsed = storedCaseSchema.parse(result);
       setStored(parsed);

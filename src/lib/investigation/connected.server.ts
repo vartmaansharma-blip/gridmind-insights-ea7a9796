@@ -11,6 +11,31 @@ const headers = {
 };
 const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers });
+const permissionErrors = new Set([
+  "AUTHENTICATION_REQUIRED",
+  "CASE_ACCESS_DENIED",
+  "CASE_CREATE_DENIED",
+  "CASE_EDIT_DENIED",
+  "CASE_ASSIGN_DENIED",
+  "ASSIGNEE_NOT_FACTORY_MEMBER",
+  "SOURCE_VERIFICATION_DENIED",
+  "INDEPENDENT_REVIEWER_REQUIRED",
+  "INTAKE_ACCESS_DENIED",
+  "PUBLISH_DENIED",
+  "STAFF_ACTION_REQUIRED",
+  "CURRENT_PUBLICATION_REQUIRED",
+]);
+const transientStorageErrors = new Set([
+  "08000",
+  "08003",
+  "08006",
+  "53300",
+  "57P01",
+  "57014",
+  "PGRST000",
+  "PGRST001",
+  "PGRST002",
+]);
 
 export async function handleConnectedInvestigation(request: Request): Promise<Response> {
   return handleAuthenticatedCaseRequest(request, "investigation_store", executeCaseCommand);
@@ -57,8 +82,24 @@ export async function handleAuthenticatedCaseRequest(
           // Codes and operation names only: never log SQL details, tokens or payloads.
           console.error("Case RPC failed", { rpc: rpcName, operation: args._op, code });
           const message = result.error.message;
-          if (code === "42501") throw new CaseError(message, 403);
-          if (code === "40001") throw new CaseError(message, 409);
+          if (code === "42501")
+            throw new CaseError(
+              permissionErrors.has(message) ? message : "CASE_ACCESS_DENIED",
+              403,
+            );
+          if (code === "40001")
+            throw new CaseError(
+              ["STALE_CASE_REVISION", "IDEMPOTENCY_CONFLICT"].includes(message)
+                ? message
+                : "CASE_CONFLICT",
+              409,
+            );
+          if (transientStorageErrors.has(code))
+            throw new CaseError("CASE_STORAGE_UNAVAILABLE", 503);
+          if (code === "P0001" && message === "INTAKE_NOT_CONFIGURED")
+            throw new CaseError(message, 503);
+          if (code === "P0001" && message === "EVIDENCE_REQUEST_MISSING")
+            throw new CaseError(message, 409);
           throw new CaseError("CASE_STORAGE_ERROR", 500);
         }
         return result.data;

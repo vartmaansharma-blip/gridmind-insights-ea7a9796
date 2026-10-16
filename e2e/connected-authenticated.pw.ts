@@ -58,7 +58,10 @@ test("connected case survives lost response and re-login; scoped reviewer verifi
   const caseId = original.caseId as string;
   await expect(page.getByText("Revision 1", { exact: true })).toBeVisible();
   let lost = false;
+  const saveRequests: string[] = [];
   await page.route("**/api/investigations", async (route) => {
+    if (route.request().postDataJSON()?.action === "save")
+      saveRequests.push(route.request().postData()!);
     if (!lost && route.request().postDataJSON()?.action === "save") {
       lost = true;
       const committed = await route.fetch();
@@ -73,9 +76,10 @@ test("connected case survives lost response and re-login; scoped reviewer verifi
     .getByLabel("Decision question", { exact: true })
     .fill("Full-stack persisted synthetic decision question");
   await page.getByRole("button", { name: "Save revision", exact: true }).click();
-  await expect(page.getByRole("alert")).toBeVisible();
-  await page.getByRole("button", { name: "Retry last request" }).click();
   await expect(page.getByText("Revision 2", { exact: true })).toBeVisible();
+  expect(saveRequests).toHaveLength(2);
+  expect(saveRequests[0]).toBe(saveRequests[1]);
+  await expect(page.getByRole("alert")).toHaveCount(0);
   await page.unroute("**/api/investigations");
   await page.getByRole("button", { name: "Sign out", exact: true }).click();
   await login(page, "gridmind-http-a@example.test");

@@ -12,6 +12,10 @@
 **Boundaries:** no production mutation/deployment, real-data intake, commercial wedge selection or implied technical approval. Tier 1/Tier 2, human authority and release gates remain binding. Local synthetic persistence cannot demonstrate tenant/file security.
 **Affected records:** Master Plan dated exception, this Constitution, issue #105, and implementation handoff. Discovery tracker remains unchanged.
 
+## Delivery ownership clarification — 16 October 2026
+
+The founder directed Codex to leave visual design, layouts and interaction polish to Lovable and concentrate on backend behavior, automation, security, data contracts and verification. Preserve the integrated dashboard; improve the actual workflow rather than create another interface. Minimal human touch means automatic handling of routine safe handoffs and recoverable failures, with bounded retries and exact receipt identity; it does not permit replaying unguarded permission changes or inferring evidence approval. Issue #109 implements the first reliability repair in this split.
+
 ## Three-area integration direction — 16 October 2026
 
 The founder requested three product areas and then clarified: retain the Lovable dashboard, incorporate the investigation workflow into it, and provide the integration plan first. Preserve the existing stack, specialist screens, tested case behavior and published history. The dashboard is the shared visual foundation for customer and team views; permissions and server response contracts distinguish those views. Internal review/economics do not become customer data by hiding controls. Keep the detailed proposal in the existing implementation handoff. The founder subsequently authorized implementation, GitHub storage and minimal human touch. Routine case creation, access grants, retries, state refresh and pre-authorized publication are automated in the synthetic source; scope authorization, source verification, independent review and customer decisions remain explicit. Source migrations are tested in isolated environments; production changes and real customer-data release remain gated.
