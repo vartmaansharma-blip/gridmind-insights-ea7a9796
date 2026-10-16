@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { validateMonths } from "./pipeline";
-import { buildReference, envelopeState } from "./reference";\nimport { createDemoFactory } from "./demo-data";
+import { buildReference, envelopeState } from "./reference";
+import { createDemoFactory } from "./demo-data";
 
 const m = (month: string, o: Partial<{ kwh: number; cost: number; production: number }> = {}) => ({
   month, kwh: o.kwh ?? 100000, cost: o.cost ?? 720000, peakKva: 1200, production: o.production ?? 20000, operatingHours: 600,
@@ -35,7 +36,7 @@ describe("pipeline", () => {
   });
   it("flags PF-demand mismatches for review, without converting them into guaranteed losses", () => {
     const r = validateMonths([
-      { ...m("2026-09", { kwh: 840000, cost: 4400000 }), peakKva: 1200, powerFactor: 0.95 },
+      { ...m("2026-09", { kwh: 863000, cost: 4400000 }), peakKva: 1200, powerFactor: 0.95 },
     ], now);
     expect(r.checks[0].states).toContain("SUSPECT");
     expect(r.checks[0].states).not.toContain("INVALID");
