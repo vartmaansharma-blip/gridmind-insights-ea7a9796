@@ -46,6 +46,17 @@ test("website/customer/team integration preserves case-only access and automatic
 }) => {
   const customer = await provisionLocalCustomer(),
     foreign = await provisionLocalCustomer();
+  const submitRequests: string[] = [];
+  await page.route("**/api/portal", async (route) => {
+    if (route.request().postDataJSON()?.action !== "submit") return route.continue();
+    submitRequests.push(route.request().postData()!);
+    if (submitRequests.length === 1) {
+      const response = await route.fetch();
+      expect(response.status()).toBe(200);
+      return route.abort("connectionfailed"); // Server committed; customer never received its receipt.
+    }
+    return route.continue();
+  });
   await login(page, customer.email, "customer");
   await page.getByRole("button", { name: "New investigation", exact: true }).click();
   const title = `Synthetic integrated request ${crypto.randomUUID().slice(0, 8)}`;
@@ -89,6 +100,9 @@ test("website/customer/team integration preserves case-only access and automatic
     );
   }
   await expect(page.getByText("Submitted · awaiting team scope review")).toBeVisible();
+  expect(submitRequests).toHaveLength(2);
+  expect(submitRequests[0]).toBe(submitRequests[1]);
+  expect((await api(page, { action: "intakeList" })).body.requests).toHaveLength(1);
   const staffContext = await browser.newContext({ baseURL: "http://127.0.0.1:4173" }),
     reviewerContext = await browser.newContext({ baseURL: "http://127.0.0.1:4173" }),
     foreignContext = await browser.newContext({ baseURL: "http://127.0.0.1:4173" });
@@ -212,7 +226,34 @@ test("website/customer/team integration preserves case-only access and automatic
     await page
       .getByLabel("Decision rationale and next action")
       .fill("Defer the physical decision pending another documented check.");
+    let decisionRequests = 0,
+      failedRefreshes = 0;
+    await page.route("**/api/portal", async (route) => {
+      const action = route.request().postDataJSON()?.action;
+      if (action === "decision") decisionRequests++;
+      if (action === "list" && decisionRequests && failedRefreshes < 3) {
+        failedRefreshes++;
+        return route.fulfill({
+          status: 503,
+          contentType: "application/json",
+          body: JSON.stringify({ error: "TEMPORARY_UNAVAILABLE" }),
+        });
+      }
+      return route.fallback();
+    });
     await page.getByRole("button", { name: "Record decision", exact: true }).click();
+    const savedNotice = page.getByText(
+      "Saved successfully. The latest workspace could not be refreshed; automatic refresh will try again.",
+      { exact: true },
+    );
+    await expect(savedNotice).toBeVisible();
+    await expect(page.getByRole("button", { name: "Retry same request", exact: true })).toHaveCount(
+      0,
+    );
+    // The existing visible-page refresh recovers automatically without resending the decision.
+    await expect(savedNotice).toHaveCount(0, { timeout: 30000 });
+    expect(decisionRequests).toBe(1);
+    expect(failedRefreshes).toBe(3);
     await expect(
       page.getByText("Defer the physical decision pending another documented check.", {
         exact: true,

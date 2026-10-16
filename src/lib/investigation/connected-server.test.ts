@@ -110,4 +110,30 @@ describe("connected case API authentication boundary", () => {
     expect(response.status).toBe(500);
     expect(await response.text()).toBe('{"error":"CASE_STORAGE_ERROR"}');
   });
+  it.each(["08006", "53300", "57P01", "57014", "PGRST002"])(
+    "classifies temporary storage %s as recoverable without exposing SQL",
+    async (code) => {
+      configured();
+      rpc.mockResolvedValueOnce({
+        data: null,
+        error: { code, message: "private SQL and synthetic-server-secret" },
+      });
+      const response = await handleConnectedInvestigation(req());
+      expect(response.status).toBe(503);
+      expect(await response.json()).toEqual({ error: "CASE_STORAGE_UNAVAILABLE" });
+    },
+  );
+  it.each(["42501", "40001"])(
+    "does not echo unexpected database details in %s errors",
+    async (code) => {
+      configured();
+      rpc.mockResolvedValueOnce({
+        data: null,
+        error: { code, message: "private SQL and synthetic-server-secret" },
+      });
+      const response = await handleConnectedInvestigation(req());
+      expect(response.status).toBe(code === "42501" ? 403 : 409);
+      expect(await response.text()).not.toContain("private");
+    },
+  );
 });

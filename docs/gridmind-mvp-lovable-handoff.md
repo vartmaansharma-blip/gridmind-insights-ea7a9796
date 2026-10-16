@@ -126,6 +126,11 @@ Run this with invented fixtures first. A production/customer-data launch needs t
 
 ### 9. Work split and scope limits
 
+**Founder clarification, 16 October:** Lovable owns public/customer/team visual design, layout, responsive presentation and interaction polish. Codex owns workflow automation, evidence/data contracts, API/database behavior, permissions, reliability, deterministic methods, integration tests and repository delivery. Preserve existing screens while strengthening their contracts. This is an execution split, not another plan.
+
+**Backend reliability follow-up — issue #109:** the shared command transport freezes the command bytes/receipt identity, retries safe reads and receipt/CAS-backed writes after transient network/gateway/throttle failures, refreshes same-account credentials per attempt, and stops on account changes. Recovery is bounded to three HTTP attempts with eight-second per-attempt timeouts and short backoff. Authorization, stale revision, validation and missing configuration errors are not retried. Long Retry-After values stop rather than retry early. Customer grant changes have no receipt/CAS contract and are not automatically replayed. Acknowledged writes remain saved when a following refresh fails; the existing periodic refresh recovers the view and clears its refresh notice. The server classifies temporary PostgreSQL/PostgREST connection, capacity and timeout failures as a generic recoverable 503, and returns only allowlisted permission/conflict errors; SQL details remain private. No payload/token is added to persistent storage. Lovable can change presentation around these behaviors without replacing the transport or weakening the request identity/permission checks.
+
+
 **Lovable:** preserve/refine the existing dashboard shell, navigation, responsive case pages, stage/evidence/request presentation, customer brief reading experience and public-site visuals.
 
 **Codex:** principal/role resolution, case adapters, typed API contracts, customer projections, scoped permissions, intake/communication persistence, source custody, exact-revision publication, method boundaries, migrations/tests and repository integration. A frontend that looks connected is not a substitute for these contracts.

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { commandAndRefresh } from "@/lib/investigation/command-receipt";
 import { portalCall } from "@/lib/investigation/portal-client";
 import type {
   PortalCommand,
@@ -7,6 +8,8 @@ import type {
   Principal,
   Intake,
 } from "@/lib/investigation/portal-contract";
+const REFRESH_NOTICE =
+  "Saved successfully. The latest workspace could not be refreshed; automatic refresh will try again.";
 export function usePortal(demo: boolean) {
   const [ready, setReady] = useState(false),
     [signedIn, setSignedIn] = useState(demo),
@@ -26,6 +29,7 @@ export function usePortal(demo: boolean) {
     setPrincipal(p);
     setCases(c.cases);
     setRequests(r.requests);
+    setError((current) => (current === REFRESH_NOTICE ? "" : current));
     setVersion((v) => v + 1);
   }, [demo]);
   useEffect(() => {
@@ -58,10 +62,18 @@ export function usePortal(demo: boolean) {
     retry.current = command;
     setBusy(true);
     try {
-      const result = await portalCall(command, demo);
-      await refresh();
-      setError("");
-      return result;
+      const receipt = await commandAndRefresh(
+        () => portalCall(command, demo),
+        refresh,
+        () => {
+          retry.current = null;
+        },
+      );
+      if (receipt.refreshFailed) {
+        setVersion((v) => v + 1);
+        setError(REFRESH_NOTICE);
+      } else setError("");
+      return receipt.result;
     } catch (e) {
       setError(e instanceof Error ? e.message : "Request failed");
       throw e;

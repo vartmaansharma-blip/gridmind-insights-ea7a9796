@@ -1,4 +1,4 @@
-import { supabase } from "@/integrations/supabase/client";
+import { authenticatedCommand } from "./command-client";
 import {
   portalCommandSchema,
   type PortalCommand,
@@ -153,36 +153,30 @@ export function resetPortalDemo() {
 export async function portalCall<T>(command: PortalCommand, demo = false): Promise<T> {
   portalCommandSchema.parse(command);
   if (demo) return demoCommand(command) as T;
-  const { data, error } = await supabase.auth.getSession();
-  if (error || !data.session) throw new Error("Sign in to access your workspace.");
-  const response = await fetch("/api/portal", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${data.session.access_token}`,
-    },
-    credentials: "omit",
-    body: JSON.stringify(command),
-  });
-  const body = await response.json();
-  if (!response.ok)
+  try {
+    return (await authenticatedCommand("/api/portal", command)) as T;
+  } catch (error) {
+    const code = error instanceof Error ? error.message : "WORKSPACE_REQUEST_FAILED";
+    const messages: Record<string, string> = {
+      CONNECTED_CASES_DISABLED:
+        "This environment is not enabled for connected cases. Explore the sample workspace or use an authorized isolated environment.",
+      CONNECTED_CASES_NOT_CONFIGURED: "Connected cases are not configured for this environment.",
+      AUTHENTICATION_REQUIRED: "Sign in to access your workspace.",
+      ACCOUNT_CHANGED: "The signed-in account changed. Reload your workspace before continuing.",
+      CONNECTION_INTERRUPTED:
+        "The connection was interrupted. Retry the same request to check its saved receipt.",
+      RETRY_LATER: "The server requested a longer wait. Retry the same request later.",
+      CASE_ACCESS_DENIED: "This account does not have active access to this case.",
+      CURRENT_INDEPENDENT_REVIEW_REQUIRED:
+        "This revision needs an accepted independent review before publication.",
+      CURRENT_PUBLICATION_REQUIRED: "Read the current released brief before recording a decision.",
+      STALE_CASE_REVISION: "The case changed. Reload the current version before continuing.",
+      PUBLISH_DENIED: "Only the case manager can publish this brief.",
+      INTAKE_NOT_CONFIGURED: "Investigation intake is not configured for this environment.",
+    };
     throw new Error(
-      (
-        {
-          CONNECTED_CASES_DISABLED:
-            "This environment is not enabled for connected cases. Explore the sample workspace or use an authorized isolated environment.",
-          CASE_ACCESS_DENIED: "This account does not have active access to this case.",
-          CURRENT_INDEPENDENT_REVIEW_REQUIRED:
-            "This revision needs an accepted independent review before publication.",
-          CURRENT_PUBLICATION_REQUIRED:
-            "Read the current released brief before recording a decision.",
-          STALE_CASE_REVISION: "The case changed. Reload the current version before continuing.",
-          PUBLISH_DENIED: "Only the case manager can publish this brief.",
-          INTAKE_NOT_CONFIGURED: "Investigation intake is not configured for this environment.",
-        } as Record<string, string>
-      )[body.error] ??
-        body.error ??
-        "Workspace request failed",
+      messages[code] ??
+        "Workspace request failed. Retry the same request or refresh your workspace.",
     );
-  return body;
+  }
 }
