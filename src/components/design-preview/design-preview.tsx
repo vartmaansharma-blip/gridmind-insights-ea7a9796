@@ -82,7 +82,7 @@ function Hero({ plate, label, position }: { plate: string; label: string; positi
           Evidence-led electricity reviews for factories. Understand the costs, investigate the questions, and identify what deserves attention.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-5">
-          <a href={CONTACT_PENDING} className="rounded-full bg-[var(--gm-brand-green)] px-6 py-3.5 font-semibold text-[var(--gm-brand-green-foreground)] transition-transform duration-200 hover:-translate-y-0.5">Discuss an electricity review ↗</a>
+          <ContactCta />
           <a href="#frame-c" className="font-medium text-[var(--gm-text)] underline-offset-4 hover:underline">Explore an example investigation →</a>
         </div>
       </div>
@@ -172,12 +172,17 @@ export function DesignPreview() {
       <div className="sticky top-0 z-50 bg-[var(--gm-brand-green)] px-4 py-1.5 text-center text-xs font-semibold text-[var(--gm-brand-green-foreground)]">
         Internal design preview — illustrative, fictional data · not linked from the site · contact destination pending
       </div>
-      <Hero plate={plateOwner} label="Frame A · Option 1 (owner reference)" position="65% center" />
-      <Hero plate={plateA} label="Frame A · Option 2 (overlook)" position="75% center" />
-      <Hero plate={plateB} label="Frame A · Option 3 (panorama)" position="75% center" />
+      <Hero plate={plateOwner} label="Frame A · Option A — human-scale overlook" position="62% center" />
+      <Hero plate={plateB} label="Frame A · Option B — infrastructure panorama" position="75% center" />
       <FrameB />
       <FrameC />
-      <div id="contact-pending" className="px-5 py-10 text-center text-sm text-[var(--gm-text-2)]">Contact destination pending — no message is sent from this preview.</div>
+      <section id="contact-pending" aria-labelledby="contact-pending-title" className="scroll-mt-16 border-t border-white/10 px-5 py-14 md:px-16">
+        <Tag tone="amber">Contact destination pending</Tag>
+        <h3 id="contact-pending-title" className="mt-4 font-display text-2xl font-semibold text-[var(--gm-text)]">The contact path isn't connected yet</h3>
+        <p id="contact-pending-note" className="mt-3 max-w-xl text-[var(--gm-text-2)]">
+          "Discuss a review" does not send anything in this preview. GridMind has not yet chosen a real contact destination (an email address or a form whose receipt is confirmed). No contact details have been made up, and no success message will appear until a real destination is connected.
+        </p>
+      </section>
     </main>
   );
 }
