@@ -14,11 +14,14 @@ import { buildReference, type Reference } from "./reference";
 
 // All assumptions in one place so the engine is transparent and auditable.
 export const ASSUMPTIONS = {
-  // A billing floor depends on utility, class, effective order and actual bill.\n  // Unknown until evidence-backed tariff mapping is implemented. Never default to 85%.\n  minBillingDemandPct: null as number | null,
+  // A billing floor depends on utility, class, effective order and actual bill.
+  // Unknown until evidence-backed tariff mapping is implemented. Never default to 85%.
+  minBillingDemandPct: null as number | null,
   contractHeadroom: 1.1, // recommended contract = max peak x headroom
   excessDemandPenaltyMultiplier: 1, // extra charge on kVA above contract (i.e. billed at 2x)
   pfTarget: 0.95,
-  // No generic power-factor penalty; invoices may use kVAh pricing or other terms.\n  pfPenaltyPerPoint: null as number | null,
+  // No generic power-factor penalty; invoices may use kVAh pricing or other terms.
+  pfPenaltyPerPoint: null as number | null,
   secRecoverableShare: 0.4, // share of SEC drift considered recoverable
   apfcCostPerKvar: 1200,
   secAlertThreshold: 1.08,
@@ -402,7 +405,13 @@ function assessQuality(f: Factory, rows: MonthRow[]): DataQuality {
       }
     }
   } else issues.push("No major equipment listed");
-  // Completeness and plausibility of invented inputs are not independently\n  // verified factory evidence. Do not show Good 100/100 on a fictional demo.\n  if (f.isDemo) {\n    score = Math.min(score, 65);\n    issues.push("Synthetic example: input coverage is not independently verified source quality.");\n  }\n  score = Math.round(Math.min(100, score));
+  // Completeness and plausibility of invented inputs are not independently
+  // verified factory evidence. Do not show Good 100/100 on a fictional demo.
+  if (f.isDemo) {
+    score = Math.min(score, 65);
+    issues.push("Synthetic example: input coverage is not independently verified source quality.");
+  }
+  score = Math.round(Math.min(100, score));
   return { score, grade: score >= 80 ? "Good" : score >= 55 ? "Fair" : "Limited", issues };
 }
 
