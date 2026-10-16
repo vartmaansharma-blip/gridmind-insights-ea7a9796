@@ -214,7 +214,7 @@ test("existing unverified session fails closed and offers normal login without r
   await expect(page.getByRole("alert")).toContainText("could not be verified");
   await expect(page.getByRole("button", { name: "Continue with Google" })).toBeEnabled();
   await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeEnabled();
-  await expect(page).toHaveURL(/auth\\?destination=team$/);
+  await expect(page).toHaveURL(new RegExp("/auth[?]destination=team$"));
 });
 
 test("new Google user with forged admin metadata remains pending and writes no grants", async ({
