@@ -12,18 +12,7 @@
 - **Review rule:** assess the actual quality of routes, responses, and next steps after the small test. A small or immature sample cannot establish market demand or prove absence of demand. If suitable contacts cannot be identified, record access as the blocker; do not invent prospects.
 - **30-day outcome:** GO TO BOUNDED TEST / NARROW / PIVOT / STOP. A paid pilot and verified savings are not required within 30 days.
 
-## Public desk context — 2026-10-13
-
-These are **public-source facts for research orientation**, not customer evidence, demand proof, or a validated commercial wedge.
-
-| Topic | Source-backed observation | What it does and does not mean |
-|---|---|---|
-| Adityapur industrial base | The official [JIADA Adityapur page](https://jiada.jharkhand.gov.in/adityapur) currently lists **1,533 total industrial units** for the Adityapur regional area. | Establishes a sizable industrial setting; does not identify active, reachable, right-sized buyers or their pain. |
-| Automotive-component listings | The [ASIA automotive-components directory](https://asiajamshedpur.com/single-category/automotive-components-and-assemblies/) displays **116 directory items** in that category at the time of this review. | This is an association directory count, not a census or a percentage of all Adityapur units. Do not repeat “85% auto parts” without a credible, current source and a clear denominator. |
-| Electricity tariff | [JBVNL's official tariff page](https://jbvnl.co.in/tariff) lists FY 2026–27 tariff material; the [JSERC tariff-order index](https://jserc.org/tariff.aspx) lists the FY 2026–27 JBVNL tariff determination dated **25 March 2026**. | Tariff impact varies by consumer category, demand, kVAh/kWh billing, fixed/demand charges, and other components. No blanket “tariff rose 8%” claim is accepted here; compare the relevant category and prior-year order before quantifying. |
-| Power/production disruptions | No specific, independently sourced recent factory disruption has been established in this desk pass. | Ask participants about a recent event and how it was handled. Do not present a hypothetical shutdown or a public headline as a validated target-customer problem. |
-
-**Segment hypothesis, not a desk fact:** owner-run or mid-size manufacturers (roughly 50–300 staff) in the Jamshedpur–Adityapur belt may be accessible enough for bounded discovery. Confirm firm size, role, buyer route, current alternatives, and actual pain during conversations.
+<!-- Public market sizing and desk evidence archived in the previous Git revision; not treated as buyer evidence. -->
 
 ## 2. Stable candidate register
 
@@ -298,7 +287,7 @@ If the GO conjunction fails: **NARROW/INCONCLUSIVE** where a relevant case exist
 
 **Balanced sample and C1/C4 decision:** log ownership group, supplier/anchor-customer chain, intermediary and candidate without storing unnecessary private identifiers. Two firms in one dependent network do not make a representative sample. Keep the same questions/scorecard for both candidate probes and mark software/migration sunk costs as **excluded** from the score.
 
-**Capacity/runway checkpoint:** provisional founder budget is **5 h/week and ₹0 incremental spend through Nov 10**; allocate 60m access/scheduling, 120m interviews and notes, 45m adviser/domain route, 45m follow-ups, 30m evidence/decision. Record actuals weekly; if impossible, mark targets missed and reset openly rather than inventing completed work. No engineer workstream competes for that budget except essential safety/correctness repair authorized separately. Before any funded trial, explicitly record authorized cash allocation, estimated cash burn, responsible contracting adult, and financial stop date; current private runway is **unknown**, not infinite.
+**Capacity/runway checkpoint (corrected 2026-10-15):** founder reports **5 hours/day, not 5 hours/week**. Use a flexible **25 h/week over five chosen days** as an illustrative planning schedule, not a mandatory workload (school, sleep and rest take precedence); record actual hours. Weekly working allocation: 6 h legitimate supported access/outreach/scheduling; 7 h booked interviews and consented non-confidential notes or preparation; 4 h adviser/domain learning; 4 h evidence review and neutral C1/C4 comparison; 2 h tracking/follow-ups; up to 2 h essential correctness/security maintenance only, otherwise discovery. If time or access is lower, record it and revise targets rather than fabricate progress. **₹0 incremental spend through Nov 10** remains unless specifically authorized. Before any funded trial, document an actual authorized cash allocation, burn, responsible contracting adult, and financial stop date; current private runway is **unknown**.
 
 
 - **Oct 19:** review the ASIA route and the 3–5-request access test; adjust route if evidence supports it. A small sample cannot establish demand or its absence.
@@ -348,18 +337,9 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 | 2026-10-15 | Founder identified “dad” when asked for supporting adult and introduction routes | Nomination only; agreement, network, sends and introductions remain unconfirmed |
 
 
-## 12. Aligned phase timeline and weekly review — 2026-10-13
+## 12. Weekly checkpoint (sole evidence log)
 
-This tracker follows the dates in the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md). It does not establish a second schedule.
-
-| Date | Purpose | What must be recorded | Failure response |
-|---|---|---|---|
-| **Oct 15** | Strategic foundation freeze | Confirm definition, sprint scope, C1/C4 probe status, evidence labels, two-tier gates, and no-build boundary agree across the Master Plan and Decision Constitution. The wedge remains unselected. | Resolve only contradictions that affect execution; no more strategy expansion. |
-| **Oct 19** | Access-route review | Actual ASIA follow-up/response and genuine warm requests, replies, referrals, meetings, and access constraints. | Record route failure or insufficient access honestly; do not infer market demand from a small sample. |
-| **Oct 24** | Adviser/access fallback checkpoint | Count *held or firmly booked* conversations, independently credible warm access and whether an actual outreach supporter accepted. | With proper support, test R3 or another distinct legitimate intermediary if warm/ASIA routes stall; if no supporter, pause external activity and record blocker. |
-| **Oct 31** | Discovery target checkpoint | Target: 3 substantive conversations held and at least one explicit buyer next step. Evidence must be in the conversation records. | Mark target missed if unmet and explain why. Do not convert planned calls into completed research. |
-| **Nov 10** | Formal decision gate | GO TO BOUNDED TEST / NARROW / PIVOT / STOP, supported by evidence, disconfirming evidence, buyer path, feasibility, and open safeguards. | No forced winner or product build if evidence is insufficient. |
-| **Nov 15** | Discovery-phase close and handoff | Consolidated decision, status of unresolved issues/PRs, and the next approved phase or explicit continued-discovery decision. | This is administrative closure, not a second gate or automatic build deadline. |
+**Dates and gates:** Oct 19 supported access review; Oct 24 access fallback; Oct 31 conversation target; Nov 10 decision. See §9 for threshold and §10 for owners. No second calendar or tracker.
 
 ### Weekly review — update this tracker, do not create another report
 
@@ -368,7 +348,7 @@ This tracker follows the dates in the [Canonical Master Plan](gridmind-master-pl
 - What is the main blocker?
 - What is the one highest-value next action, owner, due date, and completion condition?
 - What should stop because it is not required for the current decision?
-- Actual founder hours versus the provisional five-hour cap; reviewer capacity/cost unknowns; direct versus intermediary route results; commitment due dates versus completed actions.
+- Actual founder hours versus the **founder-reported 5 hours/day** and the chosen weekly schedule (25 h across five selected days is illustrative, not required); reviewer capacity/cost unknowns; direct versus intermediary route results; commitment due dates versus completed actions.
 
 **Oct 15 access clarification:** the current target remains 3–5 legitimate requests by Oct 19, not 30 names or an assumed LinkedIn funnel. If direct access stalls at the Oct 19–24 review, test one relevant intermediary category with appropriate support and log the route in the existing access log. Do not create a second contact tracker. Low replies indicate a channel constraint; they do not select C4 or disprove C1. The Oct 31 three-conversation/one-next-step target and Nov 10 gate remain unchanged. There is no fixed ₹2 lakh pain cutoff; assess conservative incremental value and feasible delivery economics using the existing rubric and ledger.
 
