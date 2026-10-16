@@ -1,7 +1,7 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import mark from "@/assets/gridmind-mark.png";
 import plateOwner from "@/assets/hero-plate-owner.jpg";
-import plateA from "@/assets/preview-hero-a.jpg";
 import plateB from "@/assets/preview-hero-b.jpg";
 
 /* Preview-scoped brand tokens. They do not touch the app's global theme. */
@@ -16,22 +16,52 @@ const tokens = {
   "--gm-amber": "#E2A43B",
 } as CSSProperties;
 
-const CONTACT_PENDING = "#contact-pending";
+/* No real contact destination exists yet: the CTA explains that instead of linking anywhere. */
+function ContactCta({ size = "lg" }: { size?: "sm" | "lg" }) {
+  const label = size === "lg" ? "Discuss an electricity review" : "Discuss a review";
+  return (
+    <button
+      type="button"
+      aria-describedby="contact-pending-note"
+      onClick={() => document.getElementById("contact-pending")?.scrollIntoView({ behavior: "smooth", block: "center" })}
+      className={`rounded-full bg-[var(--gm-brand-green)] font-semibold text-[var(--gm-brand-green-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gm-brand-green)] ${size === "lg" ? "px-6 py-3.5" : "px-4 py-2 text-sm"}`}
+    >
+      {label}
+      <span className="ml-2 rounded bg-[var(--gm-brand-green-foreground)]/15 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide">pending</span>
+    </button>
+  );
+}
+
+const NAV = [
+  { href: "#frame-b", label: "How it works" },
+  { href: "#frame-c", label: "Example investigation" },
+  { href: "#contact-pending", label: "Contact" },
+];
 
 function Header() {
+  const [open, setOpen] = useState(false);
   return (
     <header className="relative z-20 flex items-center justify-between px-5 py-5 md:px-12">
       <div className="flex items-center gap-2">
         <img src={mark} alt="" width={28} height={28} className="h-7 w-7" />
         <span className="font-display text-lg font-semibold text-[var(--gm-text)]">GridMind</span>
       </div>
-      <nav aria-label="Preview navigation" className="hidden gap-8 text-sm text-[var(--gm-text-2)] lg:flex">
-        <a href="#frame-b">Platform</a><a href="#frame-b">How it works</a><a href="#frame-c">Example investigation</a>
+      <nav aria-label="Preview sections" className="hidden gap-8 text-sm text-[var(--gm-text-2)] lg:flex">
+        {NAV.map((n) => <a key={n.href} href={n.href} className="hover:text-[var(--gm-text)]">{n.label}</a>)}
       </nav>
-      <div className="flex items-center gap-4 text-sm">
-        <a href="/auth" className="hidden text-[var(--gm-text)] sm:inline">Sign in</a>
-        <a href={CONTACT_PENDING} className="rounded-full bg-[var(--gm-brand-green)] px-4 py-2 font-semibold text-[var(--gm-brand-green-foreground)]">Discuss a review ↗</a>
+      <div className="flex items-center gap-3 text-sm">
+        <Link to="/auth" className="text-[var(--gm-text)] underline-offset-4 hover:underline">Sign in</Link>
+        <span className="hidden sm:inline"><ContactCta size="sm" /></span>
+        <button type="button" aria-expanded={open} aria-controls="preview-menu" onClick={() => setOpen((v) => !v)} className="rounded border border-white/20 px-2.5 py-1.5 text-[var(--gm-text)] lg:hidden">
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
+      {open && (
+        <nav id="preview-menu" aria-label="Preview sections" className="absolute inset-x-4 top-full z-30 flex flex-col rounded-lg border border-white/10 bg-[var(--gm-surface)] p-2 lg:hidden">
+          {NAV.map((n) => <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded px-3 py-3 text-[var(--gm-text)] hover:bg-white/5">{n.label}</a>)}
+          <Link to="/auth" className="rounded px-3 py-3 text-[var(--gm-text)] hover:bg-white/5">Sign in</Link>
+        </nav>
+      )}
     </header>
   );
 }
