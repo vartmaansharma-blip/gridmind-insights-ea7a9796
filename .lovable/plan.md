@@ -1,41 +1,45 @@
-> **Design reference only.** This earlier Lovable plan is preserved for visual/product context. It is not an active execution backlog and does not override the [Master Plan](../docs/gridmind-master-plan-2026-10-11.md), [discovery tracker](../docs/gridmind-buyer-discovery-sprint-2026-10-11.md), or [collaboration rules](../AGENTS.md). Lovable owns design; Codex owns backend and repository tasks. Do not infer completed functionality from this proposal.
+# GridMind main-site design: audit findings and preview-only plan
 
-# GridMind product overhaul
+## Audit findings (read-only, nothing changed)
 
-## Goal
-Rework the existing MVP into one coherent industrial-intelligence product while preserving the working energy engine, local factory workflow, Lovable Cloud tables, and eight synthetic machine assets.
+**Framework and pages**
+- TanStack Start + React + Vite + Tailwind v4. Supabase connected (`bvqmvgbfqhgczwbvlqkk`).
+- `/` is the factory dashboard Overview (demo factory), **not** a public homepage.
+- `/website` is the current public marketing page ("Evidence to decision", private beta). Its links go to `/auth`, `/cases` and `/cases?mode=demo`. It has no contact form or email link.
+- Other pages: factory, energy, machines, opportunities, alerts, savings, investigations, cases, team/cases, team/intake, auth, and two API routes (investigations, portal).
 
-## Product experience
-- Introduce a distinctive GridMind identity, restrained enterprise visual system, and consistent desktop/mobile navigation.
-- Reframe navigation around the operating workflow: Overview, Factory Data, Energy, Machines, Opportunities, Alerts, Savings.
-- Add a persistent factory context, data-quality state, analysis status/timestamp, and clear synthetic/demo labeling.
-- Rebuild the overview around Money at Risk, biggest opportunities, evidence, recommended actions, energy/cost performance, demand/capacity, reliability, and savings verification.
-- Make empty states guide users through factory setup, data completeness, and analysis without implying live connectivity.
+**Brand and design tokens**
+- Logo files: `src/assets/gridmind-mark.png` and two concept PNGs. There is no SVG logo. The favicon is `public/favicon.png`.
+- The colour tokens in `src/styles.css` are all oklch values. There is no `#9ADD00` token. The lime-coloured tokens are `--cta: oklch(0.82 0.22 128)`, `--accent: oklch(0.9 0.18 126)` and `--ring: oklch(0.79 0.2 128)`. These are close to `#9ADD00` but not identical. The exact difference will be measured and reported, and the dashboard will not be recoloured.
+- Fonts: Manrope, Space Grotesk and IBM Plex Mono, loaded from Google Fonts in `__root.tsx`.
+- There is no hero photography and no media folder.
 
-## Intelligence model
-- Extend each opportunity and alert presentation with evidence status, evidence, estimated rupee impact, confidence, recommended action, and data needed.
-- Preserve transparent deterministic calculations and explicitly separate observations, estimates, hypotheses, recommendations, and verified outcomes.
-- Treat low-resolution monthly data as indicators only; avoid machine-failure claims without suitable measurements.
-- Keep the data hierarchy visible: Factory → System → Asset → Sensor → Measurement → Event/Finding → Action → Outcome.
+**Contact and sign-in**
+- Sign-in goes through `/auth`, with Supabase email and Google sign-in. This must not change.
+- There is no working "Discuss a review" contact path today. The closest thing is the intake portal (`/team/intake`), which needs server routing configuration. **Blocker:** the main call-to-action needs a real contact destination, such as an email address or a backend-confirmed form, and the owner has to supply or approve it.
 
-## Legacy machine layer
-- Upgrade the machine register and passport around the existing eight database assets.
-- Present Digital/API, Electrical Retrofit, Physical Sensor Retrofit, Gateway, Manual/Assisted, and Indirect Inference as honest acquisition modes—not claimed connections.
-- Organize each passport into identity, integration, measurement mapping, retrofit economics, 30-day calibration, fingerprint readiness, diagnostics, evidence, and next action.
-- Show required/optional metrics, source, sensor type, units, installation state, diagnostic value, coverage, calibration, and diagnostic readiness.
-- Present retrofit decisions using instrumentation cost, opportunity, downtime exposure, criticality, diagnostic value, payback, and decision.
+**Git and publishing risk**
+- The editor works on branch `edit/edt-bb2...`. Lovable syncs it into `main` on GitHub. CI, Quality and Migration Replay run on every push to `main`.
+- The Lovable production site at gridmind-insights.lovable.app only updates when someone clicks Publish. Preview edits do **not** go live there on their own.
+- **Risk:** earlier audits show a Vercel project deploying from GitHub `main`. If Vercel auto-deploy is still on, any committed edit, including preview-only files, will trigger a Vercel production build. I can't confirm the current Vercel setting from here, so it is marked NOT VERIFIED.
+- `robots.txt` lets crawlers index every page. A new page would be publicly reachable on any deployment unless it is excluded from indexing.
 
-## Savings and intervention workflow
-- Recast savings as Baseline → Intervention → Post-intervention → Production normalization → Verified outcome.
-- Visually separate estimated potential from verified realized savings and keep demo calculations clearly labeled.
+## Safe preview-only boundary
 
-## Technical implementation
-- Use existing TanStack routes, components, frontend analysis/store, and Lovable Cloud machine tables; no new hardware/API integration.
-- Fix current machine-route safety/build issues, add any small shared presentation components required, and keep all page metadata complete.
-- Update shared tokens and shell first, then overview and intelligence cards, then machine views, then remaining screens for consistency.
-- Verify the preview at desktop and mobile sizes, all routes, interactions, runtime console, and the latest build signal.
+- One new isolated page, `/design-preview`, plus a self-contained `src/components/design-preview/` folder.
+- The page is tagged `noindex`, with no links to it from any navigation, and it is labelled "Internal design preview — illustrative, fictional data".
+- New brand tokens live **only inside this page's wrapper**, starting with `--gm-brand-green: #9ADD00`. Nothing changes in `src/styles.css`, `/`, `/website`, `/auth`, the backend or the database.
+- Contents:
+  1. Hero option A (person looking over an industrial plant at dusk) and option B (wide view of industrial infrastructure, no person). Both show the exact hook, the two calls to action and the logo, at desktop and mobile widths.
+  2. Static keyframes A (World), B (Discovery) and C (Intelligence), with no scroll animation.
+- The background images will be generated as clean plates with no text, numbers or interface elements. They will be labelled as generated concept imagery, not real customer sites.
+- The calls to action point to placeholders marked "Contact destination pending". No fake success messages.
+- Checks: screenshots at 1440x900, 1366x768, 390x844 and 360px, plus a colour sample of the solid green against `#9ADD00`.
 
-## Assumptions
-- “Systems” is represented as a plant system grouping and workflow context using current factory/equipment/asset data; no new database schema is required.
-- Existing zero-valued retrofit/calibration records remain “needs data” rather than receiving invented measurements or costs.
-- The eight machine records remain synthetic demo assets and no UI state will claim a live machine connection.
+## Owner decisions needed before or alongside the build
+1. Confirm whether Vercel auto-deploys from `main`. If it does, either accept that a hidden `noindex` page goes live there, or pause Vercel auto-deploy first.
+2. Provide the real contact destination for "Discuss a review".
+3. Approve AI-generated background plates as concept art, or supply licensed photography.
+
+## Out of scope for this step
+No animation, no homepage replacement, no publishing, and no backend or authentication changes.
