@@ -40,6 +40,7 @@ type Ctx = {
   analysis: Analysis | null;
   authenticated: boolean;
   loading: boolean;
+  factoryLoadError: string | null;
   setActive: (id: string) => void;
   addFactory: (f: Pick<Factory, "name" | "location" | "sector" | "contractDemandKva" | "demandChargePerKva">) => Promise<void>;
   updateFactory: (id: string, fn: (f: Factory) => Factory) => void;
@@ -117,23 +118,31 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
   });
   const persistTimers = useRef(new Map<string, ReturnType<typeof setTimeout>>());
   const persistQueues = useRef(new Map<string, Promise<void>>());
+  const [factoryLoadError, setFactoryLoadError] = useState<string | null>(null);
+  const loadGeneration = useRef(0);
 
   useEffect(() => {
     let cancelled = false;
 
     const loadForSession = async () => {
+      const generation = ++loadGeneration.current;
+      let sessionConfirmed = false;
       try {
-        const { data: sessionData } = await supabase.auth.getSession();
-        if (cancelled) return;
+        const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+        if (cancelled || generation !== loadGeneration.current) return;
+        if (sessionError) throw sessionError;
 
         if (!sessionData.session) {
+          setFactoryLoadError(null);
           setState({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID, authenticated: false, loading: false });
           return;
         }
 
+        sessionConfirmed = true;
         const snapshots = await getAuthenticatedFactorySnapshots();
-        if (cancelled) return;
+        if (cancelled || generation !== loadGeneration.current) return;
         const factories = snapshots.map(snapshotToFactory);
+        setFactoryLoadError(null);
         setState({
           factories,
           activeId: factories[0]?.id ?? null,
@@ -142,7 +151,18 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
         });
       } catch (error) {
         console.error("[GridMind] canonical factory load failed", error);
-        if (!cancelled) setState((s) => ({ ...s, loading: false }));
+        if (cancelled || generation !== loadGeneration.current) return;
+        setFactoryLoadError(sessionConfirmed
+          ? "You are signed in, but factory records could not be loaded. Retry later or contact the workspace owner."
+          : "Your sign-in status could not be checked. Please retry before accessing factory records.");
+        // A failed factory query must never masquerade as a failed login.
+        // Keep the private factory dataset empty until server-authorized reads succeed.
+        setState({
+          factories: sessionConfirmed ? [] : [createDemoFactory()],
+          activeId: sessionConfirmed ? null : DEMO_FACTORY_ID,
+          authenticated: sessionConfirmed,
+          loading: false,
+        });
       }
     };
 
@@ -150,6 +170,8 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     const { data: authSubscription } = supabase.auth.onAuthStateChange((event) => {
       if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") void loadForSession();
       if (event === "SIGNED_OUT") {
+        ++loadGeneration.current; // discard any pending private factory response
+        setFactoryLoadError(null);
         setState({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID, authenticated: false, loading: false });
       }
     });
@@ -211,6 +233,7 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     analysis,
     authenticated: state.authenticated,
     loading: state.loading,
+    factoryLoadError,
     setActive: (id) => setState((s) => ({ ...s, activeId: id })),
     addFactory: async (input) => {
       const factoryId = await createFactoryWorkspace(input);

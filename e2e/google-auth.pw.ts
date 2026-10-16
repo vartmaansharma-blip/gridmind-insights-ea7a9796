@@ -176,6 +176,47 @@ test("new prospective customer may request a case without inheriting any factory
   expect(writes).toEqual([]);
 });
 
+test("already signed-in customer restores a saved session instead of seeing sign-in again", async ({ page }) => {
+  await fixture(page, { factories: [], isCustomer: false });
+  await page.addInitScript((saved) => {
+    localStorage.setItem("sb-127-auth-token", JSON.stringify(saved));
+  }, session());
+  await page.goto("/auth?destination=customer");
+  await expect(page).toHaveURL(new RegExp("/cases/?$"));
+  await expect(page.getByRole("heading", { name: "Your investigations" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Your investigations" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Sign in to your workspace" })).toHaveCount(0);
+});
+
+test("returning team user with no grants stays signed in and sees access pending", async ({ page }) => {
+  await fixture(page);
+  await page.addInitScript((saved) => {
+    localStorage.setItem("sb-127-auth-token", JSON.stringify(saved));
+  }, session());
+  await page.goto("/auth?destination=team");
+  await expect(page.getByRole("status")).toContainText("Access pending");
+  await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Continue with Google" })).toHaveCount(0);
+  await page.reload();
+  await expect(page.getByRole("status")).toContainText("Access pending");
+});
+
+test("existing unverified session fails closed and offers normal login without role access", async ({ page }) => {
+  await fixture(page);
+  await page.route(`${backend}/auth/v1/user`, (route) =>
+    route.fulfill({ status: 401, json: { code: "bad_jwt", msg: "Expired session" } }),
+  );
+  await page.addInitScript((saved) => {
+    localStorage.setItem("sb-127-auth-token", JSON.stringify(saved));
+  }, session());
+  await page.goto("/auth?destination=team");
+  await expect(page.getByRole("alert")).toContainText("could not be verified");
+  await expect(page.getByRole("button", { name: "Continue with Google" })).toBeEnabled();
+  await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeEnabled();
+  await expect(page).toHaveURL(new RegExp("/auth[?]destination=team$"));
+});
+
 test("new Google user with forged admin metadata remains pending and writes no grants", async ({
   page,
 }) => {

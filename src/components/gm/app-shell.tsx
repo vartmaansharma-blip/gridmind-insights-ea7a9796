@@ -119,13 +119,13 @@ export function AddFactoryDialog({
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { factories, active, setActive, analysis, runAnalysis, authenticated } = useEnergy();
+  const { factories, active, setActive, analysis, runAnalysis, authenticated, loading, factoryLoadError } = useEnergy();
   const [addOpen, setAddOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authenticated && !active && !addOpen) setAddOpen(true);
-  }, [authenticated, active, addOpen]);
+    if (authenticated && !loading && !active && !factoryLoadError && !addOpen) setAddOpen(true);
+  }, [authenticated, loading, active, factoryLoadError, addOpen]);
 
   const onRun = () => {
     if (!analysis?.hasData) {
@@ -180,7 +180,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Button>
           </div>
           <div className="flex items-center gap-2">
-            {authenticated ? (
+            {loading ? (
+              <span role="status" className="text-xs text-muted-foreground">Checking sign-in…</span>
+            ) : authenticated ? (
               <Button variant="outline" size="sm" onClick={() => void supabase.auth.signOut()}>
                 Sign out
               </Button>
@@ -225,7 +227,17 @@ export function AppShell({ children }: { children: ReactNode }) {
         </>
       }
     >
-      {authenticated && !active ? (
+      {factoryLoadError ? (
+        <section className="mx-auto max-w-2xl py-16" role="alert">
+          <div className="panel border border-warning/30 p-8 text-center">
+            <h1 className="text-xl font-semibold">Factory records are temporarily unavailable</h1>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">{factoryLoadError}</p>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Your account access and your factory-data connection are separate. No new factory was created.
+            </p>
+          </div>
+        </section>
+      ) : authenticated && !active ? (
         <section className="mx-auto max-w-2xl py-16">
           <div className="panel p-8 text-center">
             <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full bg-cta/10 text-cta">
