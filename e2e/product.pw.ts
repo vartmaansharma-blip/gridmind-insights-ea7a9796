@@ -13,10 +13,12 @@ test("public website opens a labeled sample and preserves the dashboard entry", 
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/website");
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("clear evidence chain");
-  await page.getByRole("button", { name: "Read the sample brief", exact: true }).click();
-  await expect(page.getByRole("dialog")).toContainText("SYNTHETIC SAMPLE");
-  await expect(page.getByRole("dialog")).not.toContainText("Review history and retained dissent");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
+  await page.getByRole("button", { name: /Power factor/ }).click();
+  await expect(page.locator("#example")).toContainText("Does power factor affect anything on this bill?");
+  const download = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download fictional brief" }).click();
+  expect((await download).suggestedFilename()).toMatch(/FICTIONAL\.txt$/);
   await page.getByRole("link", { name: "Explore the sample workspace" }).click();
   await expect(
     page.getByRole("heading", { name: "Your investigations", exact: true }),
