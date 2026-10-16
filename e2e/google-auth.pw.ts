@@ -166,6 +166,16 @@ test("callback without a session fails and restores controls", async ({ page }) 
   await expect(page.getByRole("alert")).toContainText("did not return a session");
   await expect(page.getByLabel("Email", { exact: true })).toBeEnabled();
 });
+test("new prospective customer may request a case without inheriting any factory role", async ({ page }) => {
+  const writes = await fixture(page, { factories: [], isCustomer: false });
+  await callback(page, "customer");
+  await expect(page).toHaveURL(/\\/cases\\/?$/);
+  await expect(page.getByRole("heading", { name: "Your investigations" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "New investigation" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Intake" })).toHaveCount(0);
+  expect(writes).toEqual([]);
+});
+
 test("new Google user with forged admin metadata remains pending and writes no grants", async ({
   page,
 }) => {
