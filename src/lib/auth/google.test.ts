@@ -35,7 +35,12 @@ describe("Google auth boundaries", () => {
     expect(workspaceDestination(team, "customer")).toBe("/cases");
     expect(workspaceDestination(team, undefined)).toBe("/");
     expect(workspaceDestination({ factories: [], isCustomer: true }, "team")).toBe("/cases");
-    for (const destination of ["team", "customer", undefined] as const) {
+    // A prospective customer may request an investigation, but has no case
+    // or factory access: /cases must still apply all server-side permissions.
+    expect(workspaceDestination({ factories: [], isCustomer: false }, "customer")).toBe("/cases");
+    // Someone asking for staff access (or without a specific request intent)
+    // cannot obtain a workspace just by authenticating.
+    for (const destination of ["team", undefined] as const) {
       expect(workspaceDestination({ factories: [], isCustomer: false }, destination)).toBeNull();
     }
   });
