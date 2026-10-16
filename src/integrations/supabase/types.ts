@@ -126,7 +126,6 @@ export type Database = {
           implementation_duration: string | null
           implementation_steps: Json
           intervention_date: string | null
-          implemented_at: string | null
           intervention_type: string | null
           operating_constraints: Json
           opportunity_id: number | null
@@ -163,7 +162,6 @@ export type Database = {
           implementation_duration?: string | null
           implementation_steps?: Json
           intervention_date?: string | null
-          implemented_at?: string | null
           intervention_type?: string | null
           operating_constraints?: Json
           opportunity_id?: number | null
@@ -1099,6 +1097,73 @@ export type Database = {
             columns: ["organization_id"]
             isOneToOne: false
             referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      factory_analysis_runs: {
+        Row: {
+          algorithm_version: string
+          analysis_status: string
+          asset_id: number
+          created_at: string
+          created_by: string
+          factory_id: number
+          id: number
+          idempotency_key: string
+          input_snapshot: Json
+          refusal_codes: Json
+          result: Json
+          result_fingerprint: string
+        }
+        Insert: {
+          algorithm_version: string
+          analysis_status: string
+          asset_id: number
+          created_at?: string
+          created_by: string
+          factory_id: number
+          id?: never
+          idempotency_key: string
+          input_snapshot: Json
+          refusal_codes?: Json
+          result: Json
+          result_fingerprint: string
+        }
+        Update: {
+          algorithm_version?: string
+          analysis_status?: string
+          asset_id?: number
+          created_at?: string
+          created_by?: string
+          factory_id?: number
+          id?: never
+          idempotency_key?: string
+          input_snapshot?: Json
+          refusal_codes?: Json
+          result?: Json
+          result_fingerprint?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "factory_analysis_runs_asset_factory_fkey"
+            columns: ["asset_id", "factory_id"]
+            isOneToOne: false
+            referencedRelation: "factory_assets"
+            referencedColumns: ["id", "factory_id"]
+          },
+          {
+            foreignKeyName: "factory_analysis_runs_asset_id_fkey"
+            columns: ["asset_id"]
+            isOneToOne: false
+            referencedRelation: "factory_assets"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "factory_analysis_runs_factory_id_fkey"
+            columns: ["factory_id"]
+            isOneToOne: false
+            referencedRelation: "factories"
             referencedColumns: ["id"]
           },
         ]
