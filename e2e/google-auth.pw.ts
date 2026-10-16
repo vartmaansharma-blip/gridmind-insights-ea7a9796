@@ -58,6 +58,48 @@ async function callback(page: Page, destination = "team") {
   );
 }
 
+test("branded Google control stays accessible and password reveal does not submit the form", async ({ page }) => {
+  await fixture(page);
+  await page.goto("/auth?destination=customer");
+  const googleButton = page.getByRole("button", { name: "Continue with Google" });
+  await expect(googleButton).toBeEnabled();
+  await expect(googleButton.locator("img")).toHaveAttribute(
+    "src",
+    "https://developers.google.com/static/identity/images/g-logo.png",
+  );
+  await expect(googleButton.locator("img")).toHaveAttribute("alt", "");
+  await expect(googleButton).toHaveAttribute("aria-busy", "false");
+  const password = page.getByLabel("Password", { exact: true });
+  await expect(password).toHaveAttribute("type", "password");
+  await password.fill("synthetic-password");
+  await page.getByRole("button", { name: "Show password" }).click();
+  await expect(password).toHaveAttribute("type", "text");
+  await expect(password).toHaveValue("synthetic-password");
+  await page.getByRole("button", { name: "Hide password" }).click();
+  await expect(password).toHaveAttribute("type", "password");
+  await expect(page).toHaveURL(/\/auth\?destination=customer$/);
+});
+
+test("auth actions meet mobile tap targets and reduced motion avoids decorative transitions", async ({ page }) => {
+  await fixture(page);
+  await page.setViewportSize({ width: 380, height: 760 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/auth");
+  const google = page.getByRole("button", { name: "Continue with Google" });
+  await expect(google).toBeVisible();
+  const height = await google.evaluate((element) => element.getBoundingClientRect().height);
+  expect(height).toBeGreaterThanOrEqual(44);
+  const overflow = await page.evaluate(
+    () => document.documentElement.scrollWidth > window.innerWidth,
+  );
+  expect(overflow).toBe(false);
+  await google.focus();
+  await expect(google).toBeFocused();
+  expect(
+    await google.evaluate((element) => getComputedStyle(element).transitionDuration),
+  ).toMatch(/^(0s|0\\.00001s|1e-05s)/);
+});
+
 test("server-rendered Google and password controls are disabled until hydration", async ({
   browser,
 }) => {
