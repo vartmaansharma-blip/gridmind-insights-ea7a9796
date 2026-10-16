@@ -7,13 +7,14 @@
     "dev": "vite dev",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "preview": "vite preview",
+    "preview": "wrangler --cwd .output dev",
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "check": "bun run docs:links && bun run typecheck && bun run lint && bun run test && bun run build",
+    "check": "bun run docs:links && bun run typecheck && bun run lint && bun run test && bun run test:preview",
     "format:check": "prettier --check .",
     "test": "vitest run",
+    "test:preview": "bun run build && bun scripts/check-production-preview.mjs",
     "docs:links": "bun scripts/check-markdown-links.mjs",
     "test:intake": "python3 -m unittest discover -s tests -v"
   },
@@ -94,7 +95,8 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "8.1.5",
-    "vitest": "^5.0.3"
+    "vitest": "^5.0.3",
+    "wrangler": "4.151.0"
   },
   "packageManager": "bun@1.3.5"
 }
