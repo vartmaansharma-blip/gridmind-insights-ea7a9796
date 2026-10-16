@@ -2,11 +2,11 @@
 
 # GridMind MVP — Customer-First Build Blueprint
 
-**Version:** 3.4 (canonical evidence contract checkpoint v0.1, 16 October 2026)  
-**Status:** Proposed *supporting product/build specification*; **not** a second company strategy, release authorization, or claim of commercial validation.  
-**Canonical execution authority:** [GridMind Master Plan](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/main/docs/gridmind-master-plan-2026-10-11.md), especially §§14–15.  
-**Sole live discovery ledger:** [Buyer Discovery Sprint](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/main/docs/gridmind-buyer-discovery-sprint-2026-10-11.md).  
-**Existing application:** [GridMind repository](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796).  
+**Version:** 3.4 (canonical evidence contract checkpoint v0.1, 16 October 2026)\
+**Status:** Proposed *supporting product/build specification*; **not** a second company strategy, release authorization, or claim of commercial validation.\
+**Canonical execution authority:** [GridMind Master Plan](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/main/docs/gridmind-master-plan-2026-10-11.md), especially §§14–15.\
+**Sole live discovery ledger:** [Buyer Discovery Sprint](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/main/docs/gridmind-buyer-discovery-sprint-2026-10-11.md).\
+**Existing application:** [GridMind repository](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796).\
 **Existing synthetic prototype:** [Draft PR #103](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/103) (CI, Quality Gate, and Migration Replay **passed** at `35ea9a6e21fd59f29d33aa213c1511d2aeb77d03`; **not** an integrated UI workflow or production deployment).
 **Engineering Connection Ledger:** [GitHub issue #104](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/104) (16 tracked connections; status based on static source inspection, not deployment proof).
 
@@ -157,11 +157,11 @@ Show a **clearly marked synthetic** first page to the *decision owner* and, sepa
 
 ### 2.6 The sample report to create first (one executive page)
 
-> **SYNTHETIC EXAMPLE — NOT A CUSTOMER RESULT OR TECHNICAL APPROVAL**  
-> **Decision:** Should the plant commission additional checks regarding a documented change in monthly energy intensity?  
-> **Established:** A source-linked synthetic comparison shows intensity increased between the illustrated periods.  
-> **Not established:** The cause, comparability of operations, avoidability, recoverable charges or financial savings.  
-> **Next decision:** Verify operating conditions, bill boundaries and applicable tariff details before choosing an intervention.  
+> **SYNTHETIC EXAMPLE — NOT A CUSTOMER RESULT OR TECHNICAL APPROVAL**\
+> **Decision:** Should the plant commission additional checks regarding a documented change in monthly energy intensity?\
+> **Established:** A source-linked synthetic comparison shows intensity increased between the illustrated periods.\
+> **Not established:** The cause, comparability of operations, avoidability, recoverable charges or financial savings.\
+> **Next decision:** Verify operating conditions, bill boundaries and applicable tariff details before choosing an intervention.\
 > **Evidence:** E01–E03 (invented). **Expert review:** Not performed. **Customer-ready:** No.
 
 Design the appendix backward from every statement on this page: evidence IDs, raw units, exact arithmetic, exclusions, alternative explanations, reviewer questions and version history. The finished sample must *visibly fail release* until real review gates are satisfied.
@@ -598,11 +598,11 @@ Follow the **eight existing canonical objects** rather than creating eight new d
 
 ### Quality gates
 
-**Gate A — Method:** Sample brief makes sense to experienced practitioner; calculations traceable and repeatable.  
-**Gate B — Buyer:** Existing Tier 1 criteria pass for *one* decision/problem.  
-**Gate C — Data/operations:** Tier 2 authorization, security, qualified reviewer, custody and release controls pass.  
-**Gate D — Customer:** Real pilot output is useful compared with the actual alternative.  
-**Gate E — Economics:** Customer's payment behavior and measured case costs support another attempt.  
+**Gate A — Method:** Sample brief makes sense to experienced practitioner; calculations traceable and repeatable.\
+**Gate B — Buyer:** Existing Tier 1 criteria pass for *one* decision/problem.\
+**Gate C — Data/operations:** Tier 2 authorization, security, qualified reviewer, custody and release controls pass.\
+**Gate D — Customer:** Real pilot output is useful compared with the actual alternative.\
+**Gate E — Economics:** Customer's payment behavior and measured case costs support another attempt.\
 **Gate F — Repeatability:** Similar independent engagements confirm reusable methods and acceptable cost/quality.
 
 Failure at any gate should trigger a documented **narrow, repair, re-test or stop** decision; do not cover uncertainty by expanding scope.
