@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import { Eye, EyeOff, LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -55,6 +56,8 @@ function AuthPage() {
   const [mode, setMode] = useState<"sign-in" | "sign-up">("sign-in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [googleBusy, setGoogleBusy] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   // SSR displays the form before React attaches its event handlers. Do not
@@ -69,6 +72,7 @@ function AuthPage() {
     let cancelled = false;
     inFlight.current = true;
     setBusy(true);
+    setGoogleBusy(true);
     // Reuse SDK initialization on StrictMode effect replay.
     callbackWork.current ??= finishGoogleSignIn(supabase.auth, callback).finally(() => {
       const clean = new URL("/auth", window.location.origin);
@@ -87,6 +91,7 @@ function AuthPage() {
         if (!cancelled) {
           inFlight.current = false;
           setBusy(false);
+          setGoogleBusy(false);
         }
       });
     return () => {
@@ -98,6 +103,7 @@ function AuthPage() {
     if (!hydrated || inFlight.current) return;
     inFlight.current = true;
     setBusy(true);
+    setGoogleBusy(true);
     setError(null);
     try {
       const redirectTo = googleRedirect(window.location.origin, destination);
@@ -115,6 +121,7 @@ function AuthPage() {
       setError("Google sign-in is unavailable. Try again or use email and password.");
       inFlight.current = false;
       setBusy(false);
+      setGoogleBusy(false);
     }
   };
   useEffect(() => {
@@ -122,6 +129,7 @@ function AuthPage() {
       if (event.persisted) {
         inFlight.current = false;
         setBusy(false);
+        setGoogleBusy(false);
       }
     };
     window.addEventListener("pageshow", restore);
@@ -197,7 +205,7 @@ function AuthPage() {
     <div className="min-h-screen bg-background px-4 py-10">
       <div className="mx-auto max-w-md">
         <div className="mb-6 text-center">
-          <div className="eyebrow">GridMind</div>
+          <div className="eyebrow">GridMind · Secure access</div>
           <h1 className="mt-2 text-3xl font-semibold">Your GridMind workspace</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Sign in to continue with your cases and authorized workspace.
@@ -236,13 +244,31 @@ function AuthPage() {
               <Button
                 type="button"
                 variant="outline"
-                className="mb-4 w-full"
-                aria-busy={busy}
+                className="mb-5 min-h-11 w-full gap-3 border-[#747775] bg-white px-4 text-sm font-medium text-[#1f1f1f] transition-colors duration-150 hover:border-[#5f6368] hover:bg-[#f6f8fc] hover:text-[#1f1f1f] active:bg-[#edf2f7] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
+                aria-busy={googleBusy}
                 disabled={!hydrated || busy}
                 onClick={googleSignIn}
               >
-                Continue with Google
+                {googleBusy ? (
+                  <LoaderCircle className="size-5 animate-spin motion-reduce:animate-none" aria-hidden="true" />
+                ) : (
+                  <img
+                    src="https://developers.google.com/static/identity/images/g-logo.png"
+                    alt=""
+                    aria-hidden="true"
+                    width={20}
+                    height={20}
+                    className="size-5 shrink-0"
+                  />
+                )}
+                <span>{googleBusy ? "Connecting to Google…" : "Continue with Google"}</span>
               </Button>
+
+              <div className="mb-5 flex items-center gap-3" aria-hidden="true">
+                <span className="h-px flex-1 bg-border" />
+                <span className="text-xs text-muted-foreground">or use email</span>
+                <span className="h-px flex-1 bg-border" />
+              </div>
               <form method="post" className="grid gap-4" onSubmit={submit}>
                 <div className="grid gap-1.5">
                   <Label htmlFor="email">Email</Label>
@@ -250,6 +276,10 @@ function AuthPage() {
                     id="email"
                     type="email"
                     autoComplete="email"
+                    autoCapitalize="none"
+                    spellCheck={false}
+                    inputMode="email"
+                    className="min-h-11"
                     required
                     disabled={!hydrated || busy}
                     value={email}
@@ -258,19 +288,37 @@ function AuthPage() {
                 </div>
                 <div className="grid gap-1.5">
                   <Label htmlFor="password">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
-                    minLength={8}
-                    required
-                    disabled={!hydrated || busy}
-                    value={password}
-                    onChange={(event) => setPassword(event.target.value)}
-                  />
+                  <div className="relative">
+                    <Input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
+                      minLength={8}
+                      className="min-h-11 pr-12"
+                      required
+                      disabled={!hydrated || busy}
+                      value={password}
+                      onChange={(event) => setPassword(event.target.value)}
+                    />
+                    <button
+                      type="button"
+                      className="absolute inset-y-0 right-0 inline-flex min-w-11 items-center justify-center rounded-r-md text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring motion-reduce:transition-none"
+                      aria-label={showPassword ? "Hide password" : "Show password"}
+                      aria-pressed={showPassword}
+                      disabled={!hydrated || busy}
+                      onClick={() => setShowPassword((visible) => !visible)}
+                    >
+                      {showPassword ? (
+                        <EyeOff className="size-4" aria-hidden="true" />
+                      ) : (
+                        <Eye className="size-4" aria-hidden="true" />
+                      )}
+                    </button>
+                  </div>
                 </div>
-                <Button type="submit" variant="cta" disabled={!hydrated || busy}>
-                  {busy ? "Working…" : mode === "sign-in" ? "Sign in" : "Create account"}
+                <Button type="submit" variant="cta" className="min-h-11" disabled={!hydrated || busy}>
+                  {busy && !googleBusy ? <LoaderCircle className="size-4 animate-spin motion-reduce:animate-none" aria-hidden="true" /> : null}
+                  {busy && !googleBusy ? (mode === "sign-in" ? "Signing in…" : "Creating account…") : mode === "sign-in" ? "Sign in" : "Create account"}
                 </Button>
               </form>
 
@@ -279,7 +327,7 @@ function AuthPage() {
                   <button
                     type="button"
                     disabled={!hydrated || busy}
-                    className="font-medium text-foreground underline-offset-4 hover:underline"
+                    className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 font-medium text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setMode("sign-up")}
                   >
                     Create an account
@@ -288,7 +336,7 @@ function AuthPage() {
                   <button
                     type="button"
                     disabled={!hydrated || busy}
-                    className="font-medium text-foreground underline-offset-4 hover:underline"
+                    className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 font-medium text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setMode("sign-in")}
                   >
                     Already have an account? Sign in
@@ -300,7 +348,7 @@ function AuthPage() {
         </Panel>
 
         <p className="mt-5 text-center text-xs text-muted-foreground">
-          <Link to="/" className="underline underline-offset-4">
+          <Link to="/" className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
             Continue with demo mode
           </Link>
         </p>
