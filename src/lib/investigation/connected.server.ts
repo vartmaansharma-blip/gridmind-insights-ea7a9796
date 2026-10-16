@@ -54,6 +54,8 @@ export async function handleAuthenticatedCaseRequest(
         const result = await admin.rpc(rpcName, args);
         if (result.error) {
           const code = result.error.code;
+          // Codes and operation names only: never log SQL details, tokens or payloads.
+          console.error("Case RPC failed", { rpc: rpcName, operation: args._op, code });
           const message = result.error.message;
           if (code === "42501") throw new CaseError(message, 403);
           if (code === "40001") throw new CaseError(message, 409);

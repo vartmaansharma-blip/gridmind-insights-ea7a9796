@@ -1,5 +1,10 @@
 import { test, expect, type Page } from "@playwright/test";
-import { provisionLocalCustomer, provisionLocalReviewer, localBackend } from "./local-backend";
+import {
+  provisionLocalCustomer,
+  provisionLocalReviewer,
+  localBackend,
+  localIntakeOrganization,
+} from "./local-backend";
 async function login(page: Page, email: string, destination: "customer" | "team") {
   await page.goto(`/auth?destination=${destination}`);
   await page.getByLabel("Email", { exact: true }).fill(email);
@@ -51,7 +56,38 @@ test("website/customer/team integration preserves case-only access and automatic
     .fill("Which documented next check is justified by the invented comparison?");
   await page.getByLabel("Period start").fill("2026-01-01");
   await page.getByLabel("Period end").fill("2026-03-31");
+  const submission = page.waitForResponse(
+    (r) => r.url().endsWith("/api/portal") && r.request().postDataJSON()?.action === "submit",
+  );
   await page.getByRole("button", { name: "Submit investigation request" }).click();
+  const submitted = await submission;
+  if (!submitted.ok()) {
+    // Disposable loopback fixtures only. Diagnose RPC failures without ever exposing an admin token.
+    const command = submitted.request().postDataJSON();
+    const { origin, serviceKey } = localBackend();
+    const probe = await fetch(`${origin}/rest/v1/rpc/portal_store`, {
+      method: "POST",
+      headers: {
+        apikey: serviceKey,
+        Authorization: `Bearer ${serviceKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        _actor: customer.id,
+        _op: "intake_submit",
+        _args: {
+          id: command.id,
+          organizationId: Number(await localIntakeOrganization()),
+          payload: command.payload,
+          fingerprint: "isolated-diagnostic",
+        },
+      }),
+    });
+    const detail = await probe.json();
+    throw new Error(
+      `Isolated intake API HTTP ${submitted.status()}; RPC probe HTTP ${probe.status}: ${JSON.stringify(detail)}`,
+    );
+  }
   await expect(page.getByText("Submitted · awaiting team scope review")).toBeVisible();
   const staffContext = await browser.newContext({ baseURL: "http://127.0.0.1:4173" }),
     reviewerContext = await browser.newContext({ baseURL: "http://127.0.0.1:4173" }),
