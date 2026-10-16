@@ -1,14 +1,18 @@
 import type { Factory, MonthRecord } from "./types";
 
 // Fictional demo factory. NOT a real customer. Numbers are synthetic but
-// generated deterministically so every visitor sees the same results.\n// Synthetic tariffs and unit rates are deliberately fictional, not derived\n// from an approved JSERC order or a customer electricity invoice.
+// generated deterministically so every visitor sees the same results.
+// Synthetic tariffs and unit rates are deliberately fictional, not derived
+// from an approved JSERC order or a customer electricity invoice.
 export const DEMO_FACTORY_ID = "demo-adityapur";
 
 const months = [
   "2025-10", "2025-11", "2025-12", "2026-01", "2026-02", "2026-03",
   "2026-04", "2026-05", "2026-06", "2026-07", "2026-08", "2026-09",
 ];
-// Synthetic output volume is intentionally reconciled against monthly meter totals,\n// source power factor and recorded maximum demand. No real production is implied.\nconst production = [128700, 132600, 137150, 123500, 134550, 139750, 130650, 127400, 136500, 141700, 144300, 139100];
+// Synthetic output volume is intentionally reconciled against monthly meter totals,
+// source power factor and recorded maximum demand. No real production is implied.
+const production = [128700, 132600, 137150, 123500, 134550, 139750, 130650, 127400, 136500, 141700, 144300, 139100];
 const sec = [4.3, 4.28, 4.25, 4.32, 4.35, 4.52, 4.68, 4.71, 4.55, 4.18, 4.12, 4.1];
 const peak = [1180, 1195, 1210, 1150, 1220, 1260, 1295, 1310, 1240, 1205, 1215, 1198];
 const hours = [560, 580, 600, 540, 590, 610, 600, 590, 600, 610, 620, 600];
@@ -20,7 +24,10 @@ const ENERGY_RATE = [6.85, 6.85, 6.85, 6.85, 6.85, 6.85, 7.2, 7.2, 7.2, 7.2, 7.2
 export function createDemoFactory(): Factory {
   const rows: MonthRecord[] = months.map((m, i) => {
     const kwh = Math.round(production[i] * sec[i]);
-    // Fictional cost example only: this is NOT a JBVNL bill, approved tariff,\n    // utility billing-demand calculation, or a basis for recoverable savings.\n    // Do not impose a made-up universal contractual demand floor.\n    const billed = peak[i];
+    // Fictional cost example only: this is NOT a JBVNL bill, approved tariff,
+    // utility billing-demand calculation, or a basis for recoverable savings.
+    // Do not impose a made-up universal contractual demand floor.
+    const billed = peak[i];
     return {
       month: m,
       kwh,
