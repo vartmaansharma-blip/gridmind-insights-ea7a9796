@@ -70,9 +70,14 @@ export async function finishGoogleSignIn(
 }
 
 // Navigation never grants access. The portal rechecks permissions per request.
+// A signed-in prospective customer may use the request-only /cases portal even
+// without factory/case membership: portal_store allows only their own intake and
+// returns no private cases until an owner explicitly grants case access.
+// This customer *intent* must never be interpreted as a factory/team grant.
 export function workspaceDestination(principal: Principal, destination: AuthDestination) {
+  if (destination === "customer") return "/cases" as const;
   if (!principal.factories.length && !principal.isCustomer) return null;
-  if (!principal.factories.length || destination === "customer") return "/cases" as const;
+  if (!principal.factories.length) return "/cases" as const;
   if (destination === "team") return "/team/cases" as const;
   return "/" as const;
 }
