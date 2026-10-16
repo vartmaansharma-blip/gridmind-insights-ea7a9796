@@ -1,7 +1,7 @@
-import type { CSSProperties, ReactNode } from "react";
+import { useState, type CSSProperties, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import mark from "@/assets/gridmind-mark.png";
 import plateOwner from "@/assets/hero-plate-owner.jpg";
-import plateA from "@/assets/preview-hero-a.jpg";
 import plateB from "@/assets/preview-hero-b.jpg";
 
 /* Preview-scoped brand tokens. They do not touch the app's global theme. */
@@ -16,22 +16,52 @@ const tokens = {
   "--gm-amber": "#E2A43B",
 } as CSSProperties;
 
-const CONTACT_PENDING = "#contact-pending";
+/* No real contact destination exists yet: the CTA explains that instead of linking anywhere. */
+function ContactCta({ size = "lg" }: { size?: "sm" | "lg" }) {
+  const label = size === "lg" ? "Discuss an electricity review" : "Discuss a review";
+  return (
+    <button
+      type="button"
+      aria-describedby="contact-pending-note"
+      onClick={() => document.getElementById("contact-pending")?.scrollIntoView({ behavior: "smooth", block: "center" })}
+      className={`rounded-full bg-[var(--gm-brand-green)] font-semibold text-[var(--gm-brand-green-foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gm-brand-green)] ${size === "lg" ? "px-6 py-3.5" : "px-4 py-2 text-sm"}`}
+    >
+      {label}
+      <span className="ml-2 rounded bg-[var(--gm-brand-green-foreground)]/15 px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide">pending</span>
+    </button>
+  );
+}
+
+const NAV = [
+  { href: "#frame-b", label: "How it works" },
+  { href: "#frame-c", label: "Example investigation" },
+  { href: "#contact-pending", label: "Contact" },
+];
 
 function Header() {
+  const [open, setOpen] = useState(false);
   return (
     <header className="relative z-20 flex items-center justify-between px-5 py-5 md:px-12">
       <div className="flex items-center gap-2">
         <img src={mark} alt="" width={28} height={28} className="h-7 w-7" />
         <span className="font-display text-lg font-semibold text-[var(--gm-text)]">GridMind</span>
       </div>
-      <nav aria-label="Preview navigation" className="hidden gap-8 text-sm text-[var(--gm-text-2)] lg:flex">
-        <a href="#frame-b">Platform</a><a href="#frame-b">How it works</a><a href="#frame-c">Example investigation</a>
+      <nav aria-label="Preview sections" className="hidden gap-8 text-sm text-[var(--gm-text-2)] lg:flex">
+        {NAV.map((n) => <a key={n.href} href={n.href} className="hover:text-[var(--gm-text)]">{n.label}</a>)}
       </nav>
-      <div className="flex items-center gap-4 text-sm">
-        <a href="/auth" className="hidden text-[var(--gm-text)] sm:inline">Sign in</a>
-        <a href={CONTACT_PENDING} className="rounded-full bg-[var(--gm-brand-green)] px-4 py-2 font-semibold text-[var(--gm-brand-green-foreground)]">Discuss a review ↗</a>
+      <div className="flex items-center gap-3 text-sm">
+        <Link to="/auth" className="text-[var(--gm-text)] underline-offset-4 hover:underline">Sign in</Link>
+        <span className="hidden sm:inline"><ContactCta size="sm" /></span>
+        <button type="button" aria-expanded={open} aria-controls="preview-menu" onClick={() => setOpen((v) => !v)} className="rounded border border-white/20 px-2.5 py-1.5 text-[var(--gm-text)] lg:hidden">
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
+      {open && (
+        <nav id="preview-menu" aria-label="Preview sections" className="absolute inset-x-4 top-full z-30 flex flex-col rounded-lg border border-white/10 bg-[var(--gm-surface)] p-2 lg:hidden">
+          {NAV.map((n) => <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded px-3 py-3 text-[var(--gm-text)] hover:bg-white/5">{n.label}</a>)}
+          <Link to="/auth" className="rounded px-3 py-3 text-[var(--gm-text)] hover:bg-white/5">Sign in</Link>
+        </nav>
+      )}
     </header>
   );
 }
@@ -52,12 +82,12 @@ function Hero({ plate, label, position }: { plate: string; label: string; positi
           Evidence-led electricity reviews for factories. Understand the costs, investigate the questions, and identify what deserves attention.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-5">
-          <a href={CONTACT_PENDING} className="rounded-full bg-[var(--gm-brand-green)] px-6 py-3.5 font-semibold text-[var(--gm-brand-green-foreground)] transition-transform duration-200 hover:-translate-y-0.5">Discuss an electricity review ↗</a>
+          <ContactCta />
           <a href="#frame-c" className="font-medium text-[var(--gm-text)] underline-offset-4 hover:underline">Explore an example investigation →</a>
         </div>
       </div>
       <p className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-xs tracking-[0.2em] text-[var(--gm-text-2)]">SCROLL TO EXPLORE ↓</p>
-      <span className="absolute right-4 top-24 z-10 rounded bg-black/60 px-2 py-1 font-mono text-[10px] text-[var(--gm-text-2)]">{label} · generated concept plate</span>
+      <span className="absolute bottom-14 right-4 z-10 rounded bg-black/60 px-2 py-1 font-mono text-[10px] text-[var(--gm-text-2)]">{label} · generated concept plate</span>
     </section>
   );
 }
@@ -142,12 +172,17 @@ export function DesignPreview() {
       <div className="sticky top-0 z-50 bg-[var(--gm-brand-green)] px-4 py-1.5 text-center text-xs font-semibold text-[var(--gm-brand-green-foreground)]">
         Internal design preview — illustrative, fictional data · not linked from the site · contact destination pending
       </div>
-      <Hero plate={plateOwner} label="Frame A · Option 1 (owner reference)" position="65% center" />
-      <Hero plate={plateA} label="Frame A · Option 2 (overlook)" position="75% center" />
-      <Hero plate={plateB} label="Frame A · Option 3 (panorama)" position="75% center" />
+      <Hero plate={plateOwner} label="Frame A · Option A — human-scale overlook" position="62% center" />
+      <Hero plate={plateB} label="Frame A · Option B — infrastructure panorama" position="75% center" />
       <FrameB />
       <FrameC />
-      <div id="contact-pending" className="px-5 py-10 text-center text-sm text-[var(--gm-text-2)]">Contact destination pending — no message is sent from this preview.</div>
+      <section id="contact-pending" aria-labelledby="contact-pending-title" className="scroll-mt-16 border-t border-white/10 px-5 py-14 md:px-16">
+        <Tag tone="amber">Contact destination pending</Tag>
+        <h3 id="contact-pending-title" className="mt-4 font-display text-2xl font-semibold text-[var(--gm-text)]">The contact path isn't connected yet</h3>
+        <p id="contact-pending-note" className="mt-3 max-w-xl text-[var(--gm-text-2)]">
+          "Discuss a review" does not send anything in this preview. GridMind has not yet chosen a real contact destination (an email address or a form whose receipt is confirmed). No contact details have been made up, and no success message will appear until a real destination is connected.
+        </p>
+      </section>
     </main>
   );
 }
