@@ -60,7 +60,10 @@ const scopeFields: Field[] = [
 ];
 
 /** Functional server-backed controls; Lovable owns their final visual treatment. */
-export function ConnectedInvestigationWorkbench() {
+export function ConnectedInvestigationWorkbench({
+  caseId,
+  embedded = false,
+}: { caseId?: string; embedded?: boolean } = {}) {
   const [signedIn, setSignedIn] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
   const [error, setError] = useState("");
@@ -135,6 +138,20 @@ export function ConnectedInvestigationWorkbench() {
       );
     }
   };
+  useEffect(() => {
+    if (!caseId || !signedIn) return;
+    let active = true;
+    void call({ action: "load", caseId })
+      .then((result) => {
+        if (active) setStored(storedCaseSchema.parse(result));
+      })
+      .catch((e) => {
+        if (active) setError(e instanceof Error ? e.message : "Case could not be loaded");
+      });
+    return () => {
+      active = false;
+    };
+  }, [caseId, signedIn]);
   const c = stored?.snapshot;
   const current = !!stored && (stored.headRevision ?? stored.revision) === stored.revision;
   const editor = current && stored?.role !== "reviewer";
@@ -168,16 +185,22 @@ export function ConnectedInvestigationWorkbench() {
   );
   const evaluation = c ? evaluateCase(c) : null;
   return (
-    <main className="mx-auto grid max-w-6xl grid-cols-1 gap-5 p-4 sm:p-8">
-      <header className="flex flex-wrap justify-between gap-3">
-        <div>
-          <div className="eyebrow">GridMind / Connected method workspace</div>
-          <h1 className="text-2xl font-semibold">Persisted investigations</h1>
-        </div>
-        <Button variant="outline" asChild>
-          <Link to="/investigations">Offline synthetic workspace</Link>
-        </Button>
-      </header>
+    <div
+      className={
+        embedded ? "grid min-w-0 gap-5" : "mx-auto grid max-w-6xl grid-cols-1 gap-5 p-4 sm:p-8"
+      }
+    >
+      {!embedded && (
+        <header className="flex flex-wrap justify-between gap-3">
+          <div>
+            <div className="eyebrow">GridMind / Connected method workspace</div>
+            <h1 className="text-2xl font-semibold">Persisted investigations</h1>
+          </div>
+          <Button variant="outline" asChild>
+            <Link to="/investigations">Offline synthetic workspace</Link>
+          </Button>
+        </header>
+      )}
       <p className="rounded-md border border-warning bg-warning-soft p-4 text-sm">
         <strong>SYNTHETIC ONLY.</strong> Server-backed storage and authenticated actors. Reviews are
         simulated; customer release stays BLOCKED. No factory-file upload or real-data use.
@@ -264,62 +287,66 @@ export function ConnectedInvestigationWorkbench() {
               </Button>
             )}
           </div>
-          {record(
-            "Create an invented case",
-            <form
-              className="flex flex-wrap gap-3"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const fd = new FormData(e.currentTarget);
-                void safe(async () => {
-                  await run({
-                    action: "create",
-                    caseId: crypto.randomUUID(),
-                    factoryId: Number(fd.get("factory")),
-                    candidate: String(fd.get("candidate")) as "C1" | "C4",
-                    requestKey: crypto.randomUUID(),
-                  });
-                  await refresh();
-                });
-              }}
-            >
-              <label>
-                Authorized factory
-                <select
-                  name="factory"
-                  aria-label="Authorized factory"
-                  className="ml-2 border p-2"
-                  required
+          {!embedded && (
+            <>
+              {record(
+                "Create an invented case",
+                <form
+                  className="flex flex-wrap gap-3"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const fd = new FormData(e.currentTarget);
+                    void safe(async () => {
+                      await run({
+                        action: "create",
+                        caseId: crypto.randomUUID(),
+                        factoryId: Number(fd.get("factory")),
+                        candidate: String(fd.get("candidate")) as "C1" | "C4",
+                        requestKey: crypto.randomUUID(),
+                      });
+                      await refresh();
+                    });
+                  }}
                 >
-                  {factories.map((f) => (
-                    <option key={f.id} value={f.id}>
-                      {f.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-              <label>
-                Method
-                <select name="candidate" aria-label="Method" className="ml-2 border p-2">
-                  <option value="C4">C4 synthetic period comparison</option>
-                  <option value="C1">C1 synthetic chronology</option>
-                </select>
-              </label>
-              <Button disabled={busy || !factories.length}>Create synthetic case</Button>
-            </form>,
+                  <label>
+                    Authorized factory
+                    <select
+                      name="factory"
+                      aria-label="Authorized factory"
+                      className="ml-2 border p-2"
+                      required
+                    >
+                      {factories.map((f) => (
+                        <option key={f.id} value={f.id}>
+                          {f.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    Method
+                    <select name="candidate" aria-label="Method" className="ml-2 border p-2">
+                      <option value="C4">C4 synthetic period comparison</option>
+                      <option value="C1">C1 synthetic chronology</option>
+                    </select>
+                  </label>
+                  <Button disabled={busy || !factories.length}>Create synthetic case</Button>
+                </form>,
+              )}
+              <div className="flex flex-wrap gap-2">
+                {cases.map((v) => (
+                  <Button
+                    key={v.id}
+                    variant="outline"
+                    disabled={busy}
+                    onClick={() => void safe(() => run({ action: "load", caseId: v.id }))}
+                  >
+                    {v.id.slice(0, 8)} · v{v.revision} · {v.role}
+                  </Button>
+                ))}
+              </div>
+            </>
           )}
-          <div className="flex flex-wrap gap-2">
-            {cases.map((v) => (
-              <Button
-                key={v.id}
-                variant="outline"
-                disabled={busy}
-                onClick={() => void safe(() => run({ action: "load", caseId: v.id }))}
-              >
-                {v.id.slice(0, 8)} · v{v.revision} · {v.role}
-              </Button>
-            ))}
-          </div>
           {c && stored && evaluation && (
             <>
               <section className="panel p-4 text-sm">
@@ -846,6 +873,6 @@ export function ConnectedInvestigationWorkbench() {
           )}
         </>
       )}
-    </main>
+    </div>
   );
 }

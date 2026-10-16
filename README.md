@@ -74,6 +74,18 @@ bun run check
 
 Run the relevant checks before proposing a merge. Record the exact commit and results; do not claim a check passed unless it was actually run. Review [Release Gate](docs/release-gate.md) and the relevant technical runbooks before any live or customer-data workflow.
 
+## Integrated product preview
+
+The existing Lovable operational dashboard remains at `/`. The same application now provides:
+
+- `/website` — public service explanation and labeled sample brief.
+- `/cases?mode=demo` — customer sample workspace.
+- `/team/intake?mode=demo` and `/team/cases?mode=demo` — team sample workflow, with the existing investigation controls embedded for connected use.
+
+Remove `mode=demo` for authenticated isolated acceptance. Connected cases default to disabled; the server-only settings in `.env.example` must point at an authorized isolated database with the source migrations. Customer grants are case-specific and do not grant factory membership. Scope acceptance creates the case/grant automatically; accepted independent review publishes atomically when the manager authorized that policy. Source corrections invalidate the current publication automatically.
+
+This is synthetic source/preview capability, not a real customer-data launch. Evidence responses accept references/text; file custody is pending. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for tested behavior, automation and remaining release work.
+
 ## Working in Lovable and Codex
 
 Lovable handles design and visual implementation; Codex handles backend behavior, data contracts, tests, security, and repository operations. Keep shared changes in plain, editable code and preserve the existing stack, generated integrations, and published history. See [AGENTS.md](AGENTS.md) for the handoff rules.

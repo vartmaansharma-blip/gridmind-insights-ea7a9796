@@ -13,6 +13,13 @@ const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers });
 
 export async function handleConnectedInvestigation(request: Request): Promise<Response> {
+  return handleAuthenticatedCaseRequest(request, "investigation_store", executeCaseCommand);
+}
+export async function handleAuthenticatedCaseRequest(
+  request: Request,
+  rpcName: "investigation_store" | "portal_store",
+  execute: (store: CaseStore, actor: string, raw: unknown) => Promise<unknown>,
+): Promise<Response> {
   if (request.method !== "POST") return reply({ error: "METHOD_NOT_ALLOWED" }, 405);
   if (process.env.GRIDMIND_CONNECTED_CASES_ENABLED !== "synthetic-only")
     return reply({ error: "CONNECTED_CASES_DISABLED" }, 503);
@@ -44,7 +51,7 @@ export async function handleConnectedInvestigation(request: Request): Promise<Re
     });
     const store: CaseStore = {
       async call(args) {
-        const result = await admin.rpc("investigation_store", args);
+        const result = await admin.rpc(rpcName, args);
         if (result.error) {
           const code = result.error.code;
           const message = result.error.message;
@@ -55,7 +62,7 @@ export async function handleConnectedInvestigation(request: Request): Promise<Re
         return result.data;
       },
     };
-    return reply(await executeCaseCommand(store, data.user.id, parsed.value));
+    return reply(await execute(store, data.user.id, parsed.value));
   } catch (e) {
     if (e instanceof CaseError) return reply({ error: e.code }, e.status);
     if (e instanceof ZodError) return reply({ error: "INVALID_CASE_CONTRACT" }, 400);

@@ -1,5 +1,5 @@
 import { defineConfig } from "@playwright/test";
-import { localBackend } from "./local-backend";
+import { localBackend, localIntakeOrganization } from "./local-backend";
 
 // These tests must never contact a shared/production Supabase project.
 const backend = new URL(process.env.SUPABASE_URL ?? "http://127.0.0.1:54321");
@@ -10,10 +10,15 @@ if (!process.env.SUPABASE_ANON_KEY) throw new Error("Local SUPABASE_ANON_KEY is 
 // Server-only credential comes directly from the disposable CLI stack, never
 // from a shared project or VITE_* variable. The browser receives only anon.
 const isolated = localBackend();
+const intakeOrganization = await localIntakeOrganization();
 
 export default defineConfig({
   testDir: ".",
-  testMatch: ["authenticated-flow.pw.ts", "connected-authenticated.pw.ts"],
+  testMatch: [
+    "authenticated-flow.pw.ts",
+    "connected-authenticated.pw.ts",
+    "portal-authenticated.pw.ts",
+  ],
   fullyParallel: false,
   workers: 1,
   retries: 0,
@@ -42,6 +47,7 @@ export default defineConfig({
       SUPABASE_PUBLISHABLE_KEY: process.env.SUPABASE_ANON_KEY,
       GRIDMIND_CONNECTED_CASES_ENABLED: "synthetic-only",
       GRIDMIND_CASES_SERVICE_ROLE_KEY: isolated.serviceKey,
+      GRIDMIND_INTAKE_ORGANIZATION_ID: intakeOrganization,
     },
   },
 });

@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { addReview, evaluateCase } from "./engine";
 import { decisionBrief } from "./brief";
+import { customerBrief } from "./customer-brief";
+import { METHOD_VERSION } from "./engine";
 import { caseSchema, type Investigation } from "./schema";
 import { syntheticCase } from "./fixtures";
 import {
@@ -178,7 +180,20 @@ export async function executeCaseCommand(
       at: now,
       actorId: actor,
     });
-    event = { kind: "review", decision: cmd.decision, reviewedRevision: current.revision };
+    event = {
+      kind: "review",
+      decision: cmd.decision,
+      reviewedRevision: current.revision,
+      ...(cmd.decision === "accept"
+        ? {
+            publicationId: next.reviews.at(-1)!.id,
+            customerPublication: {
+              brief: customerBrief({ ...next, revision: current.revision + 1 }),
+            },
+            methodVersion: METHOD_VERSION,
+          }
+        : {}),
+    };
   }
   next.revision = current.revision + 1;
   return response(

@@ -58,3 +58,37 @@ export async function provisionLocalReviewer(factoryId: number, organizationId: 
   }
   return { id: user.id as string, email };
 }
+
+export async function provisionLocalCustomer() {
+  const { origin, serviceKey } = localBackend();
+  const email = `gridmind-customer-${crypto.randomUUID()}@example.test`;
+  const r = await fetch(`${origin}/auth/v1/admin/users`, {
+    method: "POST",
+    headers: {
+      apikey: serviceKey,
+      Authorization: `Bearer ${serviceKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password: "gridmind-ci-password", email_confirm: true }),
+  });
+  const user = await r.json();
+  if (!r.ok || typeof user.id !== "string")
+    throw new Error("Could not provision isolated customer");
+  return { id: user.id as string, email };
+}
+export async function localIntakeOrganization() {
+  const { origin, serviceKey } = localBackend();
+  const r = await fetch(
+    `${origin}/rest/v1/factories?name=eq.gridmind-http-factory-a&select=organization_id`,
+    { headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` } },
+  );
+  const rows = await r.json();
+  if (
+    !r.ok ||
+    !Array.isArray(rows) ||
+    rows.length !== 1 ||
+    !Number.isSafeInteger(rows[0].organization_id)
+  )
+    throw new Error("Missing isolated intake organization");
+  return String(rows[0].organization_id);
+}

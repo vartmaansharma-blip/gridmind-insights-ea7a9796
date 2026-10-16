@@ -406,6 +406,8 @@ try {
   console.log(
     "PASS expired assignment denial and concurrent-writer CAS with two PostgreSQL connections",
   );
+  const { verifyPortal } = await import("./portal-acceptance");
+  await verifyPortal(database, store, owner, reviewer, outsider, fa, a);
   if (process.env.GRIDMIND_CASE_BROWSER === "1") {
     // Restore ONLY this disposable fixture actor for the browser scenario.
     await database.query(

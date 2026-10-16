@@ -125,3 +125,33 @@ begin
   end if;
 end $$;
 select 'synthetic investigation schema/security contract: PASS' as result;
+
+-- Customer workflow tables never grant broad operational/factory access.
+do $$
+declare relation text;
+ fn regprocedure := 'public.portal_store(uuid,text,jsonb)'::regprocedure;
+ internal_fn regprocedure := 'private.portal_store(uuid,text,jsonb)'::regprocedure;
+begin
+ foreach relation in array array['case_customers','case_intake','case_communications','case_publications'] loop
+  if not (select relrowsecurity from pg_class where oid=('public.'||relation)::regclass)
+   or has_table_privilege('anon','public.'||relation,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE')
+   or has_table_privilege('authenticated','public.'||relation,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE')
+   or has_table_privilege('service_role','public.'||relation,'SELECT,INSERT,UPDATE,DELETE,TRUNCATE') then
+   raise exception 'PORTAL_SCHEMA_CONTRACT: unexpected direct access on %',relation;
+  end if;
+ end loop;
+ if has_function_privilege('anon',fn,'EXECUTE') or has_function_privilege('authenticated',fn,'EXECUTE')
+  or has_function_privilege('authenticated',internal_fn,'EXECUTE')
+  or not has_function_privilege('service_role',fn,'EXECUTE')
+  or (select prosecdef from pg_proc where oid=fn)
+  or not (select prosecdef and proconfig @> array['search_path=""'] from pg_proc where oid=internal_fn) then
+  raise exception 'PORTAL_SCHEMA_CONTRACT: server-only wrapper or pinned definer changed';
+ end if;
+ foreach relation in array array['case_communications','case_publications'] loop
+  if not exists(select 1 from pg_trigger where tgrelid=('public.'||relation)::regclass
+   and tgfoid='private.investigation_revision_immutable()'::regprocedure and not tgisinternal) then
+   raise exception 'PORTAL_SCHEMA_CONTRACT: immutable record trigger absent on %',relation;
+  end if;
+ end loop;
+end $$;
+select 'customer portal schema/security contract: PASS' as result;
