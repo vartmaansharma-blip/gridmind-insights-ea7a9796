@@ -11,14 +11,44 @@ export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
       { title: "Sign in — GridMind" },
-      { name: "description", content: "Sign in to access your private GridMind factory workspace." },
+      {
+        name: "description",
+        content: "Sign in to access your private GridMind factory workspace.",
+      },
     ],
   }),
+  validateSearch: (search: Record<string, unknown>): { destination?: "customer" | "team" } =>
+    search.destination === "customer" || search.destination === "team"
+      ? { destination: search.destination }
+      : {},
   component: AuthPage,
 });
 
 function AuthPage() {
   const navigate = useNavigate();
+  const { destination } = Route.useSearch();
+  const enterWorkspace = async () => {
+    try {
+      const { portalCall } = await import("@/lib/investigation/portal-client");
+      const p = await portalCall<import("@/lib/investigation/portal-contract").Principal>({
+        action: "principal",
+      });
+      if (!p.factories.length || destination === "customer") {
+        await navigate({ to: "/cases" });
+        return;
+      }
+      if (destination === "team") {
+        await navigate({ to: "/team/cases" });
+        return;
+      }
+    } catch {
+      if (destination) {
+        await navigate({ to: destination === "customer" ? "/cases" : "/team/cases" });
+        return;
+      }
+    }
+    await navigate({ to: "/" });
+  };
   const [mode, setMode] = useState<"sign-in" | "sign-up">("sign-in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,7 +69,7 @@ function AuthPage() {
         const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
         if (authError) throw authError;
         toast.success("Signed in");
-        navigate({ to: "/" });
+        await enterWorkspace();
       } else {
         const { data, error: authError } = await supabase.auth.signUp({ email, password });
         if (authError) throw authError;
@@ -48,7 +78,7 @@ function AuthPage() {
           setMode("sign-in");
         } else {
           toast.success("Account created");
-          navigate({ to: "/" });
+          await enterWorkspace();
         }
       }
     } catch (err) {
@@ -64,26 +94,51 @@ function AuthPage() {
       <div className="mx-auto max-w-md">
         <div className="mb-6 text-center">
           <div className="eyebrow">GridMind</div>
-          <h1 className="mt-2 text-3xl font-semibold">Private factory workspace</h1>
+          <h1 className="mt-2 text-3xl font-semibold">Your GridMind workspace</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Sign in to load factory data from the authenticated Supabase workspace.
+            Sign in to continue with your cases and authorized workspace.
           </p>
         </div>
 
         <Panel
           title={mode === "sign-in" ? "Sign in" : "Create account"}
-          desc={mode === "sign-in" ? "Your factory data stays behind authenticated, factory-scoped access." : "Create the account that will own your GridMind workspace."}
+          desc={
+            mode === "sign-in"
+              ? "Your factory data stays behind authenticated, factory-scoped access."
+              : "Create the account that will own your GridMind workspace."
+          }
         >
-          <form className="grid gap-4" onSubmit={submit}>
+          <form method="post" className="grid gap-4" onSubmit={submit}>
             <div className="grid gap-1.5">
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" autoComplete="email" required disabled={!hydrated || busy} value={email} onChange={(event) => setEmail(event.target.value)} />
+              <Input
+                id="email"
+                type="email"
+                autoComplete="email"
+                required
+                disabled={!hydrated || busy}
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
             </div>
             <div className="grid gap-1.5">
               <Label htmlFor="password">Password</Label>
-              <Input id="password" type="password" autoComplete={mode === "sign-in" ? "current-password" : "new-password"} minLength={8} required disabled={!hydrated || busy} value={password} onChange={(event) => setPassword(event.target.value)} />
+              <Input
+                id="password"
+                type="password"
+                autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
+                minLength={8}
+                required
+                disabled={!hydrated || busy}
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+              />
             </div>
-            {error && <p role="alert" className="text-sm text-danger">{error}</p>}
+            {error && (
+              <p role="alert" className="text-sm text-danger">
+                {error}
+              </p>
+            )}
             <Button type="submit" variant="cta" disabled={!hydrated || busy}>
               {busy ? "Working…" : mode === "sign-in" ? "Sign in" : "Create account"}
             </Button>
@@ -91,11 +146,21 @@ function AuthPage() {
 
           <div className="mt-4 text-center text-sm text-muted-foreground">
             {mode === "sign-in" ? (
-              <button type="button" disabled={!hydrated || busy} className="font-medium text-foreground underline-offset-4 hover:underline" onClick={() => setMode("sign-up")}>
+              <button
+                type="button"
+                disabled={!hydrated || busy}
+                className="font-medium text-foreground underline-offset-4 hover:underline"
+                onClick={() => setMode("sign-up")}
+              >
                 Create an account
               </button>
             ) : (
-              <button type="button" disabled={!hydrated || busy} className="font-medium text-foreground underline-offset-4 hover:underline" onClick={() => setMode("sign-in")}>
+              <button
+                type="button"
+                disabled={!hydrated || busy}
+                className="font-medium text-foreground underline-offset-4 hover:underline"
+                onClick={() => setMode("sign-in")}
+              >
                 Already have an account? Sign in
               </button>
             )}
@@ -103,7 +168,9 @@ function AuthPage() {
         </Panel>
 
         <p className="mt-5 text-center text-xs text-muted-foreground">
-          <Link to="/" className="underline underline-offset-4">Continue with demo mode</Link>
+          <Link to="/" className="underline underline-offset-4">
+            Continue with demo mode
+          </Link>
         </p>
       </div>
     </div>

@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:preview": "bun run build && bun scripts/check-production-preview.mjs",
     "docs:links": "bun scripts/check-markdown-links.mjs",
-    "test:intake": "python3 -m unittest discover -s tests -v"
+    "test:intake": "python3 -m unittest discover -s tests -v",
+    "demo:brief": "bun scripts/export-synthetic-investigation.ts"
   },
   "overrides": {
     "rolldown": "1.2.1"

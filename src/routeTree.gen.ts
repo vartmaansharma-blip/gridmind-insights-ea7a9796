@@ -10,28 +10,38 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as EnergyRouteImport } from './routes/energy'
 import { Route as FactoryRouteImport } from './routes/factory'
+import { Route as InvestigationsRouteImport } from './routes/investigations'
+import { Route as InvestigationsConnectedRouteImport } from './routes/investigations-connected'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SavingsRouteImport } from './routes/savings'
+import { Route as WebsiteRouteImport } from './routes/website'
+import { Route as ApiInvestigationsRouteImport } from './routes/api.investigations'
+import { Route as ApiPortalRouteImport } from './routes/api.portal'
+import { Route as CasesIndexRouteImport } from './routes/cases.index'
+import { Route as CasesCaseIdRouteImport } from './routes/cases.$caseId'
 import { Route as MachinesIndexRouteImport } from './routes/machines.index'
 import { Route as MachinesIdRouteImport } from './routes/machines.$id'
+import { Route as TeamIntakeRouteImport } from './routes/team.intake'
+import { Route as TeamCasesIndexRouteImport } from './routes/team.cases.index'
+import { Route as TeamCasesCaseIdRouteImport } from './routes/team.cases.$caseId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AlertsRoute = AlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnergyRoute = EnergyRouteImport.update({
@@ -44,6 +54,16 @@ const FactoryRoute = FactoryRouteImport.update({
   path: '/factory',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestigationsRoute = InvestigationsRouteImport.update({
+  id: '/investigations',
+  path: '/investigations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestigationsConnectedRoute = InvestigationsConnectedRouteImport.update({
+  id: '/investigations-connected',
+  path: '/investigations-connected',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
   id: '/opportunities',
   path: '/opportunities',
@@ -52,6 +72,31 @@ const OpportunitiesRoute = OpportunitiesRouteImport.update({
 const SavingsRoute = SavingsRouteImport.update({
   id: '/savings',
   path: '/savings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WebsiteRoute = WebsiteRouteImport.update({
+  id: '/website',
+  path: '/website',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInvestigationsRoute = ApiInvestigationsRouteImport.update({
+  id: '/api/investigations',
+  path: '/api/investigations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPortalRoute = ApiPortalRouteImport.update({
+  id: '/api/portal',
+  path: '/api/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesIndexRoute = CasesIndexRouteImport.update({
+  id: '/cases/',
+  path: '/cases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CasesCaseIdRoute = CasesCaseIdRouteImport.update({
+  id: '/cases/$caseId',
+  path: '/cases/$caseId',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MachinesIndexRoute = MachinesIndexRouteImport.update({
@@ -64,87 +109,172 @@ const MachinesIdRoute = MachinesIdRouteImport.update({
   path: '/machines/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamIntakeRoute = TeamIntakeRouteImport.update({
+  id: '/team/intake',
+  path: '/team/intake',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamCasesIndexRoute = TeamCasesIndexRouteImport.update({
+  id: '/team/cases/',
+  path: '/team/cases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamCasesCaseIdRoute = TeamCasesCaseIdRouteImport.update({
+  id: '/team/cases/$caseId',
+  path: '/team/cases/$caseId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
   '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
+  '/investigations': typeof InvestigationsRoute
+  '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
+  '/website': typeof WebsiteRoute
+  '/api/investigations': typeof ApiInvestigationsRoute
+  '/api/portal': typeof ApiPortalRoute
+  '/cases/$caseId': typeof CasesCaseIdRoute
   '/machines/$id': typeof MachinesIdRoute
+  '/team/intake': typeof TeamIntakeRoute
+  '/cases/': typeof CasesIndexRoute
   '/machines/': typeof MachinesIndexRoute
+  '/team/cases/$caseId': typeof TeamCasesCaseIdRoute
+  '/team/cases/': typeof TeamCasesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
   '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
+  '/investigations': typeof InvestigationsRoute
+  '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
+  '/website': typeof WebsiteRoute
+  '/api/investigations': typeof ApiInvestigationsRoute
+  '/api/portal': typeof ApiPortalRoute
+  '/cases/$caseId': typeof CasesCaseIdRoute
   '/machines/$id': typeof MachinesIdRoute
+  '/team/intake': typeof TeamIntakeRoute
+  '/cases': typeof CasesIndexRoute
   '/machines': typeof MachinesIndexRoute
+  '/team/cases/$caseId': typeof TeamCasesCaseIdRoute
+  '/team/cases': typeof TeamCasesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/auth': typeof AuthRoute
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
+  '/investigations': typeof InvestigationsRoute
+  '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
+  '/website': typeof WebsiteRoute
+  '/api/investigations': typeof ApiInvestigationsRoute
+  '/api/portal': typeof ApiPortalRoute
+  '/cases/$caseId': typeof CasesCaseIdRoute
   '/machines/$id': typeof MachinesIdRoute
+  '/team/intake': typeof TeamIntakeRoute
+  '/cases/': typeof CasesIndexRoute
   '/machines/': typeof MachinesIndexRoute
+  '/team/cases/$caseId': typeof TeamCasesCaseIdRoute
+  '/team/cases/': typeof TeamCasesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/auth'
     | '/alerts'
+    | '/auth'
     | '/energy'
     | '/factory'
+    | '/investigations'
+    | '/investigations-connected'
     | '/opportunities'
     | '/savings'
+    | '/website'
+    | '/api/investigations'
+    | '/api/portal'
+    | '/cases/$caseId'
     | '/machines/$id'
+    | '/team/intake'
+    | '/cases/'
     | '/machines/'
+    | '/team/cases/$caseId'
+    | '/team/cases/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/auth'
     | '/alerts'
+    | '/auth'
     | '/energy'
     | '/factory'
+    | '/investigations'
+    | '/investigations-connected'
     | '/opportunities'
     | '/savings'
+    | '/website'
+    | '/api/investigations'
+    | '/api/portal'
+    | '/cases/$caseId'
     | '/machines/$id'
+    | '/team/intake'
+    | '/cases'
     | '/machines'
+    | '/team/cases/$caseId'
+    | '/team/cases'
   id:
     | '__root__'
-    | '/auth'
     | '/'
     | '/alerts'
+    | '/auth'
     | '/energy'
     | '/factory'
+    | '/investigations'
+    | '/investigations-connected'
     | '/opportunities'
     | '/savings'
+    | '/website'
+    | '/api/investigations'
+    | '/api/portal'
+    | '/cases/$caseId'
     | '/machines/$id'
+    | '/team/intake'
+    | '/cases/'
     | '/machines/'
+    | '/team/cases/$caseId'
+    | '/team/cases/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthRoute: typeof AuthRoute
   AlertsRoute: typeof AlertsRoute
+  AuthRoute: typeof AuthRoute
   EnergyRoute: typeof EnergyRoute
   FactoryRoute: typeof FactoryRoute
+  InvestigationsRoute: typeof InvestigationsRoute
+  InvestigationsConnectedRoute: typeof InvestigationsConnectedRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
   SavingsRoute: typeof SavingsRoute
+  WebsiteRoute: typeof WebsiteRoute
+  ApiInvestigationsRoute: typeof ApiInvestigationsRoute
+  ApiPortalRoute: typeof ApiPortalRoute
+  CasesCaseIdRoute: typeof CasesCaseIdRoute
   MachinesIdRoute: typeof MachinesIdRoute
+  TeamIntakeRoute: typeof TeamIntakeRoute
+  CasesIndexRoute: typeof CasesIndexRoute
   MachinesIndexRoute: typeof MachinesIndexRoute
+  TeamCasesCaseIdRoute: typeof TeamCasesCaseIdRoute
+  TeamCasesIndexRoute: typeof TeamCasesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -156,18 +286,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/alerts': {
       id: '/alerts'
       path: '/alerts'
       fullPath: '/alerts'
       preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/energy': {
@@ -184,6 +314,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FactoryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/investigations': {
+      id: '/investigations'
+      path: '/investigations'
+      fullPath: '/investigations'
+      preLoaderRoute: typeof InvestigationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investigations-connected': {
+      id: '/investigations-connected'
+      path: '/investigations-connected'
+      fullPath: '/investigations-connected'
+      preLoaderRoute: typeof InvestigationsConnectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/opportunities': {
       id: '/opportunities'
       path: '/opportunities'
@@ -196,6 +340,41 @@ declare module '@tanstack/react-router' {
       path: '/savings'
       fullPath: '/savings'
       preLoaderRoute: typeof SavingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/website': {
+      id: '/website'
+      path: '/website'
+      fullPath: '/website'
+      preLoaderRoute: typeof WebsiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/investigations': {
+      id: '/api/investigations'
+      path: '/api/investigations'
+      fullPath: '/api/investigations'
+      preLoaderRoute: typeof ApiInvestigationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/portal': {
+      id: '/api/portal'
+      path: '/api/portal'
+      fullPath: '/api/portal'
+      preLoaderRoute: typeof ApiPortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases/': {
+      id: '/cases/'
+      path: '/cases'
+      fullPath: '/cases/'
+      preLoaderRoute: typeof CasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cases/$caseId': {
+      id: '/cases/$caseId'
+      path: '/cases/$caseId'
+      fullPath: '/cases/$caseId'
+      preLoaderRoute: typeof CasesCaseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/machines/': {
@@ -212,19 +391,50 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MachinesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team/intake': {
+      id: '/team/intake'
+      path: '/team/intake'
+      fullPath: '/team/intake'
+      preLoaderRoute: typeof TeamIntakeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/cases/': {
+      id: '/team/cases/'
+      path: '/team/cases'
+      fullPath: '/team/cases/'
+      preLoaderRoute: typeof TeamCasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team/cases/$caseId': {
+      id: '/team/cases/$caseId'
+      path: '/team/cases/$caseId'
+      fullPath: '/team/cases/$caseId'
+      preLoaderRoute: typeof TeamCasesCaseIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthRoute: AuthRoute,
   AlertsRoute: AlertsRoute,
+  AuthRoute: AuthRoute,
   EnergyRoute: EnergyRoute,
   FactoryRoute: FactoryRoute,
+  InvestigationsRoute: InvestigationsRoute,
+  InvestigationsConnectedRoute: InvestigationsConnectedRoute,
   OpportunitiesRoute: OpportunitiesRoute,
   SavingsRoute: SavingsRoute,
+  WebsiteRoute: WebsiteRoute,
+  ApiInvestigationsRoute: ApiInvestigationsRoute,
+  ApiPortalRoute: ApiPortalRoute,
+  CasesCaseIdRoute: CasesCaseIdRoute,
   MachinesIdRoute: MachinesIdRoute,
+  TeamIntakeRoute: TeamIntakeRoute,
+  CasesIndexRoute: CasesIndexRoute,
   MachinesIndexRoute: MachinesIndexRoute,
+  TeamCasesCaseIdRoute: TeamCasesCaseIdRoute,
+  TeamCasesIndexRoute: TeamCasesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

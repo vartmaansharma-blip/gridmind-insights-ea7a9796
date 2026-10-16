@@ -43,3 +43,6 @@ __pycache__/
 coverage/
 test-results/
 playwright-report/
+
+# Supabase CLI local discovery/cache metadata
+supabase/.temp/

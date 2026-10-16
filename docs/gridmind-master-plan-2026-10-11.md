@@ -4,6 +4,20 @@
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
+## Authorized build exception — 16 October 2026
+
+The founder explicitly instructed Codex: “start building it as fast as we can… proceed and complete it… commit it in the repository… leave the rest to Lovable.” This is a dated exception to D7 for the internal MVP implementation tracked in [issue #105](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/105).
+
+**Changed scope:** build and commit a synthetic internal investigation workflow from case scope through evidence, deterministic C1/C4 method evaluation, review, versioned Decision Brief, decision/outcome and service economics. Codex owns behavior/contracts/tests and minimal functional controls; Lovable owns visual design and interaction polish. The supplied MVP blueprint is supporting requirements, not a second execution authority.
+
+**Follow-up implementation boundary:** the founder's “do it” authorizes the connected synthetic backend source and disposable validation alongside the offline exercise. Reuse canonical organization/factory membership; store the eight case objects in immutable JSON revisions with scoped assignments. The source migration and default-disabled API are part of the internal build. This does not authorize application to production or real-data intake. See the [implementation handoff](gridmind-mvp-lovable-handoff.md) and issue #105 for verification and remaining gates.
+
+**Three-area integration direction, 16 October:** the founder requested a public website, customer view and team view, then explicitly instructed us to preserve the existing Lovable dashboard and plan its integration with the investigation build first. Keep the current dashboard, specialist routes, case engine, authentication and published history. Extend the existing dashboard with role-specific case navigation rather than build replacement dashboards. The detailed proposed map and implementation sequence live in the existing [implementation handoff](gridmind-mvp-lovable-handoff.md). The founder subsequently authorized implementation, GitHub storage and minimal human touch. The integrated synthetic source adds public/customer/team routes, case-only permissions and automatic handoffs under issue #107; preserve independent review and customer decisions. This source implementation makes no production/customer-data readiness claim. See the handoff for implemented versus remaining boundaries.
+
+**Unchanged gates:** no commercial wedge is selected; discovery evidence remains unchanged. No customer/factory intake, production database change, production deployment, actual qualified approval, public commercial promise or paid engagement is authorized. Tier 1/Tier 2 and the technical release gate still govern real use. The synthetic workspace is a method demonstration; local browser storage is not approved customer-data custody.
+
+**Trade-off:** development now proceeds before buyer validation and may need narrowing after discovery. Keep the work isolated, preserve existing architecture/history and report readiness honestly. Earlier no-build statements below continue to apply outside this explicit exception. See the dated exception in the Decision Constitution and the [implementation handoff](gridmind-mvp-lovable-handoff.md).
+
 ## Executive operating summary — 2026-10-15
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
@@ -33,7 +47,7 @@ GridMind is an **evidence-first industrial investigation service**: it turns a m
 | **D4 — Offer ladder** | (0) Free one-page workflow/decision map from an interview; (1) bounded paid, human-reviewed brief; (2) recurring monitoring only after evidence. | ₹15,000 and 5–10 working days remain unvalidated hypotheses, not approved pricing or an SLA. |
 | **D5 — Evidence hierarchy** | Public-source facts, participant statements, and controlled experiments stay in separate evidence classes. | Simulated interviews, synthetic fixtures, and desk-only hypotheses never enter the customer evidence ledger. |
 | **D6 — Reviewer dependency** | A qualified reviewer is not required to hold non-technical discovery interviews. | A suitable reviewer remains a gate before technical interpretation or any customer-data test. External outreach still requires appropriate adult/professional support. |
-| **D7 — Scope freeze** | Until the 2026-11-10 decision, no new strategy documents, speculative modules, or feature PRs. | Exception only for necessary infrastructure, correctness, security, and safety fixes. Keep existing controls; do not weaken CI. |
+| **D7 — Scope freeze, amended 2026-10-16** | Until the 2026-11-10 decision, no speculative expansion or second strategy. The founder-authorized internal synthetic MVP is the explicit build exception above. | Infrastructure, correctness, security and safety repairs remain permitted. Customer-data and production gates remain binding; keep CI intact. |
 | **D8 — 2026-10-31 checkpoint** | Target at least 3 substantive manufacturing conversations held and at least 1 explicit next step from a buyer (e.g., introduction to budget owner or request to review a scoped proposal). | If missed, record the actual access constraint and revise the plan honestly. No invented funnel rates or evidence. Real bills/data remain prohibited until Tier 2 gates pass. |
 
 ### Current state and next action
@@ -154,7 +168,7 @@ A fee must make sense against conservative incremental value **and** cover deliv
 
 ## 9. Engineering priority: minimum necessary
 
-**Discovery is the only P0.** Keep existing safeguards intact, but pause broad schema/RPC/tenant-isolation expansion, new modules, analytics dashboards, public-site polish, and prototype expansion until a candidate offer creates a concrete requirement.
+**Discovery remains the commercial P0.** The 2026-10-16 founder authorization permits the isolated internal synthetic MVP alongside it. Keep existing safeguards intact; broad schema/RPC expansion, unrelated modules, analytics dashboards and public-site polish remain deferred.
 
 - Do not weaken existing access controls or use production/customer data to accelerate discovery.
 - The existing draft equipment metadata fix [PR #37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37) is not a reason to expand the roadmap. Keep it draft/parked unless the selected workflow needs the electricity workspace; do not merge without relevant non-production acceptance.
@@ -254,7 +268,7 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 
 ## 15. Minimum investigation architecture — synthetic boundary, 2026-10-16
 
-This section records the bounded architecture exercise requested after the technical-readiness audit. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge, authorize customer-data use or start a new application module.
+This section records the architecture exercise and its information model. The dated founder build exception above now authorizes isolated synthetic implementation of this model. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge or authorize customer-data use.
 
 ### 15.1 The one product chain
 
@@ -283,7 +297,7 @@ The existing [C4 energy fixture](gridmind-economic-discovery-synthetic-evaluatio
 
 Both fixtures support the same eight-object architecture, but neither supplies commercial evidence. C1 has greater event-sequence, causal and safety risk. C4 has greater comparability, tariff and baseline risk. The prototype's stronger C4 fit is sunk implementation context, not a reason to select C4.
 
-### 15.3 Smallest future implementation boundary
+### 15.3 Smallest real-customer implementation boundary
 
 After Tier 1 buyer evidence selects a candidate and Tier 2 authorizes a bounded test, implement only one end-to-end internal path:
 
@@ -301,4 +315,4 @@ Do not build a general customer dashboard, broad integrations, autonomous diagno
 
 The synthetic architecture exercise is complete enough to prevent C4-oriented code from dictating the product model. It is not independently reviewed, delivery time is not measured, and no buyer usefulness or willingness to pay is established.
 
-The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Product implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).
+The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Real-customer implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).

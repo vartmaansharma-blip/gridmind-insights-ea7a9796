@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:synthetic": "playwright test --config synthetic.config.ts"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1"

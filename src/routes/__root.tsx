@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -90,6 +91,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const syntheticWorkspace = useRouterState({ select: (state) => ["/investigations", "/investigations-connected", "/auth", "/website", "/cases"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
+  // Case workspaces initialize only the services requested by their own route.
+  if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
   return (
     <QueryClientProvider client={queryClient}>
       <EnergyStoreProvider>
