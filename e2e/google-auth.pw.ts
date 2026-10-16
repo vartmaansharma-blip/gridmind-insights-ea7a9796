@@ -235,3 +235,16 @@ test("invalid OAuth session fails before any workspace lookup", async ({ page })
   await expect(page).toHaveURL(/\/auth\?destination=team$/);
   await expect(page.getByRole("button", { name: "Continue with Google" })).toBeEnabled();
 });
+
+test("provider availability network failure restores controls without leaving auth", async ({
+  page,
+}) => {
+  await fixture(page);
+  await page.route(`${backend}/auth/v1/settings`, (route) => route.abort("connectionfailed"));
+  await page.goto("/auth?destination=customer");
+  await page.getByRole("button", { name: "Continue with Google" }).click();
+  await expect(page.getByRole("alert")).toContainText("unavailable");
+  await expect(page.getByRole("button", { name: "Continue with Google" })).toBeEnabled();
+  await expect(page.getByLabel("Email", { exact: true })).toBeEnabled();
+  await expect(page).toHaveURL(/\/auth\?destination=customer$/);
+});
