@@ -1,6 +1,8 @@
 import { STAFF_NAV } from "./dashboard-nav";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, useEffect, type ReactNode } from "react";
+import { useQueryClient } from "@tanstack/react-query";
+import { usePullToRefresh } from "@/hooks/use-pull-to-refresh";
 import { toast } from "sonner";
 import { z } from "zod";
 import {
@@ -12,6 +14,7 @@ import {
   Lightbulb,
   Play,
   Plus,
+  RefreshCw,
   Zap,
 } from "lucide-react";
 import { DashboardFrame, DashboardBrand as Logo } from "./dashboard-frame";
@@ -119,7 +122,20 @@ export function AddFactoryDialog({
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { factories, active, setActive, analysis, runAnalysis, authenticated } = useEnergy();
+  const { factories, active, setActive, analysis, runAnalysis, authenticated, loading, refresh } = useEnergy();
+  const queryClient = useQueryClient();
+  const { distance, refreshing, threshold } = usePullToRefresh({
+    enabled: authenticated && !loading,
+    onRefresh: async () => {
+      try {
+        await refresh();
+        await queryClient.invalidateQueries();
+        toast.success("Factory data is up to date");
+      } catch (error) {
+        toast.error(error instanceof Error ? error.message : "Unable to refresh. Try again.");
+      }
+    },
+  });
   const [addOpen, setAddOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -144,6 +160,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <DashboardFrame
       links={STAFF_NAV}
       header={
+        <>
         <div className="flex min-h-16 items-center gap-2 px-4 py-3 sm:px-6">
           <div className="lg:hidden">
             <Logo />
@@ -204,6 +221,21 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
           </div>
         </div>
+        {(distance > 0 || refreshing) && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="pointer-events-none fixed left-1/2 top-20 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium shadow-md lg:hidden"
+          >
+            <RefreshCw className={`size-4 ${refreshing ? "animate-spin" : ""}`} aria-hidden="true" />
+            {refreshing
+              ? "Refreshing factory data…"
+              : distance >= threshold
+                ? "Release to refresh"
+                : "Pull to refresh"}
+          </div>
+        )}
+        </>
       }
       floating={
         <Button
