@@ -63,12 +63,51 @@ function AuthPage() {
   // SSR displays the form before React attaches its event handlers. Do not
   // accept input that hydration could discard or submit without a listener.
   const [hydrated, setHydrated] = useState(false);
+  const [checkingSession, setCheckingSession] = useState(true);
   const inFlight = useRef(false);
   const callbackWork = useRef<Promise<void> | null>(null);
   useEffect(() => {
     setHydrated(true);
     const callback = googleReturn(window.location.href);
-    if (!callback.active && !callbackWork.current) return;
+    if (!callback.active && !callbackWork.current) {
+      // Supabase persists and refreshes its browser session, but the original
+      // /auth route always displayed another login form on a return visit.
+      // Reuse an existing *verified* session before asking for credentials.
+      let cancelled = false;
+      void (async () => {
+        try {
+          const { data, error: sessionError } = await supabase.auth.getSession();
+          if (cancelled) return;
+          if (sessionError) throw new Error("Could not restore your saved sign-in. Please try again.");
+          if (!data.session) return;
+
+          const { data: verified, error: userError } = await supabase.auth.getUser();
+          if (cancelled) return;
+          if (userError || verified.user?.id !== data.session.user.id)
+            throw new Error("Your saved sign-in could not be verified. Please sign in again.");
+
+          inFlight.current = true;
+          setBusy(true);
+          await enterWorkspace();
+        } catch (err) {
+          if (!cancelled) {
+            setAwaitingAccess(false);
+            setPendingAccess(false);
+            setError(err instanceof Error ? err.message : "Could not restore your saved sign-in.");
+          }
+        } finally {
+          if (!cancelled) {
+            inFlight.current = false;
+            setBusy(false);
+            setCheckingSession(false);
+          }
+        }
+      })();
+      return () => {
+        cancelled = true;
+      };
+    }
+    setCheckingSession(false);
     let cancelled = false;
     inFlight.current = true;
     setBusy(true);
@@ -241,12 +280,17 @@ function AuthPage() {
             </div>
           ) : (
             <>
+              {checkingSession && (
+                <p role="status" className="mb-4 text-sm text-muted-foreground">
+                  Checking your saved sign-in…
+                </p>
+              )}
               <Button
                 type="button"
                 variant="outline"
                 className="mb-5 min-h-11 w-full gap-3 border-[#747775] bg-white px-4 text-sm font-medium text-[#1f1f1f] transition-colors duration-150 hover:border-[#5f6368] hover:bg-[#f6f8fc] hover:text-[#1f1f1f] active:bg-[#edf2f7] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 motion-reduce:transition-none"
                 aria-busy={googleBusy}
-                disabled={!hydrated || busy}
+                disabled={!hydrated || busy || checkingSession}
                 onClick={googleSignIn}
               >
                 {googleBusy ? (
@@ -281,7 +325,7 @@ function AuthPage() {
                     inputMode="email"
                     className="min-h-11"
                     required
-                    disabled={!hydrated || busy}
+                    disabled={!hydrated || busy || checkingSession}
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                   />
@@ -296,7 +340,7 @@ function AuthPage() {
                       minLength={8}
                       className="min-h-11 pr-12"
                       required
-                      disabled={!hydrated || busy}
+                      disabled={!hydrated || busy || checkingSession}
                       value={password}
                       onChange={(event) => setPassword(event.target.value)}
                     />
@@ -305,7 +349,7 @@ function AuthPage() {
                       className="absolute inset-y-0 right-0 inline-flex min-w-11 items-center justify-center rounded-r-md text-muted-foreground transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring motion-reduce:transition-none"
                       aria-label={showPassword ? "Hide password" : "Show password"}
                       aria-pressed={showPassword}
-                      disabled={!hydrated || busy}
+                      disabled={!hydrated || busy || checkingSession}
                       onClick={() => setShowPassword((visible) => !visible)}
                     >
                       {showPassword ? (
@@ -316,7 +360,7 @@ function AuthPage() {
                     </button>
                   </div>
                 </div>
-                <Button type="submit" variant="cta" className="min-h-11" disabled={!hydrated || busy}>
+                <Button type="submit" variant="cta" className="min-h-11" disabled={!hydrated || busy || checkingSession}>
                   {busy && !googleBusy ? <LoaderCircle className="size-4 animate-spin motion-reduce:animate-none" aria-hidden="true" /> : null}
                   {busy && !googleBusy ? (mode === "sign-in" ? "Signing in…" : "Creating account…") : mode === "sign-in" ? "Sign in" : "Create account"}
                 </Button>
@@ -326,7 +370,7 @@ function AuthPage() {
                 {mode === "sign-in" ? (
                   <button
                     type="button"
-                    disabled={!hydrated || busy}
+                    disabled={!hydrated || busy || checkingSession}
                     className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 font-medium text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setMode("sign-up")}
                   >
@@ -335,7 +379,7 @@ function AuthPage() {
                 ) : (
                   <button
                     type="button"
-                    disabled={!hydrated || busy}
+                    disabled={!hydrated || busy || checkingSession}
                     className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 font-medium text-foreground underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                     onClick={() => setMode("sign-in")}
                   >
