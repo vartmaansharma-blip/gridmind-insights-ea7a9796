@@ -119,7 +119,7 @@ function HeroCopy({ headingId }: { headingId: string }) {
 function Plate({ eager = false }: { eager?: boolean }) {
   return (
     <div className="gm-plate" aria-hidden>
-      <img src={plate} alt="" width={1376} height={768} loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} />
+      <img src={plate} alt="" width={1376} height={768} loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} onError={(e) => { e.currentTarget.style.visibility = "hidden"; }} />
     </div>
   );
 }
