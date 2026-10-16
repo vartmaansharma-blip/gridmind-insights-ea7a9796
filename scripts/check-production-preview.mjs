@@ -76,7 +76,7 @@ async function waitUntilReady() {
   throw new Error("Preview did not become ready within 30 seconds.");
 }
 
-const routes = ["/", "/auth", "/factory", "/energy", "/opportunities", "/alerts", "/savings"];
+const routes = ["/", "/auth", "/factory", "/energy", "/opportunities", "/alerts", "/savings", "/investigations"];
 
 try {
   await waitUntilReady();

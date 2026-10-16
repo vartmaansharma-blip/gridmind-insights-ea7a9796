@@ -99,3 +99,7 @@ Lovable handles design and visual implementation; Codex handles backend behavior
 The Master Plan controls execution, the Buyer Discovery Sprint records live discovery events, and the Decision Constitution records binding guardrails and durable decisions. Reference documents preserve useful history and analysis but do not create competing task queues.
 
 Do not create another master plan or discovery tracker. Update the canonical records when material evidence changes a decision.
+
+## Internal investigation MVP
+
+The founder-authorized synthetic workspace is available at `/investigations`. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.

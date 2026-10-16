@@ -10,10 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as EnergyRouteImport } from './routes/energy'
 import { Route as FactoryRouteImport } from './routes/factory'
+import { Route as InvestigationsRouteImport } from './routes/investigations'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SavingsRouteImport } from './routes/savings'
 import { Route as MachinesIndexRouteImport } from './routes/machines.index'
@@ -24,14 +25,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AlertsRoute = AlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnergyRoute = EnergyRouteImport.update({
@@ -42,6 +43,11 @@ const EnergyRoute = EnergyRouteImport.update({
 const FactoryRoute = FactoryRouteImport.update({
   id: '/factory',
   path: '/factory',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InvestigationsRoute = InvestigationsRouteImport.update({
+  id: '/investigations',
+  path: '/investigations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
@@ -67,10 +73,11 @@ const MachinesIdRoute = MachinesIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
   '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
+  '/investigations': typeof InvestigationsRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
   '/machines/$id': typeof MachinesIdRoute
@@ -78,10 +85,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
   '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
+  '/investigations': typeof InvestigationsRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
   '/machines/$id': typeof MachinesIdRoute
@@ -89,11 +97,12 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/auth': typeof AuthRoute
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/auth': typeof AuthRoute
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
+  '/investigations': typeof InvestigationsRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
   '/machines/$id': typeof MachinesIdRoute
@@ -103,10 +112,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/auth'
     | '/alerts'
+    | '/auth'
     | '/energy'
     | '/factory'
+    | '/investigations'
     | '/opportunities'
     | '/savings'
     | '/machines/$id'
@@ -114,21 +124,23 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/auth'
     | '/alerts'
+    | '/auth'
     | '/energy'
     | '/factory'
+    | '/investigations'
     | '/opportunities'
     | '/savings'
     | '/machines/$id'
     | '/machines'
   id:
     | '__root__'
-    | '/auth'
     | '/'
     | '/alerts'
+    | '/auth'
     | '/energy'
     | '/factory'
+    | '/investigations'
     | '/opportunities'
     | '/savings'
     | '/machines/$id'
@@ -137,10 +149,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthRoute: typeof AuthRoute
   AlertsRoute: typeof AlertsRoute
+  AuthRoute: typeof AuthRoute
   EnergyRoute: typeof EnergyRoute
   FactoryRoute: typeof FactoryRoute
+  InvestigationsRoute: typeof InvestigationsRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
   SavingsRoute: typeof SavingsRoute
   MachinesIdRoute: typeof MachinesIdRoute
@@ -156,18 +169,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/alerts': {
       id: '/alerts'
       path: '/alerts'
       fullPath: '/alerts'
       preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/energy': {
@@ -182,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/factory'
       fullPath: '/factory'
       preLoaderRoute: typeof FactoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investigations': {
+      id: '/investigations'
+      path: '/investigations'
+      fullPath: '/investigations'
+      preLoaderRoute: typeof InvestigationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/opportunities': {
@@ -217,10 +237,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthRoute: AuthRoute,
   AlertsRoute: AlertsRoute,
+  AuthRoute: AuthRoute,
   EnergyRoute: EnergyRoute,
   FactoryRoute: FactoryRoute,
+  InvestigationsRoute: InvestigationsRoute,
   OpportunitiesRoute: OpportunitiesRoute,
   SavingsRoute: SavingsRoute,
   MachinesIdRoute: MachinesIdRoute,

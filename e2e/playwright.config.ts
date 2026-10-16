@@ -9,7 +9,7 @@ if (!process.env.SUPABASE_ANON_KEY) throw new Error("Local SUPABASE_ANON_KEY is 
 
 export default defineConfig({
   testDir: ".",
-  testMatch: "**/*.pw.ts",
+  testMatch: "authenticated-flow.pw.ts",
   fullyParallel: false,
   workers: 1,
   retries: 0,

@@ -118,6 +118,9 @@ export function buildSyntheticC4Brief(input: SyntheticC4Case): SyntheticC4Brief 
     evidenceIds.add(record.evidenceId);
     invoices.add(record.invoiceId);
     months.add(record.month);
+    if (!Number.isFinite(record.kwh / record.productionUnits) || !Number.isFinite(record.billedInr / record.kwh)) {
+      problems.push("derived arithmetic is not finite");
+    }
     if (problems.length) {
       issues.push("Evidence " + (record.evidenceId || "(missing ID)") + ": " + problems.join("; ") + ".");
       continue;
@@ -143,6 +146,11 @@ export function buildSyntheticC4Brief(input: SyntheticC4Case): SyntheticC4Brief 
           validPeriods[i - 1].month + " and " + validPeriods[i].month + ".",
       );
     }
+  }
+  if (validPeriods.length >= 3) {
+    const start = validPeriods[0];
+    const end = validPeriods[validPeriods.length - 1];
+    if (![percentChange(start.kwh / start.productionUnits, end.kwh / end.productionUnits), percentChange(start.kwh, end.kwh), percentChange(start.productionUnits, end.productionUnits)].every(Number.isFinite)) issues.push("Comparison arithmetic is not finite.");
   }
   const safeToCompare = issues.length === 0 && validPeriods.length >= 3;
   const first = validPeriods[0];

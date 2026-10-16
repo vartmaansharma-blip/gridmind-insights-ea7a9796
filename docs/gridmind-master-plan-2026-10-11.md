@@ -4,6 +4,16 @@
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
+## Authorized build exception — 16 October 2026
+
+The founder explicitly instructed Codex: “start building it as fast as we can… proceed and complete it… commit it in the repository… leave the rest to Lovable.” This is a dated exception to D7 for the internal MVP implementation tracked in [issue #105](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/105).
+
+**Changed scope:** build and commit a synthetic internal investigation workflow from case scope through evidence, deterministic C1/C4 method evaluation, review, versioned Decision Brief, decision/outcome and service economics. Codex owns behavior/contracts/tests and minimal functional controls; Lovable owns visual design and interaction polish. The supplied MVP blueprint is supporting requirements, not a second execution authority.
+
+**Unchanged gates:** no commercial wedge is selected; discovery evidence remains unchanged. No customer/factory intake, production database change, deployment, actual qualified approval, public commercial promise or paid engagement is authorized. Tier 1/Tier 2 and the technical release gate still govern real use. The synthetic workspace is a method demonstration; local browser storage is not approved customer-data custody.
+
+**Trade-off:** development now proceeds before buyer validation and may need narrowing after discovery. Keep the work isolated, preserve existing architecture/history and report readiness honestly. Earlier no-build statements below continue to apply outside this explicit exception. See the dated exception in the Decision Constitution and the [implementation handoff](gridmind-mvp-lovable-handoff.md).
+
 ## Executive operating summary — 2026-10-15
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
@@ -31,7 +41,7 @@ GridMind is an **evidence-first industrial investigation service**: it turns a m
 | **D4 — Offer ladder** | (0) Free one-page workflow/decision map from an interview; (1) bounded paid, human-reviewed brief; (2) recurring monitoring only after evidence. | ₹15,000 and 5–10 working days remain unvalidated hypotheses, not approved pricing or an SLA. |
 | **D5 — Evidence hierarchy** | Public-source facts, participant statements, and controlled experiments stay in separate evidence classes. | Simulated interviews, synthetic fixtures, and desk-only hypotheses never enter the customer evidence ledger. |
 | **D6 — Reviewer dependency** | A qualified reviewer is not required to hold non-technical discovery interviews. | A suitable reviewer remains a gate before technical interpretation or any customer-data test. External outreach still requires appropriate adult/professional support. |
-| **D7 — Scope freeze** | Until the 2026-11-10 decision, no new strategy documents, speculative modules, or feature PRs. | Exception only for necessary infrastructure, correctness, security, and safety fixes. Keep existing controls; do not weaken CI. |
+| **D7 — Scope freeze, amended 2026-10-16** | Until the 2026-11-10 decision, no speculative expansion or second strategy. The founder-authorized internal synthetic MVP is the explicit build exception above. | Infrastructure, correctness, security and safety repairs remain permitted. Customer-data and production gates remain binding; keep CI intact. |
 | **D8 — 2026-10-31 checkpoint** | Target at least 3 substantive manufacturing conversations held and at least 1 explicit next step from a buyer (e.g., introduction to budget owner or request to review a scoped proposal). | If missed, record the actual access constraint and revise the plan honestly. No invented funnel rates or evidence. Real bills/data remain prohibited until Tier 2 gates pass. |
 
 ### Current state and next action
@@ -133,7 +143,7 @@ If these gates cannot be met, stay offline with public, synthetic, or participan
 
 ## 7. Resource model and stop conditions
 
-**Provisional planning cap:** 5 founder hours/week, ₹0 incremental spend, using existing tools and human conversations. This is an explicit planning assumption, not a claim about the founder's actual availability. If the cap is unrealistic, reduce the activity target and reset the dates; do not silently exceed it. Do not run this alongside speculative site redesign, new modules, brand renaming, or unrelated growth experiments.
+**Historical provisional planning cap:** 5 founder hours/week and ₹0 incremental spend were planning assumptions, not confirmed availability or permission to spend. The supplied 16 October blueprint reports a different capacity (about five hours/day); do not convert either into a delivery promise. Current actual available hours need confirmation through recorded work. If the cap is unrealistic, reduce the activity target and reset the dates; do not silently exceed it. Do not run this alongside speculative site redesign, new modules, brand renaming, or unrelated growth experiments.
 
 Stop or change course if:
 - **Oct 19:** review response quality from the ASIA route and the 3–5-request access test; decide whether to continue, change the route, or record access as the current blocker. Do not infer absent market demand from a small or immature sample.
@@ -157,7 +167,7 @@ A fee must make sense against conservative incremental value **and** cover deliv
 
 ## 9. Engineering priority: minimum necessary
 
-**Discovery is the only P0.** Keep existing safeguards intact, but pause broad schema/RPC/tenant-isolation expansion, new modules, analytics dashboards, public-site polish, and prototype expansion until a candidate offer creates a concrete requirement.
+**Discovery remains the commercial P0.** The 2026-10-16 founder authorization permits the isolated internal synthetic MVP alongside it. Keep existing safeguards intact; broad schema/RPC expansion, unrelated modules, analytics dashboards and public-site polish remain deferred.
 
 - Do not weaken existing access controls or use production/customer data to accelerate discovery.
 - The existing draft equipment metadata fix [PR #37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37) is not a reason to expand the roadmap. Keep it draft/parked unless the selected workflow needs the electricity workspace; do not merge without relevant non-production acceptance.
@@ -235,7 +245,7 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 
 ### 14.4 Capacity, financial runway and engineering limits
 
-**Current provisional allocation (5 founder hours/week, ₹0 incremental cash spend through Nov 10):** 60 min supported outreach/scheduling; 120 min interviews plus notes; 45 min adviser/reviewer-route coordination; 45 min follow-ups; 30 min tracker/evidence review. **No speculative product engineering is budgeted in these five hours.** If access fails or time differs, reduce activity goals and document a changed capacity assumption; do not silently exceed the cap.
+**Historical discovery allocation (based on the earlier five-hours/week assumption, superseded as a universal build cap by the 2026-10-16 authorization):** 60 min supported outreach/scheduling; 120 min interviews plus notes; 45 min adviser/reviewer-route coordination; 45 min follow-ups; 30 min tracker/evidence review. **The authorized MVP build is a separate technical workstream; this historical allocation is not a software delivery estimate.** If access fails or time differs, reduce activity goals and document a changed capacity assumption; do not silently exceed the cap.
 
 **Runway:** founder cash budget remains **₹0 incremental** for this sprint (not an assertion about personal finances). Time runway is the remaining founder hours to the Nov 10 decision; record actual weekly usage and decisions. Before authorizing any paid trial, record approved project funds, expected weekly cash burn, opportunity cost and a latest go/no-go date; calculate cash runway only from *actual allocated funds*, not estimated family resources. Do not promise paid experts or software subscriptions without approval.
 

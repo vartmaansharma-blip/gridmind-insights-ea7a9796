@@ -15,6 +15,7 @@ import { inrCompact } from "@/lib/energy/format";
 
 const NAV = [
   { to: "/", label: "Overview", icon: LayoutDashboard },
+  { to: "/investigations", label: "Investigations · Synthetic", icon: Lightbulb },
   { to: "/factory", label: "Factory / Data", icon: FactoryIcon },
   { to: "/energy", label: "Energy", icon: Zap },
   { to: "/machines", label: "Machines", icon: Cpu },

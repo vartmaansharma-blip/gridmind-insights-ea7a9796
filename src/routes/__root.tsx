@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -90,6 +91,9 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const syntheticWorkspace = useRouterState({ select: (state) => state.location.pathname === "/investigations" });
+  // Synthetic method tooling must not initialize authenticated factory services.
+  if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
   return (
     <QueryClientProvider client={queryClient}>
       <EnergyStoreProvider>

@@ -39,6 +39,8 @@
 
 | File | Disposition / authority |
 |---|---|
+| [`gridmind-mvp-build-blueprint.md`](gridmind-mvp-build-blueprint.md) | Supplied Version 3.4 supporting specification; dated canonical build exception overrides its prior no-build instructions |
+| [`gridmind-mvp-lovable-handoff.md`](gridmind-mvp-lovable-handoff.md) | Supporting implementation contract; authorized synthetic MVP and Lovable design handoff |
 | [`canonical-application-migration-v1.md`](canonical-application-migration-v1.md) | Supporting control/specification; does not override the Master Plan |
 | [`code-quality-correction-intervention-date-integrity-2026-10-10.md`](code-quality-correction-intervention-date-integrity-2026-10-10.md) | Supporting control/specification; does not override the Master Plan |
 | [`factory-economic-model-v1.md`](factory-economic-model-v1.md) | Supporting control/specification; does not override the Master Plan |
