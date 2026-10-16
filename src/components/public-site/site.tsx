@@ -161,8 +161,8 @@ function Header() {
           {NAV.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
         </nav>
         <div className="flex items-center gap-4 text-[0.92rem]">
-          <Link to="/auth" className="hover:underline underline-offset-4">Sign in</Link>
-          <a href="#contact" className="gm-btn gm-btn-primary hidden !px-4 !py-2 text-sm sm:inline-flex">Discuss a review</a>
+          <Link to="/auth" className="whitespace-nowrap hover:underline underline-offset-4">Sign in</Link>
+          <span className="hidden sm:inline"><a href="#contact" className="gm-btn gm-btn-primary !px-4 !py-2 text-sm">Discuss a review</a></span>
           <button
             type="button"
             className="rounded-md border px-3 py-1.5 text-sm gm-rule-d lg:hidden"
@@ -253,7 +253,7 @@ function Sequence() {
           <path d={paths.ui} pathLength={1} className="gm-thread-ui" fill="none" stroke="#9ADD00" strokeWidth={2} />
         </svg>
         <div ref={anchor} className="gm-anchor" style={{ left: "70%", top: "47%" }}>
-          <span className="gm-anchor-label gm-mono text-[0.68rem] tracking-wider" style={{ color: "var(--gm-text)" }}>ELECTRICITY SUPPLY · PHYSICAL CONTEXT</span>
+          <span className="gm-anchor-label gm-mono rounded px-2 py-1 text-[0.68rem] tracking-wider" style={{ color: "var(--gm-text)", background: "rgba(8,12,11,.72)" }}>ELECTRICITY SUPPLY · PHYSICAL CONTEXT</span>
         </div>
 
         <div className="relative mx-auto h-full max-w-[1320px] px-10">
