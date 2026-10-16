@@ -62,6 +62,7 @@ const scopeFields: Field[] = [
 /** Functional server-backed controls; Lovable owns their final visual treatment. */
 export function ConnectedInvestigationWorkbench() {
   const [signedIn, setSignedIn] = useState(false);
+  const [sessionReady, setSessionReady] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [factories, setFactories] = useState<{ id: number; name: string }[]>([]);
@@ -78,13 +79,20 @@ export function ConnectedInvestigationWorkbench() {
       void supabase.auth
         .getSession()
         .then(({ data }) => {
-          if (active) setSignedIn(!!data.session);
+          if (active) {
+            setSignedIn(!!data.session);
+            setSessionReady(true);
+          }
         })
         .catch(() => {
-          if (active) setError("Connect an isolated development backend before signing in.");
+          if (active) {
+            setError("Connect an isolated development backend before signing in.");
+            setSessionReady(true);
+          }
         });
     } catch {
       setError("Connect an isolated development backend before signing in.");
+      setSessionReady(true);
     }
     return () => {
       active = false;
@@ -183,6 +191,7 @@ export function ConnectedInvestigationWorkbench() {
         record(
           "Sign in to the isolated workspace",
           <form
+            method="post"
             className="grid gap-3"
             onSubmit={(e) => {
               e.preventDefault();
@@ -200,13 +209,27 @@ export function ConnectedInvestigationWorkbench() {
           >
             <label>
               Email
-              <Input name="email" type="email" required autoComplete="username" />
+              <Input
+                name="email"
+                type="email"
+                disabled={!sessionReady}
+                required
+                autoComplete="username"
+              />
             </label>
             <label>
               Password
-              <Input name="password" type="password" required autoComplete="current-password" />
+              <Input
+                name="password"
+                type="password"
+                disabled={!sessionReady}
+                required
+                autoComplete="current-password"
+              />
             </label>
-            <Button disabled={busy}>Sign in</Button>
+            <Button disabled={busy || !sessionReady}>
+              {sessionReady ? "Sign in" : "Preparing sign-in…"}
+            </Button>
           </form>,
         )
       ) : (

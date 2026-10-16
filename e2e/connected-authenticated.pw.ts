@@ -1,6 +1,21 @@
 import { test, expect, type Page } from "@playwright/test";
 import { provisionLocalReviewer } from "./local-backend";
 
+test.beforeEach(async ({ page }) => {
+  page.on("response", (response) => {
+    if (response.status() >= 400)
+      console.error("Connected HTTP failure:", response.status(), new URL(response.url()).pathname);
+  });
+  page.on("pageerror", (error) => console.error("Connected browser error:", error.message));
+});
+test.afterEach(async ({ page }, info) => {
+  if (info.status !== info.expectedStatus)
+    console.error(
+      "Connected visible fixture state:",
+      (await page.locator("body").innerText()).slice(0, 5000),
+    );
+});
+
 // No mocked Auth, RPC, case API or database. Runs only against disposable CI Supabase.
 async function login(page: Page, email: string) {
   await page.goto("/investigations-connected");
