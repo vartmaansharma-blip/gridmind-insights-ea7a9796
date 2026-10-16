@@ -50,7 +50,7 @@
   linear-gradient(0deg, rgba(8, 12, 11, 0.85) 0%, rgba(8, 12, 11, 0) 30%); }
 @media (max-width: 1023px) {
   .gm-plate img { left: 0; width: 100%; object-position: 34% center; }
-  .gm-plate::after { background: linear-gradient(180deg, rgba(8, 12, 11, 0.94) 0%, rgba(8, 12, 11, 0.8) 42%, rgba(8, 12, 11, 0.1) 72%, rgba(8, 12, 11, 0.55) 100%); }
+  .gm-plate::after { background: linear-gradient(180deg, rgba(8, 12, 11, 0.94) 0%, rgba(8, 12, 11, 0.86) 40%, rgba(8, 12, 11, 0.18) 62%, rgba(8, 12, 11, 0.45) 100%); }
 }
 
 /* ---------- Scroll-linked sequence (desktop, motion allowed) ---------- */
