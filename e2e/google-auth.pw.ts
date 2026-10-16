@@ -87,6 +87,8 @@ test("auth actions meet mobile tap targets and reduced motion avoids decorative 
   await page.goto("/auth");
   const google = page.getByRole("button", { name: "Continue with Google" });
   await expect(google).toBeVisible();
+  // Wait for React hydration; SSR deliberately disables controls until handlers attach.
+  await expect(google).toBeEnabled();
   const height = await google.evaluate((element) => element.getBoundingClientRect().height);
   expect(height).toBeGreaterThanOrEqual(44);
   const overflow = await page.evaluate(
