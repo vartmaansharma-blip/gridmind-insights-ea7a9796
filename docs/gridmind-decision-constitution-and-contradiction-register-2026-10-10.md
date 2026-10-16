@@ -6,7 +6,7 @@
 
 **Previous decision:** minimum maintenance under the discovery freeze; no internal workbench before buyer gates.
 **New explicit authorization:** the founder requested immediate MVP implementation and repository commits, with visual work handed to Lovable. [Issue #105](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/105) records the build boundary.
-**Decision:** permit an isolated synthetic internal case workflow and its correctness tests now. This exception supersedes earlier no-feature/no-workbench instructions only within this scope. Preserve TanStack Start/React/Vite/Bun and published history. Lovable owns design; Codex supplies tested domain behavior and minimal UI controls.
+**Decision:** permit an isolated synthetic internal case workflow and its correctness tests now. The founder-authorized follow-up adds connected synthetic backend source and disposable database/browser verification. Reuse existing tenant membership and three lifecycle tables (case, immutable revision, scoped assignment), with the eight domain objects held in versioned snapshots; avoid parallel tenant models. This follows the required eight-object mapping while keeping production untouched. This exception supersedes earlier no-feature/no-workbench instructions only within this scope. Preserve TanStack Start/React/Vite/Bun and published history. Lovable owns design; Codex supplies tested domain behavior and minimal UI controls.
 **Evidence:** direct founder instruction on 2026-10-16; no new buyer or reviewer evidence inferred.
 **Alternatives/trade-off:** waiting would preserve discovery sequencing; building now carries rework risk before wedge validation. Limit the implementation to the shared evidence-to-brief workflow and invented fixtures.
 **Boundaries:** no production mutation/deployment, real-data intake, commercial wedge selection or implied technical approval. Tier 1/Tier 2, human authority and release gates remain binding. Local synthetic persistence cannot demonstrate tenant/file security.
@@ -19,7 +19,7 @@
 - **Review and outcomes:** a browser flag cannot establish professional approval, and an intensity/duration change cannot establish cause, recoverable value or attributable savings. Synthetic review is always visibly simulated; technical edits invalidate its content binding.
 - **Readiness:** tests/build, local persistence, live tenant security, qualified delivery and commercial validation are separate evidence. Local synthetic storage is not a shortcut to customer-data custody.
 - **Capacity:** the older five-hours/week cap was a provisional planning assumption; the new blueprint reports five hours/day. Actual capacity is unconfirmed in this build request. Neither figure creates a deadline, budget or SLA.
-- **Division of work:** Codex owns behavior/contracts/tests, repository integration and future authenticated persistence/security work. Lovable owns visual design and interactions. Do not hand backend correctness or release approval to a design tool.
+- **Division of work:** Codex owns behavior/contracts/tests, repository integration, connected synthetic persistence/security source and remaining full-stack/real-case acceptance work. Lovable owns visual design and interactions. Do not hand backend correctness or release approval to a design tool.
 
 These corrections alter operating decisions and labels, not the customer evidence ledger. No contact, payment, reviewer engagement or production readiness is inferred.
 

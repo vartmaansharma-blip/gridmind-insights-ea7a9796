@@ -10,6 +10,8 @@ The founder explicitly instructed Codex: “start building it as fast as we can�
 
 **Changed scope:** build and commit a synthetic internal investigation workflow from case scope through evidence, deterministic C1/C4 method evaluation, review, versioned Decision Brief, decision/outcome and service economics. Codex owns behavior/contracts/tests and minimal functional controls; Lovable owns visual design and interaction polish. The supplied MVP blueprint is supporting requirements, not a second execution authority.
 
+**Follow-up implementation boundary:** the founder's “do it” authorizes the connected synthetic backend source and disposable validation alongside the offline exercise. Reuse canonical organization/factory membership; store the eight case objects in immutable JSON revisions with scoped assignments. The source migration and default-disabled API are part of the internal build. This does not authorize application to production or real-data intake. See the [implementation handoff](gridmind-mvp-lovable-handoff.md) and issue #105 for verification and remaining gates.
+
 **Unchanged gates:** no commercial wedge is selected; discovery evidence remains unchanged. No customer/factory intake, production database change, deployment, actual qualified approval, public commercial promise or paid engagement is authorized. Tier 1/Tier 2 and the technical release gate still govern real use. The synthetic workspace is a method demonstration; local browser storage is not approved customer-data custody.
 
 **Trade-off:** development now proceeds before buyer validation and may need narrowing after discovery. Keep the work isolated, preserve existing architecture/history and report readiness honestly. Earlier no-build statements below continue to apply outside this explicit exception. See the dated exception in the Decision Constitution and the [implementation handoff](gridmind-mvp-lovable-handoff.md).
@@ -269,7 +271,7 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 
 ## 15. Minimum investigation architecture — synthetic boundary, 2026-10-16
 
-This section records the bounded architecture exercise requested after the technical-readiness audit. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge, authorize customer-data use or start a new application module.
+This section records the architecture exercise and its information model. The dated founder build exception above now authorizes isolated synthetic implementation of this model. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge or authorize customer-data use.
 
 ### 15.1 The one product chain
 
@@ -298,7 +300,7 @@ The existing [C4 energy fixture](gridmind-economic-discovery-synthetic-evaluatio
 
 Both fixtures support the same eight-object architecture, but neither supplies commercial evidence. C1 has greater event-sequence, causal and safety risk. C4 has greater comparability, tariff and baseline risk. The prototype's stronger C4 fit is sunk implementation context, not a reason to select C4.
 
-### 15.3 Smallest future implementation boundary
+### 15.3 Smallest real-customer implementation boundary
 
 After Tier 1 buyer evidence selects a candidate and Tier 2 authorizes a bounded test, implement only one end-to-end internal path:
 
@@ -316,4 +318,4 @@ Do not build a general customer dashboard, broad integrations, autonomous diagno
 
 The synthetic architecture exercise is complete enough to prevent C4-oriented code from dictating the product model. It is not independently reviewed, delivery time is not measured, and no buyer usefulness or willingness to pay is established.
 
-The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Product implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).
+The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Real-customer implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).

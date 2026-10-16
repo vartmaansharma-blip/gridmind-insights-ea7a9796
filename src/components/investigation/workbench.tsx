@@ -2,7 +2,8 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { RecordForm, type Field } from "./record-form";
+import { RecordForm } from "./record-form";
+import { textField, recordFields, periodFields, eventFields, findingFields } from "./fields";
 import { caseSchema, type Investigation, type Workspace } from "@/lib/investigation/schema";
 import { initialWorkspace, syntheticCase } from "@/lib/investigation/fixtures";
 import {
@@ -29,48 +30,6 @@ const steps = [
 ] as const;
 type Step = (typeof steps)[number];
 const uid = (prefix: string) => `${prefix}-${crypto.randomUUID().slice(0, 8)}`;
-const textField = (key: string, label: string, kind?: Field["kind"]): Field => ({
-  key,
-  label,
-  kind,
-});
-const recordFields: Field[] = [
-  textField("reference", "Original source reference"),
-  textField("owner", "Source owner"),
-  textField("permitted", "Permitted for this synthetic exercise", "checkbox"),
-  textField("checked", "Checked against the invented source", "checkbox"),
-  textField("conflict", "Unresolved contradictions (blank only when resolved)", "multiline"),
-  textField("limitation", "Source limitations", "multiline"),
-  textField("retention", "Custody / retention / deletion rule"),
-];
-const periodFields: Field[] = [
-  textField("evidenceId", "Source ID"),
-  textField("invoiceId", "Invoice reference"),
-  textField("month", "Period YYYY-MM"),
-  textField("kwh", "Consumption (kWh)", "number"),
-  textField("billedInr", "Documented bill amount (INR)", "number"),
-  textField("production", "Conforming output", "number"),
-  textField("unit", "Production basis (conforming units)"),
-];
-const eventFields: Field[] = [
-  textField("evidenceId", "Source ID"),
-  textField("rawTime", "Raw timestamp with timezone"),
-  textField("clock", "Source clock"),
-  textField("reconciledTime", "Reconciled timestamp with timezone"),
-  textField("clockVerified", "Clock reconciliation verified in this exercise", "checkbox"),
-  { key: "kind", label: "Boundary classification", options: ["observation", "stop", "restart"] },
-  textField("description", "Observed event", "multiline"),
-];
-const findingFields: Field[] = [
-  { key: "type", label: "Evidence class", options: ["observation", "hypothesis", "next_check"] },
-  textField("statement", "Statement", "multiline"),
-  textField("evidenceIds", "Supporting source IDs (comma separated)", "ids"),
-  textField("counterEvidence", "Counter-evidence / alternative explanation", "multiline"),
-  textField("uncertainty", "Limitations and uncertainty", "multiline"),
-  textField("nextCheck", "Next discriminating evidence check", "multiline"),
-  { key: "disposition", label: "Challenge state", options: ["open", "included", "rejected"] },
-];
-
 function Panel({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section className="panel min-w-0 p-5">
@@ -199,7 +158,7 @@ export function InvestigationWorkbench() {
             <h1 className="mt-1 text-2xl font-semibold">Evidence to decision</h1>
           </div>
           <Button variant="outline" asChild>
-            <Link to="/">Existing workspace</Link>
+            <Link to="/investigations-connected">Connected method workspace</Link>
           </Button>
         </div>
       </header>
@@ -222,6 +181,7 @@ export function InvestigationWorkbench() {
             Investigation
             <select
               aria-label="Investigation"
+              disabled={!loaded}
               value={c?.id ?? ""}
               onChange={(e) => setSelected(e.target.value)}
               className="min-w-0 max-w-full rounded-md border border-input bg-card p-2"

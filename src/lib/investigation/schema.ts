@@ -24,6 +24,7 @@ export const evidenceSchema = z
     receivedAt: time,
     retention: text,
     limitation: text,
+    verification: z.object({ actorId: z.string().uuid(), at: time, basis: text }).strict().optional(),
   })
   .strict();
 export const periodSchema = z
@@ -75,6 +76,7 @@ export const reviewSchema = z
     dissent: text,
     at: time,
     simulated: z.literal(true),
+    actorId: z.string().uuid().optional(),
   })
   .strict();
 export const caseSchema = z

@@ -102,4 +102,4 @@ Do not create another master plan or discovery tracker. Update the canonical rec
 
 ## Internal investigation MVP
 
-The founder-authorized synthetic workspace is available at `/investigations`. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.
+The founder-authorized synthetic workspace is available at `/investigations`, with a connected synthetic path at `/investigations-connected`. The connected API is disabled by default; its source migration must first be reviewed and applied only to an authorized isolated database. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.

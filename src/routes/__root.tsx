@@ -91,8 +91,8 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const syntheticWorkspace = useRouterState({ select: (state) => state.location.pathname === "/investigations" });
-  // Synthetic method tooling must not initialize authenticated factory services.
+  const syntheticWorkspace = useRouterState({ select: (state) => ["/investigations", "/investigations-connected"].includes(state.location.pathname) });
+  // Case workspaces initialize only the services requested by their own route.
   if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
   return (
     <QueryClientProvider client={queryClient}>

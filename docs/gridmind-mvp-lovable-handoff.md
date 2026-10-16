@@ -6,7 +6,7 @@ The [supplied blueprint](gridmind-mvp-build-blueprint.md) is preserved as suppor
 
 ## What is implemented
 
-Open `/investigations`. It provides one integrated synthetic investigation with these functional steps:
+Open `/investigations` for the offline exercise, or `/investigations-connected` for the server-backed synthetic workflow. Both reuse the same domain contracts and method engine:
 
 | Step | Implemented behavior |
 |---|---|
@@ -24,11 +24,22 @@ C4 reuses draft PR #103 with an additional finite-arithmetic guard. Known answer
 
 All review actions and source records are synthetic. `approvedForCustomerDelivery` is always `false`. A synthetic accept demonstrates the state machine only. Review binding includes `METHOD_VERSION`; bump it when analysis/review semantics change so prior reviews become stale. Browser tab checks are optimistic conflict detection, not multi-user atomic locking.
 
-Local storage is an explicit exception for invented method exercises, isolated from the authenticated factory store. No real-data upload, backend request, production migration, or deployment is part of this change.
+Local storage is confined to the offline exercise. Connected cases use `/api/investigations` and versioned PostgreSQL snapshots; case contents are not cached in browser local storage. The existing Supabase client still manages authentication sessions. The connected API is **disabled by default**, accepts only synthetic cases and requires a verified non-anonymous Supabase identity.
+
+### Connected backend delivered in the follow-up
+
+- Reuse existing organization/factory membership. Three source-only lifecycle tables hold cases, immutable revisions and scoped investigator/reviewer assignments; the eight domain objects live in the versioned case snapshot.
+- Server-controlled create/save/verify/review/assign/load commands. Source verification records the authenticated actor, time and basis; changing linked measurements or source metadata clears that verification. Clients cannot forge verification or review history through ordinary saves.
+- Database row locks and expected revisions prevent lost updates. Actor-bound request fingerprints make retrying a committed request safe and reject reused keys with different commands. SHA-256 checks detect stored snapshot corruption; historical reload/export uses the selected revision.
+- Owner/admin members manage scoped assignments. Investigator/reviewer access requires active organization and factory membership plus active, unexpired assignment. Review additionally requires an explicit reviewer assignment and an actor different from the last editor. This is simulated review; professional competence is declared, not certified.
+- Reviewer responses omit labor, expenses and payments, including historical snapshots. Raw revision-table reads are denied to reviewers. Membership suspension and assignment revocation take effect on subsequent requests. Root factory owner/admin authority is inherited; revoking a case assignment does not revoke that authority.
+- The public actor-bearing RPC is executable only by the server role. Browser roles have no direct mutation grants. The server-only secret never uses a `VITE_` variable. Responses disable caching and hide internal storage errors.
+
+The new migration is committed **source**, replayed only in disposable local PostgreSQL. No production migration, deployment, real-file upload or real-data intake was performed. The old factory-monthly-input → asset-only Edge contract is a separate unresolved ledger item.
 
 ## Ownership and editable boundaries
 
-**Codex:** domain contracts, deterministic calculations, validation, review binding, persistence/recovery logic, exports, tests and repository integration. Future authenticated case persistence, authorization, file custody, actual reviewer identity/permissions and end-to-end security acceptance remain Codex/backend work and require the existing gates.
+**Codex:** domain contracts, deterministic calculations, validation, review binding, persistence/recovery logic, exports, tests and repository integration. Connected synthetic persistence, authenticated actor handling and scoped permissions are implemented in source. Isolated full-stack acceptance, real-file custody, qualified review and production release remain Codex/backend work under the existing gates.
 
 **Lovable:** layout, spacing, typography, navigation treatment, responsive interaction design, progressive disclosure and visual presentation of the functional controls. The existing controls are deliberately a scaffold. Preserve TanStack Start + React + Vite + Bun and the Lovable configuration wrapper; use the existing component library and tokens.
 
@@ -40,11 +51,15 @@ Key source files:
 - [`brief.ts`](../src/lib/investigation/brief.ts): decision brief, draft SOW and internal cost exports.
 - [`fixtures.ts`](../src/lib/investigation/fixtures.ts): invented neutral C1/C4 fixtures.
 - [`workbench.tsx`](../src/components/investigation/workbench.tsx) and [`record-form.tsx`](../src/components/investigation/record-form.tsx): functional UI adapters; restyle without duplicating domain rules.
-- [`investigations.tsx`](../src/routes/investigations.tsx): route source. Route tree is generated by Vite; do not hand-edit it.
+- [`investigations.tsx`](../src/routes/investigations.tsx) and [`investigations-connected.tsx`](../src/routes/investigations-connected.tsx): route sources. Vite generates the route tree; do not hand-edit it.
+- [`connected-contract.ts`](../src/lib/investigation/connected-contract.ts), [`connected-service.ts`](../src/lib/investigation/connected-service.ts), [`connected.server.ts`](../src/lib/investigation/connected.server.ts): typed commands, server transitions and verified-token API adapter.
+- [`connected-workbench.tsx`](../src/components/investigation/connected-workbench.tsx): minimal connected controls for Lovable to refine.
+- [`case migration`](../supabase/migrations/20261016075004_investigation_case_persistence.sql): source-only RLS, revisions, assignment and atomic RPC contract.
+- [`PostgreSQL acceptance`](../verification/postgres-acceptance.ts) and [`browser driver`](../e2e/connected-browser-acceptance.ts): disposable synthetic verification, with clearly identified fixture transports.
 
 ## Paste into Lovable
 
-> Continue the GridMind internal investigation workspace at `/investigations` from the `codex/investigation-mvp` branch/associated PR. Refine the product design using existing React/TanStack Start/Vite/Bun and shadcn/Tailwind components. Keep one integrated scope → evidence → analysis → findings → review → Decision Brief flow, with outcome, economics and retained history. Improve readability, mobile navigation, source-reference visibility, blocker explanations, form ergonomics and the executive brief preview. Reuse `src/lib/investigation` as the sole source of validation and calculations. Preserve explicit SYNTHETIC labeling, customer-release BLOCKED state, clock/conflict gates, stale-review protection, separate payment stages and cash/shadow economics. Do not fabricate real approval, customers, savings or revenue. Do not add real-data uploads, production database changes, a new dashboard, tariff diagnosis, machine instructions, AI-generated findings or deployments. Use the sourced cross-category reference table in this handoff: Linear for case focus, Carbon for evidence density, Power BI for source inspection, GitHub for review validity, Stripe for financial states, GOV.UK/W3C for recovery/accessibility and NN/G for progressive disclosure. Adapt principles rather than copying entire products. Backend/authenticated persistence and release gates remain with Codex. Keep published Git history intact and coordinate through the PR.
+> Continue the GridMind internal investigation workspaces at `/investigations` and `/investigations-connected` from the `codex/investigation-mvp` branch/associated PR. Refine the product design using existing React/TanStack Start/Vite/Bun and shadcn/Tailwind components. Keep one integrated scope → evidence → analysis → findings → review → Decision Brief flow, with outcome, economics and retained history. Improve readability, mobile navigation, source-reference visibility, blocker explanations, form ergonomics and the executive brief preview. Reuse `src/lib/investigation` as the sole source of validation and calculations. Preserve explicit SYNTHETIC labeling, customer-release BLOCKED state, clock/conflict gates, stale-review protection, separate payment stages and cash/shadow economics. Do not fabricate real approval, customers, savings or revenue. Do not add real-data uploads, production database changes, a new dashboard, tariff diagnosis, machine instructions, AI-generated findings or deployments. Use the sourced cross-category reference table in this handoff: Linear for case focus, Carbon for evidence density, Power BI for source inspection, GitHub for review validity, Stripe for financial states, GOV.UK/W3C for recovery/accessibility and NN/G for progressive disclosure. Adapt principles rather than copying entire products. Preserve connected source-verification commands, scoped reviewer permissions, redaction, expected-revision conflicts and safe retries. Backend changes and release gates remain with Codex; do not enable the feature or apply migrations to production. Keep published Git history intact and coordinate through the PR.
 
 ## Reference patterns across categories — researched 16 October 2026
 
@@ -88,11 +103,11 @@ The supplied file advanced to **Version 3.4** during this work. Its §4A/4B and 
 
 The known legacy blocker is still **factory-scoped monthly entry → asset-scoped Edge method**. Do not rename factory billing metrics or promote manual inputs to bypass it. The new C4 comparison is arithmetic-only and synthetic, with no tariff/order validation; C1 is a bounded synthetic chronology, with no root-cause or production-loss inference. The shared `fixtures.ts` feeds the UI, domain tests, backup and generated brief, connecting the synthetic artifacts while leaving the distinct asset SQL method intact.
 
-Real-case contract work still needs organization/factory/case identity, declared facility-meter/process/asset boundary, source verification actor/time/basis and supersession, method dispatch, authoritative persisted snapshots/findings/reviews/briefs, scoped reviewer assignments, and the ledger's authenticated two-organization acceptance paths. These are Codex/backend responsibilities after applicable gates, not tasks silently passed to Lovable. No `AT01`–`AT12` from #104 is claimed passed merely because a similarly named local synthetic check succeeds.
+The connected synthetic path now implements factory/case identity, source verification actor/time/basis, correction invalidation, persisted snapshots/findings/reviews, reproducible briefs and scoped assignments. Real-case contract work still needs an authorized facility-meter/process/asset boundary, validated method dispatch, secure file custody and the ledger's full authenticated two-organization acceptance paths. These are Codex/backend responsibilities after applicable gates, not tasks silently passed to Lovable. No `AT01`–`AT12` from #104 is claimed passed merely because a similarly named local synthetic check succeeds.
 
 ## Remaining live-operation dependencies
 
-Real-data intake/customer release stays blocked until buyer scope, Tier 1/Tier 2, professional review terms, permissions, secure custody/retention, authoritative authenticated persistence and exact-candidate tenant/file/reload/security acceptance pass. Map the eight case objects to existing canonical tables before proposing migrations. This change deliberately does not claim those dependencies are satisfied, and they are not assigned to Lovable.
+Real-data intake/customer release stays blocked until buyer scope, Tier 1/Tier 2, professional review terms, permissions, secure custody/retention, authoritative authenticated persistence and exact-candidate tenant/file/reload/security acceptance pass. The synthetic schema reuses existing tenant/membership tables and stores the eight case objects in immutable revisions; review that mapping and migration drift before any shared database application. This change deliberately does not claim those dependencies are satisfied, and they are not assigned to Lovable.
 
 Reviewer engagements, actual buyer interviews, pricing acceptance, delivery effort and payment must be obtained and recorded by the responsible humans in the existing discovery/commercial records. Exports provide templates; they do not invent agreements.
 
@@ -100,21 +115,29 @@ Reviewer engagements, actual buyer interviews, pricing acceptance, delivery effo
 
 Results and exact candidate commit are recorded in the PR. The existing CI workflow is preserved: GitHub rejected a workflow edit because the connected OAuth app lacks `workflow` scope. The synthetic browser suite remains committed and runnable with `cd e2e && bun run test:synthetic`; adding it to CI requires a repository owner/credential with workflow permission. This document describes the implementation, not evidence that all checks have passed. No deployed state is implied.
 
-## Completion scorecard and continuation rules
+## Repeatable verification and remaining gates
 
-**Overall outcome: Partially complete.** The internal synthetic method build is complete and locally verified; the commercially usable customer-data MVP is not yet complete.
+Local checks cover 127 Vitest tests, 21 Python intake tests, TypeScript, ESLint (zero errors; eight existing Fast Refresh warnings), Markdown links, production build and nine-route preview smoke plus redirect. Six offline Chromium scenarios protect recovery and the original method flow. The native PostgreSQL runner replays all 34 source migrations, checks catalog permissions and exercises cross-organization denial, reviewer redaction, protected verification, independent review, retry conflicts, corrections, history, direct-write denial, expired/revoked access and concurrent-writer conflicts using two database connections.
 
-| Dimension | Score | Evidence / remaining limit |
-|---|---:|---|
-| Scope | 2/2 | Issue #105 and dated canonical exception identify the integrated synthetic flow and boundaries. |
-| Accuracy/evidence | 2/2 | Known-answer arithmetic, visible unknowns, source references and unconditional synthetic customer-release block. |
-| Execution | 1.5/2 | Complete synthetic interaction and recovery path; authenticated real-case persistence and professional operation remain gated. |
-| Independent verification | 1.5/3 | Automated unit, intake, production preview and browser acceptance; actual qualified methodology review, live tenant/file acceptance and remote CI are not inferred. |
-| Repeatability/records | 1/1 | Pinned dependencies, reproducible sample exports, committed browser suite, canonical decisions and sourced Lovable handoff. |
-| **Total** | **8/10** | Score reflects present evidence, not commercial readiness. |
+The connected production-browser scenario reaches the real command processor and disposable PostgreSQL through a **fixture** API transport. It verifies create → correction → save/reload → source verification → historical reload/export, responsive width, default-disabled API and absence of case local storage. Auth and PostgREST are fixtures in that local scenario; API unit tests also mock Supabase. They do not substitute for full Supabase acceptance.
 
-**Verification on the implementation candidate:** 120 Vitest tests, 21 existing Python intake tests, TypeScript, ESLint (zero errors; eight existing Fast Refresh warnings), 108-file local Markdown link audit, production build, eight-route production-preview smoke test plus redirect, and six Chromium production-browser scenarios passed locally. Exact committed revision and remote check status belong in the PR; no deployment is claimed.
+The existing Migration Replay CI entry points now include synthetic schema/grant checks and an Auth/PostgREST wire-contract test. That test signs in two local users, verifies identity, exercises service-only case RPC create/retry/reload, and denies forged actors, conflicting fingerprints and cross-tenant reads. It is a storage boundary test, not the complete application API/browser path. Consult PR #106 for the exact committed SHA and current remote result.
 
-**Future-answer rules:** distinguish synthetic completion from live readiness; reuse the tested domain functions rather than reimplementing calculations in design components; invalidate review when evidence or method changes; require actual buyer/reviewer/security evidence before claims or real-data intake.
+Reproduce the local connected scenario without Docker on macOS ARM64 (the native binary's symlink setup is explicitly trusted only for this platform):
 
-**Next implementation task:** Lovable refines the integrated case interface using the reference table while preserving behavior and tests. The next backend task remains authoritative authenticated case persistence mapped to existing tables and isolated tenant/file/reload acceptance, after the applicable scope and release prerequisites. Neither task may declare pilot readiness from this method demonstration.
+```bash
+bun install --frozen-lockfile
+(cd e2e && bun install --frozen-lockfile && bun x playwright install chromium)
+(cd verification && bun install --frozen-lockfile)
+VITE_SUPABASE_URL=http://127.0.0.1:54321 VITE_SUPABASE_PUBLISHABLE_KEY=synthetic-public-fixture bun run build
+(cd verification && GRIDMIND_CASE_BROWSER=1 bun run test)
+(cd e2e && bun run test:synthetic)
+```
+
+The runner starts only an ephemeral loopback PostgreSQL cluster and rejects remote database configuration by not accepting any DB URL. The browser blocks external requests. The public fixture key is invented; never substitute a service-role key into the build command. The optional browser run requires the fixture build above. `cd verification && bun run test` runs database acceptance alone.
+
+For a separately authorized **isolated Supabase** environment, apply/reconcile the migration there first; supply public client settings and the server-only variables in [`.env.example`](../.env.example), setting `GRIDMIND_CONNECTED_CASES_ENABLED=synthetic-only`. Provision actual Auth users and canonical organization/factory membership through approved setup, then use `/investigations-connected`. Never enable this against production as part of the Lovable design handoff.
+
+**Delivered:** offline method workflow, connected synthetic backend source, minimal connected controls, repeatable verification and sourced design handoff. **Still required for customer use:** isolated complete API/Auth/PostgREST/browser acceptance, independent security/migration review, live schema/function reconciliation, authorized secure file custody, qualified methodology review and buyer evidence. The commercially usable customer-data MVP is not complete, and no deployment is claimed.
+
+**Lovable next:** refine both interfaces using the reference table while preserving behavior and tests. **Codex next after applicable gates:** complete isolated full-stack acceptance and the real-case contract/file-custody work in issue #104. Do not declare pilot readiness from synthetic exercises or green CI.

@@ -89,3 +89,39 @@ begin
 end $$;
 
 select 'factory_analysis_runs schema contract: PASS' as result;
+
+-- The existing migration-replay CI entry point also protects the synthetic case
+-- contract. This asserts permissions/catalog structure, not live Auth acceptance.
+do $$
+declare
+  relation text;
+  fn regprocedure := 'public.investigation_store(uuid,text,uuid,bigint,integer,text,text,jsonb,jsonb)'::regprocedure;
+  internal_fn regprocedure := 'private.investigation_store(uuid,text,uuid,bigint,integer,text,text,jsonb,jsonb)'::regprocedure;
+begin
+  foreach relation in array array['investigation_cases','investigation_assignments','investigation_revisions'] loop
+    if not (select relrowsecurity from pg_class where oid = ('public.' || relation)::regclass) then
+      raise exception 'CASE_SCHEMA_CONTRACT: RLS absent on %', relation;
+    end if;
+    if has_table_privilege('anon','public.' || relation,'SELECT')
+       or has_table_privilege('authenticated','public.' || relation,'INSERT,UPDATE,DELETE,TRUNCATE')
+       or has_table_privilege('service_role','public.' || relation,'INSERT,UPDATE,DELETE,TRUNCATE') then
+      raise exception 'CASE_SCHEMA_CONTRACT: unexpected direct grants on %', relation;
+    end if;
+  end loop;
+  if has_function_privilege('anon',fn,'EXECUTE')
+     or has_function_privilege('authenticated',fn,'EXECUTE')
+     or has_function_privilege('authenticated',internal_fn,'EXECUTE')
+     or not has_function_privilege('service_role',fn,'EXECUTE') then
+    raise exception 'CASE_SCHEMA_CONTRACT: actor-bearing RPC must be server-only';
+  end if;
+  if (select prosecdef from pg_proc where oid=fn)
+     or not (select prosecdef from pg_proc where oid=internal_fn)
+     or not (select proconfig @> array['search_path=""'] from pg_proc where oid=internal_fn) then
+    raise exception 'CASE_SCHEMA_CONTRACT: invoker wrapper or pinned definer changed';
+  end if;
+  if not exists(select 1 from pg_trigger where tgrelid='public.investigation_revisions'::regclass
+    and tgname='investigation_revisions_immutable' and not tgisinternal) then
+    raise exception 'CASE_SCHEMA_CONTRACT: immutable revision trigger absent';
+  end if;
+end $$;
+select 'synthetic investigation schema/security contract: PASS' as result;

@@ -11,7 +11,7 @@ export type Field = {
   nullable?: boolean;
   hint?: string;
 };
-type Value = string | number | boolean | string[] | null;
+type Value = unknown;
 
 /** Minimal functional controls; Lovable owns the final layout and interaction design. */
 export function RecordForm({
@@ -22,14 +22,15 @@ export function RecordForm({
 }: {
   value: Record<string, Value>;
   fields: Field[];
-  onSave: (value: Record<string, Value>) => void;
+  onSave: (value: Record<string, Value>) => void | Promise<void>;
   label?: string;
 }) {
   const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
   return (
     <form
       className="grid min-w-0 grid-cols-1 gap-3"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const next = { ...value };
@@ -52,10 +53,13 @@ export function RecordForm({
                   : raw;
         }
         try {
-          onSave(next);
+          setSaving(true);
+          await onSave(next);
           setError("");
         } catch (e) {
           setError(e instanceof Error ? e.message : "Save failed");
+        } finally {
+          setSaving(false);
         }
       }}
     >
@@ -111,8 +115,8 @@ export function RecordForm({
           {error}
         </p>
       )}
-      <Button type="submit" variant="outline" className="justify-self-start">
-        {label}
+      <Button type="submit" disabled={saving} variant="outline" className="justify-self-start">
+        {saving ? "Saving…" : label}
       </Button>
     </form>
   );

@@ -218,3 +218,48 @@ Deno.test("persist-factory-analysis enforces auth, tenant scope, server-owned in
   });
   if (tooLarge.status !== 413) throw new Error(`Oversized request should be 413, got ${tooLarge.status}`);
 });
+
+Deno.test("synthetic investigation PostgREST wire contract denies forged actors and cross-tenant reads", async () => {
+  // CI uses a disposable Supabase stack. Never aim these writes at a remote project.
+  if (!["127.0.0.1", "localhost", "[::1]"].includes(new URL(baseUrl).hostname)) {
+    throw new Error("Synthetic investigation HTTP writes require a loopback-only Supabase stack");
+  }
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+  if (!serviceKey) throw new Error("Local service-role credential is required");
+  const [a, b] = await Promise.all([signIn("gridmind-http-a@example.test"), signIn("gridmind-http-b@example.test")]);
+  const verified = await requestJson("/auth/v1/user", { headers: { apikey: anonKey!, Authorization: `Bearer ${a.access_token}` } });
+  if (!verified.response.ok || !verified.body || Array.isArray(verified.body) || verified.body.id !== a.user.id) {
+    throw new Error("Auth did not verify the fixture actor");
+  }
+  const factories = await restRows<{ id: number }>("factories", a.access_token, "name=eq.gridmind-http-factory-a&select=id");
+  if (factories.length !== 1) throw new Error("Missing local fixture factory");
+  const id = crypto.randomUUID();
+  // Storage-only shape proves the SQL/HTTP boundary; the application command
+  // processor separately enforces the full typed case and method transitions.
+  const create: Json = { _actor: a.user.id, _op: "create", _case: id, _factory: factories[0].id,
+    _expected: 0, _key: "wire-create", _fingerprint: "a".repeat(64),
+    _snapshot: { id, origin: "synthetic", revision: 1 }, _event: { kind: "edit", reason: "Synthetic wire-contract fixture" } };
+  const rpc = (args: Json, key = serviceKey, token = serviceKey) => requestJson("/rest/v1/rpc/investigation_store", {
+    method: "POST", headers: { apikey: key, Authorization: `Bearer ${token}`, "Content-Type": "application/json" }, body: JSON.stringify(args),
+  });
+  const first = await rpc(create);
+  if (!first.response.ok || !first.body || Array.isArray(first.body) || first.body.revision !== 1 || first.body.integrityValid !== true) {
+    throw new Error(`Synthetic storage RPC failed: HTTP ${first.response.status}`);
+  }
+  const retry = await rpc(create);
+  if (!retry.response.ok || !retry.body || Array.isArray(retry.body) || retry.body.replayed !== true || retry.body.revision !== 1) {
+    throw new Error("Synthetic storage retry did not return the original revision");
+  }
+  const conflicting = await rpc({ ...create, _fingerprint: "b".repeat(64) });
+  if (conflicting.response.ok) throw new Error("Conflicting synthetic request fingerprint was accepted");
+  const crossTenant = await rpc({ _actor: b.user.id, _op: "read", _case: id });
+  if (crossTenant.response.ok) throw new Error("Synthetic RPC allowed a cross-organization actor");
+  const forged = await rpc({ _actor: a.user.id, _op: "read", _case: id }, anonKey!, b.access_token);
+  if (forged.response.ok) throw new Error("Browser role executed actor-bearing synthetic RPC");
+  const foreign = await restRows("investigation_cases", b.access_token, `id=eq.${id}&select=id`);
+  if (foreign.length) throw new Error("RLS exposed synthetic case headers across organizations");
+  const reload = await rpc({ _actor: a.user.id, _op: "read", _case: id });
+  if (!reload.response.ok || !reload.body || Array.isArray(reload.body) || reload.body.snapshotSha256 !== first.body.snapshotSha256) {
+    throw new Error("PostgREST reload changed the persisted synthetic snapshot digest");
+  }
+});

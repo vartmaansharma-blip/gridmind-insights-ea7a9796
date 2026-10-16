@@ -15,8 +15,10 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as EnergyRouteImport } from './routes/energy'
 import { Route as FactoryRouteImport } from './routes/factory'
 import { Route as InvestigationsRouteImport } from './routes/investigations'
+import { Route as InvestigationsConnectedRouteImport } from './routes/investigations-connected'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SavingsRouteImport } from './routes/savings'
+import { Route as ApiInvestigationsRouteImport } from './routes/api.investigations'
 import { Route as MachinesIndexRouteImport } from './routes/machines.index'
 import { Route as MachinesIdRouteImport } from './routes/machines.$id'
 
@@ -50,6 +52,11 @@ const InvestigationsRoute = InvestigationsRouteImport.update({
   path: '/investigations',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestigationsConnectedRoute = InvestigationsConnectedRouteImport.update({
+  id: '/investigations-connected',
+  path: '/investigations-connected',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
   id: '/opportunities',
   path: '/opportunities',
@@ -58,6 +65,11 @@ const OpportunitiesRoute = OpportunitiesRouteImport.update({
 const SavingsRoute = SavingsRouteImport.update({
   id: '/savings',
   path: '/savings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiInvestigationsRoute = ApiInvestigationsRouteImport.update({
+  id: '/api/investigations',
+  path: '/api/investigations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MachinesIndexRoute = MachinesIndexRouteImport.update({
@@ -78,8 +90,10 @@ export interface FileRoutesByFullPath {
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
   '/investigations': typeof InvestigationsRoute
+  '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
+  '/api/investigations': typeof ApiInvestigationsRoute
   '/machines/$id': typeof MachinesIdRoute
   '/machines/': typeof MachinesIndexRoute
 }
@@ -90,8 +104,10 @@ export interface FileRoutesByTo {
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
   '/investigations': typeof InvestigationsRoute
+  '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
+  '/api/investigations': typeof ApiInvestigationsRoute
   '/machines/$id': typeof MachinesIdRoute
   '/machines': typeof MachinesIndexRoute
 }
@@ -103,8 +119,10 @@ export interface FileRoutesById {
   '/energy': typeof EnergyRoute
   '/factory': typeof FactoryRoute
   '/investigations': typeof InvestigationsRoute
+  '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
+  '/api/investigations': typeof ApiInvestigationsRoute
   '/machines/$id': typeof MachinesIdRoute
   '/machines/': typeof MachinesIndexRoute
 }
@@ -117,8 +135,10 @@ export interface FileRouteTypes {
     | '/energy'
     | '/factory'
     | '/investigations'
+    | '/investigations-connected'
     | '/opportunities'
     | '/savings'
+    | '/api/investigations'
     | '/machines/$id'
     | '/machines/'
   fileRoutesByTo: FileRoutesByTo
@@ -129,8 +149,10 @@ export interface FileRouteTypes {
     | '/energy'
     | '/factory'
     | '/investigations'
+    | '/investigations-connected'
     | '/opportunities'
     | '/savings'
+    | '/api/investigations'
     | '/machines/$id'
     | '/machines'
   id:
@@ -141,8 +163,10 @@ export interface FileRouteTypes {
     | '/energy'
     | '/factory'
     | '/investigations'
+    | '/investigations-connected'
     | '/opportunities'
     | '/savings'
+    | '/api/investigations'
     | '/machines/$id'
     | '/machines/'
   fileRoutesById: FileRoutesById
@@ -154,8 +178,10 @@ export interface RootRouteChildren {
   EnergyRoute: typeof EnergyRoute
   FactoryRoute: typeof FactoryRoute
   InvestigationsRoute: typeof InvestigationsRoute
+  InvestigationsConnectedRoute: typeof InvestigationsConnectedRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
   SavingsRoute: typeof SavingsRoute
+  ApiInvestigationsRoute: typeof ApiInvestigationsRoute
   MachinesIdRoute: typeof MachinesIdRoute
   MachinesIndexRoute: typeof MachinesIndexRoute
 }
@@ -204,6 +230,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestigationsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/investigations-connected': {
+      id: '/investigations-connected'
+      path: '/investigations-connected'
+      fullPath: '/investigations-connected'
+      preLoaderRoute: typeof InvestigationsConnectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/opportunities': {
       id: '/opportunities'
       path: '/opportunities'
@@ -216,6 +249,13 @@ declare module '@tanstack/react-router' {
       path: '/savings'
       fullPath: '/savings'
       preLoaderRoute: typeof SavingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/investigations': {
+      id: '/api/investigations'
+      path: '/api/investigations'
+      fullPath: '/api/investigations'
+      preLoaderRoute: typeof ApiInvestigationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/machines/': {
@@ -242,8 +282,10 @@ const rootRouteChildren: RootRouteChildren = {
   EnergyRoute: EnergyRoute,
   FactoryRoute: FactoryRoute,
   InvestigationsRoute: InvestigationsRoute,
+  InvestigationsConnectedRoute: InvestigationsConnectedRoute,
   OpportunitiesRoute: OpportunitiesRoute,
   SavingsRoute: SavingsRoute,
+  ApiInvestigationsRoute: ApiInvestigationsRoute,
   MachinesIdRoute: MachinesIdRoute,
   MachinesIndexRoute: MachinesIndexRoute,
 }
