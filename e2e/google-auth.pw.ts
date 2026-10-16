@@ -95,9 +95,10 @@ test("auth actions meet mobile tap targets and reduced motion avoids decorative 
   expect(overflow).toBe(false);
   await google.focus();
   await expect(google).toBeFocused();
-  expect(
-    await google.evaluate((element) => getComputedStyle(element).transitionDuration),
-  ).toMatch(/^(0s|0\\.00001s|1e-05s)/);
+  const transitionSeconds = await google.evaluate((element) =>
+    getComputedStyle(element).transitionDuration.split(",").map((duration) => parseFloat(duration)),
+  );
+  expect(transitionSeconds.every((duration) => Number.isFinite(duration) && duration <= 0.001)).toBe(true);
 });
 
 test("server-rendered Google and password controls are disabled until hydration", async ({
