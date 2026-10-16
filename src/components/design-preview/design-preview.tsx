@@ -87,7 +87,7 @@ function Hero({ plate, label, position }: { plate: string; label: string; positi
         </div>
       </div>
       <p className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-xs tracking-[0.2em] text-[var(--gm-text-2)]">SCROLL TO EXPLORE ↓</p>
-      <span className="absolute right-4 top-24 z-10 rounded bg-black/60 px-2 py-1 font-mono text-[10px] text-[var(--gm-text-2)]">{label} · generated concept plate</span>
+      <span className="absolute bottom-14 right-4 z-10 rounded bg-black/60 px-2 py-1 font-mono text-[10px] text-[var(--gm-text-2)]">{label} · generated concept plate</span>
     </section>
   );
 }
