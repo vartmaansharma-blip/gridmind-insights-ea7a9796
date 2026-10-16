@@ -2,7 +2,7 @@
 
 **Status:** Preflight confirmed a production/repository schema mismatch. This document is an execution runbook, not authorization to mutate production.
 **Environment:** Supabase project `bvqmvgbfqhgczwbvlqkk`; Vercel project `gridmind`.
-**Authority:** Follow the GridMind Decision Constitution and the Phase 1, 2, and 3 trackers. Security, evidence integrity, and human approval override release pressure.
+**Authority:** Follow the canonical Master Plan, Decision Constitution, Issue #29, and technical release gate. Historical Phase 1, 2, and 3 trackers are reference evidence. Security, evidence integrity, and human approval override release pressure.
 
 ## 1. Decision
 
@@ -315,3 +315,55 @@ A new read-only query was run against Supabase project `bvqmvgbfqhgczwbvlqkk` af
 The RPC definition is a real behavior mismatch, but this query does not prove a cross-tenant bypass or establish why the candidate migration has not been applied. The correct next step is an isolated replay and membership-matrix test, followed by independent review of the full migration-history/schema drift. Do not hand-edit migration history, blindly replay earlier migrations, or run production DDL without explicit authorization, a recovery point, an authorized operator and a second reviewer.
 
 No production schema, data, grants, Auth settings, migration history, or deployment target was changed.
+
+
+## Candidate implementation — 2026-10-15
+
+The [Supabase checkpoint](gridmind-supabase-connection-security-audit-2026-10-11.md#supabase-implementation-checkpoint-2026-10-15) records the fresh SELECT-only preflight, the additive workspace ambiguity migration, digest/security tests, native PostgreSQL replay, and unfulfilled release requirements. Use `scripts/check-supabase-migration-drift.mjs` to compare exported migration identities and `supabase/tests/gridmind-schema-preflight.sql` to capture live columns, constraints, triggers, policies, and ACLs. These tools perform no repair or production mutation. Existing missing-column SQL remains unchanged; seven version aliases still require operator review before any migration runner is used on production.
+
+## Recorded live SQL reconciliation and remediation rehearsal — 2026-10-15
+
+Refs Issue #29 and draft PR #72. Candidate tested: `4a37005db6da91049d8e1f6157f42b40d21e3ba4`. Fresh connector inspection confirmed GridMind project `bvqmvgbfqhgczwbvlqkk` and **30** recorded live migrations, versus 34 source files. Earlier claims of 32 live entries are superseded by this inventory. Both expected columns remain absent and the live workspace RPC lacks the ambiguity guard. No public base table lacks RLS. No production mutations were made.
+
+### Seven version aliases: SQL-body comparison completed
+
+The recorded `statements` were read from migration history and compared with source files, trimming outer whitespace only:
+
+| Source version | Recorded live version | Result |
+|---|---|---|
+| 20261009130000 | 20261010075630 | Exact trimmed SQL match |
+| 20261010100000 | 20261010081740 | Exact trimmed SQL match |
+| 20261010103000 | 20261010082541 | Comments differ; identical `GRANT UPDATE ON public.factories TO authenticated` |
+| 20261010104000 | 20261010082706 | Exact trimmed SQL match |
+| 20261010110000 | 20261010103936 | Live original omits `TO authenticated` on the membership UPDATE policy; later live migration 20261010104942 corrects it |
+| 20261010120000 | 20261010104457 | Exact trimmed SQL match |
+| 20261010130000 | 20261010104942 | Exact trimmed SQL match |
+
+A fresh catalog read confirms the final membership UPDATE policy is scoped to `authenticated`, with `private.is_org_admin(organization_id)` in both USING and WITH CHECK. This resolves the SQL-body question for these aliases, not their migration-version identities. Do not replay these seven migrations or rewrite history merely to make version numbers match.
+
+### Isolated rehearsal completed
+
+1. Replayed all 34 repository migrations in disposable native PostgreSQL with minimal synthetic Auth roles/schema; schema-contract, factory-analysis security, and workspace-bootstrap assertions passed.
+2. Separately reconstructed the **30 recorded live SQL bodies in live version order**, preceded by the repository RLS bootstrap because its live history entry is absent.
+3. Applied only the three pending source migrations to that local reconstruction: `20261010140000`, `20261010150000`, and `20261015083942`.
+4. All three migrations and the same schema/security/workspace SQL assertions passed.
+
+This reconstruction uses migration history and synthetic fixtures, not a production backup. It does not establish absence of out-of-band schema drift, data-dependent behavior, provider-managed Auth behavior, HTTP acceptance, or restore readiness. No customer rows were exported. Historical timestamps/digests were not invented.
+
+### Remaining execution gates
+
+- Apply the three reviewed pending migrations only after a confirmed recovery point, independent review, and complete isolated acceptance. The user's request authorizes database work; the required recovery/review evidence has not been supplied.
+- Preserve the seven existing live migration identities; agree the repository/runner reconciliation strategy before a bulk push. The unrecorded bootstrap also needs identity disposition, not blind replay.
+- Supabase lists only the default main branch, with no isolated preview database. Docker is unavailable locally, so full Auth/PostgREST/Edge Function HTTP acceptance remains unrun.
+- [Candidate migration CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/38709206646) still reports that the job did not start because recent payments failed or the spending limit needs increasing. This is an infrastructure failure, not a passing or failing SQL test.
+- Security Advisor still reports disabled leaked-password protection and authenticated execution of the intentionally privileged workspace RPC. Preserve onboarding authorization; do not suppress the RPC warning by weakening or arbitrarily revoking its contract. Auth safeguards require an authorized settings change and regression testing.
+
+**Status: reconciliation analysis and local remediation rehearsal completed; production changes and full acceptance remain HOLD.**
+
+### Authenticated dashboard verification — 2026-10-15
+
+After the owner signed in, the GridMind production dashboard confirmed the organization is on **Free**. The scheduled-backups page explicitly states that Free does not include project backups and offers Pro for up to seven days of scheduled backups. No usable dashboard recovery point was available to verify. A separately approved manual backup and restore test, or an owner-approved plan change followed by verification of an actual backup, is still needed.
+
+The Email provider settings confirm leaked-password protection is disabled and **only available on Pro and above**. This is a plan dependency, not an overlooked free toggle. No billing or Auth setting was changed. The organization also contains MmaFarms; an organization-wide upgrade must not be treated as a GridMind-only change.
+
+PR #72 currently has no submitted reviews. Required independent review, full isolated HTTP acceptance, and a verified recovery point remain outstanding. Signing in resolved dashboard access only; it did not resolve these release gates.

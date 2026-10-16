@@ -1,5 +1,18 @@
 # GridMind migration-history reconciliation
 
+## Current reconciliation tool — 2026-10-15
+
+For the current implementation and verification evidence, see the [Supabase checkpoint](gridmind-supabase-connection-security-audit-2026-10-11.md#supabase-implementation-checkpoint-2026-10-15). The sections below describe the earlier reconciliation and are historical evidence.
+
+Export `SELECT version, name FROM supabase_migrations.schema_migrations ORDER BY version` as a JSON array (or use the management migration-list result as `{ "migrations": [...] }`), then run:
+
+```sh
+node scripts/check-supabase-migration-drift.mjs /path/to/inventory.json
+bun run test -- scripts/check-supabase-migration-drift.test.mjs
+```
+
+Exit 0 means identities align, 1 means review findings exist, and 2 means invalid input. Name aliases require SQL/object review and never automatically count as applied. No SQL is executed by this tool. Use `supabase/tests/gridmind-schema-preflight.sql` for SELECT-only live metadata before any approved change. Do not apply production migrations until the existing recovery, independent-review, isolated acceptance, and explicit authorization gates pass.
+
 ## Why this was required
 
 A read-only comparison found that the live Supabase migration registry and the repository did not describe the same migration history. The live registry contained 21 applied migrations, while the repository contained 14 earlier migration files before this reconciliation. Several filenames used the original planned timestamps rather than the timestamps recorded by Supabase; three files also differed from the SQL stored in the live migration registry.

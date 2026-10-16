@@ -56,7 +56,7 @@ begin
     raise exception 'MISSING_SCHEMA_CONTRACT: append-only trigger is absent';
   end if;
 
-  select is_nullable = 'YES' into v_input_digest_nullable
+  select is_nullable = 'YES' and data_type = 'text' and column_default is null into v_input_digest_nullable
   from information_schema.columns
   where table_schema = 'public'
     and table_name = 'factory_analysis_runs'
@@ -78,6 +78,7 @@ begin
 
   if has_table_privilege('anon', 'public.factory_analysis_runs', 'SELECT')
      or has_table_privilege('anon', 'public.factory_analysis_runs', 'INSERT')
+     or has_table_privilege('authenticated', 'public.factory_analysis_runs', 'SELECT')
      or has_table_privilege('authenticated', 'public.factory_analysis_runs', 'INSERT') then
     raise exception 'MISSING_SCHEMA_CONTRACT: browser roles must not directly read/insert analysis runs';
   end if;
