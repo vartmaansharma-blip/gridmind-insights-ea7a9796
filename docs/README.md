@@ -45,6 +45,7 @@
 | [`factory-performance-intelligence-v1.md`](factory-performance-intelligence-v1.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-accuracy-and-validation-standard.md`](gridmind-accuracy-and-validation-standard.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-authoritative-analysis.md`](gridmind-authoritative-analysis.md) | Supporting control/specification; does not override the Master Plan |
+| [`gridmind-downtime-investigation-synthetic-evaluation-2026-10-16.md`](gridmind-downtime-investigation-synthetic-evaluation-2026-10-16.md) | Supporting synthetic C1 evaluation; does not override the Master Plan |
 | [`gridmind-economic-discovery-synthetic-evaluation-2026-10-13.md`](gridmind-economic-discovery-synthetic-evaluation-2026-10-13.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-factory-save-permissions-fix-2026-10-10.md`](gridmind-factory-save-permissions-fix-2026-10-10.md) | Supporting control/specification; does not override the Master Plan |
 | [`gridmind-factory-value-chain-intelligence.md`](gridmind-factory-value-chain-intelligence.md) | Supporting control/specification; does not override the Master Plan |

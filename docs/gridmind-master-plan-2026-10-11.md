@@ -256,3 +256,54 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 ### 14.6 The one next action
 
 **Founder, with suitable adult/professional support:** confirm and record dad's agreement to support the specific outreach before any new external industrial outreach; then pursue the Oct 19 legitimate introduction experiment. If blocked, explicitly record that blocker in the existing tracker. The one operational proof needed is a real relevant professional agreeing to discuss a recent problem—not another strategy section.
+
+## 15. Minimum investigation architecture — synthetic boundary, 2026-10-16
+
+This section records the bounded architecture exercise requested after the technical-readiness audit. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge, authorize customer-data use or start a new application module.
+
+### 15.1 The one product chain
+
+GridMind's minimum product is one traceable decision chain:
+
+**Customer question → authorized evidence → investigation → qualified review → customer decision → outcome check**
+
+The minimum information objects are:
+
+| Object | Required content |
+|---|---|
+| Investigation case | Question, decision, boundary/window, owner, status and stop conditions |
+| Evidence item | Owner/authorization, source, raw reference, time/provenance, quality, use/retention and access |
+| Timeline event | Source-linked observation with raw and reconciled time |
+| Claim or hypothesis | Exact wording, evidence for/against, alternatives, uncertainty and next discriminating check |
+| Calculation | Inputs, formula, units, baseline/counterfactual, exclusions and sensitivity |
+| Review record | Qualified role, challenge, correction, approval/rejection/dissent and unresolved limits |
+| Decision record | Customer-owned decision, rationale, responsible role and approved action |
+| Outcome check | Measure, window, confounders and state from planned through verified/sustained |
+
+Charts, reports and future dashboard views must resolve back to this chain. Missing information remains unknown; a calculation does not become a cause, recommendation, savings claim or verified outcome merely because it is reproducible.
+
+### 15.2 Comparable synthetic exercises
+
+The existing [C4 energy fixture](gridmind-economic-discovery-synthetic-evaluation-2026-10-13.md) tests period coverage, units, tariff/baseline sensitivity, duplicate/conflicting records and unsupported savings. The new [C1 downtime fixture](gridmind-downtime-investigation-synthetic-evaluation-2026-10-16.md) tests event timelines, clock conflicts, overlapping downtime, competing causes, reviewer disagreement, safety boundaries and unsupported production-loss claims.
+
+Both fixtures support the same eight-object architecture, but neither supplies commercial evidence. C1 has greater event-sequence, causal and safety risk. C4 has greater comparability, tariff and baseline risk. The prototype's stronger C4 fit is sunk implementation context, not a reason to select C4.
+
+### 15.3 Smallest future implementation boundary
+
+After Tier 1 buyer evidence selects a candidate and Tier 2 authorizes a bounded test, implement only one end-to-end internal path:
+
+1. Open one investigation with a written question and decision owner.
+2. Register only authorized evidence and its provenance/quality.
+3. Build the relevant timeline or period comparison.
+4. Record competing claims, calculations, uncertainty and next checks.
+5. Obtain qualified review with corrections and dissent preserved.
+6. Produce one approved decision brief and customer-owned decision.
+7. Record an outcome only when the agreed measure/window exists.
+
+Do not build a general customer dashboard, broad integrations, autonomous diagnosis or multi-use-case workbench before this path is validated. The existing application and database should be reused where they satisfy the selected path; missing objects should be added only from the chosen workflow's demonstrated requirement.
+
+### 15.4 Result and next gate
+
+The synthetic architecture exercise is complete enough to prevent C4-oriented code from dictating the product model. It is not independently reviewed, delivery time is not measured, and no buyer usefulness or willingness to pay is established.
+
+The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Product implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).
