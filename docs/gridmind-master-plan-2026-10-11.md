@@ -1,6 +1,6 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-15 (planning revision; customer evidence unchanged)
+**Last updated:** 2026-10-16 (capacity and relevance consolidation; customer evidence unchanged)
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
@@ -124,14 +124,9 @@ Before accepting or processing non-public data, require:
 
 If these gates cannot be met, stay offline with public, synthetic, or participant-approved non-confidential information, or stop. Do not imply a real customer validation.
 
-## 6. 30-day operating calendar
+## 6. Operating calendar
 
-- **Oct 11–12:** Freeze the plan and tracker; send the ASIA public-route inquiry; identify legitimate warm-introduction routes.
-- **Oct 12–19:** Log any ASIA response; follow up once after 4–5 business days if appropriate; make 3–5 genuine warm-introduction requests if actual capacity permits. Record real funnel movement; do not treat the small test as statistically conclusive.
-- **Oct 18–24:** Conduct conversations where booked. Probe C1 and C4 deeply, reconstruct actual incidents, and capture disconfirming evidence. Do not pitch a full platform.
-- **Oct 25–31:** Compare the two probes on buyer pain, residual gap, buyer path, commercial signal, and bounded-service feasibility. If a candidate is promising, ask whether the buyer wants a scoped retrospective test; do not request records before Tier 2.
-- **Nov 1–7:** If and only if permissions and reviewers exist, prepare a written offline test protocol. Otherwise continue discovery or record the access/reviewer blocker.
-- **Nov 8–10:** Synthesize evidence and decide **GO TO BOUNDED TEST / NARROW / PIVOT / STOP**. Do not require verified savings within this sprint; verified outcomes belong to a later, agreed observation period.
+**Oct 19:** Supported factory-introduction access checkpoint (3–5 genuine requests if contacts exist). **Oct 24:** test one independent approved intermediary if no useful access. **Oct 31:** target three substantive conversations and one explicit buyer next step; report actuals. **Nov 10:** GO to bounded-test *design* / NARROW / PIVOT / PAUSE-STOP on evidence. All detail and proof of completion belong in the [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). No forced commercialization by calendar date.
 
 ## 7. Resource model and stop conditions
 
@@ -198,9 +193,7 @@ Do not write as if an unassigned reviewer has approved anything. A missing role 
 
 ## 13. Current next action
 
-Stop expanding the plan and focus on access. The ASIA public-route inquiry was sent on 2026-10-12; no reply, referral, or conversation is confirmed. Check for an actual response and follow up once around 2026-10-19 if appropriate. In parallel, make 3–5 genuine warm-introduction requests by 2026-10-19 only if legitimate contacts and actual capacity exist. Appropriate adult/professional support is required before external outreach; confirm dad's agreement and scope in §10 first. Log actual messages, replies, introductions, calls booked/held, and explicit buyer next steps in the Buyer Discovery Sprint tracker. Do not count planned activity as completed, infer demand from a small sample, or start another planning cycle. The checkpoint is 3 substantive conversations and at least one explicit buyer next step by 2026-10-31; the formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains 2026-11-10.
-
-
+Confirm actual consent and scope with the nominated adult supporter, then attempt legitimate introductions and record real results in the [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). Do not mistake a prepared email, synthetic case, or a GitHub commit for buyer validation.
 
 ## 14. Current execution correction and staged direction — 2026-10-15
 
