@@ -160,6 +160,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <DashboardFrame
       links={STAFF_NAV}
       header={
+        <>
         <div className="flex min-h-16 items-center gap-2 px-4 py-3 sm:px-6">
           <div className="lg:hidden">
             <Logo />
@@ -234,6 +235,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 : "Pull to refresh"}
           </div>
         )}
+        </>
       }
       floating={
         <Button
