@@ -1,12 +1,14 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-15 (planning revision; customer evidence unchanged)
+**Last updated:** 2026-10-16 (execution sequence and C1 synthetic method; customer evidence unchanged)
 **Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
 **Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
 
 ## Executive operating summary — 2026-10-15
 
 **This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
+
+**Capacity correction (2026-10-16): founder reports five hours DAILY, not weekly. A 25-hour five-day working example is optional; preserve school, sleep and rest. Earlier weekly allocations are superseded.**
 
 **This week's operating view:** choose a specific buyer decision with a material unresolved gap. C1 and C4 remain open; discovery is P0. Use the table below for action, the tracker for actual results, and §14 for the current operating rules.
 
@@ -122,18 +124,13 @@ Before accepting or processing non-public data, require:
 
 If these gates cannot be met, stay offline with public, synthetic, or participant-approved non-confidential information, or stop. Do not imply a real customer validation.
 
-## 6. 30-day operating calendar
+## 6. Operating calendar
 
-- **Oct 11–12:** Freeze the plan and tracker; send the ASIA public-route inquiry; identify legitimate warm-introduction routes.
-- **Oct 12–19:** Log any ASIA response; follow up once after 4–5 business days if appropriate; make 3–5 genuine warm-introduction requests if actual capacity permits. Record real funnel movement; do not treat the small test as statistically conclusive.
-- **Oct 18–24:** Conduct conversations where booked. Probe C1 and C4 deeply, reconstruct actual incidents, and capture disconfirming evidence. Do not pitch a full platform.
-- **Oct 25–31:** Compare the two probes on buyer pain, residual gap, buyer path, commercial signal, and bounded-service feasibility. If a candidate is promising, ask whether the buyer wants a scoped retrospective test; do not request records before Tier 2.
-- **Nov 1–7:** If and only if permissions and reviewers exist, prepare a written offline test protocol. Otherwise continue discovery or record the access/reviewer blocker.
-- **Nov 8–10:** Synthesize evidence and decide **GO TO BOUNDED TEST / NARROW / PIVOT / STOP**. Do not require verified savings within this sprint; verified outcomes belong to a later, agreed observation period.
+**Oct 19:** Supported factory-introduction access checkpoint (3–5 genuine requests if contacts exist). **Oct 24:** test one independent approved intermediary if no useful access. **Oct 31:** target three substantive conversations and one explicit buyer next step; report actuals. **Nov 10:** GO to bounded-test *design* / NARROW / PIVOT / PAUSE-STOP on evidence. All detail and proof of completion belong in the [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). No forced commercialization by calendar date.
 
 ## 7. Resource model and stop conditions
 
-**Provisional planning cap:** 5 founder hours/week, ₹0 incremental spend, using existing tools and human conversations. This is an explicit planning assumption, not a claim about the founder's actual availability. If the cap is unrealistic, reduce the activity target and reset the dates; do not silently exceed it. Do not run this alongside speculative site redesign, new modules, brand renaming, or unrelated growth experiments.
+**Founder-reported availability (corrected 2026-10-15):** **5 hours/day**, **not 5 hours/week**. A practical planning baseline is **25 hours/week over five chosen days**; 35 hours/week is possible only if seven days are actually available and appropriate, **not** a target or obligation. Preserve school, sleep and rest; track actual hours and revise the schedule if necessary. Incremental cash spend remains **₹0** through the Nov 10 decision unless separately approved. Extra time enables better discovery preparation, buyer conversations, domain learning and evidence review; it does **not** waive the discovery-first freeze, support requirements, buyer-access dependency or technical/data gates.
 
 Stop or change course if:
 - **Oct 19:** review response quality from the ASIA route and the 3–5-request access test; decide whether to continue, change the route, or record access as the current blocker. Do not infer absent market demand from a small or immature sample.
@@ -196,9 +193,7 @@ Do not write as if an unassigned reviewer has approved anything. A missing role 
 
 ## 13. Current next action
 
-Stop expanding the plan and focus on access. The ASIA public-route inquiry was sent on 2026-10-12; no reply, referral, or conversation is confirmed. Check for an actual response and follow up once around 2026-10-19 if appropriate. In parallel, make 3–5 genuine warm-introduction requests by 2026-10-19 only if legitimate contacts and actual capacity exist. Appropriate adult/professional support is required before external outreach; confirm dad's agreement and scope in §10 first. Log actual messages, replies, introductions, calls booked/held, and explicit buyer next steps in the Buyer Discovery Sprint tracker. Do not count planned activity as completed, infer demand from a small sample, or start another planning cycle. The checkpoint is 3 substantive conversations and at least one explicit buyer next step by 2026-10-31; the formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains 2026-11-10.
-
-
+Confirm actual consent and scope with the nominated adult supporter, then attempt legitimate introductions and record real results in the [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). Do not mistake a prepared email, synthetic case, or a GitHub commit for buyer validation.
 
 ## 14. Current execution correction and staged direction — 2026-10-15
 
@@ -235,7 +230,7 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 
 ### 14.4 Capacity, financial runway and engineering limits
 
-**Current provisional allocation (5 founder hours/week, ₹0 incremental cash spend through Nov 10):** 60 min supported outreach/scheduling; 120 min interviews plus notes; 45 min adviser/reviewer-route coordination; 45 min follow-ups; 30 min tracker/evidence review. **No speculative product engineering is budgeted in these five hours.** If access fails or time differs, reduce activity goals and document a changed capacity assumption; do not silently exceed the cap.
+**Current planning allocation (founder reports 5 hours/day; example 25 hours over five chosen days, ₹0 incremental cash spend through Nov 10):** 6 h supported access/introductions/scheduling; 7 h genuine interviews plus permissioned non-confidential notes (reallocate to preparation when no interviews are booked); 4 h adviser/domain-expert route and relevant industrial learning; 4 h evidence review and fair C1/C4 comparison; 2 h tracker, follow-ups and operating review; **up to 2 h necessary technical correctness/security maintenance only**, otherwise return those hours to discovery. **Total: 25 h/week illustrative allocation, not an obligation or confirmed hours worked.** No speculative product engineering, unrelated dashboard polish or additional vendor purchases are authorized. Buyer access, adult/professional support, customer-data rights and reviewer requirements remain hard dependencies; actual hours must fit alongside school, sleep and rest.
 
 **Runway:** founder cash budget remains **₹0 incremental** for this sprint (not an assertion about personal finances). Time runway is the remaining founder hours to the Nov 10 decision; record actual weekly usage and decisions. Before authorizing any paid trial, record approved project funds, expected weekly cash burn, opportunity cost and a latest go/no-go date; calculate cash runway only from *actual allocated funds*, not estimated family resources. Do not promise paid experts or software subscriptions without approval.
 
@@ -256,3 +251,74 @@ These are **operational decision thresholds** meant to limit post-hoc rationaliz
 ### 14.6 The one next action
 
 **Founder, with suitable adult/professional support:** confirm and record dad's agreement to support the specific outreach before any new external industrial outreach; then pursue the Oct 19 legitimate introduction experiment. If blocked, explicitly record that blocker in the existing tracker. The one operational proof needed is a real relevant professional agreeing to discuss a recent problem—not another strategy section.
+
+
+## 15. Minimum investigation architecture — synthetic boundary, 2026-10-16
+
+This section records the bounded architecture exercise requested after the technical-readiness audit. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge, authorize customer-data use or start a new application module.
+
+### 15.1 The one product chain
+
+GridMind's minimum product is one traceable decision chain:
+
+**Customer question → authorized evidence → investigation → qualified review → customer decision → outcome check**
+
+The minimum information objects are:
+
+| Object | Required content |
+|---|---|
+| Investigation case | Question, decision, boundary/window, owner, status and stop conditions |
+| Evidence item | Owner/authorization, source, raw reference, time/provenance, quality, use/retention and access |
+| Timeline event | Source-linked observation with raw and reconciled time |
+| Claim or hypothesis | Exact wording, evidence for/against, alternatives, uncertainty and next discriminating check |
+| Calculation | Inputs, formula, units, baseline/counterfactual, exclusions and sensitivity |
+| Review record | Qualified role, challenge, correction, approval/rejection/dissent and unresolved limits |
+| Decision record | Customer-owned decision, rationale, responsible role and approved action |
+| Outcome check | Measure, window, confounders and state from planned through verified/sustained |
+
+Charts, reports and future dashboard views must resolve back to this chain. Missing information remains unknown; a calculation does not become a cause, recommendation, savings claim or verified outcome merely because it is reproducible.
+
+### 15.2 Comparable synthetic exercises
+
+The existing [C4 energy fixture](gridmind-economic-discovery-synthetic-evaluation-2026-10-13.md) tests period coverage, units, tariff/baseline sensitivity, duplicate/conflicting records and unsupported savings. The new [C1 downtime fixture](gridmind-downtime-investigation-synthetic-evaluation-2026-10-16.md) tests event timelines, clock conflicts, overlapping downtime, competing causes, reviewer disagreement, safety boundaries and unsupported production-loss claims.
+
+Both fixtures support the same eight-object architecture, but neither supplies commercial evidence. C1 has greater event-sequence, causal and safety risk. C4 has greater comparability, tariff and baseline risk. The prototype's stronger C4 fit is sunk implementation context, not a reason to select C4.
+
+### 15.3 Smallest future implementation boundary
+
+After Tier 1 buyer evidence selects a candidate and Tier 2 authorizes a bounded test, implement only one end-to-end internal path:
+
+1. Open one investigation with a written question and decision owner.
+2. Register only authorized evidence and its provenance/quality.
+3. Build the relevant timeline or period comparison.
+4. Record competing claims, calculations, uncertainty and next checks.
+5. Obtain qualified review with corrections and dissent preserved.
+6. Produce one approved decision brief and customer-owned decision.
+7. Record an outcome only when the agreed measure/window exists.
+
+Do not build a general customer dashboard, broad integrations, autonomous diagnosis or multi-use-case workbench before this path is validated. The existing application and database should be reused where they satisfy the selected path; missing objects should be added only from the chosen workflow's demonstrated requirement.
+
+### 15.4 Result and next gate
+
+The synthetic architecture exercise is complete enough to prevent C4-oriented code from dictating the product model. It is not independently reviewed, delivery time is not measured, and no buyer usefulness or willingness to pay is established.
+
+The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Product implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).
+
+
+## 16. Conditional 90-day build order — gates, not feature deadlines
+
+**Decision now:** no full dashboard, public-site redesign, new integration, or speculative schema expansion. The first meaningful artifact is a **reviewed one-case investigation and decision brief**, not an enterprise dashboard.
+
+| Gate / target period | Work and minimum evidence | What is approved next |
+|---|---|---|
+| **Now → Oct 19** | Fix only established correctness/security defects; verify the existing local synthetic browser/HTTP tests; document an actual consenting adult/professional outreach supporter and real introduction attempts in the sole tracker. Production preview issue [#98](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/98) was fixed by merged PR #99; do not reopen as a build blocker without new evidence. | Public/synthetic investigation exercises and legitimate supported discovery only. |
+| **Oct 19 → Nov 10** | Neutral C1/C4 problem interviews, reviewer-method feasibility, current alternatives, independently owned firms, attributable buyer next action. Use the existing Nov 10 decision rule in §14.2. | **GO authorizes design of one bounded test only**, never automatic data access, equipment activity or production code. |
+| **After GO, if Tier 2 separately passes** | One customer-authorized retrospective case with named qualified reviewer, written rights/retention, agreed baseline and delivery limits. Start with manual evidence register, claim/calculation/review, and one decision brief; log actual labor and direct cost. | Implement only specific repeatable steps needed to make that one case more reliable. |
+| **After multiple comparable paid or explicitly funded cases** | Document buyer use, fees collected, reviewer burden, repeatable steps, acquisition cost, quality failures and retained demand. | Small internal investigation workbench, with access controls; revisit a customer portal only if customers repeatedly ask for progress/report access. |
+| **Only after repeated multi-customer use** | Demonstrated need for ongoing cross-site visibility, willingness to pay for it, and supportable security/integration contracts. | Customer dashboard and read-only integrations; adjacent infrastructure markets have their own buyer and economics gates. |
+
+**Implementation order after authorization:** reuse existing organization/factory/Auth boundaries → investigation case and authorized evidence provenance → period/timeline comparison → competing claims, uncertainty and calculations → qualified review → approved decision brief → customer outcome status. These are logical objects, not a mandate to create new tables.
+
+**Website scope:** existing accurate public identity and a simple legitimate contact route can support introductions; no false proof, case studies, savings or implied production features. Full design/animation work remains parked.
+
+**Non-negotiable separation:** CI, production-preview and isolated browser tests establish engineering evidence only. Release to live customers requires the independent security, schema, privacy, reviewer and authorization gates in [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29), including branch protection [#46](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/46). No direct OT/SCADA or onsite equipment action in these stages.
