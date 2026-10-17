@@ -2,6 +2,17 @@
 **Decision date:** 2026-10-10  
 **Status:** Canonical interpretation of the current strategy; newest 2026-10-17 amendment governs current discovery ordering. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
 
+## Repository visibility amendment — 17 October 2026
+
+**Previous decision:** Keep the existing GridMind repository private and separate the already-public website from source/history visibility.
+
+**Founder decision:** Make this same repository and its full history public to avoid the exhausted private GitHub Actions budget; do not create a second repository. The owner completed GitHub email verification, and GitHub reports `visibility: public`.
+
+**Evidence:** The Actions budget showed $6.00 of $6.00 used and stopped jobs before any steps. After the visibility change, the exact-head CI and Quality Gate completed successfully; the isolated Migration Replay also passed. The public-site browser job ran and found an outdated contact-link assertion, corrected in the follow-up PR commit. The existing Vercel production website was already anonymously accessible and its build-rate limit is independent of GitHub repository visibility.
+
+**Trade-off and boundary:** All code, Git history, Actions logs, issues and PRs can now be read and forked by the public. No open-source license has been granted. Do not put customer records, credentials, private commercial details or sensitive security findings in the public repository. GitHub private vulnerability reporting was enabled and the public [security policy](../SECURITY.md) names it; outside-reporter submission remains untested. Public visibility does not select a paid wedge, validate a customer or authorize production deployment.
+**Affected files:** README, SECURITY policy, Master Plan, repository benchmark, engineering acceptance and PR #136. Older dated descriptions of a private repository remain historical snapshots, not current operating instructions.
+
 ## Founder-directed GridMind 3.1 scope amendment — 17 October 2026
 
 **Previous scope:** C1 downtime and C4 energy were the only deep-discovery probes; C2 quality remained parked. The synthetic connected engine and marketed electricity example reflect that older implementation sequence.  

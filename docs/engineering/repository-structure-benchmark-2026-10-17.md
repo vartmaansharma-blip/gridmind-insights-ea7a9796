@@ -1,10 +1,10 @@
 # Repository structure benchmark and improvement queue
 
-**Status:** Supporting engineering audit, 17 October 2026. **Scope:** existing private GridMind repository on draft PR #136, not a claim that any repository is “the best”. **Owner:** engineering; founder approves documentation authority. See the [Master Plan](../gridmind-master-plan-2026-10-11.md), [documentation guide](../README.md) and [release gate](../release-gate.md).
+**Status:** Supporting engineering audit, 17 October 2026. **Scope:** existing public GridMind repository on draft PR #136, not a claim that any repository is “the best”. **Owner:** engineering; founder approves documentation authority. See the [Master Plan](../gridmind-master-plan-2026-10-11.md), [documentation guide](../README.md) and [release gate](../release-gate.md).
 
 ## What “better” means here
 
-A founder should find the next decision within two clicks, an implementer should know where a change belongs, and a reviewer should distinguish a plan from working code and a green check from a blocked runner. Those are testable properties. Repository size or resemblance to a large open-source monorepo is not the goal. GridMind is private, early and domain-sensitive, so it should borrow practices without copying scale-specific complexity.
+A founder should find the next decision within two clicks, an implementer should know where a change belongs, and a reviewer should distinguish a plan from working code and a green check from a blocked runner. Those are testable properties. Repository size or resemblance to a large open-source monorepo is not the goal. GridMind is public, early and domain-sensitive, so it should borrow practices without copying scale-specific complexity and keep non-public customer/security material elsewhere.
 
 [GitHub's README guidance](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes) says a README should orient readers and link to longer material; [GitHub's protected-branch guidance](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches) distinguishes review and passing checks. [Supabase's contribution guide](https://github.com/supabase/supabase/blob/master/CONTRIBUTING.md) shows explicit development and PR instructions; [Next.js's contribution guide](https://github.com/vercel/next.js/blob/canary/contributing.md) routes work through issues, reviews and tests. These are examples of mature practices, not proof that their complete folder trees suit GridMind.
 
@@ -57,4 +57,4 @@ The 92 compatibility pointers at prior `docs/` paths keep historical links resol
 4. Reconcile open PRs #132, #133, #125 and #120 with the new site/portal sequence before combining or closing them.
 5. After first real customer/reviewer evidence, remove redundant historical summaries where links allow, and refine code module boundaries based on observed case flow.
 
-**Benchmark verdict:** The repository now has the navigation, authority and change history needed for a small private company. It does **not** yet match mature projects on enforced, passing review/release automation. That is the highest-impact gap; adding more folders cannot fix it.
+**Benchmark verdict:** The repository now has the navigation, authority and change history needed for a small company using a public codebase. It does **not** yet match mature projects on enforced, passing review/release automation. That is the highest-impact gap; adding more folders cannot fix it.

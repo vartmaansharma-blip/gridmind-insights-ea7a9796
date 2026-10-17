@@ -104,7 +104,7 @@ Lovable handles design and visual implementation; Codex handles backend behavior
 - [Contribution workflow](CONTRIBUTING.md), [ownership routing](.github/CODEOWNERS), [support](SUPPORT.md), and [security reporting](SECURITY.md).
 - [Change history](CHANGELOG.md) records completed repository work; it is not a production-release claim.
 - Dependabot proposes compatible Bun updates and GitHub Action updates for review. It does not automatically merge them or prove an update is safe for Lovable.
-- This is a private repository with no open-source license selected. Access does not establish permission to redistribute original GridMind code; request the owner's permission. Third-party dependencies retain their own licenses.
+- This repository is public, but no open-source license has been selected. Public visibility does not grant permission to reuse or redistribute original GridMind code beyond GitHub's viewing and forking terms; request the owner's permission. See [GitHub's licensing guide](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository). Third-party dependencies retain their own licenses. Never put real factory records, credentials, or private security findings in public issues, PRs, or commits; use the [security reporting route](SECURITY.md).
 
 ## Engineering and safety principles
 

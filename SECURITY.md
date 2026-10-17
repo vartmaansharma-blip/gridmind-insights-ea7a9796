@@ -2,13 +2,11 @@
 
 ## Supported scope
 
-The current `main` branch is the maintained development version. GridMind is a private, pre-pilot repository; no production-security certification or response-time guarantee is claimed. The [technical release gate](docs/release-gate.md) and [issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) control customer-data readiness.
+The current `main` branch is the maintained development version. GridMind is a public, pre-pilot repository; no production-security certification or response-time guarantee is claimed. The [technical release gate](docs/release-gate.md) and [issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) control customer-data readiness.
 
 ## Reporting a concern
 
-For this private repository, open a minimal issue visible only to authorized repository collaborators and notify the owner through your existing private working channel. Describe the affected commit, component, impact, and safe synthetic reproduction. Do not include credentials, personal data, factory records, or executable exploit payloads in an issue or PR.
-
-If GitHub private vulnerability reporting is enabled, prefer that route. Its availability has not been verified. Before making this repository public, the owner must establish and test a private reporting route; do not publish sensitive findings in public issues.
+Use **Report a vulnerability** from the repository's [Security page](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/security). GitHub private vulnerability reporting was enabled on 17 October 2026; the owner verified the setting, but an outside reporter's submission flow has not been exercised. Describe the affected commit, component, impact, and safe synthetic reproduction in the private report. Do not open a public issue or PR for a sensitive finding, and do not include credentials, personal data, factory records, or executable exploit payloads in any report.
 
 The owner, [@vartmaansharma-blip](https://github.com/vartmaansharma-blip), coordinates triage, containment, review, and any necessary communication. Auth/RLS, tenant isolation, privileged functions, migrations, exports, and secrets require appropriate independent security review before release.
 
