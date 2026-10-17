@@ -97,14 +97,14 @@ function RootComponent() {
   if (standaloneRoute) return <><Outlet /><Toaster position="top-center" /></>;
   return (
     <QueryClientProvider client={queryClient}>
-      <EnergyStoreProvider>
-        <StaffWorkspaceGate>
+      <StaffWorkspaceGate>
+        <EnergyStoreProvider>
           <AppShell>
             <Outlet />
           </AppShell>
-        </StaffWorkspaceGate>
-        <Toaster position="top-center" />
-      </EnergyStoreProvider>
+        </EnergyStoreProvider>
+      </StaffWorkspaceGate>
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
 }
