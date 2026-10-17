@@ -4,6 +4,10 @@ Use these schedules only after the buyer, adult/legal, reviewer, data-rights and
 
 **Authority:** [Master Plan](../gridmind-master-plan-2026-10-11.md) → [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) → [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Return to the [documentation guide](../README.md) for the recommended reading path.
 
+## GridMind 3.1 commercial method
+
+- [Service SOP, commercial offers and payment acceptance](gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) — stepwise on-site delivery, lawful/adult-authorized B2B collection, separately scoped manufacturer receivables, hypothetical pricing, quality and margin gates. **No live merchant integration or price validation is claimed.**
+
 ## Documents
 
 - [GridMind — Company Economics, Operating Model & Risk Register](gridmind-company-economics-and-risk-register-2026-10-17.md)
