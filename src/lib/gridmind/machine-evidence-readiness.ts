@@ -99,14 +99,20 @@ export function assessMachineEvidence(
 
   for (const observation of observations) {
     const role = roleOf(observation);
+    if (!role) {
+      rejectedRecords += 1;
+      continue;
+    }
+    // Operating state and product code can be valid text context. They are not
+    // energy/output/hours measurements and must not inflate rejection counts.
+    if (!ROLES.includes(role as RequiredRole)) continue;
     const period = periodOf(observation);
-    if (!role || !period || !usable(observation)) {
+    if (!period || !usable(observation)) {
       rejectedRecords += 1;
       continue;
     }
     qualityEligibleCount += 1;
     if (observation.dataSourceId !== null) sourceIds.add(observation.dataSourceId);
-    if (!ROLES.includes(role as RequiredRole)) continue;
     const typedRole = role as RequiredRole;
     roles[typedRole] += 1;
     const found = groups.get(period) ?? new Map<RequiredRole, number>();
