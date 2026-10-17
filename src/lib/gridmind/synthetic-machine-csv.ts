@@ -38,13 +38,16 @@ export type PreviewPeriod = {
   sourceReference: string;
   /** No field acceptance or calibration is inferred. */
   evidenceStatus: "synthetic_unverified";
+  comparableNumericFields: boolean;
 };
 export type FormatPreview = {
-  status: "format_valid_synthetic" | "format_errors";
+  status: "format_valid_synthetic" | "format_errors" | "coverage_insufficient";
   periods: PreviewPeriod[];
   issues: PreviewIssue[];
   candidatePeriods: number;
+  comparableNumericPeriods: number;
   distinctSources: number;
+  notes: string[];
   readyForMachineDiagnosis: false;
   readyForProductionIngest: false;
 };
@@ -91,15 +94,16 @@ function parseCsv(text: string): string[][] | null {
 }
 
 const absoluteTime = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/;
-const strictPositive = /^(?:\d+(?:\.\d*)?|\.\d+)$/;
+const strictNonNegative = /^(?:\d+(?:\.\d*)?|\.\d+)$/;
 const canonicalName = /^[A-Za-z0-9][A-Za-z0-9._:/ -]{0,79}$/;
 const fail = (row: number, code: PreviewIssue["code"], message: string): PreviewIssue => ({ row, code, message });
 
 export function previewSyntheticMachineCsv(text: string): FormatPreview {
   const issues: PreviewIssue[] = [];
+  const notes: string[] = [];
   const empty = (): FormatPreview => ({
     status: "format_errors", periods: [], issues, candidatePeriods: 0,
-    distinctSources: 0, readyForMachineDiagnosis: false, readyForProductionIngest: false,
+    comparableNumericPeriods: 0, distinctSources: 0, notes, readyForMachineDiagnosis: false, readyForProductionIngest: false,
   });
   if (text.length > 16_384) {
     issues.push(fail(0, "format", "Maximum 16 KB of synthetic text is allowed."));
@@ -145,8 +149,8 @@ export function previewSyntheticMachineCsv(text: string): FormatPreview {
       issues.push(fail(line, "time", "Use distinct increasing ISO timestamps with explicit time-zone offsets."));
       continue;
     }
-    if (![kwh,output,hours].every(x => strictPositive.test(x) && Number.isFinite(Number(x)) && Number(x) > 0 && Number(x) <= 1e12)) {
-      issues.push(fail(line, "number", "Energy, output and operating hours must be finite positive numbers."));
+    if (![kwh,output,hours].every(x => strictNonNegative.test(x) && Number.isFinite(Number(x)) && Number(x) >= 0 && Number(x) <= 1e12)) {
+      issues.push(fail(line, "number", "Energy, output and operating hours must be finite nonnegative numbers, with zero distinct from missing."));
       continue;
     }
     if (!canonicalName.test(state) || !canonicalName.test(product)) {
@@ -163,10 +167,12 @@ export function previewSyntheticMachineCsv(text: string): FormatPreview {
       continue;
     }
     prior.add(range);
+    const comparableNumericFields = Number(kwh) > 0 && Number(output) > 0 && Number(hours) > 0;
+    if (!comparableNumericFields) notes.push(`CSV row ${line}: zero measurement preserved, but this period is not suitable for an energy-intensity comparison without further review.`);
     periods.push({
       start, end, energyKwh: Number(kwh), outputUnits: Number(output),
       operatingHours: Number(hours), operatingState: state, productCode: product,
-      sourceReference: source, evidenceStatus: "synthetic_unverified",
+      sourceReference: source, evidenceStatus: "synthetic_unverified", comparableNumericFields,
     });
   }
   const sorted = [...periods].sort((a,b) => Date.parse(a.start) - Date.parse(b.start));
@@ -176,12 +182,14 @@ export function previewSyntheticMachineCsv(text: string): FormatPreview {
       break;
     }
   }
-  if (periods.length < 4)
-    issues.push(fail(0, "scope", "At least four distinct candidate periods are needed for current plus historical comparison."));
+  const comparableNumericPeriods = periods.filter(x => x.comparableNumericFields).length;
+  if (comparableNumericPeriods < 4)
+    notes.push("At least four non-overlapping, nonzero numeric candidate periods are needed before separately validating a current-versus-historical comparison.");
   return {
-    status: issues.length ? "format_errors" : "format_valid_synthetic",
-    periods, issues,
+    status: issues.length ? "format_errors" : comparableNumericPeriods < 4 ? "coverage_insufficient" : "format_valid_synthetic",
+    periods, issues, notes,
     candidatePeriods: periods.length,
+    comparableNumericPeriods,
     distinctSources: new Set(periods.map(x=>x.sourceReference)).size,
     readyForMachineDiagnosis: false,
     readyForProductionIngest: false,
