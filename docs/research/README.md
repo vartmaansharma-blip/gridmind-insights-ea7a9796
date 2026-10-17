@@ -4,6 +4,10 @@ These are exploratory or dated analyses. They do not select the commercial wedge
 
 **Authority:** [Master Plan](../gridmind-master-plan-2026-10-11.md) → [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) → [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Return to the [documentation guide](../README.md) for the recommended reading path.
 
+## GridMind 3.1 evidence inventory
+
+- [100 manufacturing problem hypotheses and delivery boundaries](gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) — 10 manufacturing domains × 10 issues, potential direct/expert/partner response and sourced limitations. **NOT** a list of interviewed manufacturers, commercial winners or 100 coded product features. The sole Buyer Discovery Sprint remains the only live evidence tracker.
+
 ## Documents
 
 - [GridMind — Bigger Problem Thesis: From Incident Investigation to Industrial Value Realization](gridmind-bigger-problem-thesis-2026-10-11.md)
