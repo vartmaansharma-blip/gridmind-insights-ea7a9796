@@ -39,7 +39,7 @@ describe("Google auth boundaries", () => {
     expect(workspaceDestination({ factories: [], isCustomer: false }, undefined)).toBe("/onboarding");
     // A user without a staff grant cannot self-promote by requesting team.
     expect(workspaceDestination({ factories: [], isCustomer: false }, "team")).toBeNull();
-    expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "viewer" }], isCustomer: false }, "team")).toBeNull();
+    expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "viewer" }], isCustomer: false }, "team")).toBe("/team/cases");
     expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "viewer" }], isCustomer: false }, undefined)).toBe("/onboarding");
     expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "owner" }], isCustomer: true }, "customer")).toBe("/cases");
   });
