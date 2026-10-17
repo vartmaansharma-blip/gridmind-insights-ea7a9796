@@ -35,6 +35,9 @@ jobs:
       - name: Markdown internal-link audit
         run: bun run docs:links
 
+      - name: Verify isolated scooter POC reference catalogue
+        run: bun run poc:scooter:check
+
       - name: Typecheck
         run: bun run typecheck
 
