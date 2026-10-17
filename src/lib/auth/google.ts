@@ -1,5 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Principal } from "@/lib/investigation/portal-contract";
+import { selectAuthorizedLanding } from "./workspace-routing";
 
 export type AuthDestination = "customer" | "team" | undefined;
 export function authDestination(value: unknown): AuthDestination {
@@ -75,11 +76,7 @@ export async function finishGoogleSignIn(
 // returns no private cases until an owner explicitly grants case access.
 // This customer *intent* must never be interpreted as a factory/team grant.
 export function workspaceDestination(principal: Principal, destination: AuthDestination) {
-  if (destination === "customer") return "/cases" as const;
-  if (!principal.factories.length && !principal.isCustomer) return null;
-  if (!principal.factories.length) return "/cases" as const;
-  if (destination === "team") return "/team/cases" as const;
-  return "/" as const;
+  return selectAuthorizedLanding(principal, destination);
 }
 
 // Public provider availability only: never request the management API, client
