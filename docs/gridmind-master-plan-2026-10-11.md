@@ -93,7 +93,7 @@ Public marketing site ── non-confidential conversation ── qualified scop
 
 **Current source truth:** Existing TanStack Start/React/Vite/Bun app and Lovable-branded public view, customer routes, staff routes, energy dashboards and synthetic C1/C4 case engine **remain**. Source supports C1/C4 synthetic technical demonstrations; **no** claim of implemented R1/C2 or R2/C6 connected backend is permitted. Existing root `/` is the operational dashboard; public marketing is `/website` pending a separately verified and reversible route migration. Preserve signature green and the existing design rather than overwrite it.
 
-**Team division:** Codex/engineering owns schemas, tests, backend permissions and integration; Lovable owns visual polish and responsive UX under [implementation handoff](gridmind-mvp-lovable-handoff.md). Do not let design alter security or analysis decisions.
+**Team division:** Codex/engineering owns schemas, tests, backend permissions and integration; Lovable owns visual polish and responsive UX under [implementation handoff](product/gridmind-mvp-lovable-handoff.md). Do not let design alter security or analysis decisions.
 
 ## 6. Execution: one sprint, explicit gates, not unlimited planning
 
@@ -167,7 +167,7 @@ For each **real** observed customer event record: last event and recency; busine
 ---
 
 # PART II — Detailed company, product, financial and execution architecture (17 October 2026)
-This part is an expansion of the **same canonical Master Plan**, not a new strategy, task queue or commercial approval. Part I and the security constitution still govern. Specific product contracts and case economics are supporting details in [Resolve domain specification](gridmind-resolve-domain-and-product-contract-2026-10-17.md) and [Business/risk operations](gridmind-company-economics-and-risk-register-2026-10-17.md). If they disagree, correct them here.
+This part is an expansion of the **same canonical Master Plan**, not a new strategy, task queue or commercial approval. Part I and the security constitution still govern. Specific product contracts and case economics are supporting details in [Resolve domain specification](product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) and [Business/risk operations](operations/gridmind-company-economics-and-risk-register-2026-10-17.md). If they disagree, correct them here.
 
 ## 11. First principles: what creates value, and what destroys it
 Manufacturers do not buy a business category. They buy a credible improvement in an actual decision, workflow or outcome. Most factory problems have existing owners and processes; a new vendor must prove **incremental value** over that real alternative.
@@ -280,7 +280,7 @@ Before accepting a pilot, compare **customer value that can reasonably be suppor
 
 **Cost-control default:** zero speculative equipment purchases; use existing repo/Lovable stack; contract qualified experts case-by-case; avoid long retained consulting commitments before demand. No age-restricted contracts or unsupervised site visits by the student founder.
 
-**Financial gates:** no invoice without an agreed scope and contracting entity; no recurring price until customers articulate recurring outputs; no annual forecast without retention and sales-cycle observations; no guarantee of collection/savings. Unit economics model, sensitivity analysis and definitions are maintained in [company economics/risk register](gridmind-company-economics-and-risk-register-2026-10-17.md).
+**Financial gates:** no invoice without an agreed scope and contracting entity; no recurring price until customers articulate recurring outputs; no annual forecast without retention and sales-cycle observations; no guarantee of collection/savings. Unit economics model, sensitivity analysis and definitions are maintained in [company economics/risk register](operations/gridmind-company-economics-and-risk-register-2026-10-17.md).
 
 **Failure arithmetic:** high top-line revenue does not imply value creation when travel/review and support dominate. If more buyers require unique customization, stop and narrow the ICP rather than disguising consulting time as software margin.
 
@@ -347,7 +347,7 @@ For each expansion, ask: same buyer? same budget? same evidence and specialist e
 | Founder availability | School/exams or partner unavailable | Reduce commitments and communicate realistic scope |
 | Compliance/tax/insurance gap | No suitable entity, contracts or risk ownership | No formal paid engagement until resolved |
 
-Risk severity, monitoring cadence, assignment, escalation and safeguards appear in [operating risk register](gridmind-company-economics-and-risk-register-2026-10-17.md). These are prospective operational controls, not evidence that they have been implemented.
+Risk severity, monitoring cadence, assignment, escalation and safeguards appear in [operating risk register](operations/gridmind-company-economics-and-risk-register-2026-10-17.md). These are prospective operational controls, not evidence that they have been implemented.
 
 ## 24. Technology and repository reshaping: acceptance matrix
 | Layer | Reuse / proposed change | Required acceptance before “done” |
@@ -375,7 +375,7 @@ This is the operating sequence for a founder starting with no customer. A stage 
 | Access | Ask an appropriate adult or professional for a permissioned introduction, or use an official public channel. State that this is research. | Actual send, reply and booked meeting recorded in the sole Buyer Discovery Sprint. | No legitimate contact route, site permission or safe supervision. |
 | Understand | Ask the interviewee to reconstruct one recent exception, their best existing method, decision delay, cost source and who could authorize a test. | Consent-safe event note with observed facts, estimates, gaps, buyer role and explicit next step. | Only hypothetical enthusiasm, no residual gap, or no buyer path. |
 | Compare | Ask the same core questions of R1, R2 and R3 interviewees without assuming a winner. Ask who already solves it and why that option falls short. | Evidence-based comparison in the existing tracker at the 10 November gate. | Problem frequency/value, permissions or specialist availability fails. |
-| Scope | With adult/legal and qualified domain support, define one decision question, one factory, time period, evidence owners, exclusions, fee ceiling and named reviewer. | Reviewed scope schedule using the linked [first-case template](gridmind-first-paid-case-scope-template-2026-10-17.md); no live records yet. | Customer asks for guaranteed recovery, certification, autonomous intervention or data rights they do not hold. |
+| Scope | With adult/legal and qualified domain support, define one decision question, one factory, time period, evidence owners, exclusions, fee ceiling and named reviewer. | Reviewed scope schedule using the linked [first-case template](operations/gridmind-first-paid-case-scope-template-2026-10-17.md); no live records yet. | Customer asks for guaranteed recovery, certification, autonomous intervention or data rights they do not hold. |
 | Contract and custody | Identify lawful contracting party; obtain a signed agreement, explicit evidence permissions, secure transfer, retention and correction terms; pass release/security gates. | Recorded authorization and verified technical controls for the exact environment. | Any missing authority, unsafe site access, failed tenant test or no recovery plan. |
 | Deliver | Register sources and contradictions, run only the selected domain method, let the independent qualified reviewer veto unsupported claims, then release an approved decision brief. | Version-bound source register, reviewer decision and customer-approved brief. | Evidence cannot answer the question or review is unavailable; report “insufficient evidence.” |
 | Follow through | Customer owns physical/commercial action. Observe an agreed post-period and confounders; issue corrections when needed. | Accepted action record, measured/estimated/unknown outcome and cash-cost record. | No comparable baseline or customer action; do not claim savings. |

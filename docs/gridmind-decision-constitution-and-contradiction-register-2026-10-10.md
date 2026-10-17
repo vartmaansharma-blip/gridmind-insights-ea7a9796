@@ -182,7 +182,7 @@ Do not leave a superseded instruction silently active in a prominent document. U
 
 **Repository:** CI and isolated browser/security tests are not production readiness. Keep open release controls [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29), branch enforcement [#46](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/46), and preview defect [#98](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/98) separate from buyer validation.
 
-**Prior decisions:** The dated amendment history remains available in the [repository revision immediately preceding this consolidation](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/3e3fcbc2f38872429951bb04cf5fc3416156c604/docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) and the [nonbinding historical appendix](gridmind-historical-planning-appendices-2026-10-15.md). It is not a second active strategy.
+**Prior decisions:** The dated amendment history remains available in the [repository revision immediately preceding this consolidation](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/3e3fcbc2f38872429951bb04cf5fc3416156c604/docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) and the [nonbinding historical appendix](archive/gridmind-historical-planning-appendices-2026-10-15.md). It is not a second active strategy.
 
 ## Google authentication implementation decision — 16 October 2026
 

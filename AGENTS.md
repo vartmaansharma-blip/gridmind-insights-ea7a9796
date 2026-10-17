@@ -28,7 +28,7 @@ Supporting research, dated audits, prototypes, and `roadmap.md` do not override 
 
 ## GridMind 3.1 implementation references
 
-Before creating modules, review the [Resolve Domain & Product Contract](docs/gridmind-resolve-domain-and-product-contract-2026-10-17.md) and [Engineering Acceptance Ledger](docs/gridmind-execution-and-repository-acceptance-2026-10-17.md). For pricing, cash and operational risks use the [Company Economics & Risk Register](docs/gridmind-company-economics-and-risk-register-2026-10-17.md). All remain **supporting** the Master Plan; do not turn them into competing strategies.
+Before creating modules, review the [Resolve Domain & Product Contract](docs/product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) and [Engineering Acceptance Ledger](docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md). For pricing, cash and operational risks use the [Company Economics & Risk Register](docs/operations/gridmind-company-economics-and-risk-register-2026-10-17.md). All remain **supporting** the Master Plan; do not turn them into competing strategies.
 
 **Mandatory separation:** a synthetic R1/R2/R3 commercial screening stage is not an implemented quality/finance diagnosis. Existing C1/C4 synthetic engine is not automatically a professional R3 tariff audit. No production data or physical-control integration before appropriate gates.
 

@@ -15,20 +15,20 @@
 
 1. [Documentation index](docs/README.md) — repository map and reading order.
 2. [Contribution standards](CONTRIBUTING.md) — source-of-truth rules, issue-to-PR workflow, validation, and safety requirements.
-3. [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) and [issue templates](.github/ISSUE_TEMPLATE/) — consistent scope, acceptance evidence, risk, and review records.
+3. [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) and [issue templates](.github/ISSUE_TEMPLATE) — consistent scope, acceptance evidence, risk, and review records.
 4. [Canonical Master Plan](docs/gridmind-master-plan-2026-10-11.md) — the only company execution plan.
 5. [Live Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) — the only live customer-access and discovery tracker.
 6. [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — binding strategic, safety, evidence, and scope guardrails.
-7. [Verification Audit](docs/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
+7. [Verification Audit](docs/archive/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
 
 ## GridMind 3.1 detailed operating documents
 
 The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) is the **sole company strategy and execution authority**; the additional documents below are supporting specifications, not alternate roadmaps.
 
-- [Resolve Domain & Product Contract](docs/gridmind-resolve-domain-and-product-contract-2026-10-17.md) — actual versus proposed method, evidence permissions, case states, reviewer boundaries, system and UI tests.
-- [Company Economics & Risk Register](docs/gridmind-company-economics-and-risk-register-2026-10-17.md) — cash, margin definitions, illustrative financial sensitivity, commercial and industry risk playbooks.
-- [First Paid Case Scope Schedule](docs/gridmind-first-paid-case-scope-template-2026-10-17.md) — practical gated checklist for a single professional case; pending adult, legal, reviewer and customer approval.
-- [Engineering Acceptance & Repo Conversion](docs/gridmind-execution-and-repository-acceptance-2026-10-17.md) — exact source areas, issue-linked epics, test and deployment gates.
+- [Resolve Domain & Product Contract](docs/product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) — actual versus proposed method, evidence permissions, case states, reviewer boundaries, system and UI tests.
+- [Company Economics & Risk Register](docs/operations/gridmind-company-economics-and-risk-register-2026-10-17.md) — cash, margin definitions, illustrative financial sensitivity, commercial and industry risk playbooks.
+- [First Paid Case Scope Schedule](docs/operations/gridmind-first-paid-case-scope-template-2026-10-17.md) — practical gated checklist for a single professional case; pending adult, legal, reviewer and customer approval.
+- [Engineering Acceptance & Repo Conversion](docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) — exact source areas, issue-linked epics, test and deployment gates.
 - The internal demo in `/investigations` includes a **read-only fictional Resolve lifecycle indicator** in addition to historical C1/C4 synthetic analysis. No live quality/finance engine is implied.
 
 ## Product and operating model
@@ -39,7 +39,7 @@ GridMind's proposed operating loop is:
 
 The initial commercial offer must be selected from real buyer evidence across R1/R2/R3. Do not equate a synthetic quality or receivables triage example with a functioning connected case method. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
 
-Read the [Product Definition](docs/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
+Read the [Product Definition](docs/product/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/engineering/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/operations/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
 
 ## Repository layout
 
@@ -93,7 +93,7 @@ The existing Lovable operational dashboard remains at `/`. The same application 
 
 Remove `mode=demo` for authenticated isolated acceptance. Connected cases default to disabled; the server-only settings in `.env.example` must point at an authorized isolated database with the source migrations. Customer grants are case-specific and do not grant factory membership. Scope acceptance creates the case/grant automatically; accepted independent review publishes atomically when the manager authorized that policy. Source corrections invalidate the current publication automatically.
 
-This is synthetic source/preview capability, not a real customer-data launch. Evidence responses accept references/text; file custody is pending. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for tested behavior, automation and remaining release work.
+This is synthetic source/preview capability, not a real customer-data launch. Evidence responses accept references/text; file custody is pending. See the [implementation and Lovable handoff](docs/product/gridmind-mvp-lovable-handoff.md) for tested behavior, automation and remaining release work.
 
 ## Working in Lovable and Codex
 
@@ -123,4 +123,4 @@ Do not create another master plan or discovery tracker. Update the canonical rec
 
 ## Internal investigation MVP
 
-The founder-authorized synthetic workspace is available at `/investigations`, with a connected synthetic path at `/investigations-connected`. The connected API is disabled by default; its source migration must first be reviewed and applied only to an authorized isolated database. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.
+The founder-authorized synthetic workspace is available at `/investigations`, with a connected synthetic path at `/investigations-connected`. The connected API is disabled by default; its source migration must first be reviewed and applied only to an authorized isolated database. See the [implementation and Lovable handoff](docs/product/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.

@@ -276,7 +276,7 @@ No case is qualified yet. The fields below are a reusable record within this led
 
 Calculation: founder labor = total founder hours × stated internal rate. Reviewer cost = agreed total fee **or** agreed hours × rate, never both. Expected case cost = founder labor + reviewer cost + other direct costs; avoid counting the same intake/rework hours again. Required fee floor = expected case cost + stated overhead/risk contribution. Buyer net benefit = conservative incremental gross benefit − implementation/measurement costs − proposed fee, with overlapping items removed. Unknowns remain unknown; do not calculate a margin from missing inputs. Payment timing and evidence uncertainty must be reviewed separately from accounting contribution.
 
-**Reviewer preparation:** reuse the [existing reviewer brief and unsent drafts](gridmind-qualified-reviewer-brief-and-referral-plan-2026-10-13.md); do not create another outreach packet. Request only a synthetic-method review scope, timing and fee after appropriate message review. A public directory listing does not establish acceptance. No paid review or customer-data handling is approved by this worksheet.
+**Reviewer preparation:** reuse the [existing reviewer brief and unsent drafts](operations/gridmind-qualified-reviewer-brief-and-referral-plan-2026-10-13.md); do not create another outreach packet. Request only a synthetic-method review scope, timing and fee after appropriate message review. A public directory listing does not establish acceptance. No paid review or customer-data handling is approved by this worksheet.
 
 ## 9. Decision dates and stop rules
 
