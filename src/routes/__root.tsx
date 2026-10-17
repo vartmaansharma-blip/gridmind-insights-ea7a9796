@@ -60,7 +60,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "GridMind — Factory Energy Intelligence" },
-      { name: "description", content: "Find where your factory loses money on electricity and act on rupee-quantified savings." },
+      { name: "description", content: "Trace factory electricity evidence, investigate uncertainties, and plan qualified next steps." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
