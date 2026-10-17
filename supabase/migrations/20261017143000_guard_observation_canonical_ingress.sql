@@ -45,6 +45,9 @@ create trigger guard_canonical_observation_ingress
 
 -- Factory users cannot silently rewrite original measurements. A future reviewed,
 -- versioned correction endpoint must append superseding observations.
-revoke update,delete on public.observations from public,anon,authenticated;
+-- Replace inherited/legacy table grants with the exact customer-role contract:
+-- a factory member may read and append unverified source records, never modify them.
+revoke all on public.observations from public,anon,authenticated;
+grant select,insert on public.observations to authenticated;
 
 commit;
