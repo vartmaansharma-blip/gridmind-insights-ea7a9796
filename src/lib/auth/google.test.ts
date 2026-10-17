@@ -10,7 +10,7 @@ import {
 } from "./google";
 
 const origin = "https://gridmind.example";
-const team = { factories: [{ id: 1, name: "Invented site", role: "viewer" }], isCustomer: false };
+const team = { factories: [{ id: 1, name: "Invented site", role: "analyst" }], isCustomer: false };
 describe("Google auth boundaries", () => {
   it("allows only fixed same-origin callback and enum destinations", () => {
     expect(googleRedirect(origin, "team")).toBe(`${origin}/auth?oauth=google&destination=team`);
@@ -30,19 +30,18 @@ describe("Google auth boundaries", () => {
       "/auth?oauth=google&destination=customer",
     );
   });
-  it("routes by actual access without granting a team role", () => {
+  it("routes by verified access rather than a requested URL role", () => {
     expect(workspaceDestination(team, "team")).toBe("/team/cases");
-    expect(workspaceDestination(team, "customer")).toBe("/cases");
-    expect(workspaceDestination(team, undefined)).toBe("/");
+    expect(workspaceDestination(team, "customer")).toBe("/team/cases");
+    expect(workspaceDestination(team, undefined)).toBe("/team/cases");
     expect(workspaceDestination({ factories: [], isCustomer: true }, "team")).toBe("/cases");
-    // A prospective customer may request an investigation, but has no case
-    // or factory access: /cases must still apply all server-side permissions.
-    expect(workspaceDestination({ factories: [], isCustomer: false }, "customer")).toBe("/cases");
-    // Someone asking for staff access (or without a specific request intent)
-    // cannot obtain a workspace just by authenticating.
-    for (const destination of ["team", undefined] as const) {
-      expect(workspaceDestination({ factories: [], isCustomer: false }, destination)).toBeNull();
-    }
+    expect(workspaceDestination({ factories: [], isCustomer: false }, "customer")).toBe("/onboarding");
+    expect(workspaceDestination({ factories: [], isCustomer: false }, undefined)).toBe("/onboarding");
+    // A user without a staff grant cannot self-promote by requesting team.
+    expect(workspaceDestination({ factories: [], isCustomer: false }, "team")).toBeNull();
+    expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "viewer" }], isCustomer: false }, "team")).toBeNull();
+    expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "viewer" }], isCustomer: false }, undefined)).toBe("/onboarding");
+    expect(workspaceDestination({ factories: [{ id: 9, name: "Sample", role: "owner" }], isCustomer: true }, "customer")).toBe("/cases");
   });
   it("recognizes cancellation and sanitizes untrusted provider descriptions", () => {
     for (const fragment of ["?error=access_denied", "#error_code=access_denied"]) {
