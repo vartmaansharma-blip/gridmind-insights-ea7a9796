@@ -4,6 +4,10 @@ These are technical contracts, audits and runbooks. A dated success in one envir
 
 **Authority:** [Master Plan](../gridmind-master-plan-2026-10-11.md) → [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) → [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Return to the [documentation guide](../README.md) for the recommended reading path.
 
+## Current GridMind 3.1 handoff
+
+- [Exact checkpoint and integration register (17 October 2026)](gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md) — verified PR #136 baseline, workflow evidence, Vercel quota blocker, production Supabase no-go, branch-overlap dispositions and next execution acceptance. This is a dated release handoff, not a competing execution plan.
+
 ## Documents
 
 - [Repository structure benchmark and improvement queue](repository-structure-benchmark-2026-10-17.md) — measured comparison to mature practices, completed changes and remaining gaps.
