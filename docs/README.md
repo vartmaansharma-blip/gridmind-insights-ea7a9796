@@ -7,7 +7,7 @@
 
 ## Read these first
 
-1. **[Master Plan](gridmind-master-plan-2026-10-11.md)** — sole execution plan, including D1–D8, next action, checkpoint, and decision gate.
+1. **[Master Plan](gridmind-master-plan-2026-10-11.md)** — sole execution plan, including GridMind 3.1 decisions G31-01–G31-09, detailed execution, risks and November evidence gates.
 2. **[Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md)** — sole live access/discovery tracker and evidence ledger.
 3. **[Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md)** — durable strategic decisions and binding guardrails.
 4. **[Problem-Solving Constitution](gridmind-problem-solving-constitution.md)** — required workflow, validation discipline, and task-specific lessons.
@@ -39,6 +39,9 @@
 
 | File | Disposition / authority |
 |---|---|
+| [`gridmind-company-economics-and-risk-register-2026-10-17.md`](gridmind-company-economics-and-risk-register-2026-10-17.md) | **GridMind 3.1 supporting controls:** unit economics, cash, staffing, commercial/legal/technical risk triggers; not separate strategy or verified financial statements |
+| [`gridmind-resolve-domain-and-product-contract-2026-10-17.md`](gridmind-resolve-domain-and-product-contract-2026-10-17.md) | **GridMind 3.1 supporting technical contract:** roles, cases, evidence, distinct R1/R2/R3 methods, AI/security/test invariants; future-state sections not implemented |
+| [`gridmind-execution-and-repository-acceptance-2026-10-17.md`](gridmind-execution-and-repository-acceptance-2026-10-17.md) | **GridMind 3.1 supporting implementation acceptance:** current code map, epic prerequisites, validation and rollback; GitHub issues contain the actionable work |
 | [`gridmind-mvp-build-blueprint.md`](gridmind-mvp-build-blueprint.md) | Supplied Version 3.4 supporting specification; dated canonical build exception overrides its prior no-build instructions |
 | [`gridmind-mvp-lovable-handoff.md`](gridmind-mvp-lovable-handoff.md) | Supporting implementation contract; authorized synthetic MVP and Lovable design handoff |
 | [`canonical-application-migration-v1.md`](canonical-application-migration-v1.md) | Supporting control/specification; does not override the Master Plan |
@@ -149,7 +152,7 @@
 - Public-source claims, customer statements, and controlled experimental results are distinct evidence classes.
 - Unknowns stay unknown; do not invent conversion rates, prospects, customer demand, root causes, accuracy, ROI, or savings.
 - The Master Plan is the only execution plan. The Buyer Discovery Sprint is the only live discovery tracker. GitHub Issues track actionable work.
-- Every plan/artifact must have one distinct job and an explicit lifecycle status: canonical authority, active supporting control, reference/experiment, or historical snapshot. The 2026-10-13 structural audit is recorded in the Master Plan §17; no bulk deletion is authorized without checking unique evidence and inbound references.
+- Every plan/artifact must have one distinct job and an explicit lifecycle status: canonical authority, active supporting control, reference/experiment, or historical snapshot. The historical 2026-10-13 structural audit remains available in Git history and archived docs; no bulk deletion is authorized without checking unique evidence and inbound references.
 - Preserve useful history. Before moving/deleting documents, check inbound Markdown links, issue/PR references, workflows, and unique evidence. Prefer banners to destructive cleanup when uncertain.
 - Do not merge a PR until its current diff, exact-head checks, migration implications, and security impact have been reviewed.
 

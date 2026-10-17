@@ -21,6 +21,15 @@
 6. [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — binding strategic, safety, evidence, and scope guardrails.
 7. [Verification Audit](docs/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
 
+## GridMind 3.1 detailed operating documents
+
+The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) is the **sole company strategy and execution authority**; the additional documents below are supporting specifications, not alternate roadmaps.
+
+- [Resolve Domain & Product Contract](docs/gridmind-resolve-domain-and-product-contract-2026-10-17.md) — actual versus proposed method, evidence permissions, case states, reviewer boundaries, system and UI tests.
+- [Company Economics & Risk Register](docs/gridmind-company-economics-and-risk-register-2026-10-17.md) — cash, margin definitions, illustrative financial sensitivity, commercial and industry risk playbooks.
+- [Engineering Acceptance & Repo Conversion](docs/gridmind-execution-and-repository-acceptance-2026-10-17.md) — exact source areas, issue-linked epics, test and deployment gates.
+- The internal demo in `/investigations` includes a **read-only fictional Resolve lifecycle indicator** in addition to historical C1/C4 synthetic analysis. No live quality/finance engine is implied.
+
 ## Product and operating model
 
 GridMind's proposed operating loop is:

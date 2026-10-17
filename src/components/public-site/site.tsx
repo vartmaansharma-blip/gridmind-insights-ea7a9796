@@ -328,9 +328,10 @@ function SectionHead({ n, eyebrow, title, intro, light }: { n: string; eyebrow: 
 
 function Problem() {
   const items = [
-    ["Demand", "Contract demand, recorded maximum demand and the way they are billed sit on different lines, and often on different documents."],
-    ["Power factor", "A number is printed. Whether it matters depends on tariff provisions that are not on the bill."],
-    ["Tariff category", "Short codes hide which schedule applies, and which conditions follow from it."],
+    ["Quality", "A rejection may involve inspection records, customer criteria, material records and a corrective-action process."],
+    ["Production", "Shift logs, events and maintenance notes can each explain only part of a disruption."],
+    ["Acceptance & payment", "Delivery acknowledgment, rejection evidence, contracts and invoices may be managed by different teams."],
+    ["Operating costs", "Electricity bills, tariffs and machine context can raise questions without proving a saving."],
   ];
   return (
     <section id="problem" className="gm-light px-5 py-24 md:px-10 md:py-32">
@@ -351,10 +352,10 @@ function Problem() {
 }
 
 const STEPS = [
-  { t: "Share what you have", you: "Recent electricity bills, the connection details you know, and the questions you already have.", we: "Agree with you, in writing, what is shared and how it is handled.", out: "A clear list of documents received and anything missing." },
-  { t: "Organise the sources", you: "Answer short questions about how the plant runs: shifts, major loads, planned changes.", we: "Lay out every figure with the document and line it came from.", out: "A source table you can check line by line." },
-  { t: "Observe and question", you: "Confirm or correct the context.", we: "Separate what the documents show from what they do not, and frame open questions.", out: "Observations, each marked with what is known and what is still missing." },
-  { t: "Qualified review and next steps", you: "Decide what to pursue. Changes stay with qualified plant personnel.", we: "Bring in a qualified electrical or tariff reviewer where a question needs one.", out: "A scoped evidence brief with next checks, not guaranteed savings." },
+  { t: "Define the exception", you: "Discuss one recent costly unresolved problem without confidential records.", we: "Explore who owns the decision and whether an investigation would add value over existing methods.", out: "A bounded question, known alternative and open uncertainties." },
+  { t: "Agree on evidence rights", you: "Identify which department owns the relevant records and who could authorize their use.", we: "Specify minimum necessary evidence, handling permissions and a review scope before any intake.", out: "A source plan and clearly recorded unknowns." },
+  { t: "Compare explanations", you: "Confirm or correct the process context after authorized review begins.", we: "Separate source-linked observations, conflicting facts, possible explanations and missing checks.", out: "An evidence register, not an automatic root-cause claim." },
+  { t: "Review and follow through", you: "Decide what actions to authorize with qualified personnel.", we: "Where an expert is contracted, coordinate a defensible brief, accountable next steps and an effectiveness check.", out: "A reviewed decision process, with results labeled verified or unknown." },
 ];
 
 function HowItWorks() {
@@ -470,7 +471,7 @@ const FAQS = [
   ["Will GridMind guarantee a saving or solved defect?", "No. There is no guaranteed saving, root cause, invoice collection or technical outcome. The first paid service has not yet been selected."],
   ["Is live machine or accounts integration available?", "No. The current public example is fictional and the application is not released for real customer data. There is no live monitoring or payment integration."],
   ["Who makes changes at the plant?", "Your qualified plant personnel. GridMind provides evidence and next checks, not control of equipment."],
-  ["What does it cost?", "Scope and pricing are agreed with you before any work starts."],
+  ["What does it cost?", "The first paid service and its pricing are not yet selected. Any future engagement would require an agreed scope, qualified support and written terms."],
 ];
 
 function Deliverable() {
@@ -528,12 +529,12 @@ function Contact() {
         <SectionHead n="06" eyebrow="Start a conversation" title={<>What costly factory problem is still unresolved?</>}
           intro="We are researching real quality, production, acceptance and electricity exceptions. Please begin with a non-confidential description; this is not a live audit or a promise to take a case." />
         <div data-reveal className="self-end rounded-md border p-6 gm-rule-d" role="region" aria-labelledby="contact-request-title" style={{ background: "var(--gm-ink)" }}>
-          <span className="gm-chip" style={{ color: "var(--gm-brand-green)" }}>Private investigation request</span>
+          <span className="gm-chip" style={{ color: "var(--gm-brand-green)" }}>Research stage · sample workspace</span>
           <p id="contact-request-title" className="gm-display mt-4 text-xl font-semibold">Start with one clear question.</p>
-          <p className="mt-2 leading-relaxed gm-muted-d">The current request route enters the authenticated sample workspace. No engineering service is approved by creating an account; do not submit confidential factory records.</p>
-          <p className="mt-3 text-xs leading-relaxed gm-muted-d">This is an early beta. Do not share confidential plant records or upload technical files. A request is not a technical assessment or a guaranteed response.</p>
+          <p className="mt-2 leading-relaxed gm-muted-d">The linked workspace is an invented example, not a confidential enquiry channel or accepted engagement. Do not submit real factory records.</p>
+          <p className="mt-3 text-xs leading-relaxed gm-muted-d">GridMind's first paid service is still being researched. The interface demonstrates a proposed method only; no industrial review is being offered through this demo.</p>
           <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-            <Link to="/cases" className="gm-btn gm-btn-primary !px-5 !py-3">Request a conversation <span aria-hidden>↗</span></Link>
+            <Link to="/cases" search={{ mode: "demo" }} className="gm-btn gm-btn-primary !px-5 !py-3">Explore sample workspace <span aria-hidden>↗</span></Link>
             <Link to="/auth" search={{ destination: "customer" }} className="underline underline-offset-4">Existing customer? Sign in</Link>
           </div>
         </div>

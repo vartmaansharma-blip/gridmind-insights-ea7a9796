@@ -18,6 +18,14 @@ The [supplied blueprint](gridmind-mvp-build-blueprint.md) is preserved as suppor
 
 **Near-term acceptance:** docs and UI clearly separate vision from capability; fictional triage module handles all three lanes as planning examples only; relevant offline tests and normal repo CI must pass before merge; unresolved Vercel build-rate limits cannot be waived by a green assertion.
 
+### Detailed GridMind 3.1 supporting specifications
+
+- [Resolve domain, evidence and UI contract](gridmind-resolve-domain-and-product-contract-2026-10-17.md)
+- [Economics, operational capacity and risk gates](gridmind-company-economics-and-risk-register-2026-10-17.md)
+- [Current repo route map and engineering acceptance](gridmind-execution-and-repository-acceptance-2026-10-17.md)
+
+The new fictional Resolve lifecycle demonstration is **not** a real reviewer sign-off or persistent customer case. Preserve the current C1/C4 workbench and server-scoped customer/team flows. Public copy explains the industrial exception thesis, while the electricity case remains explicitly fictional.
+
 ## Integration plan — retain the Lovable dashboard
 
 **Requested and authorized on 16 October 2026. Status: integrated source implementation for isolated synthetic acceptance; not a production/customer-data release.** The founder requested the integration plan, then instructed us to implement it, store it in GitHub and minimize human touch. Preserve the existing Lovable dashboard. Refs [issue #107](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/107) and draft [PR #106](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/106). The unused empty migration draft from the earlier planning pass was removed without application; the later source migration below is separately validated.

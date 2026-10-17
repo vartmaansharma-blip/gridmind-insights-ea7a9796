@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { evaluateSyntheticResolveCase, fictionalResolutionScenario } from "@/lib/gridmind/resolve-workflow";
 import {
   assessSyntheticException,
   RESOLVE_LANES,
@@ -12,6 +13,7 @@ const lanes: ResolveLane[] = ["R1", "R2", "R3"];
 export function ResolveTriagePreview() {
   const [lane, setLane] = useState<ResolveLane>("R1");
   const assessment = assessSyntheticException(SYNTHETIC_EXCEPTION_EXAMPLES[lane]);
+  const process = evaluateSyntheticResolveCase(fictionalResolutionScenario(lane));
   return (
     <section aria-label="GridMind Resolve — synthetic commercial discovery preview" className="mb-8 rounded-xl border bg-card p-5 shadow-sm">
       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">GridMind 3.1 · Internal synthetic preview</p>
@@ -46,6 +48,11 @@ export function ResolveTriagePreview() {
           <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground">
             {assessment.nextQuestions.map((gap) => <li key={gap}>{gap}</li>)}
           </ul>
+          <div className="mt-5 border-t pt-4">
+            <h4 className="font-semibold">Synthetic resolution lifecycle check</h4>
+            <p className="mt-2 text-muted-foreground">Step: {process.stage.replaceAll("_", " ")}. {process.reasons.join(" ")}</p>
+            <p className="mt-2 text-xs text-muted-foreground">Any simulated review is fictional. No live source approval, qualified technical signoff, real customer decision, or verified savings exists.</p>
+          </div>
           <p className="mt-4 font-medium">Status: Fictional discovery only · never approved for customer delivery.</p>
         </div>
       </div>
