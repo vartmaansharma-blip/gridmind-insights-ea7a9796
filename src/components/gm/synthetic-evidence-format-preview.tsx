@@ -56,17 +56,24 @@ export function SyntheticEvidenceFormatPreview() {
           <p className="font-semibold">
             {preview.status === "format_valid_synthetic"
               ? "Fictional input format accepted for review"
-              : "Format requires corrections"}
+              : preview.status === "coverage_insufficient"
+                ? "Not enough comparison-ready periods"
+                : "Format requires corrections"}
           </p>
           <p className="mt-2 text-muted-foreground">
-            {preview.candidatePeriods} candidate periods · {preview.distinctSources} distinct declared source references ·
-            {preview.issues.length} format warnings/errors.
+            {preview.candidatePeriods} source periods · {preview.comparableNumericPeriods} nonzero numeric candidates ·
+            {preview.distinctSources} distinct declared source references · {preview.issues.length} format errors.
           </p>
           {preview.issues.length > 0 && (
             <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
               {preview.issues.slice(0, 12).map((x, i) => (
                 <li key={i}>{x.row ? `CSV row ${x.row}: ` : ""}{x.message}</li>
               ))}
+            </ul>
+          )}
+          {preview.notes.length > 0 && (
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-xs text-muted-foreground">
+              {preview.notes.map((note, i) => <li key={i}>{note}</li>)}
             </ul>
           )}
           <p className="mt-3 text-xs leading-5 text-muted-foreground">
