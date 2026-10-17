@@ -153,6 +153,12 @@ For each **real** observed customer event record: last event and recency; busine
 
 **Do now:** Record real access attempt, identify the right expert route, build and inspect the isolated synthetic triage contract, prepare the buyer comparison. **Do not** redesign the full dashboard or widen product scope in lieu of actual customers.
 
+### GridMind 3.1 main-branch promotion is a separate decision from commercial validation
+
+**17 October 2026 decision:** [Draft PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) mixes a large documentation transition with a public-site update, synthetic case flows and changes touching tenancy/migrations/Edge Functions. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) G31-M01–M10 and [pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) govern whether code may be merged into the production-connected **main** branch. The default is **hold draft** until an exact-commit scope/review/test/rollback record and founder release authorization exist. A narrower public-site/docs release may be prepared on a new small branch without rewriting Lovable history; real customer-data release remains separately blocked by Supabase/tenant gates. Never imply a marketing site or synthetic demo proves a commercial offering.
+
+**Four distinct states to keep visible:** (1) strategic hypothesis selected (currently none), (2) synthetic source tested (partial), (3) public informational experience independently approved/deployed (not established by a source PR), and (4) real factory customer workflow, expert delivery and paid economics evidenced (not established). The **next buyer decision** still belongs to the sole live discovery tracker and remains independent of a software merge.
+
 ## 10. Current truth checklist — update only when evidenced
 
 - Buyer meetings held: **0 verified**.
