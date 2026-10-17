@@ -71,6 +71,19 @@ describe("machine evidence readiness for MVP", () => {
     expect(r.rejectedRecords).toBe(3);
   });
 
+  it("accepts string operating context without misclassifying it as an invalid numeric meter reading", () => {
+    const record = row(21, "operating_state", {
+      valueNumeric: null,
+      valueText: "running",
+      unit: null,
+      metadata: { analysis_role: "operating_state" },
+    });
+    const result = assessMachineEvidence({ ...asset, observations: [...readings(), record] });
+    expect(result.candidatePeriods).toBe(4);
+    expect(result.rejectedRecords).toBe(0);
+    expect(result.qualityEligibleCount).toBe(12);
+  });
+
   it("honors explicit role metadata and avoids treating repeated source readings as independent periods", () => {
     const rows = readings().map((o) => ({
       ...o, metric: "custom",
