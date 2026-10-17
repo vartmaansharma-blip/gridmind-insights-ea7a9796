@@ -110,7 +110,10 @@ export function previewSyntheticMachineCsv(text: string): FormatPreview {
     return empty();
   }
   // Reject NUL/control characters other than line, carriage return and tab.
-  if (/[\x00-\x08\x0B\x0C\x0E-\x1F]/.test(text)) {
+  if (Array.from(text).some((c) => {
+    const code = c.charCodeAt(0);
+    return code < 32 && code !== 9 && code !== 10 && code !== 13;
+  })) {
     issues.push(fail(0, "format", "Unexpected control character."));
     return empty();
   }
