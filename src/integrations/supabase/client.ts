@@ -3,8 +3,11 @@ import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 import { brokeredPreviewStorage } from './previewAuthStorage';
 
-const SUPABASE_URL = "https://bvqmvgbfqhgczwbvlqkk.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_iuJmWQyqOOE2KyRFhfLVWw_wOjPF6wV";
+// Lovable-generated fallback values are public client configuration, not secrets.
+// The test and deployment environments MUST be able to override them. In particular,
+// isolated browser acceptance must never send local fixture credentials to production.
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || "https://bvqmvgbfqhgczwbvlqkk.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || "sb_publishable_iuJmWQyqOOE2KyRFhfLVWw_wOjPF6wV";
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";

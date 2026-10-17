@@ -84,6 +84,29 @@ jobs:
               > /dev/null
           done
 
+      - name: Verify disposable test-user password sign-in before browser tests
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          API="${API_URL:-http://127.0.0.1:54321}"
+          for email in gridmind-http-a@example.test gridmind-http-b@example.test; do
+            response="$(mktemp)"
+            status="$(curl --silent --show-error --output "$response" --write-out '%{http_code}' \
+              -X POST "$API/auth/v1/token?grant_type=password" \
+              -H "apikey: ${ANON_KEY:?Missing local anon key}" \
+              -H 'Content-Type: application/json' \
+              --data-binary "$(printf '{"email":"%s","password":"gridmind-ci-password"}' "$email")")"
+            if [ "$status" != "200" ] || ! jq -e '.access_token and .user.id' "$response" > /dev/null; then
+              # Never print raw JSON: it may contain a bearer token.
+              error_code="$(jq -r '.error_code // .code // "unknown"' "$response" 2>/dev/null || echo unknown)"
+              rm -f "$response"
+              echo "::error::Local synthetic password sign-in failed for fixture user ($status, $error_code). Investigate Auth config/fixtures before running browsers."
+              exit 1
+            fi
+            rm -f "$response"
+            echo "Confirmed disposable password auth for fixture account"
+          done
+
       - name: Seed isolated tenant fixtures for HTTP integration
         shell: bash
         run: |

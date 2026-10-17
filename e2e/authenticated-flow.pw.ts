@@ -1,9 +1,11 @@
 import { test, expect, type Page } from "@playwright/test";
+import { requireLocalOnlyRequests } from "./nonproduction-network";
 
 const password = "gridmind-ci-password"; // Synthetic, ephemeral local users only.
 const functionPath = "/functions/v1/persist-factory-analysis";
 
 test.beforeEach(async ({ page }) => {
+  await requireLocalOnlyRequests(page.context());
   page.on("pageerror", (error) => console.error("Browser exception:", error.message));
   page.on("response", async (response) => {
     const url = new URL(response.url());
@@ -30,7 +32,9 @@ async function signIn(page: Page, user: "a" | "b") {
   await page.getByLabel("Password", { exact: true }).fill(password);
   const authResponse = page.waitForResponse((response) => response.url().includes("/auth/v1/token") && response.request().method() === "POST", { timeout: 15_000 });
   await page.getByRole("button", { name: "Sign in", exact: true }).click();
-  expect((await authResponse).status()).toBe(200);
+  const tokenResponse = await authResponse;
+  expect(new URL(tokenResponse.url()).origin).toBe("http://127.0.0.1:54321");
+  expect(tokenResponse.status()).toBe(200);
   await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();
   await expect(page.getByRole("combobox")).toContainText(`gridmind-http-factory-${user}`);
 }
