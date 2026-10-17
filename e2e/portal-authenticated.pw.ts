@@ -1,4 +1,5 @@
 import { test, expect, type Page } from "@playwright/test";
+import { requireLocalOnlyRequests } from "./nonproduction-network";
 import {
   provisionLocalCustomer,
   provisionLocalReviewer,
@@ -6,6 +7,7 @@ import {
   localIntakeOrganization,
 } from "./local-backend";
 async function login(page: Page, email: string, destination: "customer" | "team") {
+  await requireLocalOnlyRequests(page.context());
   await page.goto(`/auth?destination=${destination}`);
   await page.getByLabel("Email", { exact: true }).fill(email);
   await page.getByLabel("Password", { exact: true }).fill("gridmind-ci-password");
