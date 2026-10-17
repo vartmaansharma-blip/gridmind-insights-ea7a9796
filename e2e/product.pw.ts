@@ -7,24 +7,42 @@ test.beforeEach(async ({ context }) => {
       : route.continue();
   });
 });
-test("public website opens a labeled sample and preserves the dashboard entry", async ({
-  page,
-}) => {
+test("public website releases the approved Lovable industrial hero and functional example", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/website");
-  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
-  await page.getByRole("button", { name: /Power factor/ }).click();
+  const heading = page.getByRole("heading", { level: 1 }).first();
+  await expect(heading).toContainText("Everything is connected.");
+  await expect(heading).toContainText("What are we missing?");
+  await page.getByRole("button", { name: /Average power factor/i }).click();
   await expect(page.locator("#example")).toContainText("Does power factor affect anything on this bill?");
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download fictional brief" }).click();
   expect((await download).suggestedFilename()).toMatch(/FICTIONAL\.txt$/);
+  const contact = page.locator("#contact");
+  await expect(contact).not.toContainText("Contact route pending");
+  await expect(contact.getByRole("link", { name: "Request a conversation" })).toHaveAttribute("href", "/cases");
   await page.getByRole("link", { name: "Explore the sample workspace" }).click();
-  await expect(
-    page.getByRole("heading", { name: "Your investigations", exact: true }),
-  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Your investigations", exact: true })).toBeVisible();
   expect(errors).toEqual([]);
 });
+
+test("internal preview still shows the same design with a review-only banner", async ({ page }) => {
+  await page.goto("/design-preview");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
+  await expect(page.getByText(/Internal review copy of \/website/)).toBeVisible();
+  await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" }))
+    .toHaveAttribute("href", "/cases");
+});
+
+test("public site remains legible and scrollable on narrow screens", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/website");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
+  await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" })).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
 test("customer view shows sample brief and decision without staff controls; mobile fits", async ({
   page,
 }) => {
