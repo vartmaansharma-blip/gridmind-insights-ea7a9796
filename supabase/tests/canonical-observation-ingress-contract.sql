@@ -9,7 +9,10 @@ begin
   if has_table_privilege('authenticated','public.observations','update')
     or has_table_privilege('authenticated','public.observations','delete')
     or has_table_privilege('anon','public.observations','insert')
-    then raise exception 'CANONICAL_MUTATION_PRIVILEGE_LEAK'; end if;
+    then raise exception 'CANONICAL_MUTATION_PRIVILEGE_LEAK update:% delete:% anon_insert:%',
+      has_table_privilege('authenticated','public.observations','update'),
+      has_table_privilege('authenticated','public.observations','delete'),
+      has_table_privilege('anon','public.observations','insert'); end if;
 end $$;
 
 select id::text as user_a from auth.users where email='gridmind-http-a@example.test' \gset
