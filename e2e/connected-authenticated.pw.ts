@@ -1,7 +1,9 @@
 import { test, expect, type Page } from "@playwright/test";
+import { requireLocalOnlyRequests } from "./nonproduction-network";
 import { provisionLocalReviewer } from "./local-backend";
 
 test.beforeEach(async ({ page }) => {
+  await requireLocalOnlyRequests(page.context());
   page.on("response", (response) => {
     if (response.status() >= 400)
       console.error("Connected HTTP failure:", response.status(), new URL(response.url()).pathname);
@@ -18,6 +20,7 @@ test.afterEach(async ({ page }, info) => {
 
 // No mocked Auth, RPC, case API or database. Runs only against disposable CI Supabase.
 async function login(page: Page, email: string) {
+  await requireLocalOnlyRequests(page.context());
   await page.goto("/investigations-connected");
   await page.getByLabel("Email", { exact: true }).fill(email);
   await page.getByLabel("Password", { exact: true }).fill("gridmind-ci-password");
