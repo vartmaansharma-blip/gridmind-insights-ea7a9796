@@ -70,6 +70,9 @@
 
 ### Supporting — research, design, and experiments
 
+| [`design-dashboard.md`](design-dashboard.md) | Supporting product/design reference: now vs future GridMind Operations and Headquarters; no implementation authority |
+
+
 | File | Disposition / authority |
 |---|---|
 | [`gridmind-attention-test-and-creative-reset-2026-10-11.md`](gridmind-attention-test-and-creative-reset-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
