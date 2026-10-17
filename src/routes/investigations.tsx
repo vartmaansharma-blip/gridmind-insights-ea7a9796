@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
+import { ResolveTriagePreview } from "@/components/investigation/resolve-triage-preview";
 
 export const Route = createFileRoute("/investigations")({
   head: () => ({
@@ -12,5 +13,10 @@ export const Route = createFileRoute("/investigations")({
       },
     ],
   }),
-  component: InvestigationWorkbench,
+  component: () => (
+    <>
+      <ResolveTriagePreview />
+      <InvestigationWorkbench />
+    </>
+  ),
 });
