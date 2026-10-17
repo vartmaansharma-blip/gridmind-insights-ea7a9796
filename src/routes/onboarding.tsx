@@ -27,6 +27,7 @@ function Onboarding() {
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
   const requestId = useRef<string | null>(null);
+  const retryPayload = useRef<string | null>(null);
 
   const refresh = async () => {
     setError("");
@@ -71,11 +72,17 @@ function Onboarding() {
         to: String(form.get("to") ?? ""),
       });
       if (payload.from > payload.to) throw new Error("The review period end must not precede its start.");
-      // Reuse the same request id after a connection interruption, never create duplicates.
-      requestId.current ??= crypto.randomUUID();
+      // Identical retries reuse the same id; an intentionally edited request
+      // gets a new identity and cannot mutate the old immutable receipt.
+      const fingerprint = JSON.stringify(payload);
+      if (!requestId.current || retryPayload.current !== fingerprint) {
+        requestId.current = crypto.randomUUID();
+        retryPayload.current = fingerprint;
+      }
       await portalCall({ action: "submit", id: requestId.current, payload });
       setState("submitted");
       requestId.current = null;
+      retryPayload.current = null;
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Request could not be saved. Please retry.");
     } finally {
