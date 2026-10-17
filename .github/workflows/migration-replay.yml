@@ -114,6 +114,13 @@ jobs:
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-integration-setup.sql
 
+      - name: Verify isolated synthetic evidence intake and case link security
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          test -n "$DB_URL"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/synthetic-machine-intake-contract.sql
+
       - name: Exercise authenticated Edge Function end to end
         shell: bash
         run: |
