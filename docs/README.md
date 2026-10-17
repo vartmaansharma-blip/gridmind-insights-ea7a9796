@@ -10,6 +10,10 @@
 4. [Problem-Solving Constitution](gridmind-problem-solving-constitution.md) — evidence and investigation discipline.
 5. [Release Gate](release-gate.md) — mandatory technical/customer-data gate; a preview build is not a production release.
 
+## Before proposing PR #136 for main
+
+**Do not merge solely because CI or Vercel says success.** The [GridMind 3.1 pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) records the **current HOLD recommendation**, options to narrow release scope without rewriting Lovable history, and the separate requirements for a public informational site, synthetic case preview, and real customer data. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) G31-M01–M10 is the durable authority for those choices. Production Supabase case releases are NO-GO pending [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) and [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29). Do not treat this as a second execution plan: use existing issues, PRs and the sole buyer tracker for actions and evidence.
+
 ## Next build step
 
 The GridMind 3.1 public `/website` source has already been updated in draft PR #136. The **next task is exact-head Vercel preview, real non-confidential contact-path verification, claims/accessibility review and independent tenant/migration review before any merge**; buyer discovery proceeds separately. Read the [exact checkpoint and integration register](engineering/gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md). [Site build and acceptance](product/gridmind-site-build-and-acceptance-2026-10-17.md) gives the exact page map and release tests; the [Master Plan](gridmind-master-plan-2026-10-11.md) gives the stage-by-stage gates. A polished site does not select R1, R2 or R3 or authorize real customer data.
