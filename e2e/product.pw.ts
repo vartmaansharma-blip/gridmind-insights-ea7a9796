@@ -7,24 +7,37 @@ test.beforeEach(async ({ context }) => {
       : route.continue();
   });
 });
-test("public website opens a labeled sample and preserves the dashboard entry", async ({
-  page,
-}) => {
+test("released public website keeps its existing reviewed sample until preview release", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/website");
-  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
-  await page.getByRole("button", { name: /Power factor/ }).click();
+  await expect(page.getByRole("heading", { level: 1 }).first())
+    .toContainText("A clear decision starts with a clear evidence chain.");
+  await page.getByRole("button", { name: "Read the sample brief" }).click();
+  await expect(page.getByRole("dialog")).toContainText("SYNTHETIC SAMPLE");
+  await page.getByRole("link", { name: "Explore the sample workspace" }).click();
+  await expect(page.getByRole("heading", { name: "Your investigations", exact: true })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test("Lovable design is a separate preview with the agreed green hook and working request-only contact path", async ({ page }) => {
+  await page.goto("/design-preview");
+  await expect(page.getByRole("heading", { level: 1 }).first())
+    .toContainText("Everything is connected.");
+  await expect(page.getByRole("heading", { level: 1 }).first())
+    .toContainText("What are we missing?");
+  await page.getByRole("button", { name: /Average power factor/i }).click();
   await expect(page.locator("#example")).toContainText("Does power factor affect anything on this bill?");
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download fictional brief" }).click();
   expect((await download).suggestedFilename()).toMatch(/FICTIONAL\.txt$/);
+  const contact = page.locator("#contact");
+  await expect(contact).not.toContainText("Contact route pending");
+  await expect(contact.getByRole("link", { name: "Request a conversation" })).toHaveAttribute("href", "/cases");
   await page.getByRole("link", { name: "Explore the sample workspace" }).click();
-  await expect(
-    page.getByRole("heading", { name: "Your investigations", exact: true }),
-  ).toBeVisible();
-  expect(errors).toEqual([]);
+  await expect(page.getByRole("heading", { name: "Your investigations", exact: true })).toBeVisible();
 });
+
 test("customer view shows sample brief and decision without staff controls; mobile fits", async ({
   page,
 }) => {
