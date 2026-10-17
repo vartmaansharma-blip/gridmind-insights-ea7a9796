@@ -46,6 +46,12 @@ values
  ('d0000000-0000-4000-8000-000000000001',:'a_factory'::bigint,:'a_user'::uuid,:'a_user'::uuid),
  ('d0000000-0000-4000-8000-000000000002',:'b_factory'::bigint,:'b_user'::uuid,:'b_user'::uuid);
 
+select set_config('app.gridmind_test_a_factory',:'a_factory',true);
+select set_config('app.gridmind_test_b_factory',:'b_factory',true);
+select set_config('app.gridmind_test_a_asset',:'a_asset',true);
+select set_config('app.gridmind_test_b_asset',:'b_asset',true);
+select set_config('app.gridmind_test_a_source',:'a_source',true);
+select set_config('app.gridmind_test_b_source',:'b_source',true);
 select set_config('request.jwt.claim.sub',:'a_user',true);
 select set_config('request.jwt.claims',
   jsonb_build_object('sub',:'a_user','role','authenticated')::text,true);
@@ -54,12 +60,12 @@ set local role authenticated;
 
 do $$
 declare
-  f_a bigint := :'a_factory'::bigint;
-  a_a bigint := :'a_asset'::bigint;
-  src_a bigint := :'a_source'::bigint;
-  f_b bigint := :'b_factory'::bigint;
-  a_b bigint := :'b_asset'::bigint;
-  src_b bigint := :'b_source'::bigint;
+  f_a bigint := current_setting('app.gridmind_test_a_factory')::bigint;
+  a_a bigint := current_setting('app.gridmind_test_a_asset')::bigint;
+  src_a bigint := current_setting('app.gridmind_test_a_source')::bigint;
+  f_b bigint := current_setting('app.gridmind_test_b_factory')::bigint;
+  a_b bigint := current_setting('app.gridmind_test_b_asset')::bigint;
+  src_b bigint := current_setting('app.gridmind_test_b_source')::bigint;
   sample jsonb;
   response jsonb;
   original_count integer;
