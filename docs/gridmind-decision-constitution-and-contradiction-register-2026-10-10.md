@@ -54,6 +54,25 @@ The founder requested three product areas and then clarified: retain the Lovable
 
 These corrections alter operating decisions and labels, not the customer evidence ledger. No contact, payment, reviewer engagement or production readiness is inferred.
 
+## GridMind 3.1 pre-merge decisions — 17 October 2026
+
+**Context:** Draft [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) bundles strategy, public-site copy, synthetic triage, tenant/migration and Edge Function changes across more than 200 files. This is a **decision policy**, not a statement that approvals, reviews or tests are complete. Specific evidence and blockers are listed in the [pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md).
+
+| ID | Decision / authority | Alternative considered; reason / trade-off | Status before main |
+|---|---|---|---|
+| **G31-M01** | **One existing public repository and one canonical plan.** Keep changes on reviewable branches; no duplicate repo or history rewrite. | A new repo seems cleaner but splits Lovable sync, history and policies. Public history increases exposure: secrets and confidential records never belong here. | **Decided** |
+| **G31-M02** | **Split release scopes conceptually:** (A) truthful informational /website, (B) isolated synthetic demo, (C) production auth/database/customer workflows. Different acceptance and permissions. | One broad “MVP live” switch is simpler but would falsely authorize unsafe data handling. | **Decided**; (C) **NO-GO** |
+| **G31-M03** | **Do not merge PR #136 while mixed-code risk is unreviewed.** Either extract separately releasable changes without rewriting published history **or** present a complete file-by-file security/migration review and explicit all-scope release authorization. | Merging the monolith saves effort but exposes live Vercel production to tenant/source changes. | **Hold / review** |
+| **G31-M04** | **No production schema/feature-flag changes** until #130 and #29 reconcile migration registry, live data rights, two populated tenants, authentication, backups, reviewer separation and forward-only rollback plan. | Assuming local Migration Replay equals live readiness risks cross-tenant access or data loss. | **NO-GO** |
+| **G31-M05** | **Exact candidate evidence, not check-name optimism.** CI, Quality, Public Site Browser, isolated Migration Replay and required Vercel status must reflect the final candidate SHA; independently verify Vercel preview content, target environment and rollback. | Earlier green workflows/READY previews belong to earlier commits. | **Open per new SHA** |
+| **G31-M06** | **Independent review of changes to permissions, migrations and server functions.** A second appropriately competent person records scope and findings; solo-owner GitHub ruleset requiring zero approvals is not a security signoff. | Self-approval is faster but materially less reliable in a public, production-connected repository. | **Open** |
+| **G31-M07** | **Keep /website and / root unchanged for this PR.** PR #132 root/onboarding, #133 case bridge, #125 older contact and #120 scooter reference cannot be blindly merged; choose keep, selectively port, supersede or park after diff/migration review. | Simultaneous merging obscures route, authorization and migration effects. | **Open disposition** |
+| **G31-M08** | **Informational site may be released before buyer validation**, but only as an early-stage proposition with a real non-confidential contact receipt, explicit fictional examples, privacy/accessibility proof and founder claims approval. A paid industrial service **may not** be advertised as proven. | Waiting for all commercial proof would unnecessarily block safe market learning; skipping copy safeguards would erode trust. | **Conditional** |
+| **G31-M09** | **No customer documents, machine control, autonomous technical conclusions or paid professional review** by virtue of merging source. Commercial wedge and qualified method selection still require buyer evidence and human expert authority. | Turning a demo into a “pilot” by changing labels bypasses data rights and professional review. | **Decided boundary** |
+| **G31-M10** | **Release signoffs are distinct:** founder (business claims and intentional public change), engineer (exact-SHA behavior/security tests), qualified independent reviewer (applicable domain/security judgment). Each can block within their remit; no single green badge grants all approvals. | A single PR “mergeable” indicator cannot encode customer, professional or legal authority. | **Open actual signoffs** |
+
+**What changes with evidence:** This register may be amended only with an issue-linked decision that says what changed, why, by whose authority, which tests were observed and which existing docs are superseded. Until then: **PR #136 stays draft; no main merge, production migration or customer-data release.**
+
 ## Why this exists
 GridMind's strategy is recorded across business-thesis, expansion, website, use-case, improvement-priority and execution documents. Some describe future possibilities, provisional candidates, or specifications that can be mistaken for current commitments. This register establishes one source of truth and an explicit decision hierarchy.
 
@@ -77,37 +96,30 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 **Interpretation:** This is the destination, not a promise that every capability exists. Build the shared core incrementally where real cases prove reuse. Do not treat it as a mandate to implement a universal factory ontology or every industrial vertical now.
 
 ### D2 — Immediate scope
-**Decision:** For this 30-day cycle, establish current product truth and validate one narrow customer problem—not expand the platform or polish the marketing website.
+**Decision (current, 17 October):** Work on **two independent tracks**: (a) a small, honest and safely permissioned synthetic GridMind Resolve demonstration and existing /website public narrative; (b) real problem/buyer discovery that selects the only eventual commercial entry. Neither can prove the other. The founder explicitly authorized these bounded software/design tasks after the earlier discovery-only freeze.
 
-**In scope:** current-state audit; authorized live-workflow verification; customer/problem discovery; candidate comparison; data feasibility; bounded offer; minimum technical fixes needed for the selected case; fair evaluation and Day-30 decision.
+**In scope before wedge selection:** existing C1/C4 synthetic source; fictional R1/R2/R3 exception triage with provenance and explicit unknowns; honest /website with non-confidential contact; exact-commit tests, security/data-rights hardening and review; actual 20-minute buyer conversations with appropriate adult/professional support.
 
-**Out of scope unless evidence changes the decision:** marketplace, autonomous industrial control, broad integrations, multi-site benchmarking, generalized ontology expansion, multiple vertical modules, speculative data-centre offering, and full public-site implementation before offer/claim validation.
+**Out of scope unless separately approved by evidence and release criteria:** deployed customer-data case engine, production migration changes, physical instrumentation/control, automatic recommendations or reviewer acceptance, payment custody, three separate service modules, generalized ERP/QMS replacement, supplier-network data sharing, speculative long-term infrastructure integrations. A public marketing release may be considered without validated demand ONLY if its claims and contact process are truthful and independently release-tested. Main is Vercel-connected: merging is potentially a deployment action, not mere document archival.
 
 ### D3 — First commercial wedge is NOT decided
-**Decision:** No permanent first wedge has been selected. The current comparison set is five problem families:
-1. Downtime / production loss.
-2. Quality defects / scrap / rework.
-3. Maintenance recurrence / reliability.
-4. Energy / material inefficiency.
-5. Cross-functional decision / handoff delay.
+**Decision (2026-10-17 amendment):** Screen exactly **R1 = C2 quality/rejection with directly related C1 production incidents**, **R2 = C6 customer acceptance/invoice evidence disputes**, and **R3 = C4 electricity billing/contract exposure** in fair customer discovery. C3 maintenance recurrence is a conditional supporting topic; C5 cross-functional handoffs is a pattern within a case, not an active fourth product. R1 is an illustrative **synthetic UI preference**, not a validated buyer or commercial winner. No selected first product, buyer budget, review capacity or defensible price exists yet.
 
-Procurement intelligence remains a possible adjacent or alternative opportunity only if discovery narrows it to a specific purchasing category, buyer, recurring decision, and measurable consequence. Energy intensity for a bounded asset/process has an existing candidate data contract; detail does not confer priority.
+**Stable IDs:** C1 downtime/production loss; C2 quality/rejection; C3 maintenance recurrence; C4 electricity contract/billing (broader energy only with evidence); C5 cross-team handoffs; C6 acceptance/invoice documentation. Do not promote case evidence such as procurement, logistics or machines into an independent division without explicit approval.
 
-**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading limited discovery capacity across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
-
-**Selection evidence:** severity/frequency; conservative addressable economics; buyer and budget ownership; current alternatives; authorized data access; credible baseline; qualified reviewer; time-to-useful-result; influenceability; willingness to pay; delivery burden and margin; safety/trust; repeatability; and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
+**Selection evidence:** a real recent event and recurrence; economic consequence distinct from face value; existing software/team/expert alternative and residual gap; budget owner and observable next step; permitted data and credible comparison; qualified reviewer availability; constrained delivery effort and gross contribution; safety, trust, repeat work and disconfirming evidence. Fatal rights/expertise blockers override any score. **Only** the [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) records actual contacts, counts, score and Nov 10 GO TO BOUNDED TEST / NARROW / PIVOT / STOP decision. A completed fictional demo does not change this decision.
 
 ### D4 — Product readiness and claims
 **Decision:** Repository files, a functioning-looking UI, a green deployment, synthetic examples and completed documentation do not independently establish production readiness or customer value.
 
 Before describing a flow as working, record the actual build/commit/environment, test steps, observed outcomes and failures. Before pilot-ready, verify the authorized end-to-end path and required security/persistence checks. Before accuracy or superiority claims, use a pre-registered comparison and qualified review. Before savings claims, measure outcomes after an approved intervention.
 
-### D5 — Marketing website
-**Decision:** Homepage and marketing/sales strategy documents are design and messaging hypotheses, not authorization to implement the full public website now and not evidence of product capabilities.
+### D5 — Marketing website and production route
+**Updated authorization (17 October):** The founder authorized improving the existing Lovable-connected GridMind public experience with original signature green and an honest broader GridMind 3.1 story. Work on the existing **/website** route and its synthetic, clearly marked examples is allowed **now**, alongside customer discovery. This supersedes the older blanket prohibition on public-site implementation before selection.
 
-When the website is built, its goal is qualified problem-fit conversations, not unqualified demo bookings or guaranteed savings. “Hidden operational losses” is a hero hypothesis to test against evidence-led alternatives, not a settled winner. Public claims must match capabilities actually demonstrated. Use clearly labelled illustrative/synthetic examples; never invent customer logos, telemetry, results or case studies.
+**Release is separate from design:** do not present R1/R2 as live professional engines, imply savings or commercial traction, invent testimonials, expose sensitive records, or operate an unmonitored contact form. The public CTA should accept/request **non-confidential** discussion only, with a real tested receipt/owner and privacy treatment. Keep root **/** as the existing operational dashboard. PR #132 public-root/auth/onboarding rewrite remains a separate high-risk decision requiring route, role, tenancy and redirect acceptance.
 
-**Gate before full implementation:** refresh product truth; define the honest first offer and exclusions; test positioning with relevant buyers; map every public capability/result claim to evidence and readiness. Small research or copy tests are allowed if they do not distract from these gates.
+**Main is production-linked:** PR #136 must not be merged on the strength of a synthetic website screenshot or stale Vercel preview. Record the exact deployed SHA, passed checks, independent review, founder release permission and rollback/containment plan in the PR before changing main. Buyer discovery remains necessary before making a paid-service claim, but it need not prevent an accurate informational-only site release.
 
 ### D6 — Build strategy
 **Decision:** Build the smallest reliable vertical slice needed to test the selected workflow. Reuse the shared core only where it reduces delivery cost or improves decision quality in evidence. Do not build features solely because they appear on the long-term platform map.
@@ -146,16 +158,16 @@ The exact workflow depends on the selected use case. Not every candidate needs a
 | “GridMind covers the full industrial value chain” vs “focus on one use case” | One is long-term architecture; the other is immediate execution scope. | Keep the value-chain map as a discovery model; implement only the selected bounded case. |
 | Energy data contract is detailed vs first wedge must be chosen among three candidates | Detail does not equal strategic validation. | Treat energy as one candidate, compare fairly, and update the data contract only if selected. |
 | Expansion docs describe procurement, maintenance, energy, data centres and networks vs stop adding breadth | The expansion map is an option tree, not a simultaneous roadmap. | No module is authorized until customer demand and shared-core reuse pass a gate. |
-| Homepage spec says “build-ready” vs current instruction not to build the site first | “Build-ready” describes specification completeness, not current execution priority. | Do not implement full public site until offer and claim validation gates pass. |
+| Older discovery-only site freeze vs 17 Oct founder-authorized public-site build | Limited /website design and non-confidential contact were subsequently authorized, but neither service readiness nor production permission followed. | Honest /website source work may proceed; exact-SHA public release remains gated. |
 | Marketing hero recommends hidden-loss curiosity vs multiple positioning options remain | The recommended hero is a hypothesis, not a final market decision. | Test with buyers; do not optimize only for aesthetics or clicks. |
 | Accuracy document proposes 95% precision / 90% recall and 30 cases vs one bounded case in the 30-day plan | The task, label protocol, risk, and sample are not defined for a valid target yet. | Remove 95%/90% from active acceptance criteria. Define any threshold with a qualified reviewer only after the task and evaluation set are specified. |
 | Master thesis says GridMind can coordinate actions vs human-review rules | Coordination means recording and supporting approved actions, not autonomous control. | Customer retains authority; consequential actions require qualified human approval. |
 | “Data moat” ambition vs no validated permissioned dataset yet | A moat is a hypothesis until lawful, repeatable data advantage exists. | No claim of an existing data moat; test whether reuse is permitted and produces measurable advantage. |
-| Engineering plan puts schema/RPC/isolation work at P0 before offer selection | This contradicts D6 and there are no validated tenants or observations. | Discovery is the only P0. Preserve existing safeguards; defer new engineering until a selected offer demonstrates the specific blocker. |
+| Earlier discovery-only priority vs founder-authorized synthetic GridMind 3.1 work | Safe synthetic building and customer discovery are parallel tracks; existing security obligations remain. | No speculative production schema, broad integrations or customer-data release. |
 | More documentation vs actual execution | Documents support decisions but do not create validation. | After this consolidation, prioritize executing tests/interviews and recording results rather than generating more strategy documents. |
 
 ## 4. Current execution order
-1. Run the access experiment and buyer discovery first, using stable IDs C1–C5; C1 and C4 are the only active probes for this sprint.
+1. Run the authorized access experiment and compare **R1 (C2+C1), R2 (C6), R3 (C4)** with one sole live buyer tracker; no candidate is commercially selected.
 2. Offer a free, one-page non-technical workflow/decision map in exchange for a 20-minute conversation; do not request confidential records or promise an unqualified technical audit.
 3. Use Tier 1 evidence to decide whether a candidate deserves a bounded test. Tier 2 data, baseline, incrementality, reviewer, security, and delivery gates apply before a customer-data test.
 4. Keep engineering at minimum safe maintenance until the selected offer proves a specific technical blocker. No new schema/RPC/isolation project is P0.
