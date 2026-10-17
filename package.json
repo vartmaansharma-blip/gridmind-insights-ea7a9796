@@ -16,6 +16,7 @@
     "test": "vitest run",
     "test:preview": "bun run build && bun scripts/check-production-preview.mjs",
     "docs:links": "bun scripts/check-markdown-links.mjs",
+    "poc:scooter:check": "bun scripts/check-scooter-poc-catalogue.mjs",
     "test:intake": "python3 -m unittest discover -s tests -v",
     "demo:brief": "bun scripts/export-synthetic-investigation.ts"
   },
