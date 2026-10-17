@@ -117,7 +117,7 @@ jobs:
       - name: Verify isolated synthetic evidence intake and case link security
         shell: bash
         run: |
-          DB_URL="$(supabase status -o env | sed -n 's/^DB_URL="\\(.*\\)"$/\\1/p')"
+          eval "$(supabase status -o env)"
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/synthetic-machine-intake-contract.sql
 
