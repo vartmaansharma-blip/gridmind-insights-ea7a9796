@@ -11,11 +11,12 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "check": "bun run docs:links && bun run typecheck && bun run lint && bun run test && bun run test:preview",
+    "check": "bun run docs:links && bun run knowledge:check && bun run typecheck && bun run lint && bun run test && bun run test:preview",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:preview": "bun run build && bun scripts/check-production-preview.mjs",
     "docs:links": "bun scripts/check-markdown-links.mjs",
+    "knowledge:check": "bun scripts/check-machine-knowledge-coverage.mjs",
     "test:intake": "python3 -m unittest discover -s tests -v",
     "demo:brief": "bun scripts/export-synthetic-investigation.ts"
   },
