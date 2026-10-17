@@ -1,16 +1,15 @@
 # GridMind Insights
 
-> **Being built to turn industrial evidence into better decisions and verified improvement.**
+> **GridMind — Industrial Profit & Resolution Intelligence.** A founder-led, evidence-first effort to help factories investigate costly operational exceptions and coordinate verified decisions, not an established enterprise product.
 
-GridMind is being developed as an industrial intelligence and performance-improvement company. The long-term ambition is to help manufacturers investigate operational problems, make evidence-backed decisions, coordinate approved improvements, and verify outcomes. This is an ambition, not a claim that all capabilities exist today.
+## Current truth — 17 October 2026
 
-## Current truth
-
-- **Commercial wedge:** undecided.
-- **Discovery probes:** C1 — downtime/production-loss investigation; C4 — energy/material inefficiency. These are probes, not product commitments.
-- **Access:** the founder reports an initial public-route inquiry to ASIA was sent on 2026-10-12. No reply, buyer conversation, customer-data permission, factory access, paid demand, or verified savings is confirmed.
-- **Next access test:** a small 3–5 genuine warm-introduction-request effort by 2026-10-19, only if legitimate contacts and actual capacity are available.
-- **Product/release status:** consult the current technical evidence and release gates; a successful build or synthetic test is not proof of production readiness or customer demand.
+- **Strategic direction:** one industrial resolution company, one common permissioned evidence → qualified review → approved action → outcome system. We are **not** building six separate businesses or a replacement ERP/QMS.
+- **Commercial wedge:** **undecided**. Compare **R1** manufacturing quality/rejected orders with related C1 production incidents, **R2** documented acceptance/invoice disputes (C6), and **R3** electricity billing/contract exposure (C4). R1 is a preferred **synthetic design demonstration**, not validated demand.
+- **Evidence:** the founder reports an initial ASIA inquiry on 2026-10-12. No confirmed buyer interviews, customer records, qualified reviewer agreement, paid demand, revenue or verified results.
+- **Execution dates:** appropriate introduction access test by 2026-10-19; aim for 3 conversations/one buyer next step by 2026-10-31; GO TO BOUNDED TEST / NARROW / PIVOT / STOP decision 2026-11-10.
+- **Source reality:** existing application demos and connected internal source are synthetic **C1/C4**. Any R1/R2 intake work here is non-customer, experimental and distinct from a released investigation engine. Production/customer data gates remain.
+- **Scope exclusions:** no autonomous root-cause diagnosis, guaranteed loss reduction, invoice collection, financial custody, plant controls, standalone cybersecurity offering or premature enterprise integrations.
 
 ## Start here
 
@@ -26,9 +25,9 @@ GridMind is being developed as an industrial intelligence and performance-improv
 
 GridMind's proposed operating loop is:
 
-**Authorized evidence → traceable findings → qualified human review → customer-approved action → measured outcome → retained learning only where rights permit.**
+**Exception → authorized evidence → traceable findings and competing explanations → qualified human review → customer-approved action → measured outcome → retained learning only where rights permit.**
 
-The initial commercial offer must be selected from real buyer evidence. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
+The initial commercial offer must be selected from real buyer evidence across R1/R2/R3. Do not equate a synthetic quality or receivables triage example with a functioning connected case method. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
 
 Read the [Product Definition](docs/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
 
