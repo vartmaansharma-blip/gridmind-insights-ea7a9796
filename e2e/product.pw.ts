@@ -48,7 +48,7 @@ test("logged-out factory onboarding explains review before any private dashboard
   await expect(page.getByRole("heading", { name: "Start with your factory, not a sensor." })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Sign in or create an account" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Continue securely" })).toHaveAttribute("href", "/auth?destination=customer");
-  await expect(page.getByText("No factory data has been connected", { exact: false })).toBeVisible();
+  await expect(page.getByText(/Logging in does not connect your machines/)).toBeVisible();
 });
 
 test("public site alias retains the approved Lovable design", async ({ page }) => {
