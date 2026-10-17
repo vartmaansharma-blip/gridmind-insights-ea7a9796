@@ -24,7 +24,8 @@ Use only these IDs across notes and decisions. Never use “Hypothesis A/B” wi
 | **C2** | Quality defects / customer rejection / CAPA effectiveness | **R1 — probe** | Last rejected part, existing QMS/8D, recurrence, accountable buyer and lost time/cost |
 | **C3** | Maintenance recurrence / reliability | Parked | Reopen only if the specific customer event supports maintenance as the stronger paid problem |
 | **C4** | Electricity contract/billing exposure (broader energy only if evidenced) | **R3 — probe** | Last actual tariff/bill decision, expert currently used, gap and budget |
-| **C5** | Cross-team handoff / delayed decisions | Shared pattern only | Record where it materially affects a specific case |\n| **C6** | Order acceptance / invoice dispute / receivables coordination | **R2 — probe** | Last disputed acceptance or invoice; reason, current ERP/accounts process, payer and economic consequence |
+| **C5** | Cross-team handoff / delayed decisions | Shared pattern only | Record where it materially affects a specific case |
+| **C6** | Order acceptance / invoice dispute / receivables coordination | **R2 — probe** | Last disputed acceptance or invoice; reason, current ERP/accounts process, payer and economic consequence |
 
 **Current decision:** Interview around **one** recently costly unresolved factory exception without selling three products. Compare **R1 (C2+C1), R2 (C6), and R3 (C4)** on materiality, existing best provider, budget owner, expert delivery cost and explicit next step. This is a discovery scope amendment, **not** three selected products. C3 and C5 remain context, and procurement/logistics records are only case evidence. No customer proof or commitments changed.
 
