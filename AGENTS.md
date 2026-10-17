@@ -9,7 +9,8 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Treat opportunities as the primary intelligence object and machines as supporting evidence, because GridMind must lead from economic exposure to verified outcome.
+- **GridMind 3.1 (17 October 2026):** Treat an authorized industrial **exception/investigation case** as the primary resolution object. Machines, supplier records, billing documents and ERP events may be supporting evidence only where consented and relevant. A quantified *opportunity* is a separately supported economic judgment, never an automatic case output. Existing energy dashboards are preserved as synthetic/history; do not reinterpret them as customer-validated services.
+- Evaluate R1 (C2 quality plus related C1 incidents), R2 (C6 acceptance/invoice disputes) and R3 (C4 electricity exposure) in discovery. Do not select a commercial wedge, build a multi-division ERP/QMS/fintech suite, or activate an R1/R2 connected engine by changing a C1/C4 enum. The revised Master Plan controls.
 - Keep all industrial conclusions evidence-typed and fail closed to unknown when source resolution is insufficient, because monthly data cannot support physical fault diagnosis.
 
 ## Repository authority and execution rules
