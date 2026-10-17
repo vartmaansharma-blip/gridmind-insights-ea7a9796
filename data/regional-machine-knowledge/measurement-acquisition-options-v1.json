@@ -1,0 +1,253 @@
+{
+  "schema_version": "1.0.0",
+  "kind": "measurement-acquisition-options",
+  "status": "candidate_examples_not_specs",
+  "purpose": "Illustrative acquisition methods for generic L2 measurement quantities. These are NOT model-specific sensor requirements, qualified bill of materials, installation procedures, or proof any signal exists on a customer machine.",
+  "from_source": "data/regional-machine-knowledge/adityapur-jamshedpur-layer2-measurement.json",
+  "decision_order": [
+    "customer_authorized_existing_instrumentation",
+    "verified_existing_manual_record",
+    "qualified_external_measurement_only_if_necessary"
+  ],
+  "constraints": [
+    "manufacturer_instructions_and_site_risk_assessment",
+    "suitable_range_accuracy_environment_and_mounting_selected_by_qualified_personnel",
+    "calibration_timestamp_source_and_operating_context_provenance",
+    "record_maintenance_and_sensor_offline_states",
+    "never_present_raw_signal_as_confirmed_fault"
+  ],
+  "access": "This source-controlled catalog does not connect to actual equipment, install a sensor or ingest customer data.",
+  "quantities": {
+    "coolant_flow": {
+      "existing_or_manual": "Existing coolant indicator or flow record",
+      "external_instrument_classes_to_consider": [
+        "Compatible flow meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "coolant_temperature": {
+      "existing_or_manual": "Existing coolant temperature reading",
+      "external_instrument_classes_to_consider": [
+        "Compatible temperature instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "cooling_flow": {
+      "existing_or_manual": "Existing cooling-flow indicator",
+      "external_instrument_classes_to_consider": [
+        "Compatible flow meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "current": {
+      "existing_or_manual": "Existing drive/controller or meter reading",
+      "external_instrument_classes_to_consider": [
+        "Approved electrical current-measurement instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "cycle_or_residence_time": {
+      "existing_or_manual": "Controller events or manually timed process log",
+      "external_instrument_classes_to_consider": [
+        "Appropriate event/cycle counter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "cycle_time": {
+      "existing_or_manual": "Existing machine counter or operator shift log",
+      "external_instrument_classes_to_consider": [
+        "Cycle/event counter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "electrical_output": {
+      "existing_or_manual": "Existing generator output meter",
+      "external_instrument_classes_to_consider": [
+        "Appropriate output power meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "electrical_power": {
+      "existing_or_manual": "Existing electricity meter or drive measurement",
+      "external_instrument_classes_to_consider": [
+        "Professional power/energy meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "energy_input": {
+      "existing_or_manual": "Existing electricity/fuel records",
+      "external_instrument_classes_to_consider": [
+        "Appropriate energy meter or compatible fuel-flow instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "engine_speed": {
+      "existing_or_manual": "Existing engine controller or governor log",
+      "external_instrument_classes_to_consider": [
+        "Appropriate speed sensor"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "flow": {
+      "existing_or_manual": "Existing process flow record/indicator",
+      "external_instrument_classes_to_consider": [
+        "Fluid-compatible flow meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "force_or_load": {
+      "existing_or_manual": "Machine force readout or verified job/test record",
+      "external_instrument_classes_to_consider": [
+        "Engineered load/force transducer"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "frequency": {
+      "existing_or_manual": "Controller/drive frequency value",
+      "external_instrument_classes_to_consider": [
+        "Suitable electrical frequency measurement"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "fuel_flow": {
+      "existing_or_manual": "Recorded fuel use and run-hours",
+      "external_instrument_classes_to_consider": [
+        "Fuel-compatible flow meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "inspection_result": {
+      "existing_or_manual": "Authorized inspection report",
+      "external_instrument_classes_to_consider": [
+        "Validated inspection instrument export"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "instrument_status": {
+      "existing_or_manual": "Calibration certificate and maintenance log",
+      "external_instrument_classes_to_consider": [
+        "Instrument self-test/status interface"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "load": {
+      "existing_or_manual": "Approved load indicator or lifting/production record",
+      "external_instrument_classes_to_consider": [
+        "Engineered load-sensing instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "measurement_result": {
+      "existing_or_manual": "Signed and traceable measurement report",
+      "external_instrument_classes_to_consider": [
+        "Verified measurement-instrument output"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "motor_power": {
+      "existing_or_manual": "Existing motor-drive power register",
+      "external_instrument_classes_to_consider": [
+        "Qualified motor electrical power measurement"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "oil_temperature": {
+      "existing_or_manual": "Existing oil-temperature gauge",
+      "external_instrument_classes_to_consider": [
+        "Oil-compatible temperature instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "power": {
+      "existing_or_manual": "Existing verified meter / drive power reading",
+      "external_instrument_classes_to_consider": [
+        "Appropriate power/energy meter"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "pressure": {
+      "existing_or_manual": "Existing verified process pressure indication",
+      "external_instrument_classes_to_consider": [
+        "Process-compatible pressure transducer"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "process_temperature": {
+      "existing_or_manual": "Existing controller temperature trend",
+      "external_instrument_classes_to_consider": [
+        "Process-compatible temperature instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "shielding_gas_flow": {
+      "existing_or_manual": "Existing verified welding gas-flow record",
+      "external_instrument_classes_to_consider": [
+        "Appropriate gas-flow instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "speed": {
+      "existing_or_manual": "Existing controller/drive speed indication",
+      "external_instrument_classes_to_consider": [
+        "Suitable rotational speed pickup"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "spindle_speed": {
+      "existing_or_manual": "Existing spindle-drive speed reading",
+      "external_instrument_classes_to_consider": [
+        "Suitable tachometer/speed pickup"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "temperature": {
+      "existing_or_manual": "Existing verified temperature record",
+      "external_instrument_classes_to_consider": [
+        "Appropriate contact or noncontact temperature instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "test_parameters": {
+      "existing_or_manual": "Controlled procedure and recorded test settings",
+      "external_instrument_classes_to_consider": [
+        "Approved test instrument export"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "vibration": {
+      "existing_or_manual": "Existing qualified periodic vibration report",
+      "external_instrument_classes_to_consider": [
+        "Industrial vibration sensor / analyzer"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "voltage": {
+      "existing_or_manual": "Existing approved power-quality/meter reading",
+      "external_instrument_classes_to_consider": [
+        "Qualified electrical voltage measurement"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "welding_current": {
+      "existing_or_manual": "Existing verified welding controller record",
+      "external_instrument_classes_to_consider": [
+        "Specialist welding-current measurement"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "welding_voltage": {
+      "existing_or_manual": "Existing verified welding controller record",
+      "external_instrument_classes_to_consider": [
+        "Specialist welding-voltage measurement"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    },
+    "workpiece_temperature": {
+      "existing_or_manual": "Existing validated workpiece/process temperature record",
+      "external_instrument_classes_to_consider": [
+        "Suitable process temperature instrument"
+      ],
+      "requirement_status": "conditional_engineering_review"
+    }
+  }
+}
