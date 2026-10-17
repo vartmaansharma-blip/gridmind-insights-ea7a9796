@@ -30,7 +30,7 @@ test("Lovable design is a separate preview with the agreed green hook and workin
   await expect(page.locator("#example")).toContainText("Does power factor affect anything on this bill?");
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download fictional brief" }).click();
-  expect((await download).suggestedFilename()).toMatch(/FICTIONAL\\.txt$/);
+  expect((await download).suggestedFilename()).toMatch(/FICTIONAL\.txt$/);
   const contact = page.locator("#contact");
   await expect(contact).not.toContainText("Contact route pending");
   await expect(contact.getByRole("link", { name: "Request a conversation" })).toHaveAttribute("href", "/cases");
