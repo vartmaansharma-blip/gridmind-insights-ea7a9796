@@ -6,6 +6,7 @@ import { getCanonicalMachineSnapshots } from "@/lib/gridmind/repository";
 import { useEnergy } from "@/lib/energy/store";
 import { Button } from "@/components/ui/button";
 import { runCanonicalFactoryAnalysis, type CanonicalFactoryAnalysisRun } from "@/lib/gridmind/analysis-runner";
+import { assessMachineEvidence } from "@/lib/gridmind/machine-evidence-readiness";
 
 export const Route = createFileRoute("/machines/$id")({
   head: () => ({ meta: [{ title: "Asset — GridMind" }] }),
@@ -31,6 +32,8 @@ function AssetPage() {
 
   const asset = (query.data ?? []).find((x) => String(x.id) === id);
   if (!asset) return <p className="text-sm">Asset not found. <Link to="/machines" className="underline">Back to assets</Link></p>;
+
+  const readiness = assessMachineEvidence(asset);
 
   const runAnalysis = async () => {
     setAnalysisBusy(true);
@@ -70,6 +73,55 @@ function AssetPage() {
           <h3 className="mb-2 mt-4 text-sm font-semibold">Mappings</h3>
           {asset.mappings.map((m) => <p key={m.id} className="text-xs text-muted-foreground">{m.sourceField} → {m.canonicalMetric} · {m.unit ?? "—"} · {m.status}</p>)}
         </section>
+        <section className="panel p-5 lg:col-span-2" aria-labelledby="machine-evidence-readiness">
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h2 id="machine-evidence-readiness" className="font-semibold">Evidence readiness</h2>
+              <p className="mt-1 max-w-3xl text-sm leading-6 text-muted-foreground">
+                The first step toward an investigation is trustworthy, machine-level evidence.
+                This is a coverage preview, not an equipment-health score or an approved diagnosis.
+              </p>
+            </div>
+            <span className="rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
+              {readiness.state === "no_records" ? "No machine records" : readiness.state === "incomplete" ? "Evidence incomplete" : "Basic coverage present"}
+            </span>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-xs text-muted-foreground">Machine observations</p>
+              <p className="mt-1 text-xl font-semibold tabular-nums">{readiness.observationCount}</p>
+              <p className="text-xs text-muted-foreground">{readiness.qualityEligibleCount} eligible by basic quality checks</p>
+            </div>
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-xs text-muted-foreground">Candidate measurement periods</p>
+              <p className="mt-1 text-xl font-semibold tabular-nums">{readiness.candidatePeriods} / 4 minimum</p>
+              <p className="text-xs text-muted-foreground">Not yet checked for comparability</p>
+            </div>
+            <div className="rounded-lg border border-border p-3">
+              <p className="text-xs text-muted-foreground">Documented sources</p>
+              <p className="mt-1 text-xl font-semibold tabular-nums">{readiness.distinctDocumentedSources}</p>
+              <p className="text-xs text-muted-foreground">{readiness.mappedSources} mapped in the asset profile</p>
+            </div>
+          </div>
+          <div className="mt-4 grid gap-2 text-sm sm:grid-cols-3">
+            <p>Energy readings: <strong className="tabular-nums">{readiness.roles.energy}</strong></p>
+            <p>Production readings: <strong className="tabular-nums">{readiness.roles.production}</strong></p>
+            <p>Operating-hour readings: <strong className="tabular-nums">{readiness.roles.operating_hours}</strong></p>
+          </div>
+          <h3 className="mt-5 text-sm font-semibold">What is needed next</h3>
+          <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
+            {readiness.nextSteps.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+          <div className="mt-4 flex flex-wrap items-center gap-3">
+            <Button asChild size="sm" variant="outline">
+              <Link to="/team/cases">Open team investigations</Link>
+            </Button>
+            <p className="max-w-xl text-xs leading-5 text-muted-foreground">
+              No files or readings are imported here. Actual customer data requires approved custody and
+              access before ingestion. The server alone decides whether an analysis can support a finding.
+            </p>
+          </div>
+        </section>
         <section className="panel p-5 lg:col-span-2">
           <h2 className="mb-3 font-semibold">Canonical observations</h2>
           {asset.observations.length === 0 ? <p className="text-sm text-muted-foreground">No observations yet.</p> : asset.observations.slice(0, 100).map((o) => <div key={o.id} className="flex flex-wrap gap-3 border-b border-border py-2 text-sm last:border-0"><span className="font-mono text-xs">{o.metric}</span><span className="num">{o.valueNumeric ?? o.valueText ?? "—"} {o.unit ?? ""}</span><span className="text-xs text-muted-foreground">{new Date(o.observedAt).toLocaleString()}</span><span className="text-xs">{o.qualityStatus}</span></div>)}
@@ -98,6 +150,7 @@ function AssetPage() {
                   </span>
                   <span className="text-xs text-muted-foreground">{result.algorithmVersion}</span>
                 </div>
+                <p className="text-xs text-muted-foreground">Reproducibility verifies the calculation, not the accuracy of the underlying data or a physical cause.</p>
                 <p>Reference: {result.reference.sampleCount} comparable historical periods · {result.reference.confidence} confidence</p>
                 <p>Specific energy: actual {result.deviation.actualSpecificEnergyKwhPerUnit == null ? "—" : result.deviation.actualSpecificEnergyKwhPerUnit.toFixed(4) + " kWh/unit"} · reference {result.reference.specificEnergyKwhPerUnit == null ? "—" : result.reference.specificEnergyKwhPerUnit.toFixed(4) + " kWh/unit"}</p>
                 <p>Deviation: {result.deviation.detected ? result.deviation.deltaPercent == null ? "detected; percentage unavailable" : result.deviation.deltaPercent.toFixed(2) + "%" : "not established"}</p>
