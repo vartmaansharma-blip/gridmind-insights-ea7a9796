@@ -1,6 +1,6 @@
 # GridMind repository guide
 
-**Last reviewed:** 2026-10-15
+**Last reviewed:** 2026-10-17 — master-plan realignment
 
 **Purpose:** One navigation point for the canonical decisions and a complete document inventory.  
 **Inventory rule:** Every file under `docs/` is listed exactly once below. No document was deleted or moved in this pass. "Uncertain, kept" means its content was not reviewed deeply enough to assign a stronger status; it remains preserved and must not be treated as an authority.
@@ -16,12 +16,12 @@
 
 ## Current operating state
 
-- Positioning: evidence-first, human-reviewed industrial investigation service (working hypothesis).
+- Positioning: **GridMind — Industrial Profit & Resolution Intelligence**, a technology-enabled, expert-reviewed investigation and corrective-action coordination company (working strategic architecture).
 - Initial segment: owner-run/mid-size manufacturers in Jamshedpur–Adityapur (working hypothesis; fit still to validate).
-- C1 downtime/production-loss and C4 energy/resource inefficiency remain probes; no commercial wedge is selected.
+- **R1 quality exceptions with quality-linked C1 incidents; R2 acceptance/invoice disputes (C6); R3 C4 electricity exposure** are three competing discovery lanes; no paid product or wedge is selected. R1 is the preferred **synthetic design** hypothesis, not verified customer demand.
 - The target checkpoint is **3 substantive manufacturing conversations and at least one explicit buyer next step by 2026-10-31**. The formal GO TO BOUNDED TEST / NARROW / PIVOT / STOP gate remains **2026-11-10**.
 - The ASIA inquiry was sent 2026-10-12; no response, conversation, customer data, paid demand, or reviewer engagement is confirmed.
-- Synthetic tests and desk research are not customer evidence. CI/production readiness must be rechecked live.
+- Existing connected case engine remains **C1/C4 synthetic-only**. New quality and payment lanes require separate domain methods and release verification. Synthetic tests and desk research are not customer evidence. CI/production readiness must be rechecked live.
 
 ## Document lifecycle inventory
 
