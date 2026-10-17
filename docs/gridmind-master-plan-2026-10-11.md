@@ -366,7 +366,63 @@ Risk severity, monitoring cadence, assignment, escalation and safeguards appear 
 
 Never mark product “ready” because one synthetic preview renders. Preserve history and existing Lovable synchronization, avoid production migrations and avoid simultaneous branch feature duplication.
 
-## 25. Sources, research assumptions and decisions
+## 25. A founder's first case: from factory conversation to a decision
+
+This is the operating sequence for a founder starting with no customer. A stage is complete only when its named artifact exists; none of these artifacts is yet evidence of a sale.
+
+| Stage | Do the work | Artifact and pass condition | Stop or return when |
+|---|---|---|---|
+| Access | Ask an appropriate adult or professional for a permissioned introduction, or use an official public channel. State that this is research. | Actual send, reply and booked meeting recorded in the sole Buyer Discovery Sprint. | No legitimate contact route, site permission or safe supervision. |
+| Understand | Ask the interviewee to reconstruct one recent exception, their best existing method, decision delay, cost source and who could authorize a test. | Consent-safe event note with observed facts, estimates, gaps, buyer role and explicit next step. | Only hypothetical enthusiasm, no residual gap, or no buyer path. |
+| Compare | Ask the same core questions of R1, R2 and R3 interviewees without assuming a winner. Ask who already solves it and why that option falls short. | Evidence-based comparison in the existing tracker at the 10 November gate. | Problem frequency/value, permissions or specialist availability fails. |
+| Scope | With adult/legal and qualified domain support, define one decision question, one factory, time period, evidence owners, exclusions, fee ceiling and named reviewer. | Reviewed scope schedule using the linked [first-case template](gridmind-first-paid-case-scope-template-2026-10-17.md); no live records yet. | Customer asks for guaranteed recovery, certification, autonomous intervention or data rights they do not hold. |
+| Contract and custody | Identify lawful contracting party; obtain a signed agreement, explicit evidence permissions, secure transfer, retention and correction terms; pass release/security gates. | Recorded authorization and verified technical controls for the exact environment. | Any missing authority, unsafe site access, failed tenant test or no recovery plan. |
+| Deliver | Register sources and contradictions, run only the selected domain method, let the independent qualified reviewer veto unsupported claims, then release an approved decision brief. | Version-bound source register, reviewer decision and customer-approved brief. | Evidence cannot answer the question or review is unavailable; report “insufficient evidence.” |
+| Follow through | Customer owns physical/commercial action. Observe an agreed post-period and confounders; issue corrections when needed. | Accepted action record, measured/estimated/unknown outcome and cash-cost record. | No comparable baseline or customer action; do not claim savings. |
+| Learn | Ask whether they would buy another bounded case and why; measure actual collection and full service hours. | Win/loss and contribution record; feed only consent-safe facts into the same tracker. | Negative contribution or no repeat need makes subscription unsuitable. |
+
+### One fictional factory example showing the full value chain
+
+A component supplier buys metal and tooling, receives an order and drawing, schedules production, makes parts, checks dimensions, dispatches a lot, waits for the buyer's acceptance, invoices and collects cash. A rejected lot can generate scrap or rework, a revised schedule, freight, a buyer debit note and a later payment dispute. These are *possible* consequences, not four independently countable savings. The process owner must identify the actual root event and avoid double counting.
+
+For **R1**, the quality head might already have an 8D spreadsheet. GridMind would be worth paying only if a specific unresolved question crosses production, inspection and customer acceptance records and the existing team or consultant cannot close it as safely or promptly. Required records could include drawing revision, lot genealogy, inspection method, measurement validity, rejection notice, containment and corrective-action follow-up. A quality specialist must separate a documented defect from a plausible cause. The customer decides any process or product change.
+
+For **R2**, a finance lead might have a valid invoice in an ERP but no agreed acceptance evidence. The question is which document or decision is missing, not whether all late payment is a quality issue. Orders, delivery proof, acceptance/rejection terms, invoices, debit notes and correspondence each need distinct owners and versions. A commercial/accounting specialist and, when needed, counsel define the boundary. GridMind cannot adjudicate, collect, lend or promise payment.
+
+For **R3**, an owner may see an electricity bill rise. The question may be tariff class, demand charge, contract term, meter period or actual consumption; these require different evidence. Use the effective tariff and bill/meter periods, check units and exclusions, and have a qualified electricity specialist review the conclusion. A higher bill by itself proves neither an error nor a saving. Existing synthetic C4 logic is a demonstration, not a professional audit.
+
+### What a buyer must believe before paying
+
+The economic buyer needs a real unresolved cost or decision risk, confidence that GridMind is allowed to see the required records, a named accountable reviewer, a delivery deadline, a price and a clear answer to “what will I do differently?” The champion needs low extra work; IT and legal need access and deletion controls; a counterparty may need a separate consent path. The most credible first offer is a bounded case with a useful answer even when evidence is insufficient. A dashboard alone does not create this value.
+
+Ask these objections directly: “Why not use the quality team, ERP/QMS, accountant, consultant or electrician already involved?”; “What would this cost to adopt, including your staff time?”; “Who can release records and who can act on the result?”; “What would make our conclusion untrustworthy?” If an incumbent already resolves the case at acceptable cost and speed, record that as disconfirmation and do not force a sale.
+
+## 26. Market size, willingness to pay and business-model choice
+
+**Do not claim TAM from the number of Indian factories or a percentage of industrial GDP.** A bottom-up estimate for each candidate starts with a defined geography and factory segment, counts only reachable firms with the relevant recurring exception, estimates annual *eligible* cases, then applies the share with a buying path and safe evidence rights, a feasible delivered price, and delivery capacity. Keep each input as a range with source/date, distinguish independent public counts from interview-derived assumptions, and show a zero-demand case. Serviceable obtainable revenue is bounded by sales access, reviewer hours and customer procurement; invoices and collected cash are separate. No such credible numerical TAM is established yet.
+
+Test willingness to pay through a sequence of increasingly costly buyer actions: permission to discuss an actual case → introduction to budget owner → request for a written scope → negotiation of a priced, reviewer-backed proposal → signed terms → cash received → repeat purchase. Record refusal and its stated reason. A “yes” to an abstract product question is not price evidence. With professional and adult approval, offer two *realistically deliverable* scope/price combinations that differ in work and turnaround; never invent urgency or promise savings. Compare the maximum acceptable fee to fully loaded specialist, founder, travel, software, acquisition and correction cost, plus cash delay. If a buyer only accepts a price below variable delivery cost, narrow the method or stop.
+
+| Model considered | Why it may work | Why it is not the default now |
+|---|---|---|
+| Bounded expert-reviewed case | One concrete buyer decision and controlled liability; price can be tested | Labour-heavy until methods repeat; still requires reviewer and data rights |
+| Monthly managed resolution | Useful if cases and follow-up recur under one budget | No observed renewal frequency or stable cost yet |
+| Per-seat software | Low service load after product maturity | Buyer may have no daily software job; existing ERP/QMS already owns records |
+| Outcome/savings share | Aligns incentives in some settings | Baselines, causality, payment timing and disputes are hard to verify |
+| Enterprise supplier programme | Could coordinate repeated cross-company exceptions | Different buying cycle, conflicts and bilateral data permission |
+| Marketplace, financing or universal ERP | Large theoretical spend | Distinct regulation, capital, trust and implementation burdens; rejected for initial company |
+
+The selection rule is a paid, repeatable decision advantage over the best existing alternative with lawful data access and positive fully counted contribution. If a later lane serves a different buyer, needs a different specialist and has a different sale, treat it as a separately justified expansion even if the software shares code.
+
+## 27. Financing, hiring and independence gates
+
+During discovery, keep fixed commitments low and record founder time at a shadow rate. A signed case should fund its specialist work, travel, quality control and correction allowance under conservative payment timing. Maintain an operating cash forecast by week: opening cash + expected collections − unavoidable payments, with late-payment and rework scenarios. Do not fund payroll or equipment from quoted revenue. Seek outside capital only when evidence shows a repeatable buyer problem, delivery method, gross contribution and a specific bottleneck that capital removes; dilution is not a substitute for buyer proof.
+
+The first professional capacity should be **contracted, scoped expertise**, selected for the chosen lane and independent enough to challenge a finding. Add a responsible adult contracting/oversight arrangement, legal/accounting review and a security owner before live work. Hire permanent customer success, domain or engineering staff only when repeated paid cases justify utilization and supervision. A second reviewer or documented backup is needed before promising predictable turnaround. Supplier-network or infrastructure expansion needs separate leadership, permissions, capital model, safety authority and stage-gate approval.
+
+**Weekly founder control:** update the sole buyer tracker with actual contact/meeting outcomes, one disconfirming fact, reviewer availability, next customer action, cash exposure and the earliest safety/release blocker. Decide whether to continue, narrow, pivot or pause at the published gates. A missed date triggers an honest review, not fabricated progress.
+
+## 28. Sources, research assumptions and decisions
 **Public reference materials** (evidence of existing practices/alternatives, *not* proof of demand for GridMind):
 - [AIAG Automotive Quality Core Tools](https://www.aiag.org/expertise-areas/quality/quality-core-tools) — standard practices APQP, PPAP, FMEA, SPC, MSA; do not reproduce licensed manuals.
 - [AIAG supplier tools / Enterprise CORE](https://www.aiag.org/expertise-areas/getting-started/supplier-resources) — specialist software already addresses documentation workflows.
