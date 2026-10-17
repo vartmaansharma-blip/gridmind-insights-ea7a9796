@@ -31,6 +31,17 @@ The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) is the **sole company
 - [Engineering Acceptance & Repo Conversion](docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) — exact source areas, issue-linked epics, test and deployment gates.
 - The internal demo in `/investigations` includes a **read-only fictional Resolve lifecycle indicator** in addition to historical C1/C4 synthetic analysis. No live quality/finance engine is implied.
 
+## GridMind 3.1 manufacturing research and service blueprint (17 October 2026)
+
+The founder requested research into at least 100 industrial problems, how GridMind might help, what customers would pay for, how GridMind itself could accept fees, and how the evidence-to-resolution company would operate. The resulting source-informed proposal is deliberately **not** a promise of 100 implemented/validated services:
+
+- [100-problem manufacturer research atlas](docs/research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) — exactly 100 problems across 10 industrial domains, distinguishing potential direct software, expert-assisted work and partner-only escalation. It is **desk research**, not local factory observations or a product backlog.
+- [Service SOP, commercial/pricing hypotheses and payment collection](docs/operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) — on-site-capable expert-led service model; business invoice/bank transfer first after lawful authorized adult/professional setup; regulated hosted payment link only if later warranted. **GridMind revenue ≠ manufacturer's disputed receivables.** No live payments or contracting ability inferred.
+- [Manufacturer resolution product architecture](docs/product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — one core for authorized evidence → observation/hypothesis → qualified review → customer decision → outcome, with methods added only after buyer/safety gates.
+- [PR #136 pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — main is production-connected; broad branch stays **DRAFT/HOLD** pending exact-head checks, independent code review, production Supabase drift (#130) and authenticated release (#29). Documentation does not authorize new migrations, production or real customer use.
+
+The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) remains the **only** active strategy; the [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) is still the **only** buyer-evidence tracker. R1/R2/R3 remain discovery-only candidates. “Redmind” has not been accepted as a name change.
+
 ## Product and operating model
 
 GridMind's proposed operating loop is:
