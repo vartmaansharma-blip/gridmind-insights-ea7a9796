@@ -17,7 +17,7 @@
 - [ ] Acceptance criteria from the linked issue are met.
 - [ ] I inspected the complete diff and checked for unrelated changes.
 - [ ] Tests/checks were run on the candidate commit; exact results are below.
-- [ ] Documentation and internal links were updated where needed.
+- [ ] Documentation and internal links were updated where needed; new material is in the correct subject folder and does not create another master plan or live tracker.
 - [ ] Unknowns and limitations remain explicit; no unsupported claims were added.
 
 **Checks run and results:**

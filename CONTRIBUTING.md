@@ -7,7 +7,7 @@ This repository is both the application codebase and the operating record for Gr
 1. [Master Plan](docs/gridmind-master-plan-2026-10-11.md) — sole execution plan.
 2. [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) — sole live customer-access/discovery tracker.
 3. [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — binding principles and durable decisions.
-4. [Documentation index](docs/README.md) — map to engineering controls and reference material.
+4. [Documentation index](docs/README.md) — short map to Product, Operations, Engineering, Design, Research and Archive.
 5. [Technical release gate](docs/release-gate.md) and [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) before live/customer-data workflows.
 
 Supporting research, dated audits, prototypes, and the root `roadmap.md` do not create a second execution queue. If sources conflict, stop and reconcile the conflict in the canonical record before implementing.
@@ -61,7 +61,8 @@ Classify each document as **canonical**, **supporting**, **historical**, or **re
 - Canonical documents govern a specific information class; update them in place.
 - Supporting documents must state their scope and must not override canonical decisions.
 - Historical audits preserve what was known at a date; label their snapshot date and link to the current authority.
-- Before moving or deleting a document, search inbound Markdown links, GitHub issue/PR references, workflow references, and unique evidence. Prefer a status banner and replacement link over destructive cleanup when uncertain.
+- Put new supporting material in the matching `docs/product/`, `docs/operations/`, `docs/engineering/`, `docs/design/` or `docs/research/` folder; put superseded plans/audits in `docs/archive/`. Each folder README is navigation, not a new strategy. Keep a dated status, owner, evidence level and canonical link. Do not write substantive updates into old-path compatibility pointers.
+- Before moving or deleting a document, search inbound Markdown links, GitHub issue/PR references, workflow references, and unique evidence. Prefer a status banner and replacement link over destructive cleanup when uncertain. Run `bun run docs:links` on the exact PR head when CI is available.
 - Do not add a document if the same durable information can be maintained in an existing canonical file.
 
 ## 7. Pull-request completion standard
@@ -81,6 +82,6 @@ Keep a PR in draft while any material criterion remains unresolved. Do not merge
 
 Lovable handles design; Codex handles backend and repository tasks. Follow the collaboration rules in [AGENTS.md](AGENTS.md). Keep the existing app/template dependencies and generated integrations compatible with Lovable. Ordinary Markdown, TypeScript, Python, SQL, and GitHub configuration remain editable source; do not add a second framework or an opaque build layer.
 
-Each work item must name the observed defect or customer/evidence need, the expected improvement, and the evidence that would justify completion. Necessary security/correctness repairs can proceed during the discovery-first freeze; speculative modules and visual redesign cannot become priorities merely because a proposal exists. Keep the engineering pass bounded and return to the canonical discovery priority when essential controls are in place.
+Each work item must name the observed defect or customer/evidence need, the expected improvement, and the evidence that would justify completion. Necessary security/correctness repairs can proceed during the discovery-first freeze; speculative modules cannot become priorities merely because a proposal exists. The site-first public communication and contact milestone is explicitly authorized in [issue #138](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/138) and its [supporting specification](docs/product/gridmind-site-build-and-acceptance-2026-10-17.md); buyer discovery proceeds in parallel. Keep the engineering pass bounded and return to the canonical buyer-evidence priority when essential controls are in place.
 
 [CODEOWNERS](.github/CODEOWNERS) routes responsibility. [Security reporting](SECURITY.md), [support](SUPPORT.md), and the [change history](CHANGELOG.md) have distinct purposes. Dependency PRs require review and Lovable compatibility checks; they are never automatically merged. Major application upgrades are excluded from routine dependency updates and require a separate explicit compatibility decision. Bun and GitHub Actions update configuration follows the [GitHub supported ecosystems](https://docs.github.com/en/code-security/reference/supply-chain-security/supported-ecosystems-and-repositories).
