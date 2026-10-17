@@ -1,0 +1,1320 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "gridmind-regional-machine-connectivity-triage-v1",
+  "purpose": "Source-controlled links between the 49 regional L1 machine archetypes, existing 14-type canonical crosswalk, generic L2 measurement families, and L4 diagnostic questions. NEVER an automatic machine-specific sensor BOM, diagnosis, or safety procedure.",
+  "sources": [
+    "data/regional-machine-knowledge/adityapur-jamshedpur-layer1-engineering.json",
+    "data/regional-machine-knowledge/adityapur-jamshedpur-canonical-mapping-v1.json",
+    "data/regional-machine-knowledge/adityapur-jamshedpur-layer2-measurement.json",
+    "data/regional-machine-knowledge/adityapur-jamshedpur-layer4-diagnostics.json"
+  ],
+  "scope": "Regional industry archetypes, not evidence of a particular factory's installed equipment.",
+  "status": "candidate_screening_only",
+  "installation_authorization": "none",
+  "diagnostic_enablement": "all_blocked",
+  "inference_policy": "A measurement family suggests what information could help; a sensor is not required if trustworthy existing or manual information is available.",
+  "coverage_summary": {
+    "regional_archetypes": 49,
+    "confident_canonical_mappings": 7,
+    "unresolved_canonical_mappings": 42,
+    "machine_specific_validated_models": 0,
+    "validated_machine_specific_diagnostics": 0,
+    "candidate_profiles": 46,
+    "needs_custom_profile": 3
+  },
+  "review_gates": [
+    "confirm_machine_identity_and_site_existence",
+    "collect_oem_nameplate_and_model_manual",
+    "agree_investigation_question_and_operating_context",
+    "check_existing_data_first",
+    "select_measurement_and_quality_requirements",
+    "qualified_engineer_selects_instrument_and_installation_plan",
+    "record_calibration_and_limitations",
+    "validate_repeatability_and_diagnostic_logic",
+    "accept_independent_review_before_recommendation",
+    "verify_outcome_if_intervention_approved"
+  ],
+  "machine_types": [
+    {
+      "machine_id": "forging.electric_screw_press",
+      "machine_type": "Electric Screw Press",
+      "engineering_source_id": "forging.electric_screw_press",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "forging.gravity_drop_hammer",
+      "machine_type": "Gravity Drop Hammer",
+      "engineering_source_id": "forging.gravity_drop_hammer",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "forging.downstroke_screw_press",
+      "machine_type": "Down-Stroke Screw Press",
+      "engineering_source_id": "forging.downstroke_screw_press",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "forging.upstroke_screw_press",
+      "machine_type": "Up-Stroke Screw Press",
+      "engineering_source_id": "forging.upstroke_screw_press",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "forming.mechanical_power_press",
+      "machine_type": "Mechanical Power Press",
+      "engineering_source_id": "forming.mechanical_power_press",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 3,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heating.induction_billet_heater",
+      "machine_type": "Induction Billet Heater",
+      "engineering_source_id": "heating.induction_billet_heater",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "induction",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "power",
+        "frequency",
+        "workpiece_temperature",
+        "cooling_flow"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heating.oil_fired_furnace",
+      "machine_type": "Oil-Fired Heating Furnace",
+      "engineering_source_id": "heating.oil_fired_furnace",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "surface.shot_blasting_machine",
+      "machine_type": "Shot Blasting Machine",
+      "engineering_source_id": "surface.shot_blasting_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": null,
+      "measurement_profile_status": "machine_specific_profile_required",
+      "measurement_candidates": [],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "abrasive_flow",
+        "blast_wheel_condition",
+        "workpiece_throughput"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "forming.ring_rolling_machine",
+      "machine_type": "Ring Rolling Machine",
+      "engineering_source_id": "forming.ring_rolling_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "cutting.circular_saw",
+      "machine_type": "Circular Saw Machine",
+      "engineering_source_id": "cutting.circular_saw",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "cutting.bandsaw",
+      "machine_type": "Band Saw Machine",
+      "engineering_source_id": "cutting.bandsaw",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.cnc_turning_center",
+      "machine_type": "CNC Turning Centre",
+      "engineering_source_id": "machining.cnc_turning_center",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 1,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.vertical_machining_center",
+      "machine_type": "Vertical Machining Centre",
+      "engineering_source_id": "machining.vertical_machining_center",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 2,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.horizontal_machining_center",
+      "machine_type": "Horizontal Machining Centre",
+      "engineering_source_id": "machining.horizontal_machining_center",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.grinding_machine",
+      "machine_type": "Grinding Machine",
+      "engineering_source_id": "machining.grinding_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.conventional_lathe",
+      "machine_type": "Conventional Lathe",
+      "engineering_source_id": "machining.conventional_lathe",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.column_drilling_machine",
+      "machine_type": "Column Drilling Machine",
+      "engineering_source_id": "machining.column_drilling_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.centering_facing_machine",
+      "machine_type": "Centering & Facing Machine",
+      "engineering_source_id": "machining.centering_facing_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.gear_cutting_machine",
+      "machine_type": "Gear Cutting Machine",
+      "engineering_source_id": "machining.gear_cutting_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.broaching_machine",
+      "machine_type": "Broaching Machine",
+      "engineering_source_id": "machining.broaching_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.shaving_machine",
+      "machine_type": "Gear Shaving Machine",
+      "engineering_source_id": "machining.shaving_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.shaping_machine",
+      "machine_type": "Gear/Component Shaping Machine",
+      "engineering_source_id": "machining.shaping_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.box_normalizing_furnace",
+      "machine_type": "Box-Type Normalizing Furnace",
+      "engineering_source_id": "heat_treatment.box_normalizing_furnace",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.pit_furnace",
+      "machine_type": "Pit Furnace",
+      "engineering_source_id": "heat_treatment.pit_furnace",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.continuous_furnace",
+      "machine_type": "Continuous Heat Treatment Furnace",
+      "engineering_source_id": "heat_treatment.continuous_furnace",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.isothermal_annealing",
+      "machine_type": "Isothermal Annealing System",
+      "engineering_source_id": "heat_treatment.isothermal_annealing",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.sealed_quench",
+      "machine_type": "Sealed Quench System",
+      "engineering_source_id": "heat_treatment.sealed_quench",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.plug_quench",
+      "machine_type": "Plug Quenching System",
+      "engineering_source_id": "heat_treatment.plug_quench",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "thermal",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "process_temperature",
+        "energy_input",
+        "cycle_or_residence_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "heat_treatment.induction_hardening",
+      "machine_type": "Induction Hardening System",
+      "engineering_source_id": "heat_treatment.induction_hardening",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "induction",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "power",
+        "frequency",
+        "workpiece_temperature",
+        "cooling_flow"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "thermal",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "tooling.cnc_die_machining",
+      "machine_type": "CNC Die-Machining Centre",
+      "engineering_source_id": "tooling.cnc_die_machining",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "tooling.edm_machine",
+      "machine_type": "EDM Machine",
+      "engineering_source_id": "tooling.edm_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": null,
+      "measurement_profile_status": "machine_specific_profile_required",
+      "measurement_candidates": [],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "discharge_parameters",
+        "dielectric_status",
+        "gap_servo_state"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "tooling.wire_edm",
+      "machine_type": "Wire EDM Machine",
+      "engineering_source_id": "tooling.wire_edm",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": null,
+      "measurement_profile_status": "machine_specific_profile_required",
+      "measurement_candidates": [],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "discharge_parameters",
+        "wire_feed_and_tension",
+        "dielectric_status"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "material_handling.scrap_baling_machine",
+      "machine_type": "Scrap Baling Machine",
+      "engineering_source_id": "material_handling.scrap_baling_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "hydraulic",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "pressure",
+        "flow",
+        "oil_temperature"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "baling_force_or_pressure",
+        "cycle_time",
+        "operating_state"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity",
+        "forming"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "testing.magnaflux_crack_detection",
+      "machine_type": "Magnetic Particle Inspection Machine",
+      "engineering_source_id": "testing.magnaflux_crack_detection",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "ndt",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "inspection_result",
+        "test_parameters"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "instrument_procedure",
+        "inspection_sensitivity",
+        "inspection_record"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "testing.brinnell_hardness_tester",
+      "machine_type": "Brinell Hardness Testing Machine",
+      "engineering_source_id": "testing.brinnell_hardness_tester",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "metrology",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "measurement_result",
+        "instrument_status"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "testing.spectrometer",
+      "machine_type": "Material Spectrometer",
+      "engineering_source_id": "testing.spectrometer",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "metrology",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "measurement_result",
+        "instrument_status"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "calibration_standards",
+        "reference_material",
+        "instrument_verification"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "testing.surface_roughness_tester",
+      "machine_type": "Surface Roughness Tester",
+      "engineering_source_id": "testing.surface_roughness_tester",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "metrology",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "measurement_result",
+        "instrument_status"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "automotive.welding_cell",
+      "machine_type": "Welding Cell",
+      "engineering_source_id": "automotive.welding_cell",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "welding",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "welding_current",
+        "welding_voltage",
+        "cycle_time",
+        "shielding_gas_flow"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "joint_configuration",
+        "weld_program",
+        "weld_quality_evidence"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "utilities.air_compressor",
+      "machine_type": "Industrial Air Compressor",
+      "engineering_source_id": "utilities.air_compressor",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 8,
+      "measurement_profile_candidate": "rotating",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "vibration",
+        "speed",
+        "temperature"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "discharge_pressure",
+        "load_unload_state",
+        "runtime"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "compressed_air",
+        "rotating_condition",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "utilities.industrial_pump",
+      "machine_type": "Industrial Pump",
+      "engineering_source_id": "utilities.industrial_pump",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "hydraulic",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "pressure",
+        "flow",
+        "oil_temperature"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "fluid_compatibility",
+        "suction_and_discharge_pressure",
+        "pump_operating_point"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "measurement_integrity",
+        "pump"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "utilities.transformer",
+      "machine_type": "Plant Transformer",
+      "engineering_source_id": "utilities.transformer",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 12,
+      "measurement_profile_candidate": "electrical",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "voltage",
+        "current",
+        "power",
+        "temperature"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "electrical",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "utilities.dg_generator",
+      "machine_type": "Diesel Generator",
+      "engineering_source_id": "utilities.dg_generator",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 13,
+      "measurement_profile_candidate": "generator",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_output",
+        "fuel_flow",
+        "engine_speed",
+        "coolant_temperature"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "generator",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "material_handling.overhead_crane",
+      "machine_type": "Overhead Crane",
+      "engineering_source_id": "material_handling.overhead_crane",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "material_handling",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "load",
+        "motor_power",
+        "speed"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "material_handling",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.conventional_milling_machine",
+      "machine_type": "Conventional Milling Machine",
+      "engineering_source_id": "machining.conventional_milling_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "forming.hydraulic_press",
+      "machine_type": "Hydraulic Press",
+      "engineering_source_id": "forming.hydraulic_press",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "confident_canonical_mapping",
+      "canonical_machine_type_id": 4,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [
+        "hydraulic_pressure",
+        "oil_temperature",
+        "force_calibration"
+      ],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "fabrication.press_brake",
+      "machine_type": "Press Brake",
+      "engineering_source_id": "fabrication.press_brake",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "fabrication.shearing_machine",
+      "machine_type": "Shearing Machine",
+      "engineering_source_id": "fabrication.shearing_machine",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "forming",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "force_or_load",
+        "electrical_power",
+        "cycle_time"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "forming",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.cnc_grinding",
+      "machine_type": "CNC Grinding Machine",
+      "engineering_source_id": "machining.cnc_grinding",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    },
+    {
+      "machine_id": "machining.industrial_drill",
+      "machine_type": "Industrial Drilling Machine",
+      "engineering_source_id": "machining.industrial_drill",
+      "engineering_level": "L1",
+      "canonical_mapping_status": "unresolved_canonical_mapping",
+      "canonical_machine_type_id": null,
+      "measurement_profile_candidate": "machining",
+      "measurement_profile_status": "family_screening_only_not_machine_specific",
+      "measurement_candidates": [
+        "electrical_power",
+        "spindle_speed",
+        "cycle_time",
+        "coolant_flow",
+        "vibration"
+      ],
+      "sensor_selection_status": "not_selected_or_installed",
+      "additional_engineering_questions": [],
+      "diagnostic_question_families_not_enabled": [
+        "machining",
+        "measurement_integrity"
+      ],
+      "machine_diagnostics_enabled": false,
+      "interventions_enabled": false,
+      "validation_status": "not_validated",
+      "manufacturer_model_mapping_status": "requires_nameplate_and_oem_documentation"
+    }
+  ]
+}
