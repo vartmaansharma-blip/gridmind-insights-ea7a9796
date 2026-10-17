@@ -78,7 +78,7 @@ The internal synthetic triage may output process-stage explanations, evidence ga
 7. Obtain independent required reviews; merge without force push/history rewrites; verify main SHA/deployment; retain rollback path.
 8. If any safety or tenant problem appears, halt customer-data use and restore last tested state.
 
-**Observed blocker snapshot, 17 Oct 2026:** GitHub Actions on the previous PR commit ended before steps; Vercel reported build-rate-limit and no latest-commit deployment. GitHub source branch is not merged. No check or browser deployment is claimed successful by this plan.
+**Historical blocker snapshot (earlier 17 Oct 2026):** some older GitHub Actions runs ended before steps and Vercel hit a build-rate limit. **Superseded for head `208747c`:** four GitHub workflows passed, but Vercel failed there; subsequent documentation commits moved the head again. The latest exact-commit state must be checked in GitHub, not inferred from a historical paragraph. See the [checkpoint evidence](gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md) and [pre-merge decision packet](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md). These do not remove the independent security, Supabase and real-data gates.
 
 ## 7. Current connection and branch reconciliation — 17 October 2026
 
@@ -94,6 +94,12 @@ This is an observed snapshot, not permission to release. Recheck exact heads bef
 **Concurrent PR disposition:** [#132](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/132) proposes a public-root and role-onboarding route migration and overlaps the site/navigation contract; keep it separate until schema, role and route tests pass. [#133](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/133) proposes a synthetic case-analysis bridge and depends on the case schema/release work; preserve it as a distinct technical review. [#125](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/125) is an older site enquiry draft; compare its exact UI scope before combining. [#120](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/120) is a parked scooter reference catalogue, with a live migration-history interaction; no POC or separate launch is implied. Older machine-library, authentication and design PRs stay issue-scoped; no bulk merge into GridMind 3.1 is justified by shared branding.
 
 The corrective order is: exact branch and PR diff → source/merge-conflict review → account-side CI diagnosis → checks actually executing on the new head → preview at that head → isolated security and browser acceptance where applicable → independent review and explicit release decision. Keep the live buyer gate and production release gate separate.
+
+## Pre-merge implementation authority
+
+The founder's GridMind 3.1 direction authorizes a reviewable **synthetic** codebase and truthful public-site source, **not** automatic production rollout. The [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) G31-M01–M10 and [pre-merge decision packet](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) now distinguish Class I informational release, Class S synthetic-only demo and Class D production customer-data workflow. For #136, either narrow the releasable scope in a separate non-history-rewriting branch or obtain independent review of the entire mixed code diff and explicit founder production authorization. The default remains **draft/HOLD**.
+
+When code uses production-connected /, /website, /cases or /team routes, verify route invariants, server-side roles, tenant isolation, data-rights restrictions, feature flags, and a tested rollback on the **exact final** Vercel commit. The live Supabase schema/migration registry mismatch in #130 and authenticated release checks in #29 are blocking Class D, irrespective of passing local replay. The 215-file diff and overlapping #132/#133/#125/#120 PRs require documented per-scope disposition; avoid blind bulk merges.
 
 ## 8. Completion definition
 
