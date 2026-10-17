@@ -160,8 +160,183 @@ begin
       then raise exception 'UNKNOWN_MEASUREMENT_FIELDS' using errcode='22023'; end if;
     start_text:=record_value->>'period_start';
     end_text:=record_value->>'period_end';
-    if start_text !~ '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$'
+    if start_text !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})
       or end_text !~ '^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2})$'
+      then raise exception 'TIMEZONE_REQUIRED' using errcode='22023'; end if;
+    begin
+      period_from:=start_text::timestamptz;
+      period_to:=end_text::timestamptz;
+    exception when others then
+      raise exception 'INVALID_PERIOD_TIMESTAMP' using errcode='22023';
+    end;
+    if period_to<=period_from then raise exception 'PERIOD_END_BEFORE_START' using errcode='22023'; end if;
+    foreach field in array array['energy_kwh','output_units','operating_hours'] loop
+      value:=(record_value->>field)::numeric;
+      if value<0 or value>1000000000000
+        then raise exception 'MEASUREMENT_OUT_OF_BOUNDS' using errcode='22023'; end if;
+    end loop;
+    foreach field in array array['operating_state','product_code','source_reference'] loop
+      value_text:=record_value->>field;
+      if length(value_text)<1 or length(value_text)>80 or
+        value_text !~ '^[A-Za-z0-9][A-Za-z0-9._:/ -]*$'
+        then raise exception 'UNSAFE_MEASUREMENT_REFERENCE' using errcode='22023'; end if;
+    end loop;
+  end loop;
+
+  insert into public.synthetic_machine_evidence_batches
+    (id,factory_id,asset_id,source_id,submitted_by,payload,payload_sha256)
+  values (_id,_factory,_asset,_source,actor,_payload,fingerprint);
+
+  insert into public.synthetic_machine_evidence_periods
+    (batch_id,position,period_start,period_end,energy_kwh,output_units,operating_hours,
+      operating_state,product_code,source_reference)
+  select _id,x.ordinality,
+      (x.value->>'period_start')::timestamptz,(x.value->>'period_end')::timestamptz,
+      (x.value->>'energy_kwh')::numeric,(x.value->>'output_units')::numeric,
+      (x.value->>'operating_hours')::numeric,x.value->>'operating_state',
+      x.value->>'product_code',x.value->>'source_reference'
+  from jsonb_array_elements(records) with ordinality as x(value,ordinality);
+
+  if exists (
+    select 1 from public.synthetic_machine_evidence_periods a
+    join public.synthetic_machine_evidence_periods b on b.batch_id=a.batch_id
+      and b.position>a.position
+      and a.period_start < b.period_end and b.period_start < a.period_end
+    where a.batch_id=_id
+  ) then raise exception 'OVERLAPPING_MEASUREMENT_PERIODS' using errcode='22023'; end if;
+
+  return jsonb_build_object('batchId',_id,'status','quarantined',
+    'replayed',false,'periods',n);
+end;
+$function$;
+
+create function public.link_synthetic_evidence_case(_case uuid,_batch uuid)
+returns jsonb language plpgsql security definer set search_path=''
+as $function$
+declare
+  actor uuid := auth.uid();
+  case_factory bigint;
+  batch_factory bigint;
+  role_name text;
+begin
+  if current_setting('app.gridmind_synthetic_intake_mode',true) is distinct from 'isolated_fixture_only'
+    then raise exception 'SYNTHETIC_INTAKE_DISABLED' using errcode='42501'; end if;
+  if actor is null then raise exception 'AUTHENTICATION_REQUIRED' using errcode='42501'; end if;
+  select factory_id into case_factory from public.investigation_cases
+    where id=_case and origin='synthetic';
+  select factory_id into batch_factory from public.synthetic_machine_evidence_batches
+    where id=_batch and origin='synthetic' and status='quarantined';
+  if case_factory is null or batch_factory is null or case_factory<>batch_factory
+    then raise exception 'CASE_EVIDENCE_SCOPE_MISMATCH' using errcode='42501'; end if;
+  role_name:=private.investigation_access(_case,actor);
+  if role_name not in ('manager','investigator') or role_name is null
+    then raise exception 'CASE_LINK_ACCESS_DENIED' using errcode='42501'; end if;
+  insert into public.synthetic_machine_case_links(case_id,batch_id,linked_by)
+  values(_case,_batch,actor) on conflict(case_id,batch_id) do nothing;
+  return jsonb_build_object('caseId',_case,'batchId',_batch,
+    'status','context_only_unverified');
+end;
+$function$;
+
+revoke all on function public.stage_synthetic_machine_evidence(bigint,bigint,bigint,uuid,jsonb)
+  from public,anon,authenticated;
+revoke all on function public.link_synthetic_evidence_case(uuid,uuid)
+  from public,anon,authenticated;
+grant execute on function public.stage_synthetic_machine_evidence(bigint,bigint,bigint,uuid,jsonb)
+  to authenticated;
+grant execute on function public.link_synthetic_evidence_case(uuid,uuid)
+  to authenticated;
+
+commit;
+
+      or end_text !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})
+      then raise exception 'TIMEZONE_REQUIRED' using errcode='22023'; end if;
+    begin
+      period_from:=start_text::timestamptz;
+      period_to:=end_text::timestamptz;
+    exception when others then
+      raise exception 'INVALID_PERIOD_TIMESTAMP' using errcode='22023';
+    end;
+    if period_to<=period_from then raise exception 'PERIOD_END_BEFORE_START' using errcode='22023'; end if;
+    foreach field in array array['energy_kwh','output_units','operating_hours'] loop
+      value:=(record_value->>field)::numeric;
+      if value<0 or value>1000000000000
+        then raise exception 'MEASUREMENT_OUT_OF_BOUNDS' using errcode='22023'; end if;
+    end loop;
+    foreach field in array array['operating_state','product_code','source_reference'] loop
+      value_text:=record_value->>field;
+      if length(value_text)<1 or length(value_text)>80 or
+        value_text !~ '^[A-Za-z0-9][A-Za-z0-9._:/ -]*$'
+        then raise exception 'UNSAFE_MEASUREMENT_REFERENCE' using errcode='22023'; end if;
+    end loop;
+  end loop;
+
+  insert into public.synthetic_machine_evidence_batches
+    (id,factory_id,asset_id,source_id,submitted_by,payload,payload_sha256)
+  values (_id,_factory,_asset,_source,actor,_payload,fingerprint);
+
+  insert into public.synthetic_machine_evidence_periods
+    (batch_id,position,period_start,period_end,energy_kwh,output_units,operating_hours,
+      operating_state,product_code,source_reference)
+  select _id,x.ordinality,
+      (x.value->>'period_start')::timestamptz,(x.value->>'period_end')::timestamptz,
+      (x.value->>'energy_kwh')::numeric,(x.value->>'output_units')::numeric,
+      (x.value->>'operating_hours')::numeric,x.value->>'operating_state',
+      x.value->>'product_code',x.value->>'source_reference'
+  from jsonb_array_elements(records) with ordinality as x(value,ordinality);
+
+  if exists (
+    select 1 from public.synthetic_machine_evidence_periods a
+    join public.synthetic_machine_evidence_periods b on b.batch_id=a.batch_id
+      and b.position>a.position
+      and a.period_start < b.period_end and b.period_start < a.period_end
+    where a.batch_id=_id
+  ) then raise exception 'OVERLAPPING_MEASUREMENT_PERIODS' using errcode='22023'; end if;
+
+  return jsonb_build_object('batchId',_id,'status','quarantined',
+    'replayed',false,'periods',n);
+end;
+$function$;
+
+create function public.link_synthetic_evidence_case(_case uuid,_batch uuid)
+returns jsonb language plpgsql security definer set search_path=''
+as $function$
+declare
+  actor uuid := auth.uid();
+  case_factory bigint;
+  batch_factory bigint;
+  role_name text;
+begin
+  if current_setting('app.gridmind_synthetic_intake_mode',true) is distinct from 'isolated_fixture_only'
+    then raise exception 'SYNTHETIC_INTAKE_DISABLED' using errcode='42501'; end if;
+  if actor is null then raise exception 'AUTHENTICATION_REQUIRED' using errcode='42501'; end if;
+  select factory_id into case_factory from public.investigation_cases
+    where id=_case and origin='synthetic';
+  select factory_id into batch_factory from public.synthetic_machine_evidence_batches
+    where id=_batch and origin='synthetic' and status='quarantined';
+  if case_factory is null or batch_factory is null or case_factory<>batch_factory
+    then raise exception 'CASE_EVIDENCE_SCOPE_MISMATCH' using errcode='42501'; end if;
+  role_name:=private.investigation_access(_case,actor);
+  if role_name not in ('manager','investigator') or role_name is null
+    then raise exception 'CASE_LINK_ACCESS_DENIED' using errcode='42501'; end if;
+  insert into public.synthetic_machine_case_links(case_id,batch_id,linked_by)
+  values(_case,_batch,actor) on conflict(case_id,batch_id) do nothing;
+  return jsonb_build_object('caseId',_case,'batchId',_batch,
+    'status','context_only_unverified');
+end;
+$function$;
+
+revoke all on function public.stage_synthetic_machine_evidence(bigint,bigint,bigint,uuid,jsonb)
+  from public,anon,authenticated;
+revoke all on function public.link_synthetic_evidence_case(uuid,uuid)
+  from public,anon,authenticated;
+grant execute on function public.stage_synthetic_machine_evidence(bigint,bigint,bigint,uuid,jsonb)
+  to authenticated;
+grant execute on function public.link_synthetic_evidence_case(uuid,uuid)
+  to authenticated;
+
+commit;
+
       then raise exception 'TIMEZONE_REQUIRED' using errcode='22023'; end if;
     begin
       period_from:=start_text::timestamptz;
