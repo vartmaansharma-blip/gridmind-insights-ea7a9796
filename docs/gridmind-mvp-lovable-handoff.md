@@ -4,6 +4,20 @@
 
 The [supplied blueprint](gridmind-mvp-build-blueprint.md) is preserved as supporting requirements. Offline generated examples are in [`data/synthetic-investigation`](../data/synthetic-investigation/README.md); reproduce them with `bun run demo:brief`.
 
+## 17 October 2026 — GridMind 3.1 product realignment (not yet customer-live)
+
+**Authoritative plan:** [revised Master Plan](gridmind-master-plan-2026-10-11.md). This is a **narrow modification** to the connected synthetic implementation, not permission to invent new modules or rewrite the Lovable experience.
+
+- **Single company promise:** Industrial Profit & Resolution Intelligence. We coordinate documented resolution of economically material manufacturing exceptions; we do not replace ERP/QMS/Tally, act as debt collector, provide engineering certification, or operate machinery.
+- **Commercial problem lanes (discovery only):** R1 = C2 quality defects/customer rejection linked to C1 production incidents; R2 = C6 acceptance/invoice dispute coordination; R3 = existing C4 electricity exposure. The winner is **undecided** pending the 10 Nov buyer gate.
+- **Current engine truth:** connected `caseSchema`, case commands, deterministic evaluator and synthetic fixtures explicitly support **C1/C4 only**. Do **not** rename a C1 case to C2 or add C6 to an enum without a distinct reviewed domain model, reviewer competence and acceptance tests.
+- **Start-build S1:** a small **synthetic/non-persistent** commercial exception triage contract and test, showing the decision owner, business consequence, current alternative, missing evidence and explicit follow-up. Triage is not technical diagnosis, customer approval, result verification, or a commercial product.
+- **Design handoff:** keep signature brand green and cinematic design, retain existing operational dashboard root `/` and `/website` until separately tested route migration; adjust public copy to describe broader problem investigations without falsely claiming available services. Existing bill story is a **fictional example**, not the only current service and not evidence of a live quality module.
+- **Backend:** reuse organization/factory/case and server entitlements; later R1/R2 persistence needs contract/design review, scoped data custody and tenant/security tests before any real record or commercial intake.
+- **Explicit exclusions:** no live customer data, no production migration, no live OT integration, no supplier-to-OEM cross-tenant sharing, no AI-root-cause certification and no cyber-services launch. Reviewer/consent/independent publication gates remain unchanged.
+
+**Near-term acceptance:** docs and UI clearly separate vision from capability; fictional triage module handles all three lanes as planning examples only; relevant offline tests and normal repo CI must pass before merge; unresolved Vercel build-rate limits cannot be waived by a green assertion.
+
 ## Integration plan — retain the Lovable dashboard
 
 **Requested and authorized on 16 October 2026. Status: integrated source implementation for isolated synthetic acceptance; not a production/customer-data release.** The founder requested the integration plan, then instructed us to implement it, store it in GitHub and minimize human touch. Preserve the existing Lovable dashboard. Refs [issue #107](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/107) and draft [PR #106](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/106). The unused empty migration draft from the earlier planning pass was removed without application; the later source migration below is separately validated.
