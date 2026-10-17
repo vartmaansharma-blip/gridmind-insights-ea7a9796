@@ -25,6 +25,12 @@
 
 ## Document lifecycle inventory
 
+### Active audit workpapers
+
+| File | Disposition / authority |
+|---|---|
+| [`gridmind-repository-alignment-inventory-2026-10-13.md`](gridmind-repository-alignment-inventory-2026-10-13.md) | Active, bounded repository-alignment audit workpaper; records cross-repository findings and remediation order. Not a strategy authority or alternate execution plan. |
+
 ### Canonical authorities & index
 
 | File | Disposition / authority |
