@@ -7,6 +7,7 @@ import { useEnergy } from "@/lib/energy/store";
 import { Button } from "@/components/ui/button";
 import { runCanonicalFactoryAnalysis, type CanonicalFactoryAnalysisRun } from "@/lib/gridmind/analysis-runner";
 import { assessMachineEvidence } from "@/lib/gridmind/machine-evidence-readiness";
+import { SyntheticEvidenceFormatPreview } from "@/components/gm/synthetic-evidence-format-preview";
 
 export const Route = createFileRoute("/machines/$id")({
   head: () => ({ meta: [{ title: "Asset — GridMind" }] }),
@@ -122,6 +123,7 @@ function AssetPage() {
             </p>
           </div>
         </section>
+        <SyntheticEvidenceFormatPreview />
         <section className="panel p-5 lg:col-span-2">
           <h2 className="mb-3 font-semibold">Canonical observations</h2>
           {asset.observations.length === 0 ? <p className="text-sm text-muted-foreground">No observations yet.</p> : asset.observations.slice(0, 100).map((o) => <div key={o.id} className="flex flex-wrap gap-3 border-b border-border py-2 text-sm last:border-0"><span className="font-mono text-xs">{o.metric}</span><span className="num">{o.valueNumeric ?? o.valueText ?? "—"} {o.unit ?? ""}</span><span className="text-xs text-muted-foreground">{new Date(o.observedAt).toLocaleString()}</span><span className="text-xs">{o.qualityStatus}</span></div>)}
