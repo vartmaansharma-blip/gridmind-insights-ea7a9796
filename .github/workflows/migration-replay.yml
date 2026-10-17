@@ -121,6 +121,13 @@ jobs:
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/synthetic-machine-intake-contract.sql
 
+      - name: Enforce unverified canonical observations and factory-source scope
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          test -n "${DB_URL:-}"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/canonical-observation-ingress-contract.sql
+
       - name: Exercise authenticated Edge Function end to end
         shell: bash
         run: |
