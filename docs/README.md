@@ -40,6 +40,7 @@
 | File | Disposition / authority |
 |---|---|
 | [`gridmind-company-economics-and-risk-register-2026-10-17.md`](gridmind-company-economics-and-risk-register-2026-10-17.md) | **GridMind 3.1 supporting controls:** unit economics, cash, staffing, commercial/legal/technical risk triggers; not separate strategy or verified financial statements |
+| [`gridmind-first-paid-case-scope-template-2026-10-17.md`](gridmind-first-paid-case-scope-template-2026-10-17.md) | **Supporting first-case schedule:** buyer decision, domain method, evidence rights, expert review, deliverables, fee and stop gates; not a signed contract |
 | [`gridmind-resolve-domain-and-product-contract-2026-10-17.md`](gridmind-resolve-domain-and-product-contract-2026-10-17.md) | **GridMind 3.1 supporting technical contract:** roles, cases, evidence, distinct R1/R2/R3 methods, AI/security/test invariants; future-state sections not implemented |
 | [`gridmind-execution-and-repository-acceptance-2026-10-17.md`](gridmind-execution-and-repository-acceptance-2026-10-17.md) | **GridMind 3.1 supporting implementation acceptance:** current code map, epic prerequisites, validation and rollback; GitHub issues contain the actionable work |
 | [`gridmind-mvp-build-blueprint.md`](gridmind-mvp-build-blueprint.md) | Supplied Version 3.4 supporting specification; dated canonical build exception overrides its prior no-build instructions |
