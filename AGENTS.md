@@ -13,6 +13,14 @@
 - Evaluate R1 (C2 quality plus related C1 incidents), R2 (C6 acceptance/invoice disputes) and R3 (C4 electricity exposure) in discovery. Do not select a commercial wedge, build a multi-division ERP/QMS/fintech suite, or activate an R1/R2 connected engine by changing a C1/C4 enum. The revised Master Plan controls.
 - Keep all industrial conclusions evidence-typed and fail closed to unknown when source resolution is insufficient, because monthly data cannot support physical fault diagnosis.
 
+## GridMind 3.1 PR #136 release fence — 17 October 2026
+
+**Before advising a merge, changing deployment defaults, shipping code to Vercel main or applying SQL:** read the [pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) and [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) decisions G31-M01–M10. **Default: #136 stays draft/HOLD.** Never interpret passing CI, a Vercel READY preview, or a fictional investigator workflow as founder approval, customer-data authorization, qualified industrial advice or successful payment.
+
+Separate three release classes: **I** = truthful /website and tested non-confidential contact (still requires exact-SHA preview, permission, accessibility and rollback); **S** = scoped synthetic internal case demonstration with negative role/security tests; **D** = real customer evidence/storage/review requiring separate qualified permissions, #130 migration history and #29 populated authenticated tenant checks. **D = NO-GO** until proven and approved. The existing / root/dashboard must not be silently replaced; PR #132, #133, #125, #120 overlap and must be reconciled with owners before merging.
+
+For broad/mixed diffs, prefer narrower reviewable work on an up-to-date branch over forcing all 200+ files into production. **Never rewrite shared Lovable history.** Record precise SHA, CI/Quality/Browser/isolated migration/Vercel status, independent reviewer, founder approval and rollback in the PR. A child document or agent cannot grant these permissions.
+
 ## Repository authority and execution rules
 
 Before any non-trivial GridMind task, read [CONTRIBUTING.md](CONTRIBUTING.md) and follow its work-intake, validation, and safety rules.
