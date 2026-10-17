@@ -25,7 +25,7 @@ function Logo() {
   );
 }
 
-function PrimaryCta({ children = "Discuss an electricity review" }: { children?: ReactNode }) {
+function PrimaryCta({ children = "Discuss a factory problem" }: { children?: ReactNode }) {
   return (
     <a href="#contact" className="gm-btn gm-btn-primary">
       {children} <span aria-hidden>↗</span>
@@ -106,7 +106,7 @@ function HeroCopy({ headingId }: { headingId: string }) {
         <span className="block" style={{ color: "var(--gm-brand-green)" }}>What are we missing?</span>
       </h1>
       <p className="mt-6 max-w-[34rem] text-[clamp(1.02rem,1.25vw,1.18rem)] leading-relaxed" style={{ color: "var(--gm-text-2)" }}>
-        Evidence-led electricity reviews for factories. Understand the costs, investigate the questions, and identify what deserves attention.
+        We're developing evidence-led resolution of costly factory problems—from quality and production to acceptance and operating costs. Explore how a fictional electricity case would be investigated; services are still being validated.
       </p>
       <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
         <PrimaryCta />
@@ -182,7 +182,7 @@ function Header() {
             </a>
           ))}
           <Link to="/auth" className="block border-b py-4 text-lg gm-rule-d">Sign in</Link>
-          <a href="#contact" onClick={() => setOpen(false)} className="gm-btn gm-btn-primary mt-5">Discuss an electricity review</a>
+          <a href="#contact" onClick={() => setOpen(false)} className="gm-btn gm-btn-primary mt-5">Discuss a factory problem</a>
         </nav>
       )}
     </header>
@@ -335,8 +335,8 @@ function Problem() {
   return (
     <section id="problem" className="gm-light px-5 py-24 md:px-10 md:py-32">
       <div className="mx-auto grid max-w-[1320px] gap-14 lg:grid-cols-[1.1fr_1fr]">
-        <SectionHead light n="01" eyebrow="The problem" title={<>An electricity bill is evidence.<br />It rarely explains itself.</>}
-          intro="Factories pay for electricity every month, but the figures that drive the bill are spread across lines, tariffs and records that few people have time to read together." />
+        <SectionHead light n="01" eyebrow="The problem" title={<>Factory problems leave evidence.<br />Rarely in just one place.</>}
+          intro="Quality, production, delivery and cost problems can span different records and teams. The electricity bill below is one fictional example of our evidence-first method—not a released service or a claim of savings." />
         <ol className="border-t gm-rule-l">
           {items.map(([t, d], i) => (
             <li key={t} data-reveal className="grid grid-cols-[3rem_1fr] gap-4 border-b py-7 gm-rule-l">
@@ -371,7 +371,7 @@ function HowItWorks() {
   return (
     <section id="how" className="gm-light border-t px-5 py-24 gm-rule-l md:px-10 md:py-32" style={{ background: "var(--gm-mineral-2)" }}>
       <div className="mx-auto max-w-[1320px]">
-        <SectionHead light n="02" eyebrow="How it works" title="A review you can follow, one source at a time." />
+        <SectionHead light n="02" eyebrow="How it works" title="A proposed investigation method, one source at a time." />
         <div className="mt-14 grid gap-10 lg:grid-cols-[22rem_1fr]">
           <div role="tablist" aria-label="Review steps" aria-orientation="vertical" className="flex flex-col">
             {STEPS.map((st, k) => (
@@ -466,9 +466,9 @@ function Example() {
 }
 
 const FAQS = [
-  ["Is this an official energy audit?", "No. It is an evidence-led review of the documents you share. Where a question needs a qualified electrical or tariff specialist, we say so and bring one in."],
-  ["Will you guarantee a saving?", "No. Some reviews find questions worth pursuing; some find nothing material. Both are useful outcomes, and we will not promise either in advance."],
-  ["Do you connect to our meters or machines?", "Not for this review. It works from bills and the records you choose to share. There is no live monitoring."],
+  ["Is the electricity example a real audit?", "No. The bill and factory are fictional. Any future technical review requires a qualified specialist, written scope and authorization."],
+  ["Will GridMind guarantee a saving or solved defect?", "No. There is no guaranteed saving, root cause, invoice collection or technical outcome. The first paid service has not yet been selected."],
+  ["Is live machine or accounts integration available?", "No. The current public example is fictional and the application is not released for real customer data. There is no live monitoring or payment integration."],
   ["Who makes changes at the plant?", "Your qualified plant personnel. GridMind provides evidence and next checks, not control of equipment."],
   ["What does it cost?", "Scope and pricing are agreed with you before any work starts."],
 ];
@@ -513,7 +513,7 @@ function Vision() {
   return (
     <section id="vision" className="relative isolate overflow-hidden px-5 py-28 md:px-10 md:py-36" style={{ background: "var(--gm-ink)" }}>
       <div className="mx-auto max-w-[1320px]">
-        <SectionHead n="05" eyebrow="Beyond electricity" title="Electricity is where we start. It is not where the questions end."
+        <SectionHead n="05" eyebrow="Where the company could grow" title="One disciplined method. More problems to validate."
           intro="Over time, GridMind intends to connect the same evidence-first method to more of a plant's physical systems and records. That is an ambition, not a service available today." />
         <p data-reveal className="mt-8"><span className="gm-chip" style={{ color: "var(--gm-amber)" }}>Future direction · not currently offered</span></p>
       </div>
@@ -525,12 +525,12 @@ function Contact() {
   return (
     <section id="contact" className="border-t px-5 py-28 gm-rule-d md:px-10 md:py-36" style={{ background: "var(--gm-surface-2)" }}>
       <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[1.3fr_1fr]">
-        <SectionHead n="06" eyebrow="Start a conversation" title={<>Have a question about your factory's electricity costs?</>}
-          intro="Tell us what you are seeing on your bills. We will tell you honestly whether a review is likely to help." />
+        <SectionHead n="06" eyebrow="Start a conversation" title={<>What costly factory problem is still unresolved?</>}
+          intro="We are researching real quality, production, acceptance and electricity exceptions. Please begin with a non-confidential description; this is not a live audit or a promise to take a case." />
         <div data-reveal className="self-end rounded-md border p-6 gm-rule-d" role="region" aria-labelledby="contact-request-title" style={{ background: "var(--gm-ink)" }}>
           <span className="gm-chip" style={{ color: "var(--gm-brand-green)" }}>Private investigation request</span>
           <p id="contact-request-title" className="gm-display mt-4 text-xl font-semibold">Start with one clear question.</p>
-          <p className="mt-2 leading-relaxed gm-muted-d">Open a private workspace to describe the decision you need to make. Your request is reviewed before any engagement is agreed.</p>
+          <p className="mt-2 leading-relaxed gm-muted-d">The current request route enters the authenticated sample workspace. No engineering service is approved by creating an account; do not submit confidential factory records.</p>
           <p className="mt-3 text-xs leading-relaxed gm-muted-d">This is an early beta. Do not share confidential plant records or upload technical files. A request is not a technical assessment or a guaranteed response.</p>
           <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
             <Link to="/cases" className="gm-btn gm-btn-primary !px-5 !py-3">Request a conversation <span aria-hidden>↗</span></Link>
