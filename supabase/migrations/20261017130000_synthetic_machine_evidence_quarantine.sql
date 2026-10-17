@@ -94,7 +94,7 @@ declare
   n integer;
   period_from timestamptz;
   period_to timestamptz;
-  value numeric;
+  measured_value numeric;
   field text;
   value_text text;
   start_text text;
@@ -141,7 +141,7 @@ begin
   end if;
 
   -- Exact field shape and primitive types; never promote a source claim to validated.
-  for record_value in select value from jsonb_array_elements(records) loop
+  for record_value in select element from jsonb_array_elements(records) as item(element) loop
     if jsonb_typeof(record_value)<>'object'
       or (select count(*) from jsonb_object_keys(record_value))<>8
       or jsonb_typeof(record_value->'period_start')<>'string'
@@ -170,8 +170,8 @@ begin
     end;
     if period_to<=period_from then raise exception 'PERIOD_END_BEFORE_START' using errcode='22023'; end if;
     foreach field in array array['energy_kwh','output_units','operating_hours'] loop
-      value:=(record_value->>field)::numeric;
-      if value<0 or value>1000000000000
+      measured_value:=(record_value->>field)::numeric;
+      if measured_value<0 or measured_value>1000000000000
         then raise exception 'MEASUREMENT_OUT_OF_BOUNDS' using errcode='22023'; end if;
     end loop;
     foreach field in array array['operating_state','product_code','source_reference'] loop
