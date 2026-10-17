@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowRight, CheckCircle2, Factory, LoaderCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -22,7 +22,6 @@ export const Route = createFileRoute("/onboarding")({
 type PageState = "loading" | "signed_out" | "new" | "pending" | "customer" | "staff" | "unavailable" | "submitted";
 
 function Onboarding() {
-  const navigate = useNavigate();
   const [state, setState] = useState<PageState>("loading");
   const [pending, setPending] = useState<Intake[]>([]);
   const [error, setError] = useState("");
@@ -177,21 +176,21 @@ function Onboarding() {
             </p>
             <form className="mt-6 grid gap-4" onSubmit={(e) => void submit(e)}>
               <div className="grid gap-4 sm:grid-cols-2">
-                <label className="grid gap-1.5"><Label htmlFor="intro-factory">Factory or business name</Label><Input id="intro-factory" name="factory" required maxLength={90} /></label>
-                <label className="grid gap-1.5"><Label htmlFor="intro-city">City or industrial area</Label><Input id="intro-city" name="city" required maxLength={60} /></label>
+                <div className="grid gap-1.5"><Label htmlFor="intro-factory">Factory or business name</Label><Input id="intro-factory" name="factory" required maxLength={90} /></div>
+                <div className="grid gap-1.5"><Label htmlFor="intro-city">City or industrial area</Label><Input id="intro-city" name="city" required maxLength={60} /></div>
               </div>
-              <label className="grid gap-1.5"><Label htmlFor="intro-process">Primary process or equipment type</Label><Input id="intro-process" name="process" required maxLength={120} placeholder="For example, compressors or machining" /></label>
-              <label className="grid gap-1.5"><Label htmlFor="intro-question">What would you like GridMind to investigate?</Label><Textarea id="intro-question" name="question" required maxLength={1500} rows={3} placeholder="Describe an operational or electricity question without sharing private records." /></label>
-              <label className="grid gap-1.5 text-sm"><Label htmlFor="intro-type">Review focus</Label>
+              <div className="grid gap-1.5"><Label htmlFor="intro-process">Primary process or equipment type</Label><Input id="intro-process" name="process" required maxLength={120} placeholder="For example, compressors or machining" /></div>
+              <div className="grid gap-1.5"><Label htmlFor="intro-question">What would you like GridMind to investigate?</Label><Textarea id="intro-question" name="question" required maxLength={1500} rows={3} placeholder="Describe an operational or electricity question without sharing private records." /></div>
+              <div className="grid gap-1.5 text-sm"><Label htmlFor="intro-type">Review focus</Label>
                 <select id="intro-type" name="candidate" className="h-10 rounded-md border border-input bg-background px-3">
                   <option value="C4">Electricity consumption or billing</option>
                   <option value="C1">Downtime or rework evidence</option>
                 </select>
-              </label>
+              </div>
               <p className="text-xs leading-5 text-muted-foreground">Approximate period you want examined (required for a bounded request). You can refine the dates with GridMind later.</p>
               <div className="grid gap-4 sm:grid-cols-2">
-                <label className="grid gap-1.5"><Label htmlFor="intro-start">Period start</Label><Input id="intro-start" name="from" type="date" required /></label>
-                <label className="grid gap-1.5"><Label htmlFor="intro-end">Period end</Label><Input id="intro-end" name="to" type="date" required /></label>
+                <div className="grid gap-1.5"><Label htmlFor="intro-start">Period start</Label><Input id="intro-start" name="from" type="date" required /></div>
+                <div className="grid gap-1.5"><Label htmlFor="intro-end">Period end</Label><Input id="intro-end" name="to" type="date" required /></div>
               </div>
               <p className="text-xs text-muted-foreground">No files, registration details, billing account numbers or proprietary operational records at this stage.</p>
               <Button className="mt-2" type="submit" disabled={sending}>{sending ? "Submitting…" : "Submit connection request"} <ArrowRight className="size-4" /></Button>
