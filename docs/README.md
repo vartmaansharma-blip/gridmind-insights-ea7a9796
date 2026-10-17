@@ -10,13 +10,17 @@
 4. [Problem-Solving Constitution](gridmind-problem-solving-constitution.md) — evidence and investigation discipline.
 5. [Release Gate](release-gate.md) — mandatory technical/customer-data gate; a preview build is not a production release.
 
+## Next build step
+
+Build the honest, responsive public site at the existing `/website` route and verify its non-confidential contact path, while the founder runs the documented buyer-discovery sprint. [Site build and acceptance](product/gridmind-site-build-and-acceptance-2026-10-17.md) gives the exact page map and release tests; the [Master Plan](gridmind-master-plan-2026-10-11.md) gives the stage-by-stage gates. A polished site does not select R1, R2 or R3 or authorize real customer data.
+
 ## Find the supporting work
 
 | Need | Folder | Start with |
 |---|---|---|
 | Service economics, qualified experts, first paid case and customer delivery | [Operations](operations/README.md) | [Economics and risk](operations/gridmind-company-economics-and-risk-register-2026-10-17.md), then [case scope schedule](operations/gridmind-first-paid-case-scope-template-2026-10-17.md) |
 | R1/R2/R3 case methods, roles, customer/reviewer journeys and Lovable handoff | [Product](product/README.md) | [Resolve domain contract](product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) |
-| Existing code truth, security, migrations, tests, deployment and rollback | [Engineering](engineering/README.md) | [Repository acceptance](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) |
+| Existing code truth, security, migrations, tests, deployment and rollback | [Engineering](engineering/README.md) | [Repository acceptance](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) and [structure benchmark](engineering/repository-structure-benchmark-2026-10-17.md) |
 | Brand, website and interaction exploration | [Design](design/README.md) | Folder guide; proposals require current evidence and review |
 | Market hypotheses, desk research and experiments | [Research](research/README.md) | Folder guide; none substitutes for buyer interviews |
 | Earlier plans and dated audits | [Archive](archive/README.md) | Historical context only |

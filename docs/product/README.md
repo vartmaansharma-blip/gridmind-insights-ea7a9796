@@ -6,6 +6,8 @@ These describe the proposed case product and existing implementation boundaries.
 
 ## Documents
 
+- [Public website build and acceptance — GridMind 3.1](gridmind-site-build-and-acceptance-2026-10-17.md) — immediate site milestone, claim rules, journeys, design/Lovable handoff and exact-head tests.
+
 - [GridMind Resolve — Domain, UX and Engineering Contract](gridmind-resolve-domain-and-product-contract-2026-10-17.md)
 - [GridMind internal MVP — implementation and Lovable handoff](gridmind-mvp-lovable-handoff.md)
 - [GridMind factory value-chain intelligence model](gridmind-factory-value-chain-intelligence.md)

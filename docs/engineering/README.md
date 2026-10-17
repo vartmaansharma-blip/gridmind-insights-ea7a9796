@@ -6,6 +6,8 @@ These are technical contracts, audits and runbooks. A dated success in one envir
 
 ## Documents
 
+- [Repository structure benchmark and improvement queue](repository-structure-benchmark-2026-10-17.md) — measured comparison to mature practices, completed changes and remaining gaps.
+
 - [GridMind 3.1 — Repository Conversion & Engineering Acceptance](gridmind-execution-and-repository-acceptance-2026-10-17.md)
 - [GridMind — Phase 13.1 Canonical Application & Data-Contract Migration Map](canonical-application-migration-v1.md)
 - [Code-quality correction: intervention date integrity](code-quality-correction-intervention-date-integrity-2026-10-10.md)
