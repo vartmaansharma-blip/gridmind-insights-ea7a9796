@@ -159,8 +159,8 @@ begin
       then raise exception 'UNKNOWN_MEASUREMENT_FIELDS' using errcode='22023'; end if;
     start_text:=record_value->>'period_start';
     end_text:=record_value->>'period_end';
-    if start_text !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$'
-      or end_text !~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})$'
+    if start_text !~ ('^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})' || chr(36))
+      or end_text !~ ('^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?(Z|[+-][0-9]{2}:[0-9]{2})' || chr(36))
       then raise exception 'TIMEZONE_REQUIRED' using errcode='22023'; end if;
     begin
       period_from:=start_text::timestamptz;
