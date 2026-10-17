@@ -1,6 +1,6 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-15 (dad nominated as supporting adult; no new buyer evidence)
+**Last updated:** 2026-10-17 (scope widened by founder directive; no new buyer evidence)
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
@@ -14,19 +14,19 @@
 
 <!-- Public market sizing and desk evidence archived in the previous Git revision; not treated as buyer evidence. -->
 
-## 2. Stable candidate register
+## 2. Stable candidate register (2026-10-17 scope amendment)
 
 Use only these IDs across notes and decisions. Never use “Hypothesis A/B” without the ID.
 
 | ID | Candidate | Status this sprint | Evidence to seek |
 |---|---|---|---|
-| **C1** | Downtime / production-loss investigation | Probe deeply | Last real event, production consequence, investigation timeline, existing systems/process, unresolved gap, accountable owner |
-| **C2** | Quality defects / scrap / rework / escapes | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
+| **C1** | Downtime / production loss | R1 supporting investigation | Last quality-linked disruption; do not assume machine cause |
+| **C2** | Quality defects / customer rejection / CAPA effectiveness | **R1 — probe** | Last rejected part, existing QMS/8D, recurrence, accountable buyer and lost time/cost |
 | **C3** | Maintenance recurrence / reliability | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
-| **C4** | Energy / material inefficiency | Probe deeply | Last real event or recurring cost, bills/process evidence available, tariff/operating context, current review process, residual gap, accountable owner |
-| **C5** | Cross-team handoff / delayed operational decisions | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
+| **C4** | Electricity contract/billing exposure (broader energy only if evidenced) | **R3 — probe** | Last actual tariff/bill decision, expert currently used, gap and budget |
+| **C5** | Cross-team handoff / delayed decisions | Shared pattern only | Record where it materially affects a specific case |\n| **C6** | Order acceptance / invoice dispute / receivables coordination | **R2 — probe** | Last disputed acceptance or invoice; reason, current ERP/accounts process, payer and economic consequence |
 
-C1 and C4 are discovery probes, not selected product wedges. Do not compare five candidates shallowly. Procurement intelligence, consumer products, broad platforms, brand renaming, and other concepts are out of this sprint unless evidence triggers a formal change in the master plan.
+**Current decision:** Interview around **one** recently costly unresolved factory exception without selling three products. Compare **R1 (C2+C1), R2 (C6), and R3 (C4)** on materiality, existing best provider, budget owner, expert delivery cost and explicit next step. This is a discovery scope amendment, **not** three selected products. C3 and C5 remain context, and procurement/logistics records are only case evidence. No customer proof or commitments changed.
 
 ## 3. Concrete give and conversation invitation
 
@@ -36,15 +36,15 @@ For C4, do not promise an electricity-bill/tariff audit unless a qualified energ
 
 ### Outreach draft — warm introduction request
 
-> Hi — I’m working on GridMind, an early project exploring how manufacturing teams investigate recurring operational problems. I’m trying to understand the current process before deciding what, if anything, to build.
+> Hi — I’m working on GridMind, an early project exploring how manufacturing teams investigate costly problems that disrupt quality, production, acceptance or payment. I’m trying to understand the current process before deciding what, if anything, to build.
 >
-> Could you introduce me to one production/operations or energy/utility professional who might be open to a 20-minute research conversation about a recent issue and how the team investigated it? I can share a free one-page workflow map afterward, based only on what they choose to discuss. This is not a sales pitch or a technical audit, and I won’t request confidential records or use operational data. If it is not relevant, no problem.
+> Could you introduce me to one quality, production, finance or energy decision-maker who might be open to a 20-minute research conversation about a recent issue and how the team investigated it? I can share a free one-page workflow map afterward, based only on what they choose to discuss. This is not a sales pitch or a technical audit, and I won’t request confidential records or use operational data. If it is not relevant, no problem.
 >
 > Please only introduce someone if you think the conversation is appropriate.
 
 ### Outreach draft — public association / technical-learning route
 
-> Hello — I’m researching how manufacturing teams investigate recurring production and operating-cost problems as part of an early project called GridMind. I’m not asking for a member list or endorsement. Is there a public event, learning session, or appropriate process through which I could request a short research conversation with a relevant operations or energy professional? I can return a concise, non-confidential workflow map to any participant who finds the conversation useful. I will not ask for plant records or confidential information.
+> Hello — I’m researching how manufacturing teams investigate recurring quality, production, acceptance, payment and operating-cost exceptions as part of an early project called GridMind. I’m not asking for a member list or endorsement. Is there a public event, learning session, or appropriate process through which I could request a short research conversation with a relevant operations or energy professional? I can return a concise, non-confidential workflow map to any participant who finds the conversation useful. I will not ask for plant records or confidential information.
 
 **Oversight:** Have a trusted adult/professional review and support external industrial outreach and any formal engagement. Do not send automatically. No factory visit, payment/contract commitment, or non-public data handling without appropriate authorization and oversight.
 
@@ -99,8 +99,8 @@ Update only with actual counts. Do not fill planned counts as completed.
 | Introductions offered | 0 | Track actual | — |
 | Calls booked | 0 | Track actual; no forecast target | — |
 | Calls held | 0 | Oct 31 target: 3 substantive manufacturing conversations | Target only; no conversations claimed |
-| C1 substantive cases | 0 | Probe deeply | — |
-| C4 substantive cases | 0 | Probe deeply | — |
+| C1 quality-linked production incidents | 0 | R1 supporting probe | — |\n| C2 quality/acceptance-related cases | 0 | R1 primary probe | — |\n| C6 invoice/acceptance disputes | 0 | R2 probe | — |
+| C4 electricity-cost cases | 0 | R3 probe | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |
 | Authorized customer-data paths | 0 | Tier 2 only | No customer data requested |
 
@@ -112,7 +112,7 @@ Ask about one real, recent event. Do not ask “Would AI help?” or lead the pa
 
 **Interview discipline:** Ask for the most recent concrete example before discussing general opinions. Let the participant describe their process in their own words; ask “What happened next?” and “How do you know?” Do not suggest a cause, savings estimate, feature, or desired answer. Do not pitch a solution during the evidence-gathering portion. Record exact short phrases only when necessary and non-confidential; label recollection separately from records. End with one low-pressure, specific next-step question and accept “no.”
 
-1. What was the last production-loss or energy/material-cost issue that required investigation?
+1. What was the last costly unresolved issue involving quality/rejection, production, delivery acceptance, payment, or electricity? Please choose one actual event.
 2. What triggered it? Walk me through what happened and the order of decisions.
 3. Who was involved, and who owned the final decision?
 4. How often has something similar happened recently? What evidence would confirm the frequency?
@@ -141,7 +141,7 @@ Copy this section once per conversation into the notes area below, or record a l
 
 - Date / duration:
 - Role and industry context (minimum necessary):
-- Candidate ID: C1 / C4 / other with reason:
+- Candidate ID: C1 / C2 / C4 / C6 / other with reason; lane R1 / R2 / R3:
 - Permission to retain non-confidential notes: not yet asked
 - Introduction route ID:
 - **Recent event and timeline:**
