@@ -1,0 +1,60 @@
+name: GridMind Public Site Browser
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/components/public-site/**"
+      - "src/components/design-preview/**"
+      - "src/components/product/website.tsx"
+      - "src/routes/design-preview.tsx"
+      - "src/routes/website.tsx"
+      - "e2e/product.pw.ts"
+      - "e2e/synthetic.config.ts"
+      - ".github/workflows/site-preview-browser.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/components/public-site/**"
+      - "src/components/design-preview/**"
+      - "src/components/product/website.tsx"
+      - "src/routes/design-preview.tsx"
+      - "src/routes/website.tsx"
+      - "e2e/product.pw.ts"
+      - "e2e/synthetic.config.ts"
+      - ".github/workflows/site-preview-browser.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gridmind-site-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  isolated-site:
+    name: Released Lovable public site and preserved preview in isolated browser
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install pinned Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.5
+      - name: Install application dependencies
+        run: bun install --frozen-lockfile
+      - name: Install isolated browser test dependencies
+        working-directory: e2e
+        run: bun install --frozen-lockfile
+      - name: Install Chromium dependencies
+        working-directory: e2e
+        run: bunx playwright install --with-deps chromium
+      - name: Build production preview
+        run: bun run build
+      - name: Test both public routes and synthetic customer flows
+        working-directory: e2e
+        run: bun run test:synthetic

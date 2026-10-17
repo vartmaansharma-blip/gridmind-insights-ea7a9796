@@ -527,13 +527,14 @@ function Contact() {
       <div className="mx-auto grid max-w-[1320px] gap-12 lg:grid-cols-[1.3fr_1fr]">
         <SectionHead n="06" eyebrow="Start a conversation" title={<>Have a question about your factory's electricity costs?</>}
           intro="Tell us what you are seeing on your bills. We will tell you honestly whether a review is likely to help." />
-        <div data-reveal className="self-end rounded-md border p-6 gm-rule-d" role="note" aria-labelledby="contact-pending-title" style={{ background: "var(--gm-ink)" }}>
-          <span className="gm-chip" style={{ color: "var(--gm-amber)" }}>Contact route pending</span>
-          <p id="contact-pending-title" className="gm-display mt-4 text-xl font-semibold">Our contact route is being set up.</p>
-          <p className="mt-2 leading-relaxed gm-muted-d">Nothing is sent from this page yet, and we have not published an address we cannot answer from. This note will be replaced by a working contact route.</p>
-          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
-            <Link to="/auth" className="underline underline-offset-4">Existing customer? Sign in</Link>
-            <a href="#example" className="underline underline-offset-4">Revisit the example</a>
+        <div data-reveal className="self-end rounded-md border p-6 gm-rule-d" role="region" aria-labelledby="contact-request-title" style={{ background: "var(--gm-ink)" }}>
+          <span className="gm-chip" style={{ color: "var(--gm-brand-green)" }}>Private investigation request</span>
+          <p id="contact-request-title" className="gm-display mt-4 text-xl font-semibold">Start with one clear question.</p>
+          <p className="mt-2 leading-relaxed gm-muted-d">Open a private workspace to describe the decision you need to make. Your request is reviewed before any engagement is agreed.</p>
+          <p className="mt-3 text-xs leading-relaxed gm-muted-d">This is an early beta. Do not share confidential plant records or upload technical files. A request is not a technical assessment or a guaranteed response.</p>
+          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
+            <Link to="/cases" className="gm-btn gm-btn-primary !px-5 !py-3">Request a conversation <span aria-hidden>↗</span></Link>
+            <Link to="/auth" search={{ destination: "customer" }} className="underline underline-offset-4">Existing customer? Sign in</Link>
           </div>
         </div>
       </div>
