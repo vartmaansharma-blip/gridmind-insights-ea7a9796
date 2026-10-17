@@ -81,6 +81,7 @@
 | [`gridmind-data-advantage-strategy.md`](gridmind-data-advantage-strategy.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-discovery-execution-kit-2026-10-11.md`](gridmind-discovery-execution-kit-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-expansion-architecture-2026-10-10.md`](gridmind-expansion-architecture-2026-10-10.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
+| [`gridmind-infrastructure-intelligence-strategy-2026-10-17.md`](gridmind-infrastructure-intelligence-strategy-2026-10-17.md) | Supporting founder strategy and feasibility gates; does not override the Master Plan or prove buyer demand |
 | [`gridmind-improvement-priorities-2026-10-10.md`](gridmind-improvement-priorities-2026-10-10.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-india-segment-shortlist-2026-10-11.md`](gridmind-india-segment-shortlist-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-industrial-venture-strategy-research-2026-10-10.md`](gridmind-industrial-venture-strategy-research-2026-10-10.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
