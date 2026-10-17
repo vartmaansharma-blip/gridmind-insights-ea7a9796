@@ -1,6 +1,18 @@
 # GridMind Decision Constitution and Contradiction Register
 **Decision date:** 2026-10-10  
-**Status:** Canonical interpretation of the current strategy. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
+**Status:** Canonical interpretation of the current strategy; newest 2026-10-17 amendment governs current discovery ordering. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
+
+## Founder-directed GridMind 3.1 scope amendment — 17 October 2026
+
+**Previous scope:** C1 downtime and C4 energy were the only deep-discovery probes; C2 quality remained parked. The synthetic connected engine and marketed electricity example reflect that older implementation sequence.  
+**Founder request:** Reorient the company and repository around one industrial operations/profit-resolution business using useful capabilities from quality, maintenance, purchasing, logistics, receivables and energy; begin a controlled implementation now.  
+**New decision:** The [Master Plan](gridmind-master-plan-2026-10-11.md) now directs **one firm / one shared authorized evidence-to-action platform / one eventual paid wedge**. Screening lanes are **R1 = C2 quality and directly related C1 incidents**, **R2 = C6 acceptance and invoice-dispute coordination**, **R3 = C4 electricity billing/contract exposure**. New C6 is a discovery-only identifier; it is not an implemented engine mode. R1 may be designed as a **synthetic preferred illustration**, but **no wedge is selected** until customer evidence and the 10 November decision. This explicitly supersedes the older **C1/C4-only discovery ordering** and old C2 parked status; it does not declare an outcome or authorize three commercial products.  
+**Business boundary:** GridMind complements existing ERP/QMS/finance tools; maintenance/procurement/logistics supply case evidence and approved follow-up, not new independent divisions. No lending, collections guarantee, supplier-data sharing without consent, autonomous diagnosis, grid control, physical intervention or industrial cyber-assessment service. Secure company operation is mandatory.  
+**Evidence:** founder's instruction and strategic comparison only; **no new buyer interview, contract, paid demand, reviewer, safe customer-data path, savings or production release established**. Prior infrastructure-first PR #134 is historical proposal and should be superseded rather than merged into conflicting authority.  
+**Trade-offs:** broader problem discovery may dilute interview focus; counter with one recent-event story per call and at most three commercial lanes; narrower actual MVP than vision. A selected C2/R1 product needs its own verified case schema and expert methods; DO NOT enable by merely changing the existing C1/C4 enum.  
+**Affected files:** Master Plan, Buyer Discovery Sprint, root README, implementation handoff, Docs index, and any scoped synthetic code. Existing permission/release gates and 16 October build exception stand.
+
+Older decision sections below retain their dates and remain useful historical explanation. **Where older C1/C4-only sequencing conflicts, this dated amendment and the revised Master Plan govern.** The older live evidence totals are not altered by the amendment.
 
 ## Dated scope amendment — 16 October 2026
 
