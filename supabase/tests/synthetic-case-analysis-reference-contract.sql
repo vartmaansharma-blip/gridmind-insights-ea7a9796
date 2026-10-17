@@ -72,8 +72,8 @@ begin
     if sqlerrm<>'CASE_ANALYSIS_FACTORY_MISMATCH' then raise; end if;
   end;
   begin
-    update public.synthetic_case_analysis_references set status='synthetic_unreviewed_reference'
-      where run_id=run_id;
+    update public.synthetic_case_analysis_references as linked set status='synthetic_unreviewed_reference'
+      where linked.run_id=run_id;
     raise exception 'IMMUTABLE_CASE_RUN_REFERENCE_WAS_UPDATED';
   exception when insufficient_privilege then null; end;
 end $$;
