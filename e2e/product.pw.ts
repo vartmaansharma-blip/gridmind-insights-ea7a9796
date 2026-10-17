@@ -26,7 +26,7 @@ test("Lovable design is a separate preview with the agreed green hook and workin
     .toContainText("Everything is connected.");
   await expect(page.getByRole("heading", { level: 1 }).first())
     .toContainText("What are we missing?");
-  await page.getByRole("button", { name: /Power factor/ }).click();
+  await page.getByRole("button", { name: /Average power factor/i }).click();
   await expect(page.locator("#example")).toContainText("Does power factor affect anything on this bill?");
   const download = page.waitForEvent("download");
   await page.getByRole("button", { name: "Download fictional brief" }).click();
