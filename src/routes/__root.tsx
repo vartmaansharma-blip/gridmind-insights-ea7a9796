@@ -15,6 +15,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { EnergyStoreProvider } from "@/lib/energy/store";
 import { AppShell } from "@/components/gm/app-shell";
+import { StaffWorkspaceGate } from "@/components/gm/staff-workspace-gate";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 
@@ -91,15 +92,17 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const syntheticWorkspace = useRouterState({ select: (state) => ["/investigations", "/investigations-connected", "/auth", "/website", "/cases", "/design-preview"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
+  const standaloneRoute = useRouterState({ select: (state) => ["/", "/website", "/onboarding", "/investigations", "/investigations-connected", "/auth", "/cases", "/design-preview"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
   // Case workspaces initialize only the services requested by their own route.
-  if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
+  if (standaloneRoute) return <><Outlet /><Toaster position="top-center" /></>;
   return (
     <QueryClientProvider client={queryClient}>
       <EnergyStoreProvider>
-        <AppShell>
-          <Outlet />
-        </AppShell>
+        <StaffWorkspaceGate>
+          <AppShell>
+            <Outlet />
+          </AppShell>
+        </StaffWorkspaceGate>
         <Toaster position="top-center" />
       </EnergyStoreProvider>
     </QueryClientProvider>
