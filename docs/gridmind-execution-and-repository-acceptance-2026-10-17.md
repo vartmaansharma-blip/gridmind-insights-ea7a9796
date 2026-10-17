@@ -80,7 +80,22 @@ The internal synthetic triage may output process-stage explanations, evidence ga
 
 **Observed blocker snapshot, 17 Oct 2026:** GitHub Actions on the previous PR commit ended before steps; Vercel reported build-rate-limit and no latest-commit deployment. GitHub source branch is not merged. No check or browser deployment is claimed successful by this plan.
 
-## 7. Completion definition
+## 7. Current connection and branch reconciliation — 17 October 2026
+
+This is an observed snapshot, not permission to release. Recheck exact heads before merging because connected state can move.
+
+| Surface | Observed evidence | Implication and next safe action |
+|---|---|---|
+| GitHub | Private repository; draft [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) began at 540b08c, based on main 74e7c52. Its four Actions workflows failed; the CI job shows no steps and its log fetch returned BlobNotFound. | Check the current run annotation and account Actions allowance/budget first. The billing restriction was previously cleared on 15 October per [#42](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/42), so recurrence needs fresh account evidence. Then rerun locked-install, docs links, typecheck, lint, tests, migration replay and browser checks on the **new exact head**. Do not call this a source failure or waive a gate. |
+| Vercel | Project gridmind uses tanstack-start-lovable. Preview dpl_7A767VqU4oeDmzP96C93kY27CAFH was READY for 540b08c; target was preview, not production. | A subsequent documentation commit makes that preview stale for the PR's current head. Wait for an exact-head preview and inspect build plus protected browser flows; READY alone proves neither tests nor live service readiness. |
+| Lovable | GridMind project latest reported commit was 74e7c52, the main/base commit, while its project description remained energy-centered. | PR branch content is not evidenced as synced into the Lovable editor or published site. After safe integration, use the [Lovable handoff](gridmind-mvp-lovable-handoff.md) to reconcile public copy and design on the appropriate source; do not describe the branch as live. |
+| Supabase | Project bvqmvgbfqhgczwbvlqkk is ACTIVE_HEALTHY in ap-south-1. Read-only migration list contains 31 live entries and ends with scooter_poc_reference_catalogue. [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) documents missing case tables/columns on its last schema inspection. | Service health and a migration registry do not establish schema parity or tenant safety. Reconcile source/live SQL and the parked scooter PR, create an approved recovery plan and isolated Auth/PostgREST/Edge acceptance. No migration or real-data use follows from this strategy PR. |
+
+**Concurrent PR disposition:** [#132](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/132) proposes a public-root and role-onboarding route migration and overlaps the site/navigation contract; keep it separate until schema, role and route tests pass. [#133](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/133) proposes a synthetic case-analysis bridge and depends on the case schema/release work; preserve it as a distinct technical review. [#125](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/125) is an older site enquiry draft; compare its exact UI scope before combining. [#120](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/120) is a parked scooter reference catalogue, with a live migration-history interaction; no POC or separate launch is implied. Older machine-library, authentication and design PRs stay issue-scoped; no bulk merge into GridMind 3.1 is justified by shared branding.
+
+The corrective order is: exact branch and PR diff → source/merge-conflict review → account-side CI diagnosis → checks actually executing on the new head → preview at that head → isolated security and browser acceptance where applicable → independent review and explicit release decision. Keep the live buyer gate and production release gate separate.
+
+## 8. Completion definition
 
 A change is complete only if its issue states the customer/correctness need, scoped implementation, risks, acceptance tests, exact SHA, executed test results, independent review where needed, merge and deployment proof if applicable. Unknown metrics remain unknown. Building beautifully without buyers, or earning revenue without positive case contribution, does not complete a commercial gate.
 
