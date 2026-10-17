@@ -15,7 +15,7 @@ import type { DashboardNav } from "./dashboard-nav";
 import gridMindMark from "@/assets/gridmind-mark.png";
 export function DashboardBrand() {
   return (
-    <Link to="/website" className="flex items-center gap-2">
+    <Link to="/" className="flex items-center gap-2">
       <img src={gridMindMark} alt="" width={36} height={36} className="size-9 object-contain" />
       <span className="leading-tight">
         <span className="block text-sm font-semibold">GridMind</span>
@@ -70,7 +70,7 @@ export function DashboardFrame({
             <>
               <p className="font-semibold text-rail-foreground">Evidence. Clarity. Decisions.</p>
               <p>Every conclusion has a source. Every next step has an owner.</p>
-              <Link to="/website" className="mt-3 inline-flex items-center gap-1">
+              <Link to="/" className="mt-3 inline-flex items-center gap-1">
                 About GridMind <ArrowUpRight className="size-3" />
               </Link>
             </>
