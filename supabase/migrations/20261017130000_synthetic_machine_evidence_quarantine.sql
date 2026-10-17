@@ -59,8 +59,7 @@ grant select on public.synthetic_machine_evidence_batches,
 create policy "staff read own scoped synthetic intake" on public.synthetic_machine_evidence_batches
   for select to authenticated
   using (
-    private.investigation_factory_role(factory_id,(select auth.uid()))
-      in ('owner','admin','analyst')
+    private.is_factory_member(factory_id,ARRAY['owner','admin','analyst'])
   );
 create policy "staff read own synthetic intake rows" on public.synthetic_machine_evidence_periods
   for select to authenticated
