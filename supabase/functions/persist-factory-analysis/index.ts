@@ -1,4 +1,4 @@
-import { createClient } from "npm:@supabase/supabase-js@2.117.2";
+import { createClient } from "npm:@supabase/supabase-js@2.118.0";
 import { buildAnalysisInputFromCanonical, type AnalysisEconomicContext } from "../_shared/analysis-input-adapter.ts";
 import { readBoundedJsonBody } from "../_shared/request-body.ts";
 import {
