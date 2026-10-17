@@ -8,6 +8,11 @@ These are technical contracts, audits and runbooks. A dated success in one envir
 
 - [Exact checkpoint and integration register (17 October 2026)](gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md) — verified PR #136 baseline, workflow evidence, Vercel quota blocker, production Supabase no-go, branch-overlap dispositions and next execution acceptance. This is a dated release handoff, not a competing execution plan.
 
+## PR #136 merge decision
+
+- [Pre-merge decision packet — GridMind 3.1](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — release scope options, informational versus synthetic versus customer-data gates, actual evidence, independent reviews and explicit founder permission. **Current verdict: hold draft.**
+- [Exact checkpoint and integration register](gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md) — historical baseline and dependencies. Do not treat an older status snapshot as the final candidate's test record.
+
 ## Documents
 
 - [Repository structure benchmark and improvement queue](repository-structure-benchmark-2026-10-17.md) — measured comparison to mature practices, completed changes and remaining gaps.
