@@ -2,6 +2,23 @@
 **Decision date:** 2026-10-10  
 **Status:** Canonical interpretation of the current strategy. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
 
+## Approved narrow industrial-intelligence research incorporation — 18 October 2026
+
+**Scope of this amendment:** Founder requested that 2026 manufacturing/infrastructure intelligence lessons be incorporated into GridMind's **existing** project and then merged to `main`. This narrow documentation-only change authorizes **research and design method requirements**, **not** production code, customer-data processing, paid services, electrical advice or broad PR #136 merge. See [dated competitor research](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and [R3 screening method/12 synthetic fixtures](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md).
+
+| ID | Decision | Limitation |
+|---|---|---|
+| **G31-I01** | Capture permissioned evidence source, supplier/site, dated rule version, uncertainty and provenance before any AI narrative (CADDi learning). | Existing code and database not independently verified. |
+| **G31-I02** | Follow an observed issue through qualified review, authorized decision-owner/action and objectively evidenced or inconclusive follow-up (Arch learning). | A dashboard/report does not itself prove resolution or savings. |
+| **G31-I03** | Keep one shared case/evidence/decision/outcome core with separately qualified specialist methods (Noetive learning). | Do not build a universal factory AI platform. |
+| **G31-I04** | Defer digital twins, infrastructure asset topology, physics simulation, utility dispatch, sensors and machinery controls (Siemens/NVIDIA, Neara, GE learning). | Future specialist qualification and separately validated buyer required. |
+| **G31-I05** | Research **R3 electricity billing/contract-cost exposure first**; separately interview R2 acceptance/invoice buyers; R1 is a fictional demonstration. | **No paid wedge selected**; do not inflate interview/sample/savings evidence. |
+| **G31-I06** | Proposed narrow R3 screen asks about **demand charges, applicable PF items and tariff-category questions** against actual supplier, contract, bill period and effective order. Unknown source => **INCONCLUSIVE**. | An expert must approve method; no real bill upload, certified audit or guarantee. |
+| **G31-I07** | Include expert costs, founder labor, sales and failed/free-screen acquisition in case economics. | Prices/20-screen targets are research hypotheses, not collected cash or real customer data. |
+| **G31-I08** | Keep PR #136 draft until independently reviewed release gates; production Supabase schema, tenant controls and rollout remain blocked under [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) and [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29). | This docs-only incorporation cannot authorize a production application merge. |
+
+**Operating hierarchy remains unchanged:** Master Plan is the sole execution plan, Buyer Discovery Sprint the only live field-evidence tracker, this Constitution resolves changes, and research files cannot masquerade as customer interviews. Source-linked company performance claims are **not** GridMind results. No live professional method approval or real payment has been established.
+
 ## Dated scope amendment — 16 October 2026
 
 **Previous decision:** minimum maintenance under the discovery freeze; no internal workbench before buyer gates.
