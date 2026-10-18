@@ -8,6 +8,10 @@ These are exploratory or dated analyses. They do not select the commercial wedge
 
 - [100 manufacturing problem hypotheses and delivery boundaries](gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) — 10 manufacturing domains × 10 issues, potential direct/expert/partner response and sourced limitations. **NOT** a list of interviewed manufacturers, commercial winners or 100 coded product features. The sole Buyer Discovery Sprint remains the only live evidence tracker.
 
+## 18 October 2026 — Current competitive learning
+
+- [Industrial intelligence competitor learning register](gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) — dated CADDi, Arch, Noetive, Siemens/NVIDIA, Neara and GE Vernova evidence; translated into 12 **gated** GridMind improvements. Company claims are **not GridMind customer outcomes**; future digital-twin/agent ambitions remain deferred.
+
 ## Documents
 
 - [GridMind — Bigger Problem Thesis: From Incident Investigation to Industrial Value Realization](gridmind-bigger-problem-thesis-2026-10-11.md)
