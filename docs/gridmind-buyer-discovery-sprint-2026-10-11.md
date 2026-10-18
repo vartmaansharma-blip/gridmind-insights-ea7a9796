@@ -1,5 +1,7 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
+**Strategic baseline status, 18 October 2026:** PR #136 is merged into main; the strategy now considers R1/R2/R3 while **R3 is first for research only**, R2 receives an independent commercial challenge and R1 remains a legitimate quality-use-case probe plus fictional demo. These are *directions, not new field evidence*. This remains the **sole buyer evidence tracker**; as of the last verified record, zero substantive buyer interviews, zero paid commitments, zero expert engagements. Do not substitute release status for interview progress. Existing 19 October access review, 24 October fallback and 10 November decision gate remain unchanged.
+
 **Last updated:** 2026-10-17 (R1/R2/R3 alignment; mailbox confirms one outbound ASIA enquiry and no matching response; 0 buyer interviews)
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
@@ -356,7 +358,7 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
 | 2026-10-15 | External proposals reviewed under the former master: retain C1/C4, distinguish energy questions, track buyer behavior and economics, and preserve existing gates | **Historical, C1/C4-only ordering superseded 2026-10-17; underlying evidence rules remain** |
 | 2026-10-15 | Founder identified “dad” when asked for supporting adult and introduction routes | Nomination only; agreement, network, sends and introductions remain unconfirmed |
-| 2026-10-17 | Founder revised company architecture to one industrial exception resolution firm; compare R1 (C2+C1), R2 (C6), R3 (C4) while keeping no selected wedge and unchanged customer evidence | **Strategic decision; PR #136, pending CI** |
+| 2026-10-17 | Founder revised company architecture to one industrial exception resolution firm; compare R1 (C2+C1), R2 (C6), R3 (C4) while keeping no selected wedge and unchanged customer evidence | **Strategic decision recorded in merged PR #136 on 18 Oct; no buyer evidence added** |
 | 2026-10-17 | Read-only connected mailbox check verified one ASIA enquiry sent 2026-10-12. Search found no matching reply as of this check. No private contact information stored here. | **Access evidence only; 0 interviews, 0 buyer next steps** |
 
 
