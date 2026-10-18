@@ -42,6 +42,12 @@ The founder requested research into at least 100 industrial problems, how GridMi
 
 The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) remains the **only** active strategy; the [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) is still the **only** buyer-evidence tracker. R1/R2/R3 remain discovery-only candidates. “Redmind” has not been accepted as a name change.
 
+## Latest research-driven adaptation — 18 October 2026
+
+- [Industrial intelligence competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) translates major 2026 manufacturing/infrastructure technology moves into **source-first evidence, owned corrective action, reviewer accountability, interoperability and tested economic outcomes**. Large-company digital twins and autonomous grid/plant controls are **not** current GridMind features.
+- [R3 electricity screen specification](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) defines a proposed narrow supplier-specific tariff research instrument, with twelve synthetic negative acceptance scenarios and professional-review prerequisites. No real calculation engine, accredited opinion or live factory intake is claimed.
+- **Sequence:** Research **R3 energy billing first**, compare **R2 documentary payment/acceptance disputes fairly**, retain **R1** as a fictional design case. A paid wedge is **still unselected** until the live [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) records actual buyers and delivery feasibility.
+
 ## Product and operating model
 
 GridMind's proposed operating loop is:
