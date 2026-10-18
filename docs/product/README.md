@@ -8,6 +8,10 @@ These describe the proposed case product and existing implementation boundaries.
 
 - [Manufacturer resolution system and architecture](gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — user roles, proposed modules, evidence-to-decision objects, methods versus problem tags, UX/technical acceptance and production data boundaries. The domain-specific engines remain **unvalidated/not built**.
 
+## Electricity screening research method
+
+- [R3 industrial electricity bill screening contract and 12 fictional acceptance cases](gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) — official supplier/date/category qualification, demand/PF/category questions, fail-closed results and reviewer prerequisite; **NOT** a working calculator, audit or production data release.
+
 ## Documents
 
 - [Public website build and acceptance — GridMind 3.1](gridmind-site-build-and-acceptance-2026-10-17.md) — immediate site milestone, claim rules, journeys, design/Lovable handoff and exact-head tests.
