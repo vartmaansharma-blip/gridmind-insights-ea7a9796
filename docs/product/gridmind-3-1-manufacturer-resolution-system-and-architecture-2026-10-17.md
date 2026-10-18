@@ -114,6 +114,18 @@ Existing main software: **TanStack Start, React, Vite, Bun, Lovable, Supabase** 
 
 **Commercial acceptance:** actual recent customer pain, paid next step, reviewed real economics and repeat need from buyer tracker; no use of fictional invoice as proof of cash recovery.
 
+## 9A. Industrial intelligence competitor learning — product-contract addendum (18 Oct 2026)
+
+**Primary mapping:** [competitor learning register](../research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) CL-01–CL-12. These principles refine acceptance, not authorize implementation. [R3 tariff/bill screening method and twelve negative fixtures](gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) is the proposed first research method **subject to professional approval**.
+
+- **Source-first search (CADDi lesson):** source, owner, collection purpose, company/site, date/effective period, revision, original units and permission precede synthesis. No source or conflicting sources → explain why inconclusive.
+- **Insight-to-execution (Arch lesson):** every case has a named reviewer, customer approver, authorized action owner, follow-up observation window, and verified / unverified / inconclusive classification. A report or closed task is not automatically verified value.
+- **Shared core, bounded domain methods (Noetive lesson):** R1 quality, R2 acceptance/invoice, R3 billing have independently reviewed required sources/calculations; a common enum is NOT enough. R3 first in discovery only; R2 comparator remains mandatory.
+- **Deterministic-before-generative (Siemens lesson):** tariff bill arithmetic uses date-specific professional rules and typed units. AI cannot fill missing parameters or invent a savings forecast; one state must be “need qualified review.”
+- **Future topology and physical constraints (Neara/GE lesson):** note architectural possibility for future approved infrastructure models; no network graph, simulation or OT-control implementation in current MVP.
+- **Adapt rather than replace (incumbents):** prefer read-only/manual authorized records and exported CSV; integration is conditional on actual buyer need and independently tested security.
+- **Acceptance:** synthetic correct/invalid/inconclusive/adversarial cases, reviewer revision integrity, tenant negative checks; no claims of working real R1/R2/R3 technical engine or live professional services from spec edits alone.
+
 ## 10. How expansion earns permission
 
 For each additional domain method require: (i) more than an attractive opportunity score—actual buyer access and specific repeated pain; (ii) independent expert/method owner; (iii) minimum auditable sources and permission model; (iv) valid test fixtures and negative controls; (v) priced delivery with collected cash and sustainable contribution; (vi) release approval and reversal plan. The fact that two domains share a table does not mean their regulated actions share an approval.
