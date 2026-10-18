@@ -1,5 +1,15 @@
 # GridMind 3.1 — PR #136 pre-merge decision packet
 
+## Final disposition — PR #136 merged, 18 October 2026 (authoritative latest checkpoint)
+
+**Status:** [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) **MERGED/CLOSED** on 18 October 2026; resulting `main` merge SHA **`363cbface9e164319df43660ef9f9886b8b7fdb7`**. Reconciled candidate head `b32fb2d3b280c4bf007ba431d37b59a62b27d88a` preserved Lovable history. Candidate exact-head CI, Quality Gate, Public Site Browser, isolated Migration Replay and Vercel preview **passed**; merge was accepted by GitHub branch protection and the post-merge Vercel status reported **success**. This is an actual result, not a proposed review.
+
+**Precisely what shipped:** 212 file changes compared to prior main, only documentation plus pinned `Supabase CLI 2.121.0` for **isolated CI migration replay**. No `src/`, `supabase/`, `e2e/`, routes, Auth permissions, data grants, feature flags, app dependencies or production database mutation was part of the **final delta**. Separate [#140](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/140) research and [#142](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/142) synthetic Resolve work were previously merged and retained. The proposed alternative marketing copy remained deferred to [#138](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/138).
+
+**The older pre-merge HOLD and incomplete acceptance form below are historical 17 October snapshots, preserved for audit only. They do not describe the current PR state.** **Separately, Class D live customer data remains NO-GO:** production Supabase migration drift [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130), Auth/tenant authorization [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29), qualified professional scope, data rights and billing are not validated. No independent security sign-off on existing production architecture is claimed. The documentation merge's review classification does not authorize real cases. A code revert must be a new controlled merge-revert commit rather than a force push; no production migration rollback is implicated in this docs-only release.
+
+**Canonical current release status:** [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Further planned releases need *their own* exact-head evidence and release packet.
+
 ## Integration scope correction — 18 October 2026
 
 Refs #137, #136, #138, #29 and #130. The founder requested resolution of #136 and consolidation into main only when legitimate gates pass. The current integration merges main `8cf121ca4f8a8e8d0709941b62f2640686c6e6cd` into original source `42ec9e2143f837c714c8d96d5dee6ad2babc2c9c` with a merge commit; no published history is rewritten.
@@ -83,7 +93,7 @@ Record actual URL, timestamp, tester and SHA; **not** “tested in general”. U
 
 Any changes to these dispositions must be documented on the original PR/issue with a testable reason. Do not conflate “open”, “merged”, “deployed”, “in production database”, and “commercially operating”.
 
-## 6. Acceptance / actual decision record (fill only when evidence exists)
+## 6. Historical 17 October acceptance form (superseded by final disposition above)
 
 **Target PR / source head:** #136 / **NOT YET APPROVED FOR MERGE**  
 **Target environment:** main-connected Vercel production — **impact review needed**  
