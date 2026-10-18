@@ -73,6 +73,23 @@ These corrections alter operating decisions and labels, not the customer evidenc
 
 **What changes with evidence:** This register may be amended only with an issue-linked decision that says what changed, why, by whose authority, which tests were observed and which existing docs are superseded. Until then: **PR #136 stays draft; no main merge, production migration or customer-data release.**
 
+## GridMind 3.1 external intelligence adaptation — 18 October 2026
+
+**Founder request:** Apply learnings from 2026 industrial intelligence news and competitors to the **existing** GridMind project and execution. See [dated, source-linked competitor learning register](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and [R3 screening method contract](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md). Announcements of funding, software or industrial outcomes elsewhere **do not verify GridMind's own** commercial model.
+
+| Decision ID | Binding direction | Status / limits |
+|---|---|---|
+| **G31-I01** | Learn **source provenance, context, versioning and interoperability** from CADDi/industrial incumbents; ingest only permitted, minimal sources. | Design requirement, **no production connector approved**. |
+| **G31-I02** | Learn **action ownership and measured closure** from Arch Systems' lighthouse workflow; source → hypotheses → independent review → customer decision → follow-up. | Existing case domain contract strengthened, not evidence of deployed capability. |
+| **G31-I03** | Learn **shared intelligence core with domain-expert methods** from Noetive/industrial AI; never equate adding an R1/R2/R3 label with expert diagnosis. | Retain one company and common evidence core, no universal autonomous platform. |
+| **G31-I04** | Learn appropriate **simulation / physics / topology scope** from Siemens/NVIDIA, Neara/Zepben, GE Vernova; retain operator authority. | **Watch only**. No digital twins, machine control, electrical network models or grid dispatch approved. |
+| **G31-I05** | **R3 FIRST for focused discovery, not selected first paid wedge**; evaluate R2 acceptance/documentary disputes as genuine challenger with precommitted evidence rubric. | Supersedes equal-ranked candidate outreach *ordering* only; R1 remains honest fictional experience; no real buyer proof. |
+| **G31-I06** | Propose a time-limited, consented, **expert-reviewed** R3 screen (demand, tariff category and PF only when applicable) against the *actual supplier/date/order*. Unknown or mismatch must return inconclusive. | **NOT** a finished, approved or live tariff calculator. No real bill in public repo/unapproved production systems. |
+| **G31-I07** | Case economics include founder sales time, **all free screens including negative/non-converted**, expert review, travel and correction. | Price points/30% contribution/20-screen threshold are proposed experiments; record precommitment before interpretation in **sole** buyer tracker. |
+| **G31-I08** | The latest research creates **supporting specs and issue tasks only**; live data, financial rails and release remain under existing rights, professional review, #29/#130 and PR #136 HOLD. | No authority to merge broad PR or expand into OT, regulated utility work, lending or certifications. |
+
+**Decisions intentionally not made:** reviewer identity and contract, actual price, tariff formula, first buyer, consent for a factory bill, actual ROI/savings, final market wedge, production schema, plant integrations, fixed date to enter infrastructure. The previous G31-M01–M10 and G31-R01–R06 remain binding where not expressly narrowed here. No new company name or signature-green change.
+
 ## GridMind 3.1 research/operating amendment — 17 October 2026
 
 **Input:** Founder requested a comprehensive manufacturing “SOAP” plan and research covering 100 factory problems, proposed solutions, monetization, GridMind fee collection and build structure **before** further integration. “Redmind 3.1” in that request is treated as a reference to the existing **GridMind 3.1**, not an approved corporate rebrand. SOAP is only an informal shorthand for **Service–Operations–Architecture–Payments**, not a directive to add a technical SOAP/XML protocol.
