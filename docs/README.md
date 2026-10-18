@@ -49,6 +49,7 @@ These are **supporting research and proposed acceptance methods**, not a second 
 
 | File | Disposition / authority |
 |---|---|
+| [`product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md`](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) | Research method and 12 synthetic tests; expert approval and real-data readiness **NOT established** |
 | [`gridmind-mvp-build-blueprint.md`](gridmind-mvp-build-blueprint.md) | Supplied Version 3.4 supporting specification; dated canonical build exception overrides its prior no-build instructions |
 | [`gridmind-mvp-lovable-handoff.md`](gridmind-mvp-lovable-handoff.md) | Supporting implementation contract; authorized synthetic MVP and Lovable design handoff |
 | [`canonical-application-migration-v1.md`](canonical-application-migration-v1.md) | Supporting control/specification; does not override the Master Plan |
@@ -82,6 +83,7 @@ These are **supporting research and proposed acceptance methods**, not a second 
 
 | File | Disposition / authority |
 |---|---|
+| [`research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md`](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) | Dated externally sourced competitor lessons and gated opportunities; no actual GridMind customer validation |
 | [`gridmind-attention-test-and-creative-reset-2026-10-11.md`](gridmind-attention-test-and-creative-reset-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-bigger-problem-thesis-2026-10-11.md`](gridmind-bigger-problem-thesis-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-brand-definition-and-name-risk-2026-10-11.md`](gridmind-brand-definition-and-name-risk-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
