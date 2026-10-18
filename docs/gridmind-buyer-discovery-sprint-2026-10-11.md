@@ -298,6 +298,24 @@ If the GO conjunction fails: **NARROW/INCONCLUSIVE** where a relevant case exist
 
 A paid pilot is desirable, not required to declare the discovery sprint complete. No verified-savings claim is possible without the later observation period and agreed attribution method.
 
+### Industrial intelligence learning and R3/R2 comparison addendum — 18 October 2026 (planning, not evidence)
+
+**Reason for amendment:** Recent competitor review and critique indicate we should test **R3 electricity billing/contract exposure first** because record-based screens *might* be economical, **without selecting it as the paid wedge**. R2 customer acceptance/invoice dispute must receive distinct finance/commercial decision-maker conversations; R1 remains a fictional product UX example pending evidence. The existing **Nov 10 GO/NARROW/PIVOT/STOP interim classification** stays in force; optional later festival-adjusted full sample date must be formally recorded if agreed, not silently assumed.
+
+**Interview prompts to add to existing open question protocol, after recent-problem exploration (NOT leading customer):**
+- Electricity: actual retail supplier and contract/category (JBVNL, Tata Steel, TSUISL or other), last actual unexplained bill item, who reviewed it, current paid alternative, any genuine credit/revision, utility escalation concerns and professionally authorized access. **No assumption of overcharging.**
+- Invoice acceptance: last genuinely disputed acceptance/invoice, underlying documents, true incremental cost separate from face value, responsible buyer, current accountant/ERP/CA/legal workaround and reason it remained unresolved.
+- Both: actual buying authority, prior independent expert spending, data permissions, real next step. Do not infer willingness from praise.
+- Relative factory-owner contact: potential route **reported by founder**, **not yet completed or counted** as interview, referral, purchase, screening or permission. Log actual date/participation/status only after occurrence.
+
+**Precommit proposed R3 experiment with actual reviewer before interpreting outcomes:** 20 eligible permissioned bill screens; a potential material flag requires reviewable estimated annual exposure ≥ ₹75,000 or 3× proposed paid review fee, whichever is larger; at least four material expert-supported flags and two concrete buyer-level paid-review follow-ups are *hypothetical* GO thresholds. A one-time verified billing credit is assessed separately from annual run-rate savings. Negative and ineligible screens remain in denominator documentation; **sample of 20 is not statewide prevalence**. Screen may only use source-specific JSERC tariff/order/date/category under qualified expertise, per [method contract](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md). If no permission or competent expert, record NOT SCREENED; do not conduct real bill analysis anyway.
+
+**R3 vs R2 predeclared comparison (0–5 evidence grades, unknown explicitly):** addressable annual loss 20%, buyer paid intent 20%, frequency 15%, permitted source access 15%, expert/delivery economics 15%, time to useful action 10%, repeatability 5%. Professional authority, confidentiality, safety and economics are **binary eligibility gates**, not offsets for a high score. Score actual events, not interviews with no relevant evidence. Distinguish access failure from negative demand.
+
+**Commercial cost note:** account for free negative screens, sales/outreach time, founder shadow labor, qualified reviewer, travel, rework and payment collection. Test narrow ₹15k and detailed ₹35k fixed-fee *hypotheses* plus a professionally reviewed hybrid only where contractually attributable; aim for a provisional ≥30% direct contribution after realistic costs. This is not a price card or collected revenue.
+
+**Truth guard:** all numerical targets remain **unobserved planning criteria**. Only the existing evidence log and actual dated interview records can establish field progress.
+
 ## 10. Current execution queue
 
 | Priority | Task | Owner | Due | Status |
