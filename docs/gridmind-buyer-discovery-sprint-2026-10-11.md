@@ -1,6 +1,6 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
-**Last updated:** 2026-10-15 (dad nominated as supporting adult; no new buyer evidence)
+**Last updated:** 2026-10-17 (R1/R2/R3 alignment; mailbox confirms one outbound ASIA enquiry and no matching response; 0 buyer interviews)
 **Status:** One initial ASIA inquiry sent on 2026-10-12; no reply, calls booked/held, customer data, or buyer commitment confirmed.  
 **This is the only live discovery tracker.** Follow the [Canonical Master Plan](gridmind-master-plan-2026-10-11.md) for decisions and schedule. Do not create another 30-day schedule in a separate document.
 
@@ -14,19 +14,20 @@
 
 <!-- Public market sizing and desk evidence archived in the previous Git revision; not treated as buyer evidence. -->
 
-## 2. Stable candidate register
+## 2. Stable candidate register (2026-10-17 scope amendment)
 
 Use only these IDs across notes and decisions. Never use “Hypothesis A/B” without the ID.
 
 | ID | Candidate | Status this sprint | Evidence to seek |
 |---|---|---|---|
-| **C1** | Downtime / production-loss investigation | Probe deeply | Last real event, production consequence, investigation timeline, existing systems/process, unresolved gap, accountable owner |
-| **C2** | Quality defects / scrap / rework / escapes | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
-| **C3** | Maintenance recurrence / reliability | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
-| **C4** | Energy / material inefficiency | Probe deeply | Last real event or recurring cost, bills/process evidence available, tariff/operating context, current review process, residual gap, accountable owner |
-| **C5** | Cross-team handoff / delayed operational decisions | Parked | Only reopen if a buyer's evidence points here more strongly than C1/C4 |
+| **C1** | Downtime / production loss | R1 supporting investigation | Last quality-linked disruption; do not assume machine cause |
+| **C2** | Quality defects / customer rejection / CAPA effectiveness | **R1 — probe** | Last rejected part, existing QMS/8D, recurrence, accountable buyer and lost time/cost |
+| **C3** | Maintenance recurrence / reliability | Parked | Reopen only if the specific customer event supports maintenance as the stronger paid problem |
+| **C4** | Electricity contract/billing exposure (broader energy only if evidenced) | **R3 — probe** | Last actual tariff/bill decision, expert currently used, gap and budget |
+| **C5** | Cross-team handoff / delayed decisions | Shared pattern only | Record where it materially affects a specific case |
+| **C6** | Order acceptance / invoice dispute / receivables coordination | **R2 — probe** | Last disputed acceptance or invoice; reason, current ERP/accounts process, payer and economic consequence |
 
-C1 and C4 are discovery probes, not selected product wedges. Do not compare five candidates shallowly. Procurement intelligence, consumer products, broad platforms, brand renaming, and other concepts are out of this sprint unless evidence triggers a formal change in the master plan.
+**Current decision:** Interview around **one** recently costly unresolved factory exception without selling three products. Compare **R1 (C2+C1), R2 (C6), and R3 (C4)** on materiality, existing best provider, budget owner, expert delivery cost and explicit next step. This is a discovery scope amendment, **not** three selected products. C3 and C5 remain context, and procurement/logistics records are only case evidence. No customer proof or commitments changed.
 
 ## 3. Concrete give and conversation invitation
 
@@ -36,15 +37,15 @@ For C4, do not promise an electricity-bill/tariff audit unless a qualified energ
 
 ### Outreach draft — warm introduction request
 
-> Hi — I’m working on GridMind, an early project exploring how manufacturing teams investigate recurring operational problems. I’m trying to understand the current process before deciding what, if anything, to build.
+> Hi — I’m working on GridMind, an early project exploring how manufacturing teams investigate costly problems that disrupt quality, production, acceptance or payment. I’m trying to understand the current process before deciding what, if anything, to build.
 >
-> Could you introduce me to one production/operations or energy/utility professional who might be open to a 20-minute research conversation about a recent issue and how the team investigated it? I can share a free one-page workflow map afterward, based only on what they choose to discuss. This is not a sales pitch or a technical audit, and I won’t request confidential records or use operational data. If it is not relevant, no problem.
+> Could you introduce me to one quality, production, finance or energy decision-maker who might be open to a 20-minute research conversation about a recent issue and how the team investigated it? I can share a free one-page workflow map afterward, based only on what they choose to discuss. This is not a sales pitch or a technical audit, and I won’t request confidential records or use operational data. If it is not relevant, no problem.
 >
 > Please only introduce someone if you think the conversation is appropriate.
 
 ### Outreach draft — public association / technical-learning route
 
-> Hello — I’m researching how manufacturing teams investigate recurring production and operating-cost problems as part of an early project called GridMind. I’m not asking for a member list or endorsement. Is there a public event, learning session, or appropriate process through which I could request a short research conversation with a relevant operations or energy professional? I can return a concise, non-confidential workflow map to any participant who finds the conversation useful. I will not ask for plant records or confidential information.
+> Hello — I’m researching how manufacturing teams investigate recurring quality, production, acceptance, payment and operating-cost exceptions as part of an early project called GridMind. I’m not asking for a member list or endorsement. Is there a public event, learning session, or appropriate process through which I could request a short research conversation with a relevant operations or energy professional? I can return a concise, non-confidential workflow map to any participant who finds the conversation useful. I will not ask for plant records or confidential information.
 
 **Oversight:** Have a trusted adult/professional review and support external industrial outreach and any formal engagement. Do not send automatically. No factory visit, payment/contract commitment, or non-public data handling without appropriate authorization and oversight.
 
@@ -99,8 +100,10 @@ Update only with actual counts. Do not fill planned counts as completed.
 | Introductions offered | 0 | Track actual | — |
 | Calls booked | 0 | Track actual; no forecast target | — |
 | Calls held | 0 | Oct 31 target: 3 substantive manufacturing conversations | Target only; no conversations claimed |
-| C1 substantive cases | 0 | Probe deeply | — |
-| C4 substantive cases | 0 | Probe deeply | — |
+| C1 quality-linked production incidents | 0 | R1 supporting probe | — |
+| C2 quality/acceptance-related cases | 0 | R1 primary probe | — |
+| C6 invoice/acceptance disputes | 0 | R2 probe | — |
+| C4 electricity-cost cases | 0 | R3 probe | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |
 | Authorized customer-data paths | 0 | Tier 2 only | No customer data requested |
 
@@ -112,7 +115,7 @@ Ask about one real, recent event. Do not ask “Would AI help?” or lead the pa
 
 **Interview discipline:** Ask for the most recent concrete example before discussing general opinions. Let the participant describe their process in their own words; ask “What happened next?” and “How do you know?” Do not suggest a cause, savings estimate, feature, or desired answer. Do not pitch a solution during the evidence-gathering portion. Record exact short phrases only when necessary and non-confidential; label recollection separately from records. End with one low-pressure, specific next-step question and accept “no.”
 
-1. What was the last production-loss or energy/material-cost issue that required investigation?
+1. What was the last costly unresolved issue involving quality/rejection, production, delivery acceptance, payment, or electricity? Please choose one actual event.
 2. What triggered it? Walk me through what happened and the order of decisions.
 3. Who was involved, and who owned the final decision?
 4. How often has something similar happened recently? What evidence would confirm the frequency?
@@ -141,7 +144,7 @@ Copy this section once per conversation into the notes area below, or record a l
 
 - Date / duration:
 - Role and industry context (minimum necessary):
-- Candidate ID: C1 / C4 / other with reason:
+- Candidate ID: C1 / C2 / C4 / C6 / other with reason; lane R1 / R2 / R3:
 - Permission to retain non-confidential notes: not yet asked
 - Introduction route ID:
 - **Recent event and timeline:**
@@ -183,7 +186,7 @@ Do not transform recollection into fact or an estimated gross loss into GridMind
 
 ### Candidate-comparison rubric — use only after substantive conversations
 
-Score each candidate (currently C1 and C4) against the same dimensions. This is a decision aid, not a statistical model. Keep evidence references beside every score; do not score from intuition or desk research alone.
+Score the three **discovery lanes R1/R2/R3** using the same dimensions, but only for lanes supported by a substantive recent customer event. This is a decision aid, not a statistical model. Keep evidence references beside every score; do not score from intuition or desk research alone.
 
 | Dimension | 0 | 1 | 2 | 3 |
 |---|---|---|---|---|
@@ -197,7 +200,7 @@ Score each candidate (currently C1 and C4) against the same dimensions. This is 
 **Scoring rules**
 - Use **U (unknown)** rather than 0 when the interview did not establish the answer. Zero means evidence supports the lowest score.
 - Never convert a U to a number to make the comparison look complete.
-- Do not total scores while any dimension is U for either candidate. First identify the cheapest ethical way to resolve the missing information.
+- Do not total scores while any material dimension is U for the candidates being compared. First identify the cheapest ethical way to resolve the missing information.
 - After enough evidence exists, show both the score and the supporting evidence; do not use a one-point difference as a false-precision verdict.
 - A strong score does not waive Tier 2 safeguards, qualified review, or customer authorization.
 
@@ -275,27 +278,45 @@ No case is qualified yet. The fields below are a reusable record within this led
 
 Calculation: founder labor = total founder hours × stated internal rate. Reviewer cost = agreed total fee **or** agreed hours × rate, never both. Expected case cost = founder labor + reviewer cost + other direct costs; avoid counting the same intake/rework hours again. Required fee floor = expected case cost + stated overhead/risk contribution. Buyer net benefit = conservative incremental gross benefit − implementation/measurement costs − proposed fee, with overlapping items removed. Unknowns remain unknown; do not calculate a margin from missing inputs. Payment timing and evidence uncertainty must be reviewed separately from accounting contribution.
 
-**Reviewer preparation:** reuse the [existing reviewer brief and unsent drafts](gridmind-qualified-reviewer-brief-and-referral-plan-2026-10-13.md); do not create another outreach packet. Request only a synthetic-method review scope, timing and fee after appropriate message review. A public directory listing does not establish acceptance. No paid review or customer-data handling is approved by this worksheet.
+**Reviewer preparation:** reuse the [existing reviewer brief and unsent drafts](operations/gridmind-qualified-reviewer-brief-and-referral-plan-2026-10-13.md); do not create another outreach packet. Request only a synthetic-method review scope, timing and fee after appropriate message review. A public directory listing does not establish acceptance. No paid review or customer-data handling is approved by this worksheet.
 
 ## 9. Decision dates and stop rules
 
-**Precommitted 2026-11-10 classification (refer to [Master Plan §14](gridmind-master-plan-2026-10-11.md) for definitions):** GO to **bounded-test design** requires **≥3 held substantive interviews**, **≥2 independent ownership groups**, **≥2 specific recent cases favoring the same candidate with a residual gap vs current alternative**, **≥1 explicit budget-owner path and attributable buyer next step**, and a plausible bounded/safe delivery scope. **All must hold.** These are small-sample *operating gates*, not statistical market validation; Tier 2 permissions/expert review/secure handling remain separate and cannot be waived.
+**Precommitted 2026-11-10 classification (refer to [Master Plan §6](gridmind-master-plan-2026-10-11.md) for execution gates):** GO to **bounded-test design** requires **≥3 held substantive interviews**, **≥2 independent ownership groups**, **≥2 specific recent cases favoring the same candidate with a residual gap vs current alternative**, **≥1 explicit budget-owner path and attributable buyer next step**, and a plausible bounded/safe delivery scope. **All must hold.** These are small-sample *operating gates*, not statistical market validation; Tier 2 permissions/expert review/secure handling remain separate and cannot be waived.
 
-If the GO conjunction fails: **NARROW/INCONCLUSIVE** where a relevant case exists but access, independence, buyer action or feasibility is incomplete; **PIVOT** only where meaningful interview evidence weakens both probes and supports a named alternative; **STOP/PAUSE** for exhausted legitimate access routes, missing outreach supporter or a disqualifying safety/rights/economic barrier. Clearly label **channel failure versus product failure**. Precommit the rule before interpreting interviews; never silently lower cutoffs to force GO.
+If the GO conjunction fails: **NARROW/INCONCLUSIVE** where a relevant case exists but access, independence, buyer action or feasibility is incomplete; **PIVOT** only where meaningful interview evidence weakens the current problem lanes and supports a named alternative; **STOP/PAUSE** for exhausted legitimate access routes, missing outreach supporter or a disqualifying safety/rights/economic barrier. Clearly label **channel failure versus product failure**. Precommit the rule before interpreting interviews; never silently lower cutoffs to force GO.
 
-**2026-10-24 access fallback:** if **0 substantive conversations held or firmly scheduled**, or no credible warm route exists, test one distinct supported intermediary (R3 first if suitable); log actually sent, reply, introduction and relevant conflicts, not mere intent. If external adviser remains unassigned, do **not** send; record the adviser as a blocker instead.
+**2026-10-24 access fallback:** if **0 substantive conversations held or firmly scheduled**, or no credible warm route exists, test one distinct supported intermediary (choose based on the intermediary's actual domain expertise, not an automatic R3 preference); log actually sent, reply, introduction and relevant conflicts, not mere intent. If external adviser remains unassigned, do **not** send; record the adviser as a blocker instead.
 
-**Balanced sample and C1/C4 decision:** log ownership group, supplier/anchor-customer chain, intermediary and candidate without storing unnecessary private identifiers. Two firms in one dependent network do not make a representative sample. Keep the same questions/scorecard for both candidate probes and mark software/migration sunk costs as **excluded** from the score.
+**Balanced sample and R1/R2/R3 comparison:** log ownership group, supplier/anchor-customer chain, intermediary and candidate without storing unnecessary private identifiers. Two firms in one dependent network do not make a representative sample. Keep the same questions/scorecard for the eligible lanes and mark software/migration sunk costs as **excluded** from the score.
 
-**Capacity/runway checkpoint (corrected 2026-10-15):** founder reports **5 hours/day, not 5 hours/week**. Use a flexible **25 h/week over five chosen days** as an illustrative planning schedule, not a mandatory workload (school, sleep and rest take precedence); record actual hours. Weekly working allocation: 6 h legitimate supported access/outreach/scheduling; 7 h booked interviews and consented non-confidential notes or preparation; 4 h adviser/domain learning; 4 h evidence review and neutral C1/C4 comparison; 2 h tracking/follow-ups; up to 2 h essential correctness/security maintenance only, otherwise discovery. If time or access is lower, record it and revise targets rather than fabricate progress. **₹0 incremental spend through Nov 10** remains unless specifically authorized. Before any funded trial, document an actual authorized cash allocation, burn, responsible contracting adult, and financial stop date; current private runway is **unknown**.
+**Capacity/runway checkpoint (corrected 2026-10-15):** founder reports **5 hours/day, not 5 hours/week**. Use a flexible **25 h/week over five chosen days** as an illustrative planning schedule, not a mandatory workload (school, sleep and rest take precedence); record actual hours. Weekly working allocation: 6 h legitimate supported access/outreach/scheduling; 7 h booked interviews and consented non-confidential notes or preparation; 4 h adviser/domain learning; 4 h evidence review and neutral R1/R2/R3 comparison; 2 h tracking/follow-ups; up to 2 h essential correctness/security maintenance only, otherwise discovery. If time or access is lower, record it and revise targets rather than fabricate progress. **₹0 incremental spend through Nov 10** remains unless specifically authorized. Before any funded trial, document an actual authorized cash allocation, burn, responsible contracting adult, and financial stop date; current private runway is **unknown**.
 
 
 - **Oct 19:** review the ASIA route and the 3–5-request access test; adjust route if evidence supports it. A small sample cannot establish demand or its absence.
 - **After the first substantive conversations:** update the access plan from observed route quality and buyer evidence; do not forecast a fixed call count without a credible funnel.
-- **After five conversations:** if neither C1 nor C4 yields a concrete event with credible consequence and a residual gap, revisit the stable candidate register once and choose the next probe from evidence.
+- **After five conversations:** if no current R1/R2/R3 lane yields a concrete event with credible consequence and a residual gap, revisit the stable candidate register once and choose the next probe from evidence.
 - **Nov 10:** decide GO TO BOUNDED TEST / NARROW / PIVOT / STOP. If no candidate has a credible buyer path and explicit next step, no-go on new product build.
 
 A paid pilot is desirable, not required to declare the discovery sprint complete. No verified-savings claim is possible without the later observation period and agreed attribution method.
+
+### Industrial intelligence learning and R3/R2 comparison addendum — 18 October 2026 (planning, not evidence)
+
+**Reason for amendment:** Recent competitor review and critique indicate we should test **R3 electricity billing/contract exposure first** because record-based screens *might* be economical, **without selecting it as the paid wedge**. R2 customer acceptance/invoice dispute must receive distinct finance/commercial decision-maker conversations; R1 remains a fictional product UX example pending evidence. The existing **Nov 10 GO/NARROW/PIVOT/STOP interim classification** stays in force; optional later festival-adjusted full sample date must be formally recorded if agreed, not silently assumed.
+
+**Interview prompts to add to existing open question protocol, after recent-problem exploration (NOT leading customer):**
+- Electricity: actual retail supplier and contract/category (JBVNL, Tata Steel, TSUISL or other), last actual unexplained bill item, who reviewed it, current paid alternative, any genuine credit/revision, utility escalation concerns and professionally authorized access. **No assumption of overcharging.**
+- Invoice acceptance: last genuinely disputed acceptance/invoice, underlying documents, true incremental cost separate from face value, responsible buyer, current accountant/ERP/CA/legal workaround and reason it remained unresolved.
+- Both: actual buying authority, prior independent expert spending, data permissions, real next step. Do not infer willingness from praise.
+- Relative factory-owner contact: potential route **reported by founder**, **not yet completed or counted** as interview, referral, purchase, screening or permission. Log actual date/participation/status only after occurrence.
+
+**Precommit proposed R3 experiment with actual reviewer before interpreting outcomes:** 20 eligible permissioned bill screens; a potential material flag requires reviewable estimated annual exposure ≥ ₹75,000 or 3× proposed paid review fee, whichever is larger; at least four material expert-supported flags and two concrete buyer-level paid-review follow-ups are *hypothetical* GO thresholds. A one-time verified billing credit is assessed separately from annual run-rate savings. Negative and ineligible screens remain in denominator documentation; **sample of 20 is not statewide prevalence**. Screen may only use source-specific JSERC tariff/order/date/category under qualified expertise, per [method contract](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md). If no permission or competent expert, record NOT SCREENED; do not conduct real bill analysis anyway.
+
+**R3 vs R2 predeclared comparison (0–5 evidence grades, unknown explicitly):** addressable annual loss 20%, buyer paid intent 20%, frequency 15%, permitted source access 15%, expert/delivery economics 15%, time to useful action 10%, repeatability 5%. Professional authority, confidentiality, safety and economics are **binary eligibility gates**, not offsets for a high score. Score actual events, not interviews with no relevant evidence. Distinguish access failure from negative demand.
+
+**Commercial cost note:** account for free negative screens, sales/outreach time, founder shadow labor, qualified reviewer, travel, rework and payment collection. Test narrow ₹15k and detailed ₹35k fixed-fee *hypotheses* plus a professionally reviewed hybrid only where contractually attributable; aim for a provisional ≥30% direct contribution after realistic costs. This is not a price card or collected revenue.
+
+**Truth guard:** all numerical targets remain **unobserved planning criteria**. Only the existing evidence log and actual dated interview records can establish field progress.
 
 ## 10. Current execution queue
 
@@ -303,9 +324,9 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 |---|---|---|---|---|
 | **P0 — BLOCKED** | Obtain consent from real adult/professional outreach supporter before new external approach | Founder + trusted adult/professional | Before any send; Oct 19 review | Dad nominated; agreement pending; public/offline preparation only |
 | **P0** | Identify 3–5 legitimate warm-introduction routes; do not invent names or scrape lists | Founder, with appropriate adult/professional support | Oct 19 | In progress / capacity-dependent |
-| **P0** | Review the two short outreach drafts and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
+| **P0** | Review the existing short outreach drafts for the broader GridMind 3.1 scope and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
 | **P0** | Log actual funnel movement and review the small access experiment | Founder | Oct 19 review | In progress |
-| P1 | Hold and document conversations using C1/C4 IDs | Founder | Through Nov 10 | Waiting for access |
+| P1 | Hold and document conversations using R1/R2/R3 and original C1/C2/C4/C6 IDs | Founder | Through Nov 10 | Waiting for access |
 | P2 | Scope an offline retrospective test only if Tier 1 evidence and a buyer request justify it | Founder + named reviewer/customer owner | After evidence | Blocked on people/evidence |
 | Parked | Broad schema/RPC changes, workspace redesign, new modules, public-site polish, rename, trademark work | — | Until evidence changes priority | Not P0 |
 
@@ -327,14 +348,16 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 
 | Date | Decision / evidence | Status |
 |---|---|---|
-| 2026-10-11 | C1 and C4 selected as the two discovery probes only; neither is the product wedge | Active probe choice |
+| 2026-10-11 | C1 and C4 selected as the two discovery probes only; neither was the product wedge | **Historical; superseded by 2026-10-17 R1/R2/R3 comparison** |
 | 2026-10-11 | Two-tier gates separate interview evidence from customer-data/pilot acceptance | Active |
 | 2026-10-12 | Earlier 30-ask / Oct 17 access plan superseded by a bounded 3–5-request test by Oct 19, subject to capacity | Current access test; not market validation |
 | 2026-10-11 | No outreach, interview, customer data, qualified reviewer, or commercial commitment was claimed at that time | Historical state, superseded by ASIA inquiry sent Oct 12 |
 | 2026-10-12 | Initial ASIA public-route inquiry sent; no reply, referral, meeting, customer data, or buyer commitment confirmed | Access experiment only; not customer validation |
 | 2026-10-12 | Phase 1–3 discussion: keep no-wedge decision; compare alternatives without false precision; distinguish public/customer/experimental evidence; synthetic-only prototype until gates pass | Active strategic guardrails; canonical plan and constitution updated |
-| 2026-10-15 | External proposals reviewed in Master Plan §19: retain C1/C4, distinguish energy question types, track buyer behavior and case economics, use a bounded intermediary fallback, and preserve existing gates | Protocol change only; no new contacts, interviews, data, reviewer or commercial result |
+| 2026-10-15 | External proposals reviewed under the former master: retain C1/C4, distinguish energy questions, track buyer behavior and economics, and preserve existing gates | **Historical, C1/C4-only ordering superseded 2026-10-17; underlying evidence rules remain** |
 | 2026-10-15 | Founder identified “dad” when asked for supporting adult and introduction routes | Nomination only; agreement, network, sends and introductions remain unconfirmed |
+| 2026-10-17 | Founder revised company architecture to one industrial exception resolution firm; compare R1 (C2+C1), R2 (C6), R3 (C4) while keeping no selected wedge and unchanged customer evidence | **Strategic decision; PR #136, pending CI** |
+| 2026-10-17 | Read-only connected mailbox check verified one ASIA enquiry sent 2026-10-12. Search found no matching reply as of this check. No private contact information stored here. | **Access evidence only; 0 interviews, 0 buyer next steps** |
 
 
 ## 12. Weekly checkpoint (sole evidence log)

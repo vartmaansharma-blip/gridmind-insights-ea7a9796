@@ -1,112 +1,18 @@
-# GridMind accuracy and validation standard
+# Moved document
 
-> **REFERENCE ONLY — superseded for execution on 2026-10-11.** The sole execution authority is [GridMind Master Plan](gridmind-master-plan-2026-10-11.md); the sole live discovery tracker is [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md). This document may preserve useful analysis, but its old schedules, candidate letters, gates, engineering priorities, and numeric targets are not active instructions. Use stable candidate IDs C1–C5 and the two-tier gates in the canonical files. Do not create another plan from this document.
+**Status:** Supporting reference. The content is now at [gridmind-accuracy-and-validation-standard.md](engineering/gridmind-accuracy-and-validation-standard.md). This path remains so older GitHub links continue to open. The [documentation guide](README.md) identifies the current authority.
 
+Earlier section links:
 
-**Status:** Required engineering and pilot policy. Thresholds below are proposed release gates to be reviewed against the selected use case; they are not achieved performance claims. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs scope; validation targets do not imply that a pilot, generalized accuracy claim, or product launch is currently authorized.
-
-## 1. Accuracy is a system property
-
-GridMind must not optimize for confident-sounding answers. Accuracy depends on the entire chain: source correctness, asset mapping, time alignment, context, calculation, uncertainty, interpretation, persistence, and expert review. A correct formula applied to the wrong meter, period, unit, or operating context is a wrong answer.
-
-The system must be able to say **insufficient evidence**, ask for the next discriminating measurement, and keep a finding unresolved. Refusal is preferable to fabricated certainty.
-
-## 2. Separate accuracy dimensions
-
-Never report one undifferentiated “accuracy” percentage. Track:
-
-1. **Input integrity:** percentage of required records with validated source, unit, period, quality and lineage.
-2. **Mapping accuracy:** correct meter-to-asset/process mapping, independently checked.
-3. **Period/comparability accuracy:** valid joins, aggregation, exclusions and context matching.
-4. **Calculation correctness:** deterministic test cases, dimensional analysis, numerical edge cases and independent recomputation.
-5. **Finding precision:** supported material findings / all material findings asserted.
-6. **Finding recall:** supported material issues found / all material issues independently adjudicated as present in the evaluated scope.
-7. **Calibration:** whether confidence levels correspond to observed correctness; do not show numerical confidence until calibrated on representative cases.
-8. **Economic error:** forecast-versus-measured difference with a pre-agreed measurement and normalization method; do not confuse estimate error with causal attribution.
-9. **Reproducibility:** same version and same canonical inputs reproduce the same result.
-10. **Refusal quality:** insufficient-evidence cases correctly refused, with the missing evidence and next step explained.
-
-A reviewer must distinguish a false positive, a missed issue, a valid refusal, and an unresolved case. An unresolved case is not automatically counted as either correct or incorrect.
-
-## 3. Proposed release gates
-
-These are initial conservative targets to test and ratify before a real pilot; they must not be described as achieved until measured.
-
-### Gate A — deterministic and data integrity
-- 100% of supported unit conversions and reference calculation fixtures pass.
-- 100% of invalid/ambiguous inputs in the defined test suite are rejected or explicitly marked insufficient.
-- 100% of reported values can be traced to canonical source IDs, units, periods and algorithm version.
-- 100% of persisted analysis results pass reload-and-recompute consistency checks.
-- Zero known cross-tenant data leakage in the defined security acceptance suite.
-- No silent imputation, unit guessing, timestamp inference, or unsupported asset-level allocation.
-
-### Gate B — expert-reviewed case set
-- Evaluate a minimum of 30 independently adjudicated cases before making any generalized accuracy claim; include positive findings, negative cases, ambiguous/incomplete data and relevant operating variations. Thirty cases is a starting smoke-test, not enough to prove broad industrial generalization.
-- Pre-register the target problem, inclusion/exclusion criteria, reviewer rubric and success thresholds before scoring.
-- On the defined test set, target at least 95% precision for material findings asserted as evidence-supported; report exact counts and uncertainty intervals, not just the percentage.
-- Target at least 90% recall for material issues within the explicitly evaluated scope, with every miss reviewed for severity and root cause.
-- For unsupported or ambiguous inputs, target 100% correct refusal on the defined refusal suite.
-- Any safety-critical, high-consequence, or potentially damaging recommendation requires qualified human approval regardless of aggregate metrics.
-- If the sample is too small or unrepresentative, report the result as preliminary and do not generalize to other assets, factories or industries.
-
-These are proposed gates, not a promise that 95% precision or 90% recall is currently achievable. If they are not met, narrow the supported use case, improve the method, or refuse to claim readiness.
-
-### Gate C — comparative value
-- Compare GridMind with the existing engineering process on the same cases and with a pre-agreed review method.
-- Track false positives, misses, review time, data-cleaning effort, reproducibility and expert acceptance separately.
-- A speed improvement counts only if the finding-quality gates are also met.
-- Do not claim superiority over engineers from a demo, one anecdote, synthetic data, or an unblinded founder review.
-- Before claiming savings, run an agreed measurement-and-verification plan after an approved intervention and document confounders and uncertainty.
-
-## 4. Test design that avoids self-deception
-
-- Separate development/tuning cases from locked evaluation cases. Never tune on the held-out evaluation set and then report it as independent.
-- Include negative cases and inconclusive cases, not just examples where the system found something.
-- Have reviewers adjudicate cases using source evidence and a written rubric; record disagreements and use a second reviewer for disputed/high-impact cases.
-- Where practical, hide which method generated each finding until scoring is complete.
-- Record the denominator, exclusions, missing labels, confidence intervals and known selection bias.
-- Repeat evaluation on a second facility before claiming cross-site transferability.
-- Test data drift, meter replacements, changes in product mix, shift schedules, tariffs, and equipment configuration.
-- Version the adapter, calculation engine, rules, prompts/models if used, and all material transformations. A material semantic change requires regression tests and re-evaluation.
-
-## 5. Root-cause and recommendation discipline
-
-Energy-per-unit deviation is a screening signal, not a root cause. Potential explanations may include operating hours, product mix, idle time, process settings, meter boundary errors, maintenance, environmental conditions, or measurement faults. Present these as hypotheses only when supported by context, and identify the observation or inspection that would distinguish them.
-
-Never automatically convert:
-- correlation into causation;
-- nameplate ratings into measured consumption;
-- technical potential into recoverable financial value;
-- estimated opportunity into realized savings;
-- a generated hypothesis into a confirmed diagnosis;
-- one site's pattern into a universal rule.
-
-Recommendations affecting machinery, electrical systems, production quality, or worker safety must remain advisory and require qualified site review and approval. This initial use case does not control equipment.
-
-## 6. Accuracy incident loop
-
-For each material error or missed issue:
-1. Preserve the exact input snapshot, source lineage, algorithm version and output.
-2. Classify the failure: data, mapping, temporal alignment, context, calculation, interpretation, calibration, persistence, or reviewer process.
-3. Determine scope and whether any customer-facing claim needs correction.
-4. Add a minimized, permissioned regression fixture where legally permitted; otherwise record a non-sensitive test specification.
-5. Add a test that would have caught the error and test nearby edge cases.
-6. Re-run the locked evaluation set and check for regressions.
-7. Document resolution, remaining risk and whether prior results need re-review.
-
-Customer data must not be committed to public GitHub or used for training/benchmarks without explicit rights. Store only redacted test fixtures or synthetic fixtures clearly labeled as synthetic.
-
-## 7. Public claims policy
-
-Until the evidence exists, describe GridMind as **being built to produce traceable, reproducible industrial findings**. Do not advertise a percentage accuracy, “better than engineers,” verified savings, autonomous diagnosis, or broad industrial generalization without a representative, independently reviewed evaluation supporting the exact claim.
-
-For each public performance claim retain: metric definition, denominator, dataset scope, date/version, reviewer method, exclusions, uncertainty and permission to disclose. Marketing must not outrun the evidence.
-
-## 8. Next execution sequence
-
-1. Audit the current calculation engine and tests against Gate A; record actual pass/fail evidence rather than assuming tests pass because they exist.
-2. Create a case-labeling rubric and a versioned evaluation harness using synthetic fixtures only for engineering correctness—not as proof of real-world accuracy.
-3. Obtain an authorized real case and independent technical adjudication.
-4. Build a locked evaluation set from authorized cases, with positive, negative and insufficient-evidence examples.
-5. Run the head-to-head scorecard; publish only scope-limited measured results.
-6. Fix the most common failure mode first and repeat evaluation.
+- <a id="gridmind-accuracy-and-validation-standard"></a>[GridMind accuracy and validation standard](engineering/gridmind-accuracy-and-validation-standard.md#gridmind-accuracy-and-validation-standard)
+- <a id="1-accuracy-is-a-system-property"></a>[1. Accuracy is a system property](engineering/gridmind-accuracy-and-validation-standard.md#1-accuracy-is-a-system-property)
+- <a id="2-separate-accuracy-dimensions"></a>[2. Separate accuracy dimensions](engineering/gridmind-accuracy-and-validation-standard.md#2-separate-accuracy-dimensions)
+- <a id="3-proposed-release-gates"></a>[3. Proposed release gates](engineering/gridmind-accuracy-and-validation-standard.md#3-proposed-release-gates)
+- <a id="gate-a-deterministic-and-data-integrity"></a>[Gate A — deterministic and data integrity](engineering/gridmind-accuracy-and-validation-standard.md#gate-a-deterministic-and-data-integrity)
+- <a id="gate-b-expert-reviewed-case-set"></a>[Gate B — expert-reviewed case set](engineering/gridmind-accuracy-and-validation-standard.md#gate-b-expert-reviewed-case-set)
+- <a id="gate-c-comparative-value"></a>[Gate C — comparative value](engineering/gridmind-accuracy-and-validation-standard.md#gate-c-comparative-value)
+- <a id="4-test-design-that-avoids-self-deception"></a>[4. Test design that avoids self-deception](engineering/gridmind-accuracy-and-validation-standard.md#4-test-design-that-avoids-self-deception)
+- <a id="5-root-cause-and-recommendation-discipline"></a>[5. Root-cause and recommendation discipline](engineering/gridmind-accuracy-and-validation-standard.md#5-root-cause-and-recommendation-discipline)
+- <a id="6-accuracy-incident-loop"></a>[6. Accuracy incident loop](engineering/gridmind-accuracy-and-validation-standard.md#6-accuracy-incident-loop)
+- <a id="7-public-claims-policy"></a>[7. Public claims policy](engineering/gridmind-accuracy-and-validation-standard.md#7-public-claims-policy)
+- <a id="8-next-execution-sequence"></a>[8. Next execution sequence](engineering/gridmind-accuracy-and-validation-standard.md#8-next-execution-sequence)

@@ -1,6 +1,42 @@
 # GridMind Decision Constitution and Contradiction Register
+
+## Integration scope correction — 18 October 2026
+
+Refs #137, #136, #138, #29 and #130. The founder requested resolution of #136 and consolidation into main only when legitimate gates pass. The current integration merges main `8cf121ca4f8a8e8d0709941b62f2640686c6e6cd` into original source `42ec9e2143f837c714c8d96d5dee6ad2babc2c9c` with a merge commit; no published history is rewritten.
+
+**Selected scope: documentation consolidation and isolated-test tooling only.** All `src/`, `supabase/`, `e2e/`, application dependency/build configuration and public/root routes are retained byte-for-byte from current main. #140 research and #142 synthetic Resolve behavior, additional negative tests and accessibility fixes are retained. The only executable change is pinning the isolated replay workflow's Supabase CLI from `latest` to `2.121.0`; this workflow starts and resets only its disposable runner-local stack. No production migration job is added.
+
+The proposed website copy is deferred to #138 and remains recoverable at source commit `42ec9e2`; it is not shipped by this integration. No contact receipt, qualified review, savings or customer outcome is asserted. #132 root/onboarding, #133 case bridge, #125 older enquiry and #120 scooter reference remain separate and unmerged; this candidate imports none of their branch-only changes. Existing seven factory records and production drift recorded in #130 are not read or mutated by this task. They are not assumed fictional.
+
+**Gate applicability:** G31-M03/M06 security review remains mandatory for any future permission, migration or server-function change; this narrowed diff contains none. #29/#130 remain open and Class D remains NO-GO. This correction supersedes earlier descriptions that #136's remaining diff includes tenant/migration/Edge code or releases revised website copy. It does not waive any gate for those deferred changes. Normal exact-head CI, Quality, Public Site Browser, isolated Migration Replay, Vercel preview and resolved-conversation protections still apply. Keep draft until those checks and preview evidence are recorded on the PR.
+
+**Containment and rollback:** application/backend tree equals main baseline `8cf121c`; no data rollback is needed. If documentation or CI pin causes a problem after merge, revert the integration merge with a new reviewed commit (`git revert -m 1 <main-merge-sha>`), validate it and merge normally; never reset/force-push or execute down migrations. Verify the reverse patch restores the baseline tree before merging. The PR evidence comment records candidate SHA, exact check URLs, preview, review findings and final disposition; this source note does not predeclare success.
+
 **Decision date:** 2026-10-10  
-**Status:** Canonical interpretation of the current strategy. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
+**Status:** Canonical interpretation of the current strategy; newest 2026-10-17 amendment governs current discovery ordering. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
+
+## Repository visibility amendment — 17 October 2026
+
+**Previous decision:** Keep the existing GridMind repository private and separate the already-public website from source/history visibility.
+
+**Founder decision:** Make this same repository and its full history public to avoid the exhausted private GitHub Actions budget; do not create a second repository. The owner completed GitHub email verification, and GitHub reports `visibility: public`.
+
+**Evidence:** The Actions budget showed $6.00 of $6.00 used and stopped jobs before any steps. After the visibility change, the exact-head CI and Quality Gate completed successfully; the isolated Migration Replay also passed. The public-site browser job ran and found an outdated contact-link assertion, corrected in the follow-up PR commit. The existing Vercel production website was already anonymously accessible and its build-rate limit is independent of GitHub repository visibility.
+
+**Trade-off and boundary:** All code, Git history, Actions logs, issues and PRs can now be read and forked by the public. No open-source license has been granted. Do not put customer records, credentials, private commercial details or sensitive security findings in the public repository. GitHub private vulnerability reporting was enabled and the public [security policy](../SECURITY.md) names it; outside-reporter submission remains untested. Public visibility does not select a paid wedge, validate a customer or authorize production deployment.
+**Affected files:** README, SECURITY policy, Master Plan, repository benchmark, engineering acceptance and PR #136. Older dated descriptions of a private repository remain historical snapshots, not current operating instructions.
+
+## Founder-directed GridMind 3.1 scope amendment — 17 October 2026
+
+**Previous scope:** C1 downtime and C4 energy were the only deep-discovery probes; C2 quality remained parked. The synthetic connected engine and marketed electricity example reflect that older implementation sequence.  
+**Founder request:** Reorient the company and repository around one industrial operations/profit-resolution business using useful capabilities from quality, maintenance, purchasing, logistics, receivables and energy; begin a controlled implementation now.  
+**New decision:** The [Master Plan](gridmind-master-plan-2026-10-11.md) now directs **one firm / one shared authorized evidence-to-action platform / one eventual paid wedge**. Screening lanes are **R1 = C2 quality and directly related C1 incidents**, **R2 = C6 acceptance and invoice-dispute coordination**, **R3 = C4 electricity billing/contract exposure**. New C6 is a discovery-only identifier; it is not an implemented engine mode. R1 may be designed as a **synthetic preferred illustration**, but **no wedge is selected** until customer evidence and the 10 November decision. This explicitly supersedes the older **C1/C4-only discovery ordering** and old C2 parked status; it does not declare an outcome or authorize three commercial products.  
+**Business boundary:** GridMind complements existing ERP/QMS/finance tools; maintenance/procurement/logistics supply case evidence and approved follow-up, not new independent divisions. No lending, collections guarantee, supplier-data sharing without consent, autonomous diagnosis, grid control, physical intervention or industrial cyber-assessment service. Secure company operation is mandatory.  
+**Evidence:** founder's instruction and strategic comparison only; **no new buyer interview, contract, paid demand, reviewer, safe customer-data path, savings or production release established**. Prior infrastructure-first PR #134 is historical proposal and should be superseded rather than merged into conflicting authority.  
+**Trade-offs:** broader problem discovery may dilute interview focus; counter with one recent-event story per call and at most three commercial lanes; narrower actual MVP than vision. A selected C2/R1 product needs its own verified case schema and expert methods; DO NOT enable by merely changing the existing C1/C4 enum.  
+**Affected files:** Master Plan, Buyer Discovery Sprint, root README, implementation handoff, Docs index, and any scoped synthetic code. Existing permission/release gates and 16 October build exception stand.
+
+Older decision sections below retain their dates and remain useful historical explanation. **Where older C1/C4-only sequencing conflicts, this dated amendment and the revised Master Plan govern.** The older live evidence totals are not altered by the amendment.
 
 ## Authorized synthetic triage integration — 18 October 2026
 
@@ -56,6 +92,61 @@ The founder requested three product areas and then clarified: retain the Lovable
 
 These corrections alter operating decisions and labels, not the customer evidence ledger. No contact, payment, reviewer engagement or production readiness is inferred.
 
+## GridMind 3.1 pre-merge decisions — 17 October 2026
+
+**Context:** Draft [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) bundles strategy, public-site copy, synthetic triage, tenant/migration and Edge Function changes across more than 200 files. This is a **decision policy**, not a statement that approvals, reviews or tests are complete. Specific evidence and blockers are listed in the [pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md).
+
+| ID | Decision / authority | Alternative considered; reason / trade-off | Status before main |
+|---|---|---|---|
+| **G31-M01** | **One existing public repository and one canonical plan.** Keep changes on reviewable branches; no duplicate repo or history rewrite. | A new repo seems cleaner but splits Lovable sync, history and policies. Public history increases exposure: secrets and confidential records never belong here. | **Decided** |
+| **G31-M02** | **Split release scopes conceptually:** (A) truthful informational /website, (B) isolated synthetic demo, (C) production auth/database/customer workflows. Different acceptance and permissions. | One broad “MVP live” switch is simpler but would falsely authorize unsafe data handling. | **Decided**; (C) **NO-GO** |
+| **G31-M03** | **Do not merge PR #136 while mixed-code risk is unreviewed.** Either extract separately releasable changes without rewriting published history **or** present a complete file-by-file security/migration review and explicit all-scope release authorization. | Merging the monolith saves effort but exposes live Vercel production to tenant/source changes. | **Hold / review** |
+| **G31-M04** | **No production schema/feature-flag changes** until #130 and #29 reconcile migration registry, live data rights, two populated tenants, authentication, backups, reviewer separation and forward-only rollback plan. | Assuming local Migration Replay equals live readiness risks cross-tenant access or data loss. | **NO-GO** |
+| **G31-M05** | **Exact candidate evidence, not check-name optimism.** CI, Quality, Public Site Browser, isolated Migration Replay and required Vercel status must reflect the final candidate SHA; independently verify Vercel preview content, target environment and rollback. | Earlier green workflows/READY previews belong to earlier commits. | **Open per new SHA** |
+| **G31-M06** | **Independent review of changes to permissions, migrations and server functions.** A second appropriately competent person records scope and findings; solo-owner GitHub ruleset requiring zero approvals is not a security signoff. | Self-approval is faster but materially less reliable in a public, production-connected repository. | **Open** |
+| **G31-M07** | **Keep /website and / root unchanged for this PR.** PR #132 root/onboarding, #133 case bridge, #125 older contact and #120 scooter reference cannot be blindly merged; choose keep, selectively port, supersede or park after diff/migration review. | Simultaneous merging obscures route, authorization and migration effects. | **Open disposition** |
+| **G31-M08** | **Informational site may be released before buyer validation**, but only as an early-stage proposition with a real non-confidential contact receipt, explicit fictional examples, privacy/accessibility proof and founder claims approval. A paid industrial service **may not** be advertised as proven. | Waiting for all commercial proof would unnecessarily block safe market learning; skipping copy safeguards would erode trust. | **Conditional** |
+| **G31-M09** | **No customer documents, machine control, autonomous technical conclusions or paid professional review** by virtue of merging source. Commercial wedge and qualified method selection still require buyer evidence and human expert authority. | Turning a demo into a “pilot” by changing labels bypasses data rights and professional review. | **Decided boundary** |
+| **G31-M10** | **Release signoffs are distinct:** founder (business claims and intentional public change), engineer (exact-SHA behavior/security tests), qualified independent reviewer (applicable domain/security judgment). Each can block within their remit; no single green badge grants all approvals. | A single PR “mergeable” indicator cannot encode customer, professional or legal authority. | **Open actual signoffs** |
+
+**What changes with evidence:** This register may be amended only with an issue-linked decision that says what changed, why, by whose authority, which tests were observed and which existing docs are superseded. Until then: **PR #136 stays draft; no main merge, production migration or customer-data release.**
+
+## GridMind 3.1 external intelligence adaptation — 18 October 2026
+
+**Founder request:** Apply learnings from 2026 industrial intelligence news and competitors to the **existing** GridMind project and execution. See [dated, source-linked competitor learning register](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and [R3 screening method contract](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md). Announcements of funding, software or industrial outcomes elsewhere **do not verify GridMind's own** commercial model.
+
+| Decision ID | Binding direction | Status / limits |
+|---|---|---|
+| **G31-I01** | Learn **source provenance, context, versioning and interoperability** from CADDi/industrial incumbents; ingest only permitted, minimal sources. | Design requirement, **no production connector approved**. |
+| **G31-I02** | Learn **action ownership and measured closure** from Arch Systems' lighthouse workflow; source → hypotheses → independent review → customer decision → follow-up. | Existing case domain contract strengthened, not evidence of deployed capability. |
+| **G31-I03** | Learn **shared intelligence core with domain-expert methods** from Noetive/industrial AI; never equate adding an R1/R2/R3 label with expert diagnosis. | Retain one company and common evidence core, no universal autonomous platform. |
+| **G31-I04** | Learn appropriate **simulation / physics / topology scope** from Siemens/NVIDIA, Neara/Zepben, GE Vernova; retain operator authority. | **Watch only**. No digital twins, machine control, electrical network models or grid dispatch approved. |
+| **G31-I05** | **R3 FIRST for focused discovery, not selected first paid wedge**; evaluate R2 acceptance/documentary disputes as genuine challenger with precommitted evidence rubric. | Supersedes equal-ranked candidate outreach *ordering* only; R1 remains honest fictional experience; no real buyer proof. |
+| **G31-I06** | Propose a time-limited, consented, **expert-reviewed** R3 screen (demand, tariff category and PF only when applicable) against the *actual supplier/date/order*. Unknown or mismatch must return inconclusive. | **NOT** a finished, approved or live tariff calculator. No real bill in public repo/unapproved production systems. |
+| **G31-I07** | Case economics include founder sales time, **all free screens including negative/non-converted**, expert review, travel and correction. | Price points/30% contribution/20-screen threshold are proposed experiments; record precommitment before interpretation in **sole** buyer tracker. |
+| **G31-I08** | The latest research creates **supporting specs and issue tasks only**; live data, financial rails and release remain under existing rights, professional review, #29/#130 and PR #136 HOLD. | No authority to merge broad PR or expand into OT, regulated utility work, lending or certifications. |
+
+**Decisions intentionally not made:** reviewer identity and contract, actual price, tariff formula, first buyer, consent for a factory bill, actual ROI/savings, final market wedge, production schema, plant integrations, fixed date to enter infrastructure. The previous G31-M01–M10 and G31-R01–R06 remain binding where not expressly narrowed here. No new company name or signature-green change.
+
+## GridMind 3.1 research/operating amendment — 17 October 2026
+
+**Input:** Founder requested a comprehensive manufacturing “SOAP” plan and research covering 100 factory problems, proposed solutions, monetization, GridMind fee collection and build structure **before** further integration. “Redmind 3.1” in that request is treated as a reference to the existing **GridMind 3.1**, not an approved corporate rebrand. SOAP is only an informal shorthand for **Service–Operations–Architecture–Payments**, not a directive to add a technical SOAP/XML protocol.
+
+**Research evidence and limitations:** The [100-problem atlas](research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) is a sourced **hypothesis library** spanning ten factory domains. Sources are sector studies, quality standards, energy programmes and existing market products. There are **no new verified customer interviews, factory observations, legal permissions, qualified reviewer engagements, paid buyers or proven savings**. Its 100 entries do not become 100 product features, 100 promises, a new customer-evidence tracker or an authority to enter safety-critical trades.
+
+| Decision ID | Binding planning rule | Alternative and reason | Status and review gate |
+|---|---|---|---|
+| **G31-R01** | Maintain broad **problem-recognition** taxonomy but narrow **paid execution** to one buyer-validated R1/R2/R3 method. Specialized physical, legal and safety solutions require partner referral. | Universal factory ERP/agent would require impossible expertise, security and capital before proof. | Architecture principle decided; commercial selection **undecided**. |
+| **G31-R02** | Product is an on-site-capable **expert-assisted industrial resolution service** supported by one case/evidence/review/action/outcome system, not generic SaaS or automated diagnosis. | Pure consulting is labor-heavy; full SaaS before buyers is unproven. | Proposed operating model; needs actual delivery/unit economics. |
+| **G31-R03** | Test a bounded investigation fee first; monthly Continuity only after repeated paid demand and contribution. Example ranges are **quote hypotheses**, not published tariff. | “Always subscription” would falsely assume recurring value; “everything free” cannot prove payment intent. | Pricing not validated. Sole buyer tracker controls. |
+| **G31-R04** | GridMind's own customer fees are settled via **lawfully authorized business invoice and business bank transfer** initially; hosted regulated provider link optional later. **No present real checkout/payment integration.** Under-18 founder does not bypass merchant/contract/account requirements; approved adult/legal/tax professionals must handle eligibility/operations. | Custom processor, personal QR or premature checkout would add avoidable regulatory, trust and security risks. | Payment design chosen provisionally; account/entity/fees remain unapproved and unverified. |
+| **G31-R05** | Factory customer receivables in R2 are **not GridMind payment revenue**. GridMind may coordinate documentary resolution when permitted, but must not take custody of buyer payments, lend, guarantee recovery or provide unauthorized legal services. | A percentage of disputed face value creates adverse incentives and legal exposure without causal proof. | Firm boundary; any regulated expansion requires separate authority. |
+| **G31-R06** | The [service SOP](operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) and [resolution architecture](product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) are **supporting specifications only**. Do not implement domain methods, payment ledgers or production migration just from a document. | Competing master plans and unreviewed scope expansion break the canonical decision and release gates. | Existing Master Plan/Constitution and #136 draft/NO-GO rules govern. |
+
+**Actions permitted now:** non-confidential desk research, synthetic test fixtures and demo source within approved boundaries, founder/adult-supported interviews and professional referrals; source-controlled documentation review. **Not newly permitted:** main merge, real factory record upload, industrial machine controls, statutory audit/certification, production schema/auth mutation, new corporate bank/merchant account or real payment collection. Each requires its separate authorization and gate.
+
+**Affected authorities:** [Master Plan](gridmind-master-plan-2026-10-11.md), [research atlas](research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md), [payment/delivery SOP](operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md), [product architecture](product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md), and [pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md). There is still **one** authoritative execution plan and **one** buyer-evidence tracker.
+
 ## Why this exists
 GridMind's strategy is recorded across business-thesis, expansion, website, use-case, improvement-priority and execution documents. Some describe future possibilities, provisional candidates, or specifications that can be mistaken for current commitments. This register establishes one source of truth and an explicit decision hierarchy.
 
@@ -79,37 +170,30 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 **Interpretation:** This is the destination, not a promise that every capability exists. Build the shared core incrementally where real cases prove reuse. Do not treat it as a mandate to implement a universal factory ontology or every industrial vertical now.
 
 ### D2 — Immediate scope
-**Decision:** For this 30-day cycle, establish current product truth and validate one narrow customer problem—not expand the platform or polish the marketing website.
+**Decision (current, 17 October):** Work on **two independent tracks**: (a) a small, honest and safely permissioned synthetic GridMind Resolve demonstration and existing /website public narrative; (b) real problem/buyer discovery that selects the only eventual commercial entry. Neither can prove the other. The founder explicitly authorized these bounded software/design tasks after the earlier discovery-only freeze.
 
-**In scope:** current-state audit; authorized live-workflow verification; customer/problem discovery; candidate comparison; data feasibility; bounded offer; minimum technical fixes needed for the selected case; fair evaluation and Day-30 decision.
+**In scope before wedge selection:** existing C1/C4 synthetic source; fictional R1/R2/R3 exception triage with provenance and explicit unknowns; honest /website with non-confidential contact; exact-commit tests, security/data-rights hardening and review; actual 20-minute buyer conversations with appropriate adult/professional support.
 
-**Out of scope unless evidence changes the decision:** marketplace, autonomous industrial control, broad integrations, multi-site benchmarking, generalized ontology expansion, multiple vertical modules, speculative data-centre offering, and full public-site implementation before offer/claim validation.
+**Out of scope unless separately approved by evidence and release criteria:** deployed customer-data case engine, production migration changes, physical instrumentation/control, automatic recommendations or reviewer acceptance, payment custody, three separate service modules, generalized ERP/QMS replacement, supplier-network data sharing, speculative long-term infrastructure integrations. A public marketing release may be considered without validated demand ONLY if its claims and contact process are truthful and independently release-tested. Main is Vercel-connected: merging is potentially a deployment action, not mere document archival.
 
 ### D3 — First commercial wedge is NOT decided
-**Decision:** No permanent first wedge has been selected. The current comparison set is five problem families:
-1. Downtime / production loss.
-2. Quality defects / scrap / rework.
-3. Maintenance recurrence / reliability.
-4. Energy / material inefficiency.
-5. Cross-functional decision / handoff delay.
+**Decision (2026-10-17 amendment):** Screen exactly **R1 = C2 quality/rejection with directly related C1 production incidents**, **R2 = C6 customer acceptance/invoice evidence disputes**, and **R3 = C4 electricity billing/contract exposure** in fair customer discovery. C3 maintenance recurrence is a conditional supporting topic; C5 cross-functional handoffs is a pattern within a case, not an active fourth product. R1 is an illustrative **synthetic UI preference**, not a validated buyer or commercial winner. No selected first product, buyer budget, review capacity or defensible price exists yet.
 
-Procurement intelligence remains a possible adjacent or alternative opportunity only if discovery narrows it to a specific purchasing category, buyer, recurring decision, and measurable consequence. Energy intensity for a bounded asset/process has an existing candidate data contract; detail does not confer priority.
+**Stable IDs:** C1 downtime/production loss; C2 quality/rejection; C3 maintenance recurrence; C4 electricity contract/billing (broader energy only with evidence); C5 cross-team handoffs; C6 acceptance/invoice documentation. Do not promote case evidence such as procurement, logistics or machines into an independent division without explicit approval.
 
-**Current discovery probes (not wedge choices):** probe C1 (downtime/production-loss investigation) and C4 (energy/material inefficiency) deeply, to avoid spreading limited discovery capacity across five families. Reopen another stable candidate only if evidence materially weakens both probes or a buyer introduces a stronger specific case. A retrospective test is a later stage, only after Tier 1 evidence and Tier 2 permissions/reviewer/baseline gates.
-
-**Selection evidence:** severity/frequency; conservative addressable economics; buyer and budget ownership; current alternatives; authorized data access; credible baseline; qualified reviewer; time-to-useful-result; influenceability; willingness to pay; delivery burden and margin; safety/trust; repeatability; and expansion potential. Fatal blockers override scores. If evidence is insufficient, continue discovery rather than force a winner.
+**Selection evidence:** a real recent event and recurrence; economic consequence distinct from face value; existing software/team/expert alternative and residual gap; budget owner and observable next step; permitted data and credible comparison; qualified reviewer availability; constrained delivery effort and gross contribution; safety, trust, repeat work and disconfirming evidence. Fatal rights/expertise blockers override any score. **Only** the [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) records actual contacts, counts, score and Nov 10 GO TO BOUNDED TEST / NARROW / PIVOT / STOP decision. A completed fictional demo does not change this decision.
 
 ### D4 — Product readiness and claims
 **Decision:** Repository files, a functioning-looking UI, a green deployment, synthetic examples and completed documentation do not independently establish production readiness or customer value.
 
 Before describing a flow as working, record the actual build/commit/environment, test steps, observed outcomes and failures. Before pilot-ready, verify the authorized end-to-end path and required security/persistence checks. Before accuracy or superiority claims, use a pre-registered comparison and qualified review. Before savings claims, measure outcomes after an approved intervention.
 
-### D5 — Marketing website
-**Decision:** Homepage and marketing/sales strategy documents are design and messaging hypotheses, not authorization to implement the full public website now and not evidence of product capabilities.
+### D5 — Marketing website and production route
+**Updated authorization (17 October):** The founder authorized improving the existing Lovable-connected GridMind public experience with original signature green and an honest broader GridMind 3.1 story. Work on the existing **/website** route and its synthetic, clearly marked examples is allowed **now**, alongside customer discovery. This supersedes the older blanket prohibition on public-site implementation before selection.
 
-When the website is built, its goal is qualified problem-fit conversations, not unqualified demo bookings or guaranteed savings. “Hidden operational losses” is a hero hypothesis to test against evidence-led alternatives, not a settled winner. Public claims must match capabilities actually demonstrated. Use clearly labelled illustrative/synthetic examples; never invent customer logos, telemetry, results or case studies.
+**Release is separate from design:** do not present R1/R2 as live professional engines, imply savings or commercial traction, invent testimonials, expose sensitive records, or operate an unmonitored contact form. The public CTA should accept/request **non-confidential** discussion only, with a real tested receipt/owner and privacy treatment. Keep root **/** as the existing operational dashboard. PR #132 public-root/auth/onboarding rewrite remains a separate high-risk decision requiring route, role, tenancy and redirect acceptance.
 
-**Gate before full implementation:** refresh product truth; define the honest first offer and exclusions; test positioning with relevant buyers; map every public capability/result claim to evidence and readiness. Small research or copy tests are allowed if they do not distract from these gates.
+**Main is production-linked:** PR #136 must not be merged on the strength of a synthetic website screenshot or stale Vercel preview. Record the exact deployed SHA, passed checks, independent review, founder release permission and rollback/containment plan in the PR before changing main. Buyer discovery remains necessary before making a paid-service claim, but it need not prevent an accurate informational-only site release.
 
 ### D6 — Build strategy
 **Decision:** Build the smallest reliable vertical slice needed to test the selected workflow. Reuse the shared core only where it reduces delivery cost or improves decision quality in evidence. Do not build features solely because they appear on the long-term platform map.
@@ -148,16 +232,16 @@ The exact workflow depends on the selected use case. Not every candidate needs a
 | “GridMind covers the full industrial value chain” vs “focus on one use case” | One is long-term architecture; the other is immediate execution scope. | Keep the value-chain map as a discovery model; implement only the selected bounded case. |
 | Energy data contract is detailed vs first wedge must be chosen among three candidates | Detail does not equal strategic validation. | Treat energy as one candidate, compare fairly, and update the data contract only if selected. |
 | Expansion docs describe procurement, maintenance, energy, data centres and networks vs stop adding breadth | The expansion map is an option tree, not a simultaneous roadmap. | No module is authorized until customer demand and shared-core reuse pass a gate. |
-| Homepage spec says “build-ready” vs current instruction not to build the site first | “Build-ready” describes specification completeness, not current execution priority. | Do not implement full public site until offer and claim validation gates pass. |
+| Older discovery-only site freeze vs 17 Oct founder-authorized public-site build | Limited /website design and non-confidential contact were subsequently authorized, but neither service readiness nor production permission followed. | Honest /website source work may proceed; exact-SHA public release remains gated. |
 | Marketing hero recommends hidden-loss curiosity vs multiple positioning options remain | The recommended hero is a hypothesis, not a final market decision. | Test with buyers; do not optimize only for aesthetics or clicks. |
 | Accuracy document proposes 95% precision / 90% recall and 30 cases vs one bounded case in the 30-day plan | The task, label protocol, risk, and sample are not defined for a valid target yet. | Remove 95%/90% from active acceptance criteria. Define any threshold with a qualified reviewer only after the task and evaluation set are specified. |
 | Master thesis says GridMind can coordinate actions vs human-review rules | Coordination means recording and supporting approved actions, not autonomous control. | Customer retains authority; consequential actions require qualified human approval. |
 | “Data moat” ambition vs no validated permissioned dataset yet | A moat is a hypothesis until lawful, repeatable data advantage exists. | No claim of an existing data moat; test whether reuse is permitted and produces measurable advantage. |
-| Engineering plan puts schema/RPC/isolation work at P0 before offer selection | This contradicts D6 and there are no validated tenants or observations. | Discovery is the only P0. Preserve existing safeguards; defer new engineering until a selected offer demonstrates the specific blocker. |
+| Earlier discovery-only priority vs founder-authorized synthetic GridMind 3.1 work | Safe synthetic building and customer discovery are parallel tracks; existing security obligations remain. | No speculative production schema, broad integrations or customer-data release. |
 | More documentation vs actual execution | Documents support decisions but do not create validation. | After this consolidation, prioritize executing tests/interviews and recording results rather than generating more strategy documents. |
 
 ## 4. Current execution order
-1. Run the access experiment and buyer discovery first, using stable IDs C1–C5; C1 and C4 are the only active probes for this sprint.
+1. Run the authorized access experiment and compare **R1 (C2+C1), R2 (C6), R3 (C4)** with one sole live buyer tracker; no candidate is commercially selected.
 2. Offer a free, one-page non-technical workflow/decision map in exchange for a 20-minute conversation; do not request confidential records or promise an unqualified technical audit.
 3. Use Tier 1 evidence to decide whether a candidate deserves a bounded test. Tier 2 data, baseline, incrementality, reviewer, security, and delivery gates apply before a customer-data test.
 4. Keep engineering at minimum safe maintenance until the selected offer proves a specific technical blocker. No new schema/RPC/isolation project is P0.
@@ -195,7 +279,7 @@ Do not leave a superseded instruction silently active in a prominent document. U
 
 **Repository:** CI and isolated browser/security tests are not production readiness. Keep open release controls [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29), branch enforcement [#46](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/46), and preview defect [#98](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/98) separate from buyer validation.
 
-**Prior decisions:** The dated amendment history remains available in the [repository revision immediately preceding this consolidation](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/3e3fcbc2f38872429951bb04cf5fc3416156c604/docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) and the [nonbinding historical appendix](gridmind-historical-planning-appendices-2026-10-15.md). It is not a second active strategy.
+**Prior decisions:** The dated amendment history remains available in the [repository revision immediately preceding this consolidation](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/3e3fcbc2f38872429951bb04cf5fc3416156c604/docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) and the [nonbinding historical appendix](archive/gridmind-historical-planning-appendices-2026-10-15.md). It is not a second active strategy.
 
 ## Google authentication implementation decision — 16 October 2026
 

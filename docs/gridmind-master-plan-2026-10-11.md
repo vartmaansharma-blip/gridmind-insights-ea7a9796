@@ -1,318 +1,510 @@
 # GridMind Master Plan — Canonical Execution Plan
 
-**Last updated:** 2026-10-16 (capacity and relevance consolidation; customer evidence unchanged)
-**Status:** Discovery-first. No commercial wedge selected; no customer interviews, authorized customer data, pilot, revenue, or verified savings claimed.  
-**Authority:** This is the sole execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live tracker. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records durable guardrails; older strategy documents are reference material, not separate schedules or work queues.
+**Revised:** 2026-10-17 — GridMind 3.1 founder-directed execution edition  
+**Authority:** This is the **sole current execution plan**. [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live field-evidence tracker; [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs security, ethics, authority and conflicts. This replacement supersedes the former C1/C4-only discovery *ordering*, not established safeguards, retained code or technical test history. Former plan text remains retrievable through Git history.  
+**Evidence status:** **No verified customer interview, paid customer, qualified reviewer engagement, authorized customer-data test, proven customer ROI, or production release.** The 2026-10-12 ASIA inquiry is the only reported external access action; no reply established. No commercial wedge has won.
 
-## Authorized build exception — 16 October 2026
+## 1. Permanent strategic identity
 
-The founder explicitly instructed Codex: “start building it as fast as we can… proceed and complete it… commit it in the repository… leave the rest to Lovable.” This is a dated exception to D7 for the internal MVP implementation tracked in [issue #105](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/105).
+**Company:** GridMind — Industrial Profit & Resolution Intelligence (working positioning; name and immutable signature green retained).
 
-**Changed scope:** build and commit a synthetic internal investigation workflow from case scope through evidence, deterministic C1/C4 method evaluation, review, versioned Decision Brief, decision/outcome and service economics. Codex owns behavior/contracts/tests and minimal functional controls; Lovable owns visual design and interaction polish. The supplied MVP blueprint is supporting requirements, not a second execution authority.
+**Mission:** Help manufacturers understand, investigate, coordinate and verify resolution of economically significant operational **exceptions** that interfere with making, accepting, delivering or getting paid for products.
 
-**Follow-up implementation boundary:** the founder's “do it” authorizes the connected synthetic backend source and disposable validation alongside the offline exercise. Reuse canonical organization/factory membership; store the eight case objects in immutable JSON revisions with scoped assignments. The source migration and default-disabled API are part of the internal build. This does not authorize application to production or real-data intake. See the [implementation handoff](gridmind-mvp-lovable-handoff.md) and issue #105 for verification and remaining gates.
+**Category:** Expert-assisted industrial problem-resolution and decision-support business. **Not** an ERP replacement, full QMS replacement, payment processor, lending business, freight broker, energy auditor, cybersecurity consultancy, automated machinery controller or universal AI agent.
 
-**Three-area integration direction, 16 October:** the founder requested a public website, customer view and team view, then explicitly instructed us to preserve the existing Lovable dashboard and plan its integration with the investigation build first. Keep the current dashboard, specialist routes, case engine, authentication and published history. Extend the existing dashboard with role-specific case navigation rather than build replacement dashboards. The detailed proposed map and implementation sequence live in the existing [implementation handoff](gridmind-mvp-lovable-handoff.md). The founder subsequently authorized implementation, GitHub storage and minimal human touch. The integrated synthetic source adds public/customer/team routes, case-only permissions and automatic handoffs under issue #107; preserve independent review and customer decisions. This source implementation makes no production/customer-data readiness claim. See the handoff for implemented versus remaining boundaries.
+**Long-term ambition:** A trusted resolution layer across authorized factory processes and, where independently justified, industrial supplier networks and specialized infrastructure. A large-company outcome and expansion into power grids are hypotheses, not present capabilities.
 
-**Unchanged gates:** no commercial wedge is selected; discovery evidence remains unchanged. No customer/factory intake, production database change, production deployment, actual qualified approval, public commercial promise or paid engagement is authorized. Tier 1/Tier 2 and the technical release gate still govern real use. The synthetic workspace is a method demonstration; local browser storage is not approved customer-data custody.
+**What customers may buy:** A bounded, evidence-backed investigation and actionable decision record, followed by authorized corrective-action coordination and effectiveness checks. A customer is not buying an AI-generated root cause, a guaranteed saving, a guaranteed invoice collection, or technical certification.
 
-**Trade-off:** development now proceeds before buyer validation and may need narrowing after discovery. Keep the work isolated, preserve existing architecture/history and report readiness honestly. Earlier no-build statements below continue to apply outside this explicit exception. See the dated exception in the Decision Constitution and the [implementation handoff](gridmind-mvp-lovable-handoff.md).
+**The operating loop:** concrete exception → scoped consent → provenance-controlled evidence → facts vs competing hypotheses → relevant qualified review → approved recommendation and customer-owned action → verification with confounders → economic and service-cost review.
 
-## Executive operating summary — 2026-10-15
+## 2. Strategy: one firm, one shared capability, conditional adjacent offers
 
-**This section is the fast operating view.** The detailed sections below remain supporting specifications and guardrails; this file remains the sole execution plan.
-
-**Capacity correction (2026-10-16): founder reports five hours DAILY, not weekly. A 25-hour five-day working example is optional; preserve school, sleep and rest. Earlier weekly allocations are superseded.**
-
-**This week's operating view:** choose a specific buyer decision with a material unresolved gap. C1 and C4 remain open; discovery is P0. Use the table below for action, the tracker for actual results, and §14 for the current operating rules.
-
-| Next step | Owner / dependency | Done when |
+| Opportunity previously discussed | 2026-10-17 decision | Initial scope boundary |
 |---|---|---|
-| Confirm supporting adult and first access route | Founder nominated dad on Oct 15; his agreement and relevant connections are not yet confirmed | Dad agrees to support the specific outreach and helps identify at least one appropriate introducer/contact. |
-| Run the existing access experiment by Oct 19 | Founder + supporting adult; 3–5 requests only if real routes/capacity exist | Actual requests, replies, introductions and bookings are recorded separately in the tracker; zero remains zero until an action occurs. |
-| Hold discovery conversations toward Oct 31 checkpoint | Founder; willing manufacturing participants | Three substantive conversations and one explicit buyer next step are targeted; records contain incident, residual gap, decision owner and disconfirming evidence. |
-| Establish qualified-review and delivery feasibility before a quote/data test | Founder + appropriate reviewer; existing reviewer brief | Written review scope, availability and fee are obtained, and the tracker economics worksheet is filled from case-specific evidence. |
+| **C2 + C1: quality, rejected parts and connected production incidents** | **Preferred first commercial hypothesis: GridMind Resolve** | Investigations, evidence, 8D/CAPA-style action tracking, quality-related production events. Not generic QMS, autonomous root cause or predictive maintenance. |
+| **C6: customer acceptance / invoice-dispute workflow** | **Equal-status challenger in discovery** (possible higher-value economics); initially document/decision coordination only | Not receivables financing, collection guarantee, payments custody or regulated financial advice. |
+| **C4: electricity cost and contract exposure** | **Retained challenger** and independent synthetic technical capability | Narrow bill/contract review only with qualified electrical/tariff expert; not a physical energy audit or guaranteed savings. |
+| C3: general maintenance + field service | Adjacent **only if** a selected case genuinely requires it | No full CMMS rollout, technicians marketplace or machine intervention at launch. |
+| Supplier and procurement intelligence | Evidence within an exception first; later paid workflow only on demand | No inventory, lending, marketplaces or supplier claims unsupported by contracts. |
+| Logistics/trade | Relevant dispatch, acceptance and delivery evidence only | No full TMS, customs-brokerage or freight operations at launch. |
+| Cybersecurity | **Mandatory GridMind internal security**; separate commercial service rejected for now | No OT testing, intrusive scanning, cyber guarantee or unattended control. |
+| Grid connection, BESS, infrastructure | Distant option requiring independent market, technical and safety validation | No grid control, storage dispatch or engineering signoff without qualified authority. |
 
-**Current human input:** dad is nominated, not recorded as having accepted an engagement. No manufacturing contact, message, reviewer agreement or fee is inferred from that nomination. Reviewer preparation may proceed alongside access; it does not delay no-data discovery interviews. This view does not authorize outreach, customer data, implementation or commercial commitments.
+**Non-negotiable wedge rule:** Three *commercial problem lanes*, not three simultaneous products: **R1** quality-related exception (C2 + relevant C1), **R2** acceptance/receivables dispute (C6), **R3** electricity exposure (C4). Use a common discovery script; spend interview time on the participant's last costly unresolved event, not pitching all lanes. Pick **one** paid trial candidate at the existing 2026-11-10 gate.
 
-### Working definition and positioning
-GridMind is an **evidence-first industrial investigation service**: it turns a manufacturer's authorized bills, logs, and stoppage/operating records into an evidence-graded answer to one costly operational question, delivered through a bounded, human-reviewed engagement. This is the current positioning hypothesis—not proof of demand, a commitment to consulting-only delivery, or a claim that the current application already provides the complete service.
+**Specialist methods remain separate.** Shared storage/workflow does not establish domain competence. For R1, quality standards and corrective-action effectiveness require qualified professional judgment. R2 requires sound commercial and documentation processes and privacy. R3 uses versioned applicable tariffs, verified bills and a qualified reviewer. Findings from one cannot silently become facts in another.
 
-### Decisions D1–D8
-| ID | Current decision | Boundary |
+## 3. Initial ideal customer and distribution
+
+**Working ICP:** Owner-managed and small/mid-size automotive-component manufacturers in Jamshedpur–Adityapur, where an owner/plant/quality/finance decision-maker has an **actual unresolved, consequential exception**, the current team or provider has an observable gap, and the company has power to buy and act. Employee count 50–300 is a hypothesis, not a filter or market fact.
+
+**Potential buyers:** Owner or plant leader for R1, quality head as champion; finance/receivables decision owner for R2; plant finance/energy owner for R3. Never assume these roles share one budget.
+
+**Channel:** permissioned warm introduction with appropriate adult/professional support; one public-route inquiry to ASIA is already reported, no reply confirmed. Later investigate specialist consultants, industrial service firms, and authorized Tier-1/OEM supplier programmes. Do not represent association membership, referrals, enterprise interest or customer authorization without evidence.
+
+**Disqualify early:** Satisfied with current process, no meaningful residual gap, no buying authority, no safe record access, no acceptable review capability, no viable price, or customer seeking unsafe action or unsupported guarantees.
+
+## 4. Commercial offer and business economics
+
+**Free discovery give:** One-page workflow/decision map from a voluntary, non-confidential conversation only. It is **not** a professional audit, compliance certification, finding, sales promise or customer proof. No record collection before approval.
+
+**First paid offer (after gate):** GridMind Resolve / corresponding selected single-lane review; written question, boundaries, exclusions, source list, facts/uncertainty, qualified signoff when needed, actionable decision brief, verification plan, price, reviewer cost, timeline, customer rights and stop conditions. Quotes and SLAs require suitable commercial/technical authority.
+
+**Future ladder (conditional):** 1) single bounded paid case → 2) repeated investigation and action follow-up where repeat demand is demonstrated → 3) software-enabled case and evidence workflow → 4) multi-factory/permissioned supplier-network programmes. Each layer requires its **own customer willingness and cost evidence**. No mandatory subscription and no presumed network effect.
+
+**Per-engagement management accounting:**
+- Revenue **actually collected** (report quoted, contracted, invoiced and collected separately).
+- Direct cost: specialist hours/fees, founder + staff service hours at shadow rates, travel, storage/model usage, QA, implementation support.
+- Contribution = collected revenue minus direct case delivery costs; report separately cash timings, acquisition/onboarding and fixed overhead. Do not conflate contribution with operating profit.
+- Track case cycle time, revisions/rework, unresolved errors, explicit customer decision, baseline/outcome evidence, confounders and customer continuation/renewal.
+- **Management ambition**, not a customer promise or current forecast: repeatable engagements with positive contribution, a credible path toward >50% gross margin, customer acquisition payback consistent with cash flow, and paid repeat demand. Reject uneconomic engagements.
+- Prices such as ₹15,000 and timeframes previously explored are **unvalidated examples**, not an approved offer.
+
+## 5. Firm-wide product map (future target, not MVP)
+
+```text
+Public marketing site ── non-confidential conversation ── qualified scope
+       │
+       └── authorized customer account / factory identity
+                           │
+               GRIDMIND RESOLUTION CORE
+          permissioned cases • evidence & provenance
+          versioned findings • independent human review
+          approved actions • verification • case economics
+                           │
+                ┌──────────┴──────────┐
+                │                     │
+         Customer workspace      Internal/reviewer workspace
+         approved results only   scope, revision, QA, release
+                │                     │
+                └──────────┬──────────┘
+                           │
+            ONE validated paid commercial lane
+              R1 quality/incident OR
+              R2 acceptance/invoice exception OR
+              R3 electricity exposure
+                           │
+         conditional repeat → cross-factory → supplier network
+         conditional domain expansion and infrastructure
+```
+
+**System boundaries:** GridMind complements existing ERP/QMS/accounting/maintenance tools; does not duplicate their transaction ledgers or provide unauthorized access to them. Maintain organization/factory/case isolation, server-verified roles, least privilege, document custody and retention rules. Cross-buyer/supplier visibility must be contractually explicit.
+
+**Current source truth:** Existing TanStack Start/React/Vite/Bun app and Lovable-branded public view, customer routes, staff routes, energy dashboards and synthetic C1/C4 case engine **remain**. Source supports C1/C4 synthetic technical demonstrations; **no** claim of implemented R1/C2 or R2/C6 connected backend is permitted. Existing root `/` is the operational dashboard; public marketing is `/website` pending a separately verified and reversible route migration. Preserve signature green and the existing design rather than overwrite it.
+
+**Team division:** Codex/engineering owns schemas, tests, backend permissions and integration; Lovable owns visual polish and responsive UX under [implementation handoff](product/gridmind-mvp-lovable-handoff.md). Do not let design alter security or analysis decisions.
+
+## 6. Execution: one sprint, explicit gates, not unlimited planning
+
+| Target date / sequence | Owner and work | Acceptance |
 |---|---|---|
-| **D1 — Positioning** | Evidence-first investigation service for one consequential manufacturing question. | Not a generic AI platform or dashboard; no autonomous diagnosis or unsupported savings claims. |
-| **D2 — Initial segment** | Explore owner-run and mid-size manufacturers in the Jamshedpur–Adityapur belt; 50–300 staff is a working segment hypothesis. | Validate size, buyer access, and fit through discovery. Do not present cluster counts or Tata dependence as proof of buyer demand. |
-| **D3 — Sequencing lens** | Compare the electricity-bill and power-disruption entry route first, alongside C1 downtime/production loss and C4 energy/resource inefficiency. | This is a research sequence, not a selected wedge. The 2026-11-10 gate still decides. Do not repeat an unverified blanket “8% tariff rise” claim; use the applicable tariff category/order only after checking it. |
-| **D4 — Offer ladder** | (0) Free one-page workflow/decision map from an interview; (1) bounded paid, human-reviewed brief; (2) recurring monitoring only after evidence. | ₹15,000 and 5–10 working days remain unvalidated hypotheses, not approved pricing or an SLA. |
-| **D5 — Evidence hierarchy** | Public-source facts, participant statements, and controlled experiments stay in separate evidence classes. | Simulated interviews, synthetic fixtures, and desk-only hypotheses never enter the customer evidence ledger. |
-| **D6 — Reviewer dependency** | A qualified reviewer is not required to hold non-technical discovery interviews. | A suitable reviewer remains a gate before technical interpretation or any customer-data test. External outreach still requires appropriate adult/professional support. |
-| **D7 — Scope freeze, amended 2026-10-16** | Until the 2026-11-10 decision, no speculative expansion or second strategy. The founder-authorized internal synthetic MVP is the explicit build exception above. | Infrastructure, correctness, security and safety repairs remain permitted. Customer-data and production gates remain binding; keep CI intact. |
-| **D8 — 2026-10-31 checkpoint** | Target at least 3 substantive manufacturing conversations held and at least 1 explicit next step from a buyer (e.g., introduction to budget owner or request to review a scoped proposal). | If missed, record the actual access constraint and revise the plan honestly. No invented funnel rates or evidence. Real bills/data remain prohibited until Tier 2 gates pass. |
+| **17–19 Oct 2026** | Founder + confirmed supporting adult: 3–5 legitimate warm-introduction requests where routes exist; optional ASIA follow-up after appropriate interval | Only real sends/replies recorded in [live tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). Adult nominated is **not** yet confirmed engaged. |
+| **By 31 Oct** | At least 3 substantive manufacturing conversations **target**, covering recent exceptions and existing alternatives | At least 1 explicit credible buyer next step **target**. Non-confidential permitted notes, exact disconfirming details, zero fabrication. |
+| **10 Nov decision** | Compare R1/R2/R3 using evidence—not idea scores—and decide **GO TO BOUNDED TEST / NARROW / PIVOT / STOP** | Named buyer decision, material gap, credible reviewer, safe data path, buying signal, reasonable prospective service economics. A small interview sample is not market proof. |
+| **Next, only after acceptance** | Qualified expert and adult/professional oversee tightly scoped authorized customer pilot | Signed role/scope/permission, secure custody passed, defensible delivery, real costs and customer acceptance recorded. |
+| **Then** | Offer and collect payment; measure contribution and repeat need | No claimed profitability from quotes or hypothetical savings. |
+| **Then** | Automate reliable repeatable case steps, expand role-specific portal and signed customer release | Tested tenant isolation, reviewer independence and end-to-end acceptance; no speculative ERP/OT integrations. |
+| **Later** | Multi-site and supplier network, further service lanes | Demonstrated paid demand + data rights + compelling unit economics + domain team. |
 
-### Current state and next action
-- Commercial wedge: **not selected**. C1 and C4 remain the two active probes.
-- Customer conversations held: **0 confirmed**; buyer next steps: **0 confirmed**; authorized customer data: **0**; reviewer secured: **no**.
-- The ASIA public-route inquiry was sent 2026-10-12; no reply or referral is confirmed. Follow up once around 2026-10-19 if appropriate.
-- The next execution priority is to make 3–5 genuine warm-introduction requests by 2026-10-19 **only where legitimate contacts and capacity exist**, with appropriate adult/professional support. Dad is nominated; confirm his agreement and scope before external outreach.
-- No real bill, factory visit, commercial commitment, or customer-data trial is authorized by this plan. Do not start another planning cycle.
+**Founder capacity:** ~5 project hours/day when feasible; school and rest take precedence. No forced schedule. Next working block: 1h actual introduction paths, 1h consent-safe interview pack, 1h reviewer qualification route, 1–2h synthetic Resolve workflow implementation and test review. This is a planning allocation, not recorded completed work.
 
-## 1. Objective
+### Discovery scorecard (do not substitute arithmetic for evidence)
 
-Find one reachable industrial workflow where a specific buyer has recurring or high-consequence pain, existing alternatives leave a material gap, the buyer will take a concrete next step, and a small human-reviewed service can be delivered responsibly.
+For each **real** observed customer event record: last event and recency; business consequence (actual vs estimate); frequency; existing best solution; gap that persists; buyer and budget; prior paid workaround; minimum permissioned data; expert feasibility and cost; proposed price and cash term; explicit next step; disconfirming evidence. Compare R1/R2/R3 consistently and document why the winner beats existing providers.
 
-**30-day decision date: 2026-11-10.** The outcome is **GO TO A BOUNDED TEST / NARROW / PIVOT / STOP**, not a promise of a paid pilot or verified savings in 30 days.
+## 7. Technical implementation, first slice
 
-## 2. Current truth
+**Release intent:** build and test **isolated synthetic** product foundations now at the founder's instruction. This authorization does **not** permit production database schema changes, real customer documents, public release, live controls, or a paid technical engagement.
 
-- Commercial wedge: **undecided**.
-- One initial inquiry to ASIA was sent by the founder on 2026-10-12. No reply, referral, conversation, customer commitment, buyer-approved data, or factory access is confirmed.
-- The long-term thesis remains: authorized evidence → traceable finding → human-reviewed decision → approved action → measured outcome → retained learning.
-- The first offer is a service experiment, not a claim that GridMind's current software can autonomously diagnose causes, prescribe interventions, or verify savings.
-- Do not make production-readiness, customer, accuracy, ROI, savings, endorsement, or integration claims without evidence.
-- Technical CI and isolated migration checks are not proof of production readiness or customer demand.
+**Slice S0 — Complete / preserve:** existing C1/C4 synthetic case pipeline, reviewer gates, case version integrity, customer/team case projections where code evidence supports them. Retain source and history; no destructive migration.
 
-## 3. Stable candidate register
+**Slice S1 — In progress under this decision:** domain-neutral commercial case intake contract for a fictional factory exception: lane, operational consequence, current alternative, authorized evidence requirements, buyer decision and explicit unknowns; **never label a triage classification as an engineering diagnosis**. Unit tests and an honest synthetic entry point. A quality/receivables case is *not* yet a connected professional engine.
 
-Use these IDs everywhere. Do not use letters such as “Hypothesis A” as shorthand.
+**Slice S2 — Conditional after code QA:** connect an authorized R1 case type only when it has a real quality-specific evidence schema, deterministic checks, reviewer competence/assignment, safe customer projection, action ownership and tests. Separate R2 financial documentation and R3 tariffs. Do not simply add enum labels to the existing C1/C4 engine; that would misapply methods.
 
-| ID | Candidate workflow | Buyer roles to explore | Sprint status |
+**Slice S3 — Conditional:** production-quality data custody, audit trail, scoped document storage, tenant/RLS checks and qualified review; then limited customer acceptance. Live [release gate](release-gate.md) and [issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) remain binding.
+
+**Critical tests:** typecheck, lint, Vitest, docs link audit and build, plus authenticated tenant-isolation/approval tests in an isolated environment. A PR or Vercel status failure is not green. **No checks are claimed passed by this strategy update.**
+
+## 8. Stop rules and principal risks
+
+- **Demand:** no concrete costly recent buyer case, no residual gap vs SAP/Odoo/QMS/consultant/internal team, or repeated unwillingness to take a concrete next step → NARROW/PIVOT/STOP.
+- **Economics:** reviewer/service hours make the reasonable paid price uneconomic, or customers only buy once when a subscription is required for viability → redesign or stop. Track actual cash and collection delays.
+- **Technical:** incomplete data, irreproducible calculations, unqualified technical claims, customer cross-tenant leakage, missing permissions, unsupported outcome claims → no live use.
+- **Liability:** no automated industrial control, physical interventions, financial advice/financing, formal audits/certification, or OT cyber work without qualified authorized parties.
+- **Strategy:** do not form independent QMS, ERP, procurement marketplace, lender, logistics operator, energy engineering firm or cybersecurity product groups as speculative parallel builds. New evidence must justify each business extension.
+- **Trust:** no fictitious customers, endorsements, domain credentials, savings, supplier-network adoption or marketing claims.
+- **Governance:** preserve the existing repository, migrations, brand token and CI requirements; use branch → reviewable PR → green gates → merge. No force-merge or bypass of paid/limited deployments.
+
+## 9. Decision register and next accountable actions
+
+| Decision ID | New binding direction as of 17 Oct | Evidence / limit |
+|---|---|---|
+| G31-01 | One industrial profit/problem-resolution company; one shared evidence-to-action core | Founder instruction + workflow/competitive reasoning; not a paying market |
+| G31-02 | Three **screening lanes** R1(C2+C1), R2(C6), R3(C4) and **one** eventual paid entry | Does not imply multiple first products |
+| G31-03 | Prefer R1 GridMind Resolve as a provisional design demonstration | Commercial priority remains **undecided** until 10 Nov |
+| G31-04 | Procurement/logistics/maintenance evidence can support a selected investigation; no standalone modules | Reopen only with customer pull and positive unit economics |
+| G31-05 | Cybersecurity as internal platform protection; energy independent; grid-tech long-term optional | No independent commercial divisions now |
+| G31-06 | Protect existing Lovable experience, signature green, C1/C4 engine, and isolation controls | Never equate synthetic test with production readiness |
+| G31-07 | Paid value, actual collections, expert cost, safety and reviewer authority beat feature breadth | No ROI, pricing or margin proof exists |
+| G31-08 | Discovery dates and one tracker remain; quality/C1, receivables, C4 get explicit fair comparison | Supersedes older C1/C4-only probe ordering |
+| G31-09 | Founder authorizes synthetic S1 code/document alignment now; real customer/production gates unchanged | No blanket approval to deploy or handle confidential records |
+
+**Do now:** Record real access attempt, identify the right expert route, build and inspect the isolated synthetic triage contract, prepare the buyer comparison. **Do not** redesign the full dashboard or widen product scope in lieu of actual customers.
+
+### GridMind 3.1 main-branch promotion is a separate decision from commercial validation
+
+**17 October 2026 decision:** [Draft PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) mixes a large documentation transition with a public-site update, synthetic case flows and changes touching tenancy/migrations/Edge Functions. The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) G31-M01–M10 and [pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) govern whether code may be merged into the production-connected **main** branch. The default is **hold draft** until an exact-commit scope/review/test/rollback record and founder release authorization exist. A narrower public-site/docs release may be prepared on a new small branch without rewriting Lovable history; real customer-data release remains separately blocked by Supabase/tenant gates. Never imply a marketing site or synthetic demo proves a commercial offering.
+
+**Four distinct states to keep visible:** (1) strategic hypothesis selected (currently none), (2) synthetic source tested (partial), (3) public informational experience independently approved/deployed (not established by a source PR), and (4) real factory customer workflow, expert delivery and paid economics evidenced (not established). The **next buyer decision** still belongs to the sole live discovery tracker and remains independent of a software merge.
+
+### GridMind 3.1 industrial intelligence competitor adaptation — 18 October 2026
+
+**Learning, not a feature race:** [2026 competitor learning register](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) verifies external industrial AI developments and maps **CADDi provenance**, **Arch lighthouse-to-action workflow**, **Noetive cross-functional case core**, **Siemens/NVIDIA human-reviewed deterministic/physical-model limits**, **Neara topology/asset separation**, and **GE Vernova operator decision authority** to GridMind without copying those companies. External funding/case-study results are **not** our customer validation, revenue or ROI. No universal industrial agent, asset digital twin, ERP replacement, sensors, grid control or expansion budget is approved. Retain the one permissioned case core and specialist method-per-domain architecture.
+
+**Commercial priority refinement (not wedge selection):** Research **R3 electricity billing and contract exposure FIRST**, while testing **R2 invoice acceptance/documents as a meaningful challenger**, and retaining R1 as a **fictional illustration**. No paid first wedge has won. This supersedes only an equal-priority sequencing of R1/R2/R3; older Oct 10/17 safety gates and the **Nov 10 interim decision** remain. One accessible manufacturing owner/relative is a prospective introduction, **not a held interview** unless recorded as such in the sole buyer tracker. Every paid launch requires competent expert capacity, rights, legal/contracting approval, contribution economics and buyer action. Guard against R3 selection bias by comparing R2 against its actual best incumbent.
+
+**First technical research method:** [R3 supplier-specific screening contract and 12 fictional negative fixtures](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) covers precisely contract-demand line, applicable power-factor line and tariff category. The JSERC official register distinguishes **JBVNL, Tata Steel and TSUISL** orders, with effective dates and amendments; a generic Jharkhand tariff calculation is prohibited. Initial method is **expert-review pending** and **not a functioning engine**; missing source → inconclusive. Do not ingest real bills into public GitHub or unapproved Supabase. Expert-approved synthetic spreadsheet/protocol first; technical automation only if its repeated manual use and buyer value are supported. The free screen is a **bounded acquisition experiment**, not a promise of refund.
+
+**Operating learning:** source integrity → observed findings and alternatives → qualified reviewer → customer-approved owner/action → measured/estimated/inconclusive verification. Price and acquisition cost must account for rejected/negative screens and all founder/sales hours. Default fixed investigation fee (test ₹15k narrow / ₹35k thorough), hybrid attributable outcomes only under professionally reviewed contract, not guaranteed. Test experimental thresholds (e.g., 20 eligible R3 screens, 4 material expert-supported flags, 2 buyer-level commercial next steps, R2 parity) **only after precommitment** in the buyer tracker; failure to obtain access ≠ no demand. These are proposed management hypotheses, not real results. **No merge, payment integration, real customer-data gate or professional authorization changed.**
+
+### GridMind 3.1 broad manufacturing research and service/payment architecture — 17 October 2026
+
+**Research scope, not service expansion:** [100 manufacturing problem hypotheses](research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) have been organized into ten domains—quality, production, maintenance, procurement, inventory/logistics, energy/utilities, finance/commercial, workforce/safety, compliance and information/strategy. Each distinguishes proposed **direct evidence workflow**, **qualified expert assistance**, and **partner referral**. It is a sourced problem taxonomy, not 100 verified local factory complaints, 100 built methods, buyer commitments or permission to “solve everything.” Keep **R1/R2/R3** as the only current interview candidates and choose **one** paid entry after the sole discovery tracker produces actual evidence.
+
+**Service design:** [GridMind service SOP / commercial and payment blueprint](operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) specifies authorized inquiry → bounded quote and appropriate adult/legal contracting authority → signed rights and specialist competence → evidence/uncertainty review → customer decision → measured outcome → actual payment reconciliation and case contribution. Proposed **₹15,000–₹50,000 per bounded case** and **₹25,000–₹75,000/month** for any future justified Continuity service are **illustrative, untested pricing hypotheses**, not a fixed catalog or accepted market price. The former tentative ₹15,000 electricity review remains unvalidated. Fully account for expert labor, travel, taxes and collection; no invented cash or guaranteed savings.
+
+**Payment decision:** distinguish fees **paid to GridMind** from invoices/receivables **owed to manufacturers**. Start with legally authorized B2B quotation/invoice and business bank transfer after properly approved entity/account/signatory/tax compliance; optional payment links via a regulated provider only when merchant eligibility, adult/professional oversight and actual customer preference justify it; no custom payment processor. GridMind must not collect clients' disputed receivables, act as a lender, hold payments in custody or promise legal collection. No live checkout, merchant account or lawful customer billing is evidenced or authorized by this research plan.
+
+**Product boundary:** [manufacturer resolution architecture](product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) organizes one **permissioned case–source–observation–hypothesis–qualified review–customer-approved action–outcome** core. Later R1/R2/R3 domain methods need specialized test fixtures and expert signoff; adding categories or case labels does not implement 100 analytical engines. Lovable green, existing routes and C1/C4 synthetic source are preserved. [Pre-merge decision gates](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md), production Supabase issue #130 and live authenticated issue #29 are not waived. **All three new documents are supporting research/specifications**, not alternate master execution plans or new work authorization.
+
+## 10. Current truth checklist — update only when evidenced
+
+- Buyer meetings held: **0 verified**.
+- Paid engagements or cash collected: **0 verified**.
+- Real factory/customer records authorized: **0 verified**.
+- Qualified domain reviewer agreement: **none verified**.
+- First commercial wedge: **not selected**.
+- Product readiness: **synthetic C1/C4 source and some integrated sample routes exist; live release gates pending**.
+- Strategic direction: **GridMind 3.1 chosen as planning architecture**, not proven profit or industry dominance.
+
+
+---
+
+# PART II — Detailed company, product, financial and execution architecture (17 October 2026)
+This part is an expansion of the **same canonical Master Plan**, not a new strategy, task queue or commercial approval. Part I and the security constitution still govern. Specific product contracts and case economics are supporting details in [Resolve domain specification](product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) and [Business/risk operations](operations/gridmind-company-economics-and-risk-register-2026-10-17.md). If they disagree, correct them here.
+
+## 11. First principles: what creates value, and what destroys it
+Manufacturers do not buy a business category. They buy a credible improvement in an actual decision, workflow or outcome. Most factory problems have existing owners and processes; a new vendor must prove **incremental value** over that real alternative.
+
+Value chain: order → supplier input → production → measurement/quality → delivery → customer acceptance → invoice → collected cash. Exceptions in one link sometimes propagate, but **a payment delay is not automatically caused by quality**, and the same single case must not count overlapping consequences as separate savings.
+
+**Three thesis tests**:
+1. Does a real buyer identify a recent high-stakes exception the existing QMS/ERP, accountant, consultant or team did not close efficiently?
+2. Can GridMind deliver a safer, more complete or materially faster authorized decision and follow-up at a price above *fully counted* variable service cost?
+3. Is a repeatable cross-case method possible without consulting cost expanding linearly with revenue?
+
+**If the best answer is process improvement using the customer's existing tools, recommend it** rather than forcing software. An honest “we are not needed here” is a qualified outcome, not a failed sales call.
+
+## 12. Which profit pools to pursue; which to reject
+| Profit pool | Potential budget owner | Recurrence / profit engine | Principal obstacle | Entry rule |
+|---|---|---|---|---|
+| Quality rejection/CAPA execution | Quality head + owner/plant head | Continuing exceptions, documented remediation | Incumbent QMS and in-house engineers | Specific repeat unresolved issue with acceptance evidence |
+| Quality-linked incident coordination | Plant/production/quality | Shared case handling; safe professional review | Root-cause uncertainty; site data gaps | Demonstrate evidence provenance and accountable human |
+| Disputed acceptance / invoice documentation | Finance/commercial head | Ongoing documentation and resolution workflow | Credit/payment disputes may be unrelated; access to buyer | Recent actual disputed document, authority and realistic next step |
+| Electricity billing/contract exposure | Plant finance/energy head | Annual/periodic check; possible watch only if repeated | Existing bill reviewers, tariffs, lower frequency | Unresolved tariff/contract question, verified applicable rules |
+| Supplier corrective-action network | Tier-1 buyer / OEM purchasing-quality sponsor | Per-supplier/enterprise programme contracts | Longer procurement, conflicts, consent, QMS competition | At least two independent customer success cases plus committed sponsor |
+| General CMMS/QMS/ERP/fintech marketplace | Multiple separate buyers | High hypothetical TAM, high capital burden | Full-system parity, compliance, go-to-market | **Rejected as startup scope** |
+| Specialized grid/storage/cyber OT | Utilities/asset owners | High-stakes possible future services | Formal accreditation, expertise, liability, capital | Separate investment thesis years later; not inherited by brand |
+
+**Unifying competitive thesis:** an “exception-to-resolution” service layer that works *with* existing systems and responsible professionals. Competing only on AI text generation, a dashboard, bill parsing or 8D templates has little defensible value. A shared data model reduces costs only after work patterns are demonstrably reusable.
+
+**Structural threats:** industry incumbents can add features; large companies may refuse a new intermediary; sensitive data may never be shareable; services margins may plateau; factory decision cycles and collection cycles can consume cash. All are first-order strategic risks, not afterthoughts.
+
+## 13. Exactly who pays: buying committee and incentive conflicts
+| Role | R1 involvement | R2 involvement | R3 involvement | What they need |
+|---|---|---|---|---|
+| Economic buyer: owner/MD/plant head | Authorizes fee, improvement resources | May arbitrate credit dispute | Approves billing review | Cost/risk consequence, deliverable, payback, trust |
+| Process owner: quality head | Owns rejection/CAPA and facts | May establish acceptance status | Context only | No duplicate re-entry, source-linked findings |
+| Production/maintenance manager | Timelines and process conditions | Dispatch implications | Load/shifts context | Safe bounded investigation, not blame |
+| Finance/commercial lead | Quantifies write-offs/claims | **Primary sponsor** | **Primary sponsor** | Documents, disputed amounts, collection terms |
+| Customer procurement/quality | May approve supplier corrective actions | May control acceptance and timing | Usually none | Transparent but **contractually allowed** sharing |
+| IT/security/data owner | Approval for integration/retention | Controls invoice/customer records | Controls sensitive bills | Access control, custody, audit, deletion |
+| External specialist | Reviews technical conclusions | Reviews commercial/accounting interpretation | Reviews applicable tariffs | Independence, fee, liability boundary |
+
+Two-sided interests can conflict. A buyer cannot silently give GridMind permission to expose a supplier's confidential data. Likewise, an OEM-funded study could bias results unless scope, sponsor influence and expert independence are disclosed.
+
+**Pilot buying path:** identify technical champion → verify economic buyer → confirm incumbent alternative → set scope/exclusions → determine decision rights and procurement cycle → qualify expert and data route → commercial offer. An interview or verbal interest is **not** an executed contract.
+
+## 14. Service design, with acceptance and refusal criteria
+**Front door:** no mandatory sign-in to understand service; contact through a non-confidential discussion route. Never instruct prospects to upload factory documents into unapproved forms, demos, email chains or browser localStorage.
+
+**Proposed free output:** participant-approved one-page map of event, teams, handoffs, known unknowns, and decision owner. Never label it certified diagnosis or expert review.
+
+**Qualified, paid engagement template (future, after gates):**
+- Commercial sponsor, operating owner, affected factory and defined time window.
+- Exactly one problem, trigger and decision question; best current alternative and why insufficient.
+- Permitted scope, list of required records, owner of each record, rights to use and retention/erasure period.
+- Method selection and reviewer credentials/independence; no assurance beyond agreed standards.
+- Outputs: source register, chronology where meaningful, facts/calculations versus hypotheses, conflict/uncertainty register, reviewed findings or explicit insufficiency, owner-approved action plan, verification design.
+- Commercial terms: fixed/limited scope, review hours, fee/expense cap, milestones, cancellation, dispute handling, confidentiality, liability and who owns final decisions.
+- Customer acceptance: explicit correction process, sign-off, recommendations not self-executing.
+- Outcome follow-up: baseline, intervention evidence, post-period, alternative causes, whether a financial amount is **measured**, **estimated**, or **unknown**.
+
+**Reject engagements** with no demonstrable problem, customer demanding guaranteed savings/collection, unsafe factory controls, no lawful data rights, insufficient specialist competence, contradictory documents that cannot be reconciled, or negative fully costed economics without a deliberate funded experiment.
+
+## 15. Sales and marketing: prove, do not advertise a fantasy
+- **Audience:** narrow automotive suppliers with a real recent rejection, handoff failure or operational cost question. Jamshedpur–Adityapur is an access experiment, not a geographical moat.
+- **Positioning:** “Understand the evidence behind one unresolved factory problem, coordinate the right next decision, and verify follow-through.” Avoid “we solve all factory problems,” guaranteed profit, auto-diagnosis and compliance certification.
+- **Marketing surfaces:** single public brand with green signature token; problem, realistic limits, fictional worked example, how professional review works, no fake client results, optional conversation. Customer workspace only after appropriate agreement.
+- **Channels to test in order:** legitimate warm introductions; relevant professional/association event routes; engineering/accounting/quality specialist introductions; after results, owner referrals; only then enterprise buyer-led supplier programmes. Track actual conversions, not hypothetical funnels.
+- **Displacement test:** ask for last supplier/consultant/QMS/ERP workflow and why its owner would pay for GridMind *in addition*. If no gap, exit.
+- **Trust kit before paid pilot:** qualified expert profile where authorized, concise sample deliverable clearly fictional, privacy notice, scope/limitations, data custody protocol, complaint/correction procedure, contactable responsible contracting entity. No borrowed logos.
+- **Sales funnel states:** legitimate route → request sent → reply → intro → interview booked → interview held → problem qualified → scoped proposal requested → proposal sent → agreement → authorized data → completed engagement → accepted outcome → invoice → cash collected → renewal. Never merge adjacent stages in reporting.
+
+## 16. Product boundaries by role and customer experience
+**Public site:** story of industrial exceptions; why existing fragmented data can complicate decisions, how evidence review works, real qualifications only, contact. Electricity example remains labeled **fictional** and **illustrates the method only**.
+
+**Customer workspace (later, permitted):** factory selector; active assigned cases only; case progress; customer-action requests; explicit evidence ownership; approved published findings; corrective-action owner/status; outcome and remaining uncertainty. Never show internal review drafts or other customers.
+
+**Reviewer workspace:** assigned case, frozen technical snapshot, provenance references, conflict register, competence, accept/revise/reject and dissent. Review binds to exact revision; new evidence invalidates previous technical clearance.
+
+**Operations team:** scope acceptance, evidence checks, expert assignment, quality assurance, revision and release, service-cost ledger, audit trail and customer acceptance. All authorization server-side; hide elements **and** reject unauthorized requests.
+
+**Management dashboard:** open consequential exceptions, next owner action, late corrective actions, accepted case outcomes, data-confidence status, service margin. **No fabricated ₹ saving card** and no cross-factory benchmarks without consent and reliable comparison methods.
+
+**Shared objects:** organization, factory, member/role, customer boundary, case, consent, evidence provenance, observation, method-specific analysis, finding, review, published brief, action, acceptance, measurement, financial costing, audit event. Records are versioned with stable IDs. Details and acceptance criteria live in the supporting domain contract.
+
+## 17. Architecture sequence / “do not build yet” contract
+Current app: TanStack Start + React + Vite + Bun + Lovable + Supabase, public /website, dashboard /, customer /cases, internal /team/* and synthetic C1/C4 engine. Preserve existing routes, green brand, authenticated factory identity and tests.
+
+**Step A (now; synthetic only):** finish static fictional R1/R2/R3 triage, typed contracts and tests. No persistence, no customer records, no technical judgement. Check contrast, navigation, responsiveness, missing-state copy.
+
+**Step B (only when a candidate wins and method is reviewed):** dedicated domain model for one selected case, deterministic validation of chronology/document relationships, explicit accepted/unknown status, evidence rights, reviewer competence, and safe published projection. Do **not** change enum values in C1/C4 engine and call it quality intelligence.
+
+**Step C (security-ready, still isolated):** source storage and audit history, RBAC/RLS, secure document custody, retention/erasure, cross-tenant negative tests, reviewer independence, restore/retry, customer scope acceptance, data export.
+
+**Step D (pilot technical gate):** test on exact release commit; expert method sign-off; explicit adult-supported customer agreement, permissions, scoped datasets and rollback. No live industrial actuator integration.
+
+**Step E (after paid workflow evidence):** automate validated repetitive extraction, review queues and reporting; consider standardized CSV/ERP exports *before* direct integrations; build supplier/network sharing only with distinct contractual rights.
+
+**Never in launch MVP:** predictive sensors, live SCADA/PLC access, financial custody, open multi-tenant document uploads, unattended root-cause AI, an ERP clone, mass seller/buyer marketplace or public release of expert-only findings.
+
+## 18. AI and analytical reliability
+- **AI may:** draft non-binding summaries, classify documents in bounded vocabularies, extract text with citation/verification, identify missing fields, prepare reviewer checklists.
+- **AI may not:** invent missing readings, claim deterministic root cause, certify IATF/ISO standards, choose/operate factory machinery, move money, approve its own output, infer contractual permission or publish unreviewed findings.
+- **Provenance:** every claim carries exact source ID, version, relevant time/units and whether participant statement / document / estimate / hypothesis. Contradictory sources stay visible.
+- **Deterministic methods:** verify timezones, units, periods, tariff effective dates, invoice identities and case-specific logic; clearly report “insufficient evidence.”
+- **Review:** qualified and independent when appropriate, explicit competence, exact revision hash, dissent; corrections unpublish or invalidate old conclusions. Local synthetic review flags are not real approvals.
+- **Quality program:** seeded synthetic positive/negative cases, missing and adversarial records, contradictory records, two-factory isolation, invalid permission, stale revision, malicious document text as data. Measure false conclusions as seriously as speed.
+
+## 19. Financial plan: cash, pricing, capital and reinvestment
+Before accepting a pilot, compare **customer value that can reasonably be supported** with realistic costs. Qualify price through buyer action, not guesswork or broad market turnover.
+
+**Track separately** 1) offer price, 2) contracted amount, 3) invoiced amount, 4) collected amount, 5) direct delivery cost, 6) acquisition and onboarding, 7) fixed operating expense, 8) cash reserve/runway. Gross margin is not operating margin, and a late invoice is not cash.
+
+**Cost-control default:** zero speculative equipment purchases; use existing repo/Lovable stack; contract qualified experts case-by-case; avoid long retained consulting commitments before demand. No age-restricted contracts or unsupervised site visits by the student founder.
+
+**Financial gates:** no invoice without an agreed scope and contracting entity; no recurring price until customers articulate recurring outputs; no annual forecast without retention and sales-cycle observations; no guarantee of collection/savings. Unit economics model, sensitivity analysis and definitions are maintained in [company economics/risk register](operations/gridmind-company-economics-and-risk-register-2026-10-17.md).
+
+**Failure arithmetic:** high top-line revenue does not imply value creation when travel/review and support dominate. If more buyers require unique customization, stop and narrow the ICP rather than disguising consulting time as software margin.
+
+## 20. Distribution and defensibility: opportunities to capture the “cream”
+**Best reachable entry:** an unresolved exception whose outcome is important enough that an accountable owner pays for better resolution.
+
+**Potential higher-value next buyer:** multi-site manufacturer or Tier-1 quality/procurement sponsor seeking authorized resolution across selected facilities/suppliers. This may improve contract value per sales relationship, but requires significantly better security, reliability and procurement credibility. Do not start with enterprise procurement before one delivered value case.
+
+**Real moat candidates (unearned):** permissioned process histories, reliable repeatable methods, clear specialized technical quality, integration into daily actions, trusted expert network, operating distribution, low cost per resolved case, safe cross-company coordination. “Data moat” needs documented customer rights and valid representativeness; cannot silently train on confidential records.
+
+**Avoid winner-take-all assumptions:** enterprise incumbents (QMS, ERP, supply-chain collaboration), local industrial engineers and accountants may already solve a specific problem more cheaply. Test switching costs, buying path, incumbent adequacy and differentiated outcomes.
+
+**Strategic market-selection rule:** Prefer high willingness to pay × repeatable value ÷ (expert hours + integration costs + acquisition friction + risk). Never substitute total industrial spending or electricity-grid investment figures for an attainable revenue pool.
+
+## 21. Scale and business-development stages (conditional, not dates promised)
+| Stage | Capability | Evidence for advancement | What to resist |
 |---|---|---|---|
-| **C1** | Downtime / production-loss investigation | Plant/production manager; operations or continuous-improvement lead | **Probe deeply** |
-| **C2** | Quality defects, scrap, rework, or escapes | Quality lead; production owner | Parked unless discovery redirects |
-| **C3** | Maintenance recurrence / reliability | Maintenance or reliability lead | Parked unless discovery redirects |
-| **C4** | Energy / material inefficiency | Energy/utility owner; plant finance/operations | **Probe deeply** |
-| **C5** | Cross-team handoff / delayed operational decisions | Operations excellence; process owner | Parked unless discovery redirects |
+| 0 / discovery | One account of a recent exception per buyer | Verified buyer pain and next action; qualified access | Building modules before first buyer |
+| 1 / managed pilot | One scoped expert-reviewed problem | Authorized records, useful acceptance, cash/effort logs | Treating report completion as measurable savings |
+| 2 / repeatable service | Repeat engagements with similar workflow | Positive contribution, founder hours and reviewer hours declining, paid repeat demand | Permanent custom consulting |
+| 3 / software-assisted operations | Case, evidence and action system improves delivery | Tested workflow, tenant isolation, reduced cost without worse accuracy | Selling “AI” alone |
+| 4 / multi-factory | More than one site of a paying enterprise | Repeat budget and realistic customer success cost | Assuming one pilot equals enterprise deal |
+| 5 / supplier-network | Select suppliers with explicit sharing consent | Buyer sponsorship, supplier permission, independent fair assessment, viable contract | Unilateral OEM access |
+| 6 / broader infrastructure | Independently chosen energy/reliability/grid domain | Qualified power-system team, separate sales access and economics | Claiming GridMind can control critical infrastructure |
 
-C1 and C4 are **discovery probes, not chosen wedges**. Probe these two to avoid spreading limited discovery capacity across five families. Reopen another candidate only when specific evidence contradicts both probes or a qualified buyer introduces a stronger concrete case. Procurement intelligence, consumer brands, broad multi-vertical platforms, and renaming are parked for this sprint.
+For each expansion, ask: same buyer? same budget? same evidence and specialist expertise? same software model? incremental contract margin? If two or more answers are “no,” treat as a new business requiring new investment approval.
 
-## 4. The access plan and concrete give
+## 22. Execution ownership, work blocks and checkpoints
+**Founder (appropriate adult-supported):** discovery questions, market choice, intro research, consent-safe interview notes, pricing feedback, specialist referral discussions, no confidential factory intake. School/rest protected.
 
-### Primary route: warm introductions
+**Qualified domain partner:** method review, limits, source interpretation and professional signoff where authorized. Reviewer has stop authority; absence of partner blocks specialist output.
 
-Ask trusted people in the founder's existing professional/family network to introduce one relevant manufacturing professional at a time. The current network is a possible route, **not a verified prospect list**. No contact has agreed to help yet.
+**Engineering/Codex:** existing TanStack/Supabase compatible contracts, isolation and deterministic checks, tests and documented commits. **Lovable:** visual design and site UX, signature green, accessibility/responsive behavior. Neither changes commercial truth by itself.
 
-**Initial access test by 2026-10-19:** make 3–5 genuine warm-introduction requests, only if legitimate contacts and actual capacity are available. This replaces the previous 30-request planning target for the immediate test. Do not invent contacts or use an assumed conversion rate. Review responses and route quality before deciding whether to expand.
+**External legal/accounting/security advisers:** entity/contracts, tax/invoicing, confidentiality, insurance, privacy/security review and industrial safety scope before any live paid case.
 
-### Offer something useful without overclaiming
+**Daily optional five-hour project budget:** 90m customer access/interview preparation, 60m method and specialist learning, 60m product/testing, 45m evidence and economics, 45m documentation/follow-up; reduce as school obligations require. Do not treat this as compulsory hours.
 
-Invite a 20-minute conversation about one recent incident. In return, offer a **free, one-page workflow/decision map** based only on what the participant chooses to share verbally: steps, handoffs, evidence used, unresolved questions, and possible next questions. It is not an engineering audit, root-cause diagnosis, energy audit, or savings claim. No confidential records are needed. Share the summary only with their permission.
+**Existing gate dates preserved:** 19 Oct access review, 24 Oct if no route use consented intermediary, 31 Oct 3 substantive conversations / 1 buyer next-step target, 10 Nov decision. Do not fabricate entries to achieve dates.
 
-For C4, do **not** promise a technical electricity-bill review unless a qualified energy reviewer has explicitly agreed to review it. Until then, offer the same workflow map, not an unqualified technical service.
+**Decision classification:** GO TO BOUNDED TEST only on evidence recorded with consent; NARROW on incomplete buyer/channel validation; PIVOT on disconfirming case evidence and a named stronger alternative; STOP/PAUSE on unsafe scope, impossible permissions, absent real buying route after bounded attempts, or irreconcilable economics.
 
-### Secondary route and kill date
+**Immediate work in repo:** finish the public site claim/CTA/preview acceptance at the existing route while discovery continues; finish synthetic exercise, run exact-head checks, resolve GitHub Actions runner-start and Vercel quota restrictions, then merge only when review and release gates pass. On the business side, record actual access. Neither track substitutes for the other.
 
-Use one public industry/technical-network route in parallel to ask about appropriate public events or a legitimate research introduction—not member lists or endorsements. Existing public route references in the discovery kit include ASIA Jamshedpur, ACMA Eastern Region, IDTR, and JSIA; verify the official channel and relevance before use.
-
-**Access status and next step:** the ASIA public-route inquiry was sent on 2026-10-12. No reply, referral, or conversation is confirmed. Follow up once after 4–5 business days if appropriate (around 2026-10-19). In parallel, make a deliberate 3–5 genuine warm-introduction requests by 2026-10-19 if actual capacity and legitimate contacts exist. This is a small access experiment, not a rigid funnel or market-demand test. If suitable contacts cannot be identified, record the access constraint; do not invent prospects. ACMA Eastern Region and IDTR are possible public-route research channels, not buyer leads.
-
-No outreach is sent automatically. A trusted adult/professional must review and support external industrial outreach and any formal engagement. No factory visit, commercial commitment, payment arrangement, or non-public data handling without the appropriate authorization and oversight.
-
-## 5. Two-tier decision gates
-
-### Tier 1 — Select a candidate for a bounded test
-
-Use interviews and non-confidential evidence to assess:
-
-1. **Specific pain:** a recent, concrete event described by a relevant role.
-2. **Materiality and recurrence:** consequence and frequency, with measured facts separated from estimates.
-3. **Residual gap:** why the best current tool, expert, or process did not adequately solve the problem.
-4. **Ownership and access:** identifiable operational owner and credible route to the economic buyer; plausible source and authorized owner for any future evidence.
-5. **Commercial signal:** explicit willingness to continue, introduce the budget owner, review a scoped proposal, or discuss a paid test—not merely “interesting.”
-6. **Service feasibility:** a bounded first deliverable that can be produced honestly with available time and capability.
-
-A candidate can advance to a **test-design stage** when evidence is promising and major blockers are understood. Baseline quality, causal incrementality, production security, and verified outcomes are not interview-only gates and must not be falsely marked passed.
-
-### Tier 2 — Authorize a retrospective customer-data test
-
-Before accepting or processing non-public data, require:
-
-1. Named customer owner and data approver; written scope and data rights.
-2. Data minimization, secure transfer/storage, retention/deletion plan, and approved recipients.
-3. Qualified domain reviewer appropriate to the workflow.
-4. Defined question, evidence provenance, alternatives, limitations, and human-review boundary.
-5. Baseline and outcome metric with a feasible measurement window.
-6. Incrementality/counterfactual plan appropriate to the claim; record confounders and uncertainty.
-7. Safe delivery process, bounded founder/reviewer hours, direct cost, and liability limits.
-8. Buyer-approved decision/use of findings and explicit success/failure/stop criteria.
-
-If these gates cannot be met, stay offline with public, synthetic, or participant-approved non-confidential information, or stop. Do not imply a real customer validation.
-
-## 6. Operating calendar
-
-**Oct 19:** Supported factory-introduction access checkpoint (3–5 genuine requests if contacts exist). **Oct 24:** test one independent approved intermediary if no useful access. **Oct 31:** target three substantive conversations and one explicit buyer next step; report actuals. **Nov 10:** GO to bounded-test *design* / NARROW / PIVOT / PAUSE-STOP on evidence. All detail and proof of completion belong in the [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). No forced commercialization by calendar date.
-
-## 7. Resource model and stop conditions
-
-**Founder-reported availability (corrected 2026-10-15):** **5 hours/day**, **not 5 hours/week**. A practical planning baseline is **25 hours/week over five chosen days**; 35 hours/week is possible only if seven days are actually available and appropriate, **not** a target or obligation. Preserve school, sleep and rest; track actual hours and revise the schedule if necessary. Incremental cash spend remains **₹0** through the Nov 10 decision unless separately approved. Extra time enables better discovery preparation, buyer conversations, domain learning and evidence review; it does **not** waive the discovery-first freeze, support requirements, buyer-access dependency or technical/data gates.
-
-Stop or change course if:
-- **Oct 19:** review response quality from the ASIA route and the 3–5-request access test; decide whether to continue, change the route, or record access as the current blocker. Do not infer absent market demand from a small or immature sample.
-- **Oct 24:** review booked/held conversations and route quality against the Oct 31 target of three held conversations; revise access assumptions if the target is at risk. There is no active ten-call quota.
-- After five substantive conversations: neither C1 nor C4 produces a concrete incident with a credible consequence and an unresolved gap → open the candidate register once and choose the next probe based on evidence, not intuition.
-- By Nov 10: no candidate has a credible buyer path and explicit next step → **NO-GO on product build**, document the blocker, and decide whether to pivot or stop.
-- Any request for unsafe access, unauthorized data, autonomous control, unsupported causal claims, or unbounded unpaid customization → decline or pause.
-
-## 8. Economics: no unsupported ACV story
-
-No $20k ACV, market size, or energy-wedge price is validated. Do not multiply speculative customer value into a ten-year forecast.
-
-For each real case, record:
-- Gross loss/cost and evidence source;
-- addressable share and why GridMind could influence it;
-- conservative incremental improvement versus the current alternative;
-- direct service hours, qualified reviewer cost, acquisition/onboarding, tooling, and support;
-- plausible fee and buyer approval path.
-
-A fee must make sense against conservative incremental value **and** cover delivery cost. A service-led offer is acceptable for discovery, but only if its actual delivery effort and liability can be bounded. If the reachable value pool is too small for a sustainable fee, reject or narrow the candidate rather than using an arbitrary ACV target.
-
-## 9. Engineering priority: minimum necessary
-
-**Discovery remains the commercial P0.** The 2026-10-16 founder authorization permits the isolated internal synthetic MVP alongside it. Keep existing safeguards intact; broad schema/RPC expansion, unrelated modules, analytics dashboards and public-site polish remain deferred.
-
-- Do not weaken existing access controls or use production/customer data to accelerate discovery.
-- The existing draft equipment metadata fix [PR #37](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/37) is not a reason to expand the roadmap. Keep it draft/parked unless the selected workflow needs the electricity workspace; do not merge without relevant non-production acceptance.
-- The broader [opportunity workspace prototype PR #32](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/32) is explicitly paused/not P0. Do not merge or expand it until a selected candidate and buyer decision justify the slice.
-- Before any selected offer uses the application with real customer data, re-evaluate schema, tenant isolation, persistence, authorization, auditability, and deletion requirements against that specific workflow.
-- Synthetic/offline testing is allowed, but clearly label synthetic data and never present it as customer evidence.
-
-## 10. Named roles and gates
-
-| Role | Owner status | When required |
+## 23. Corporate operating controls and critical failure playbooks
+| Failure | Earliest signal | Owner's action / stop criterion |
 |---|---|---|
-| Founder / discovery lead | Founder | All discovery; owns evidence log and time cap |
-| Trusted adult/professional | **Dad nominated by founder on Oct 15; agreement and scope unconfirmed** | Review/support external industrial outreach and formal engagement |
-| Qualified domain reviewer | **Not yet named** | Before technical interpretation or any customer-data test |
-| Customer operational owner and data approver | **Not yet identified** | Before any customer-specific test or data access |
-| Customer security/privacy approver | **Not yet identified** | Before any non-public data is transferred or processed |
-| Supabase/security practitioner | **Not assigned; not a current discovery gate** | Only if a selected workflow requires production data/security changes |
-| Trademark/legal counsel | **Not assigned; not a current sprint gate** | Before material trademark spend, formal legal claims, or contracts that need counsel |
+| No access to buyers | No real intro/meeting at checkpoint | Test authorized alternative channel, then NARROW/PAUSE not fake leads |
+| Nobody will pay | “Interesting” but no buyer action/quote | Ask for prior spend and buyer path; reject unproven wedge |
+| Reviewer shortage | No available competent specialist with clear scope/fee | Do not perform consequential assessment |
+| Data denied or low quality | Missing consent, unreconciled records | Return insufficient evidence; do not ingest or fabricate |
+| Wrong buyer | Users interested, no spend authority | Map economic sponsor before technical project |
+| Price below delivery cost | Shadow hours + reviewer + travel exceed fee | Reduce scope, improve model, or reject engagement |
+| Repeat demand weak | No fresh recurring cases or renewal | Remain project-based or choose better problem |
+| Client delays payment | Days to collect materially longer than terms | Reduce exposure, review billing terms, preserve cash buffer |
+| Customer pressure to certify | Requests for unsourced root cause/ROI | Written qualifications; independent reviewer veto |
+| Cross-tenant leak | Unauthorized data read/export | Stop affected service, contain, follow incident response and disclosure obligations |
+| Source tampering/hallucination | Unverifiable citations/units/dates | Fail closed, re-review case, invalidate obsolete report |
+| Review stale after edit | Source revision changes | Invalidate approval until independent re-review |
+| Unsafe machine request | Requests to connect/write OT systems | Decline; only authorized qualified professionals |
+| Enterprise network conflict | Buyer wants supplier data without permission | Require separate data-owner consent and legal review |
+| New feature temptation | No evidence-linked issue/acceptance | Park in supporting backlog; don't add to MVP |
+| Platform/CI outage | Checks fail before runner, rate-limit | Preserve branches, resolve account restriction, do not waive tests |
+| Founder availability | School/exams or partner unavailable | Reduce commitments and communicate realistic scope |
+| Compliance/tax/insurance gap | No suitable entity, contracts or risk ownership | No formal paid engagement until resolved |
 
-Do not write as if an unassigned reviewer has approved anything. A missing role blocks only the stage that requires that role; it must not prevent offline interviews.
+Risk severity, monitoring cadence, assignment, escalation and safeguards appear in [operating risk register](operations/gridmind-company-economics-and-risk-register-2026-10-17.md). These are prospective operational controls, not evidence that they have been implemented.
 
-## 11. Trust and measurement rules
-
-- Separate source-backed facts, participant recollections, estimates, hypotheses, recommendations, approved actions, and verified outcomes.
-- Do not set 95% precision/90% recall or any other accuracy threshold before defining the task, label protocol, risk, and sample. Remove those figures from active acceptance criteria; any historical accuracy proposal is reference-only.
-- One retrospective case can test workflow feasibility, not establish general accuracy, causal impact, repeatability, or product-market fit.
-- No cross-customer learning or retention of derived customer information without explicit legal basis, permission, and safeguards.
-- “No finding,” “existing process is adequate,” and “insufficient evidence” are valid results.
-
-## 12. Source-of-truth map
-
-- **Execution plan:** this file.
-- **Live discovery tracker and evidence ledger:** [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md).
-- **Binding strategic guardrails / contradiction history:** [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md).
-- **Reference only, not separate plans:** wedge scorecard, discovery execution kit, problem failure analysis, manufacturing workflow stress test, strategic leverage map, product definition, data-advantage strategy, expansion architecture, and design/brand documents. Do not add new strategy documents; update this plan and tracker when evidence changes a decision.
-
-## 13. Current next action
-
-Confirm actual consent and scope with the nominated adult supporter, then attempt legitimate introductions and record real results in the [Discovery Tracker](gridmind-buyer-discovery-sprint-2026-10-11.md). Do not mistake a prepared email, synthetic case, or a GitHub commit for buyer validation.
-
-## 14. Current execution correction and staged direction — 2026-10-15
-
-**Authority:** This is an operating correction to §§4–13, not a new sprint. Resolve any overlap in favor of the clearer requirement here; the Decision Constitution's safety, permissions and discovery-first limits still override this section. **No real access, customer, adult adviser, paid engagement or qualified domain reviewer is claimed.** Historical audit chapters and the longer platform option map are [archived here](gridmind-historical-planning-appendices-2026-10-15.md).
-
-### 14.1 The three immediate blockers and exact fallbacks
-
-| By when | Owner and evidence to record in the *existing* Buyer Discovery Sprint | If not met |
+## 24. Technology and repository reshaping: acceptance matrix
+| Layer | Reuse / proposed change | Required acceptance before “done” |
 |---|---|---|
-| **Before any external industrial outreach** | Founder records a real, consenting **trusted adult/professional outreach supporter** (name privately, scope, contact route, date agreed). A backup support route should be attempted, not presumed. Domain reviewer is a **separate, later role** and is not needed for non-technical interviews. | **OUTREACH BLOCKED**. Prepare questions and review public material only; do not send pitches, enter factories or seek protected information independently. Ask a trusted adult to help identify an appropriate supporter. |
-| **2026-10-19** | With that support and legitimate contacts, attempt **3–5 real warm-introduction requests**; record route ID, recipient role or private reference, sent date, reply, introduction and next action. Check ASIA's Oct 12 inquiry and follow up once if appropriate. No names are invented to fill a quota. | Log **ACCESS NOT PROVEN**, not 'no market'. If the supporter is absent, the blocker remains supporter access; if sends occurred without suitable routes, activate a distinct intermediary test. |
-| **2026-10-24 fallback trigger** | If **zero substantive conversations held or firmly scheduled**, or no workable warm route has emerged, support one **alternative intermediary category**, initially ACMA Eastern Region's official public-introduction/event inquiry or a qualified technical intermediary. Verify current route details and professional oversight first. Record whether the intermediary actually produces access and its possible conflicts. | If supporter remains absent: **PAUSE EXTERNAL ACCESS**. If both legitimate routes produce no access by Nov 10: **PAUSE/STOP BUILD**, do not infer C1/C4 has no buyer demand. |
-| **2026-10-31** | **Target**, not achieved count: 3 substantive conversations, at least 1 explicit buyer next step. Log actual founder hours and supply-chain/referral independence. | Report target missed, revise access strategy or schedule. Do not inflate booked calls or courtesy interest into buyer commitments. |
-| **2026-11-10** | Formal Tier 1 **GO TO BOUNDED TEST DESIGN / NARROW / PIVOT / STOP OR PAUSE** decision with evidence and reasons. | No product build without the defined qualifying evidence. A GO is not a data-access, contract, onsite work or production-use authorization. |
+| Identity | Preserve Supabase org/factory membership and Auth | Server-enforced no-cross-factory reads/writes; authenticated browser tests |
+| Public site | Shift from energy-only marketing to company-wide problem discovery; keep fictional energy case | No unsupported live claims, reachable no-login contact intent, accessibility |
+| Internal demo | R1/R2/R3 *fictional screening*, C1/C4 technical demo separated | Explicit labels; test unauthorized/live origin rejection |
+| Investigation domain | Future typed quality or receivables case method selected by gate | Correct source semantics, provenance, reviewer signature, action/outcome integrity |
+| Team workspace | Reuse intake, reviewers, history, economics | Role-specific access and immutable approved publications |
+| Customer workspace | Keep cases and permissioned published projection | Customer cannot see internal comments or other tenants |
+| Reports | Reviewed, revision-bound Decision Brief | Traceable citations, explicit uncertainty, no inflated savings |
+| Storage and APIs | No production changes now | Data rights, consent, retention, RLS, negative authorization tests |
+| Analytics | Separate measured customer benefit from service profitability | Verified baselines, cost accounting, unknown handling |
+| CI | Bun check, docs link, lint, tests, build, security/migration isolated suites | Exact-head runners execute and pass; non-starting jobs are infra failures |
+| Deployment | Preview current exact commit, then permitted promotion | Correct Git SHA, domain, auth, smoke, rollback and release approval |
 
-**Known facts as of this amendment:** only one ASIA inquiry is reported sent on 2026-10-12. Dad is nominated as outreach supporter; his agreement and relevant connections remain **unconfirmed**. The qualified reviewer and any buyer introduction remain **unassigned/unconfirmed**. Recording a planned deadline does not satisfy it.
+Never mark product “ready” because one synthetic preview renders. Preserve history and existing Lovable synchronization, avoid production migrations and avoid simultaneous branch feature duplication.
 
-### 14.2 Predetermined discovery decision rule (set before first interview)
+## 25. A founder's first case: from factory conversation to a decision
 
-These are **operational decision thresholds** meant to limit post-hoc rationalization, *not* statistical validation, sales forecasts, arbitrary annual-loss cutoffs or a waiver of disqualifying risks.
+This is the operating sequence for a founder starting with no customer. A stage is complete only when its named artifact exists; none of these artifacts is yet evidence of a sale.
 
-- **GO to bounded-test *design* for C1 or C4 only when ALL apply:** (a) at least **3 substantive conversations held** with relevant practitioners; (b) participants represent at least **2 independently owned companies**, with relationships and shared anchor supply chains disclosed; (c) **2 concrete, recent, relevant instances** favor the *same* candidate and establish an unresolved gap compared with the participant's best current process; (d) a **named or privately identifiable budget owner / route** and **1 explicit next step** attributable to a relevant buyer (introduction to budget holder, proposal review, or requested test scope); (e) a bounded useful output is plausible without unauthorised data, unsafe activity or unbounded expert labor; (f) the evidence ledger records strongest counter-evidence and the other candidate's status. No score overrules a material safety/rights blocker. Technical interpretation/customer-data use require Tier 2 **later**.
-- **NARROW / INCONCLUSIVE:** at least one specific material case, but insufficient independent cases, buyer commitment, sample coverage or deliverability to meet GO. Specify *one* decisive missing fact and a time-bounded next access experiment. **This is the default when discovery sample is too small.**
-- **PIVOT:** after meaningful independent interviews, credible evidence shows both C1/C4 are adequately handled, not important, or not deliverable; a **specific alternative** is supported by a buyer-described concrete problem, plausible decision owner and evidence path. No pivot merely because a proposal or prototype looks attractive.
-- **STOP/PAUSE:** both legitimate access methods tested without usable access by the checkpoint, no adviser available for ethical outreach, or a hard unresolved safety, rights, competence, buyer-value or financial feasibility barrier. Distinguish *channel failure* from *market rejection*, and state conditions for resuming.
-- **Precedence:** hard safeguards > evidence quality/independence > numeric minimums > relative score. Targets missed do not turn unknown into a zero. Freeze these criteria for the sprint; amend only through an evidence-backed dated exception approved before reading the relevant results.
+| Stage | Do the work | Artifact and pass condition | Stop or return when |
+|---|---|---|---|
+| Access | Ask an appropriate adult or professional for a permissioned introduction, or use an official public channel. State that this is research. | Actual send, reply and booked meeting recorded in the sole Buyer Discovery Sprint. | No legitimate contact route, site permission or safe supervision. |
+| Understand | Ask the interviewee to reconstruct one recent exception, their best existing method, decision delay, cost source and who could authorize a test. | Consent-safe event note with observed facts, estimates, gaps, buyer role and explicit next step. | Only hypothetical enthusiasm, no residual gap, or no buyer path. |
+| Compare | Ask the same core questions of R1, R2 and R3 interviewees without assuming a winner. Ask who already solves it and why that option falls short. | Evidence-based comparison in the existing tracker at the 10 November gate. | Problem frequency/value, permissions or specialist availability fails. |
+| Scope | With adult/legal and qualified domain support, define one decision question, one factory, time period, evidence owners, exclusions, fee ceiling and named reviewer. | Reviewed scope schedule using the linked [first-case template](operations/gridmind-first-paid-case-scope-template-2026-10-17.md); no live records yet. | Customer asks for guaranteed recovery, certification, autonomous intervention or data rights they do not hold. |
+| Contract and custody | Identify lawful contracting party; obtain a signed agreement, explicit evidence permissions, secure transfer, retention and correction terms; pass release/security gates. | Recorded authorization and verified technical controls for the exact environment. | Any missing authority, unsafe site access, failed tenant test or no recovery plan. |
+| Deliver | Register sources and contradictions, run only the selected domain method, let the independent qualified reviewer veto unsupported claims, then release an approved decision brief. | Version-bound source register, reviewer decision and customer-approved brief. | Evidence cannot answer the question or review is unavailable; report “insufficient evidence.” |
+| Follow through | Customer owns physical/commercial action. Observe an agreed post-period and confounders; issue corrections when needed. | Accepted action record, measured/estimated/unknown outcome and cash-cost record. | No comparable baseline or customer action; do not claim savings. |
+| Learn | Ask whether they would buy another bounded case and why; measure actual collection and full service hours. | Win/loss and contribution record; feed only consent-safe facts into the same tracker. | Negative contribution or no repeat need makes subscription unsuitable. |
 
-### 14.3 Neutral C1/C4 testing, sampling and rapid safe learning
+### One fictional factory example showing the full value chain
 
-- **Separate problem selection from code readiness.** Existing energy-oriented fields/migrations are *sunk cost*, neither demand evidence nor a tiebreaker. Log **C1 and C4 using identical** last-incident, consequence, alternatives, buyer and data-path questions; compare per relevant respondent. Do not count a synthetic electricity fixture as a C4 buyer vote.
-- **Sampling independence:** log ownership group, supplier-customer chain, introducer and participant role at a minimum necessary level. The GO requirement of 2 independent companies is a floor, not representative sampling; aim for different owner groups and at least one perspective outside the same anchor-buyer supply chain. If all interviews come from the same network, label **cluster bias / evidence limited**.
-- **Learning before Tier 2:** use publicly available records, permissioned *non-confidential verbal process descriptions*, one-page workflow/decision maps and explicitly synthetic dry runs. These can test access, relevance, deliverable comprehension and working hypotheses, **not** diagnose an actual factory or establish savings. Do not downgrade written customer-data authorization, competent reviewer, baseline, custody, security or outcome controls.
-- **Domain challenge:** seek an experienced plant/energy practitioner for a *non-confidential* 20-minute methodology critique through supported introductions, record expertise and objections. This is advisory input, **not** a qualified signed technical review or implied endorsement. Do not repeat unverified tariff, CBAM, subsidy or refund claims as fact.
+A component supplier buys metal and tooling, receives an order and drawing, schedules production, makes parts, checks dimensions, dispatches a lot, waits for the buyer's acceptance, invoices and collects cash. A rejected lot can generate scrap or rework, a revised schedule, freight, a buyer debit note and a later payment dispute. These are *possible* consequences, not four independently countable savings. The process owner must identify the actual root event and avoid double counting.
 
-### 14.4 Capacity, financial runway and engineering limits
+For **R1**, the quality head might already have an 8D spreadsheet. GridMind would be worth paying only if a specific unresolved question crosses production, inspection and customer acceptance records and the existing team or consultant cannot close it as safely or promptly. Required records could include drawing revision, lot genealogy, inspection method, measurement validity, rejection notice, containment and corrective-action follow-up. A quality specialist must separate a documented defect from a plausible cause. The customer decides any process or product change.
 
-**Current planning allocation (founder reports 5 hours/day; example 25 hours over five chosen days, ₹0 incremental cash spend through Nov 10):** 6 h supported access/introductions/scheduling; 7 h genuine interviews plus permissioned non-confidential notes (reallocate to preparation when no interviews are booked); 4 h adviser/domain-expert route and relevant industrial learning; 4 h evidence review and fair C1/C4 comparison; 2 h tracker, follow-ups and operating review; **up to 2 h necessary technical correctness/security maintenance only**, otherwise return those hours to discovery. **Total: 25 h/week illustrative allocation, not an obligation or confirmed hours worked.** No speculative product engineering, unrelated dashboard polish or additional vendor purchases are authorized. Buyer access, adult/professional support, customer-data rights and reviewer requirements remain hard dependencies; actual hours must fit alongside school, sleep and rest.
+For **R2**, a finance lead might have a valid invoice in an ERP but no agreed acceptance evidence. The question is which document or decision is missing, not whether all late payment is a quality issue. Orders, delivery proof, acceptance/rejection terms, invoices, debit notes and correspondence each need distinct owners and versions. A commercial/accounting specialist and, when needed, counsel define the boundary. GridMind cannot adjudicate, collect, lend or promise payment. For an eligible small-enterprise delayed-payment matter, compare the official [MSME Samadhaan and ODR pathways](https://odr.msme.gov.in/assets/pdf/MSE_Scheme_on_ODR_for_Delayed_Payment_Guidelines.pdf) as existing alternatives; competent counsel must decide applicability. GridMind's proposed value is only a better permissioned evidence/decision handoff where a real buyer finds a gap.
 
-**Runway:** founder cash budget remains **₹0 incremental** for this sprint (not an assertion about personal finances). Time runway is the remaining founder hours to the Nov 10 decision; record actual weekly usage and decisions. Before authorizing any paid trial, record approved project funds, expected weekly cash burn, opportunity cost and a latest go/no-go date; calculate cash runway only from *actual allocated funds*, not estimated family resources. Do not promise paid experts or software subscriptions without approval.
+For **R3**, an owner may see an electricity bill rise. The question may be tariff class, demand charge, contract term, meter period or actual consumption; these require different evidence. Use the effective tariff and bill/meter periods, check units and exclusions, and have a qualified electricity specialist review the conclusion. A higher bill by itself proves neither an error nor a saving. Existing synthetic C4 logic is a demonstration, not a professional audit.
 
-**Engineering and release:** customer discovery is P0. Preserve existing security/integrity measures; scope urgent correctness repairs separately, not against new feature promises. Actions runner-start billing restriction was recorded as **restored on Oct 15** in [Issue #42](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/42); this does **not** establish production readiness, universal green checks or branch protection. By **Oct 24**, repository owner should review [Issue #46](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/46) and record available enforcement options, plan entitlement, exact required checks and a manual PR-review/check-recording protocol if mandatory rules are unavailable. No unreviewed merges or weakened CI; [PR #72](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/72) has dated technical claims that must be updated separately before any merge. No production database, real customer file or deployment change is approved here.
+### What a buyer must believe before paying
 
-### 14.5 Long-term direction — conditional option tree, not an active build queue
+The economic buyer needs a real unresolved cost or decision risk, confidence that GridMind is allowed to see the required records, a named accountable reviewer, a delivery deadline, a price and a clear answer to “what will I do differently?” The champion needs low extra work; IT and legal need access and deletion controls; a counterparty may need a separate consent path. The most credible first offer is a bounded case with a useful answer even when evidence is insufficient. A dashboard alone does not create this value.
 
-| Stage | What is to be proven before investment | Candidate technology only when needed |
+Ask these objections directly: “Why not use the quality team, ERP/QMS, accountant, consultant or electrician already involved?”; “What would this cost to adopt, including your staff time?”; “Who can release records and who can act on the result?”; “What would make our conclusion untrustworthy?” If an incumbent already resolves the case at acceptable cost and speed, record that as disconfirmation and do not force a sale.
+
+## 26. Market size, willingness to pay and business-model choice
+
+**Do not claim TAM from the number of Indian factories or a percentage of industrial GDP.** A bottom-up estimate for each candidate starts with a defined geography and factory segment, counts only reachable firms with the relevant recurring exception, estimates annual *eligible* cases, then applies the share with a buying path and safe evidence rights, a feasible delivered price, and delivery capacity. Keep each input as a range with source/date, distinguish independent public counts from interview-derived assumptions, and show a zero-demand case. Serviceable obtainable revenue is bounded by sales access, reviewer hours and customer procurement; invoices and collected cash are separate. No such credible numerical TAM is established yet.
+
+Test willingness to pay through a sequence of increasingly costly buyer actions: permission to discuss an actual case → introduction to budget owner → request for a written scope → negotiation of a priced, reviewer-backed proposal → signed terms → cash received → repeat purchase. Record refusal and its stated reason. A “yes” to an abstract product question is not price evidence. With professional and adult approval, offer two *realistically deliverable* scope/price combinations that differ in work and turnaround; never invent urgency or promise savings. Compare the maximum acceptable fee to fully loaded specialist, founder, travel, software, acquisition and correction cost, plus cash delay. If a buyer only accepts a price below variable delivery cost, narrow the method or stop.
+
+| Model considered | Why it may work | Why it is not the default now |
 |---|---|---|
-| **1 Industrial Investigation (current hypothesis)** | Specific buyer, painful unresolved decision, permissioned human-reviewed bounded delivery and viable case economics | Existing React/TanStack Start, Bun, Supabase, GitHub, Vercel, Lovable; optional deterministic calculations and controlled AI assistance after gates |
-| **2 Industrial Intelligence** | Multiple paying cases, repeatable reviewer workflow, improving labor-adjusted contribution and demand for continuing service | Customer portal, scheduled reviews, CRM/accounting only with volume |
-| **3 Operational Intelligence** | Verified incremental value beyond periodic exports, reliable authorized read-only connections and supportable OT security | CSV/API first; OPC UA or AWS IoT SiteWise/Greengrass only if a real need justifies them |
-| **4 Infrastructure Intelligence** | One adjacent sector demonstrates independently validated buyer, expertise and delivery economics | Sector-specific integrations/data analysis rather than speculative multi-vertical builds |
-| **5 Infrastructure Decision Platform** | Multi-site reliability, contractual rights, quality governance, economic scaling and enterprise distribution | Enterprise architecture decisions based on actual workloads, not vendor forecasts |
+| Bounded expert-reviewed case | One concrete buyer decision and controlled liability; price can be tested | Labour-heavy until methods repeat; still requires reviewer and data rights |
+| Monthly managed resolution | Useful if cases and follow-up recur under one budget | No observed renewal frequency or stable cost yet |
+| Per-seat software | Low service load after product maturity | Buyer may have no daily software job; existing ERP/QMS already owns records |
+| Outcome/savings share | Aligns incentives in some settings | Baselines, causality, payment timing and disputes are hard to verify |
+| Enterprise supplier programme | Could coordinate repeated cross-company exceptions | Different buying cycle, conflicts and bilateral data permission |
+| Marketplace, financing or universal ERP | Large theoretical spend | Distinct regulation, capital, trust and implementation burdens; rejected for initial company |
 
-**Service economics and defensibility tests:** Track, per *authorized* case, buyer decision against best current alternative, attributable customer value with uncertainties, fee **collected**, qualified reviewer/founder/site hours including shadow rates, direct costs, rework, acquisition burden, repeat purchases and customer consent. Case contribution is not company profit. A ‘data moat’ does not exist today; no cross-customer data pooling/training without rights. Automation must reduce measured time, cost or error **without bypassing qualified review**. A revenue/AI/dashboard milestone alone never justifies expansion. Detailed earlier future-stage proposals are preserved only as historical reference.
+The selection rule is a paid, repeatable decision advantage over the best existing alternative with lawful data access and positive fully counted contribution. If a later lane serves a different buyer, needs a different specialist and has a different sale, treat it as a separately justified expansion even if the software shares code.
 
-### 14.6 The one next action
+## 27. Financing, hiring and independence gates
 
-**Founder, with suitable adult/professional support:** confirm and record dad's agreement to support the specific outreach before any new external industrial outreach; then pursue the Oct 19 legitimate introduction experiment. If blocked, explicitly record that blocker in the existing tracker. The one operational proof needed is a real relevant professional agreeing to discuss a recent problem—not another strategy section.
+During discovery, keep fixed commitments low and record founder time at a shadow rate. A signed case should fund its specialist work, travel, quality control and correction allowance under conservative payment timing. Maintain an operating cash forecast by week: opening cash + expected collections − unavoidable payments, with late-payment and rework scenarios. Do not fund payroll or equipment from quoted revenue. Seek outside capital only when evidence shows a repeatable buyer problem, delivery method, gross contribution and a specific bottleneck that capital removes; dilution is not a substitute for buyer proof.
 
-## 15. Minimum investigation architecture — synthetic boundary, 2026-10-16
+The first professional capacity should be **contracted, scoped expertise**, selected for the chosen lane and independent enough to challenge a finding. Add a responsible adult contracting/oversight arrangement, legal/accounting review and a security owner before live work. Hire permanent customer success, domain or engineering staff only when repeated paid cases justify utilization and supervision. A second reviewer or documented backup is needed before promising predictable turnaround. Supplier-network or infrastructure expansion needs separate leadership, permissions, capital model, safety authority and stage-gate approval.
 
-This section records the architecture exercise and its information model. The dated founder build exception above now authorizes isolated synthetic implementation of this model. It does not displace discovery as P0, change §14.6's human next action, select a commercial wedge or authorize customer-data use.
+**Weekly founder control:** update the sole buyer tracker with actual contact/meeting outcomes, one disconfirming fact, reviewer availability, next customer action, cash exposure and the earliest safety/release blocker. Decide whether to continue, narrow, pivot or pause at the published gates. A missed date triggers an honest review, not fabricated progress.
 
-### 15.1 The one product chain
+## 28. Step-by-step program: from today's site to a repeatable company
 
-GridMind's minimum product is one traceable decision chain:
+This is the **operating order** for the existing public repository. A step may be prepared in parallel, but its exit gate cannot be skipped. The first visible build is the existing public site at `/website`; customer discovery runs at the same time because a finished page does not validate a service. Keep real factory records, credentials, private pricing/customer discussions and sensitive findings out of public commits, issues and Actions logs. [Site build and acceptance](product/gridmind-site-build-and-acceptance-2026-10-17.md), [repository benchmark](engineering/repository-structure-benchmark-2026-10-17.md), [domain/product contract](product/gridmind-resolve-domain-and-product-contract-2026-10-17.md), [first-case schedule](operations/gridmind-first-paid-case-scope-template-2026-10-17.md) and [release gate](release-gate.md) carry implementable detail. This section is the only master sequence; GitHub issues are execution tickets, not alternate roadmaps.
 
-**Customer question → authorized evidence → investigation → qualified review → customer decision → outcome check**
+| Stage and timing | Do, in order | Exit evidence and owner | If the gate fails |
+|---|---|---|---|
+| **0. Establish one source of truth — now** | Review main, PR #136, overlapping PRs/issues, docs, code, Lovable/Vercel/Supabase; place current specs by subject, preserve old links and historical records. | Founder owns strategy; engineering records exact SHA, link check, CI/preview state, migration and permission gaps. | Keep PR draft; do not merge or present the branch as deployed. |
+| **1. Build the public site — next code milestone** | Inventory every claim; write plain buyer copy; design responsive page using signature green; show a fictional bounded case; implement non-confidential contact; test accessibility and actual route. | Founder verifies claims/contact; design/Lovable and engineering verify `/website` on exact preview SHA, mobile/keyboard, CTA receipt and privacy. Site spec has page/interaction tests. | Fix copy/form/browser failure. Do not publish fabricated clients, savings or certification. |
+| **2. Obtain legitimate access — in parallel, through 10 Nov gate** | Find warm/intermediary routes with consent; conduct interviews about recent exceptions, existing workarounds, budget and permissions; record refusals and disconfirming facts in the **one** tracker. | Founder with appropriate adult support records real dated conversations; no documents or confidential case evidence collected during discovery. Compare R1/R2/R3 at the published gate. | Narrow target or channel, pivot to a stronger evidenced exception, or pause. Do not use site traffic as paid-demand proof. |
+| **3. Select one bounded offer and professionals** | Choose at most one entry lane using buyer urgency, decision owner, access, reviewer availability, feasible delivery and price/cost range. Define qualified reviewer, adult contracting oversight, scope, exclusions, source list, data rights and remedy. | Founder + independent domain reviewer + legal/accounting advisers as needed approve a realistic written scope and two testable price options. | Do not accept the case; use a fictional walkthrough to expose method gaps. |
+| **4. Build only the selected method and safe portal slice** | Turn fictional screen into domain-specific case schema, provenance, review states, customer/team/reviewer projections and negative authorization tests. Preserve C1/C4 synthetic logic; R1/R2/R3 are separate methods. | Engineering demonstrates tenant isolation, server checks, reviewer signoff, revision-bound brief, lawful source/retention path and exact-head tests. | Keep data synthetic and stop live intake. No production migration or real documents. |
+| **5. Deliver one paid pilot under signed terms** | Confirm buyer authority and consent; collect minimum permitted records only after gates; specialist investigates, reviewer challenges and signs; customer owns action; verify or mark outcome unknown; invoice and collect. | Customer acceptance plus defensible source trail, recorded actual hours/cost, cash receipt and correction outcome. Reviewer may reject. | Stop unsafe work, correct findings under contract, preserve incident trail; do not claim ROI or gross margin from a quote. |
+| **6. Demonstrate repeatability before automation** | Repeat comparable cases with the same method; measure time, quality/rework, willingness to pay, repeat purchase, collection delay and contribution after full costs. | Founder + finance/domain owners show positive conservative contribution, teachable steps, backup reviewer and a credible acquisition route. | Change scope, price or lane; do not hire fixed staff or build a generic suite. |
+| **7. Extend service and distribution conditionally** | Add portals/automation to measured bottlenecks; then another factory/site, then a second service lane, supplier collaboration or infrastructure option only with distinct buyer/data/legal proof. | Each expansion passes its own demand, rights, economics, safety, reviewer-capacity and cash gates; maintain one company strategy and shared platform where useful. | Hold expansion. Treat a new buyer and method as a new business hypothesis, not automatic cross-sell. |
 
-The minimum information objects are:
+**At the end of each week:** record what was completed (link to commit/issue or dated field note), buyer evidence and contradictions, next seven-day deliverable, cash/obligation exposure, reviewer capacity, CI/Vercel/Supabase blockers, and the explicit GO/NARROW/PIVOT/PAUSE decision. This is a short update to the existing tracker/issue, not a new plan. The 19/24/31 October and 10 November discovery gates in sections 6 and 22 remain targets. A date missed without evidence is a failure to examine, not an excuse to claim success.
 
-| Object | Required content |
-|---|---|
-| Investigation case | Question, decision, boundary/window, owner, status and stop conditions |
-| Evidence item | Owner/authorization, source, raw reference, time/provenance, quality, use/retention and access |
-| Timeline event | Source-linked observation with raw and reconciled time |
-| Claim or hypothesis | Exact wording, evidence for/against, alternatives, uncertainty and next discriminating check |
-| Calculation | Inputs, formula, units, baseline/counterfactual, exclusions and sensitivity |
-| Review record | Qualified role, challenge, correction, approval/rejection/dissent and unresolved limits |
-| Decision record | Customer-owned decision, rationale, responsible role and approved action |
-| Outcome check | Measure, window, confounders and state from planned through verified/sustained |
+**Near-term issue order:** current #137 strategy and repository acceptance → #138 website copy/CTA/preview acceptance on the existing route → #42 Actions runner and Vercel build limit → #130 migration and authenticated tenant evidence → reconcile #132 route migration and #133 bridge before implementing them → #40 buyer decision → first scoped service/portal issues only after its gate → #29 release approval. Issue #135 is future architecture, not permission to build six domains now. #125 and #120 need explicit overlap/history review. No independent backlog is created by this table.
 
-Charts, reports and future dashboard views must resolve back to this chain. Missing information remains unknown; a calculation does not become a cause, recommendation, savings claim or verified outcome merely because it is reproducible.
+## 29. Fundamental question register: answer before claiming a solved business
 
-### 15.2 Comparable synthetic exercises
+An answer marked **hypothesis** is a design assumption, not a customer fact. The founder should ask the hardest questions early, including those that could kill the idea. The single live buyer tracker records observed answers; the decision constitution records durable decisions. This register identifies what would count as an answer and who must obtain it.
 
-The existing [C4 energy fixture](gridmind-economic-discovery-synthetic-evaluation-2026-10-13.md) tests period coverage, units, tariff/baseline sensitivity, duplicate/conflicting records and unsupported savings. The new [C1 downtime fixture](gridmind-downtime-investigation-synthetic-evaluation-2026-10-16.md) tests event timelines, clock conflicts, overlapping downtime, competing causes, reviewer disagreement, safety boundaries and unsupported production-loss claims.
+| Question a founder or buyer will ask | Current answer / decisive evidence needed | Owner and decision triggered |
+|---|---|---|
+| What is GridMind, in one sentence? | **Working definition:** an expert-assisted industrial exception-resolution business that traces evidence, coordinates an owned action and verifies the outcome. Test whether buyers repeat this back and name a real decision. | Founder; rewrite positioning if they cannot. |
+| Why does the exception exist and where in the factory value chain? | Map plan/order → supplier receipt → production/quality → dispatch/acceptance → invoice/cash and utilities. For a recent case, identify trigger, handoffs, source systems, delays, costs and decision owner. | Founder with operations specialist; reject abstract “AI efficiency” stories. |
+| Which R1, R2 or R3 pain is recurrent and economically material? | No lane validated. Ask for dated case examples, actual frequency and financial/operational consequence; triangulate with permitted artifacts only after rights exist. | Founder; choose one lane at 10 Nov gate or narrow/pause. |
+| Who feels the pain, signs, pays and can block purchase? | Hypotheses: plant/quality/procurement/finance/energy and owner/CFO; map each account's champion, economic buyer, IT/security, legal and reviewer. Evidence is a named path to a budget decision. | Founder; no “factory” as a single persona. |
+| What do they do today, and why pay us instead? | Incumbent ERP/QMS, consultants, internal staff, spreadsheets, suppliers, lawyers/ODR or energy advisers may already solve it. Observe the remaining costly gap, switching burden and why doing nothing is rational. | Founder; stop if the best alternative wins. |
+| Can we reach buyers lawfully and credibly? | Warm introductions, trade bodies and consented intermediaries are candidates; one reported ASIA inquiry is not a working channel. Log actual response and meeting conversion without harvested confidential data. | Founder/adult; change channel by 24 Oct if needed. |
+| What exact output is purchased? | A bounded source-linked decision brief, action owner/date, reviewed uncertainty and follow-up; service schedule specifies acceptance/exclusions. Ask buyer to negotiate a real scope and price. | Founder + specialist; no vague platform subscription first. |
+| Will they pay enough, on time, repeatedly? | No WTP evidence. Test priced written offers, signed terms, collection and repeat; include rejection reasons, delay and procurement friction. | Founder/finance; stop or shrink work if price < fully loaded cost. |
+| Who is qualified to opine, and who carries liability? | Domain-specific professional/reviewer with documented competence, independence, conflicts, insurance/engagement scope and veto. Founder/adult plus legal advice determine who can contract and visit safely. | Founder + counsel + reviewer; no professional output without them. |
+| May we enter a plant or handle records? | Only through owner permission, site induction, data-processing terms, minimum necessary source custody and retention/deletion agreement. Discovery uses non-confidential notes. | Adult/legal/security; unsafe or unclear access is a no-go. |
+| How do we avoid an unsafe or wrong recommendation? | Provenance, uncertainty, human reviewer, customer-owned action, correction/withdrawal and escalation; no autonomous OT/control. Test adverse examples, conflicts and failure recovery. | Domain reviewer + engineering; stop release on failed gate. |
+| What should the website claim and do first? | Explain the proposed service honestly, show fictional method and capture a non-confidential conversation. Existing `/website` is next build; route move is separate. | Founder/design/engineering; fail if CTA or claims are untrue. |
+| What software is truly necessary? | Only case states, source references, roles, review, customer projection and measurable follow-up for a chosen lane. Existing stack is retained; automate repeated manual bottlenecks. | Engineering/product; do not rebuild ERP/QMS or six dashboards. |
+| How are tenants, people and AI constrained? | Server-enforced tenant/role permissions; consent, purpose and retention; AI may summarize or propose with source links but cannot certify, approve, alter records or operate machinery. | Security/reviewer; negative tests and real-data gate required. |
+| What is the market size and acquisition cost? | Bottom-up count of reachable eligible factories × case frequency × deliverable price, with public source/date and low/zero cases. CAC includes founder time, travel and failed leads. No credible numeric TAM/CAC yet. | Founder/finance; do not pitch fabricated size. |
+| Can this become independent and defensible? | Repeatable method, reviewer network, outcome learning with customer rights, distribution and trust are candidate advantages; copied UI is weak. Confirm with repeat paid cases and clean unit economics. | Founder; no scale claim before evidence. |
+| Should we fundraise or hire? | Only if a named repeatability bottleneck and conservative cash forecast justify fixed costs; use scoped professionals first. | Founder/finance/adult; no payroll from pipeline or speculative valuation. |
+| When do we expand to suppliers, infrastructure or other lanes? | Separate buyer, bilateral permission, conflict, data and economics gate for each; avoid exposing one customer's evidence to another. | Founder + legal/domain; pause network features without agreements. |
+| What would make us stop? | No legitimate access after bounded attempts; buyers accept incumbent/no action; absent reviewer or safe data rights; unsound advice risk; price below cost; slow cash/rework destroys runway; CI/tenant/security gate fails. | Founder + relevant veto owner; record PAUSE/NARROW/PIVOT/STOP rather than silently lowering gate. |
+| What is proven today? | Existing code/history and synthetic C1/C4 methods are real; R1/R2/R3 intake is fictional and non-persistent; no verified paid demand, real-data acceptance or green exact-head release. | Engineering and founder; update this statement only with dated evidence links. |
 
-Both fixtures support the same eight-object architecture, but neither supplies commercial evidence. C1 has greater event-sequence, causal and safety risk. C4 has greater comparability, tariff and baseline risk. The prototype's stronger C4 fit is sunk implementation context, not a reason to select C4.
+**Question protocol for every new idea:** (1) define the buyer decision and loss; (2) describe the current best alternative; (3) state the smallest safer test; (4) identify rights, reviewer and cost; (5) decide the evidence threshold and deadline; (6) record disconfirming evidence; (7) build only the repeatable part after the gate. “Interesting” ideas belong in the existing issue tracker as hypotheses until this protocol yields a customer-backed next step.
 
-### 15.3 Smallest real-customer implementation boundary
+## 30. Sources, research assumptions and decisions
+**Public reference materials** (evidence of existing practices/alternatives, *not* proof of demand for GridMind):
+- [AIAG Automotive Quality Core Tools](https://www.aiag.org/expertise-areas/quality/quality-core-tools) — standard practices APQP, PPAP, FMEA, SPC, MSA; do not reproduce licensed manuals.
+- [AIAG supplier tools / Enterprise CORE](https://www.aiag.org/expertise-areas/getting-started/supplier-resources) — specialist software already addresses documentation workflows.
+- [NIST SP 800-82 Rev. 3 OT Security](https://csrc.nist.gov/pubs/sp/800/82/r3/final) — industrial systems have safety/reliability constraints; NIST Rev. 4 is draft as of this plan.
+- [Ministry of MSME Samadhaan dashboard](https://www.dashboard.msme.gov.in/msme_samadhaan.aspx) and [official MSE ODR scheme guidelines](https://odr.msme.gov.in/assets/pdf/MSE_Scheme_on_ODR_for_Delayed_Payment_Guidelines.pdf) — existing delayed-payment pathways are a competitor/alternative to test for R2, not proof of demand or legal authorization for GridMind.
+- [BEE](https://beeindia.gov.in/) — established industrial energy efficiency programs and professionals; not customer demand for GridMind.
+- Existing repository's dated desk research remains available as supporting context, not live execution authority.
 
-After Tier 1 buyer evidence selects a candidate and Tier 2 authorizes a bounded test, implement only one end-to-end internal path:
+**Evidence gaps at publication:** interviews, contracts, actual industrial source records, buyer budgets, case economics, specialist fees, real permissions, accuracy on real cases, competitive win/loss, product-market fit, revenue, margin and scalability. None can be filled by fictional records or internet research.
 
-1. Open one investigation with a written question and decision owner.
-2. Register only authorized evidence and its provenance/quality.
-3. Build the relevant timeline or period comparison.
-4. Record competing claims, calculations, uncertainty and next checks.
-5. Obtain qualified review with corrections and dissent preserved.
-6. Produce one approved decision brief and customer-owned decision.
-7. Record an outcome only when the agreed measure/window exists.
-
-Do not build a general customer dashboard, broad integrations, autonomous diagnosis or multi-use-case workbench before this path is validated. The existing application and database should be reused where they satisfy the selected path; missing objects should be added only from the chosen workflow's demonstrated requirement.
-
-### 15.4 Result and next gate
-
-The synthetic architecture exercise is complete enough to prevent C4-oriented code from dictating the product model. It is not independently reviewed, delivery time is not measured, and no buyer usefulness or willingness to pay is established.
-
-The next human execution remains §14.6: confirm supported access and conduct neutral C1/C4 discovery. The next method validation is one qualified synthetic-only critique of each fixture using the same questions and an actual effort log. Real-customer implementation remains gated on buyer evidence, reviewer availability, authorization and the technical release controls in [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29).
+**Change-control rule:** All future changes must state observed evidence, user decision, trade-offs, risks, affected code/docs, owner, and acceptance. Update the same Master Plan rather than creating GridMind 4.0 for each attractive industry.

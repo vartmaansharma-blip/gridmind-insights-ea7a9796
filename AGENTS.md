@@ -9,8 +9,31 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Treat opportunities as the primary intelligence object and machines as supporting evidence, because GridMind must lead from economic exposure to verified outcome.
+- **GridMind 3.1 (17 October 2026):** Treat an authorized industrial **exception/investigation case** as the primary resolution object. Machines, supplier records, billing documents and ERP events may be supporting evidence only where consented and relevant. A quantified *opportunity* is a separately supported economic judgment, never an automatic case output. Existing energy dashboards are preserved as synthetic/history; do not reinterpret them as customer-validated services.
+- Evaluate R1 (C2 quality plus related C1 incidents), R2 (C6 acceptance/invoice disputes) and R3 (C4 electricity exposure) in discovery. Do not select a commercial wedge, build a multi-division ERP/QMS/fintech suite, or activate an R1/R2 connected engine by changing a C1/C4 enum. The revised Master Plan controls.
 - Keep all industrial conclusions evidence-typed and fail closed to unknown when source resolution is insufficient, because monthly data cannot support physical fault diagnosis.
+
+## GridMind 3.1 competitor learning and R3 screen fence — 18 October 2026
+
+Read the [dated competitor learning register](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md), [R3 screening method and negative fixtures](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md), and [sole buyer tracker](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) before building industrial intelligence features. Competitor announcements and vendor-reported outcomes do **not** validate GridMind customer claims.
+
+**Discovery sequencing:** R3 (electricity billing/contract exposure) is FIRST FOR RESEARCH only; R2 (invoice acceptance/document disputes) must be fairly compared, and R1 remains a synthetic design story. The first paid wedge has **not** been selected. Do not infer manufacturer/customer adoption from source commits or research.
+
+**R3 calculation rule:** no utility-agnostic Jharkhand tariff spreadsheet, numerical savings/refund claim, default PF penalty, client bill intake or live R3 engine unless an appropriately qualified expert has approved supplier/period/category-specific tariff method and the applicable rights/release gates are met. Missing orders, units, scope or reviewer ⇒ explicit inconclusive state. Related bounded task is [issue #139](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/139).
+
+**Build discipline:** preserve the shared source → observed evidence/hypothesis → independent reviewer → customer-approved action → outcome workflow. Read-only/minimal adapters only after repeated customer need and technical permissions. Do not build autonomous industrial agents, physical electrical controls, network digital twins, GPU simulations or ERP replacement because competitors announced them. Source-first explanations, synthetic negative fixtures and professional authority precede automation.
+
+## PR #136 narrowed integration — 18 October 2026
+
+The founder requested safe resolution and consolidation of #136. The [current packet amendment](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) narrows the final diff to documentation and an isolated replay CLI pin; application, routes, auth and Supabase source equal main. Earlier mixed-code HOLD statements describe the historical broad candidate. Keep draft pending exact-head checks and preview; do not apply those historical scope descriptions to claim new security code is shipping. All production/customer-data and independent security-review requirements remain binding for changes in those areas.
+
+## GridMind 3.1 PR #136 release fence — 17 October 2026 (historical broad scope)
+
+**Before advising a merge, changing deployment defaults, shipping code to Vercel main or applying SQL:** read the [pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) and [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) decisions G31-M01–M10. **Default: #136 stays draft/HOLD.** Never interpret passing CI, a Vercel READY preview, or a fictional investigator workflow as founder approval, customer-data authorization, qualified industrial advice or successful payment.
+
+Separate three release classes: **I** = truthful /website and tested non-confidential contact (still requires exact-SHA preview, permission, accessibility and rollback); **S** = scoped synthetic internal case demonstration with negative role/security tests; **D** = real customer evidence/storage/review requiring separate qualified permissions, #130 migration history and #29 populated authenticated tenant checks. **D = NO-GO** until proven and approved. The existing / root/dashboard must not be silently replaced; PR #132, #133, #125, #120 overlap and must be reconciled with owners before merging.
+
+For broad/mixed diffs, prefer narrower reviewable work on an up-to-date branch over forcing all 200+ files into production. **Never rewrite shared Lovable history.** Record precise SHA, CI/Quality/Browser/isolated migration/Vercel status, independent reviewer, founder approval and rollback in the PR. A child document or agent cannot grant these permissions.
 
 ## Repository authority and execution rules
 
@@ -24,6 +47,12 @@ Use this authority order:
 5. GitHub Issues — actionable work and acceptance criteria.
 
 Supporting research, dated audits, prototypes, and `roadmap.md` do not override these authorities or create competing task queues. When sources conflict, stop and reconcile the canonical record before implementation.
+
+## GridMind 3.1 implementation references
+
+For the next public build, follow [issue #138](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/138) and the [site build and acceptance specification](docs/product/gridmind-site-build-and-acceptance-2026-10-17.md); buyer discovery runs in parallel and the existing `/website` route stays until separately tested. Before creating modules, review the [Resolve Domain & Product Contract](docs/product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) and [Engineering Acceptance Ledger](docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md). For pricing, cash and operational risks use the [Company Economics & Risk Register](docs/operations/gridmind-company-economics-and-risk-register-2026-10-17.md). All remain **supporting** the Master Plan; do not turn them into competing strategies.
+
+**Mandatory separation:** a synthetic R1/R2/R3 commercial screening stage is not an implemented quality/finance diagnosis. Existing C1/C4 synthetic engine is not automatically a professional R3 tariff audit. No production data or physical-control integration before appropriate gates.
 
 ## Change and validation discipline
 

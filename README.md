@@ -1,40 +1,66 @@
 # GridMind Insights
 
-> **Being built to turn industrial evidence into better decisions and verified improvement.**
-
-GridMind is being developed as an industrial intelligence and performance-improvement company. The long-term ambition is to help manufacturers investigate operational problems, make evidence-backed decisions, coordinate approved improvements, and verify outcomes. This is an ambition, not a claim that all capabilities exist today.
+> **GridMind — Industrial Profit & Resolution Intelligence.** A founder-led, evidence-first effort to help factories investigate costly operational exceptions and coordinate verified decisions, not an established enterprise product.
 
 ## Research update — 18 October 2026
 
-[Industrial intelligence competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and the [R3 electricity screen research method](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) are now documented. R3 (electricity bill/contract exposure) is **first for discovery only**, R2 (invoice/acceptance disputes) is the alternative to compare, and R1 (quality) remains a fictional demonstration; **no paid wedge has been validated**. There is **no live bill-screen calculator or authorized real-data service**. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) controls these dated refinements.
+[Competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and the [R3 method](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) prioritize R3 for research, fairly compare R2, and retain R1 as a fictional demonstration. No paid wedge, live bill-screen calculator or authorized real-data service is established. The #136 integration preserves main's website and application; its [scope amendment](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) controls release evidence.
 
-## Current truth
+## Current truth — 17 October 2026
 
-- **Commercial wedge:** undecided.
-- **Discovery probes:** C1 — downtime/production-loss investigation; C4 — energy/material inefficiency. These are probes, not product commitments.
-- **Access:** the founder reports an initial public-route inquiry to ASIA was sent on 2026-10-12. No reply, buyer conversation, customer-data permission, factory access, paid demand, or verified savings is confirmed.
-- **Next access test:** a small 3–5 genuine warm-introduction-request effort by 2026-10-19, only if legitimate contacts and actual capacity are available.
-- **Product/release status:** consult the current technical evidence and release gates; a successful build or synthetic test is not proof of production readiness or customer demand.
+- **Strategic direction:** one industrial resolution company, one common permissioned evidence → qualified review → approved action → outcome system. We are **not** building six separate businesses or a replacement ERP/QMS.
+- **Commercial wedge:** **undecided**. Compare **R1** manufacturing quality/rejected orders with related C1 production incidents, **R2** documented acceptance/invoice disputes (C6), and **R3** electricity billing/contract exposure (C4). R1 is a preferred **synthetic design demonstration**, not validated demand.
+- **Evidence:** the founder reports an initial ASIA inquiry on 2026-10-12. No confirmed buyer interviews, customer records, qualified reviewer agreement, paid demand, revenue or verified results.
+- **Execution dates:** appropriate introduction access test by 2026-10-19; aim for 3 conversations/one buyer next step by 2026-10-31; GO TO BOUNDED TEST / NARROW / PIVOT / STOP decision 2026-11-10.
+- **Source reality:** existing application demos and connected internal source are synthetic **C1/C4**. Any R1/R2 intake work here is non-customer, experimental and distinct from a released investigation engine. Production/customer data gates remain.
+- **Scope exclusions:** no autonomous root-cause diagnosis, guaranteed loss reduction, invoice collection, financial custody, plant controls, standalone cybersecurity offering or premature enterprise integrations.
 
 ## Start here
 
 1. [Documentation index](docs/README.md) — repository map and reading order.
 2. [Contribution standards](CONTRIBUTING.md) — source-of-truth rules, issue-to-PR workflow, validation, and safety requirements.
-3. [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) and [issue templates](.github/ISSUE_TEMPLATE/) — consistent scope, acceptance evidence, risk, and review records.
+3. [Pull request template](.github/PULL_REQUEST_TEMPLATE.md) and [issue templates](.github/ISSUE_TEMPLATE) — consistent scope, acceptance evidence, risk, and review records.
 4. [Canonical Master Plan](docs/gridmind-master-plan-2026-10-11.md) — the only company execution plan.
 5. [Live Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) — the only live customer-access and discovery tracker.
 6. [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) — binding strategic, safety, evidence, and scope guardrails.
-7. [Verification Audit](docs/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
+7. [Verification Audit](docs/archive/gridmind-verification-audit-2026-10-12.md) — point-in-time verification; recheck live systems before acting on operational findings.
+
+## GridMind 3.1 detailed operating documents
+
+The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) is the **sole company strategy and execution authority**; the additional documents below are supporting specifications, not alternate roadmaps.
+
+- [Resolve Domain & Product Contract](docs/product/gridmind-resolve-domain-and-product-contract-2026-10-17.md) — actual versus proposed method, evidence permissions, case states, reviewer boundaries, system and UI tests.
+- [Company Economics & Risk Register](docs/operations/gridmind-company-economics-and-risk-register-2026-10-17.md) — cash, margin definitions, illustrative financial sensitivity, commercial and industry risk playbooks.
+- [First Paid Case Scope Schedule](docs/operations/gridmind-first-paid-case-scope-template-2026-10-17.md) — practical gated checklist for a single professional case; pending adult, legal, reviewer and customer approval.
+- [Engineering Acceptance & Repo Conversion](docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) — exact source areas, issue-linked epics, test and deployment gates.
+- The internal demo in `/investigations` includes a **read-only fictional Resolve lifecycle indicator** in addition to historical C1/C4 synthetic analysis. No live quality/finance engine is implied.
+
+## GridMind 3.1 manufacturing research and service blueprint (17 October 2026)
+
+The founder requested research into at least 100 industrial problems, how GridMind might help, what customers would pay for, how GridMind itself could accept fees, and how the evidence-to-resolution company would operate. The resulting source-informed proposal is deliberately **not** a promise of 100 implemented/validated services:
+
+- [100-problem manufacturer research atlas](docs/research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) — exactly 100 problems across 10 industrial domains, distinguishing potential direct software, expert-assisted work and partner-only escalation. It is **desk research**, not local factory observations or a product backlog.
+- [Service SOP, commercial/pricing hypotheses and payment collection](docs/operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) — on-site-capable expert-led service model; business invoice/bank transfer first after lawful authorized adult/professional setup; regulated hosted payment link only if later warranted. **GridMind revenue ≠ manufacturer's disputed receivables.** No live payments or contracting ability inferred.
+- [Manufacturer resolution product architecture](docs/product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — one core for authorized evidence → observation/hypothesis → qualified review → customer decision → outcome, with methods added only after buyer/safety gates.
+- [PR #136 pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — main is production-connected; broad branch stays **DRAFT/HOLD** pending exact-head checks, independent code review, production Supabase drift (#130) and authenticated release (#29). Documentation does not authorize new migrations, production or real customer use.
+
+The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) remains the **only** active strategy; the [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) is still the **only** buyer-evidence tracker. R1/R2/R3 remain discovery-only candidates. “Redmind” has not been accepted as a name change.
+
+## Latest research-driven adaptation — 18 October 2026
+
+- [Industrial intelligence competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) translates major 2026 manufacturing/infrastructure technology moves into **source-first evidence, owned corrective action, reviewer accountability, interoperability and tested economic outcomes**. Large-company digital twins and autonomous grid/plant controls are **not** current GridMind features.
+- [R3 electricity screen specification](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) defines a proposed narrow supplier-specific tariff research instrument, with twelve synthetic negative acceptance scenarios and professional-review prerequisites. No real calculation engine, accredited opinion or live factory intake is claimed.
+- **Sequence:** Research **R3 energy billing first**, compare **R2 documentary payment/acceptance disputes fairly**, retain **R1** as a fictional design case. A paid wedge is **still unselected** until the live [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) records actual buyers and delivery feasibility.
 
 ## Product and operating model
 
 GridMind's proposed operating loop is:
 
-**Authorized evidence → traceable findings → qualified human review → customer-approved action → measured outcome → retained learning only where rights permit.**
+**Exception → authorized evidence → traceable findings and competing explanations → qualified human review → customer-approved action → measured outcome → retained learning only where rights permit.**
 
-The initial commercial offer must be selected from real buyer evidence. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
+The initial commercial offer must be selected from real buyer evidence across R1/R2/R3. Do not equate a synthetic quality or receivables triage example with a functioning connected case method. Do not claim autonomous diagnosis, verified root cause, guaranteed savings, accuracy, ROI, customer endorsement, or production readiness without the corresponding evidence and approval.
 
-Read the [Product Definition](docs/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
+Read the [Product Definition](docs/product/gridmind-product-definition.md), [Accuracy and Validation Standard](docs/engineering/gridmind-accuracy-and-validation-standard.md), and [Factory Economic Model](docs/operations/factory-economic-model-v1.md) for supporting detail. They do not override the Master Plan.
 
 ## Repository layout
 
@@ -88,7 +114,7 @@ The existing Lovable operational dashboard remains at `/`. The same application 
 
 Remove `mode=demo` for authenticated isolated acceptance. Connected cases default to disabled; the server-only settings in `.env.example` must point at an authorized isolated database with the source migrations. Customer grants are case-specific and do not grant factory membership. Scope acceptance creates the case/grant automatically; accepted independent review publishes atomically when the manager authorized that policy. Source corrections invalidate the current publication automatically.
 
-This is synthetic source/preview capability, not a real customer-data launch. Evidence responses accept references/text; file custody is pending. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for tested behavior, automation and remaining release work.
+This is synthetic source/preview capability, not a real customer-data launch. Evidence responses accept references/text; file custody is pending. See the [implementation and Lovable handoff](docs/product/gridmind-mvp-lovable-handoff.md) for tested behavior, automation and remaining release work.
 
 ## Working in Lovable and Codex
 
@@ -99,7 +125,7 @@ Lovable handles design and visual implementation; Codex handles backend behavior
 - [Contribution workflow](CONTRIBUTING.md), [ownership routing](.github/CODEOWNERS), [support](SUPPORT.md), and [security reporting](SECURITY.md).
 - [Change history](CHANGELOG.md) records completed repository work; it is not a production-release claim.
 - Dependabot proposes compatible Bun updates and GitHub Action updates for review. It does not automatically merge them or prove an update is safe for Lovable.
-- This is a public repository with no open-source license selected. Access does not establish permission to redistribute original GridMind code; request the owner's permission. Third-party dependencies retain their own licenses.
+- This repository is public, but no open-source license has been selected. Public visibility does not grant permission to reuse or redistribute original GridMind code beyond GitHub's viewing and forking terms; request the owner's permission. See [GitHub's licensing guide](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository). Third-party dependencies retain their own licenses. Never put real factory records, credentials, or private security findings in public issues, PRs, or commits; use the [security reporting route](SECURITY.md).
 
 ## Engineering and safety principles
 
@@ -118,4 +144,4 @@ Do not create another master plan or discovery tracker. Update the canonical rec
 
 ## Internal investigation MVP
 
-The founder-authorized synthetic workspace is available at `/investigations`, with a connected synthetic path at `/investigations-connected`. The connected API is disabled by default; its source migration must first be reviewed and applied only to an authorized isolated database. See the [implementation and Lovable handoff](docs/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.
+The founder-authorized synthetic workspace is available at `/investigations`, with a connected synthetic path at `/investigations-connected`. The connected API is disabled by default; its source migration must first be reviewed and applied only to an authorized isolated database. See the [implementation and Lovable handoff](docs/product/gridmind-mvp-lovable-handoff.md) for behavior, ownership and verification commands. Invented records only; customer-data and production release gates remain binding.
