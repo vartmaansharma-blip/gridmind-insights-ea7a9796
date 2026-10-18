@@ -100,7 +100,9 @@ Update only with actual counts. Do not fill planned counts as completed.
 | Introductions offered | 0 | Track actual | — |
 | Calls booked | 0 | Track actual; no forecast target | — |
 | Calls held | 0 | Oct 31 target: 3 substantive manufacturing conversations | Target only; no conversations claimed |
-| C1 quality-linked production incidents | 0 | R1 supporting probe | — |\n| C2 quality/acceptance-related cases | 0 | R1 primary probe | — |\n| C6 invoice/acceptance disputes | 0 | R2 probe | — |
+| C1 quality-linked production incidents | 0 | R1 supporting probe | — |
+| C2 quality/acceptance-related cases | 0 | R1 primary probe | — |
+| C6 invoice/acceptance disputes | 0 | R2 probe | — |
 | C4 electricity-cost cases | 0 | R3 probe | — |
 | Explicit commercial next steps | 0 | Evidence required for GO | — |
 | Authorized customer-data paths | 0 | Tier 2 only | No customer data requested |

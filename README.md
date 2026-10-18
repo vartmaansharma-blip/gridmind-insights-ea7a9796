@@ -2,6 +2,10 @@
 
 > **GridMind — Industrial Profit & Resolution Intelligence.** A founder-led, evidence-first effort to help factories investigate costly operational exceptions and coordinate verified decisions, not an established enterprise product.
 
+## Research update — 18 October 2026
+
+[Competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and the [R3 method](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) prioritize R3 for research, fairly compare R2, and retain R1 as a fictional demonstration. No paid wedge, live bill-screen calculator or authorized real-data service is established. The #136 integration preserves main's website and application; its [scope amendment](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) controls release evidence.
+
 ## Current truth — 17 October 2026
 
 - **Strategic direction:** one industrial resolution company, one common permissioned evidence → qualified review → approved action → outcome system. We are **not** building six separate businesses or a replacement ERP/QMS.

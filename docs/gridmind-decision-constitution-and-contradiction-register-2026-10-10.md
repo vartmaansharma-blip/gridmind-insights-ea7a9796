@@ -1,4 +1,17 @@
 # GridMind Decision Constitution and Contradiction Register
+
+## Integration scope correction — 18 October 2026
+
+Refs #137, #136, #138, #29 and #130. The founder requested resolution of #136 and consolidation into main only when legitimate gates pass. The current integration merges main `8cf121ca4f8a8e8d0709941b62f2640686c6e6cd` into original source `42ec9e2143f837c714c8d96d5dee6ad2babc2c9c` with a merge commit; no published history is rewritten.
+
+**Selected scope: documentation consolidation and isolated-test tooling only.** All `src/`, `supabase/`, `e2e/`, application dependency/build configuration and public/root routes are retained byte-for-byte from current main. #140 research and #142 synthetic Resolve behavior, additional negative tests and accessibility fixes are retained. The only executable change is pinning the isolated replay workflow's Supabase CLI from `latest` to `2.121.0`; this workflow starts and resets only its disposable runner-local stack. No production migration job is added.
+
+The proposed website copy is deferred to #138 and remains recoverable at source commit `42ec9e2`; it is not shipped by this integration. No contact receipt, qualified review, savings or customer outcome is asserted. #132 root/onboarding, #133 case bridge, #125 older enquiry and #120 scooter reference remain separate and unmerged; this candidate imports none of their branch-only changes. Existing seven factory records and production drift recorded in #130 are not read or mutated by this task. They are not assumed fictional.
+
+**Gate applicability:** G31-M03/M06 security review remains mandatory for any future permission, migration or server-function change; this narrowed diff contains none. #29/#130 remain open and Class D remains NO-GO. This correction supersedes earlier descriptions that #136's remaining diff includes tenant/migration/Edge code or releases revised website copy. It does not waive any gate for those deferred changes. Normal exact-head CI, Quality, Public Site Browser, isolated Migration Replay, Vercel preview and resolved-conversation protections still apply. Keep draft until those checks and preview evidence are recorded on the PR.
+
+**Containment and rollback:** application/backend tree equals main baseline `8cf121c`; no data rollback is needed. If documentation or CI pin causes a problem after merge, revert the integration merge with a new reviewed commit (`git revert -m 1 <main-merge-sha>`), validate it and merge normally; never reset/force-push or execute down migrations. Verify the reverse patch restores the baseline tree before merging. The PR evidence comment records candidate SHA, exact check URLs, preview, review findings and final disposition; this source note does not predeclare success.
+
 **Decision date:** 2026-10-10  
 **Status:** Canonical interpretation of the current strategy; newest 2026-10-17 amendment governs current discovery ordering. This file resolves conflicts between planning documents; it does not claim customer validation or product readiness.
 
@@ -24,6 +37,31 @@
 **Affected files:** Master Plan, Buyer Discovery Sprint, root README, implementation handoff, Docs index, and any scoped synthetic code. Existing permission/release gates and 16 October build exception stand.
 
 Older decision sections below retain their dates and remain useful historical explanation. **Where older C1/C4-only sequencing conflicts, this dated amendment and the revised Master Plan govern.** The older live evidence totals are not altered by the amendment.
+
+## Authorized synthetic triage integration — 18 October 2026
+
+**Decision and evidence:** The founder explicitly requested safe product functionality from draft PR #136 integrated into current main, with normal protection checks and preservation of the original draft/history. [Issue #141](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/141) bounds this extraction from source head `42ec9e2143f837c714c8d96d5dee6ad2babc2c9c`: fictional R1/R2/R3 intake/lifecycle contracts and a read-only comparison alongside the existing `/investigations` C1/C4 workbench. This is a narrow addition to the earlier synthetic-build authorization; the research-only promotion in PR #140 did not authorize the broader PR #136 application change.
+
+**Alternatives and trade-off:** A whole-branch merge would mix unresolved application, routing and production database changes; leaving all product work parked would also withhold an independently testable demonstration. Extract the local synthetic slice onto a fresh main-based branch, preserve signature green and existing routes, and test both new lane switching and existing workbench behavior. The comparison uses fixed fictional examples with no new intake, network, storage or approval path. It does not implement specialist diagnosis, the proposed R3 bill-screen method, or validate a commercial wedge.
+
+**Release and reconsideration:** Require passing CI, Quality, Browser, isolated Migration Replay and Vercel on the final candidate plus review of deployment/merge safeguards before a normal merge. No production database, Auth, tenant, credential, connected-case flag or real-data change is authorized; [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) and [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) remain independent gates. Root/dashboard and `/website` stay in place; #132 requires a separate decision. Broader website-copy extraction requires its own preview/contact/browser acceptance. Rollback is a normal revert of the narrow integration. Reconsider scope only through separately authorized, issue-linked work; implementation/check evidence belongs in #141 and its PR, and merge is not claimed by this decision record.
+
+## Approved narrow industrial-intelligence research incorporation — 18 October 2026
+
+**Scope of this amendment:** Founder requested that 2026 manufacturing/infrastructure intelligence lessons be incorporated into GridMind's **existing** project and then merged to `main`. This narrow documentation-only change authorizes **research and design method requirements**, **not** production code, customer-data processing, paid services, electrical advice or broad PR #136 merge. See [dated competitor research](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and [R3 screening method/12 synthetic fixtures](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md).
+
+| ID | Decision | Limitation |
+|---|---|---|
+| **G31-I01** | Capture permissioned evidence source, supplier/site, dated rule version, uncertainty and provenance before any AI narrative (CADDi learning). | Existing code and database not independently verified. |
+| **G31-I02** | Follow an observed issue through qualified review, authorized decision-owner/action and objectively evidenced or inconclusive follow-up (Arch learning). | A dashboard/report does not itself prove resolution or savings. |
+| **G31-I03** | Keep one shared case/evidence/decision/outcome core with separately qualified specialist methods (Noetive learning). | Do not build a universal factory AI platform. |
+| **G31-I04** | Defer digital twins, infrastructure asset topology, physics simulation, utility dispatch, sensors and machinery controls (Siemens/NVIDIA, Neara, GE learning). | Future specialist qualification and separately validated buyer required. |
+| **G31-I05** | Research **R3 electricity billing/contract-cost exposure first**; separately interview R2 acceptance/invoice buyers; R1 is a fictional demonstration. | **No paid wedge selected**; do not inflate interview/sample/savings evidence. |
+| **G31-I06** | Proposed narrow R3 screen asks about **demand charges, applicable PF items and tariff-category questions** against actual supplier, contract, bill period and effective order. Unknown source => **INCONCLUSIVE**. | An expert must approve method; no real bill upload, certified audit or guarantee. |
+| **G31-I07** | Include expert costs, founder labor, sales and failed/free-screen acquisition in case economics. | Prices/20-screen targets are research hypotheses, not collected cash or real customer data. |
+| **G31-I08** | Keep PR #136 draft until independently reviewed release gates; production Supabase schema, tenant controls and rollout remain blocked under [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) and [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29). | This docs-only incorporation cannot authorize a production application merge. |
+
+**Operating hierarchy remains unchanged:** Master Plan is the sole execution plan, Buyer Discovery Sprint the only live field-evidence tracker, this Constitution resolves changes, and research files cannot masquerade as customer interviews. Source-linked company performance claims are **not** GridMind results. No live professional method approval or real payment has been established.
 
 ## Dated scope amendment — 16 October 2026
 

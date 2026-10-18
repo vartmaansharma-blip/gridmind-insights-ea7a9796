@@ -1,5 +1,21 @@
 # GridMind 3.1 — Exact checkpoint and integration register
 
+## Integration scope correction — 18 October 2026
+
+Refs #137, #136, #138, #29 and #130. The founder requested resolution of #136 and consolidation into main only when legitimate gates pass. The current integration merges main `8cf121ca4f8a8e8d0709941b62f2640686c6e6cd` into original source `42ec9e2143f837c714c8d96d5dee6ad2babc2c9c` with a merge commit; no published history is rewritten.
+
+**Selected scope: documentation consolidation and isolated-test tooling only.** All `src/`, `supabase/`, `e2e/`, application dependency/build configuration and public/root routes are retained byte-for-byte from current main. #140 research and #142 synthetic Resolve behavior, additional negative tests and accessibility fixes are retained. The only executable change is pinning the isolated replay workflow's Supabase CLI from `latest` to `2.121.0`; this workflow starts and resets only its disposable runner-local stack. No production migration job is added.
+
+The proposed website copy is deferred to #138 and remains recoverable at source commit `42ec9e2`; it is not shipped by this integration. No contact receipt, qualified review, savings or customer outcome is asserted. #132 root/onboarding, #133 case bridge, #125 older enquiry and #120 scooter reference remain separate and unmerged; this candidate imports none of their branch-only changes. Existing seven factory records and production drift recorded in #130 are not read or mutated by this task. They are not assumed fictional.
+
+**Gate applicability:** G31-M03/M06 security review remains mandatory for any future permission, migration or server-function change; this narrowed diff contains none. #29/#130 remain open and Class D remains NO-GO. This correction supersedes earlier descriptions that #136's remaining diff includes tenant/migration/Edge code or releases revised website copy. It does not waive any gate for those deferred changes. Normal exact-head CI, Quality, Public Site Browser, isolated Migration Replay, Vercel preview and resolved-conversation protections still apply. Keep draft until those checks and preview evidence are recorded on the PR.
+
+**Containment and rollback:** application/backend tree equals main baseline `8cf121c`; no data rollback is needed. If documentation or CI pin causes a problem after merge, revert the integration merge with a new reviewed commit (`git revert -m 1 <main-merge-sha>`), validate it and merge normally; never reset/force-push or execute down migrations. Verify the reverse patch restores the baseline tree before merging. The PR evidence comment records candidate SHA, exact check URLs, preview, review findings and final disposition; this source note does not predeclare success.
+
+---
+
+**Historical snapshot below; current integration scope is defined above.**
+
 **Date:** 17 October 2026. **Class:** Supporting point-in-time release/integration record, not a second plan, commercial tracker or backlog. **Baseline:** Draft [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136), head **208747c43ee6ab68a501aeaf6b547ae5339a5942**. **Owner:** founder for business/release approvals, engineering maintainer for source and acceptance, qualified specialist for professional findings. **Important:** after any new commit, exact-head checks and Vercel preview must be repeated. This file records the recovered checkpoint, not continuously live status.
 
 ## A. The product being built, and the proof missing

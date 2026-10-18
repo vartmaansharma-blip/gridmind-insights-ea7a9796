@@ -23,7 +23,11 @@ Read the [dated competitor learning register](docs/research/gridmind-industrial-
 
 **Build discipline:** preserve the shared source → observed evidence/hypothesis → independent reviewer → customer-approved action → outcome workflow. Read-only/minimal adapters only after repeated customer need and technical permissions. Do not build autonomous industrial agents, physical electrical controls, network digital twins, GPU simulations or ERP replacement because competitors announced them. Source-first explanations, synthetic negative fixtures and professional authority precede automation.
 
-## GridMind 3.1 PR #136 release fence — 17 October 2026
+## PR #136 narrowed integration — 18 October 2026
+
+The founder requested safe resolution and consolidation of #136. The [current packet amendment](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) narrows the final diff to documentation and an isolated replay CLI pin; application, routes, auth and Supabase source equal main. Earlier mixed-code HOLD statements describe the historical broad candidate. Keep draft pending exact-head checks and preview; do not apply those historical scope descriptions to claim new security code is shipping. All production/customer-data and independent security-review requirements remain binding for changes in those areas.
+
+## GridMind 3.1 PR #136 release fence — 17 October 2026 (historical broad scope)
 
 **Before advising a merge, changing deployment defaults, shipping code to Vercel main or applying SQL:** read the [pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) and [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) decisions G31-M01–M10. **Default: #136 stays draft/HOLD.** Never interpret passing CI, a Vercel READY preview, or a fictional investigator workflow as founder approval, customer-data authorization, qualified industrial advice or successful payment.
 

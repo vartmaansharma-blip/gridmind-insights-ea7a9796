@@ -5,13 +5,13 @@ import { PublicSite } from "@/components/public-site/site";
 export const Route = createFileRoute("/website")({
   head: () => ({
     meta: [
-      { title: "GridMind — Industrial Profit & Resolution Intelligence" },
+      { title: "GridMind — Evidence-led factory electricity reviews" },
       {
         name: "description",
-        content: "Everything is connected. What are we missing? GridMind is developing evidence-led investigations for costly factory exceptions. Explore a fictional electricity example; customer services are not yet validated.",
+        content: "Everything is connected. What are we missing? GridMind investigates factory electricity bills and operating evidence, with human review and source-linked next steps.",
       },
       { property: "og:title", content: "GridMind — Everything is connected. What are we missing?" },
-      { property: "og:description", content: "Evidence-led industrial investigations. Explore a clearly fictional electricity case illustrating source traceability and qualified review." },
+      { property: "og:description", content: "Evidence-led factory electricity reviews. Trace each observation to its source and see what requires qualified review." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

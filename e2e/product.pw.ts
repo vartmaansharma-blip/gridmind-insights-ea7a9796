@@ -20,9 +20,8 @@ test("public website releases the approved Lovable industrial hero and functiona
   await page.getByRole("button", { name: "Download fictional brief" }).click();
   expect((await download).suggestedFilename()).toMatch(/FICTIONAL\.txt$/);
   const contact = page.locator("#contact");
-  await expect(contact).toContainText("Do not submit real factory records.");
-  await expect(contact.getByRole("link", { name: "Explore sample workspace" }))
-    .toHaveAttribute("href", "/cases?mode=demo");
+  await expect(contact).not.toContainText("Contact route pending");
+  await expect(contact.getByRole("link", { name: "Request a conversation" })).toHaveAttribute("href", "/cases");
   await page.getByRole("link", { name: "Explore the sample workspace" }).click();
   await expect(page.getByRole("heading", { name: "Your investigations", exact: true })).toBeVisible();
   expect(errors).toEqual([]);
@@ -32,15 +31,15 @@ test("internal preview still shows the same design with a review-only banner", a
   await page.goto("/design-preview");
   await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
   await expect(page.getByText(/Internal review copy of \/website/)).toBeVisible();
-  await expect(page.locator("#contact").getByRole("link", { name: "Explore sample workspace" }))
-    .toHaveAttribute("href", "/cases?mode=demo");
+  await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" }))
+    .toHaveAttribute("href", "/cases");
 });
 
 test("public site remains legible and scrollable on narrow screens", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/website");
   await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
-  await expect(page.locator("#contact").getByRole("link", { name: "Explore sample workspace" })).toBeVisible();
+  await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
 });
 

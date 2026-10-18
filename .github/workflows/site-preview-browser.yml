@@ -1,17 +1,11 @@
 name: GridMind Public Site Browser
 
+# Required branch-protection checks must execute for all PRs targeting main.
+# PR path filters cause documentation-only PRs to remain permanently blocked
+# even when all other checks pass. Keep push paths limited to website changes.
 on:
   pull_request:
     branches: [main]
-    paths:
-      - "src/components/public-site/**"
-      - "src/components/design-preview/**"
-      - "src/components/product/website.tsx"
-      - "src/routes/design-preview.tsx"
-      - "src/routes/website.tsx"
-      - "e2e/product.pw.ts"
-      - "e2e/synthetic.config.ts"
-      - ".github/workflows/site-preview-browser.yml"
   push:
     branches: [main]
     paths:

@@ -1,6 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
+
 import { ResolveTriagePreview } from "@/components/investigation/resolve-triage-preview";
+
+function SyntheticInvestigations() {
+  return (
+    <>
+      <div className="mx-auto max-w-7xl px-4 pt-6">
+        <ResolveTriagePreview />
+      </div>
+      <InvestigationWorkbench />
+    </>
+  );
+}
 
 export const Route = createFileRoute("/investigations")({
   head: () => ({
@@ -13,10 +25,5 @@ export const Route = createFileRoute("/investigations")({
       },
     ],
   }),
-  component: () => (
-    <>
-      <ResolveTriagePreview />
-      <InvestigationWorkbench />
-    </>
-  ),
+  component: SyntheticInvestigations,
 });
