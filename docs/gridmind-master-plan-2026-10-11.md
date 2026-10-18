@@ -2,7 +2,7 @@
 
 **Revised:** 2026-10-18 — GridMind 3.1 approved strategic baseline after PR #136 integration  
 **Authority:** This is the **sole current execution plan**. [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live field-evidence tracker; [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs security, ethics, authority and conflicts. This replacement supersedes the former C1/C4-only discovery *ordering*, not established safeguards, retained code or technical test history. Former plan text remains retrievable through Git history.  
-**Evidence status:** **No verified customer interview, paid customer, qualified reviewer engagement, authorized customer-data test, proven customer ROI, or production release.** The 2026-10-12 ASIA inquiry is the only reported external access action; no reply established. No commercial wedge has won.
+**Evidence status:** **No verified customer interview, paid customer, qualified reviewer engagement, authorized customer-data test, proven customer ROI, or production customer-case/data release.** The 2026-10-12 ASIA inquiry is the only reported external access action; no reply established. No commercial wedge has won.
 
 ## 1. Permanent strategic identity
 
