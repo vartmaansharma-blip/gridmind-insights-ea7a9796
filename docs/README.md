@@ -14,6 +14,16 @@
 5. **[Contribution standards](../CONTRIBUTING.md)** — work intake, branch/history preservation, validation, and review requirements.
 6. **[Technical release gate](release-gate.md)** and [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) — mandatory before customer-data workflows.
 
+## New dated research incorporation — 18 October 2026
+
+These are **supporting research and proposed acceptance methods**, not a second Master Plan, new buyer-evidence tracker, finished bill-auditing engine, or approval for PR #136 production deployment:
+
+- [Competitor learning register](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) — source-linked CADDi, Arch, Noetive, Schneider/PTC, Siemens/NVIDIA, Neara/Zepben, GE Vernova and JSERC lessons translated into bounded design decisions.
+- [Proposed R3 electricity bill-screen method with 12 fictional scenarios](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) — expert validation pending; supplier/date/category, demand and conditional PF checks, explicit inconclusive result.
+- The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) authorizes **R3-first discovery, R2 challenger parity and preservation of the common case architecture**, not a first paid wedge or customer/production software release.
+
+**Current technical guardrail:** Issue [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) and [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) remain open. PR [#136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) contains a much larger application/structural change and is not covered by this documentation-only promotion.
+
 ## Current operating state
 
 - Positioning: evidence-first, human-reviewed industrial investigation service (working hypothesis).
