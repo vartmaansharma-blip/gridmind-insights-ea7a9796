@@ -11,6 +11,7 @@ These are exploratory or dated analyses. They do not select the commercial wedge
 ## 18 October 2026 — Current competitive learning
 
 - [Industrial intelligence competitor learning register](gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) — dated CADDi, Arch, Noetive, Siemens/NVIDIA, Neara and GE Vernova evidence; translated into 12 **gated** GridMind improvements. Company claims are **not GridMind customer outcomes**; future digital-twin/agent ambitions remain deferred.
+- [GridMind 3.1 gap and design playbook](gridmind-3-1-gap-and-design-playbook-2026-10-18.md) — **proposals**, 18 Oct 2026: unaddressed problems, conclusions and designs (adverse-finding and authority protocols, Claim File offer, reconciliation gate, staged stop rules). Not a decision record; no buyer evidence, savings or signoff is asserted.
 
 ## Documents
 
