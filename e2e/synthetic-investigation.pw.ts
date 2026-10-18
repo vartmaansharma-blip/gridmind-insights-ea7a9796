@@ -183,3 +183,54 @@ test("removing a bad source preserves history and blocks unresolved links", asyn
   expect(stored.history[0].before.evidence[0].id).toBe("E01");
   expect(stored.history[0].reason).toContain("Removed evidence/E01");
 });
+
+test("Resolve discovery switches fictional lanes without intake, persistence or backend access", async ({
+  page,
+}) => {
+  const backend: string[] = [];
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("request", (request) => {
+    if (/supabase|\/auth\/v1|\/rest\/v1|\/functions\/v1|\/api\//.test(request.url())) {
+      backend.push(request.url());
+    }
+  });
+  await page.goto("/investigations");
+  const preview = page.getByRole("region", {
+    name: "GridMind Resolve — synthetic commercial discovery preview",
+  });
+  await expect(
+    preview.getByRole("button", { name: "R1 · Quality & production exceptions" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("heading", { name: "Evidence to decision" })).toBeVisible();
+  const saved = await page.evaluate(() => JSON.stringify({ ...localStorage }));
+  for (const width of [1365, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const [lane, title, question] of [
+      ["R1", "Quality & production exceptions", "repeat component-rejection complaint"],
+      ["R2", "Acceptance & invoice disputes", "disputes acceptance of delivered components"],
+      ["R3", "Electricity exposure", "understand an electricity billing change"],
+    ]) {
+      const button = preview.getByRole("button", { name: `${lane} · ${title}` });
+      await button.click();
+      await expect(button).toHaveAttribute("aria-pressed", "true");
+      await expect(preview.getByRole("button", { pressed: true })).toHaveCount(1);
+      await expect(preview).toContainText(question);
+      await expect(preview).toContainText("No commercial wedge is validated");
+      await expect(preview).toContainText("simulated review needed");
+      await expect(preview).toContainText("never approved for customer delivery");
+      await expect(preview.locator("input, textarea, select, form, a")).toHaveCount(0);
+      expect(await page.evaluate(() => JSON.stringify({ ...localStorage }))).toBe(saved);
+    }
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth),
+    ).toBe(true);
+  }
+  await page.reload();
+  await expect(
+    preview.getByRole("button", { name: "R1 · Quality & production exceptions" }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await expect(page.getByRole("heading", { name: "Evidence to decision" })).toBeVisible();
+  expect(backend).toEqual([]);
+  expect(errors).toEqual([]);
+});
