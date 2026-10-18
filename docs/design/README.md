@@ -1,5 +1,7 @@
 # Design and website references
 
+**Current design authority, 18 October 2026:** The working GridMind 3.1 positioning is **industrial problem-resolution**, not a validated electricity-only paid service. The existing bright signature green **#9ADD00**, memorable dynamic homepage and accessibility remain design constraints. Current implemented public route is `/website`, with `/` preserved for the existing factory overview. The older creative/homepage specifications in this folder are **historical/supporting design explorations**, not independently approved replacements for deployed copy, product claims or routes. The actionable public-site acceptance and real contact receipt/consent requirements are controlled by [#138](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/138) and [current Product site acceptance specification](../product/gridmind-site-build-and-acceptance-2026-10-17.md). No new website implementation or Lovable design handoff is performed by this documentation update.
+
 Design research and proposals are supporting references. Keep the current Lovable code, signature green and truthful public claims.
 
 **Authority:** [Master Plan](../gridmind-master-plan-2026-10-11.md) → [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) → [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Return to the [documentation guide](../README.md) for the recommended reading path.
