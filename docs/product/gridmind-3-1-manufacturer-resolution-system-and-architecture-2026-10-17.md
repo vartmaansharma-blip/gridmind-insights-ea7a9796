@@ -1,5 +1,7 @@
 # GridMind 3.1 — Manufacturer Resolution System / Product Architecture
 
+**Implementation/release-status correction, 18 October 2026:** PR #140 (industrial intelligence research), PR #142 (synthetic Resolve triage) and PR #136 (strategy-document integration) were merged, without enabling a real R1/R2/R3 professional engine, production case storage or any live bill calculator. Later detailed examples remain design proposals unless checked against the current `src/` and Supabase schema. The [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) controls final status.
+
 **Date:** 17 October 2026 · **Class:** Supporting product and solution architecture, **not an implementation claim**, separate roadmap, new brand, or authorization to ship. The user's term “SOAP plan” is interpreted here as a comprehensive **Service–Operations–Architecture–Payments** operating design (a working shorthand, not the SOAP XML network protocol). “Redmind” has not been approved as a GridMind brand rename.  
 **Strategic authority:** [sole Master Plan](../gridmind-master-plan-2026-10-11.md), [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), [sole Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md). Read [100-problem Research Atlas](../research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) as testable taxonomy, and [Commercial & Payment SOP](../operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) for future business operations.
 
@@ -86,7 +88,7 @@ The initial product is a *service operating system*, where an authorized trained
 
 ## 7. Present source and routes — do not overclaim
 
-Existing main software: **TanStack Start, React, Vite, Bun, Lovable, Supabase** with a synthetic C1/C4 investigation/analysis history and reviewable client/team screens. GridMind 3.1 draft #136 includes broader public copy and **fictional non-persistent R1/R2/R3 triage**. No connected qualified R1/R2 engine or production customer-data release is established.
+Existing main software: **TanStack Start, React, Vite, Bun, Lovable, Supabase** with a synthetic C1/C4 investigation/analysis history and reviewable client/team screens. The **fictional non-persistent R1/R2/R3 triage** was integrated via merged PR #142, and the GridMind 3.1 documentation consolidation was merged via PR #136. The broader proposed public marketing copy is **not** shipped; [#138](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/138) remains its separate acceptance gate. No connected qualified R1/R2 engine or production customer-data release is established.
 
 **Route preservation:** `/website` public; `/` existing dashboard; `/investigations` fictional discovery/synthetic path; `/cases` authorized customer-facing sample; `/team/intake` and `/team/cases` staff routes. PR #132 proposes a different public-root/onboarding route, but is held separately until exact route, auth, RLS and browser acceptance.
 
