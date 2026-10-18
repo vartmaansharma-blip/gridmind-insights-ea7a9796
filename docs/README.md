@@ -14,6 +14,16 @@
 5. **[Contribution standards](../CONTRIBUTING.md)** — work intake, branch/history preservation, validation, and review requirements.
 6. **[Technical release gate](release-gate.md)** and [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) — mandatory before customer-data workflows.
 
+## New dated research incorporation — 18 October 2026
+
+These are **supporting research and proposed acceptance methods**, not a second Master Plan, new buyer-evidence tracker, finished bill-auditing engine, or approval for PR #136 production deployment:
+
+- [Competitor learning register](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) — source-linked CADDi, Arch, Noetive, Schneider/PTC, Siemens/NVIDIA, Neara/Zepben, GE Vernova and JSERC lessons translated into bounded design decisions.
+- [Proposed R3 electricity bill-screen method with 12 fictional scenarios](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) — expert validation pending; supplier/date/category, demand and conditional PF checks, explicit inconclusive result.
+- The [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) authorizes **R3-first discovery, R2 challenger parity and preservation of the common case architecture**, not a first paid wedge or customer/production software release.
+
+**Current technical guardrail:** Issue [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130) and [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) remain open. PR [#136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) contains a much larger application/structural change and is not covered by this documentation-only promotion.
+
 ## Current operating state
 
 - Positioning: evidence-first, human-reviewed industrial investigation service (working hypothesis).
@@ -39,6 +49,7 @@
 
 | File | Disposition / authority |
 |---|---|
+| [`product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md`](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) | Research method and 12 synthetic tests; expert approval and real-data readiness **NOT established** |
 | [`gridmind-mvp-build-blueprint.md`](gridmind-mvp-build-blueprint.md) | Supplied Version 3.4 supporting specification; dated canonical build exception overrides its prior no-build instructions |
 | [`gridmind-mvp-lovable-handoff.md`](gridmind-mvp-lovable-handoff.md) | Supporting implementation contract; authorized synthetic MVP and Lovable design handoff |
 | [`canonical-application-migration-v1.md`](canonical-application-migration-v1.md) | Supporting control/specification; does not override the Master Plan |
@@ -72,6 +83,7 @@
 
 | File | Disposition / authority |
 |---|---|
+| [`research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md`](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) | Dated externally sourced competitor lessons and gated opportunities; no actual GridMind customer validation |
 | [`gridmind-attention-test-and-creative-reset-2026-10-11.md`](gridmind-attention-test-and-creative-reset-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-bigger-problem-thesis-2026-10-11.md`](gridmind-bigger-problem-thesis-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |
 | [`gridmind-brand-definition-and-name-risk-2026-10-11.md`](gridmind-brand-definition-and-name-risk-2026-10-11.md) | Supporting hypothesis or experiment; not a task queue or proof of demand |

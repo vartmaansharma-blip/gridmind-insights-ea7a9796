@@ -4,6 +4,10 @@
 
 GridMind is being developed as an industrial intelligence and performance-improvement company. The long-term ambition is to help manufacturers investigate operational problems, make evidence-backed decisions, coordinate approved improvements, and verify outcomes. This is an ambition, not a claim that all capabilities exist today.
 
+## Research update — 18 October 2026
+
+[Industrial intelligence competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and the [R3 electricity screen research method](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) are now documented. R3 (electricity bill/contract exposure) is **first for discovery only**, R2 (invoice/acceptance disputes) is the alternative to compare, and R1 (quality) remains a fictional demonstration; **no paid wedge has been validated**. There is **no live bill-screen calculator or authorized real-data service**. The [Decision Constitution](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) controls these dated refinements.
+
 ## Current truth
 
 - **Commercial wedge:** undecided.
@@ -95,7 +99,7 @@ Lovable handles design and visual implementation; Codex handles backend behavior
 - [Contribution workflow](CONTRIBUTING.md), [ownership routing](.github/CODEOWNERS), [support](SUPPORT.md), and [security reporting](SECURITY.md).
 - [Change history](CHANGELOG.md) records completed repository work; it is not a production-release claim.
 - Dependabot proposes compatible Bun updates and GitHub Action updates for review. It does not automatically merge them or prove an update is safe for Lovable.
-- This is a private repository with no open-source license selected. Access does not establish permission to redistribute original GridMind code; request the owner's permission. Third-party dependencies retain their own licenses.
+- This is a public repository with no open-source license selected. Access does not establish permission to redistribute original GridMind code; request the owner's permission. Third-party dependencies retain their own licenses.
 
 ## Engineering and safety principles
 
