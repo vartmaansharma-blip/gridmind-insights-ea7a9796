@@ -8,7 +8,7 @@
 
 **The older pre-merge HOLD and incomplete acceptance form below are historical 17 October snapshots, preserved for audit only. They do not describe the current PR state.** **Separately, Class D live customer data remains NO-GO:** production Supabase migration drift [#130](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/130), Auth/tenant authorization [#29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29), qualified professional scope, data rights and billing are not validated. No independent security sign-off on existing production architecture is claimed. The documentation merge's review classification does not authorize real cases. A code revert must be a new controlled merge-revert commit rather than a force push; no production migration rollback is implicated in this docs-only release.
 
-**Canonical current release status:** [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md#current-binding-gridmind-31-decisions--frozen-strategic-baseline-18-october-2026). Further planned releases need *their own* exact-head evidence and release packet.
+**Canonical current release status:** [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Further planned releases need *their own* exact-head evidence and release packet.
 
 ## Integration scope correction — 18 October 2026
 
