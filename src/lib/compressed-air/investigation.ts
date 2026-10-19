@@ -63,9 +63,10 @@ export async function importCompressedAirCsv(
   sourceName: string,
 ): Promise<Dataset> {
   if (text.length > 2000000 || text.includes('"')) throw new Error("Unsupported or oversized CSV");
+  // Preserve physical line numbers: only an optional BOM and final newline are stripped.
   const lines = text
     .replace(/^\uFEFF/, "")
-    .trim()
+    .replace(/\r?\n$/, "")
     .split(/\r?\n/);
   if (lines.shift() !== HEADER) throw new Error("Use the exact header and canonical units");
   const samples = lines.map((line, i) => {

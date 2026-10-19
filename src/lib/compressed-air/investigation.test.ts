@@ -126,4 +126,9 @@ describe("compressed-air source-linked investigation", () => {
       ),
     ).rejects.toThrow();
   });
+  it("preserves physical line references and cannot resolve excess hidden by uncertainty", async () => {
+    await expect(importCompressedAirCsv("\n" + csv, scope, "fiction.csv")).rejects.toThrow();
+    const d = await importCompressedAirCsv(csv.replace(/,2$/gm, ",40"), scope, "fiction.csv");
+    expect(analyzeCompressedAir(d).comparisons[0].state).toBe("no_resolved_excess");
+  });
 });
