@@ -1,10 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PublicSite } from "@/components/public-site/site";
 
-/** Released public marketing site; factory workspace remains at '/' until separately migrated. */
+/** Legacy alias for the canonical homepage at /. Do not link here from main navigation. */
 export const Route = createFileRoute("/website")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "GridMind — Evidence-led factory electricity reviews" },
       {
         name: "description",
