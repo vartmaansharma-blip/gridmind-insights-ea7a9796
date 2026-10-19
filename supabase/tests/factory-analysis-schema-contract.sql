@@ -223,11 +223,18 @@ begin
     if deleted_count <> 0 then
       raise exception 'Storage object deletion unexpectedly allowed';
     end if;
-  exception when raise_exception then
+  exception when others then
+    -- Supabase Storage may raise its deletion guard with a SQLSTATE other
+    -- than P0001. Match the specific protection error; never swallow a
+    -- different database failure (including our own assertion).
     if sqlerrm not like 'Direct deletion from storage tables is not allowed%' then
       raise;
     end if;
   end;
+  perform pg_temp.assert_true(
+    (select count(*) = 1 from storage.objects where bucket_id = 'electricity-bills'),
+    'the denied SQL deletion must preserve the uploaded evidence'
+  );
 end $storage_delete_test$;
 select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000003',true);
 select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'viewer cannot read internal cases');
