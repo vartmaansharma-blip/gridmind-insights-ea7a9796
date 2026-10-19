@@ -156,6 +156,11 @@ export function analyzeCompressedAir(input: unknown) {
   const before = comparisons.filter((c) => c.phase === "before");
   const after = comparisons.filter((c) => c.phase === "after");
   // Descriptive paired comparison only. No aggregation across unmatched regimes or causal attribution.
+  const intensityRange = (residual: number[], flow: number, uncertaintyPct: number) => {
+    const u = uncertaintyPct / 100;
+    const endpoints = residual.flatMap((v) => [v / (flow * (1 - u)), v / (flow * (1 + u))]);
+    return [Math.min(...endpoints), Math.max(...endpoints)];
+  };
   const verificationPairs = after.map((a) => {
     const afterSample = d.samples.find((s) => s.sourceLine === a.ref.line)!;
     const b = before.find((c) => {
@@ -170,14 +175,17 @@ export function analyzeCompressedAir(input: unknown) {
     if (!b?.residualKw || !a.residualKw)
       return { afterLine: a.ref.line, state: "inconclusive_unmatched_periods" };
     const beforeSample = d.samples.find((s) => s.sourceLine === b.ref.line)!;
+    const bRange = intensityRange(
+      b.residualKw,
+      beforeSample.flowM3Min,
+      beforeSample.uncertaintyPct,
+    );
+    const aRange = intensityRange(a.residualKw, afterSample.flowM3Min, afterSample.uncertaintyPct);
     return {
       beforeLine: b.ref.line,
       afterLine: a.ref.line,
       state: "descriptive_only",
-      residualIntensityChangeKwPerM3Min: [
-        a.residualKw[0] / afterSample.flowM3Min - b.residualKw[1] / beforeSample.flowM3Min,
-        a.residualKw[1] / afterSample.flowM3Min - b.residualKw[0] / beforeSample.flowM3Min,
-      ],
+      residualIntensityChangeKwPerM3Min: [aRange[0] - bRange[1], aRange[1] - bRange[0]],
       limitation:
         "After minus before baseline-adjusted residual intensity; not attributable savings. Pairing uses first comparable before interval.",
     };
