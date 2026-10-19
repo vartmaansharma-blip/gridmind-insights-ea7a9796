@@ -58,8 +58,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "GridMind — Factory Energy Intelligence" },
-      { name: "description", content: "Find where your factory loses money on electricity and act on rupee-quantified savings." },
+      { title: "GridMind — Evidence-led Industrial Intelligence" },
+      { name: "description", content: "Evidence-led factory electricity reviews, with qualified human review and clear boundaries on what the records can support." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -91,7 +91,7 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const syntheticWorkspace = useRouterState({ select: (state) => ["/investigations", "/investigations-connected", "/auth", "/website", "/cases", "/design-preview"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
+  const syntheticWorkspace = useRouterState({ select: (state) => ["/", "/website", "/problem", "/how-it-works", "/example", "/about", "/contact", "/investigations", "/investigations-connected", "/auth", "/cases", "/design-preview"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
   // Case workspaces initialize only the services requested by their own route.
   if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
   return (
