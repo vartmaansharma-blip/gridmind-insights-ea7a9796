@@ -1,7 +1,15 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
-import { airCommandSchema, airHash, executeAirCommand, type AirSnapshot } from "./connected";
+import {
+  airCommandSchema,
+  airStoredSchema,
+  airHash,
+  executeAirCommand,
+  type AirSnapshot,
+} from "./connected";
 import { importCompressedAirCsv } from "./investigation";
+import * as method from "./investigation";
+afterEach(() => vi.restoreAllMocks());
 
 const actor = "11111111-1111-4111-8111-111111111111";
 const reviewer = "22222222-2222-4222-8222-222222222222";
@@ -114,5 +122,111 @@ describe("compressed-air connected contract and source custody", () => {
       }),
     ).rejects.toThrow("AIR_STALE_REVIEW");
     expect(call).toHaveBeenCalledTimes(2);
+  });
+  it("returns the frozen exported analysis on retry without re-running the current method", async () => {
+    const stored = await fixture();
+    const s = stored.snapshot;
+    const receipt = {
+      ...stored,
+      reportSha256: "b".repeat(64),
+      report: {
+        caseId,
+        revision: stored.revision,
+        snapshotSha256: stored.snapshotSha256,
+        exportedBy: stored.actorId,
+        exportedAt: stored.at,
+        dataset: s.dataset,
+        originalCsv: s.csv,
+        datasetHash: s.datasetHash,
+        importRevision: s.importRevision,
+        importedBy: s.importedBy,
+        importedAt: s.importedAt,
+        analysis: method.analyzeCompressedAir(s.dataset),
+        engineerReview: s.review,
+        actions: s.actions,
+        outcomeVerification: s.verification,
+        reviewStatus: "unreviewed",
+        verifiedSavings: null,
+        approvedForCustomerDelivery: false,
+      },
+    };
+    const analyze = vi.spyOn(method, "analyzeCompressedAir").mockImplementation(() => {
+      throw new Error("Current method must not replace a committed report");
+    });
+    const call = vi.fn().mockResolvedValue(receipt);
+    const result = await executeAirCommand({ call }, actor, {
+      action: "export",
+      caseId,
+      expectedRevision: 0,
+      requestKey: "original-export",
+    });
+    expect(airStoredSchema.parse(result).report!.analysis).toEqual(receipt.report.analysis);
+    expect(analyze).not.toHaveBeenCalled();
+    expect(call).toHaveBeenCalledTimes(1);
+    await expect(
+      executeAirCommand(
+        {
+          call: vi.fn().mockResolvedValue({
+            ...receipt,
+            report: { ...receipt.report, originalCsv: "altered source" },
+          }),
+        },
+        actor,
+        { action: "load", caseId },
+      ),
+    ).rejects.toThrow("AIR_REPORT_INTEGRITY_FAILED");
+  });
+  it("rejects corrupt completion or outcome records instead of exporting them", async () => {
+    const stored = await fixture();
+    stored.snapshot.actions.push({
+      id: crypto.randomUUID(),
+      owner: "Invented action owner",
+      description: "Invented task completed without authorization",
+      proposedBy: actor,
+      status: "completed",
+    });
+    await expect(
+      executeAirCommand({ call: vi.fn().mockResolvedValue(stored) }, actor, {
+        action: "load",
+        caseId,
+      }),
+    ).rejects.toThrow("AIR_WORKFLOW_INTEGRITY_FAILED");
+  });
+  it("bounds the connected quadratic comparison workload before storing an import", async () => {
+    const large = [
+      csv.split("\n")[0],
+      ...Array.from(
+        { length: 1001 },
+        (_, i) =>
+          `${new Date(Date.UTC(2026, 0, 1, i)).toISOString()},${new Date(Date.UTC(2026, 0, 1, i + 1)).toISOString()},baseline,synthetic,7,10,60,2`,
+      ),
+    ].join("\n");
+    const call = vi
+      .fn()
+      .mockResolvedValueOnce({ found: false })
+      .mockResolvedValueOnce({
+        ...(await fixture()),
+        snapshot: null,
+        revision: 0,
+        headRevision: 0,
+        role: "manager",
+      })
+      .mockResolvedValueOnce({
+        organizationId: "1",
+        siteId: "2",
+        assets: [{ id: 3, name: "Synthetic asset" }],
+      });
+    await expect(
+      executeAirCommand({ call }, actor, {
+        action: "import",
+        caseId,
+        expectedRevision: 0,
+        requestKey: "bounded",
+        assetId: 3,
+        sourceName: "synthetic.csv",
+        csv: large,
+      }),
+    ).rejects.toThrow("AIR_INVALID_CSV");
+    expect(call).toHaveBeenCalledTimes(3);
   });
 });

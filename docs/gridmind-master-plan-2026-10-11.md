@@ -1,8 +1,16 @@
 # GridMind Master Plan — Canonical Execution Plan
 
+## Technical status reconciliation — 20 October 2026
+
+This updates implementation facts, **not the approved GridMind 3.1 strategy**. Inspected main is merged #153 (`42fc8c9959fd9dc5412ca04ca68c4969e9c77380`): homepage `/`, legacy public alias `/website`, approved study `/design-preview`, operational dashboard `/dashboard`, electricity intake and the offline compressed-air foundation are present. Earlier instructions placing the dashboard at `/` describe the pre-promotion state (homepage promotion `62770bb`); preserve the current routes and green identity. This is not authorization to merge the separate broad #132 proposal.
+
+[Draft PR #154](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/154), on `codex/step1-connected-compressed-air`, adds the isolated connected compressed-air method attachment. It is **branch source, not merged main or a production/customer release**. Prior head `1afd61c` passed all automated checks; review corrections require fresh exact-head evidence in the PR. [Engineering acceptance and the independent review packet](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) own implementation/testing detail. Issue #152 remains open; independent security/method review, #29/#130, #150 and rights/retention gates remain. R3-first research, fair R2/R1 comparison, the unselected commercial wedge and one shared evidence → investigation → review → action → verification capability remain unchanged.
+
+**Execution filter (founder instruction, 20 October):** complete the existing end-to-end investigation before adding modules; integrate → verify evidence/analysis → test security/persistence → obtain qualified review → validate the customer problem → expand only when earned. Security remains mandatory at every stage. The existing engineering ledger maps code and related issues to these responsibilities; no new services, duplicate plans or commercial selection follow from this instruction.
+
 ## Step 1 compressed-air authorization — 19 October 2026
 
-The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Merged #153 provides the offline synthetic importer and auditable report. The isolated connected continuation reuses case/membership/asset identities, immutable evidence revisions, simulated review/actions and inconclusive outcome verification; see the [current engineering checkpoint](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md). It is not an authorized connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.
+The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Merged #153 provides the offline synthetic importer and auditable report. Draft PR #154 (not merged or customer-released) reuses case/membership/asset identities, immutable evidence revisions, simulated review/actions and inconclusive outcome verification; see the [current engineering checkpoint](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md). It is not an authorized connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.
 
 
 ## GM-3.1-001 engineering authorization — 19 October 2026
@@ -31,6 +39,8 @@ Reuse factory/organization memberships and dashboard primitives. Keep the fictio
 **The operating loop:** concrete exception → scoped consent → provenance-controlled evidence → facts vs competing hypotheses → relevant qualified review → approved recommendation and customer-owned action → verification with confounders → economic and service-cost review.
 
 ## 2. Strategy: one firm, one shared capability, conditional adjacent offers
+
+**Historical candidate ordering, 17 October:** the table preserves that dated discussion. Its preferred/challenger ranking was superseded by the 18 October research sequence: R3 first for research, R2/R1 fairly compared, no commercial winner. The long-term scope boundaries remain binding.
 
 | Opportunity previously discussed | 2026-10-17 decision | Initial scope boundary |
 |---|---|---|
@@ -103,7 +113,7 @@ Public marketing site ── non-confidential conversation ── qualified scop
 
 **System boundaries:** GridMind complements existing ERP/QMS/accounting/maintenance tools; does not duplicate their transaction ledgers or provide unauthorized access to them. Maintain organization/factory/case isolation, server-verified roles, least privilege, document custody and retention rules. Cross-buyer/supplier visibility must be contractually explicit.
 
-**Current source truth:** Existing TanStack Start/React/Vite/Bun app and Lovable-branded public view, customer routes, staff routes, energy dashboards and synthetic C1/C4 case engine **remain**. Source supports C1/C4 synthetic technical demonstrations; **no** claim of implemented R1/C2 or R2/C6 connected backend is permitted. Existing root `/` is the operational dashboard; public marketing is `/website` pending a separately verified and reversible route migration. Preserve signature green and the existing design rather than overwrite it.
+**Current source truth:** Existing TanStack Start/React/Vite/Bun app and Lovable-branded public view, customer routes, staff routes, energy dashboards and synthetic C1/C4 case engine **remain**. Source supports C1/C4 synthetic technical demonstrations; **no** claim of implemented R1/C2 or R2/C6 connected backend is permitted. Current main has the public homepage at `/`, the retained alias at `/website`, `/design-preview` as the study and the operational dashboard at `/dashboard`; the earlier root/dashboard statement is historical. Preserve signature green and the existing design rather than overwrite it.
 
 **Team division:** Codex/engineering owns schemas, tests, backend permissions and integration; Lovable owns visual polish and responsive UX under [implementation handoff](product/gridmind-mvp-lovable-handoff.md). Do not let design alter security or analysis decisions.
 
@@ -293,7 +303,7 @@ Two-sided interests can conflict. A buyer cannot silently give GridMind permissi
 **Shared objects:** organization, factory, member/role, customer boundary, case, consent, evidence provenance, observation, method-specific analysis, finding, review, published brief, action, acceptance, measurement, financial costing, audit event. Records are versioned with stable IDs. Details and acceptance criteria live in the supporting domain contract.
 
 ## 17. Architecture sequence / “do not build yet” contract
-Current app: TanStack Start + React + Vite + Bun + Lovable + Supabase, public /website, dashboard /, customer /cases, internal /team/* and synthetic C1/C4 engine. Preserve existing routes, green brand, authenticated factory identity and tests.
+Current app: TanStack Start + React + Vite + Bun + Lovable + Supabase, public homepage / (legacy alias /website), dashboard /dashboard, customer /cases, internal /team/* and synthetic C1/C4 engine. Preserve existing routes, green brand, authenticated factory identity and tests.
 
 **Step A (now; synthetic only):** finish static fictional R1/R2/R3 triage, typed contracts and tests. No persistence, no customer records, no technical judgement. Check contrast, navigation, responsiveness, missing-state copy.
 

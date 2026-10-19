@@ -16,6 +16,7 @@ export async function verifyCompressedAir(
   reviewer: string,
   outsider: string,
   factory: number,
+  getConnection: () => ReturnType<EmbeddedPostgres["getPgClient"]>,
 ) {
   await db.query("update public.organization_members set status='active' where user_id=$1", [
     owner,
@@ -53,11 +54,11 @@ export async function verifyCompressedAir(
       )
     ).rows[0].id,
   );
-  const store: CaseStore = {
+  const makeStore = (connection: typeof db): CaseStore => ({
     async call(args) {
-      await db.query("begin");
+      await connection.query("begin");
       try {
-        await db.query("set local role service_role");
+        await connection.query("set local role service_role");
         const keys = [
           "_actor",
           "_op",
@@ -68,18 +69,19 @@ export async function verifyCompressedAir(
           "_snapshot",
           "_event",
         ];
-        const result = await db.query(
+        const result = await connection.query(
           "select public.compressed_air_store($1,$2,$3,$4,$5,$6,$7,$8) result",
           keys.map((k) => args[k] ?? (k === "_event" ? {} : null)),
         );
-        await db.query("commit");
+        await connection.query("commit");
         return result.rows[0].result;
       } catch (e) {
-        await db.query("rollback");
+        await connection.query("rollback");
         throw e;
       }
     },
-  };
+  });
+  const store = makeStore(db);
   const run = (actor: string, cmd: AirCommand) => executeAirCommand(store, actor, cmd);
   await assert.rejects(() => run(owner, { action: "load", caseId }), /COMPRESSED_AIR_DISABLED/);
   await db.query("update private.compressed_air_gate set enabled=true");
@@ -145,6 +147,20 @@ export async function verifyCompressedAir(
     () => run(reviewer, { ...review, findings: [{ ...review.findings[0], sourceLines: [99999] }] }),
     /AIR_UNRESOLVED_SOURCE_LINE/,
   );
+  parent = storedCaseSchema.parse(
+    await executeCaseCommand(cases, owner, {
+      action: "assign",
+      caseId,
+      expectedRevision: parent.revision,
+      requestKey: crypto.randomUUID(),
+      userId: reviewer,
+      role: "investigator",
+      active: true,
+      expiresAt: null,
+    }),
+  );
+  await assert.rejects(() => run(reviewer, review), /INDEPENDENT_REVIEWER_REQUIRED/);
+  await assign(true);
   const reviewed = airStoredSchema.parse(await run(reviewer, review));
   assert.equal(reviewed.snapshot!.review!.actorId, reviewer);
   // Grant revocation blocks historical reads AND retry receipts, not just mutations.
@@ -202,6 +218,15 @@ export async function verifyCompressedAir(
   const exported = await run(owner, exportCmd);
   assert("report" in exported);
   assert.equal(exported.report.verifiedSavings, null);
+  assert.match(exported.report.reportSha256, /^[a-f0-9]{64}$/);
+  const savedReport = (
+    await db.query(
+      "select report,report_sha256 from public.compressed_air_revisions where case_id=$1 and revision=7",
+      [caseId],
+    )
+  ).rows[0];
+  assert.deepEqual(savedReport.report.analysis, exported.report.analysis);
+  assert.equal(savedReport.report_sha256, exported.report.reportSha256);
   assert.equal(exported.report.outcomeVerification!.outcome, "inconclusive");
   assert.equal(
     exported.report.outcomeVerification!.descriptiveEvidence,
@@ -227,12 +252,45 @@ export async function verifyCompressedAir(
   const old = airStoredSchema.parse(await run(owner, { action: "load", caseId, revision: 7 }));
   assert.equal(old.snapshot!.actions[0].status, "completed");
   assert.equal(old.headRevision, 8);
+  assert.deepEqual(old.report!.analysis, exported.report.analysis);
+  assert.deepEqual(((await run(owner, exportCmd)) as typeof exported).report, exported.report);
+  const second = getConnection();
+  await second.connect();
+  try {
+    const commands = [0, 1].map(() => ({ action: "export" as const, ...common(8) }));
+    const raced = await Promise.allSettled([
+      run(owner, commands[0]),
+      executeAirCommand(makeStore(second), owner, commands[1]),
+    ]);
+    assert.equal(raced.filter((r) => r.status === "fulfilled").length, 1);
+    const denied = raced.find((r) => r.status === "rejected");
+    assert(denied?.status === "rejected" && /STALE_CASE_REVISION/.test(String(denied.reason)));
+    assert.equal(
+      airStoredSchema.parse(await run(owner, { action: "load", caseId })).headRevision,
+      9,
+    );
+  } finally {
+    await second.end();
+  }
   // Original parent evaluation is independent; attaching interval data never edits C1/C4 fields.
   assert.deepEqual(
     storedCaseSchema.parse(await executeCaseCommand(cases, owner, { action: "load", caseId }))
       .snapshot,
     parent.snapshot,
   );
+  const organizationId = (
+    await db.query("select organization_id from public.factories where id=$1", [factory])
+  ).rows[0].organization_id;
+  await db.query("update public.organizations set status='suspended' where id=$1", [
+    organizationId,
+  ]);
+  for (const command of [
+    { action: "scope" as const, caseId },
+    { action: "load" as const, caseId, revision: 7 },
+    exportCmd,
+  ])
+    await assert.rejects(() => run(owner, command), /CASE_ACCESS_DENIED/);
+  await db.query("update public.organizations set status='active' where id=$1", [organizationId]);
   await db.query("update public.organization_members set status='suspended' where user_id=$1", [
     owner,
   ]);

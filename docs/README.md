@@ -10,7 +10,11 @@
 4. [Problem-Solving Constitution](gridmind-problem-solving-constitution.md) — evidence and investigation discipline.
 5. [Release Gate](release-gate.md) — mandatory technical/customer-data gate; a preview build is not a production release.
 
-## Current GridMind 3.1 approved strategy and release status — 18 October 2026
+## Technical status reconciliation — 20 October 2026
+
+The approved 18 October strategy below is unchanged. [Master Plan technical status](gridmind-master-plan-2026-10-11.md) distinguishes inspected main (#153) from draft #154; [engineering acceptance and the independent review packet](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) own implementation/tests and review requirements. Current source has homepage `/`, alias `/website`, study `/design-preview` and dashboard `/dashboard`. Older root/dashboard and #136 HOLD statements below are historical, not new instructions. No customer-data or production approval follows from this correction.
+
+## Approved GridMind 3.1 strategy baseline — 18 October 2026
 
 **Strategy baseline approved; no paid offer validated.** GridMind is an **on-site-first, expert-assisted industrial problem-resolution company** developing a permissioned source → question/hypothesis → specialist review → authorized customer action → outcome-verification method. The software is a delivery tool, not yet an autonomous factory intelligence product. Research order is **R3 electricity first for discovery**, **R2 acceptance/invoice disputes as independent commercial challenger**, **R1 quality/rejection as equally legitimate challenger and fictional product illustration**. The working signature green remains **#9ADD00**. Customer evidence, specialist sign-off, paid pricing, wider infrastructure expansion and any real-data release remain **undecided or unvalidated**, not retroactively approved.
 
@@ -25,14 +29,14 @@
 - [100 manufacturing problem hypotheses](research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) — source-informed 10×10 inventory of possible direct, qualified expert and partner roles. These are **not** factory interviews, a product backlog or 100 deliverable services.
 - [Service SOP, pricing hypotheses and GridMind payment acceptance](operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) — authorized company invoicing and business bank transfers first; regulated hosted links only if merchant eligibility and demand justify them. GridMind fees must not be confused with manufacturers' own receivables. No live billing integration exists.
 - [Manufacturer resolution product architecture](product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — one shared permitted case core, specialist methods later, explicit evidence/reviewer/security/route restrictions.
-- The [Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and sole [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) remain authoritative; none of the new research files replaces them or waives [PR #136's merge gate](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md).
+- The [Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and sole [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) remain authoritative; none of the research files replaces them or waives the independent production/customer-data gates documented in the historical [PR #136 release packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md).
 
 ## 18 October 2026 — Competitor learning applied to GridMind 3.1
 
 - [Competitor learning register](research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md): date/source-qualified industrial AI lessons translated into CI-01–CI-12 product/operating constraints. External vendor funding and customer-case outcomes are not proof GridMind has paying customers or a universal AI system.
 - [R3 tariff screening method and synthetic acceptance specification](product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md): **proposed and expert-review pending**, separate supplier/order/date/category requirements, 12 negative fixtures. No current professional signoff, tariff calculator, live factory bill ingestion, or production deployment is asserted.
 - **Research sequencing:** R3 first for a narrow bill-screen feasibility investigation, with R2 invoice-acceptance disputes a necessary challenger; R1 stays a fictional product illustration. The [Master Plan](gridmind-master-plan-2026-10-11.md), [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), and sole [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) now spell out this refinement. **Commercial winner still unselected.**
-- Scope and release unchanged: do not merge [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136), claim savings, input real data, or enable payment/plant controls without their independent acceptance gates.
+- **Historical pre-merge wording:** #136 was subsequently merged normally in its narrowed documentation scope. Production/customer evidence, savings claims and payment/plant controls remain subject to their independent gates; the completed merge did not waive them.
 
 ## Next build and operating priorities
 
@@ -51,7 +55,7 @@
 
 ## How this repository is arranged
 
-The application remains in `src/`, backend migrations/functions in `supabase/`, automated checks in `scripts/` and `.github/workflows/`, and fictional examples in `data/synthetic-investigation/`. The GridMind 3.1 handbook governs *why and what*; folder specifications explain *how*; issues define reviewable work; code and exact-run evidence determine what actually works. The public site remains at `/website` and the existing dashboard at `/` until a separately tested route change. Existing C1/C4 synthetic capabilities remain; R1/R2 have no connected professional engine.
+The application remains in `src/`, backend migrations/functions in `supabase/`, automated checks in `scripts/` and `.github/workflows/`, and fictional examples in `data/synthetic-investigation/`. The GridMind 3.1 handbook governs *why and what*; folder specifications explain *how*; issues define reviewable work; code and exact-run evidence determine what actually works. Current source has the approved public homepage at `/`, retained alias `/website`, study `/design-preview` and operational dashboard `/dashboard`; earlier root/dashboard descriptions are historical. Existing C1/C4 synthetic capabilities remain; R1/R2 have no connected professional engine.
 
 **Placement rule for new writing:** edit the canonical handbook or live tracker when their truth changes; add an issue-linked specification only in the appropriate subject folder. Mark every new document as current, supporting, research or historical, with date, owner, evidence and superseded links. Never create another master plan, live tracker or independent backlog. Record durable decision changes in the existing Constitution.
 

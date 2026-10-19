@@ -1,8 +1,14 @@
 # GridMind Decision Constitution and Contradiction Register
 
+## Technical status reconciliation — 20 October 2026
+
+This is a technical correction under the founder's request to preserve approved decisions, not a strategy amendment. [Master Plan technical status](gridmind-master-plan-2026-10-11.md) records main #153 versus draft #154; the [engineering ledger and independent review packet](engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) own implementation/test evidence. Homepage promotion `62770bb` places `/` at the approved public homepage and the operational dashboard at `/dashboard`, retaining `/website` and `/design-preview`. Pre-promotion route labels in dated decisions below are historical. G31-F01–F08 strategic commitments, unselected commercial wedge and independent security/professional/production gates remain binding; draft #154 is not a merged or customer-released product.
+
+**Operating clarification (20 October):** the founder directs system-level acceptance of the existing evidence → contextual analysis → investigation → review/action → verification/history workflow before additional modules. These are logical responsibilities, not separate-service mandates. Reuse existing components and the single engineering ledger; no new roadmap or change to G31-F01–F08 is created.
+
 ## Step 1 compressed-air authorization — 19 October 2026
 
-The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Current implementation is an offline synthetic importer and auditable report, not a connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.
+The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Merged #153 implements the offline synthetic importer/report. Draft #154 adds the isolated connected synthetic workflow described in the engineering acceptance record; neither is an authorized connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.
 
 
 ## GM-3.1-001 engineering authorization — 19 October 2026
@@ -13,6 +19,8 @@ Reuse factory/organization memberships and dashboard primitives. Keep the fictio
 
 
 ## Current binding GridMind 3.1 decisions — frozen strategic baseline, 18 October 2026
+
+**Historical technical labels:** route/PR-release facts in this dated table reflect 18 October; the 20 October technical reconciliation above supersedes those labels only. Strategic identity, commercial discovery, domain separation and release constraints remain approved and unchanged.
 
 **Meaning of "frozen":** The adopted operating model below is the default for future work. It can change through the existing evidence-backed decision-change protocol; it is not a promise of first-product fit, an irreversible business commitment or a requirement to build every feature. **This section is later than, and supersedes conflicting present-tense PR #136 release statements in, the dated decisions retained below.** Original decisions remain for audit history.
 
@@ -180,7 +188,7 @@ These corrections alter operating decisions and labels, not the customer evidenc
 GridMind's strategy is recorded across business-thesis, expansion, website, use-case, improvement-priority and execution documents. Some describe future possibilities, provisional candidates, or specifications that can be mistaken for current commitments. This register establishes one source of truth and an explicit decision hierarchy.
 
 ## 1. Decision hierarchy
-If documents appear to disagree, use this order:
+**Historical hierarchy formulation:** retain the safety and evidence principles below. G31-F08 and AGENTS.md now define execution-document authority as Master Plan → sole Buyer Discovery Sprint → this Constitution → supporting specifications → issue acceptance. No document ranking waives safety, authorization or data rights. The following older wording is retained for audit history:
 
 1. **Safety, authorization, data rights and security constraints** — always override roadmap or commercial urgency.
 2. **This Decision Constitution** — resolves current strategic interpretation and scope.
@@ -199,7 +207,7 @@ A new idea does not supersede a prior decision just because it is newer. To chan
 **Interpretation:** This is the destination, not a promise that every capability exists. Build the shared core incrementally where real cases prove reuse. Do not treat it as a mandate to implement a universal factory ontology or every industrial vertical now.
 
 ### D2 — Immediate scope
-**Decision (current, 17 October):** Work on **two independent tracks**: (a) a small, honest and safely permissioned synthetic GridMind Resolve demonstration and existing /website public narrative; (b) real problem/buyer discovery that selects the only eventual commercial entry. Neither can prove the other. The founder explicitly authorized these bounded software/design tasks after the earlier discovery-only freeze.
+**Decision (17 October baseline; subsequent scoped amendments above govern later implementation):** Work on **two independent tracks**: (a) a small, honest and safely permissioned synthetic GridMind Resolve demonstration and existing /website public narrative; (b) real problem/buyer discovery that selects the only eventual commercial entry. Neither can prove the other. The founder explicitly authorized these bounded software/design tasks after the earlier discovery-only freeze.
 
 **In scope before wedge selection:** existing C1/C4 synthetic source; fictional R1/R2/R3 exception triage with provenance and explicit unknowns; honest /website with non-confidential contact; exact-commit tests, security/data-rights hardening and review; actual 20-minute buyer conversations with appropriate adult/professional support.
 
@@ -220,7 +228,7 @@ Before describing a flow as working, record the actual build/commit/environment,
 ### D5 — Marketing website and production route
 **Updated authorization (17 October):** The founder authorized improving the existing Lovable-connected GridMind public experience with original signature green and an honest broader GridMind 3.1 story. Work on the existing **/website** route and its synthetic, clearly marked examples is allowed **now**, alongside customer discovery. This supersedes the older blanket prohibition on public-site implementation before selection.
 
-**Release is separate from design:** do not present R1/R2 as live professional engines, imply savings or commercial traction, invent testimonials, expose sensitive records, or operate an unmonitored contact form. The public CTA should accept/request **non-confidential** discussion only, with a real tested receipt/owner and privacy treatment. Keep root **/** as the existing operational dashboard. PR #132 public-root/auth/onboarding rewrite remains a separate high-risk decision requiring route, role, tenancy and redirect acceptance.
+**Release is separate from design:** do not present R1/R2 as live professional engines, imply savings or commercial traction, invent testimonials, expose sensitive records, or operate an unmonitored contact form. The public CTA should accept/request **non-confidential** discussion only, with a real tested receipt/owner and privacy treatment. **Historical route constraint (17 October, superseded by promotion `62770bb`):** root **/** then held the operational dashboard. Current main preserves the approved homepage at `/` and operational dashboard at `/dashboard`. PR #132 public-root/auth/onboarding rewrite remains a separate high-risk decision requiring route, role, tenancy and redirect acceptance.
 
 **Main is production-linked:** PR #136 must not be merged on the strength of a synthetic website screenshot or stale Vercel preview. Record the exact deployed SHA, passed checks, independent review, founder release permission and rollback/containment plan in the PR before changing main. Buyer discovery remains necessary before making a paid-service claim, but it need not prevent an accurate informational-only site release.
 
@@ -258,6 +266,7 @@ The exact workflow depends on the selected use case. Not every candidate needs a
 
 | Apparent conflict | Resolution | What is binding now |
 |---|---|---|
+| Older root/dashboard, offline-only and pre-merge #136 statements vs inspected source | Keep dated decisions as history; source promotion `62770bb`, merged #153 and draft #154 have distinct technical statuses. | Preserve homepage `/`, dashboard `/dashboard`, existing architecture/green identity; #154 is isolated branch source pending review, not a merged or customer-released product. |
 | “GridMind covers the full industrial value chain” vs “focus on one use case” | One is long-term architecture; the other is immediate execution scope. | Keep the value-chain map as a discovery model; implement only the selected bounded case. |
 | Energy data contract is detailed vs first wedge must be chosen among three candidates | Detail does not equal strategic validation. | Treat energy as one candidate, compare fairly, and update the data contract only if selected. |
 | Expansion docs describe procurement, maintenance, energy, data centres and networks vs stop adding breadth | The expansion map is an option tree, not a simultaneous roadmap. | No module is authorized until customer demand and shared-core reuse pass a gate. |

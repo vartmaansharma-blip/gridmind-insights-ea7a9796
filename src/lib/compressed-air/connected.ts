@@ -6,7 +6,7 @@ import { CaseError, stableJson } from "../investigation/connected-service";
 const uuid = z.string().uuid();
 const digest = z.string().regex(/^[a-f0-9]{64}$/);
 const note = z.string().trim().min(10).max(4000);
-const revision = z.number().int().nonnegative();
+const revision = z.number().int().nonnegative().max(2_147_483_647);
 const common = { caseId: uuid, expectedRevision: revision, requestKey: z.string().min(1).max(200) };
 export const airCommandSchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("scope"), caseId: uuid }).strict(),
@@ -112,6 +112,23 @@ const actionSchema = z
     completedBy: uuid.optional(),
   })
   .strict();
+const verificationSchema = z
+  .object({
+    actorId: uuid,
+    at: z.string().datetime(),
+    datasetHash: digest,
+    confounders: note,
+    rationale: note,
+    outcome: z.literal("inconclusive"),
+    descriptiveEvidence: z.enum([
+      "matched_intervals_available",
+      "insufficient_comparable_intervals",
+    ]),
+    sourceLines: z.array(z.number().int().min(2)),
+  })
+  .strict()
+  .nullable();
+
 export const airSnapshotSchema = z
   .object({
     method: z.literal("compressed-air-context-envelope-v1"),
@@ -124,25 +141,31 @@ export const airSnapshotSchema = z
     importRevision: revision,
     review: reviewSchema.nullable(),
     actions: z.array(actionSchema).max(100),
-    verification: z
-      .object({
-        actorId: uuid,
-        at: z.string().datetime(),
-        datasetHash: digest,
-        confounders: note,
-        rationale: note,
-        outcome: z.literal("inconclusive"),
-        descriptiveEvidence: z.enum([
-          "matched_intervals_available",
-          "insufficient_comparable_intervals",
-        ]),
-        sourceLines: z.array(z.number().int().min(2)),
-      })
-      .strict()
-      .nullable(),
+    verification: verificationSchema,
   })
   .strict();
 export type AirSnapshot = z.infer<typeof airSnapshotSchema>;
+// Saved export payload is validated structurally, then bound to its immutable snapshot below.
+const airReportSchema = z.object({
+  caseId: uuid,
+  revision,
+  snapshotSha256: digest,
+  exportedBy: uuid,
+  exportedAt: z.string().datetime({ offset: true }),
+  dataset: datasetSchema,
+  originalCsv: z.string().max(2_000_000),
+  datasetHash: digest,
+  importRevision: revision,
+  importedBy: uuid,
+  importedAt: z.string().datetime(),
+  analysis: z.record(z.unknown()),
+  engineerReview: reviewSchema.nullable(),
+  actions: z.array(actionSchema).max(100),
+  outcomeVerification: verificationSchema,
+  reviewStatus: z.enum(["simulated_review_only", "unreviewed"]),
+  verifiedSavings: z.null(),
+  approvedForCustomerDelivery: z.literal(false),
+});
 export const airStoredSchema = z.object({
   caseId: uuid,
   revision,
@@ -153,6 +176,8 @@ export const airStoredSchema = z.object({
   actorId: uuid.nullable(),
   at: z.string().nullable(),
   replayed: z.boolean().optional(),
+  report: airReportSchema.nullable().optional(),
+  reportSha256: digest.nullable().optional(),
 });
 export type AirStored = z.infer<typeof airStoredSchema>;
 export async function airHash(value: unknown) {
@@ -181,6 +206,43 @@ async function checked(raw: unknown): Promise<AirStored> {
         ))
     )
       throw new CaseError("AIR_REVIEW_INTEGRITY_FAILED", 409);
+    if (
+      new Set(s.actions.map((a) => a.id)).size !== s.actions.length ||
+      (s.actions.length > 0 && s.review?.decision !== "accept") ||
+      s.actions.some(
+        (a) =>
+          (a.status !== "proposed" && (!a.customerApproval || !a.approvedBy)) ||
+          (a.status === "completed" && (!a.completionEvidence || !a.completedBy)),
+      ) ||
+      (s.verification &&
+        (s.verification.datasetHash !== s.datasetHash ||
+          !s.actions.some((a) => a.status === "completed") ||
+          s.verification.sourceLines.some(
+            (line) => !s.dataset.samples.some((p) => p.sourceLine === line),
+          )))
+    )
+      throw new CaseError("AIR_WORKFLOW_INTEGRITY_FAILED", 409);
+    if (stored.report) {
+      const r = stored.report;
+      if (
+        !stored.reportSha256 ||
+        r.caseId !== stored.caseId ||
+        r.revision !== stored.revision ||
+        r.snapshotSha256 !== stored.snapshotSha256 ||
+        r.exportedBy !== stored.actorId ||
+        r.exportedAt !== stored.at ||
+        r.datasetHash !== s.datasetHash ||
+        stableJson(r.dataset) !== stableJson(s.dataset) ||
+        r.originalCsv !== s.csv ||
+        r.importRevision !== s.importRevision ||
+        r.importedBy !== s.importedBy ||
+        r.importedAt !== s.importedAt ||
+        stableJson(r.engineerReview) !== stableJson(s.review) ||
+        stableJson(r.actions) !== stableJson(s.actions) ||
+        stableJson(r.outcomeVerification) !== stableJson(s.verification)
+      )
+        throw new CaseError("AIR_REPORT_INTEGRITY_FAILED", 409);
+    }
   }
   return stored;
 }
@@ -232,6 +294,7 @@ export async function executeAirCommand(
     ).catch(() => {
       throw new CaseError("AIR_INVALID_CSV");
     });
+    if (dataset.samples.length > 1000) throw new CaseError("AIR_INVALID_CSV");
     next = {
       method: "compressed-air-context-envelope-v1",
       origin: "synthetic",
@@ -335,35 +398,37 @@ export async function executeAirCommand(
       _key: cmd.requestKey,
       _fingerprint: fingerprint,
       _snapshot: airSnapshotSchema.parse(next),
-      _event: { kind: cmd.action },
+      _event: {
+        kind: cmd.action,
+        ...(cmd.action === "export" ? { report: reportPayload(current) } : {}),
+      },
     }),
   );
   return cmd.action === "export" ? withReport(result) : result;
 }
 
 function withReport(stored: AirStored) {
+  if (!stored.report || !stored.reportSha256) throw new CaseError("AIR_REPORT_MISSING", 409);
+  return { ...stored, report: { ...stored.report, reportSha256: stored.reportSha256 } };
+}
+
+// Computed once before the export append. PostgreSQL adds authoritative custody
+// fields and hashes/persists the report in the same immutable revision transaction.
+function reportPayload(stored: AirStored) {
   const s = stored.snapshot!;
   return {
-    ...stored,
-    report: {
-      caseId: stored.caseId,
-      revision: stored.revision,
-      snapshotSha256: stored.snapshotSha256,
-      exportedBy: stored.actorId,
-      exportedAt: stored.at,
-      dataset: s.dataset,
-      originalCsv: s.csv,
-      datasetHash: s.datasetHash,
-      importRevision: s.importRevision,
-      importedBy: s.importedBy,
-      importedAt: s.importedAt,
-      analysis: analyzeCompressedAir(s.dataset),
-      engineerReview: s.review,
-      actions: s.actions,
-      outcomeVerification: s.verification,
-      reviewStatus: s.review ? "simulated_review_only" : "unreviewed",
-      verifiedSavings: null,
-      approvedForCustomerDelivery: false,
-    },
+    dataset: s.dataset,
+    originalCsv: s.csv,
+    datasetHash: s.datasetHash,
+    importRevision: s.importRevision,
+    importedBy: s.importedBy,
+    importedAt: s.importedAt,
+    analysis: analyzeCompressedAir(s.dataset),
+    engineerReview: s.review,
+    actions: s.actions,
+    outcomeVerification: s.verification,
+    reviewStatus: s.review ? "simulated_review_only" : "unreviewed",
+    verifiedSavings: null,
+    approvedForCustomerDelivery: false,
   };
 }

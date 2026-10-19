@@ -1,7 +1,7 @@
 import { test, expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
 import { requireLocalOnlyRequests } from "./nonproduction-network";
-import { provisionLocalReviewer } from "./local-backend";
+import { localBackend, provisionLocalReviewer } from "./local-backend";
 
 async function login(page: Page, email: string) {
   await requireLocalOnlyRequests(page.context());
@@ -43,13 +43,28 @@ test("isolated compressed-air: import recovery, reviewer, action, outcome, expor
   await page.getByRole("button", { name: "Create synthetic case", exact: true }).click();
   const parent = await (await created).json();
   const caseId = parent.caseId as string;
-  const section = page
-    .locator("section")
-    .filter({
-      has: page.getByRole("heading", { name: "Compressed-air evidence attachment", exact: true }),
-    });
+  const section = page.locator("section").filter({
+    has: page.getByRole("heading", { name: "Compressed-air evidence attachment", exact: true }),
+  });
   await section.getByRole("button", { name: "Load compressed-air evidence", exact: true }).click();
   await expect(section.getByText("Revision 0 / 0 · manager", { exact: true })).toBeVisible();
+  const csvInput = section.getByLabel("Synthetic CSV only", { exact: true });
+  await expect(csvInput).toHaveAttribute("maxlength", "2000000");
+  const sample = await readFile(
+    new URL("../data/compressed-air/synthetic.csv", import.meta.url),
+    "utf8",
+  );
+  const longCsv = [
+    sample.split("\n")[0],
+    ...Array.from({ length: 60 }, (_, i) => {
+      const start = new Date(Date.UTC(2026, 0, 1, i)).toISOString();
+      const end = new Date(Date.UTC(2026, 0, 1, i + 1)).toISOString();
+      return `${start},${end},${i < 3 ? "baseline" : i < 40 ? "before" : "after"},product-a-loaded,7,10,${i >= 3 && i < 40 ? 90 : 60},2`;
+    }),
+  ].join("\n");
+  expect(longCsv.length).toBeGreaterThan(4000);
+  await csvInput.fill(longCsv);
+  await expect(csvInput).toHaveValue(longCsv);
   let dropped = false;
   const requests: string[] = [];
   await page.route("**/api/investigations?method=compressed-air", async (route) => {
@@ -70,6 +85,8 @@ test("isolated compressed-air: import recovery, reviewer, action, outcome, expor
   await page.unroute("**/api/investigations?method=compressed-air");
   const imported = await api(page, { action: "load", caseId });
   expect(imported.status).toBe(200);
+  expect(imported.body.snapshot.csv).toBe(longCsv);
+  expect(imported.body.snapshot.dataset.samples).toHaveLength(60);
   const datasetHash = imported.body.snapshot.datasetHash;
   const scope = await api(page, { action: "scope", caseId });
   const fixture = await provisionLocalReviewer(parent.factoryId, Number(scope.body.organizationId));
@@ -186,10 +203,44 @@ test("isolated compressed-air: import recovery, reviewer, action, outcome, expor
     const file = await download;
     const report = JSON.parse(await readFile((await file.path())!, "utf8"));
     expect(report.verifiedSavings).toBeNull();
+    expect(report.originalCsv).toBe(longCsv);
+    expect(report.reportSha256).toMatch(/^[a-f0-9]{64}$/);
+    const saved = await api(page, { action: "load", caseId, revision: report.revision });
+    expect(saved.body.report.analysis).toEqual(report.analysis);
+    expect(saved.body.reportSha256).toBe(report.reportSha256);
     expect(report.outcomeVerification.outcome).toBe("inconclusive");
     expect(report.engineerReview.actorId).toBe(fixture.id);
     expect(report.revision).toBe(7);
     expect(report.snapshotSha256).toMatch(/^[a-f0-9]{64}$/);
+    // Test-node fixture mutation is restricted by localBackend() to the CLI loopback stack.
+    // The service key never enters page.evaluate, browser storage or client code.
+    const local = localBackend();
+    const setOrganization = async (status: "active" | "suspended") => {
+      const response = await fetch(
+        `${local.origin}/rest/v1/organizations?id=eq.${Number(scope.body.organizationId)}`,
+        {
+          method: "PATCH",
+          headers: {
+            apikey: local.serviceKey,
+            Authorization: `Bearer ${local.serviceKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ status }),
+        },
+      );
+      expect(response.ok).toBe(true);
+    };
+    try {
+      await setOrganization("suspended");
+      for (const command of [
+        { action: "scope", caseId },
+        { action: "load", caseId, revision: 1 },
+        { action: "export", caseId, expectedRevision: 7, requestKey: crypto.randomUUID() },
+      ])
+        expect((await api(page, command)).status).toBe(403);
+    } finally {
+      await setOrganization("active");
+    }
     const other = await otherContext.newPage();
     await login(other, "gridmind-http-b@example.test");
     for (const command of [

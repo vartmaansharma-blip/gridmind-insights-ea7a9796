@@ -16,6 +16,11 @@ create table public.compressed_air_revisions (
   snapshot jsonb not null check(jsonb_typeof(snapshot)='object' and octet_length(snapshot::text)<=8000000
     and snapshot->>'origin'='synthetic'),
   snapshot_sha256 text not null,
+  report jsonb,
+  report_sha256 text,
+  check ((event='export' and report is not null and jsonb_typeof(report)='object'
+    and octet_length(report::text)<=8000000 and report_sha256 is not null and report_sha256 ~ '^[a-f0-9]{64}$')
+    or (event<>'export' and report is null and report_sha256 is null)),
   event text not null check(event in ('import','review','propose','approve','complete','verifyOutcome','export')),
   actor_id uuid not null references auth.users(id) on delete restrict,
   created_at timestamptz not null default now(),
@@ -42,8 +47,9 @@ declare
   organization bigint;
   kind text := _event->>'kind';
   replay boolean := false;
+  report_value jsonb;
 begin
-  if not (select enabled from private.compressed_air_gate where singleton) then
+  if (select enabled from private.compressed_air_gate where singleton) is distinct from true then
     raise exception 'COMPRESSED_AIR_DISABLED' using errcode='42501'; end if;
   if _actor is null or not exists(select 1 from auth.users u where id=_actor
     and coalesce((to_jsonb(u)->>'is_anonymous')::boolean,false)=false) then
@@ -51,7 +57,10 @@ begin
   -- Parent lock serializes append/retry and assignment revocation with existing case commands.
   select * into c from public.investigation_cases where id=_case for update;
   access_role:=private.investigation_access(_case,_actor);
-  if c.id is null or access_role is null then raise exception 'CASE_ACCESS_DENIED' using errcode='42501'; end if;
+  if c.id is null or access_role is null or not exists (
+    select 1 from public.factories f join public.organizations o on o.id=f.organization_id
+    where f.id=c.factory_id and o.status='active'
+  ) then raise exception 'CASE_ACCESS_DENIED' using errcode='42501'; end if;
   select organization_id into organization from public.factories where id=c.factory_id;
   if _op='scope' then
     return jsonb_build_object('organizationId',organization::text,'siteId',c.factory_id::text,
@@ -121,10 +130,25 @@ begin
             then raise exception 'AIR_ACCEPTED_REVIEW_REQUIRED' using errcode='22023'; end if;
         else raise exception 'INVALID_CASE_COMMAND' using errcode='22023'; end if;
       end if;
+      if kind='export' then
+        report_value:=_event->'report';
+        if jsonb_typeof(report_value) is distinct from 'object'
+          or report_value->'dataset' is distinct from _snapshot->'dataset'
+          or report_value->>'originalCsv' is distinct from _snapshot->>'csv'
+          or report_value->>'datasetHash' is distinct from _snapshot->>'datasetHash'
+          or report_value->'engineerReview' is distinct from _snapshot->'review'
+          or report_value->'actions' is distinct from _snapshot->'actions'
+          or report_value->'outcomeVerification' is distinct from _snapshot->'verification'
+          then raise exception 'INVALID_AIR_REPORT' using errcode='22023'; end if;
+        report_value:=report_value || jsonb_build_object('caseId',_case,'revision',head+1,
+          'snapshotSha256',encode(sha256(convert_to(_snapshot::text,'UTF8')),'hex'),
+          'exportedBy',_actor,'exportedAt',now());
+      end if;
       insert into public.compressed_air_revisions(case_id,revision,asset_id,request_key,fingerprint,
-        snapshot,snapshot_sha256,event,actor_id)
+        snapshot,snapshot_sha256,event,actor_id,report,report_sha256)
       values(_case,head+1,asset,_key,_fingerprint,_snapshot,
-        encode(sha256(convert_to(_snapshot::text,'UTF8')),'hex'),kind,_actor) returning * into result;
+        encode(sha256(convert_to(_snapshot::text,'UTF8')),'hex'),kind,_actor,report_value,
+        case when report_value is not null then encode(sha256(convert_to(report_value::text,'UTF8')),'hex') end) returning * into result;
       head:=result.revision;
     end if;
   elsif _op='read' then
@@ -135,9 +159,12 @@ begin
   else raise exception 'INVALID_STORE_OPERATION' using errcode='22023'; end if;
   if result.revision is not null and result.snapshot_sha256<>encode(sha256(convert_to(result.snapshot::text,'UTF8')),'hex')
     then raise exception 'AIR_SOURCE_INTEGRITY_FAILED' using errcode='22023'; end if;
+  if result.report is not null and result.report_sha256 is distinct from encode(sha256(convert_to(result.report::text,'UTF8')),'hex')
+    then raise exception 'AIR_REPORT_INTEGRITY_FAILED' using errcode='22023'; end if;
   return jsonb_build_object('caseId',_case,'revision',coalesce(result.revision,0),'headRevision',head,
     'role',access_role,'snapshot',result.snapshot,'snapshotSha256',result.snapshot_sha256,
-    'actorId',result.actor_id,'at',result.created_at,'replayed',replay);
+    'actorId',result.actor_id,'at',result.created_at,'replayed',replay,
+    'report',result.report,'reportSha256',result.report_sha256);
 end $$;
 revoke all on function private.compressed_air_store(uuid,text,uuid,integer,text,text,jsonb,jsonb) from public,anon,authenticated;
 grant execute on function private.compressed_air_store(uuid,text,uuid,integer,text,text,jsonb,jsonb) to service_role;

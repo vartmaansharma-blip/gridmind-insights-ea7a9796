@@ -138,7 +138,11 @@ export function CompressedAirWorkbench({ caseId }: { caseId: string }) {
                     options: assets.map((a) => String(a.id)),
                   },
                   textField("sourceName", "Synthetic source name"),
-                  textField("csv", "Synthetic CSV only", "multiline"),
+                  {
+                    ...textField("csv", "Synthetic CSV only", "multiline"),
+                    maxLength: 2_000_000,
+                    hint: "At most 1,000 synthetic intervals; input is validated before saving.",
+                  },
                 ]}
                 label="Append synthetic import"
                 onSave={(v) =>

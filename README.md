@@ -8,7 +8,9 @@
 
 [Competitor learnings](docs/research/gridmind-industrial-intelligence-competitor-learnings-2026-10-18.md) and the [R3 method](docs/product/gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) prioritize R3 for research, fairly compare R2, and retain R1 as a fictional demonstration. No paid wedge, live bill-screen calculator or authorized real-data service is established. The #136 integration preserves main's website and application; its [scope amendment](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) controls release evidence.
 
-## Current truth — 17 October 2026
+**Technical status, 20 October:** use the [Master Plan](docs/gridmind-master-plan-2026-10-11.md) for current approved direction and main-versus-draft status, and the [single engineering ledger/review packet](docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) for the connected Step 1 workflow. PR #154 remains draft; earlier technical snapshots below are historical.
+
+## Historical truth snapshot — 17 October 2026
 
 - **Strategic direction:** one industrial resolution company, one common permissioned evidence → qualified review → approved action → outcome system. We are **not** building six separate businesses or a replacement ERP/QMS.
 - **Commercial wedge:** **undecided**. Compare **R1** manufacturing quality/rejected orders with related C1 production incidents, **R2** documented acceptance/invoice disputes (C6), and **R3** electricity billing/contract exposure (C4). R1 is a preferred **synthetic design demonstration**, not validated demand.
@@ -44,7 +46,7 @@ The founder requested research into at least 100 industrial problems, how GridMi
 - [100-problem manufacturer research atlas](docs/research/gridmind-100-manufacturing-problem-opportunity-atlas-2026-10-17.md) — exactly 100 problems across 10 industrial domains, distinguishing potential direct software, expert-assisted work and partner-only escalation. It is **desk research**, not local factory observations or a product backlog.
 - [Service SOP, commercial/pricing hypotheses and payment collection](docs/operations/gridmind-3-1-service-sop-commercial-and-payment-blueprint-2026-10-17.md) — on-site-capable expert-led service model; business invoice/bank transfer first after lawful authorized adult/professional setup; regulated hosted payment link only if later warranted. **GridMind revenue ≠ manufacturer's disputed receivables.** No live payments or contracting ability inferred.
 - [Manufacturer resolution product architecture](docs/product/gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — one core for authorized evidence → observation/hypothesis → qualified review → customer decision → outcome, with methods added only after buyer/safety gates.
-- [PR #136 pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — main is production-connected; broad branch stays **DRAFT/HOLD** pending exact-head checks, independent code review, production Supabase drift (#130) and authenticated release (#29). Documentation does not authorize new migrations, production or real customer use.
+- [PR #136 pre-merge decision packet](docs/engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — historical pre-merge scope and final narrowed merge disposition. Main is production-connected; production Supabase drift (#130) and authenticated release (#29) remain separate gates. Documentation does not authorize new migrations, production or real customer use.
 
 The [Master Plan](docs/gridmind-master-plan-2026-10-11.md) remains the **only** active strategy; the [Buyer Discovery Sprint](docs/gridmind-buyer-discovery-sprint-2026-10-11.md) is still the **only** buyer-evidence tracker. R1/R2/R3 remain discovery-only candidates. “Redmind” has not been accepted as a name change.
 
@@ -108,7 +110,7 @@ Run the relevant checks before proposing a merge. Record the exact commit and re
 
 ## Integrated product preview
 
-The existing Lovable operational dashboard remains at `/`. The same application now provides:
+Current main serves the approved homepage at `/`, retains `/website` and `/design-preview`, and keeps the Lovable operational dashboard at `/dashboard`. The same application provides:
 
 - `/website` — public service explanation and labeled sample brief.
 - `/cases?mode=demo` — customer sample workspace.

@@ -415,7 +415,7 @@ try {
   const { verifyPortal } = await import("./portal-acceptance");
   await verifyPortal(database, store, owner, reviewer, outsider, fa, a);
   const { verifyCompressedAir } = await import("./compressed-air-acceptance");
-  await verifyCompressedAir(database, store, owner, reviewer, outsider, fa);
+  await verifyCompressedAir(database, store, owner, reviewer, outsider, fa, () => db.getPgClient());
   if (process.env.GRIDMIND_CASE_BROWSER === "1") {
     // Restore ONLY this disposable fixture actor for the browser scenario.
     await database.query(
