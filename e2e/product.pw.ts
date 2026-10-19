@@ -10,7 +10,7 @@ test.beforeEach(async ({ context }) => {
 test("public website releases the approved Lovable industrial hero and functional example", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/website");
+  await page.goto("/");
   const heading = page.getByRole("heading", { level: 1 }).first();
   await expect(heading).toContainText("Everything is connected.");
   await expect(heading).toContainText("What are we missing?");
