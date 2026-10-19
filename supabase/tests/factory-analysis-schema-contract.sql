@@ -1,5 +1,5 @@
 -- Assert the canonical analysis persistence contract after a clean migration replay.
--- This test is local/CI-only and performs no writes.
+-- Local/CI only. Catalog checks are read-only; electricity fixtures below roll back.
 do $$
 declare
   v_rls boolean;
@@ -155,3 +155,88 @@ begin
  end loop;
 end $$;
 select 'customer portal schema/security contract: PASS' as result;
+
+-- Disposable fixtures only; rolled back. Run after full migration replay.
+begin;
+create function pg_temp.assert_true(value boolean, message text) returns void language plpgsql as $$
+begin if value is distinct from true then raise exception 'ASSERT: %',message; end if; end $$;
+create function pg_temp.denied(statement text) returns void language plpgsql as $$
+begin
+ begin execute statement; exception when insufficient_privilege or check_violation or invalid_parameter_value or serialization_failure or not_null_violation then return; end;
+ raise exception 'Unexpectedly accepted: %',statement;
+end $$;
+insert into auth.users(id,email) values
+ ('a1000000-0000-4000-8000-000000000001','electricity-owner@example.test'),
+ ('a1000000-0000-4000-8000-000000000002','electricity-analyst@example.test'),
+ ('a1000000-0000-4000-8000-000000000003','electricity-viewer@example.test'),
+ ('a1000000-0000-4000-8000-000000000004','electricity-other@example.test');
+do $$ declare oa bigint; ob bigint; fa bigint; fb bigint; begin
+ insert into public.organizations(name) values('SYNTHETIC Electricity A') returning id into oa;
+ insert into public.organizations(name) values('SYNTHETIC Electricity B') returning id into ob;
+ insert into public.factories(name,organization_id) values('SYNTHETIC Adityapur',oa) returning id into fa;
+ insert into public.factories(name,organization_id) values('SYNTHETIC Other',ob) returning id into fb;
+ insert into public.organization_members(organization_id,user_id,role,status) values
+ (oa,'a1000000-0000-4000-8000-000000000001','owner','active'),
+ (oa,'a1000000-0000-4000-8000-000000000002','analyst','active'),
+ (oa,'a1000000-0000-4000-8000-000000000003','viewer','active'),
+ (ob,'a1000000-0000-4000-8000-000000000004','owner','active');
+ insert into public.factory_members(factory_id,organization_id,user_id,role) values
+ (fa,oa,'a1000000-0000-4000-8000-000000000001','owner'),
+ (fa,oa,'a1000000-0000-4000-8000-000000000002','analyst'),
+ (fa,oa,'a1000000-0000-4000-8000-000000000003','viewer'),
+ (fb,ob,'a1000000-0000-4000-8000-000000000004','owner');
+ perform set_config('test.factory',fa::text,true);
+ perform set_config('test.other_factory',fb::text,true);
+end $$;
+set local role authenticated;
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
+select public.electricity_command(jsonb_build_object('action','create','id','b1000000-0000-4000-8000-000000000001','factoryId',current_setting('test.factory')::bigint,'investigatorId','a1000000-0000-4000-8000-000000000002','utility','Unknown','from','2026-09-01','to','2026-09-30','issue','Synthetic demand charge question'));
+select public.electricity_command(jsonb_build_object('action','create','id','b1000000-0000-4000-8000-000000000001','factoryId',current_setting('test.factory')::bigint,'investigatorId','a1000000-0000-4000-8000-000000000002','utility','Unknown','from','2026-09-01','to','2026-09-30','issue','Synthetic demand charge question'));
+select pg_temp.assert_true((select count(*)=1 from public.electricity_events),'idempotent creation emits one audit');
+select pg_temp.assert_true(jsonb_array_length(public.electricity_command('{"action":"list"}'))=1,'list returns persisted authorized case');
+select pg_temp.assert_true(jsonb_array_length(public.electricity_command('{"action":"options"}')->'sites')=1,'options scope organization and investigators');
+select pg_temp.denied($q$select public.electricity_command(jsonb_build_object('action','create','id','b1000000-0000-4000-8000-000000000002','factoryId',current_setting('test.factory')::bigint,'investigatorId','a1000000-0000-4000-8000-000000000004','utility','Unknown','from','2026-09-01','to','2026-09-30','issue','Cross tenant assignee'))$q$);
+select pg_temp.denied($q$select public.electricity_command(jsonb_build_object('action','create','id','b1000000-0000-4000-8000-000000000002','factoryId',current_setting('test.factory')::bigint,'investigatorId','a1000000-0000-4000-8000-000000000002','utility','Unknown','from','2026-09-30','to','2026-09-01','issue','Reversed dates invalid'))$q$);
+select pg_temp.denied($q$update public.electricity_cases set investigator_id='a1000000-0000-4000-8000-000000000004'$q$);
+select pg_temp.denied($q$delete from public.electricity_events$q$);
+select pg_temp.denied($q$select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","status":"investigating"}')$q$);
+select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","revision":1,"status":"investigating"}');
+select pg_temp.denied($q$select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","revision":1,"status":"awaiting_expert"}')$q$);
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000002',true);
+select pg_temp.assert_true((public.electricity_command('{"action":"load","caseId":"b1000000-0000-4000-8000-000000000001"}')->'case'->>'revision')::int=2,'assigned analyst can retrieve persisted revision');
+select public.electricity_command('{"action":"reserve","caseId":"b1000000-0000-4000-8000-000000000001","id":"c1000000-0000-4000-8000-000000000001","filename":"synthetic.pdf","mime":"application/pdf","bytes":20}');
+select pg_temp.denied($q$select public.electricity_command('{"action":"finalize","caseId":"b1000000-0000-4000-8000-000000000001","id":"c1000000-0000-4000-8000-000000000001"}')$q$);
+insert into storage.objects(bucket_id,name,metadata) values('electricity-bills','b1000000-0000-4000-8000-000000000001/c1000000-0000-4000-8000-000000000001','{"size":20,"mimetype":"application/pdf"}');
+select public.electricity_command('{"action":"finalize","caseId":"b1000000-0000-4000-8000-000000000001","id":"c1000000-0000-4000-8000-000000000001"}');
+select public.electricity_command('{"action":"finalize","caseId":"b1000000-0000-4000-8000-000000000001","id":"c1000000-0000-4000-8000-000000000001"}');
+select pg_temp.assert_true((select count(*)=1 from public.electricity_events where kind='evidence_uploaded'),'finalize retry emits one audit');
+select pg_temp.assert_true((select count(*)=1 from storage.objects where bucket_id='electricity-bills'),'private evidence visible to assigned analyst');
+with changed as (update storage.objects set name='overwrite' where bucket_id='electricity-bills' returning *) select pg_temp.assert_true((select count(*)=0 from changed),'object overwrite denied');
+with changed as (delete from storage.objects where bucket_id='electricity-bills' returning *) select pg_temp.assert_true((select count(*)=0 from changed),'object deletion denied');
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000003',true);
+select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'viewer cannot read internal cases');
+select pg_temp.denied($q$select public.electricity_command('{"action":"load","caseId":"b1000000-0000-4000-8000-000000000001"}')$q$);
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000004',true);
+select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'foreign owner cannot enumerate');
+select pg_temp.assert_true((select count(*)=0 from public.electricity_events),'foreign owner cannot read audit');
+select pg_temp.assert_true((select count(*)=0 from storage.objects where bucket_id='electricity-bills'),'foreign owner cannot download');
+select pg_temp.denied($q$select public.electricity_command('{"action":"load","caseId":"b1000000-0000-4000-8000-000000000001"}')$q$);
+select pg_temp.denied($q$insert into storage.objects(bucket_id,name) values('electricity-bills','foreign/path')$q$);
+reset role;
+update public.organization_members set status='suspended' where user_id='a1000000-0000-4000-8000-000000000002';
+set local role authenticated;
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000002',true);
+select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'revoked analyst loses access');
+select pg_temp.assert_true((select count(*)=0 from storage.objects where bucket_id='electricity-bills'),'revoked analyst loses Storage access');
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
+select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","revision":2,"status":"closed_inconclusive"}');
+select pg_temp.denied($q$select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","revision":3,"status":"investigating"}')$q$);
+select set_config('request.jwt.claims','{"is_anonymous":true}',true);
+select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'anonymous JWT cannot read');
+select pg_temp.denied($q$select public.electricity_command('{"action":"list"}')$q$);
+reset role;
+select pg_temp.assert_true((select not public and file_size_limit=10485760 from storage.buckets where id='electricity-bills'),'private bounded bucket');
+set local role anon;
+select pg_temp.denied($q$select public.electricity_command('{"action":"list"}')$q$);
+select pg_temp.denied($q$select * from public.electricity_cases$q$);
+rollback;

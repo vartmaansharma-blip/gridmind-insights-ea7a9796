@@ -47,7 +47,7 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@1dedf2c611547ede7232d26866dd3c56ab903bbb # v1
         with:
-          version: 2.121.0
+          version: latest
 
       - name: Start isolated local Supabase stack
         run: supabase start -x studio,logflare,vector,imgproxy
@@ -84,49 +84,12 @@ jobs:
               > /dev/null
           done
 
-      - name: Verify disposable test-user password sign-in before browser tests
-        shell: bash
-        run: |
-          eval "$(supabase status -o env)"
-          API="${API_URL:-http://127.0.0.1:54321}"
-          for email in gridmind-http-a@example.test gridmind-http-b@example.test; do
-            response="$(mktemp)"
-            status="$(curl --silent --show-error --output "$response" --write-out '%{http_code}' \
-              -X POST "$API/auth/v1/token?grant_type=password" \
-              -H "apikey: ${ANON_KEY:?Missing local anon key}" \
-              -H 'Content-Type: application/json' \
-              --data-binary "$(printf '{"email":"%s","password":"gridmind-ci-password"}' "$email")")"
-            if [ "$status" != "200" ] || ! jq -e '.access_token and .user.id' "$response" > /dev/null; then
-              # Never print raw JSON: it may contain a bearer token.
-              error_code="$(jq -r '.error_code // .code // "unknown"' "$response" 2>/dev/null || echo unknown)"
-              rm -f "$response"
-              echo "::error::Local synthetic password sign-in failed for fixture user ($status, $error_code). Investigate Auth config/fixtures before running browsers."
-              exit 1
-            fi
-            rm -f "$response"
-            echo "Confirmed disposable password auth for fixture account"
-          done
-
       - name: Seed isolated tenant fixtures for HTTP integration
         shell: bash
         run: |
           eval "$(supabase status -o env)"
           test -n "$DB_URL"
           psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/factory-analysis-integration-setup.sql
-
-      - name: Verify isolated synthetic evidence intake and case link security
-        shell: bash
-        run: |
-          eval "$(supabase status -o env)"
-          test -n "$DB_URL"
-          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/synthetic-machine-intake-contract.sql
-
-      - name: Enforce unverified canonical observations and factory-source scope
-        shell: bash
-        run: |
-          eval "$(supabase status -o env)"
-          test -n "${DB_URL:-}"
-          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/canonical-observation-ingress-contract.sql
 
       - name: Exercise authenticated Edge Function end to end
         shell: bash

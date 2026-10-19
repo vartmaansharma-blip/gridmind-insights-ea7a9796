@@ -14,6 +14,7 @@ export type DashboardNav = { to: LinkProps["to"]; label: string; icon: LucideIco
 export const STAFF_NAV: DashboardNav[] = [
   { to: "/", label: "Overview", icon: LayoutDashboard },
   { to: "/team/cases", label: "Investigations", icon: Lightbulb },
+  { to: "/team/electricity", label: "Electricity cases", icon: Zap },
   { to: "/team/intake", label: "Intake", icon: Inbox },
   { to: "/factory", label: "Factory / Data", icon: Factory },
   { to: "/energy", label: "Energy", icon: Zap },

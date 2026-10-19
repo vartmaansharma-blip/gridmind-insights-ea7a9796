@@ -1,5 +1,12 @@
 # GridMind Master Plan — Canonical Execution Plan
 
+## GM-3.1-001 engineering authorization — 19 October 2026
+
+The founder explicitly selected **industrial electricity-cost investigation for a Jamshedpur–Adityapur manufacturer as the first bounded engineering slice**, and authorized correcting defects during implementation. This supersedes the research-only restriction for building intake, private evidence, assignment, lifecycle and retrieval in the existing application. [Issue #146](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/146) owns acceptance criteria. It does not establish a paid wedge, buyer demand, tariff correctness, savings or authority to use customer data. The Buyer Discovery Sprint remains the sole field-evidence tracker; R1/R2 commercial comparison is unchanged.
+
+Reuse factory/organization memberships and dashboard primitives. Keep the fictional calculation/reviewer engine intact: a separate electricity intake record must not turn a synthetic review into professional certification. Test with synthetic files only; no public publishing or calculation in this slice. Production reconciliation #130, populated live acceptance #29, independent security review, data rights, retention and qualified professional review remain release dependencies. Execute dependencies without a new date-based roadmap: persistence/permissions → API → UI adapter → negative-role and end-to-end acceptance → independent review → separately authorized release.
+
+
 **Revised:** 2026-10-18 — GridMind 3.1 approved strategic baseline after PR #136 integration  
 **Authority:** This is the **sole current execution plan**. [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) is the sole live field-evidence tracker; [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) governs security, ethics, authority and conflicts. This replacement supersedes the former C1/C4-only discovery *ordering*, not established safeguards, retained code or technical test history. Former plan text remains retrievable through Git history.  
 **Evidence status:** **No verified customer interview, paid customer, qualified reviewer engagement, authorized customer-data test, proven customer ROI, or production customer-case/data release.** The 2026-10-12 ASIA inquiry is the only reported external access action; no reply established. No commercial wedge has won.

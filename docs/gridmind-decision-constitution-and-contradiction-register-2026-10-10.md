@@ -1,5 +1,12 @@
 # GridMind Decision Constitution and Contradiction Register
 
+## GM-3.1-001 engineering authorization — 19 October 2026
+
+The founder explicitly selected **industrial electricity-cost investigation for a Jamshedpur–Adityapur manufacturer as the first bounded engineering slice**, and authorized correcting defects during implementation. This supersedes the research-only restriction for building intake, private evidence, assignment, lifecycle and retrieval in the existing application. [Issue #146](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/146) owns acceptance criteria. It does not establish a paid wedge, buyer demand, tariff correctness, savings or authority to use customer data. The Buyer Discovery Sprint remains the sole field-evidence tracker; R1/R2 commercial comparison is unchanged.
+
+Reuse factory/organization memberships and dashboard primitives. Keep the fictional calculation/reviewer engine intact: a separate electricity intake record must not turn a synthetic review into professional certification. Test with synthetic files only; no public publishing or calculation in this slice. Production reconciliation #130, populated live acceptance #29, independent security review, data rights, retention and qualified professional review remain release dependencies. Execute dependencies without a new date-based roadmap: persistence/permissions → API → UI adapter → negative-role and end-to-end acceptance → independent review → separately authorized release.
+
+
 ## Current binding GridMind 3.1 decisions — frozen strategic baseline, 18 October 2026
 
 **Meaning of "frozen":** The adopted operating model below is the default for future work. It can change through the existing evidence-backed decision-change protocol; it is not a promise of first-product fit, an irreversible business commitment or a requirement to build every feature. **This section is later than, and supersedes conflicting present-tense PR #136 release statements in, the dated decisions retained below.** Original decisions remain for audit history.
