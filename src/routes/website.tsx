@@ -5,6 +5,7 @@ import { PublicSite } from "@/components/public-site/site";
 export const Route = createFileRoute("/website")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: "GridMind — Evidence-led factory electricity reviews" },
       {
         name: "description",
@@ -16,5 +17,6 @@ export const Route = createFileRoute("/website")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
+    links: [{ rel: "canonical", href: "/" }],
   component: PublicSite,
 });
