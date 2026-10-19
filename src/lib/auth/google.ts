@@ -79,7 +79,7 @@ export function workspaceDestination(principal: Principal, destination: AuthDest
   if (!principal.factories.length && !principal.isCustomer) return null;
   if (!principal.factories.length) return "/cases" as const;
   if (destination === "team") return "/team/cases" as const;
-  return "/" as const;
+  return "/dashboard" as const;
 }
 
 // Public provider availability only: never request the management API, client
