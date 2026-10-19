@@ -8,17 +8,19 @@ import "./site.css";
 const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
 const NAV = [
-  { href: "#problem", label: "The problem" },
-  { href: "#how", label: "How it works" },
-  { href: "#example", label: "Example investigation" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/problem", label: "The problem" },
+  { href: "/how-it-works", label: "How it works" },
+  { href: "/example", label: "Example investigation" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 /* ---------------- Shared pieces ---------------- */
 
 function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-2.5" aria-label="GridMind — back to top">
+    <a href="/" className="flex items-center gap-2.5" aria-label="GridMind — back to top">
       <img src={mark} alt="" width={30} height={30} className="h-[30px] w-[30px]" />
       <span className="gm-display text-[1.15rem] font-semibold">GridMind</span>
     </a>
