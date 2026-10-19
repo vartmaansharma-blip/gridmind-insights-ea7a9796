@@ -533,7 +533,7 @@ function Contact() {
           <p className="mt-2 leading-relaxed gm-muted-d">Open a private workspace to describe the decision you need to make. Your request is reviewed before any engagement is agreed.</p>
           <p className="mt-3 text-xs leading-relaxed gm-muted-d">This is an early beta. Do not share confidential plant records or upload technical files. A request is not a technical assessment or a guaranteed response.</p>
           <div className="mt-6 flex flex-wrap items-center gap-4 text-sm">
-            <Link to="/cases" className="gm-btn gm-btn-primary !px-5 !py-3">Request a conversation <span aria-hidden>↗</span></Link>
+            <Link to="/onboarding" className="gm-btn gm-btn-primary !px-5 !py-3">Connect your factory <span aria-hidden>↗</span></Link>
             <Link to="/auth" search={{ destination: "customer" }} className="underline underline-offset-4">Existing customer? Sign in</Link>
           </div>
         </div>

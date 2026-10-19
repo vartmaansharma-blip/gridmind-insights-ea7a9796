@@ -256,7 +256,7 @@ function AuthPage() {
           desc={
             mode === "sign-in"
               ? "Your factory data stays behind authenticated, factory-scoped access."
-              : "Create an account. Workspace access requires an authorized invitation or membership."
+              : "Create an account, then request factory onboarding. Connection and workspace access require GridMind review."
           }
         >
           {error && (

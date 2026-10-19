@@ -4,7 +4,7 @@ import { PublicSite } from "@/components/public-site/site";
 /** Released public marketing site; factory workspace remains at '/' until separately migrated. */
 export const Route = createFileRoute("/website")({
   head: () => ({
-    meta: [
+    meta: [{ name: "robots", content: "noindex, follow" },
       { title: "GridMind — Evidence-led factory electricity reviews" },
       {
         name: "description",

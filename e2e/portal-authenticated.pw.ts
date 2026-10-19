@@ -42,6 +42,53 @@ test.afterEach(async ({ page }, info) => {
       (await page.locator("body").innerText()).slice(0, 6000),
     );
 });
+test("new customer follows public login, factory request, team approval and case-only dashboard", async ({ page, browser }) => {
+  const customer = await provisionLocalCustomer();
+  await requireLocalOnlyRequests(page.context());
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
+  await page.getByRole("link", { name: "Connect your factory" }).click();
+  await expect(page.getByRole("heading", { name: "Start with your factory, not a sensor." })).toBeVisible();
+  await page.getByRole("link", { name: "Continue securely" }).click();
+  await page.getByLabel("Email", { exact: true }).fill(customer.email);
+  await page.getByLabel("Password", { exact: true }).fill("gridmind-ci-password");
+  await page.getByRole("button", { name: "Sign in", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Request a factory introduction" })).toBeVisible();
+  const factory = `Invented acceptance plant ${crypto.randomUUID().slice(0, 6)}`;
+  await page.getByLabel("Factory or business name").fill(factory);
+  await page.getByLabel("City or industrial area").fill("Synthetic City");
+  await page.getByLabel("Primary process or equipment type").fill("Synthetic machining");
+  await page.getByLabel("What would you like GridMind to investigate?").fill("Which fictional meter record needs checking?");
+  await page.getByLabel("Period start").fill("2026-01-01");
+  await page.getByLabel("Period end").fill("2026-02-28");
+  await page.getByRole("button", { name: "Submit connection request" }).click();
+  await expect(page.getByRole("heading", { name: "Introduction request submitted" })).toBeVisible();
+  const request = (await api(page, { action: "intakeList" })).body.requests;
+  expect(request).toHaveLength(1);
+  expect(request[0].payload.site).toContain(factory);
+  expect(request[0].caseId).toBeNull();
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Your introduction is awaiting GridMind review" })).toBeVisible();
+  const staffContext = await browser.newContext({ baseURL: "http://127.0.0.1:4173" });
+  try {
+    const staff = await staffContext.newPage();
+    await login(staff, "gridmind-http-a@example.test", "team");
+    await staff.goto("/team/intake");
+    const card = staff.locator("section").filter({ has: staff.getByRole("heading", { name: `Factory introduction — ${factory}`, exact: true }) });
+    await expect(card).toBeVisible();
+    await card.getByRole("button", { name: "Accept scope and open case" }).click();
+    await expect(card.getByRole("link", { name: "Open accepted case" })).toBeVisible();
+    await page.getByRole("button", { name: "Refresh request status" }).click();
+    await expect(page.getByRole("heading", { name: "Your investigation workspace is available" })).toBeVisible();
+    await page.getByRole("link", { name: "Open your dashboard" }).click();
+    await expect(page.getByRole("heading", { name: "Your investigations", exact: true })).toBeVisible();
+    await page.goto("/app/overview");
+    await expect(page.getByRole("heading", { name: "This workspace is for authorized factory staff" })).toBeVisible();
+  } finally {
+    await staffContext.close();
+  }
+});
+
 test("website/customer/team integration preserves case-only access and automatically publishes after independent review", async ({
   page,
   browser,

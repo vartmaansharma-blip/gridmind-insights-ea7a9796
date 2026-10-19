@@ -15,6 +15,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { EnergyStoreProvider } from "@/lib/energy/store";
 import { AppShell } from "@/components/gm/app-shell";
+import { StaffWorkspaceGate } from "@/components/gm/staff-workspace-gate";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 
@@ -59,7 +60,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "GridMind — Factory Energy Intelligence" },
-      { name: "description", content: "Find where your factory loses money on electricity and act on rupee-quantified savings." },
+      { name: "description", content: "Trace factory electricity evidence, investigate uncertainties, and plan qualified next steps." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -91,17 +92,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const syntheticWorkspace = useRouterState({ select: (state) => ["/investigations", "/investigations-connected", "/auth", "/website", "/cases", "/design-preview"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
+  const standaloneRoute = useRouterState({ select: (state) => ["/", "/website", "/onboarding", "/investigations", "/investigations-connected", "/auth", "/cases", "/design-preview"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
   // Case workspaces initialize only the services requested by their own route.
-  if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
+  if (standaloneRoute) return <><Outlet /><Toaster position="top-center" /></>;
   return (
     <QueryClientProvider client={queryClient}>
-      <EnergyStoreProvider>
-        <AppShell>
-          <Outlet />
-        </AppShell>
-        <Toaster position="top-center" />
-      </EnergyStoreProvider>
+      <StaffWorkspaceGate>
+        <EnergyStoreProvider>
+          <AppShell>
+            <Outlet />
+          </AppShell>
+        </EnergyStoreProvider>
+      </StaffWorkspaceGate>
+      <Toaster position="top-center" />
     </QueryClientProvider>
   );
 }

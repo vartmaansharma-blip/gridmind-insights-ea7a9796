@@ -7,10 +7,10 @@ test.beforeEach(async ({ context }) => {
       : route.continue();
   });
 });
-test("public website releases the approved Lovable industrial hero and functional example", async ({ page }) => {
+test("GridMind root releases approved green homepage and functional example", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/website");
+  await page.goto("/");
   const heading = page.getByRole("heading", { level: 1 }).first();
   await expect(heading).toContainText("Everything is connected.");
   await expect(heading).toContainText("What are we missing?");
@@ -21,7 +21,7 @@ test("public website releases the approved Lovable industrial hero and functiona
   expect((await download).suggestedFilename()).toMatch(/FICTIONAL\.txt$/);
   const contact = page.locator("#contact");
   await expect(contact).not.toContainText("Contact route pending");
-  await expect(contact.getByRole("link", { name: "Request a conversation" })).toHaveAttribute("href", "/cases");
+  await expect(contact.getByRole("link", { name: "Connect your factory" })).toHaveAttribute("href", "/onboarding");
   await page.getByRole("link", { name: "Explore the sample workspace" }).click();
   await expect(page.getByRole("heading", { name: "Your investigations", exact: true })).toBeVisible();
   expect(errors).toEqual([]);
@@ -41,6 +41,19 @@ test("public site remains legible and scrollable on narrow screens", async ({ pa
   await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
   await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test("logged-out factory onboarding explains review before any private dashboard", async ({ page }) => {
+  await page.goto("/onboarding");
+  await expect(page.getByRole("heading", { name: "Start with your factory, not a sensor." })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Sign in or create an account" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Continue securely" })).toHaveAttribute("href", "/auth?destination=customer");
+  await expect(page.getByText(/Logging in does not connect your machines/)).toBeVisible();
+});
+
+test("public site alias retains the approved Lovable design", async ({ page }) => {
+  await page.goto("/website");
+  await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
 });
 
 test("customer view shows sample brief and decision without staff controls; mobile fits", async ({
