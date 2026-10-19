@@ -223,7 +223,7 @@ do $$ declare oa bigint; ob bigint; fa bigint; fb bigint; begin
  (fb,ob,'a1000000-0000-4000-8000-000000000004','owner');
  perform set_config('test.factory',fa::text,true);
  perform set_config('test.other_factory',fb::text,true);
-end $;
+end $$;
 -- A direct authenticated PostgREST call must fail BEFORE the synthetic-only
 -- database release gate is enabled; the application API flag is not enough.
 set local role authenticated;
