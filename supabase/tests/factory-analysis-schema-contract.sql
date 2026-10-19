@@ -180,6 +180,17 @@ begin
   end if;
 end $electricity_isolation_contract$;
 select 'electricity independent migration contract: PASS' as result;
+-- Release must remain closed even if the application server feature flag is bypassed.
+do $electricity_gate_contract$
+begin
+  if not exists(select 1 from private.electricity_release_gate
+                where singleton=true and synthetic_acceptance_enabled=false) or
+     has_table_privilege('authenticated','private.electricity_release_gate','SELECT,UPDATE,INSERT,DELETE') or
+     has_table_privilege('anon','private.electricity_release_gate','SELECT,UPDATE,INSERT,DELETE') then
+    raise exception 'ELECTRICITY_SCHEMA_CONTRACT: DB gate not fail-closed';
+  end if;
+end $electricity_gate_contract$;
+select 'electricity gate default-deny contract: PASS' as result;
 
 -- Disposable fixtures only; rolled back. Run after full migration replay.
 begin;
@@ -212,7 +223,14 @@ do $$ declare oa bigint; ob bigint; fa bigint; fb bigint; begin
  (fb,ob,'a1000000-0000-4000-8000-000000000004','owner');
  perform set_config('test.factory',fa::text,true);
  perform set_config('test.other_factory',fb::text,true);
-end $$;
+end $;
+-- A direct authenticated PostgREST call must fail BEFORE the synthetic-only
+-- database release gate is enabled; the application API flag is not enough.
+set local role authenticated;
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
+select pg_temp.denied($q$select public.electricity_command('{"action":"options"}')$q$);
+reset role;
+update private.electricity_release_gate set synthetic_acceptance_enabled=true where singleton;
 set local role authenticated;
 select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
 select public.electricity_command(jsonb_build_object('action','create','id','b1000000-0000-4000-8000-000000000001','factoryId',current_setting('test.factory')::bigint,'investigatorId','a1000000-0000-4000-8000-000000000002','utility','Unknown','from','2026-09-01','to','2026-09-30','issue','Synthetic demand charge question'));
