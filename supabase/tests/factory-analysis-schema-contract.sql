@@ -156,6 +156,31 @@ begin
 end $$;
 select 'customer portal schema/security contract: PASS' as result;
 
+-- Electricity case module must stand alone atop the canonical core membership model:
+-- the optional synthetic case module is not present in production Supabase.
+do $electricity_isolation_contract$
+declare
+  role_fn regprocedure := 'private.electricity_factory_role(bigint,uuid)'::regprocedure;
+  immutable_fn regprocedure := 'private.electricity_event_immutable()'::regprocedure;
+begin
+  if position('private.investigation_factory_role' in pg_get_functiondef(role_fn)) > 0 then
+    raise exception 'ELECTRICITY_SCHEMA_CONTRACT: undeployed case-role dependency';
+  end if;
+  if has_function_privilege('authenticated', role_fn, 'EXECUTE') or
+     has_function_privilege('anon', role_fn, 'EXECUTE') then
+    raise exception 'ELECTRICITY_SCHEMA_CONTRACT: role helper must remain private';
+  end if;
+  if not exists(
+    select 1 from pg_trigger
+    where tgrelid='public.electricity_events'::regclass
+      and tgname='electricity_events_immutable'
+      and tgfoid=immutable_fn::oid and not tgisinternal
+  ) then
+    raise exception 'ELECTRICITY_SCHEMA_CONTRACT: own append-only event guard missing';
+  end if;
+end $electricity_isolation_contract$;
+select 'electricity independent migration contract: PASS' as result;
+
 -- Disposable fixtures only; rolled back. Run after full migration replay.
 begin;
 create function pg_temp.assert_true(value boolean, message text) returns void language plpgsql as $$
