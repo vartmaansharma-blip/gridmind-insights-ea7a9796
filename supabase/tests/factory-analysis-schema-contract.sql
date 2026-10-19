@@ -279,6 +279,23 @@ select pg_temp.assert_true((select count(*)=0 from storage.objects where bucket_
 select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
 select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","revision":2,"status":"closed_inconclusive"}');
 select pg_temp.denied($q$select public.electricity_command('{"action":"status","caseId":"b1000000-0000-4000-8000-000000000001","revision":3,"status":"investigating"}')$q$);
+-- An organization suspension must revoke even a valid owner's read/RPC access.
+-- These fixtures exist only inside this rolled-back SQL test transaction.
+reset role;
+update public.organizations set status='suspended'
+ where id=(select organization_id from public.factories
+           where id=current_setting('test.factory')::bigint);
+set local role authenticated;
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
+select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),
+  'suspended organization cannot read electricity cases');
+select pg_temp.denied($q$select public.electricity_command('{"action":"load","caseId":"b1000000-0000-4000-8000-000000000001"}')$q$);
+reset role;
+update public.organizations set status='active'
+ where id=(select organization_id from public.factories
+           where id=current_setting('test.factory')::bigint);
+set local role authenticated;
+select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000001',true);
 select set_config('request.jwt.claims','{"is_anonymous":true}',true);
 select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'anonymous JWT cannot read');
 select pg_temp.denied($q$select public.electricity_command('{"action":"list"}')$q$);
