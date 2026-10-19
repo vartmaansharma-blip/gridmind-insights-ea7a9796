@@ -58,16 +58,16 @@ insert into private.electricity_release_gate(singleton,synthetic_acceptance_enab
  values(true,false);
 revoke all on private.electricity_release_gate from public,anon,authenticated,service_role;
 create function private.electricity_feature_enabled() returns boolean
-language sql stable security definer set search_path='' as $
+language sql stable security definer set search_path='' as $$
  select coalesce((select g.synthetic_acceptance_enabled from private.electricity_release_gate g where g.singleton),false)
-$;
+$$;
 revoke all on function private.electricity_feature_enabled() from public,anon,authenticated,service_role;
 
 -- Reuse canonical factory/organization memberships, not the optional synthetic
 -- investigation-case module (which has not been deployed to production).
 -- This feature can therefore be migrated independently after core schema checks.
 create function private.electricity_factory_role(_factory bigint, _actor uuid) returns text
-language sql stable security definer set search_path='' as $
+language sql stable security definer set search_path='' as $$
  select fm.role
  from public.factory_members fm
  join public.factories f on f.id=fm.factory_id and f.organization_id=fm.organization_id
@@ -76,7 +76,7 @@ language sql stable security definer set search_path='' as $
     and om.user_id=fm.user_id and om.status='active'
  where fm.factory_id=_factory and fm.user_id=_actor
  limit 1
-$;
+$$;
 revoke all on function private.electricity_factory_role(bigint,uuid) from public,anon,authenticated,service_role;
 
 -- Deliberately not accepting an actor argument: identity comes exclusively from JWT.
@@ -96,8 +96,8 @@ create policy electricity_evidence_read on public.electricity_evidence for selec
 create policy electricity_event_read on public.electricity_events for select to authenticated using(private.electricity_access(case_id));
 -- Own append-only guard: avoid requiring a migration for an unrelated case system.
 create function private.electricity_event_immutable() returns trigger
-language plpgsql set search_path='' as $
-begin raise exception 'ELECTRICITY_EVENT_IMMUTABLE' using errcode='42501'; end $;
+language plpgsql set search_path='' as $$
+begin raise exception 'ELECTRICITY_EVENT_IMMUTABLE' using errcode='42501'; end $$;
 revoke all on function private.electricity_event_immutable() from public,anon,authenticated,service_role;
 create trigger electricity_events_immutable before update or delete on public.electricity_events
 for each row execute function private.electricity_event_immutable();
