@@ -10,7 +10,7 @@ test.beforeEach(async ({ context }) => {
 test("public website releases the approved Lovable industrial hero and functional example", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/website");
+  await page.goto("/");
   const heading = page.getByRole("heading", { level: 1 }).first();
   await expect(heading).toContainText("Everything is connected.");
   await expect(heading).toContainText("What are we missing?");
@@ -30,14 +30,14 @@ test("public website releases the approved Lovable industrial hero and functiona
 test("internal preview still shows the same design with a review-only banner", async ({ page }) => {
   await page.goto("/design-preview");
   await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
-  await expect(page.getByText(/Internal review copy of \/website/)).toBeVisible();
+  await expect(page.getByText(/Internal review copy of \//)).toBeVisible();
   await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" }))
     .toHaveAttribute("href", "/cases");
 });
 
 test("public site remains legible and scrollable on narrow screens", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/website");
+  await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 }).first()).toContainText("What are we missing?");
   await expect(page.locator("#contact").getByRole("link", { name: "Request a conversation" })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

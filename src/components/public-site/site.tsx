@@ -458,7 +458,7 @@ function Example() {
           </div>
         </div>
         <p className="mt-8 text-sm gm-muted-d">
-          Want to see a fuller workflow? <Link to="/cases" search={{ mode: "demo" }} className="underline underline-offset-4">Explore the sample workspace</Link> or open the <Link to="/" className="underline underline-offset-4">factory dashboard demo</Link>. Both use synthetic data.
+          Want to see a fuller workflow? <Link to="/cases" search={{ mode: "demo" }} className="underline underline-offset-4">Explore the sample workspace</Link> or open the <Link to="/dashboard" className="underline underline-offset-4">GridMind Dashboard</Link>. Both use synthetic data.
         </p>
       </div>
     </section>

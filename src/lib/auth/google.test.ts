@@ -33,7 +33,7 @@ describe("Google auth boundaries", () => {
   it("routes by actual access without granting a team role", () => {
     expect(workspaceDestination(team, "team")).toBe("/team/cases");
     expect(workspaceDestination(team, "customer")).toBe("/cases");
-    expect(workspaceDestination(team, undefined)).toBe("/");
+    expect(workspaceDestination(team, undefined)).toBe("/dashboard");
     expect(workspaceDestination({ factories: [], isCustomer: true }, "team")).toBe("/cases");
     // A prospective customer may request an investigation, but has no case
     // or factory access: /cases must still apply all server-side permissions.

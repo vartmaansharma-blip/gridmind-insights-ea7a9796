@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 export type DashboardNav = { to: LinkProps["to"]; label: string; icon: LucideIcon };
 export const STAFF_NAV: DashboardNav[] = [
-  { to: "/", label: "Overview", icon: LayoutDashboard },
+  { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { to: "/team/cases", label: "Investigations", icon: Lightbulb },
   { to: "/team/electricity", label: "Electricity cases", icon: Zap },
   { to: "/team/intake", label: "Intake", icon: Inbox },
