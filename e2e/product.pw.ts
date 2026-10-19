@@ -93,3 +93,37 @@ test("sample intake connects customer and team without duplicating accepted case
     page.getByRole("heading", { name: "Invented bounded request", exact: true }),
   ).toBeVisible();
 });
+
+test("fictional electricity investigation walkthrough traces evidence without backend or claims", async ({ page }) => {
+  const backendCalls: string[] = [];
+  const pageErrors: string[] = [];
+  page.on("request", (request) => {
+    if (new URL(request.url()).pathname.startsWith("/api/")) backendCalls.push(request.url());
+  });
+  page.on("pageerror", (error) => pageErrors.push(error.message));
+  await page.goto("/electricity-demo");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("What are we missing?");
+  await expect(page.getByText("Fictional data · No real bills")).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("The bill says 400.");
+  await page.getByRole("button", { name: /Maximum Demand.*310 kVA/i }).click();
+  await expect(page.getByRole("tabpanel", { name: /Follow the evidence/ })).toContainText(
+    "The highest demand recorded on the fictional bill is 310 kVA.",
+  );
+  await page.getByRole("tab", { name: /Test an explanation/ }).click();
+  await expect(page.getByText("No applicable tariff provision has been supplied.")).toBeVisible();
+  await page.getByRole("checkbox", { name: /Test an invented example rule/ }).check();
+  await expect(page.getByTestId("example-rule-result")).toContainText("80% × 500 kVA = 400 kVA");
+  await expect(page.getByTestId("example-rule-result")).toContainText("NOT established");
+  await page.getByRole("tab", { name: /Understand the decision/ }).click();
+  await expect(page.getByText("Qualified review not performed")).toBeVisible();
+  await expect(page.getByText("More evidence required.")).toBeVisible();
+  const download = page.waitForEvent("download");
+  await page.getByRole("button", { name: /Download fictional evidence note/ }).click();
+  expect((await download).suggestedFilename()).toBe("gridmind-fictional-investigation-note.txt");
+  expect(backendCalls).toEqual([]);
+  expect(pageErrors).toEqual([]);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.reload();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("What are we missing?");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

@@ -110,7 +110,7 @@ function HeroCopy({ headingId }: { headingId: string }) {
       </p>
       <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
         <PrimaryCta />
-        <a href="#example" className="gm-btn gm-btn-ghost">Explore an example investigation <span aria-hidden>→</span></a>
+        <Link to="/electricity-demo" className="gm-btn gm-btn-ghost">Try the fictional investigation <span aria-hidden>→</span></Link>
       </div>
     </>
   );
