@@ -212,7 +212,23 @@ select public.electricity_command('{"action":"finalize","caseId":"b1000000-0000-
 select pg_temp.assert_true((select count(*)=1 from public.electricity_events where kind='evidence_uploaded'),'finalize retry emits one audit');
 select pg_temp.assert_true((select count(*)=1 from storage.objects where bucket_id='electricity-bills'),'private evidence visible to assigned analyst');
 with changed as (update storage.objects set name='overwrite' where bucket_id='electricity-bills' returning *) select pg_temp.assert_true((select count(*)=0 from changed),'object overwrite denied');
-with changed as (delete from storage.objects where bucket_id='electricity-bills' returning *) select pg_temp.assert_true((select count(*)=0 from changed),'object deletion denied');
+-- Local Supabase Storage may reject direct SQL deletion in its guard trigger before RLS
+-- would return an empty result. Both are legitimate denial; actual deletion is not.
+do $storage_delete_test$
+declare deleted_count bigint;
+begin
+  begin
+    with changed as (delete from storage.objects where bucket_id='electricity-bills' returning *)
+    select count(*) into deleted_count from changed;
+    if deleted_count <> 0 then
+      raise exception 'Storage object deletion unexpectedly allowed';
+    end if;
+  exception when raise_exception then
+    if sqlerrm not like 'Direct deletion from storage tables is not allowed%' then
+      raise;
+    end if;
+  end;
+end $storage_delete_test$;
 select set_config('request.jwt.claim.sub','a1000000-0000-4000-8000-000000000003',true);
 select pg_temp.assert_true((select count(*)=0 from public.electricity_cases),'viewer cannot read internal cases');
 select pg_temp.denied($q$select public.electricity_command('{"action":"load","caseId":"b1000000-0000-4000-8000-000000000001"}')$q$);
