@@ -1,0 +1,6 @@
+start,end,phase,context,pressure_bar,flow_m3_min,power_kw,uncertainty_pct
+2026-01-01T00:00:00Z,2026-01-01T01:00:00Z,baseline,product-a-loaded,7,10,60,2
+2026-01-01T01:00:00Z,2026-01-01T02:00:00Z,baseline,product-a-loaded,7,10,60,2
+2026-01-01T02:00:00Z,2026-01-01T03:00:00Z,baseline,product-a-loaded,7,10,60,2
+2026-01-01T03:00:00Z,2026-01-01T04:00:00Z,before,product-a-loaded,7,10,90,2
+2026-01-01T04:00:00Z,2026-01-01T05:00:00Z,after,product-a-loaded,7,10,60,2

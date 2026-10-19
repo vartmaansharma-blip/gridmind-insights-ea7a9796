@@ -1,5 +1,10 @@
 # GridMind Decision Constitution and Contradiction Register
 
+## Step 1 compressed-air authorization — 19 October 2026
+
+The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Current implementation is an offline synthetic importer and auditable report, not a connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.
+
+
 ## GM-3.1-001 engineering authorization — 19 October 2026
 
 The founder explicitly selected **industrial electricity-cost investigation for a Jamshedpur–Adityapur manufacturer as the first bounded engineering slice**, and authorized correcting defects during implementation. This supersedes the research-only restriction for building intake, private evidence, assignment, lifecycle and retrieval in the existing application. [Issue #146](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/146) owns acceptance criteria. It does not establish a paid wedge, buyer demand, tariff correctness, savings or authority to use customer data. The Buyer Discovery Sprint remains the sole field-evidence tracker; R1/R2 commercial comparison is unchanged.
