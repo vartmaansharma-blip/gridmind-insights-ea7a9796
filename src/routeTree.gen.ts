@@ -21,12 +21,14 @@ import { Route as InvestigationsConnectedRouteImport } from './routes/investigat
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SavingsRouteImport } from './routes/savings'
 import { Route as WebsiteRouteImport } from './routes/website'
+import { Route as ApiElectricityRouteImport } from './routes/api.electricity'
 import { Route as ApiInvestigationsRouteImport } from './routes/api.investigations'
 import { Route as ApiPortalRouteImport } from './routes/api.portal'
 import { Route as CasesIndexRouteImport } from './routes/cases.index'
 import { Route as CasesCaseIdRouteImport } from './routes/cases.$caseId'
 import { Route as MachinesIndexRouteImport } from './routes/machines.index'
 import { Route as MachinesIdRouteImport } from './routes/machines.$id'
+import { Route as TeamElectricityRouteImport } from './routes/team.electricity'
 import { Route as TeamIntakeRouteImport } from './routes/team.intake'
 import { Route as TeamCasesIndexRouteImport } from './routes/team.cases.index'
 import { Route as TeamCasesCaseIdRouteImport } from './routes/team.cases.$caseId'
@@ -91,6 +93,11 @@ const WebsiteRoute = WebsiteRouteImport.update({
   path: '/website',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiElectricityRoute = ApiElectricityRouteImport.update({
+  id: '/api/electricity',
+  path: '/api/electricity',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiInvestigationsRoute = ApiInvestigationsRouteImport.update({
   id: '/api/investigations',
   path: '/api/investigations',
@@ -119,6 +126,11 @@ const MachinesIndexRoute = MachinesIndexRouteImport.update({
 const MachinesIdRoute = MachinesIdRouteImport.update({
   id: '/machines/$id',
   path: '/machines/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamElectricityRoute = TeamElectricityRouteImport.update({
+  id: '/team/electricity',
+  path: '/team/electricity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TeamIntakeRoute = TeamIntakeRouteImport.update({
@@ -150,10 +162,12 @@ export interface FileRoutesByFullPath {
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
+  '/api/electricity': typeof ApiElectricityRoute
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
   '/machines/$id': typeof MachinesIdRoute
+  '/team/electricity': typeof TeamElectricityRoute
   '/team/intake': typeof TeamIntakeRoute
   '/cases/': typeof CasesIndexRoute
   '/machines/': typeof MachinesIndexRoute
@@ -173,10 +187,12 @@ export interface FileRoutesByTo {
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
+  '/api/electricity': typeof ApiElectricityRoute
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
   '/machines/$id': typeof MachinesIdRoute
+  '/team/electricity': typeof TeamElectricityRoute
   '/team/intake': typeof TeamIntakeRoute
   '/cases': typeof CasesIndexRoute
   '/machines': typeof MachinesIndexRoute
@@ -197,10 +213,12 @@ export interface FileRoutesById {
   '/opportunities': typeof OpportunitiesRoute
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
+  '/api/electricity': typeof ApiElectricityRoute
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
   '/machines/$id': typeof MachinesIdRoute
+  '/team/electricity': typeof TeamElectricityRoute
   '/team/intake': typeof TeamIntakeRoute
   '/cases/': typeof CasesIndexRoute
   '/machines/': typeof MachinesIndexRoute
@@ -222,10 +240,12 @@ export interface FileRouteTypes {
     | '/opportunities'
     | '/savings'
     | '/website'
+    | '/api/electricity'
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
     | '/machines/$id'
+    | '/team/electricity'
     | '/team/intake'
     | '/cases/'
     | '/machines/'
@@ -245,10 +265,12 @@ export interface FileRouteTypes {
     | '/opportunities'
     | '/savings'
     | '/website'
+    | '/api/electricity'
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
     | '/machines/$id'
+    | '/team/electricity'
     | '/team/intake'
     | '/cases'
     | '/machines'
@@ -268,10 +290,12 @@ export interface FileRouteTypes {
     | '/opportunities'
     | '/savings'
     | '/website'
+    | '/api/electricity'
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
     | '/machines/$id'
+    | '/team/electricity'
     | '/team/intake'
     | '/cases/'
     | '/machines/'
@@ -292,10 +316,12 @@ export interface RootRouteChildren {
   OpportunitiesRoute: typeof OpportunitiesRoute
   SavingsRoute: typeof SavingsRoute
   WebsiteRoute: typeof WebsiteRoute
+  ApiElectricityRoute: typeof ApiElectricityRoute
   ApiInvestigationsRoute: typeof ApiInvestigationsRoute
   ApiPortalRoute: typeof ApiPortalRoute
   CasesCaseIdRoute: typeof CasesCaseIdRoute
   MachinesIdRoute: typeof MachinesIdRoute
+  TeamElectricityRoute: typeof TeamElectricityRoute
   TeamIntakeRoute: typeof TeamIntakeRoute
   CasesIndexRoute: typeof CasesIndexRoute
   MachinesIndexRoute: typeof MachinesIndexRoute
@@ -389,6 +415,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WebsiteRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/electricity': {
+      id: '/api/electricity'
+      path: '/api/electricity'
+      fullPath: '/api/electricity'
+      preLoaderRoute: typeof ApiElectricityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/investigations': {
       id: '/api/investigations'
       path: '/api/investigations'
@@ -431,6 +464,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MachinesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team/electricity': {
+      id: '/team/electricity'
+      path: '/team/electricity'
+      fullPath: '/team/electricity'
+      preLoaderRoute: typeof TeamElectricityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/team/intake': {
       id: '/team/intake'
       path: '/team/intake'
@@ -468,10 +508,12 @@ const rootRouteChildren: RootRouteChildren = {
   OpportunitiesRoute: OpportunitiesRoute,
   SavingsRoute: SavingsRoute,
   WebsiteRoute: WebsiteRoute,
+  ApiElectricityRoute: ApiElectricityRoute,
   ApiInvestigationsRoute: ApiInvestigationsRoute,
   ApiPortalRoute: ApiPortalRoute,
   CasesCaseIdRoute: CasesCaseIdRoute,
   MachinesIdRoute: MachinesIdRoute,
+  TeamElectricityRoute: TeamElectricityRoute,
   TeamIntakeRoute: TeamIntakeRoute,
   CasesIndexRoute: CasesIndexRoute,
   MachinesIndexRoute: MachinesIndexRoute,

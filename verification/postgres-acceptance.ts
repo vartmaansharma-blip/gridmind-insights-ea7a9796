@@ -30,6 +30,12 @@ try {
     create schema auth; create schema extensions; grant usage on schema public,auth to anon,authenticated,service_role;
     create table auth.users(id uuid primary key,aud text,role text,email text,created_at timestamptz,updated_at timestamptz,raw_app_meta_data jsonb,raw_user_meta_data jsonb);
     create function auth.uid() returns uuid language sql stable as $$ select coalesce(nullif(current_setting('request.jwt.claim.sub',true),''),nullif(current_setting('request.jwt.claims',true),'')::jsonb->>'sub')::uuid $$;`);
+  // Minimal Storage catalog fixture for native SQL policy tests, not Storage HTTP acceptance.
+  await client.query(`create schema storage; grant usage on schema storage to authenticated,anon;
+    create table storage.buckets(id text primary key,name text,public boolean,file_size_limit bigint,allowed_mime_types text[]);
+    create table storage.objects(id uuid default gen_random_uuid() primary key,bucket_id text references storage.buckets(id),name text,metadata jsonb,unique(bucket_id,name));
+    alter table storage.objects enable row level security;
+    grant select,insert,update,delete on storage.objects to authenticated;`);
   const migrations = (await readdir(join(root, "supabase/migrations")))
     .filter((n) => n.endsWith(".sql"))
     .sort();
