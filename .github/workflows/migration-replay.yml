@@ -35,6 +35,14 @@ jobs:
           cd e2e
           bun install --frozen-lockfile
 
+      - name: Install locked native PostgreSQL acceptance dependencies
+        working-directory: verification
+        run: bun install --frozen-lockfile
+
+      - name: Verify native connected case, portal and compressed-air security contracts
+        working-directory: verification
+        run: bun run test
+
       - name: Install isolated acceptance browser
         working-directory: e2e
         run: bunx playwright install --with-deps chromium

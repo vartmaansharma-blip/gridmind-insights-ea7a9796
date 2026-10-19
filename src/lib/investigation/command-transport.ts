@@ -23,6 +23,7 @@ export class CommandRequestError extends Error {
   }
 }
 const unavailable = new Set([
+  "COMPRESSED_AIR_DISABLED",
   "CONNECTED_CASES_DISABLED",
   "CONNECTED_CASES_NOT_CONFIGURED",
   "INTAKE_NOT_CONFIGURED",
@@ -51,7 +52,7 @@ function retryAfter(response: Response, now: number): number | null {
 }
 
 export async function sendCommand(
-  endpoint: "/api/portal" | "/api/investigations",
+  endpoint: "/api/portal" | "/api/investigations" | "/api/investigations?method=compressed-air",
   command: unknown,
   options: TransportOptions,
 ): Promise<unknown> {
