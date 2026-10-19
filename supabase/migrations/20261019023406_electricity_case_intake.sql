@@ -47,6 +47,22 @@ alter table public.electricity_events enable row level security;
 revoke all on public.electricity_cases,public.electricity_evidence,public.electricity_events from public,anon,authenticated,service_role;
 grant select on public.electricity_cases,public.electricity_evidence,public.electricity_events to authenticated;
 
+-- DB-side release gate: the Vercel API flag alone cannot stop a signed-in user
+-- from invoking a public PostgREST RPC directly. Deny by default at the database.
+-- Only trusted migration/release operators can enable disposable synthetic acceptance.
+create table private.electricity_release_gate (
+ singleton boolean primary key default true check (singleton),
+ synthetic_acceptance_enabled boolean not null default false
+);
+insert into private.electricity_release_gate(singleton,synthetic_acceptance_enabled)
+ values(true,false);
+revoke all on private.electricity_release_gate from public,anon,authenticated,service_role;
+create function private.electricity_feature_enabled() returns boolean
+language sql stable security definer set search_path='' as $
+ select coalesce((select g.synthetic_acceptance_enabled from private.electricity_release_gate g where g.singleton),false)
+$;
+revoke all on function private.electricity_feature_enabled() from public,anon,authenticated,service_role;
+
 -- Reuse canonical factory/organization memberships, not the optional synthetic
 -- investigation-case module (which has not been deployed to production).
 -- This feature can therefore be migrated independently after core schema checks.
@@ -66,7 +82,8 @@ revoke all on function private.electricity_factory_role(bigint,uuid) from public
 -- Deliberately not accepting an actor argument: identity comes exclusively from JWT.
 create function private.electricity_access(_case uuid) returns boolean
 language sql stable security definer set search_path='' as $$
- select auth.uid() is not null and coalesce(nullif(current_setting('request.jwt.claims',true),''),'{}')::jsonb->>'is_anonymous' is distinct from 'true' and exists (
+ select private.electricity_feature_enabled()
+ and auth.uid() is not null and coalesce(nullif(current_setting('request.jwt.claims',true),''),'{}')::jsonb->>'is_anonymous' is distinct from 'true' and exists (
  select 1 from public.electricity_cases c
  where c.id=_case and (
  private.electricity_factory_role(c.factory_id,auth.uid()) in ('owner','admin')
@@ -106,6 +123,8 @@ declare
 begin
  if actor is null or coalesce(nullif(current_setting('request.jwt.claims',true),''),'{}')::jsonb->>'is_anonymous'='true' then
  raise exception 'AUTHENTICATION_REQUIRED' using errcode='42501'; end if;
+ if not private.electricity_feature_enabled() then
+ raise exception 'ELECTRICITY_DISABLED' using errcode='42501'; end if;
  if _command is null or jsonb_typeof(_command)<>'object' or octet_length(_command::text)>16000 then
  raise exception 'INVALID_COMMAND' using errcode='22023'; end if;
  if op='options' then
