@@ -104,7 +104,7 @@ test("fictional electricity investigation walkthrough traces evidence without ba
   await page.goto("/electricity-demo");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("What are we missing?");
   await expect(page.getByText("Fictional data · No real bills")).toBeVisible();
-  await expect(page.getByText("400", { exact: true }).first()).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("The bill says 400.");
   await page.getByRole("button", { name: /Maximum Demand.*310 kVA/i }).click();
   await expect(page.getByRole("tabpanel", { name: /Follow the evidence/ })).toContainText(
     "The highest demand recorded on the fictional bill is 310 kVA.",
