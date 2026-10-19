@@ -323,3 +323,32 @@ set local role anon;
 select pg_temp.denied($q$select public.electricity_command('{"action":"list"}')$q$);
 select pg_temp.denied($q$select * from public.electricity_cases$q$);
 rollback;
+
+-- Compressed-air review regressions. Disposable clean replay only; changes roll back.
+begin;
+do $$
+declare
+  r text;
+begin
+  if not (select relrowsecurity from pg_class where oid='public.compressed_air_revisions'::regclass)
+    then raise exception 'AIR_RLS_REQUIRED'; end if;
+  foreach r in array array['anon','authenticated','service_role'] loop
+    if has_table_privilege(r,'public.compressed_air_revisions','SELECT,INSERT,UPDATE,DELETE,TRUNCATE')
+      or has_table_privilege(r,'private.compressed_air_gate','SELECT,INSERT,UPDATE,DELETE,TRUNCATE')
+      then raise exception 'AIR_DIRECT_TABLE_PRIVILEGE: %',r; end if;
+  end loop;
+  foreach r in array array['anon','authenticated'] loop
+    if has_function_privilege(r,'public.compressed_air_store(uuid,text,uuid,integer,text,text,jsonb,jsonb)','EXECUTE')
+      or has_function_privilege(r,'private.compressed_air_store(uuid,text,uuid,integer,text,text,jsonb,jsonb)','EXECUTE')
+      then raise exception 'AIR_FORGED_ACTOR_RPC_PRIVILEGE: %',r; end if;
+  end loop;
+  -- NULL must not turn a lost/deleted singleton into an enabled feature.
+  delete from private.compressed_air_gate;
+  begin
+    perform public.compressed_air_store(null,'read',gen_random_uuid());
+    raise exception 'AIR_MISSING_GATE_FAILED_OPEN';
+  exception when insufficient_privilege then
+    if sqlerrm <> 'COMPRESSED_AIR_DISABLED' then raise; end if;
+  end;
+end $$;
+rollback;

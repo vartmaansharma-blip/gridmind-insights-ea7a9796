@@ -6,11 +6,13 @@ These are technical contracts, audits and runbooks. A dated success in one envir
 
 ## Current GridMind 3.1 handoff
 
+- [Current implementation status and independent review packet](gridmind-execution-and-repository-acceptance-2026-10-17.md) — merged #153 offline foundation versus draft #154 isolated connected source, exact-head evidence, security/method review and unchanged production gates.
+
 - [Exact checkpoint and integration register (17 October 2026)](gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md) — verified PR #136 baseline, workflow evidence, Vercel quota blocker, production Supabase no-go, branch-overlap dispositions and next execution acceptance. This is a dated release handoff, not a competing execution plan.
 
 ## PR #136 merge decision
 
-- [Pre-merge decision packet — GridMind 3.1](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — release scope options, informational versus synthetic versus customer-data gates, actual evidence, independent reviews and explicit founder permission. **Current verdict: hold draft.**
+- [Pre-merge decision packet — GridMind 3.1](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) — release scope options, informational versus synthetic versus customer-data gates, actual evidence, independent reviews and explicit founder permission. **Historical pre-merge verdict:** #136 was later merged normally in narrowed scope; see the packet amendment. Draft #154 and real-data release have their own current review gates.
 - [Exact checkpoint and integration register](gridmind-3-1-exact-checkpoint-and-integration-register-2026-10-17.md) — historical baseline and dependencies. Do not treat an older status snapshot as the final candidate's test record.
 
 ## Documents

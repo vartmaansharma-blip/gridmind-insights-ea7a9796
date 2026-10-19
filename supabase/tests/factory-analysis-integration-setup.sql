@@ -1,6 +1,7 @@
 -- Isolated local-only fixtures for HTTP integration tests. Never run against a shared or production database.
 -- The measurements below are synthetic and exist only to prove the full calculation path.
 begin;
+update private.compressed_air_gate set enabled=true where singleton=true;
 -- This fixture is executed ONLY in the isolated local stack. Production remains
 -- deny-by-default, even if a user bypasses the HTTP feature flag via PostgREST.
 update private.electricity_release_gate
