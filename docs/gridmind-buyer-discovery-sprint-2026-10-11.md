@@ -1,5 +1,15 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
+## Reported interview input and next evidence gate — 20 October 2026
+
+**Field-evidence correction:** founder supplied an account of a real automotive-component factory conversation in the linked chat and current instruction. Accept it as **one founder-reported interview input**, not zero reported conversations. Original full transcript/interview date, permissioned factory documents, counterparties, paid intent and qualified reviewer engagement were not recovered or independently verified. Older zero-interview counts below mean zero verified substantive buyer records at those checkpoints; no invented new meeting or outbound action is recorded here. Private identifying/commercial detail stays outside this public repository.
+
+Reported themes are separate: underutilisation of unknown cause, expensive finishing of unknown necessity/rework content, workforce/night operations, cash interruption and material availability. No single causal chain is established. Synthetic records and external desk research do not add to buyer-interview counts.
+
+**Current hypothesis:** R2 documentary acceptance/invoice exception; alternative R1 one finishing operation; R3 still independent. Supporting [comparison](research/gridmind-market-research-first-pass-2026-10-11.md) and [pilot protocol](product/gridmind-synthetic-invoice-exception-experiment-2026-10-20.md) do not establish paid demand. India-wide segment evidence is required; Adityapur is an access point, not the market boundary.
+
+**Next actual field entry must record:** buyer/role and spending authority; last specific incident and date; whether acceptance is actually disputed; present Excel/ERP/manual-expert process and elapsed effort; permitted minimum records and chronology; counterparty decision owner; competent reviewer; measurable incremental decision; fee/cost estimate and explicit next-step commitment or refusal. If accepted debt merely waits for cash/terms, reject the documentary hypothesis for that incident. If finishing is selected, separate necessary passes from excess/rework before estimating loss. No outreach was sent by this task.
+
 **Strategic baseline status, 18 October 2026:** PR #136 is merged into main; the strategy now considers R1/R2/R3 while **R3 is first for research only**, R2 receives an independent commercial challenge and R1 remains a legitimate quality-use-case probe plus fictional demo. These are *directions, not new field evidence*. This remains the **sole buyer evidence tracker**; as of the last verified record, zero substantive buyer interviews, zero paid commitments, zero expert engagements. Do not substitute release status for interview progress. Existing 19 October access review, 24 October fallback and 10 November decision gate remain unchanged.
 
 **Last updated:** 2026-10-17 (R1/R2/R3 alignment; mailbox confirms one outbound ASIA enquiry and no matching response; 0 buyer interviews)

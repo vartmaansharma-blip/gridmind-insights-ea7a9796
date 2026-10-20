@@ -1,5 +1,15 @@
 # GridMind Decision Constitution and Contradiction Register
 
+## G31-F09 — comparative research and bounded R2 experiment, 20 October 2026
+
+**Decision source:** direct founder request to finish research, compare products, implement one synthetic functional experiment, update existing knowledge and open a reviewable PR; subsequent request to recheck first principles. This permits issue [#159](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/159)'s offline R2 experiment despite earlier research-only ordering. It is a scoped exception, not permission for connected R2 persistence or a product suite.
+
+Provisional commercial test: one acceptance/invoice documentary exception (R2); alternative: one part/operation finishing-loss investigation (R1). R3 remains a challenger; existing compressed-air and electricity engineering continue independently. Earlier preferred-hypothesis statements are historical where inconsistent with this dated amendment. No paid wedge, buyer budget, savings or causal claim is established.
+
+Accept the founder-reported factory conversation as a reported discovery input; original full transcript, dated source documents, counterparty account and economic claims remain unverified. Do not erase the conversation because older tracker text counted zero verified interviews; do not count it as a newly authenticated interview or commercial commitment. Do not infer deliberate withholding or supplier motives.
+
+Only invented data may enter the new preview/CLI experiment. Simulated identities, source hashes and offline cross-scope checks are not authentication, professional attestation or live tenant security. Keep independent reviewer, customer action authority, unknown outcomes and prior history explicit. #29/#130 and applicable rights/security gates remain binding. No merge, deployment, migration or production/customer-data mutation is authorised. [Master Plan](gridmind-master-plan-2026-10-11.md) remains sole plan; [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) remains sole field tracker.
+
 ## Step 1 compressed-air authorization — 19 October 2026
 
 The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Current implementation is an offline synthetic importer and auditable report, not a connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.

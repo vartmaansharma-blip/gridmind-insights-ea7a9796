@@ -2,12 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
 
 import { ResolveTriagePreview } from "@/components/investigation/resolve-triage-preview";
+import { InvoiceExceptionPreview } from "@/components/investigation/invoice-exception-preview";
 
 function SyntheticInvestigations() {
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 pt-6">
         <ResolveTriagePreview />
+        <InvoiceExceptionPreview />
       </div>
       <InvestigationWorkbench />
     </>

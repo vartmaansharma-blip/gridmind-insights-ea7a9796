@@ -1,5 +1,15 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Synthetic invoice-exception acceptance — 20 October 2026
+
+Refs [#159](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/159); baseline main `42fc8c9959fd9dc5412ca04ca68c4969e9c77380`; isolated branch `feat/invoice-exception-experiment`. See [method specification](../product/gridmind-synthetic-invoice-exception-experiment-2026-10-20.md). Concurrent #154/#156/#158 preserved; no source edits in their worktrees. No API/auth/database/migration change.
+
+Implemented bounded original-source CSV reconciliation, explicit missing/conflicting states, scope/integrity checks, revision-bound simulated independent review and history, fictional customer-owned action, inconclusive follow-up, existing Resolve lifecycle adapter, export/reopen CLI and bundled internal preview. No public upload or backend requests. Whole-document duplicate kinds fail ambiguous rather than infer partial receipts. Completion references and review identities are fictional; this is not a real case system.
+
+Executed locally: **274 unit tests / 29 files** (including **35 new domain/CLI tests**); **15 synthetic browser tests** (including two new positive/negative/mobile/download tests), typecheck and semantic lint passed. Lint retains nine existing warnings. Production build passed. Route smoke passed **17 routes plus machines redirect** with `NITRO_COMPATIBILITY_DATE=2026-10-19`, an environment-only supported-runtime override. The default preview initially failed: generated 2026-10-20 compatibility date exceeds the installed workerd maximum 2026-10-19. Do not report an unqualified default-preview pass or change unrelated runtime configuration to conceal it. Exact-head hosted checks/review remain separate PR evidence.
+
+Offline scope/integrity tests are not live tenant-isolation acceptance; no new server persistence exists. No independent security/domain review, buyer validation, recovered payment, measured customer benefit or production release. Keep draft/HOLD; customer-data activation still requires the applicable #29/#130, rights, reviewer, retention and authenticated authorisation/recovery gates.
+
 ## Step 1 execution checkpoint — 19 October 2026
 
 Owner: Codex; evidence: repository inspection and read-only connected-service checks. Refs #152. Current main inspected at `6b549c5d3d0db03e644dbbe3072c61f0af435b5e`: homepage promotion `62770bb`, electricity intake #147 and fictional public demo #151 are merged. Earlier root-route statements below are historical. Supabase has 31 live migration records versus 38 source files and RLS enabled on all 45 public tables inspected; this alone does not prove policy isolation. Live history differs from source; no SQL was applied. Security advisor reports intentional authenticated bootstrap SECURITY DEFINER execution and disabled leaked-password protection. Bootstrap hardening is pending independent review in #150; do not duplicate or merge it as part of this slice. Existing open #132/#133/#125 overlap with historical navigation/connection proposals; none is integrated here.

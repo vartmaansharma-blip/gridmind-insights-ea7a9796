@@ -1,0 +1,6 @@
+record_id,kind,order_id,invoice_id,part_id,revision,date,quantity_pieces,amount_paise,currency,status,reference,note
+SYN-O,order,SYN-PO,SYN-INV,SYN-PART,A,2026-01-01,100,100000,INR,recorded,fictional-order,Invented records only
+SYN-D,dispatch,SYN-PO,SYN-INV,SYN-PART,A,2026-01-02,100,,INR,recorded,fictional-dispatch,Quantity claimed dispatched
+SYN-R,receipt,SYN-PO,SYN-INV,SYN-PART,A,2026-01-03,90,,INR,recorded,fictional-receipt,Reason for difference unknown
+SYN-A,acceptance,SYN-PO,SYN-INV,SYN-PART,A,2026-01-04,90,,INR,accepted,fictional-acceptance,Acceptance scope needs reconciliation
+SYN-I,invoice,SYN-PO,SYN-INV,SYN-PART,A,2026-01-02,100,100000,INR,recorded,fictional-invoice,Face value is not a loss
