@@ -1,5 +1,7 @@
 # Contributing to GridMind
 
+> **Current authority — 20 October 2026:** [Master Plan §7](docs/gridmind-master-plan-2026-10-11.md) and [G31-C20-01–08](docs/gridmind-decision-constitution-and-contradiction-register-2026-10-10.md#canonical-consolidation-decisions-20-october-2026) supersede older priorities, calendar targets, route/status statements and M1-only queues here. No number-one commercial opportunity is approved; the premature quality-loss ranking is withdrawn. Preserve earlier technical evidence, synthetic-build authorizations and release safeguards. Current routes are public `/` and application `/dashboard`; #136/#149/#153 are merged. #154/#156/#158/#160/#162 remain drafts; #150 is open/behind main at this audit. This document is supporting guidance, not another plan.
+
 This repository is both the application codebase and the operating record for GridMind. Optimize for correctness, traceability, and safe decisions—not activity or document count.
 
 ## 1. Read the authorities before acting
@@ -68,6 +70,7 @@ Classify each document as **canonical**, **supporting**, **historical**, or **re
 ## 7. Pull-request completion standard
 
 A PR is ready only when:
+
 - the diff matches the stated scope and linked issue;
 - acceptance criteria are demonstrably met;
 - tests/checks ran on the exact candidate commit, or the blocker is explicitly recorded;
