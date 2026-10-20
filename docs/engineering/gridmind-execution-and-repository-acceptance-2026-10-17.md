@@ -1,5 +1,9 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Final-candidate browser synchronization correction — 20 October 2026
+
+#156 head `e467880` passed CI/Quality/Migration/Vercel but the public browser run [39390945223](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39390945223) failed the existing cross-tab test at the exact stale-save error assertion. The test used `second.goto()` as proof that its old local-storage snapshot had loaded; navigation does not establish hydration completion. If the old snapshot is read after the first tab writes, the second tab is not actually stale. The test now waits for the existing “Loaded from this browser” state before the first-tab write. No application code, timeout/retry, stale-write rejection, exact error or preserved-data assertion changes. Local verification after the synchronization change: all 15 targeted repeats and all 13 public/synthetic browser tests passed, with the exact stale-save and preserved-data assertions retained. The earlier unsynchronized version also passed locally, so no deterministic application defect is asserted; this removes an invalid navigation-as-readiness assumption. New final candidate requires its own hosted checks.
+
 ## Pending-work completion checkpoint — 20 October 2026
 
 Refs #42/#155 and pending research #157/#159/#161. Main remains `42fc8c9959fd9dc5412ca04ca68c4969e9c77380`. This alignment candidate reconciles the latest commercial research direction and founder-reported interview without importing the separate chronology/invoice/finishing implementations. #154 `123fc2a` and #150 `2a49139` remain unchanged and require independent decisions.
