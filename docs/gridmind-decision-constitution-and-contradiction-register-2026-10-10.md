@@ -10,6 +10,14 @@
 | **G31-R02:** One founder-reported qualitative interview is distinct from zero independently verified interviews and zero confirmed paid/reviewer engagements. Factory owner is the proposed confirmation contact/reviewer. | Date, exact process/part, consent and source records remain missing. Owner authority does not establish method expertise or independent professional review. Reported sales exposure is not verified profit loss; payment gap is not established deliberate withholding or invoice discrepancy. |
 | **G31-R03:** Reconcile shared canonical documents and repair isolated browser-runtime acceptance on the existing drafts; preserve each implementation and published history.                                               | No bulk research-engine integration, main merge, production migration/settings/flags, customer data, outreach or assumed independent signoff follows from this work. Earlier unpublished workflow correction remains preserved.                                                                 |
 
+## Revenue and automation boundaries — 20 October 2026
+
+**G31-R04:** Start revenue discovery with a bounded expert-assisted decision service; recurring automation and underlying-software licensing are conditional later forms of the same proven job. Owner/plant authority and a paid useful decision must be observed. Sell no generic intelligence promise, fabricated savings or speculative infrastructure platform. Public competitor capabilities establish substitutes, not this factory's unmet need.
+
+**G31-R05:** The founder's request to solve bottlenecks now permits the smallest useful source-linked finishing preview in #162, reusing its adapter and existing route/primitives; it does not waive actual records, reviewer competence/independence, qualified physical decisions or #29/#130/#150 release controls. An owner can confirm facts without being a qualified independent engineer. Unknown time and required-only work must expose negative/inconclusive results.
+
+**G31-R06:** Cost/price examples are invented planning inputs, not customer value or market rates. Track collected fee and realistic delivery/acquisition/rework costs separately; released capacity, sales exposure, invoice face value, cash savings and revenue are different quantities. Current economics and canonical field tracker remain authoritative; no second ledger, model or master plan is introduced.
+
 ## Current alignment decisions and audit — 20 October 2026
 
 **Decision owner:** founder (explicit repository-alignment and fundamental-challenge instruction). **Evidence:** live GitHub/source at main `42fc8c9959fd9dc5412ca04ca68c4969e9c77380`; draft #154 `123fc2a7554427d9db6d1060d0e37cda6dbe2233`; primary-source research in the [Master Plan §4](gridmind-master-plan-2026-10-11.md#4-fundamental-challenge-is-this-the-problem-and-the-solution). Refs [#155](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/155).

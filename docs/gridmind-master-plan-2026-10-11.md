@@ -29,6 +29,16 @@ Dependency order: review/check/reconcile PRs → confirm actual process/part, in
 
 **Owner confirmation:** in this follow-up the founder identified **the factory owner** as the contact to confirm Interview #1 and proposed engineering reviewer. Actual interview date, process/part, permission to retain notes and reviewer competence/independence remain unconfirmed. Use the prepared confirmation packet in the sole buyer tracker; do not infer a new held interview or professional engagement.
 
+## Revenue-layer decision and bounded implementation — 20 October 2026
+
+The founder requested a deeper bottleneck/revenue analysis, immediate bounded work and repository updates. **Decision:** test one paid intelligence service around a part-family finishing-cost/quality decision, with production-order disruption as the challenger; no paid wedge is selected. The deliverable is a source-linked, independently reviewed decision packet useful beyond competent current Excel/ERP/QMS/engineer practice. Automation follows a demonstrated repeated bottleneck; recurring software/integration or service-partner licensing follows repeated paid acceptance and viable support/delivery economics. Neither a generic dashboard nor AI-written 8D paperwork establishes differentiation.
+
+The [revenue and bottleneck analysis](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/162) is maintained in the existing research record on #162. It compares finishing, order readiness, conditional invoice reconciliation and existing ERP/QMS substitutes. Costs/prices are explicitly illustrative; no revenue, recoverable loss, cause, paid demand or customer outcome is claimed. Existing investigation economics already separates quote/contract/invoice/collection; reuse it.
+
+**Authorized small implementation:** #162 adds a read-only bundled finishing comparison to existing `/investigations`, using its existing offline adapter. Show classified repeat, missing classification and required-only counterexamples; preserve original synthetic source/digest and pending-review export. No upload, backend, new engine, live automation, customer record, physical action or release. Review it as a minimal data adapter under the existing green design. Independent #154/#150 and production/customer gates remain open.
+
+**Revenue test:** owner confirms the last event, process/part, current-method result, budget/action authority and record/reviewer feasibility; compare one permissioned bounded packet with that baseline; only then seek a specific priced next-step acceptance or refusal with actual delivery costs. Inadequate records, no actionable gap, no competent independent review or sufficient existing process means hold/narrow/stop. No outreach or binding offer is sent automatically.
+
 ## 1. One ambition and the decision we are taking
 
 **Build GridMind from a narrowly useful, evidence-backed industrial investigation and resolution system into an industrial intelligence company, then expand into physical-infrastructure intelligence only when capability, customer value and safe delivery have been demonstrated.**
