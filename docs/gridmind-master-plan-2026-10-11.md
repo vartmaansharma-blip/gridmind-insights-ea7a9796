@@ -524,3 +524,11 @@ An answer marked **hypothesis** is a design assumption, not a customer fact. The
 **Evidence gaps at publication:** interviews, contracts, actual industrial source records, buyer budgets, case economics, specialist fees, real permissions, accuracy on real cases, competitive win/loss, product-market fit, revenue, margin and scalability. None can be filled by fictional records or internet research.
 
 **Change-control rule:** All future changes must state observed evidence, user decision, trade-offs, risks, affected code/docs, owner, and acceptance. Update the same Master Plan rather than creating GridMind 4.0 for each attractive industry.
+
+## Public discovery checkpoint — 20 October 2026, #157
+
+Founder-authorized public manufacturer research extends the existing [research record](research/gridmind-market-research-first-pass-2026-10-11.md#public-manufacturer-problem-discovery-20-october-2026); the [sole buyer tracker](gridmind-buyer-discovery-sprint-2026-10-11.md) distinguishes one founder-reported qualitative interview from independently verified field evidence. No commercial wedge is selected. Existing Step 1 work and release gates continue; this creates no competing feature queue.
+
+Research proposes one no-sensor historical material-shortage chronology replay, conditional on rights, private custody and qualified review. It fairly compares earlier notification, faster escalation, neither and inconclusive; acceptance disputes and quality/rework remain interview alternatives. A minimal offline synthetic adapter reuses the existing C1 case/evidence/event/finding contracts solely to test faithful representation and missing-evidence handling. It cannot diagnose a shortage cause, send an action, receive private records, or claim avoided loss/savings. No runtime route, production configuration or database change is part of this research.
+
+Next action: clarify Interview #1's chronology/mechanism using five questions in the research record. If no actionable window, recurring residual gap, budget or feasible records/reviewer exists, reject/narrow/stop the hypothesis. Public complaints and competitor claims do not substitute for those gates.
