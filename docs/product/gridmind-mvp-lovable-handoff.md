@@ -1,5 +1,7 @@
 # GridMind internal MVP — implementation and Lovable handoff
 
+> **Current handoff correction — 20 October 2026:** use the [engineering ledger](../engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) for current source/check evidence and the [Master Plan](../gridmind-master-plan-2026-10-11.md) for M1. Merged #149 establishes public `/` and dashboard `/dashboard`; preserve approved design/green identity, `/design-preview` and `/website` compatibility. #153 is merged offline foundation; #154 is draft connected synthetic continuation. Earlier route plans, draft PR labels and build queues below are dated history/specification, not instructions to repeat work. No professional/customer-data approval is implied.
+
 **Status:** Supporting implementation contract for [issue #105](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/105), 16 October 2026. The [Master Plan](../gridmind-master-plan-2026-10-11.md) dated build exception is authoritative. This is not a second roadmap or a pilot-readiness claim.
 
 The [supplied blueprint](gridmind-mvp-build-blueprint.md) is preserved as supporting requirements. Offline generated examples are in [`data/synthetic-investigation`](../../data/synthetic-investigation/README.md); reproduce them with `bun run demo:brief`.
@@ -51,7 +53,7 @@ This mapping is based on the repository inspected at `a7ee358cd84136d6925bc26c2d
 | Existing source / route | Retain | Integration change |
 |---|---|---|
 | `src/components/gm/app-shell.tsx` | Logo, sidebar, header, mobile navigation, tokens and overall dashboard design | Extract reusable presentation from factory-store behavior. Supply customer/team navigation and the appropriate case/company context. |
-| `src/routes/index.tsx` — `/` | Current operational overview and its existing behavior | Add a case-summary entry point for authorized team users. Keep operational estimates labeled; do not feed unreleased investigation findings into headline financial cards. |
+| `src/routes/dashboard.tsx` — `/dashboard` | Current operational overview and its existing behavior | Add a case-summary entry point for authorized team users. Keep operational estimates labeled; do not feed unreleased investigation findings into headline financial cards. |
 | `/factory`, `/energy` | Existing monthly data entry and energy views | Link permitted records to an explicit case boundary. Preserve their current screening role until the facility/asset method contract is repaired. |
 | `/machines`, `/machines/$id` | Machine identity, source mappings, observations and existing authenticated asset analysis | Add a scoped “Investigate” entry that references the selected asset; preserve the asset analysis method and its provenance. |
 | `/opportunities`, `/alerts` | Persisted opportunity/deviation views and evidence references | Allow an authorized user to open a case from a selected record. A case finding does not automatically create an opportunity. |

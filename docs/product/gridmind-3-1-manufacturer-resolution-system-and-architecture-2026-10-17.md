@@ -1,5 +1,17 @@
 # GridMind 3.1 — Manufacturer Resolution System / Product Architecture
 
+## Current architecture decision — 20 October 2026
+
+**Retain the bounded shared loop:** industrial evidence → validation → contextual analysis/investigation → human review → approved corrective action → verified or inconclusive outcome → permissioned retained history. It fits the present product thesis because each responsibility protects a defensible decision. These are logical responsibilities inside the existing app, not seven services or new products. [Master Plan](../gridmind-master-plan-2026-10-11.md) owns why, buyer hypotheses and phased work; [engineering ledger](../engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md) maps them to actual code.
+
+Merged #153 is offline compressed-air foundation; draft #154 adds the isolated connected attachment to existing case/Auth/reviewer identities. Existing C1/C4, electricity intake/provenance #147/#151 and fictional Resolve triage are retained. There is no proven universal domain method, customer value or cross-case learning engine. Data validation, physical comparability, professional review and customer action authority remain separate.
+
+**Architecture weaknesses to test:** duplicated method/workflow validation across server/SQL may drift; shared privileged helpers can leave a domain boundary insufficient (draft #154's suspension correction is concrete evidence); immutable source/review/export revisions must stay aligned; full snapshots bound small synthetic imports but create retention/resource questions at scale. These are bounded review obligations, not authorization to replace the architecture. Inspect the actual interfaces and adversarial acceptance before extracting an abstraction.
+
+**Transfer to future infrastructure:** case identity, permissioned provenance, revision-bound human review, action ownership, outcome protocols and audit history may transfer. Infrastructure sensing, topology/physics, causal/predictive models, operational availability, new regulations and safety authority require new engineering and validation. Reusing a case table does not provide them. No credible path to expansion exists without relationships, expert capacity, data rights, revenue and demonstrated first-offer repeatability; those links are currently unproved.
+
+**Routes:** approved public `/`, application `/dashboard`; preserve `/design-preview`, `/website` compatibility and green #9ADD00. Earlier route descriptions below are superseded. Detailed module/object/state lists below are design specifications, not implemented schemas or parallel milestones. Institutional knowledge currently means source-bound history/reports; broader mining/prediction is conditional M6/M7 work.
+
 **Implementation/release-status correction, 18 October 2026:** PR #140 (industrial intelligence research), PR #142 (synthetic Resolve triage) and PR #136 (strategy-document integration) were merged, without enabling a real R1/R2/R3 professional engine, production case storage or any live bill calculator. Later detailed examples remain design proposals unless checked against the current `src/` and Supabase schema. The [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) controls final status.
 
 **Date:** 17 October 2026 · **Class:** Supporting product and solution architecture, **not an implementation claim**, separate roadmap, new brand, or authorization to ship. The user's term “SOAP plan” is interpreted here as a comprehensive **Service–Operations–Architecture–Payments** operating design (a working shorthand, not the SOAP XML network protocol). “Redmind” has not been approved as a GridMind brand rename.  
@@ -17,7 +29,7 @@ Manufacturers rarely lack data or software altogether. They may lack a trusted a
 
 | Role | Need | Allowed UI/rights |
 |---|---|---|
-| Anonymous industrial visitor | Understand credible scope and limitations | Public /website, fictional example, non-confidential contact only |
+| Anonymous industrial visitor | Understand credible scope and limitations | Public `/` (plus `/website` compatibility), fictional example, non-confidential contact only |
 | Factory owner / economic buyer | Case economics, decisions, delivery status | Own authorized cases and released briefs; no internal reviewer dissent/pricing internals |
 | Quality or production champion | Historical failure/inspection/corrective-action links | Scoped factory/case evidence and approved assigned actions |
 | Commercial/accounts sponsor | Acceptance/invoice documentary blockers | Authorized R2 case scope only; no access to unrelated payroll, treasury or client payments |
@@ -31,7 +43,7 @@ Manufacturers rarely lack data or software altogether. They may lack a trusted a
 
 ## 3. The seven logical product modules
 
-1. **Public narrative and research contact** — source: existing Lovable-connected `/website`. Signature brand green `#9ADD00` preserved, compelling motion with accessibility/reduced-motion, fictional case demo, honest status, actual non-confidential recipient and privacy/consent. No checkout; root `/` retains current dashboard until separately tested root migration.
+1. **Public narrative and research contact** — source: existing Lovable-connected public `/` with `/website` compatibility. Signature brand green `#9ADD00` preserved, compelling motion with accessibility/reduced-motion, fictional case demo, honest status, actual non-confidential recipient and privacy/consent. No checkout; dashboard remains at `/dashboard` after merged #149.
 2. **Resolve case workbench** — case question and owner; R1/R2/R3 as *candidate tags*; intake scope, state and evidence requests; no automated diagnosis solely by candidate name.
 3. **Evidence/provenance layer** — signed scope, permitted sources, immutable/versioned documents or references, checksum, origin, collection method, event time, timezone, units, contradicting evidence and retention. Closed by default without customer data custody clearance.
 4. **Observation and hypothesis engine** — deterministic parsers and calculations per **chosen/verified** method; source-to-claim links; missingness/uncertainty labels; unresolved competing explanations. Generative AI may summarize permitted text or propose *questions*, not make technical fact claims without source/reviewer.
