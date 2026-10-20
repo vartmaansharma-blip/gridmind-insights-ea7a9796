@@ -1,5 +1,17 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
+> **Founder-reported qualitative event added 20 October 2026 — #157:** The founder reports Interview #1 with one manufacturer. This updates the qualitative direction; it does not establish an independently verified interview, measured outcome, paid commitment or permission to obtain records. Earlier zero-interview counts below are historical verification status, not a denial of this new founder report. Public posts are desk evidence, never additional GridMind interviews. See the dated [public discovery research](research/gridmind-market-research-first-pass-2026-10-11.md#public-manufacturer-problem-discovery-20-october-2026).
+
+### Interview #1 provenance and unknowns — 20 October addition
+
+- Source: founder's current request and limited prior-chat context; conversation date, named participant/authority and consent to records are unconfirmed. Do not identify the company from public sources.
+- Founder-reported context: approximately 80 staff, 20 machines, 50% utilization (definition unknown); grinding labour concern; rejection of 10 proposed sensors per machine; ₹50–60k electricity bill (period unknown); 15-day payment hold (terms and reason unknown).
+- Reported incident: festive steel shortage affecting Tata Motors components, approaches to Tata Motors and Tata Steel; approximately ₹40 lakh potential delayed/missed sales. Not profit, verified loss, recovered amount or GridMind value. No export-priority or intentional-payment-delay allegation is verified.
+- Discovery-to-stop timing, contemporaneous warning, actual resolution mechanism, shipment/cancellation outcome, recurrence, available alternatives, installed ERP/sheets, buyer budget, rights and qualified reviewer remain unknown.
+- One proposed next test: source-linked historical material timeline, only after owner/third-party rights, private custody and reviewer prerequisites. Prototype is offline/synthetic; no historical test run or real records received. Interview questions and falsification criteria are in the existing research document.
+- Status: **1 founder-reported qualitative interview; independent documentary verification not established; no new paid commitment or data permission confirmed.** Existing outreach logs below are not reverified by this work. No outreach was sent.
+
+
 **Strategic baseline status, 18 October 2026:** PR #136 is merged into main; the strategy now considers R1/R2/R3 while **R3 is first for research only**, R2 receives an independent commercial challenge and R1 remains a legitimate quality-use-case probe plus fictional demo. These are *directions, not new field evidence*. This remains the **sole buyer evidence tracker**; as of the last verified record, zero substantive buyer interviews, zero paid commitments, zero expert engagements. Do not substitute release status for interview progress. Existing 19 October access review, 24 October fallback and 10 November decision gate remain unchanged.
 
 **Last updated:** 2026-10-17 (R1/R2/R3 alignment; mailbox confirms one outbound ASIA enquiry and no matching response; 0 buyer interviews)
