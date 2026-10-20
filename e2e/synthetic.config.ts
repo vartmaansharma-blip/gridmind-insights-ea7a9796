@@ -20,7 +20,10 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   webServer: {
-    command: "bun run preview -- --ip 127.0.0.1 --port 4185 --show-interactive-dev-session=false",
+    // Match the locked Wrangler/workerd runtime in this isolated test server only.
+    // Nitro may generate a newer date from the build clock; production config is unchanged.
+    command:
+      "bun run preview -- --ip 127.0.0.1 --port 4185 --compatibility-date 2026-10-19 --show-interactive-dev-session=false",
     cwd: "..",
     url: "http://127.0.0.1:4185/investigations",
     reuseExistingServer: false,

@@ -20,6 +20,9 @@ const preview = spawn(
     host,
     "--port",
     String(port),
+    // Match the locked local runtime, without editing generated deployment configuration.
+    "--compatibility-date",
+    "2026-10-19",
     "--show-interactive-dev-session=false",
   ],
   {

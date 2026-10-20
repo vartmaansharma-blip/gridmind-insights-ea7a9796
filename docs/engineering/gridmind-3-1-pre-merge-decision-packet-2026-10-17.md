@@ -1,5 +1,7 @@
 # GridMind 3.1 — PR #136 pre-merge decision packet
 
+> **HISTORICAL candidate record:** #136 merged as documentation consolidation `363cbface9e164319df43660ef9f9886b8b7fdb7`. Earlier HOLD/check/route states below describe their dated candidates. Use the [current engineering ledger](gridmind-execution-and-repository-acceptance-2026-10-17.md) and [Master Plan](../gridmind-master-plan-2026-10-11.md) for present work. Production/customer-data safeguards remain independent.
+
 ## Final disposition — PR #136 merged, 18 October 2026 (authoritative latest checkpoint)
 
 **Status:** [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136) **MERGED/CLOSED** on 18 October 2026; resulting `main` merge SHA **`363cbface9e164319df43660ef9f9886b8b7fdb7`**. Reconciled candidate head `b32fb2d3b280c4bf007ba431d37b59a62b27d88a` preserved Lovable history. Candidate exact-head CI, Quality Gate, Public Site Browser, isolated Migration Replay and Vercel preview **passed**; merge was accepted by GitHub branch protection and the post-merge Vercel status reported **success**. This is an actual result, not a proposed review.

@@ -1,5 +1,7 @@
 # GridMind 3.1 — Exact checkpoint and integration register
 
+> **HISTORICAL candidate record:** #136 merged as documentation consolidation `363cbface9e164319df43660ef9f9886b8b7fdb7`. Earlier HOLD/check/route states below describe their dated candidates. Use the [current engineering ledger](gridmind-execution-and-repository-acceptance-2026-10-17.md) and [Master Plan](../gridmind-master-plan-2026-10-11.md) for present work. Production/customer-data safeguards remain independent.
+
 ## Integration scope correction — 18 October 2026
 
 Refs #137, #136, #138, #29 and #130. The founder requested resolution of #136 and consolidation into main only when legitimate gates pass. The current integration merges main `8cf121ca4f8a8e8d0709941b62f2640686c6e6cd` into original source `42ec9e2143f837c714c8d96d5dee6ad2babc2c9c` with a merge commit; no published history is rewritten.

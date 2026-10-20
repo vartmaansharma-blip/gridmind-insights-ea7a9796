@@ -1,12 +1,12 @@
 # Public website build and acceptance — GridMind 3.1
 
-**Status:** Supporting implementation specification; 17 October 2026. **Owner:** founder for claims and contact route; product/design for copy and accessibility; engineering for routes, tests and preview. The [Master Plan](../gridmind-master-plan-2026-10-11.md) controls strategy and the [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) controls evidence. This is the next visible build milestone, not proof of demand.
+**Status:** Supporting implementation specification; 17 October 2026. **Owner:** founder for claims and contact route; product/design for copy and accessibility; engineering for routes, tests and preview. The [Master Plan](../gridmind-master-plan-2026-10-11.md) controls strategy and the [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) controls evidence. This is supporting contact/claims acceptance, not the current development milestone or proof of demand. Preserve approved design; M1 is defined in the Master Plan.
 
 ## The job of this site
 
 A factory buyer arriving cold should understand in one minute: what GridMind investigates, what decision it helps them make, what it will **not** do, why the source evidence and specialist review matter, and how to request a non-confidential first conversation. A site visit is not a lead, buying signal or validated problem until the person takes a recorded, consented step. The public website may be built now while buyer discovery continues; claims must remain explicitly provisional.
 
-**Current route truth:** the public page is `/website`; the existing application dashboard is `/`. The separate public-root/authenticated-routing PR #132 is open. Do not silently combine that route change with this copy/design work. Move the public site to `/` only after redirect/deep-link, sign-in, role, tenant and browser acceptance and issue/PR reconciliation.
+**Current route truth — corrected 20 October 2026:** merged #149 (`62770bb`) made the approved design-preview homepage public at `/`, kept `/design-preview`, and moved the application to `/dashboard`. Preserve `/website` compatibility. #132 remains an overlapping proposal; it does not make root cutover an outstanding task. The earlier page map below supplies acceptance guidance for a justified change, not permission to redesign or replace the approved homepage. Residual contact receipt/consent remains #138 work.
 
 ## Release 1 page map and copy contract
 
@@ -23,7 +23,7 @@ Do not create independent “solutions” microsites for six businesses. No publ
 
 ## Functional journeys
 
-1. **Cold buyer:** lands at `/website`, understands the proposition, inspects a fictional R1 example, selects a non-confidential contact action. On submission or mail open, sees what happens next and what not to send.
+1. **Cold buyer:** lands at `/`, understands the proposition, inspects a fictional R1 example, selects a non-confidential contact action. On submission or mail open, sees what happens next and what not to send.
 2. **Skeptical specialist:** sees where the method stops, the source/provenance expectations, who has signoff and the distinction between a screening demo and professional opinion.
 3. **Existing signed-in user:** reaches the current application without losing a deep link or being redirected into public content. No cross-tenant data appears.
 4. **Founder/team:** records only authorized inbound contact and consent in the sole buyer tracker; the website must not silently create a case or inflate conversion.
@@ -39,11 +39,11 @@ Minimal form fields if a form is justified: name, organization/role, contact met
 | Step | Owner | Deliverable and exit test |
 |---|---|---|
 | 1. Claim inventory | Founder + domain reviewer when available | Every public assertion maps to verified fact, explicit hypothesis, fictional demo or prohibited claim. Remove unsupported claims. |
-| 2. Information architecture and copy | Product/design | One page at `/website` covering the table above. Founder can explain it without an acronym glossary. |
+| 2. Information architecture and copy | Product/design | Approved existing page at `/` covering the table above. Founder can explain it without an acronym glossary. |
 | 3. Responsive accessible implementation | Engineering/Lovable | Keyboard navigation, semantic headings, sufficient contrast, mobile widths, reduced-motion respect and visible errors/success. Keep signature green. |
 | 4. Contact path | Founder + engineering | Non-confidential route works end to end in a preview; consent and retention path are explicit. No confidential upload. |
 | 5. Exact-head review | Engineering + founder | Build, lint, tests, docs links, browser smoke, route/deep-link and no-auth checks run on the exact SHA; compare preview SHA with source. Record failures. |
-| 6. Route change, only if warranted | Engineering | Review #132 separately against Supabase role/tenant and migration state; test public root and authenticated dashboard; keep rollback. |
+| 6. Route regression check | Engineering | Preserve merged #149 public `/`, dashboard `/dashboard` and compatibility/deep links; review only a justified remaining #132 delta. |
 | 7. Publication | Release owner | Only after release gate and authorized promotion; verify final domain, actual deployed SHA and hard reload. |
 
 The public site does **not** require a selected paid lane. Its copy is provisional until buyer evidence permits a sharper offer. A contact CTA that cannot receive messages fails Step 4. A beautiful page with broken CI or blocked Vercel preview fails Step 5. No production promotion is implied by this document.
