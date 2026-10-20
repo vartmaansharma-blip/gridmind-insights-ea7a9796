@@ -53,4 +53,3 @@ bun scripts/invoice-exception.ts reopen /tmp/gm-invoice-outcome.json data/synthe
 Unit/CLI tests cover original-source preservation, unknowns, scope/integrity checks, review/action/outcome boundaries and non-overwriting save/reopen. Browser tests cover positive and negative/mobile paths without backend requests; existing product/synthetic regressions remain required. Offline cross-scope tests are **not** live tenant-isolation acceptance.
 
 Keep the PR draft pending actual exact-head CI/browser/preview/review evidence. Main is deployment-connected. No merge, production release, customer data, qualified signoff, paid demand or savings follows from this experiment.
-
