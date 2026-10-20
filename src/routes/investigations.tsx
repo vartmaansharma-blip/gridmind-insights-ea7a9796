@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
 
+import { FinishingComparisonPreview } from "@/components/investigation/finishing-comparison-preview";
 import { ResolveTriagePreview } from "@/components/investigation/resolve-triage-preview";
 
 function SyntheticInvestigations() {
@@ -8,6 +9,7 @@ function SyntheticInvestigations() {
     <>
       <div className="mx-auto max-w-7xl px-4 pt-6">
         <ResolveTriagePreview />
+        <FinishingComparisonPreview />
       </div>
       <InvestigationWorkbench />
     </>

@@ -1,5 +1,12 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Final pending-work local acceptance — 20 October 2026
+
+Finishing research #162: 255 unit tests / 29 files, typecheck, semantic lint (0 errors, 9 existing warnings), 226-document links and default production build passed; all 15 browser tests passed, including new original-source export, SHA-256 recheck, pending simulated review, null cause/savings, no backend requests, unknown classification, required-only falsifier and mobile-width checks. New UI is a minimal read-only adapter to the existing comparison at /investigations. No upload, new engine, auth/backend/DB/migration change. React quality review used the React best-practices skill: event-driven calculation, deferred method import, no network effect, explicit async busy/error state, semantic region/table/buttons and scoped responsive overflow.
+
+Shared canonical Master Plan, Buyer Discovery Sprint and Decision Constitution now agree with #156, including factory-owner confirmation and unverified reviewer competence/independence. Hosted checks must pass at the final published head; no preceding branch green result substitutes. Keep the research PR draft for independent/source/method review. #154/#150 professional decisions and #29/#130 remain open; nothing is merged to main or activated in production.
+
+
 ## Pending-work completion checkpoint — 20 October 2026
 
 Refs #42/#155 and pending research #157/#159/#161. Main remains `42fc8c9959fd9dc5412ca04ca68c4969e9c77380`. This alignment candidate reconciles the latest commercial research direction and founder-reported interview without importing the separate chronology/invoice/finishing implementations. #154 `123fc2a` and #150 `2a49139` remain unchanged and require independent decisions.

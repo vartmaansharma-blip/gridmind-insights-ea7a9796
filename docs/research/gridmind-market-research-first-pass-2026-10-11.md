@@ -1,5 +1,108 @@
 # GridMind Market Research — First Pass
 
+## Revenue and bottleneck decision — 20 October 2026
+
+**Supporting analysis under the existing Master Plan; no commercial wedge selected.** The founder requested intelligence-layer, automation and underlying-software revenue analysis plus bounded implementation. The factory owner is the proposed confirmation contact/reviewer; competence and independence remain unverified.
+
+### Executive Summary
+
+**First sell a bounded decision service for one part-family finishing exception.** The factory owner reported high grinding labor, but required finishing, repeated work and unknown recording must be separated. Charge for an independently reviewed decision record only where the current engineer/Excel/QMS process leaves a material unresolved decision. This is the leading learning hypothesis, not a proven paid wedge.
+
+**Keep one order-disruption case as the challenger.** Software may improve readiness checks and escalation timing; it cannot manufacture missing steel, provide working capital or create orders. Test whether an authorized feasible alternative existed when better information could have mattered.
+
+**Automation and software subscriptions come after repeat demand.** Reconcile evidence, record the responsible decision and measure follow-up first. Sell repeatable workflow/integration support only when the owner values that residual job and delivery economics work. No paid commitment, customer outcome or qualified independent engagement is established.
+
+### Target a blocked decision before proposing software
+
+The useful unit is one part-family/operation exception or one order, at one factory, over an explicit window. “50% utilization” has no interpretable loss denominator yet. The reported ₹40 lakh concerns possible delayed/lost sales or production, not established profit loss or value GridMind can recover. The approximately 15-day payment gap does not identify its mechanism.
+
+The founder identified the owner as the confirmation contact and proposed reviewer. The actual interview date, process, permission to retain notes, record rights and scope-specific reviewer competence/independence still need confirmation. A public-source competitor feature establishes an alternative; it does not prove adoption at this factory or unmet demand.
+
+Map the constraint through: **record → comparable observation → unresolved decision → qualified review → authorized feasible action → measured outcome**. If no feasible decision changes, stop the offer. Faster paperwork alone has value only if the buyer explicitly values and funds it.
+
+### Finishing costs are the closest test of paid intelligence
+
+**The bottleneck to test:** nobody can reconcile paid finishing time, required specification, final accepted output and repeat passes into a decision the owner can act on. High labor alone is insufficient: required manual finishing may be the correct process.
+
+**What GridMind can do:** preserve source references; reconcile final dispositions so reworked parts are counted once; separate required, repeat and unclassified person-minutes; normalize by final accepted parts; expose unmatched drawing/material/route/shift conditions; assemble competing explanations and the next discriminating check for the engineer. The existing adapter implements the bounded synthetic comparison. The new internal preview makes positive, unclassified and required-only cases inspectable and exports a pending-review record.
+
+**What changes physically:** a qualified process/tooling specialist may investigate tooling, material, setup, route or specification, and the customer approves any intervention. Ultra Tool’s self-published fuel-filler-cup case describes a tooling/process redesign that reduced secondary operations; it demonstrates that a physical process change can matter, not that software itself fixes burrs or that its outcome transfers here.
+
+**Buyer and initial revenue:** owner/plant leader, with a production/quality champion; a fixed-scope diagnostic and review fee, followed only if useful by a separately scoped authorized trial/measurement service. Confirm budget and actual alternatives before quoting. If all finishing is required, classification is unresolvable, the existing method suffices or there is no feasible action, do not sell a rework-saving claim.
+
+**Proof:** baseline the current method’s analyst/reviewer time, unknowns and decision first; compare a source-linked GridMind packet without revealing the desired answer; record corrections, time and useful decision difference. Subsequent outcome assessment needs an agreed prospective baseline, action and follow-up, with part mix, shift, quality and outsourcing inside the boundary. Released labor capacity is distinct from lower payroll/overtime/subcontract spend; do not sum them as independent savings.
+
+### Order disruption is valuable only when an earlier decision was feasible
+
+**The bottleneck to test:** material, tooling, labor, quality release, subcontract and payment conditions sit in separate records; no accountable person sees which dependency will miss an order’s requirement date early enough to act.
+
+**What GridMind could earn for:** reconstruct one order’s actual readiness timeline, identify missing/conflicting commitments, distinguish signal time from recorded-at time, and prepare an owner-controlled escalation/decision packet. PR #158 already owns an offline synthetic chronology test. SAP documentation describes material, resource and tool availability checks; a generic missing-parts list is therefore not differentiation.
+
+**Critical causal test:** what did each responsible person know then, and which approved alternative was available at that time, at what lead time/cost? If steel was unavailable across all qualified suppliers, financing was the binding constraint, no orders existed, or the team already acted promptly, a new dashboard cannot be credited with recoverable output. A retrospective warning that uses information learned later is invalid.
+
+**Automation after proof:** read-only imports from the existing ERP/Excel process; explicit owners and due dates; fresh/stale/conflicting commitment states; proposed reminders and escalation drafts requiring customer approval. Do not automatically place orders, promise delivery, contact counterparties or substitute material grades. Integration/setup plus recurring exception-review support is a later price hypothesis, conditional on recurring paid need.
+
+### Invoice coordination is contingent on a documentary mechanism
+
+**The bottleneck to test:** purchase order, dispatch, receipt, acceptance, invoice and payment-status records cannot be matched, leaving a specific discrepancy without an owner or approved next step. PR #160 implements a separate invented-record reconciliation experiment.
+
+**What a bounded service can provide:** explicit quantity/revision/reference conflicts, missing acceptance evidence, a source-linked reconciliation brief and customer-owned follow-up preparation. A discrepancy is an investigative lead, not proof of debt entitlement or payment recovery.
+
+**Disconfirming alternatives:** ordinary payment terms, buyer liquidity, supplier credit or material allocation may explain the cash interruption. Existing ERP/accounting follow-up can already be sufficient. Obtain actual due/acceptance/payment dates and the stated reason before treating this factory’s 15-day gap as an invoice opportunity. Financing and collection guarantees remain outside GridMind’s role.
+
+**Revenue hypothesis:** fixed fee for resolving documentary uncertainty, paid only under a scoped engagement with appropriate reviewer/rights and buyer authority. A recurring fee needs repeated accepted work. Avoid success-based debt/savings fees until attribution and appropriate professional/legal review are separately established.
+
+### The software layer is evidence reconciliation plus decision accountability
+
+1factory already advertises investigation, corrective actions, task assignment, reminders, review/approval and effectiveness checks. Odoo’s indexed manufacturing documentation distinguishes expected and actual manufacturing cost. These are strong substitutes; “AI + workflow + dashboards” is not established differentiation.
+
+The potential gap is **reliable linkage across the customer’s existing records and organizational handoffs**: scope/part/revision/time alignment; conflict and missingness detection; source-bound review; an accountable action owner; and comparable follow-up. The customer retains its ERP/QMS transaction records. GridMind should return reviewable observations and proposed decisions rather than silently create a second ledger.
+
+**Intelligence service:** a qualified human-assisted case packet and useful decision. **Automation:** repeatable validated matching/checking and customer-approved follow-up preparation. **Underlying software:** versioned evidence/decision interfaces and integrations licensed to a factory or qualified service partner after repeat usage proves utility and support economics. These are stages of one offer, not three launches.
+
+Possible defensibility requires permitted data linkage, repeatable specialist methods, integration reliability and paid repeat outcomes. A source hash proves content integrity rather than authenticity; an AI-written report or stored case history is not by itself a moat. No autonomous agent, prediction engine, broad ERP replacement or live factory integration is needed to run the next test.
+
+### A quoted fee must cover actual delivery effort
+
+Price and demand are unknown. Use the owner’s actual decision value and a reviewed fully loaded delivery budget. Separate quoted, contracted, invoiced and collected amounts; the existing investigation economics module already makes that distinction. Record specialist fees, founder/analyst shadow labor, travel, storage/model use, acquisition, rework and payment exposure without counting a reviewer’s invoice again as the same reviewer’s shadow cost.
+
+**Illustrative arithmetic only:** six analyst hours at ₹500 = ₹3,000; four specialist hours at ₹1,500 = ₹6,000; travel ₹1,500; tooling/storage ₹500; rework allowance ₹1,000; acquisition effort two hours at ₹500 = ₹1,000. Total scenario cost = **₹13,000**. These are invented planning inputs, not market rates, incurred expenses, buyer willingness or a quote.
+
+At an assumed ₹15,000 collected fee, scenario contribution is ₹2,000 (13.3%); at ₹35,000, ₹22,000 (62.9%). Shared fixed overhead, tax and financing remain separate and are not net profit. A 30% contribution requirement with this scenario cost implies at least **₹18,572**, rounded up to whole rupees: cost ÷ (1 − target margin). If actual reviewer effort/cost is unknown, there is no defensible quote floor. Do not use potential customer savings as revenue or present either fee as validated.
+
+Start with a free, non-confidential qualification conversation. Seek a fixed-scope paid diagnostic only after the rights, reviewer, readiness and budget gates. Scope expansion and implementation are separate approvals. Recurring pricing follows actual repeated acceptance; a licensing/channel offer follows demonstrated integration/support effort and permissioned case reuse.
+
+### Next actions convert the hypothesis into a buying decision
+
+**1. Owner qualification:** use the prepared confirmation packet in the sole buyer tracker. Confirm actual process/part, last event, dates, current method, decision/budget authority, permission and reviewer competence/independence. The owner’s name alone clears none of these gates. No outreach is sent by this work.
+
+**2. One paired test:** choose finishing only if required/repeat work is classifiable and an actionable gap exists; retain one order-disruption challenger. Establish permitted minimal source handling outside the public repository. Pre-record the current-method decision/effort and a falsifier. Missing rights/reviewer/records means hold or inconclusive, not synthetic substitution.
+
+**3. Scope and commitment:** after a useful reviewed result, present the actual delivery-cost budget, bounded scope, acceptance criteria and exclusions to the owner. Record a priced next-step acceptance, refusal or request for change. Measure analyst effort, corrected errors, decision cycle and usefulness before claiming business improvement. Only then decide whether recurring automation or a simple existing tool is economically justified.
+
+### Questions that could reverse the recommendation
+
+Is the factory stamping/fabricating, machining, casting, or a mixed route? Is reported grinding required finishing or repeated correction? Who can classify it against the actual drawing? What does the utilization denominator measure? Which steel-order action could have changed the historical outcome using information available then? Was the payment unavailable before or after its actual due date and acceptance? What does the existing team already resolve adequately? What will the owner actually pay for, who can review it independently, and what does delivery cost?
+
+### Evidence limits and release boundary
+
+This is a provisional workflow/revenue analysis as of 20 October 2026. One founder-reported qualitative interview remains unverified; no source factory records, paid commitments or qualified reviewer engagement were established. Public vendor case studies are self-published and may not transfer to this customer. Odoo/SAP documentation was available through indexed excerpts, with full-page access limited; conclusions are confined to the described features. No market size, probability score, revenue forecast or causal savings is estimated.
+
+Main remains the merged offline/synthetic foundation. Research PRs are drafts; production Supabase lacks the case tables and required analysis fields confirmed in the read-only audit. Independent #154/#150 decisions, #29/#130 reconciliation/recovery, rights/custody and explicit release approval remain required. The bundled UI accepts no customer files and makes no backend writes. No physical process was changed and no customer problem is marked resolved by synthetic acceptance.
+
+### Current source verification
+
+- [1factory NCR/CAPA/SCAR](https://www.1factory.com/ncr-capa-scar-complaint.html): page read 20 Oct 2026; vendor feature claims, not independent customer demand.
+- [Ultra Tool fuel-filler-cup case](https://www.ultratoolmfg.com/case-studies/fuel-filler-cup/): page read 20 Oct 2026; self-published physical tooling/process example, no transfer or causal claim for GridMind.
+- [Odoo manufacturing order costs](https://www.odoo.com/documentation/17.0/applications/inventory_and_mrp/manufacturing/basic_setup/mo_costs.html): official indexed excerpt verified 20 Oct; full fetch timed out.
+- [SAP Monitor Product Availability](https://help.sap.com/docs/SAP_S4HANA_CLOUD/32da8359c8ee4e8b8e8c5e15cacba5aa/c602b753128eb44ce10000000a174cb4.html): official indexed excerpt verified 20 Oct; full page rendered no readable text.
+
+### Claim and arithmetic QA
+
+All candidates are hypotheses; no numeric market score is assigned. Recomputed illustrative costs total ₹13,000; contributions use collected fee less that scenario cost and divide by fee, not cost. Floor rounds up 13000/0.70 to ₹18,572. Freed hours, sales exposure, invoice face value, verified profit and GridMind revenue are distinct and never summed. Synthetic two-lot comparisons are descriptive and cannot establish sufficient baseline, causality or economic value. No broad chart is produced from nonexistent customer data.
+
+
+
 ## Metal-component contract manufacturing focus — 20 October 2026
 
 **Status:** supporting research; owner: founder/Codex. Current [Master Plan](../gridmind-master-plan-2026-10-11.md), [sole Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) and [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) govern execution. This amendment supersedes geographic and five-industry prioritisation below. It does not validate a commercial wedge.
