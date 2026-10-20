@@ -1,5 +1,13 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Conditional main integration follow-up — 20 October 2026
+
+After docs-only #163 `ae6f399`, the founder explicitly requested merging this direction into main if appropriate. Required Public Browser run [39447051320](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39447051320) reproduced the existing startup failure: generated compatibility date `2026-10-20` exceeds installed runtime support `2026-10-19`; no browser tests executed. CI and Quality passed; isolated migration acceptance was still running at that snapshot.
+
+**Bounded remedy:** selectively port exactly three existing #156 `299f6ff` files: `e2e/synthetic.config.ts`, `scripts/check-production-preview.mjs` and `e2e/synthetic-investigation.pw.ts`. Only isolated test servers receive the locked runtime date; the cross-tab test waits for its actual loaded-snapshot state before the first tab writes. Production build defaults, workflows, dependencies, application code and stale-save rejection/data assertions are unchanged. These files match that already-published repair; no new engine or redesign. Remaining #156 work stays preserved on its branch.
+
+G31-C20-09 records conditional merge authority. Merge only when required checks pass on the final candidate, base is current, reviews/threads/conflicts permit it and the diff stays bounded; never bypass checks or independent #154/#150 review requirements. Main merge can trigger its existing deployment pipeline. No manual deployment, production database/settings/flag changes or customer-data use follows. Record actual final SHA, hosted checks and merge receipt in #163/#155; do not predeclare completion here. The initial docs-only audit and its historical restrictions below describe `ae6f399`, superseded only within this follow-up scope.
+
 ## Canonical consolidation audit — 20 October 2026
 
 **Scope:** read-only GitHub/source/session audit plus documentation reconciliation, Refs #155. Base main `42fc8c9959fd9dc5412ca04ca68c4969e9c77380`. No application, test-runner, workflow, migration, deployment, live Supabase or settings change. This checkpoint supersedes older next-task, route, date and PR-status statements below; their measurements remain dated history. [Master Plan §7](../gridmind-master-plan-2026-10-11.md) owns current work order, not the old E0–E7/M1 queue.
