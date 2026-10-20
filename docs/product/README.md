@@ -6,7 +6,7 @@ These describe the proposed case product and existing implementation boundaries.
 
 ## GridMind 3.1 solution architecture
 
-- [Manufacturer resolution system and architecture](gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — user roles, proposed modules, evidence-to-decision objects, methods versus problem tags, UX/technical acceptance and production data boundaries. The domain-specific engines remain **unvalidated/not built**.
+- [Manufacturer resolution system and architecture](gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — §11 now specifies India-first feasibility/bottleneck/delivery risk, requirements, initial logical model, trust/approval levels, replay/counterexamples and validation; earlier sections retain user roles, proposed modules, evidence-to-decision objects, methods versus problem tags, UX/technical acceptance and production data boundaries. The domain-specific engines remain **unvalidated/not built**.
 
 ## Electricity screening research method
 
