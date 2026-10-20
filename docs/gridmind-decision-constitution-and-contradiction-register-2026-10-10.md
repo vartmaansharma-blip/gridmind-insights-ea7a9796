@@ -1,5 +1,13 @@
 # GridMind Decision Constitution and Contradiction Register
 
+## Metal-component research decision — 20 October 2026
+
+**Authority/evidence:** current founder instruction narrows commercial research to B2B metal-component contract manufacturing, independent of geography; [bounded source/alternative audit](research/gridmind-market-research-first-pass-2026-10-11.md) supports a falsifiable comparison, not a paid wedge. Stamping/pressing/fabrication leads; CNC is separate adjacent validation; foundry/casting/forging waits for specialist evidence. This supersedes earlier geographic/five-industry priority and pending #160's invoice-first *hypothesis ordering* only.
+
+**One provisional first learning workflow:** one part's finishing-cost/quality exception. Alternative: a production-order disruption. Separate required finishing, repeat work and unknown classification; distinguish descriptive cost/time variation from causes, avoided spend and verified outcomes. Existing QMS/ERP/MES, competent Excel routines and physical process engineering are real alternatives. AI investigation alone provides no demonstrated moat. If current practice or a toolmaker suffices, stop/narrow software investment.
+
+**Truth/release:** one founder-reported qualitative interview is not independent record verification. ₹40 lakh describes potential delayed/lost sales/production, never established profit loss. Utilization cause, payment mechanism and steel-supply resolution are unknown. No sensors are mandatory. Preserve evidence → investigation → qualified review → approved action → verification. Synthetic finishing comparison returns null causes/savings and a pending-review Resolve draft; it cannot establish authenticated tenant authorization, professional authority or production readiness. Existing #29/#130, independent review, customer rights and separate release authorization remain necessary. #154/#156/#158/#160 work must be reconciled, not overwritten; no live data, migration, merge or deployment here.
+
 ## Step 1 compressed-air authorization — 19 October 2026
 
 The founder now authorizes a bounded read-only compressed-air operating-loss investigation in the same repository ([issue #152](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/152)). This is an additional engineering experiment, not a change to commercial wedge selection or a retirement of electricity review. Reuse existing organization/factory/asset identities when persistence is separately validated. Current implementation is an offline synthetic importer and auditable report, not a connected customer workflow. No machine control, supported fault diagnosis, real savings, customer-data authorization or production database mutation follows from this authorization.
