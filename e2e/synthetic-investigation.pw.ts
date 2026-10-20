@@ -113,6 +113,9 @@ test("corrupt storage is recoverable without automatic overwrite; other-tab edit
   await expect(page.getByRole("alert")).toHaveCount(0);
   const second = await context.newPage();
   await second.goto("/investigations");
+  // Navigation can finish before hydration reads the saved snapshot. Establish
+  // the second tab's old revision before the first tab writes a newer one.
+  await expect(second.getByText("Loaded from this browser", { exact: true })).toBeVisible();
   await page.getByLabel("Decision question", { exact: true }).fill("First tab edit");
   await page.getByRole("button", { name: "Save revision", exact: true }).first().click();
   await expect(second.getByRole("alert")).toContainText("another tab");
