@@ -1,5 +1,9 @@
 # GridMind Buyer Discovery Sprint — Live Tracker
 
+> **Current evidence interpretation — 20 October 2026:** This remains the sole actual field-evidence tracker. Alignment research adds no interview, reply, reviewer, paid customer or customer-data permission. Existing counts/log entries below remain last-recorded evidence, not newly reverified external facts. The [Master Plan](gridmind-master-plan-2026-10-11.md) owns dependency-driven phases; this tracker owns D buyer/problem/alternative evidence and M3 availability questions. Compressed air is a technical exemplar; R3-first research and fictional R1 preference select no commercial winner.
+>
+> Earlier 19/24/31 October and 10 November dates are retained commitments/targets, not current launch gates or completion claims. The 19 October target has passed without a new result recorded here. Review the missing evidence and next feasible action; never mark a gate passed or reset its history because a date elapsed. All technical build queues in older notes defer to M1 in the current Master Plan.
+
 **Strategic baseline status, 18 October 2026:** PR #136 is merged into main; the strategy now considers R1/R2/R3 while **R3 is first for research only**, R2 receives an independent commercial challenge and R1 remains a legitimate quality-use-case probe plus fictional demo. These are *directions, not new field evidence*. This remains the **sole buyer evidence tracker**; as of the last verified record, zero substantive buyer interviews, zero paid commitments, zero expert engagements. Do not substitute release status for interview progress. Existing 19 October access review, 24 October fallback and 10 November decision gate remain unchanged.
 
 **Last updated:** 2026-10-17 (R1/R2/R3 alignment; mailbox confirms one outbound ASIA enquiry and no matching response; 0 buyer interviews)
@@ -320,19 +324,19 @@ A paid pilot is desirable, not required to declare the discovery sprint complete
 
 **Truth guard:** all numerical targets remain **unobserved planning criteria**. Only the existing evidence log and actual dated interview records can establish field progress.
 
-## 10. Current execution queue
+## 10. Current discovery actions — dependency-driven, parallel to M1
 
-| Priority | Task | Owner | Due | Status |
-|---|---|---|---|---|
-| **P0 — BLOCKED** | Obtain consent from real adult/professional outreach supporter before new external approach | Founder + trusted adult/professional | Before any send; Oct 19 review | Dad nominated; agreement pending; public/offline preparation only |
-| **P0** | Identify 3–5 legitimate warm-introduction routes; do not invent names or scrape lists | Founder, with appropriate adult/professional support | Oct 19 | In progress / capacity-dependent |
-| **P0** | Review the existing short outreach drafts for the broader GridMind 3.1 scope and the concrete give | Founder + trusted adult/professional | Before first send | Not started |
-| **P0** | Log actual funnel movement and review the small access experiment | Founder | Oct 19 review | In progress |
-| P1 | Hold and document conversations using R1/R2/R3 and original C1/C2/C4/C6 IDs | Founder | Through Nov 10 | Waiting for access |
-| P2 | Scope an offline retrospective test only if Tier 1 evidence and a buyer request justify it | Founder + named reviewer/customer owner | After evidence | Blocked on people/evidence |
-| Parked | Broad schema/RPC changes, workspace redesign, new modules, public-site polish, rename, trademark work | — | Until evidence changes priority | Not P0 |
+| Dependency | Next action / owner | Completion evidence / failure response |
+|---|---|---|
+| Appropriate support and access (#39) | Founder confirms actual support and one legitimate route; use prepared draft only after its existing oversight requirements | Record actual agreement/send/reply; pending remains pending. No messages are sent by this documentation task |
+| Buyer/problem/alternative evidence (#40) | Founder holds a consented non-confidential recent-event conversation; identify user, economic buyer, reviewer and action owner separately | Actual held conversation, persistent gap vs current tool/team/expert, consequence, recurrence, next step and strongest disconfirmation. No concrete gap → narrow/stop; no access → change bounded route |
+| Source and method feasibility (M3) | Founder/qualified reviewer inventory availability of needed measurements/documents without taking unapproved evidence | Source owner, availability, reference conditions, calibration, time/context, cost and rights status. Missing necessary evidence → inconclusive/no pilot |
+| Candidate decision (D exit) | Founder compares R1/R2/R3 fairly and relevant compressed-air delivery feasibility using actual events | Multiple substantive examples + credible buyer step + feasible reviewer/data/economics; otherwise NARROW/PIVOT/STOP. A technical exemplar does not win by default |
+| Customer-data test design (M4 prerequisite) | Named customer/reviewer/security owners prepare one written scope after D supports it | Tier 2 rights/method/security/release acceptance before any records/visit. No autonomous data request or outreach |
 
-### Decision-gate output format — 2026-11-10
+This is the discovery work record, not another engineering roadmap. Residual non-confidential contact acceptance (#138) may enable access, but presentation redesign and new product engines are not D prerequisites. Recheck relevant primary competitor/method sources before a decision and capture what would falsify the candidate; desk research cannot replace customer evidence.
+
+### Decision-gate output format — use when evidence is available; original target 2026-11-10
 
 The gate record must state:
 1. Number of substantive conversations held and participant roles (minimum necessary detail); distinguish booked from held.
@@ -364,7 +368,7 @@ A “GO TO BOUNDED TEST” authorizes only preparation of a written test design.
 
 ## 12. Weekly checkpoint (sole evidence log)
 
-**Dates and gates:** Oct 19 supported access review; Oct 24 access fallback; Oct 31 conversation target; Nov 10 decision. See §9 for threshold and §10 for owners. No second calendar or tracker.
+**Historical target review:** Oct 19 access review, Oct 24 fallback, Oct 31 conversations and Nov 10 decision remain dated commitments to examine. Current stage exits depend on evidence in the Master Plan, not elapsed time. Use §10 for next actions; no second calendar or tracker.
 
 ### Weekly review — update this tracker, do not create another report
 

@@ -1,6 +1,46 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
-## Step 1 execution checkpoint — 19 October 2026
+## Current implementation and acceptance — 20 October 2026
+
+**Supporting implementation evidence, not another execution plan.** Read [Master Plan §§3–6](../gridmind-master-plan-2026-10-11.md) for current status, dependencies and P0–P4 meaning; this ledger owns the technical detail. Inspected main is `42fc8c9959fd9dc5412ca04ca68c4969e9c77380` (merged #153). Connected continuation #154 is **OPEN / DRAFT**, inspected head `123fc2a7554427d9db6d1060d0e37cda6dbe2233`, base main `42fc8c9`. No code from that draft is merged by this documentation change.
+
+**M1 next executable task:** reproduce the draft's bounded workflow and execute its [independent security and engineering-method review packet at the inspected SHA](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/blob/123fc2a7554427d9db6d1060d0e37cda6dbe2233/docs/engineering/gridmind-execution-and-repository-acceptance-2026-10-17.md). The packet is retained on #154; this branch neither rewrites it nor duplicates its implementation. Founder must arrange qualified independent people; an author or AI self-review does not satisfy those decisions. Keep #152 open/#154 draft until declared acceptance passes.
+
+### What exists and how it connects
+
+| Shared responsibility | Merged main / inspected draft evidence | Required boundary |
+|---|---|---|
+| Identity and case | Main `src/lib/investigation/schema.ts`, `connected-contract.ts`, `connected.server.ts`; existing organization/factory/equipment and case grants | Server-authorized identity and current scope for every read/write/export. No second identity system |
+| Evidence and validation | Main `src/lib/compressed-air/investigation.ts`, electricity contract/server and synthetic bill provenance; draft `compressed-air/connected.ts` | Original source bytes/lines/digest, units, interval/time/context and normalized revision. Valid syntax/hash does not prove calibration or genuine acquisition |
+| Contextual analysis/investigation | Main descriptive matched baseline, uncertainty and competing hypotheses; draft attaches to existing connected workbench | Demonstration tolerances unvalidated; no monthly bill → compressor fault inference, universal diagnosis or causal claim |
+| Review → customer decision → action | Main existing investigation/portal contracts; draft source-bound independent assigned simulated review, manager-recorded simulated approval and completion | Reviewer differs from importer and remains assigned; revision changes invalidate dependent approval. Simulation is not professional/customer authority |
+| Outcome → institutional knowledge | Main offline JSON report; draft explicit inconclusive assessment and atomically persisted immutable report/history | In inspected draft, causal outcome stays inconclusive, verified savings null, customer delivery false. History is retained learning; no cross-case mining, trained model or shared customer dataset is established |
+| Persistence and authorization | Draft `connected.server.ts`, `verification/compressed-air-acceptance.ts`, `supabase/migrations/20261019182727_connected_compressed_air.sql` | Isolated loopback disposable stack only; private default-off gate, role/tenant denial, CAS, retries, revocation/suspension and append-only custody. Never apply the unmerged migration to production |
+
+This supports keeping one case loop and distinct domain methods. Reusable workflow responsibilities are demonstrated in source; full generalized reuse across industrial domains remains unproved. No new services, universal ontology or platform rewrite is needed to accept M1.
+
+### Exact candidate verification versus independent authority
+
+Observed on #154 `123fc2a`: [CI](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39307732386), [Quality](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39307732502), [Public Browser](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39307732423) and [Migration Replay](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39307732342) completed SUCCESS; Vercel context SUCCESS; Supabase Preview SKIPPED. These are live GitHub status observations, not reruns by this documentation task. The draft's 249-unit-test/native/browser details belong to that candidate's PR evidence, not to current merged main. The PR body still says final checks pending; the observed rollup supersedes that pending-check sentence only, not review requirements.
+
+- **M1 acceptance blockers:** qualified independent security and engineering-method scoped accept/revise/reject decisions; resolve findings on the refreshed final candidate, rerun applicable acceptance and reconcile documentation/main before normal consolidation. Test import → save/reload → independent simulated review → approved/completed action → explicit inconclusive outcome → saved historical export. Include wrong tenant/role, revoked/expired grants, suspended organization, missing gate, malformed/altered import, lost response retry, stale review, concurrent revision and export integrity.
+- **M2 production blockers:** #130 read-only drift/recovery/change-control plan; #29 populated authenticated acceptance including inherited parent/portal suspension and session lifecycle semantics; #150 independent bootstrap review. No live migration or Auth/settings/flag mutation follows from M1 success.
+- **M3 method/data blockers:** engineer must challenge pressure/flow reference conditions, instrument/clock quality, context/baseline coverage, 0.2 bar/10%/three-interval assumptions, uncertainty/covariance/drift, before/after pairing and confounders. Accept bounded synthetic demonstration separately from real-case validity. Real follow-up requires a prospective protocol.
+- **M4 rights/customer blockers:** actual source consent/purpose/custody/retention/recovery, professional engagement and customer action authority. A hash is not a signature; pre-imported after-periods are not an intervention study. Do not claim customer value without actual evidence.
+
+### Reproduction and concurrent handoff
+
+Use pinned Bun 1.3.5 and locked dependencies. On the relevant candidate run `bun run docs:links`, `bun run typecheck`, `bun run lint`, `bun run test`, `bun run build`; `bun run check` adds production-preview smoke. Security/schema changes additionally require the existing disposable Migration Replay Auth → API → database → browser workflow and qualified review. Never use production or real customer fixtures.
+
+#154 already edits these canonical files. Its owner must integrate the alignment commit through a normal main merge, preserve its method/security packet and current code, resolve documentation conflicts semantically, and rerun checks on the resulting candidate. Older #154 priority numbering is a supporting snapshot; use the Master Plan's current P0–P4 classification. #132/#125 route/contact and #133 bridge proposals need remaining-delta review, not bulk integration. #150 stays separate; no duplicate bootstrap fix.
+
+**Routes and source:** #149 `62770bb` established approved public `/` and `/dashboard`; preserve `/design-preview`, `/website` compatibility and signature green. #147/#151 electricity source is merged but customer release remains gated. #136 merged as documentation consolidation `363cbfa`; historical broad-candidate HOLD is superseded. No production deployment/Supabase state was freshly verified in this documentation audit.
+
+## Historical technical checkpoints — retained evidence only
+
+Everything below records its own dated candidate/environment. Its old routes, E0–E7 priority sequence, outstanding-adapter tasks and #136 candidate status do not govern present execution. The current section above and Master Plan own status/sequence; durable security requirements remain. Dated live counts are not current measurements.
+
+## Historical offline Step 1 checkpoint — 19 October 2026
 
 Owner: Codex; evidence: repository inspection and read-only connected-service checks. Refs #152. Current main inspected at `6b549c5d3d0db03e644dbbe3072c61f0af435b5e`: homepage promotion `62770bb`, electricity intake #147 and fictional public demo #151 are merged. Earlier root-route statements below are historical. Supabase has 31 live migration records versus 38 source files and RLS enabled on all 45 public tables inspected; this alone does not prove policy isolation. Live history differs from source; no SQL was applied. Security advisor reports intentional authenticated bootstrap SECURITY DEFINER execution and disabled leaked-password protection. Bootstrap hardening is pending independent review in #150; do not duplicate or merge it as part of this slice. Existing open #132/#133/#125 overlap with historical navigation/connection proposals; none is integrated here.
 
@@ -38,7 +78,9 @@ Original root / still opens the operational energy dashboard. /website is the pu
 
 **Lovable:** typography, interaction, accessibility, mobile and actual immutable signature green token. **Engineering:** data contracts, case methods, security, APIs, migrations, independent review and test evidence. No duplicate customer identity model.
 
-## 3. Ordered engineering epics — acceptance, not a parallel calendar
+<a id="3-ordered-engineering-epics-acceptance-not-a-parallel-calendar"></a>
+
+## 3. Historical engineering epics — superseded work order
 
 **E0 — Fix validation infrastructure (P0).** Inspect GitHub PR head and the exact failed runs, GitHub Actions allowance, Vercel build-rate limit; do not weaken workflows. Run locked-install, docs:links, typecheck, lint, test, build and relevant isolated migration/browser acceptance on exact candidate SHA. Record logs. References: [PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136), [#42](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/42), [#137](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/137). **Done:** actual steps execute and pass; source issues fixed rather than bypassed.
 
@@ -112,7 +154,7 @@ The corrective order is: exact branch and PR diff → source/merge-conflict revi
 
 ## Pre-merge implementation authority
 
-The founder's GridMind 3.1 direction authorizes a reviewable **synthetic** codebase and truthful public-site source, **not** automatic production rollout. The [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) G31-M01–M10 and [pre-merge decision packet](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) now distinguish Class I informational release, Class S synthetic-only demo and Class D production customer-data workflow. For #136, either narrow the releasable scope in a separate non-history-rewriting branch or obtain independent review of the entire mixed code diff and explicit founder production authorization. The default remains **draft/HOLD**.
+The founder's GridMind 3.1 direction authorizes a reviewable **synthetic** codebase and truthful public-site source, **not** automatic production rollout. The [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) G31-M01–M10 and [pre-merge decision packet](gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) now distinguish Class I informational release, Class S synthetic-only demo and Class D production customer-data workflow. Historical #136 broad-candidate disposition was draft/HOLD; the final documentation consolidation merged as `363cbfa`. It did not waive production/customer-data requirements. Current work follows the Master Plan and candidate-specific review.
 
 When code uses production-connected /, /website, /cases or /team routes, verify route invariants, server-side roles, tenant isolation, data-rights restrictions, feature flags, and a tested rollback on the **exact final** Vercel commit. The live Supabase schema/migration registry mismatch in #130 and authenticated release checks in #29 are blocking Class D, irrespective of passing local replay. The 215-file diff and overlapping #132/#133/#125/#120 PRs require documented per-scope disposition; avoid blind bulk merges.
 
