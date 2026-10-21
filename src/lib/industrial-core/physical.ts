@@ -253,25 +253,31 @@ export function physicalFixture(scenario: (typeof physicalScenarioIds)[number]) 
       validUntil: core.validUntil, attributes,
     });
   };
+  add("second-material", "material", {
+    specificationId: "spec", producerId: "approved-producer", unit: "kg",
+  });
+  add("second-process", "process", {
+    inputIds: ["second-material"], outputIds: ["second-part"],
+  });
   add("press-second", "resource", {
-    resourceType: "machine", facilityId: "plant", assetRef: null, processIds: ["stamping"],
+    resourceType: "machine", facilityId: "plant", assetRef: null, processIds: ["second-process"],
   });
   add("press-second-capability", "capability", {
-    resourceId: "press-second", processId: "stamping", verification: "verified",
+    resourceId: "press-second", processId: "second-process", verification: "verified",
   });
   add("line-one", "resource", {
     resourceType: "line", facilityId: "plant", assetRef: null, processIds: ["stamping"],
   });
   add("line-two", "resource", {
-    resourceType: "line", facilityId: "plant", assetRef: null, processIds: ["stamping"],
+    resourceType: "line", facilityId: "plant", assetRef: null, processIds: ["second-process"],
   });
   add("second-part", "product", { revision: "R2", specificationId: "spec", unit: "part" });
   add("second-bom", "bom", {
-    productId: "second-part", revision: "R2", materialIds: ["steel"],
-    quantities: { steel: 1 }, quantityUnits: { steel: "kg" },
+    productId: "second-part", revision: "R2", materialIds: ["second-material"],
+    quantities: { "second-material": 1 }, quantityUnits: { "second-material": "kg" },
   });
   add("second-operation", "operation", {
-    processId: "stamping", resourceId: "press-second", predecessorIds: [],
+    processId: "second-process", resourceId: "press-second", predecessorIds: [],
   });
   add("second-routing", "routing", {
     productId: "second-part", revision: "R2", operationIds: ["second-operation"],
