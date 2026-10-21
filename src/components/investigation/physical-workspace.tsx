@@ -57,10 +57,10 @@ export function PhysicalInfrastructureWorkspace() {
         </p>
       </div>
       <div className="flex flex-wrap gap-3 items-end">
-        <label className="text-sm">
+        <label className="block min-w-0 w-full max-w-md text-sm">
           Operating situation
           <select aria-label="Infrastructure scenario" disabled={!hydrated || loading}
-            className="mt-2 block rounded border bg-background p-2" value={scenario}
+            className="mt-2 block w-full min-w-0 max-w-full rounded border bg-background p-2" value={scenario}
             onChange={(e) => { setScenario(e.target.value as keyof typeof options); setResult(null); setError(""); }}>
             {Object.entries(options).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
           </select>
