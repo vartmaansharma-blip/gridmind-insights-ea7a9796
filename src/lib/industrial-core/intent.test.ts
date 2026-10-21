@@ -20,22 +20,22 @@ describe("owner intent conflicts remain advisory and verifiable",()=>{
   });
   it("flags an explicitly confirmed avoidance of an otherwise eligible action",()=>{
     const e=evaluate(withIntent("owner_stated","avoid"),REPLAY_AT);
-    expect(e.ownerIntentAssessment.conflicts[0].reason).toBe("OWNER_AVOIDED_ELIGIBLE_ACTION");
+    expect(e.ownerIntentAssessment?.conflicts[0].reason).toBe("OWNER_AVOIDED_ELIGIBLE_ACTION");
     expect(e.recommendation).toBeNull();
     expect(e.disposition).toBe("owner_intent_conflict_requires_review");
     expect(e.alternatives.find(x=>x.actionId==="produce-approved")?.status).toBe("eligible");
   });
   it("does not treat inferred relationships or preferences as confirmed",()=>{
     const e=evaluate(withIntent("inferred","avoid"),REPLAY_AT);
-    expect(e.ownerIntentAssessment.inferredGoalsRequireConfirmation).toEqual(["owner-goal"]);
-    expect(e.ownerIntentAssessment.conflicts).toHaveLength(0);
+    expect(e.ownerIntentAssessment?.inferredGoalsRequireConfirmation).toEqual(["owner-goal"]);
+    expect(e.ownerIntentAssessment?.conflicts).toHaveLength(0);
     expect(e.recommendation).toBe("produce-approved");
   });
   it("does not permit owner intent to override a contract prohibition",()=>{
-    const s=withIntent("owner_stated","favor","produce-unapproved");
+    const s=withIntent("owner_stated","favor","buy-alternative");
     const e=evaluate(s,REPLAY_AT);
-    expect(e.alternatives.find(a=>a.actionId==="produce-unapproved")?.status).toBe("prohibited");
-    expect(e.ownerIntentAssessment.conflicts[0].reason).toBe("OWNER_FAVORED_ACTION_NOT_ELIGIBLE");
+    expect(e.alternatives.find(a=>a.actionId==="buy-alternative")?.status).toBe("prohibited");
+    expect(e.ownerIntentAssessment?.conflicts[0].reason).toBe("OWNER_FAVORED_ACTION_NOT_ELIGIBLE");
     expect(e.recommendation).toBeNull();
   });
   it("rejects foreign-owner intents and fabricated inferred confirmation",()=>{
@@ -51,7 +51,7 @@ describe("owner intent conflicts remain advisory and verifiable",()=>{
     const s=withIntent("owner_stated","avoid");
     s.evidence[0].verification="unverified";
     const e=evaluate(s,REPLAY_AT);
-    expect(e.ownerIntentAssessment.summaries[0].state).toBe("stale");
-    expect(e.ownerIntentAssessment.conflicts).toHaveLength(0);
+    expect(e.ownerIntentAssessment?.summaries[0].state).toBe("stale");
+    expect(e.ownerIntentAssessment?.conflicts).toHaveLength(0);
   });
 });
