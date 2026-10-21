@@ -35,6 +35,9 @@ jobs:
       - name: Markdown internal-link audit
         run: bun run docs:links
 
+      - name: Machine catalogue source-integrity and diagnostic safety gate
+        run: bun run knowledge:check
+
       - name: Typecheck
         run: bun run typecheck
 
