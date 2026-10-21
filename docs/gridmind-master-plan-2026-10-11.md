@@ -2,6 +2,12 @@
 
 **Updated:** 20 October 2026. **Owner:** founder. **Authority:** sole company strategy and execution plan. The [Buyer Discovery Sprint](gridmind-buyer-discovery-sprint-2026-10-11.md) owns field evidence; the [Decision Constitution](gridmind-decision-constitution-and-contradiction-register-2026-10-10.md) records decisions and supersession. Refs [#155](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/155).
 
+## GM-CORE-003 implementation authorization — 20 October 2026
+
+The founder explicitly authorizes a modular shared industrial knowledge/operating model, deterministic constraint/decision/economics/matching/workflow foundation and minimal synthetic interface in the existing repository ([#166](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/166)). This is a bounded build exception to the earlier no-new-engine queue, not proof of demand, a validated number-one product, production readiness or permission to process customer records. The brief names Indian automotive-component manufacturing, including Jamshedpur–Adityapur, as initial specialization context; keep the shared schemas industry-neutral and earlier separate-segment evidence/uncertainty intact. No broad strategy replacement.
+
+Preserve the prior plan and all reusable work. Reuse current organization/factory/Auth and evidence/approval patterns; no Next.js migration, new tenant model, ERP replacement, live procurement/payment execution or machine control. The [implemented foundation contract](engineering/gridmind-gm-core-003-foundation.md) defines exact methods, schemas, authority, tests and limitations. Four invented scenarios exercise actual backend code. Commit verified changes on a dedicated branch and prepare an unmerged reviewable PR. #154/#150 reviews, #29/#130 and real-data/professional gates remain independent; related draft #165 is not silently adopted or merged.
+
 ## 1. Ambition and current commercial decision
 
 GridMind aims to become a globally relevant **industrial and critical-infrastructure intelligence company**, serving India and eventually international markets. Help organizations investigate consequential operational problems, understand dependencies, make defensible decisions, and improve the reliability and economics of physical systems. Prove one valuable product before expanding; each expansion needs separate demand, capability, safety and economic evidence.

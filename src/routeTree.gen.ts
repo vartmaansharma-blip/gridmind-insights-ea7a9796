@@ -23,6 +23,7 @@ import { Route as OpportunitiesRouteImport } from './routes/opportunities'
 import { Route as SavingsRouteImport } from './routes/savings'
 import { Route as WebsiteRouteImport } from './routes/website'
 import { Route as ApiElectricityRouteImport } from './routes/api.electricity'
+import { Route as ApiIndustrialCoreRouteImport } from './routes/api.industrial-core'
 import { Route as ApiInvestigationsRouteImport } from './routes/api.investigations'
 import { Route as ApiPortalRouteImport } from './routes/api.portal'
 import { Route as CasesIndexRouteImport } from './routes/cases.index'
@@ -104,6 +105,11 @@ const ApiElectricityRoute = ApiElectricityRouteImport.update({
   path: '/api/electricity',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiIndustrialCoreRoute = ApiIndustrialCoreRouteImport.update({
+  id: '/api/industrial-core',
+  path: '/api/industrial-core',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiInvestigationsRoute = ApiInvestigationsRouteImport.update({
   id: '/api/investigations',
   path: '/api/investigations',
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
   '/api/electricity': typeof ApiElectricityRoute
+  '/api/industrial-core': typeof ApiIndustrialCoreRoute
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
@@ -196,6 +203,7 @@ export interface FileRoutesByTo {
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
   '/api/electricity': typeof ApiElectricityRoute
+  '/api/industrial-core': typeof ApiIndustrialCoreRoute
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
@@ -223,6 +231,7 @@ export interface FileRoutesById {
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
   '/api/electricity': typeof ApiElectricityRoute
+  '/api/industrial-core': typeof ApiIndustrialCoreRoute
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
@@ -251,6 +260,7 @@ export interface FileRouteTypes {
     | '/savings'
     | '/website'
     | '/api/electricity'
+    | '/api/industrial-core'
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
@@ -277,6 +287,7 @@ export interface FileRouteTypes {
     | '/savings'
     | '/website'
     | '/api/electricity'
+    | '/api/industrial-core'
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
@@ -303,6 +314,7 @@ export interface FileRouteTypes {
     | '/savings'
     | '/website'
     | '/api/electricity'
+    | '/api/industrial-core'
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
@@ -330,6 +342,7 @@ export interface RootRouteChildren {
   SavingsRoute: typeof SavingsRoute
   WebsiteRoute: typeof WebsiteRoute
   ApiElectricityRoute: typeof ApiElectricityRoute
+  ApiIndustrialCoreRoute: typeof ApiIndustrialCoreRoute
   ApiInvestigationsRoute: typeof ApiInvestigationsRoute
   ApiPortalRoute: typeof ApiPortalRoute
   CasesCaseIdRoute: typeof CasesCaseIdRoute
@@ -442,6 +455,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiElectricityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/industrial-core': {
+      id: '/api/industrial-core'
+      path: '/api/industrial-core'
+      fullPath: '/api/industrial-core'
+      preLoaderRoute: typeof ApiIndustrialCoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/investigations': {
       id: '/api/investigations'
       path: '/api/investigations'
@@ -530,6 +550,7 @@ const rootRouteChildren: RootRouteChildren = {
   SavingsRoute: SavingsRoute,
   WebsiteRoute: WebsiteRoute,
   ApiElectricityRoute: ApiElectricityRoute,
+  ApiIndustrialCoreRoute: ApiIndustrialCoreRoute,
   ApiInvestigationsRoute: ApiInvestigationsRoute,
   ApiPortalRoute: ApiPortalRoute,
   CasesCaseIdRoute: CasesCaseIdRoute,

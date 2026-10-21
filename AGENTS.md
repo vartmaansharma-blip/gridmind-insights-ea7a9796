@@ -27,6 +27,10 @@ Read in this order before non-trivial work:
 
 This is a reading order, not permission to override safety. Authorization, data rights and security constrain all documents; the Constitution resolves decision conflicts, the Master Plan owns work order, the tracker owns field facts, and reproducible code/check evidence establishes behavior. Newer prose alone does not supersede a decision.
 
+## GM-CORE-003 explicit build exception
+
+The founder authorized the shared typed industrial core and four synthetic backend demonstrations in [#166](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/166), with the [bounded implementation contract](docs/engineering/gridmind-gm-core-003-foundation.md). This supersedes the no-new-engine restriction below only within that task. Keep schemas industry-neutral; automotive/India/cluster is initial specialization intent, not validated paid demand. Reuse canonical identities/Auth/UI, require explicit commercial/quality/safety authority, preserve default-off isolated persistence and all release/data gates. Commit verified work and prepare a PR; **do not merge automatically**. Do not replace earlier strategy or adopt unmerged #165 wholesale.
+
 ## Select one bounded scope
 
 **Current execution order:** consolidate decisions → reconcile concurrent PRs → prepare one bounded finishing-versus-interruption historical experiment → obtain permissioned real evidence and qualified review → compare against current methods → approve one commercial product only if justified → expand on repeated evidence. The Master Plan §7 owns acceptance/dependency gates. Old M1-only, finishing-first, R3-first and calendar ordering is superseded. Preserve #152/#154 compressed-air review ownership and #150 security work; do not duplicate their implementation. No new engines while inputs/reviews are missing.

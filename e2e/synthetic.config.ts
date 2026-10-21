@@ -4,7 +4,7 @@ import { defineConfig } from "@playwright/test";
 // It must run without database credentials and reject backend requests.
 export default defineConfig({
   testDir: ".",
-  testMatch: ["synthetic-investigation.pw.ts", "product.pw.ts"],
+  testMatch: ["synthetic-investigation.pw.ts", "product.pw.ts", "industrial-core.pw.ts"],
   fullyParallel: false,
   workers: 1,
   retries: 0,

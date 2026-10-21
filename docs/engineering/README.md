@@ -1,5 +1,7 @@
 # Engineering, security and release
 
+[GM-CORE-003 shared-core implementation](gridmind-gm-core-003-foundation.md) — typed operating model, deterministic constraint/decision/economics/matching/workflow services, isolated authority/storage, four synthetic demonstrations and verification limits. Supporting contract; no production/customer approval.
+
 These are technical contracts, audits and runbooks. A dated success in one environment does not authorize production or real customer data.
 
 **Authority:** [Master Plan](../gridmind-master-plan-2026-10-11.md) → [Buyer Discovery Sprint](../gridmind-buyer-discovery-sprint-2026-10-11.md) → [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md). Return to the [documentation guide](../README.md) for the recommended reading path.

@@ -1,5 +1,7 @@
 # GridMind documentation — start here
 
+[GM-CORE-003 shared-core implementation](engineering/gridmind-gm-core-003-foundation.md) — typed operating model, deterministic constraint/decision/economics/matching/workflow services, isolated authority/storage, four synthetic demonstrations and verification limits. Supporting contract; no production/customer approval.
+
 This is navigation. The [Master Plan](gridmind-master-plan-2026-10-11.md) is the single strategy and phased execution plan: globally relevant industrial and critical-infrastructure intelligence, earned through one valuable first product. **No number-one commercial opportunity is approved; the premature quality-loss ranking is withdrawn.**
 
 ## Five-minute reading path

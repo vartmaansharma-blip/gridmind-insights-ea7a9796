@@ -323,3 +323,18 @@ set local role anon;
 select pg_temp.denied($q$select public.electricity_command('{"action":"list"}')$q$);
 select pg_temp.denied($q$select * from public.electricity_cases$q$);
 rollback;
+
+-- GM-CORE-003 source contract: isolated-only, explicit capabilities, no browser write/RPC bypass.
+do $$
+begin
+ if not (select relrowsecurity from pg_class where oid='public.industrial_core_workspaces'::regclass)
+ or not (select relrowsecurity from pg_class where oid='public.industrial_core_revisions'::regclass) then raise exception 'CORE_RLS_REQUIRED'; end if;
+ if has_table_privilege('authenticated','public.industrial_core_revisions','INSERT')
+ or has_table_privilege('authenticated','public.industrial_core_revisions','UPDATE')
+ or has_table_privilege('authenticated','public.industrial_core_workspaces','UPDATE')
+ or has_table_privilege('service_role','public.industrial_core_revisions','INSERT') then raise exception 'CORE_DIRECT_MUTATION_FORBIDDEN'; end if;
+ if has_function_privilege('authenticated','public.industrial_core_store(text,uuid,uuid,bigint,uuid,integer,text,text,jsonb,jsonb)','EXECUTE')
+ or has_function_privilege('anon','public.industrial_core_store(text,uuid,uuid,bigint,uuid,integer,text,text,jsonb,jsonb)','EXECUTE') then raise exception 'CORE_FORGED_ACTOR_RPC_FORBIDDEN'; end if;
+ if (select enabled from private.industrial_core_gate where singleton) is distinct from false then raise exception 'CORE_DEFAULT_MUST_BE_OFF'; end if;
+ if exists(select 1 from private.industrial_core_authorities) or exists(select 1 from private.industrial_core_sharing) then raise exception 'CORE_NO_AUTOMATIC_AUTHORITY'; end if;
+end $$;
