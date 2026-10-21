@@ -1,8 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient } from "@supabase/supabase-js";
+import { readFileSync } from "node:fs";
 import {
   authDestination,
   finishGoogleSignIn,
+  googlePublicConfig,
   googleRedirect,
   googleReturn,
   requireGoogleProvider,
@@ -100,16 +102,22 @@ describe("Google auth boundaries", () => {
       "did not return a session",
     );
   });
-  it("reads exactly the initialized Supabase browser client configuration, not Vite-only variables", async () => {
-    // Production and Lovable preview builds can resolve the URL/key differently.
-    // Preflight must use whatever public endpoint the actual client is using.
-    const client = createClient("https://configured-gridmind.supabase.co", "sb_publishable_fixture", {
-      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+  it("uses public fallbacks identical to the generated browser client and accepts Vite overrides", async () => {
+    const fallback = googlePublicConfig({});
+    const generatedSource = readFileSync(
+      new URL("../../integrations/supabase/client.ts", import.meta.url),
+      "utf8",
+    );
+    expect(generatedSource).toContain(`|| "${fallback.url}"`);
+    expect(generatedSource).toContain(`|| "${fallback.key}"`);
+    const config = googlePublicConfig({
+      url: "https://configured-gridmind.supabase.co",
+      key: "sb_publishable_fixture",
     });
     const fetcher = vi.fn().mockResolvedValue(
       new Response(JSON.stringify({ external: { google: true } })),
     );
-    await requireGoogleProvider(client, fetcher);
+    await requireGoogleProvider(config.url, config.key, fetcher);
     expect(String(fetcher.mock.calls[0][0]))
       .toBe("https://configured-gridmind.supabase.co/auth/v1/settings");
     expect(fetcher.mock.calls[0][1].headers.apikey).toBe("sb_publishable_fixture");
@@ -117,25 +125,22 @@ describe("Google auth boundaries", () => {
   });
 
   it("fails closed on disabled Google provider, invalid config and settings outages", async () => {
-    const client = {
-      supabaseUrl: origin,
-      supabaseKey: "sb_publishable_fixture",
-    } as Pick<SupabaseClient, "supabaseUrl" | "supabaseKey">;
+    const config = { url: origin, key: "sb_publishable_fixture" };
     const fetcher = vi.fn().mockResolvedValue(
       new Response(JSON.stringify({ external: { google: true } })),
     );
-    await requireGoogleProvider(client, fetcher);
+    await requireGoogleProvider(config.url, config.key, fetcher);
     expect(String(fetcher.mock.calls[0][0])).toBe(`${origin}/auth/v1/settings`);
     fetcher.mockResolvedValueOnce(new Response('{"external":{"google":false}}'));
-    await expect(requireGoogleProvider(client, fetcher))
+    await expect(requireGoogleProvider(config.url, config.key, fetcher))
       .rejects.toMatchObject({ reason: "provider_disabled" });
     fetcher.mockResolvedValueOnce(new Response("error", { status: 500 }));
-    await expect(requireGoogleProvider(client, fetcher))
+    await expect(requireGoogleProvider(config.url, config.key, fetcher))
       .rejects.toMatchObject({ reason: "provider_check_failed" });
     fetcher.mockRejectedValueOnce(new Error("private network details"));
-    await expect(requireGoogleProvider(client, fetcher))
+    await expect(requireGoogleProvider(config.url, config.key, fetcher))
       .rejects.toMatchObject({ reason: "provider_check_failed" });
-    await expect(requireGoogleProvider({ ...client, supabaseKey: "sb_secret_fixture" }, fetcher))
+    await expect(requireGoogleProvider(config.url, "sb_secret_fixture", fetcher))
       .rejects.toMatchObject({ reason: "configuration_missing" });
   });
 });
