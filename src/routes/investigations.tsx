@@ -2,8 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
 
 import { IndustrialCoreWorkspace } from "@/components/investigation/industrial-core-workspace";
+import { FinishingComparisonPreview } from "@/components/investigation/finishing-comparison-preview";
 import { PhysicalInfrastructureWorkspace } from "@/components/investigation/physical-workspace";
 import { ResolveTriagePreview } from "@/components/investigation/resolve-triage-preview";
+import { InvoiceExceptionPreview } from "@/components/investigation/invoice-exception-preview";
 
 function SyntheticInvestigations() {
   return (
@@ -18,6 +20,18 @@ function SyntheticInvestigations() {
         <ResolveTriagePreview />
         <PhysicalInfrastructureWorkspace />
         <IndustrialCoreWorkspace />
+
+        <section aria-labelledby="record-comparisons-title" className="mt-8">
+          <h2 id="record-comparisons-title" className="text-2xl font-semibold">
+            Compare current records
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Fictional invoice and finishing comparisons. Review the source and unresolved questions
+            before considering an action.
+          </p>
+          <InvoiceExceptionPreview />
+          <FinishingComparisonPreview />
+        </section>
       </div>
       <InvestigationWorkbench />
     </>

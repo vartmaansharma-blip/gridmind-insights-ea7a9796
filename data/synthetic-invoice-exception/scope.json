@@ -1,0 +1,12 @@
+{
+  "origin": "synthetic",
+  "organizationId": "synthetic-org",
+  "factoryId": "synthetic-factory",
+  "caseId": "synthetic-invoice-case",
+  "orderId": "SYN-PO",
+  "invoiceId": "SYN-INV",
+  "partId": "SYN-PART",
+  "revision": "A",
+  "analystId": "synthetic-analyst",
+  "customerActorId": "synthetic-customer"
+}

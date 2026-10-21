@@ -6,7 +6,9 @@ These describe the proposed case product and existing implementation boundaries.
 
 ## GridMind 3.1 solution architecture
 
-- [Manufacturer resolution system and architecture](gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — user roles, proposed modules, evidence-to-decision objects, methods versus problem tags, UX/technical acceptance and production data boundaries. The domain-specific engines remain **unvalidated/not built**.
+- [Manufacturer resolution system and architecture](gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — user roles, proposed modules, evidence-to-decision objects, methods versus problem tags, UX/technical acceptance and production data boundaries. See its current addendum and engineering ledger for offline #153, draft connected #154 and merged gated electricity source; professional/customer validity remains unproved.
+
+The architecture also preserves §11 requirements for India-first feasibility, bottleneck and delivery-risk intelligence, logical entities, trust/approval levels and falsification cases. Those remain requirements unless corresponding code and acceptance evidence are identified.
 
 ## Electricity screening research method
 
@@ -14,7 +16,7 @@ These describe the proposed case product and existing implementation boundaries.
 
 ## Documents
 
-- [Public website build and acceptance — GridMind 3.1](gridmind-site-build-and-acceptance-2026-10-17.md) — immediate site milestone, claim rules, journeys, design/Lovable handoff and exact-head tests.
+- [Public website build and acceptance — GridMind 3.1](gridmind-site-build-and-acceptance-2026-10-17.md) — supporting contact/claims acceptance (approved public homepage source already merged), claim rules, journeys, design/Lovable handoff and exact-head tests.
 
 - [GridMind Resolve — Domain, UX and Engineering Contract](gridmind-resolve-domain-and-product-contract-2026-10-17.md)
 - [GridMind internal MVP — implementation and Lovable handoff](gridmind-mvp-lovable-handoff.md)

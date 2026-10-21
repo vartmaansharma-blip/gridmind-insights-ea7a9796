@@ -9,6 +9,8 @@ export default defineConfig({
     "product.pw.ts",
     "industrial-core.pw.ts",
     "customer-demo.pw.ts",
+    "invoice-exception.pw.ts",
+    "finishing-comparison.pw.ts",
   ],
   fullyParallel: false,
   workers: 1,
