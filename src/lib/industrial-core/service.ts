@@ -346,7 +346,9 @@ export async function executeCoreCommand(
           throw new Error("CORE_WORKFLOW_TRANSITION_DENIED");
         const action = fresh.alternatives.find((a) => a.actionId === cmd.actionId);
         if (!authorizable(action)) throw new Error("CORE_ACTION_NOT_ELIGIBLE");
-        if (fresh.ownerIntentAssessment?.conflicts.some((conflict) => conflict.actionId === cmd.actionId || conflict.actionId === null))
+        // A confirmed unresolved strategic disagreement invalidates the decision as a
+        // whole. Approving a different action must not bypass the owner's review.
+        if (fresh.ownerIntentAssessment?.conflicts.length)
           throw new Error("CORE_OWNER_INTENT_CONFLICT_REQUIRES_REVIEW");
         const requiredAuthorities = Array.from(
           new Set<Capability>([...action.requiredAuthorities, authorityFor(cmd.kind)]),
@@ -372,11 +374,7 @@ export async function executeCoreCommand(
           !["cancel", "record_outcome"].includes(cmd.action) &&
           (
             !authorizable(fresh.alternatives.find((a) => a.actionId === next.workflow!.actionId)) ||
-            Boolean(
-              fresh.ownerIntentAssessment?.conflicts.some(
-                (conflict) => conflict.actionId === next.workflow!.actionId || conflict.actionId === null,
-              ),
-            )
+            Boolean(fresh.ownerIntentAssessment?.conflicts.length)
           )
         )
           throw new Error("CORE_ACTION_NO_LONGER_ELIGIBLE");
