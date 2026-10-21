@@ -87,7 +87,7 @@ export function spreadsheetBaseline(core: CoreInput, snapshot: PhysicalSnapshot)
     }
   }
   const ownerGoal = core.ownerIntents?.[0];
-  const owner = !ownerGoal ? "none"
+  const owner: Preference = !ownerGoal ? "none"
     : ownerGoal.status !== "confirmed" ? "unconfirmed"
     : incident?.type === "machine_stop" && ownerGoal.preference === "favor" ||
       !incident && ownerGoal.preference === "avoid"
