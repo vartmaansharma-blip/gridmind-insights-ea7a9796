@@ -12,7 +12,7 @@ This repository is both the application codebase and the operating record for Gr
 4. [Documentation index](docs/README.md) — short map to Product, Operations, Engineering, Design, Research and Archive.
 5. [Technical release gate](docs/release-gate.md) and [Issue #29](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/29) before live/customer-data workflows.
 
-Supporting research, dated audits, prototypes, and the root `roadmap.md` do not create a second execution queue. If sources conflict, stop and reconcile the conflict in the canonical record before implementing.
+Supporting research, dated audits, prototypes, and the root `roadmap.md` do not create a second execution queue. If sources conflict, name the file/section and reconcile the canonical record before dependent implementation; continue unaffected authorized work. The Constitution resolves decision conflicts, the plan owns sequence and the tracker owns field facts. Safety and authorization constrain every level.
 
 ## 2. Work intake
 
@@ -43,7 +43,7 @@ bun run build
 bun run check
 ```
 
-`bun run check` runs documentation links, typecheck, repository-wide semantic lint, Vitest, and production build. Formatting is checked separately with `bun run format:check`; do not confuse legacy formatting debt with semantic lint failures. See the [release gate](docs/release-gate.md) for Python, Deno, migration, and enforcement responsibilities.
+`bun run check` runs documentation links, typecheck, repository-wide semantic lint, Vitest, production build and production-preview smoke acceptance (see current `package.json`). Formatting is checked separately with `bun run format:check`; do not confuse legacy formatting debt with semantic lint failures. See the [release gate](docs/release-gate.md) for Python, Deno, migration, and enforcement responsibilities.
 
 Do not report a check as passed unless it actually ran. A successful build, synthetic fixture, local mock, or documentation change is not proof of production readiness, customer demand, root-cause accuracy, or verified savings. If CI infrastructure fails before steps start, report it as an infrastructure blocker and do not weaken the checks to obtain a green status.
 
@@ -85,6 +85,6 @@ Keep a PR in draft while any material criterion remains unresolved. Do not merge
 
 Lovable handles design; Codex handles backend and repository tasks. Follow the collaboration rules in [AGENTS.md](AGENTS.md). Keep the existing app/template dependencies and generated integrations compatible with Lovable. Ordinary Markdown, TypeScript, Python, SQL, and GitHub configuration remain editable source; do not add a second framework or an opaque build layer.
 
-Each work item must name the observed defect or customer/evidence need, the expected improvement, and the evidence that would justify completion. Necessary security/correctness repairs can proceed during the discovery-first freeze; speculative modules cannot become priorities merely because a proposal exists. The site-first public communication and contact milestone is explicitly authorized in [issue #138](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/138) and its [supporting specification](docs/product/gridmind-site-build-and-acceptance-2026-10-17.md); buyer discovery proceeds in parallel. Keep the engineering pass bounded and return to the canonical buyer-evidence priority when essential controls are in place.
+Each work item must name the observed defect or customer/evidence need, the expected improvement, and the evidence that would justify completion. Necessary security/correctness repairs can proceed during the discovery-first freeze; speculative modules cannot become priorities merely because a proposal exists. The current single development milestone and dependency map are in the [Master Plan](docs/gridmind-master-plan-2026-10-11.md). M1 covers #152/#154 connected synthetic acceptance; buyer discovery runs alongside it. Public homepage source already moved to `/` and dashboard to `/dashboard` in #149. Residual contact acceptance in #138 is a scoped discovery dependency, not a competing redesign milestone. Before opening implementation work, answer the plan's fundamental buyer/problem/alternative/input/reviewer/verification questions and name the failed-gate response. Read-only release preparation and necessary security corrections remain permitted within their issue scope.
 
 [CODEOWNERS](.github/CODEOWNERS) routes responsibility. [Security reporting](SECURITY.md), [support](SUPPORT.md), and the [change history](CHANGELOG.md) have distinct purposes. Dependency PRs require review and Lovable compatibility checks; they are never automatically merged. Major application upgrades are excluded from routine dependency updates and require a separate explicit compatibility decision. Bun and GitHub Actions update configuration follows the [GitHub supported ecosystems](https://docs.github.com/en/code-security/reference/supply-chain-security/supported-ecosystems-and-repositories).
