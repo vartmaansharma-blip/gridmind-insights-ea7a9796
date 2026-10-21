@@ -93,11 +93,21 @@ export class GoogleProviderError extends Error {
     this.name = "GoogleProviderError";
   }
 }
+// The generated client is not edited: mirror its documented PUBLIC fallback
+// config so both the browser and preflight select the same Supabase project,
+// even when VITE_* variables are missing in a preview build. A regression
+// test checks these fallback literals against the generated client.
+export function googlePublicConfig(env: { url?: string; key?: string }) {
+  return {
+    url: env.url || "https://bvqmvgbfqhgczwbvlqkk.supabase.co",
+    key: env.key || "sb_publishable_iuJmWQyqOOE2KyRFhfLVWw_wOjPF6wV",
+  };
+}
 export async function requireGoogleProvider(
-  client: Pick<SupabaseClient, "supabaseUrl" | "supabaseKey">,
+  url: string,
+  key: string,
   fetcher: typeof fetch = fetch,
 ) {
-  const { supabaseUrl: url, supabaseKey: key } = client;
   if (!url || !key || key.startsWith("sb_secret_")) {
     throw new GoogleProviderError("configuration_missing");
   }
