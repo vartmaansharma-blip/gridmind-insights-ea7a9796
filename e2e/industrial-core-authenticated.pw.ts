@@ -70,7 +70,14 @@ test("core persists a reviewed decision through real Auth/HTTP, denies foreign t
     await region.getByLabel("Core plant ID").fill(String(factory));
     const workspaceId = crypto.randomUUID();
     await region.getByLabel("Core workspace UUID").fill(workspaceId);
+    const createdResponse = page.waitForResponse(
+      (r) => r.url().endsWith("/api/industrial-core") && r.request().method() === "POST",
+    );
     await region.getByRole("button", { name: "Create synthetic workspace", exact: true }).click();
+    const created = await createdResponse;
+    // Log only the API's stable error category on failure, never session/request data.
+    const category = created.ok() ? "ok" : String((await created.json()).error);
+    expect(created.status(), `Workspace create: ${category}`).toBe(200);
     await expect(region.getByText(/Saved revision 1;/)).toBeVisible();
     const base = { workspaceId, factoryId: factory };
     const reviewPage = await reviewerContext.newPage();
