@@ -42,7 +42,7 @@ export async function handleConnectedInvestigation(request: Request): Promise<Re
 }
 export async function handleAuthenticatedCaseRequest(
   request: Request,
-  rpcName: "investigation_store" | "portal_store",
+  rpcName: "investigation_store" | "portal_store" | "compressed_air_store",
   execute: (store: CaseStore, actor: string, raw: unknown) => Promise<unknown>,
 ): Promise<Response> {
   if (request.method !== "POST") return reply({ error: "METHOD_NOT_ALLOWED" }, 405);
@@ -82,6 +82,10 @@ export async function handleAuthenticatedCaseRequest(
           // Codes and operation names only: never log SQL details, tokens or payloads.
           console.error("Case RPC failed", { rpc: rpcName, operation: args._op, code });
           const message = result.error.message;
+          if (rpcName === "compressed_air_store") {
+            if (message === "COMPRESSED_AIR_DISABLED") throw new CaseError(message, 503);
+            if (message === "AIR_REVISION_MISSING") throw new CaseError(message, 409);
+          }
           if (code === "42501")
             throw new CaseError(
               permissionErrors.has(message) ? message : "CASE_ACCESS_DENIED",
