@@ -1,9 +1,9 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Principal } from "@/lib/investigation/portal-contract";
 
-export type AuthDestination = "customer" | "team" | undefined;
+export type AuthDestination = "customer" | "team" | "profile" | undefined;
 export function authDestination(value: unknown): AuthDestination {
-  return value === "customer" || value === "team" ? value : undefined;
+  return value === "customer" || value === "team" || value === "profile" ? value : undefined;
 }
 
 // The fixed same-origin route and enum prevent open redirects. Supabase must
@@ -75,6 +75,7 @@ export async function finishGoogleSignIn(
 // returns no private cases until an owner explicitly grants case access.
 // This customer *intent* must never be interpreted as a factory/team grant.
 export function workspaceDestination(principal: Principal, destination: AuthDestination) {
+  if (destination === "profile") return "/profile" as const;
   if (destination === "customer") return "/cases" as const;
   if (!principal.factories.length && !principal.isCustomer) return null;
   if (!principal.factories.length) return "/cases" as const;
@@ -86,7 +87,8 @@ export function workspaceDestination(principal: Principal, destination: AuthDest
 // initialized Supabase browser client uses. The generated client supports
 // public fallbacks when VITE_* variables are absent (e.g. Lovable previews);
 // checking only import.meta.env caused a false "unavailable" error.
-export type GoogleProviderErrorReason = "provider_disabled" | "configuration_missing" | "provider_check_failed";
+export type GoogleProviderErrorReason =
+  "provider_disabled" | "configuration_missing" | "provider_check_failed";
 export class GoogleProviderError extends Error {
   constructor(readonly reason: GoogleProviderErrorReason) {
     super("Google provider preflight failed");

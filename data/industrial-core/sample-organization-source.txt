@@ -1,0 +1,14 @@
+SYNTHETIC ONLY — GridMind Example Components, Example Components Plant 01, India.
+Composed deterministically from the existing normal two-press physical fixture and finite planner.
+Press 01 runs stamping on line-one; Press 02 runs second-process on line-two.
+The existing products, BOMs, two orders/work orders, suppliers and customer identities remain.
+The first steel lot starts at 300 kg, with 50 kg reserved for the first order; second lot 200 kg.
+Both machine calendars have 480 explicitly usable minutes, 12:00–20:00 UTC on 20 October 2026.
+A shared operator and tool have explicit qualifications for both example processes.
+Each operation uses an illustrative 10 minute setup and 1.2 minutes per produced part.
+The organization has one fictional operations manager, owner and inspection-review persona.
+These are not Auth users, industrial measurements, customer records, causal findings or real approvals.
+Visitor changes are canonical typed commands; each changed record is bound to its own generated
+command and previous-source digest in session memory. Old evaluations retain frozen inputs.
+Generated incidents are fictional observations; physical causes remain unconfirmed.
+Electrical uncertainty must never create a verified machine failure.

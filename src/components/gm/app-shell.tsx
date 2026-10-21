@@ -1,3 +1,4 @@
+import { useNavigationAccess } from "@/lib/navigation-context";
 import { STAFF_NAV } from "./dashboard-nav";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useState, useEffect, type ReactNode } from "react";
@@ -119,13 +120,38 @@ export function AddFactoryDialog({
 }
 
 export function AppShell({ children }: { children: ReactNode }) {
-  const { factories, active, setActive, analysis, runAnalysis, authenticated, loading, factoryLoadError } = useEnergy();
+  const {
+    factories,
+    active,
+    setActive,
+    analysis,
+    runAnalysis,
+    authenticated,
+    loading,
+    factoryLoadError,
+  } = useEnergy();
   const [addOpen, setAddOpen] = useState(false);
-  const navigate = useNavigate();
-
+  const { setAccess } = useNavigationAccess();
   useEffect(() => {
-    if (authenticated && !loading && !active && !factoryLoadError && !addOpen) setAddOpen(true);
-  }, [authenticated, loading, active, factoryLoadError, addOpen]);
+    let cancelled = false;
+    if (!authenticated) {
+      setAccess({ userId: null, factories: false, staff: false, customer: false });
+      return;
+    }
+    void supabase.auth.getUser().then(({ data, error }) => {
+      if (!cancelled && !error && data.user)
+        setAccess({
+          userId: data.user.id,
+          factories: factories.some((f) => !f.isDemo) && !factoryLoadError,
+          staff: factories.some((f) => !f.isDemo) && !factoryLoadError,
+          customer: false,
+        });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [authenticated, factories, factoryLoadError, setAccess]);
+  const navigate = useNavigate();
 
   const onRun = () => {
     if (!analysis?.hasData) {
@@ -144,7 +170,14 @@ export function AppShell({ children }: { children: ReactNode }) {
     <DashboardFrame
       links={STAFF_NAV}
       header={
-        <div className="flex min-h-16 items-center gap-2 px-4 py-3 sm:px-6">
+        <div className="flex min-h-16 flex-wrap items-center gap-2 px-4 py-3 sm:px-6">
+          <p className="w-full text-xs text-muted-foreground">
+            {active?.isDemo
+              ? "SYNTHETIC legacy dashboard"
+              : authenticated && active
+                ? `Authorized workspace · organization #${active.organizationId} · ${active.name} (factory #${active.id})`
+                : "Personal account · no authorized factory selected"}
+          </p>
           <div className="lg:hidden">
             <Logo />
           </div>
@@ -181,7 +214,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
           <div className="flex items-center gap-2">
             {loading ? (
-              <span role="status" className="text-xs text-muted-foreground">Checking sign-in…</span>
+              <span role="status" className="text-xs text-muted-foreground">
+                Checking sign-in…
+              </span>
             ) : authenticated ? (
               <Button variant="outline" size="sm" onClick={() => void supabase.auth.signOut()}>
                 Sign out
@@ -233,7 +268,8 @@ export function AppShell({ children }: { children: ReactNode }) {
             <h1 className="text-xl font-semibold">Factory records are temporarily unavailable</h1>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{factoryLoadError}</p>
             <p className="mt-2 text-xs text-muted-foreground">
-              Your account access and your factory-data connection are separate. No new factory was created.
+              Your account access and your factory-data connection are separate. No new factory was
+              created.
             </p>
           </div>
         </section>
@@ -245,16 +281,20 @@ export function AppShell({ children }: { children: ReactNode }) {
             </div>
             <div className="eyebrow">Workspace setup</div>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight">
-              Create your first factory
+              Your personal GridMind account
             </h1>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-muted-foreground">
-              Your account is authenticated, but it has no factory membership yet. Create the
-              factory workspace before entering operational data. GridMind will keep this workspace
-              private and factory-scoped.
+              Your account is authenticated, but it has no authorized factory membership. Use your
+              personal profile or explore the fictional organization. A business is not required.
             </p>
-            <Button variant="cta" className="mt-6" onClick={() => setAddOpen(true)}>
-              <Plus /> Create factory
-            </Button>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Button variant="cta" asChild>
+                <Link to="/profile">Open personal profile</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link to="/explore">Explore GridMind</Link>
+              </Button>
+            </div>
           </div>
         </section>
       ) : (

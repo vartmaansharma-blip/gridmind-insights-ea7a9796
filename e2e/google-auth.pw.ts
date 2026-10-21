@@ -58,7 +58,9 @@ async function callback(page: Page, destination = "team") {
   );
 }
 
-test("branded Google control stays accessible and password reveal does not submit the form", async ({ page }) => {
+test("branded Google control stays accessible and password reveal does not submit the form", async ({
+  page,
+}) => {
   await fixture(page);
   await page.goto("/auth?destination=customer");
   const googleButton = page.getByRole("button", { name: "Continue with Google" });
@@ -80,7 +82,9 @@ test("branded Google control stays accessible and password reveal does not submi
   await expect(page).toHaveURL(/\/auth\?destination=customer$/);
 });
 
-test("auth actions meet mobile tap targets and reduced motion avoids decorative transitions", async ({ page }) => {
+test("auth actions meet mobile tap targets and reduced motion avoids decorative transitions", async ({
+  page,
+}) => {
   await fixture(page);
   await page.setViewportSize({ width: 380, height: 760 });
   await page.emulateMedia({ reducedMotion: "reduce" });
@@ -98,9 +102,13 @@ test("auth actions meet mobile tap targets and reduced motion avoids decorative 
   await google.focus();
   await expect(google).toBeFocused();
   const transitionSeconds = await google.evaluate((element) =>
-    getComputedStyle(element).transitionDuration.split(",").map((duration) => parseFloat(duration)),
+    getComputedStyle(element)
+      .transitionDuration.split(",")
+      .map((duration) => parseFloat(duration)),
   );
-  expect(transitionSeconds.every((duration) => Number.isFinite(duration) && duration <= 0.001)).toBe(true);
+  expect(
+    transitionSeconds.every((duration) => Number.isFinite(duration) && duration <= 0.001),
+  ).toBe(true);
 });
 
 test("server-rendered Google and password controls are disabled until hydration", async ({
@@ -144,7 +152,9 @@ test("disabled provider stays on auth with usable email sign-in", async ({ page 
   await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeEnabled();
   await expect(page).toHaveURL(/\/auth$/);
 });
-test("Google provider settings outage does not expose details or block email sign-in", async ({ page }) => {
+test("Google provider settings outage does not expose details or block email sign-in", async ({
+  page,
+}) => {
   await fixture(page);
   await page.route(`${backend}/auth/v1/settings`, (route) =>
     route.fulfill({ status: 503, body: "private provider configuration" }),
@@ -179,7 +189,9 @@ test("callback without a session fails and restores controls", async ({ page }) 
   await expect(page.getByRole("alert")).toContainText("did not return a session");
   await expect(page.getByLabel("Email", { exact: true })).toBeEnabled();
 });
-test("new prospective customer may request a case without inheriting any factory role", async ({ page }) => {
+test("new prospective customer may request a case without inheriting any factory role", async ({
+  page,
+}) => {
   const writes = await fixture(page, { factories: [], isCustomer: false });
   await callback(page, "customer");
   await expect(page).toHaveURL(new RegExp("/cases/?$"));
@@ -189,7 +201,9 @@ test("new prospective customer may request a case without inheriting any factory
   expect(writes).toEqual([]);
 });
 
-test("already signed-in customer restores a saved session instead of seeing sign-in again", async ({ page }) => {
+test("already signed-in customer restores a saved session instead of seeing sign-in again", async ({
+  page,
+}) => {
   await fixture(page, { factories: [], isCustomer: false });
   await page.addInitScript((saved) => {
     localStorage.setItem("sb-127-auth-token", JSON.stringify(saved));
@@ -202,7 +216,9 @@ test("already signed-in customer restores a saved session instead of seeing sign
   await expect(page.getByRole("button", { name: "Sign in to your workspace" })).toHaveCount(0);
 });
 
-test("returning team user with no grants stays signed in and sees access pending", async ({ page }) => {
+test("returning team user with no grants stays signed in and sees access pending", async ({
+  page,
+}) => {
   await fixture(page);
   await page.addInitScript((saved) => {
     localStorage.setItem("sb-127-auth-token", JSON.stringify(saved));
@@ -215,7 +231,9 @@ test("returning team user with no grants stays signed in and sees access pending
   await expect(page.getByRole("status")).toContainText("Access pending");
 });
 
-test("existing unverified session fails closed and offers normal login without role access", async ({ page }) => {
+test("existing unverified session fails closed and offers normal login without role access", async ({
+  page,
+}) => {
   await fixture(page);
   await page.route(`${backend}/auth/v1/user`, (route) =>
     route.fulfill({ status: 401, json: { code: "bad_jwt", msg: "Expired session" } }),
@@ -356,4 +374,81 @@ test("provider availability network failure restores controls without leaving au
   await expect(page.getByRole("button", { name: "Continue with Google" })).toBeEnabled();
   await expect(page.getByLabel("Email", { exact: true })).toBeEnabled();
   await expect(page).toHaveURL(/\/auth\?destination=customer$/);
+});
+
+async function personalFixture(page: Page, memberships = false) {
+  await fixture(page);
+  let current = {
+    ...user,
+    user_metadata: { ...user.user_metadata, display_name: "Real test account", designation: "" },
+    email_confirmed_at: "2026-01-01T00:00:00Z",
+  };
+  const updates: unknown[] = [];
+  await page.route(`${backend}/auth/v1/user`, async (route) => {
+    if (route.request().method() === "PUT") {
+      const payload = route.request().postDataJSON();
+      updates.push(payload);
+      current = { ...current, user_metadata: { ...current.user_metadata, ...payload.data } };
+    }
+    return route.fulfill({ json: current });
+  });
+  await page.route(`${backend}/rest/v1/**`, (route) => {
+    const table = new URL(route.request().url()).pathname.split("/").at(-1);
+    const rows: Record<string, unknown[]> = {
+      organization_members: [{ organization_id: 1, role: "viewer" }],
+      organizations: [{ id: 1, name: "Verified test organization" }],
+      factory_members: [{ factory_id: 2, organization_id: 1, role: "viewer" }],
+      factories: [{ id: 2, name: "Verified test factory", organization_id: 1 }],
+    };
+    return route.request().method() === "GET"
+      ? route.fulfill({ json: memberships ? (rows[table!] ?? []) : [] })
+      : route.abort();
+  });
+  return updates;
+}
+test("personal account without membership edits only its own metadata and can explore fiction", async ({
+  page,
+}) => {
+  const updates = await personalFixture(page);
+  await callback(page, "profile");
+  await expect(page).toHaveURL(/\/profile$/);
+  await expect(page.getByRole("heading", { name: "Personal profile", exact: true })).toBeVisible();
+  await expect(
+    page.getByText("Context: Personal account without a factory.", { exact: true }),
+  ).toBeVisible();
+  await page.getByLabel("Display name", { exact: true }).fill("Updated Person");
+  await page.getByLabel("Designation — personal metadata", { exact: true }).fill("Engineer");
+  await page.getByRole("button", { name: "Save personal details", exact: true }).click();
+  await expect(page.getByRole("heading", { name: "Updated Person", exact: true })).toBeVisible();
+  expect(updates).toEqual([
+    {
+      data: { display_name: "Updated Person", designation: "Engineer" },
+      code_challenge: null,
+      code_challenge_method: null,
+    },
+  ]);
+  await page.reload();
+  await expect(page.getByLabel("Display name", { exact: true })).toHaveValue("Updated Person");
+  await page.getByRole("link", { name: "Explore sample organization", exact: true }).click();
+  await page.getByRole("button", { name: "Start Exploring", exact: true }).click();
+  await expect(page.getByText("GridMind Example Components", { exact: true })).toBeVisible();
+  await expect(page.getByText(/Demo Operations Manager/).first()).toBeVisible();
+  expect(updates).toHaveLength(1);
+});
+test("profile role labels come from authorized records instead of editable user metadata", async ({
+  page,
+}) => {
+  await personalFixture(page, true);
+  await callback(page, "profile");
+  await expect(page.getByText(/read-only organization role: viewer/)).toBeVisible();
+  await expect(page.getByText(/Verified test factory · factory role: viewer/)).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Open authorized dashboard", exact: true }),
+  ).toHaveAttribute("href", "/dashboard");
+  await expect(page.getByRole("textbox", { name: /role|email|organization/i })).toHaveCount(0);
+  await page.getByRole("button", { name: "Sign out", exact: true }).click();
+  await expect(
+    page.getByRole("heading", { name: "Sign in to view your own profile", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("Verified test organization", { exact: true })).toHaveCount(0);
 });

@@ -1,3 +1,5 @@
+import { PreferencesProvider } from "@/lib/preferences-provider";
+import { NavigationAccessProvider } from "@/lib/navigation-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -17,6 +19,8 @@ import { EnergyStoreProvider } from "@/lib/energy/store";
 import { AppShell } from "@/components/gm/app-shell";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
+import { routeLayout } from "@/lib/route-layout";
+import { GlobalNavigation } from "@/components/gm/global-navigation";
 
 function NotFoundComponent() {
   return (
@@ -24,9 +28,16 @@ function NotFoundComponent() {
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
         <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">The page you're looking for doesn't exist or has been moved.</p>
+        <p className="mt-2 text-sm text-muted-foreground">
+          The page you're looking for doesn't exist or has been moved.
+        </p>
         <div className="mt-6">
-          <Link to="/" className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90">Go home</Link>
+          <Link
+            to="/"
+            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+          >
+            Go home
+          </Link>
         </div>
       </div>
     </div>
@@ -42,11 +53,24 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">This page didn't load</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Something went wrong on our end. You can try refreshing or head back home.</p>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Something went wrong on our end. You can try refreshing or head back home.
+        </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <Button onClick={() => { router.invalidate(); reset(); }}>Try again</Button>
-          <Button variant="outline" asChild><Link to="/">Go home</Link></Button>
+          <Button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+          >
+            Try again
+          </Button>
+          <Button variant="outline" asChild>
+            <Link to="/">Go home</Link>
+          </Button>
         </div>
       </div>
     </div>
@@ -59,7 +83,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "GridMind — Industrial Problem Resolution" },
-      { name: "description", content: "An evidence-led industrial problem-resolution company. Investigate, review and decide with clear limits on uncertainty." },
+      {
+        name: "description",
+        content:
+          "An evidence-led industrial problem-resolution company. Investigate, review and decide with clear limits on uncertainty.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -68,7 +96,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.png", type: "image/png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -80,7 +111,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 function RootShell({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head><HeadContent /></head>
+      <head>
+        <HeadContent />
+      </head>
       <body>
         {children}
         <Scripts />
@@ -90,10 +123,29 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
+  return (
+    <PreferencesProvider>
+      <NavigationAccessProvider>
+        <RouteContent />
+      </NavigationAccessProvider>
+    </PreferencesProvider>
+  );
+}
+function RouteContent() {
   const { queryClient } = Route.useRouteContext();
-  const syntheticWorkspace = useRouterState({ select: (state) => ["/", "/customer-demo", "/investigations", "/investigations-connected", "/auth", "/website", "/cases", "/design-preview", "/electricity-demo"].includes(state.location.pathname) || state.location.pathname.startsWith("/cases/") || state.location.pathname.startsWith("/team/") });
+  const currentPath = useRouterState({ select: (state) => state.location.pathname });
+  const layout = routeLayout(currentPath);
   // Case workspaces initialize only the services requested by their own route.
-  if (syntheticWorkspace) return <><Outlet /><Toaster position="top-center" /></>;
+  if (layout !== "operational")
+    return (
+      <>
+        {!["/", "/website", "/design-preview"].includes(currentPath) && layout !== "sample" && (
+          <GlobalNavigation />
+        )}
+        <Outlet />
+        <Toaster position="top-center" />
+      </>
+    );
   return (
     <QueryClientProvider client={queryClient}>
       <EnergyStoreProvider>

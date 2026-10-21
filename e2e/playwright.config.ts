@@ -20,6 +20,7 @@ export default defineConfig({
     "portal-authenticated.pw.ts",
     "electricity-authenticated.pw.ts",
     "industrial-core-authenticated.pw.ts",
+    "profile-authenticated.pw.ts",
   ],
   fullyParallel: false,
   workers: 1,

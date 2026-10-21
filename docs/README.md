@@ -2,6 +2,8 @@
 
 [Recovered GridMind conversation decisions](gridmind-recovered-conversation-decisions-2026-10-21.md) — 84 indexed decisions/requirements from earlier chats; distinguishes current, historical, proposed and unverified work. Supporting retrieval index; Master Plan remains canonical.
 
+[Connected sample workspace and functional Lovable handoff](product/gridmind-sample-workspace.md) — one anonymous organization, real account separation, source transparency, verification and capability matrix.
+
 [First-customer sample walkthrough](product/gridmind-customer-demo.md) — invented dataset, readable engine decisions and reproducible JSON export.
 
 [GM-CORE-003 shared-core implementation](engineering/gridmind-gm-core-003-foundation.md) — typed operating model, deterministic constraint/decision/economics/matching/workflow services, isolated authority/storage, four synthetic demonstrations and verification limits. Supporting contract; no production/customer approval.

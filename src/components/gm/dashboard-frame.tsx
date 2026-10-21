@@ -1,4 +1,6 @@
+import { usePreferences } from "@/lib/preferences";
 import type { ReactNode } from "react";
+import { GlobalNavigation } from "./global-navigation";
 import { Link } from "@tanstack/react-router";
 import {
   LayoutDashboard,
@@ -41,15 +43,24 @@ export function DashboardFrame({
   floating?: ReactNode;
   sidebarFooter?: ReactNode;
 }) {
+  const { preferences } = usePreferences();
   return (
-    <div className="min-h-screen bg-background lg:pl-64">
+    <div
+      className={
+        preferences.sidebarCollapsed
+          ? "min-h-screen bg-background"
+          : "min-h-screen bg-background lg:pl-64"
+      }
+    >
       <a
         href="#workspace-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-card focus:p-3"
       >
         Skip to content
       </a>
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-sidebar-border bg-rail p-4 text-rail-foreground lg:flex">
+      <aside
+        className={`fixed inset-y-0 left-0 z-30 hidden w-64 flex-col border-r border-sidebar-border bg-rail p-4 text-rail-foreground ${preferences.sidebarCollapsed ? "" : "lg:flex"}`}
+      >
         <DashboardBrand />
         <nav aria-label="Workspace navigation" className="mt-8 grid gap-0.5">
           {links.map((n) => (
@@ -78,6 +89,7 @@ export function DashboardFrame({
         </div>
       </aside>
       <header className="sticky top-0 z-20 border-b border-border bg-background/95 backdrop-blur">
+        <GlobalNavigation />
         {header}
       </header>
       <main
