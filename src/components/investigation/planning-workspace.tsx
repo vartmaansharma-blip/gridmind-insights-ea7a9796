@@ -211,9 +211,7 @@ export function PlanningWorkspace() {
       className="my-6 min-w-0 rounded-xl border border-border bg-card p-5 space-y-4"
     >
       <div>
-        <p className="text-xs font-semibold uppercase tracking-wide text-primary">
-          Synthetic operating workflow
-        </p>
+        <p className="eyebrow font-mono">Synthetic operating workflow</p>
         <h2 id="finite-planning-title" className="text-2xl font-semibold">
           Finite production planning
         </h2>
@@ -244,7 +242,7 @@ export function PlanningWorkspace() {
         </select>
       </label>
       <div className="flex flex-wrap gap-2">
-        <Button disabled={!ready || busy} onClick={() => void run()}>
+        <Button variant="cta" disabled={!ready || busy} onClick={() => void run()}>
           {busy ? "Planning…" : "Plan invented orders"}
         </Button>
         <Button variant="outline" disabled={!ready || busy || !result} onClick={download}>

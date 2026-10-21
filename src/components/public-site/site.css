@@ -1,7 +1,7 @@
 /* Public site styles. Everything is scoped under .gm-site so the dashboard theme is untouched. */
 .gm-site {
-  --gm-brand-green: #9ADD00;
-  --gm-brand-green-foreground: #080D08;
+  --gm-brand-green: var(--brand-green, #9ADD00);
+  --gm-brand-green-foreground: var(--brand-green-foreground, #080D08);
   --gm-brand-green-translucent: rgba(154, 221, 0, 0.16);
   --gm-ink: #080C0B;
   --gm-surface: #121B17;

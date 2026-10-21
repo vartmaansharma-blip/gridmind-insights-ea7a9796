@@ -18,6 +18,15 @@ test("finite planning uses the real server path, explains blocked orders and exp
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto("/investigations");
   const region = page.getByRole("region", { name: "Finite production planning", exact: true });
+  await expect(region.getByRole("button", { name: "Plan invented orders" })).toHaveCSS(
+    "background-color",
+    "rgb(154, 221, 0)",
+  );
+  await expect(region.getByRole("heading", { name: "Finite production planning" })).toHaveCSS(
+    "font-family",
+    /Space Grotesk/,
+  );
+  await expect(region).toHaveCSS("font-family", /Manrope/);
   const response = page.waitForResponse(
     (r) =>
       r.url().endsWith("/api/industrial-core") &&

@@ -1,5 +1,9 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Established GridMind identity retained — 21 October 2026
+
+Founder explicitly reaffirmed that changing workflows must retain GridMind's existing theme, color, typography and industrial character. The existing Manrope body, Space Grotesk display and IBM Plex Mono technical typefaces remain. One shared `--brand-green: #9ADD00` with existing dark foreground now supplies both the public site's unchanged green and the application CTA variant; new planner and customer-walkthrough primary actions use that existing component. Mineral working surfaces, dark industrial public presentation, green identity, routes and dashboard remain. Browser acceptance checks the actual CTA color and inherited font families; no replacement brand or new font was introduced.
+
 ## GM-OPERATIONS-001 — finite planning implementation, 21 October 2026
 
 Implemented a bounded multi-order candidate planner through the existing industrial-core entities, rules, evidence, Auth and revision store. Two fictional work orders compete for one machine, qualified operator and tool. The deterministic earliest-due/earliest-finish heuristic conserves integral base-unit inventory, protects other orders' reservations, includes setup, obeys precedence and explicit shared calendars, and excludes held material, unsupported resources, unreviewed evidence and unresolved downtime. Failed jobs release their tentative allocations atomically before considering the next order. Supplied owner preferences cannot override mandatory requirements. No optimality claim.
