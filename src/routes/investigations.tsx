@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
 
 import { IndustrialCoreWorkspace } from "@/components/investigation/industrial-core-workspace";
@@ -8,6 +8,12 @@ function SyntheticInvestigations() {
   return (
     <>
       <div className="mx-auto max-w-7xl px-4 pt-6">
+        <Link
+          to="/customer-demo"
+          className="inline-block mb-4 text-primary underline underline-offset-4"
+        >
+          Open the customer sample walkthrough
+        </Link>
         <ResolveTriagePreview />
         <IndustrialCoreWorkspace />
       </div>

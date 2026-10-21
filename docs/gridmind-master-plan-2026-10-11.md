@@ -10,6 +10,8 @@ Preserve the prior plan and all reusable work. Reuse current organization/factor
 
 ## 1. Ambition and current commercial decision
 
+**21 October demonstration authorization:** after #167, the founder authorized a fictional first-customer dataset, readable walkthrough and full-flow correctness fixes on current main. The [sample contract](product/gridmind-customer-demo.md) reuses the engine and records acceptance on #166. Merge verified work through required repository checks. This is a demonstration, not buyer evidence or production/customer-data activation; preserve the earlier strategy and separate review/release gates.
+
 GridMind aims to become a globally relevant **industrial and critical-infrastructure intelligence company**, serving India and eventually international markets. Help organizations investigate consequential operational problems, understand dependencies, make defensible decisions, and improve the reliability and economics of physical systems. Prove one valuable product before expanding; each expansion needs separate demand, capability, safety and economic evidence.
 
 **GridMind has not yet identified or validated its number-one commercial business opportunity.** The earlier Manufacturing Quality-Loss Intelligence ranking was premature and is **withdrawn as an approved commercial decision**. Credible manufacturing problems and working software did not establish that our proposed tool addresses the binding cause better than existing alternatives. Finishing/quality is a candidate; neither the provisional finishing-first wording in #156/#158/#160/#162 nor earlier invoice-first/R3-first priorities approve a commercial winner.

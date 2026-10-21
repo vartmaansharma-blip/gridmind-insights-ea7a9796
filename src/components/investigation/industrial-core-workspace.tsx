@@ -111,10 +111,11 @@ export function IndustrialCoreWorkspace() {
           aria-label="Industrial core scenario"
           className="mt-2 block w-full max-w-md rounded border bg-background p-2"
           value={scenario}
-          disabled={!ready || busy}
+          disabled={!ready || busy || !!pending.current}
           onChange={(e) => {
             setScenario(e.target.value as keyof typeof scenarios);
             setDemo(null);
+            setStored(null);
           }}
         >
           {Object.entries(scenarios).map(([id, label]) => (
@@ -276,7 +277,7 @@ export function IndustrialCoreWorkspace() {
               Evaluate saved inputs
             </Button>
             <Button
-              disabled={!ready || busy || !evaluation?.recommendation}
+              disabled={!ready || busy || !stored?.snapshot?.evaluation?.recommendation}
               variant="outline"
               onClick={() =>
                 void mutate("request_approval", {

@@ -1,0 +1,2343 @@
+{
+  "schemaVersion": "gridmind/customer-demo/v1",
+  "origin": "synthetic",
+  "scenario": "A",
+  "label": "FICTIONAL SAMPLE — invented data, simulated source review; no real customer, approval, transaction or verified savings",
+  "story": {
+    "title": "Can we accept this component order?",
+    "question": "A fictional manufacturer receives an order for 100 components. Is the specified revision feasible with permitted material and the available press?"
+  },
+  "replayAt": "2026-10-20T12:00:00.000Z",
+  "validUntil": "2026-10-21T00:00:00.000Z",
+  "inputSha256": "9506c64ac3fbaa3fa3d8132d41e7777d8cc94043e63ed5432914979170703e4b",
+  "source": {
+    "id": "source",
+    "title": "Invented manufacturing replay — not real company records",
+    "source": "data/industrial-core/synthetic-source.txt",
+    "digest": "ffa784b1657e0c9b4020778fca1c9aa2a42e1cb127a0287357bfc1f755284a47",
+    "observedAt": "2026-10-20T00:00:00.000Z",
+    "expiresAt": "2026-10-21T00:00:00.000Z",
+    "verification": "verified",
+    "origin": "synthetic"
+  },
+  "operatingSummary": {
+    "manufacturer": "SYNTHETIC Manufacturer A",
+    "customer": "SYNTHETIC Buyer B",
+    "product": "Illustrative pressed component",
+    "productRevision": "R2",
+    "orderQuantity": 100,
+    "orderUnit": "part",
+    "materialPerPart": 1,
+    "materialUnit": "kg",
+    "requiredMaterial": 100,
+    "lotQuantity": 200,
+    "reservedQuantity": 50,
+    "unreservedQuantity": 150,
+    "calendarMinutes": 360,
+    "requiredMinutes": 120,
+    "resourceAvailable": true,
+    "requiredAuthorities": [
+      "commercial",
+      "safety"
+    ]
+  },
+  "conclusion": {
+    "status": "eligible",
+    "title": "One supplied alternative meets the sample checks",
+    "next": "Ask the authorized commercial and safety reviewers to approve the exact decision before any supported action."
+  },
+  "checks": [
+    {
+      "actionId": "produce-approved",
+      "label": "Use approved existing material and press",
+      "status": "eligible",
+      "checks": [
+        {
+          "ruleId": "approved-steel",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "producer",
+            "op": "in",
+            "value": [
+              "approved-producer"
+            ],
+            "unit": "id"
+          }
+        },
+        {
+          "ruleId": "revision",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "revision",
+            "op": "eq",
+            "value": "R2",
+            "unit": "id"
+          }
+        },
+        {
+          "ruleId": "material",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "inventoryQuantity",
+            "op": "gte",
+            "value": 100,
+            "unit": "kg"
+          }
+        },
+        {
+          "ruleId": "capacity",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "capacityMinutes",
+            "op": "gte",
+            "value": 120,
+            "unit": "minute"
+          }
+        },
+        {
+          "ruleId": "dependency",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "processReady",
+            "op": "eq",
+            "value": true,
+            "unit": "boolean"
+          }
+        },
+        {
+          "ruleId": "safety",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "safetySatisfied",
+            "op": "eq",
+            "value": true,
+            "unit": "boolean"
+          }
+        }
+      ]
+    },
+    {
+      "actionId": "buy-alternative",
+      "label": "Cheaper unapproved producer (invented)",
+      "status": "prohibited",
+      "checks": [
+        {
+          "ruleId": "approved-steel",
+          "version": 1,
+          "status": "prohibited",
+          "reason": "MANDATORY_REQUIREMENT_FAILED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "This alternative does not meet a mandatory requirement.",
+          "requirement": {
+            "field": "producer",
+            "op": "in",
+            "value": [
+              "approved-producer"
+            ],
+            "unit": "id"
+          }
+        },
+        {
+          "ruleId": "revision",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "revision",
+            "op": "eq",
+            "value": "R2",
+            "unit": "id"
+          }
+        },
+        {
+          "ruleId": "material",
+          "version": 1,
+          "status": "unknown",
+          "reason": "FACT_MISSING_OR_STALE",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "fact missing or stale",
+          "requirement": {
+            "field": "inventoryQuantity",
+            "op": "gte",
+            "value": 100,
+            "unit": "kg"
+          }
+        },
+        {
+          "ruleId": "capacity",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "capacityMinutes",
+            "op": "gte",
+            "value": 120,
+            "unit": "minute"
+          }
+        },
+        {
+          "ruleId": "dependency",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "processReady",
+            "op": "eq",
+            "value": true,
+            "unit": "boolean"
+          }
+        },
+        {
+          "ruleId": "safety",
+          "version": 1,
+          "status": "eligible",
+          "reason": "CONDITION_SATISFIED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "The reviewed sample requirement is satisfied.",
+          "requirement": {
+            "field": "safetySatisfied",
+            "op": "eq",
+            "value": true,
+            "unit": "boolean"
+          }
+        },
+        {
+          "ruleId": "operating-model",
+          "version": 1,
+          "status": "unknown",
+          "reason": "BOM_MATERIAL_COMPARISON_UNRESOLVED",
+          "evidenceIds": [
+            "source"
+          ],
+          "explanation": "bom material comparison unresolved",
+          "requirement": null
+        }
+      ]
+    }
+  ],
+  "opportunity": null,
+  "economics": null,
+  "workflow": {
+    "phase": "awaiting_approval",
+    "execution": "not_executed",
+    "outcome": "unverified"
+  },
+  "customerInputs": [
+    {
+      "record": "Order and engineering revision",
+      "fields": "Customer, part, revision, quantity, due date",
+      "sampleEntityIds": [
+        "order",
+        "part",
+        "bom",
+        "routing"
+      ]
+    },
+    {
+      "record": "Material and reservations",
+      "fields": "Lot, producer, unit, released quantity, commitments",
+      "sampleEntityIds": [
+        "steel",
+        "lot",
+        "reservation",
+        "inspection"
+      ]
+    },
+    {
+      "record": "Resources and production events",
+      "fields": "Resource capability, shift minutes, operation sequence, downtime",
+      "sampleEntityIds": [
+        "press",
+        "operation",
+        "shift"
+      ]
+    },
+    {
+      "record": "Rules and authorization",
+      "fields": "Approved source, rule version, evidence, effective period, responsible reviewer",
+      "sampleEntityIds": [
+        "approved-producer"
+      ]
+    }
+  ],
+  "input": {
+    "origin": "synthetic",
+    "schemaVersion": "gm-core-003/v1",
+    "organizationId": 1,
+    "factoryId": 1,
+    "asOf": "2026-10-20T12:00:00.000Z",
+    "validUntil": "2026-10-21T00:00:00.000Z",
+    "sourceId": "bundled-A",
+    "syntheticClock": null,
+    "entities": [
+      {
+        "id": "industry",
+        "kind": "industry",
+        "label": "Fictional industry",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "code": "fictional-metal-components",
+          "parentId": null
+        }
+      },
+      {
+        "id": "seller",
+        "kind": "company",
+        "label": "Fictional seller",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "legalName": "SYNTHETIC Manufacturer A",
+          "industryId": "industry",
+          "organizationRef": null
+        }
+      },
+      {
+        "id": "buyer",
+        "kind": "company",
+        "label": "Fictional buyer",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "legalName": "SYNTHETIC Buyer B",
+          "industryId": "industry",
+          "organizationRef": null
+        }
+      },
+      {
+        "id": "approved-producer",
+        "kind": "company",
+        "label": "Fictional approved-producer",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "legalName": "SYNTHETIC Approved Producer",
+          "industryId": "industry",
+          "organizationRef": null
+        }
+      },
+      {
+        "id": "alternative-producer",
+        "kind": "company",
+        "label": "Fictional alternative-producer",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "legalName": "SYNTHETIC Alternative Producer",
+          "industryId": "industry",
+          "organizationRef": null
+        }
+      },
+      {
+        "id": "plant",
+        "kind": "facility",
+        "label": "Fictional plant",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "companyId": "seller",
+          "factoryRef": 1
+        }
+      },
+      {
+        "id": "spec",
+        "kind": "specification",
+        "label": "Fictional spec",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "version": "S1",
+          "requirements": []
+        }
+      },
+      {
+        "id": "part",
+        "kind": "product",
+        "label": "Fictional part",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "revision": "R2",
+          "specificationId": "spec",
+          "unit": "part"
+        }
+      },
+      {
+        "id": "steel",
+        "kind": "material",
+        "label": "Fictional steel",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "specificationId": "spec",
+          "producerId": "approved-producer",
+          "unit": "kg"
+        }
+      },
+      {
+        "id": "stamping",
+        "kind": "process",
+        "label": "Fictional stamping",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "inputIds": [
+            "steel"
+          ],
+          "outputIds": [
+            "part"
+          ]
+        }
+      },
+      {
+        "id": "press",
+        "kind": "resource",
+        "label": "Fictional press",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "resourceType": "machine",
+          "facilityId": "plant",
+          "assetRef": null,
+          "processIds": [
+            "stamping"
+          ]
+        }
+      },
+      {
+        "id": "press-capability",
+        "kind": "capability",
+        "label": "Fictional press-capability",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "resourceId": "press",
+          "processId": "stamping",
+          "verification": "verified"
+        }
+      },
+      {
+        "id": "supply-relation",
+        "kind": "relationship",
+        "label": "Fictional supply-relation",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "companyId": "seller",
+          "counterpartyId": "approved-producer",
+          "relationship": "supplier"
+        }
+      },
+      {
+        "id": "customer-relation",
+        "kind": "relationship",
+        "label": "Fictional customer-relation",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "companyId": "seller",
+          "counterpartyId": "buyer",
+          "relationship": "customer"
+        }
+      },
+      {
+        "id": "bom",
+        "kind": "bom",
+        "label": "Fictional bom",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "productId": "part",
+          "revision": "R2",
+          "materialIds": [
+            "steel"
+          ],
+          "quantities": {
+            "steel": 1
+          },
+          "quantityUnits": {
+            "steel": "kg"
+          }
+        }
+      },
+      {
+        "id": "order",
+        "kind": "order",
+        "label": "Fictional order",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "customerId": "buyer",
+          "productId": "part",
+          "revision": "R2",
+          "quantity": 100,
+          "dueAt": "2026-10-21T00:00:00.000Z"
+        }
+      },
+      {
+        "id": "operation",
+        "kind": "operation",
+        "label": "Fictional operation",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "processId": "stamping",
+          "resourceId": "press",
+          "predecessorIds": []
+        }
+      },
+      {
+        "id": "routing",
+        "kind": "routing",
+        "label": "Fictional routing",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "productId": "part",
+          "revision": "R2",
+          "operationIds": [
+            "operation"
+          ]
+        }
+      },
+      {
+        "id": "work-order",
+        "kind": "work_order",
+        "label": "Fictional work-order",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "orderId": "order",
+          "routingId": "routing",
+          "quantity": 100
+        }
+      },
+      {
+        "id": "shift",
+        "kind": "shift",
+        "label": "Fictional shift",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "resourceId": "press",
+          "facilityId": "plant",
+          "startsAt": "2026-10-20T12:00:00.000Z",
+          "endsAt": "2026-10-20T20:00:00.000Z",
+          "availableMinutes": 360
+        }
+      },
+      {
+        "id": "lot",
+        "kind": "lot",
+        "label": "Fictional lot",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "materialId": "steel",
+          "producerId": "approved-producer",
+          "quantity": 200,
+          "reserved": 50,
+          "unit": "kg",
+          "quality": "released"
+        }
+      },
+      {
+        "id": "reservation",
+        "kind": "reservation",
+        "label": "Fictional reservation",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "lotId": "lot",
+          "orderId": "order",
+          "quantity": 50,
+          "unit": "kg"
+        }
+      },
+      {
+        "id": "commitment",
+        "kind": "commitment",
+        "label": "Fictional commitment",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "supplierId": "approved-producer",
+          "materialId": "steel",
+          "quantity": 100,
+          "dueAt": "2026-10-21T00:00:00.000Z"
+        }
+      },
+      {
+        "id": "inspection",
+        "kind": "inspection",
+        "label": "Fictional inspection",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "lotId": "lot",
+          "status": "released",
+          "inspectorRef": "SYNTHETIC-inspector"
+        }
+      },
+      {
+        "id": "shipment",
+        "kind": "shipment",
+        "label": "Fictional shipment",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "orderId": "order",
+          "lotIds": [
+            "lot"
+          ],
+          "status": "planned"
+        }
+      },
+      {
+        "id": "invoice",
+        "kind": "invoice",
+        "label": "Fictional invoice",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "orderId": "order",
+          "currency": "INR",
+          "minorUnits": 100000,
+          "status": "draft"
+        }
+      },
+      {
+        "id": "demand",
+        "kind": "demand",
+        "label": "Fictional demand",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "companyId": "buyer",
+          "productId": "part",
+          "quantity": 75,
+          "unit": "kg",
+          "status": "potential"
+        }
+      },
+      {
+        "id": "opportunity",
+        "kind": "opportunity",
+        "label": "Fictional opportunity",
+        "version": 1,
+        "ownerOrganizationId": 1,
+        "basis": "record",
+        "evidenceIds": [
+          "source"
+        ],
+        "validFrom": "2026-10-20T00:00:00.000Z",
+        "validUntil": "2026-10-21T00:00:00.000Z",
+        "attributes": {
+          "sellerId": "seller",
+          "buyerId": "buyer",
+          "productId": "part",
+          "kind": "surplus"
+        }
+      }
+    ],
+    "relationships": [
+      {
+        "id": "part-material",
+        "from": "part",
+        "to": "steel",
+        "type": "requires",
+        "evidenceIds": [
+          "source"
+        ]
+      },
+      {
+        "id": "part-operation",
+        "from": "part",
+        "to": "operation",
+        "type": "requires",
+        "evidenceIds": [
+          "source"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "source",
+        "title": "Invented manufacturing replay — not real company records",
+        "source": "data/industrial-core/synthetic-source.txt",
+        "digest": "ffa784b1657e0c9b4020778fca1c9aa2a42e1cb127a0287357bfc1f755284a47",
+        "observedAt": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "verification": "verified",
+        "origin": "synthetic"
+      }
+    ],
+    "constraints": [
+      {
+        "id": "approved-steel",
+        "ownerOrganizationId": 1,
+        "version": 1,
+        "category": "approved_source",
+        "evidenceIds": [
+          "source"
+        ],
+        "scope": {
+          "customerId": "buyer",
+          "productId": "part",
+          "actionKinds": [
+            "produce"
+          ]
+        },
+        "effectiveFrom": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "condition": {
+          "field": "producer",
+          "op": "in",
+          "value": [
+            "approved-producer"
+          ],
+          "unit": "id"
+        },
+        "effect": "require",
+        "verification": "verified",
+        "authority": "commercial",
+        "exceptionPermitted": false,
+        "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+        "exception": null
+      },
+      {
+        "id": "revision",
+        "ownerOrganizationId": 1,
+        "version": 1,
+        "category": "revision",
+        "evidenceIds": [
+          "source"
+        ],
+        "scope": {
+          "customerId": "buyer",
+          "productId": "part",
+          "actionKinds": [
+            "produce"
+          ]
+        },
+        "effectiveFrom": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "condition": {
+          "field": "revision",
+          "op": "eq",
+          "value": "R2",
+          "unit": "id"
+        },
+        "effect": "require",
+        "verification": "verified",
+        "authority": "quality",
+        "exceptionPermitted": false,
+        "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+        "exception": null
+      },
+      {
+        "id": "material",
+        "ownerOrganizationId": 1,
+        "version": 1,
+        "category": "inventory",
+        "evidenceIds": [
+          "source"
+        ],
+        "scope": {
+          "customerId": "buyer",
+          "productId": "part",
+          "actionKinds": [
+            "produce"
+          ]
+        },
+        "effectiveFrom": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "condition": {
+          "field": "inventoryQuantity",
+          "op": "gte",
+          "value": 100,
+          "unit": "kg"
+        },
+        "effect": "require",
+        "verification": "verified",
+        "authority": "quality",
+        "exceptionPermitted": false,
+        "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+        "exception": null
+      },
+      {
+        "id": "capacity",
+        "ownerOrganizationId": 1,
+        "version": 1,
+        "category": "capacity",
+        "evidenceIds": [
+          "source"
+        ],
+        "scope": {
+          "customerId": "buyer",
+          "productId": "part",
+          "actionKinds": [
+            "produce"
+          ]
+        },
+        "effectiveFrom": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "condition": {
+          "field": "capacityMinutes",
+          "op": "gte",
+          "value": 120,
+          "unit": "minute"
+        },
+        "effect": "require",
+        "verification": "verified",
+        "authority": "quality",
+        "exceptionPermitted": false,
+        "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+        "exception": null
+      },
+      {
+        "id": "dependency",
+        "ownerOrganizationId": 1,
+        "version": 1,
+        "category": "dependency",
+        "evidenceIds": [
+          "source"
+        ],
+        "scope": {
+          "customerId": "buyer",
+          "productId": "part",
+          "actionKinds": [
+            "produce"
+          ]
+        },
+        "effectiveFrom": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "condition": {
+          "field": "processReady",
+          "op": "eq",
+          "value": true,
+          "unit": "boolean"
+        },
+        "effect": "require",
+        "verification": "verified",
+        "authority": "quality",
+        "exceptionPermitted": false,
+        "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+        "exception": null
+      },
+      {
+        "id": "safety",
+        "ownerOrganizationId": 1,
+        "version": 1,
+        "category": "safety",
+        "evidenceIds": [
+          "source"
+        ],
+        "scope": {
+          "customerId": "buyer",
+          "productId": "part",
+          "actionKinds": [
+            "produce"
+          ]
+        },
+        "effectiveFrom": "2026-10-20T00:00:00.000Z",
+        "expiresAt": "2026-10-21T00:00:00.000Z",
+        "condition": {
+          "field": "safetySatisfied",
+          "op": "eq",
+          "value": true,
+          "unit": "boolean"
+        },
+        "effect": "require",
+        "verification": "verified",
+        "authority": "safety",
+        "exceptionPermitted": false,
+        "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+        "exception": null
+      }
+    ],
+    "actions": [
+      {
+        "id": "produce-approved",
+        "kind": "produce",
+        "label": "Use approved existing material and press",
+        "productId": "part",
+        "customerId": "buyer",
+        "operationIds": [
+          "operation"
+        ],
+        "facts": {
+          "producer": {
+            "value": "approved-producer",
+            "unit": "id",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "revision": {
+            "value": "R2",
+            "unit": "id",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "inventoryQuantity": {
+            "value": 150,
+            "unit": "kg",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "capacityMinutes": {
+            "value": 360,
+            "unit": "minute",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "processReady": {
+            "value": true,
+            "unit": "boolean",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "safetySatisfied": {
+            "value": true,
+            "unit": "boolean",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          }
+        },
+        "requiredRuleIds": [
+          "approved-steel",
+          "revision",
+          "material",
+          "capacity",
+          "dependency",
+          "safety"
+        ],
+        "requiredAuthorities": [
+          "commercial",
+          "safety"
+        ]
+      },
+      {
+        "id": "buy-alternative",
+        "kind": "produce",
+        "label": "Cheaper unapproved producer (invented)",
+        "productId": "part",
+        "customerId": "buyer",
+        "operationIds": [
+          "operation"
+        ],
+        "facts": {
+          "producer": {
+            "value": "alternative-producer",
+            "unit": "id",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "revision": {
+            "value": "R2",
+            "unit": "id",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "inventoryQuantity": {
+            "value": 150,
+            "unit": "kg",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "capacityMinutes": {
+            "value": 360,
+            "unit": "minute",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "processReady": {
+            "value": true,
+            "unit": "boolean",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          "safetySatisfied": {
+            "value": true,
+            "unit": "boolean",
+            "basis": "record",
+            "evidenceIds": [
+              "source"
+            ]
+          }
+        },
+        "requiredRuleIds": [
+          "approved-steel",
+          "revision",
+          "material",
+          "capacity",
+          "dependency",
+          "safety"
+        ],
+        "requiredAuthorities": [
+          "commercial",
+          "safety"
+        ]
+      }
+    ]
+  },
+  "decision": {
+    "algorithmVersion": "gm-core-003/constraints-v1",
+    "evaluatedAt": "2026-10-20T12:00:00.000Z",
+    "inputSnapshot": {
+      "origin": "synthetic",
+      "schemaVersion": "gm-core-003/v1",
+      "organizationId": 1,
+      "factoryId": 1,
+      "asOf": "2026-10-20T12:00:00.000Z",
+      "validUntil": "2026-10-21T00:00:00.000Z",
+      "sourceId": "bundled-A",
+      "syntheticClock": null,
+      "entities": [
+        {
+          "id": "industry",
+          "kind": "industry",
+          "label": "Fictional industry",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "code": "fictional-metal-components",
+            "parentId": null
+          }
+        },
+        {
+          "id": "seller",
+          "kind": "company",
+          "label": "Fictional seller",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "legalName": "SYNTHETIC Manufacturer A",
+            "industryId": "industry",
+            "organizationRef": null
+          }
+        },
+        {
+          "id": "buyer",
+          "kind": "company",
+          "label": "Fictional buyer",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "legalName": "SYNTHETIC Buyer B",
+            "industryId": "industry",
+            "organizationRef": null
+          }
+        },
+        {
+          "id": "approved-producer",
+          "kind": "company",
+          "label": "Fictional approved-producer",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "legalName": "SYNTHETIC Approved Producer",
+            "industryId": "industry",
+            "organizationRef": null
+          }
+        },
+        {
+          "id": "alternative-producer",
+          "kind": "company",
+          "label": "Fictional alternative-producer",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "legalName": "SYNTHETIC Alternative Producer",
+            "industryId": "industry",
+            "organizationRef": null
+          }
+        },
+        {
+          "id": "plant",
+          "kind": "facility",
+          "label": "Fictional plant",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "companyId": "seller",
+            "factoryRef": 1
+          }
+        },
+        {
+          "id": "spec",
+          "kind": "specification",
+          "label": "Fictional spec",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "version": "S1",
+            "requirements": []
+          }
+        },
+        {
+          "id": "part",
+          "kind": "product",
+          "label": "Fictional part",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "revision": "R2",
+            "specificationId": "spec",
+            "unit": "part"
+          }
+        },
+        {
+          "id": "steel",
+          "kind": "material",
+          "label": "Fictional steel",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "specificationId": "spec",
+            "producerId": "approved-producer",
+            "unit": "kg"
+          }
+        },
+        {
+          "id": "stamping",
+          "kind": "process",
+          "label": "Fictional stamping",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "inputIds": [
+              "steel"
+            ],
+            "outputIds": [
+              "part"
+            ]
+          }
+        },
+        {
+          "id": "press",
+          "kind": "resource",
+          "label": "Fictional press",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "resourceType": "machine",
+            "facilityId": "plant",
+            "assetRef": null,
+            "processIds": [
+              "stamping"
+            ]
+          }
+        },
+        {
+          "id": "press-capability",
+          "kind": "capability",
+          "label": "Fictional press-capability",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "resourceId": "press",
+            "processId": "stamping",
+            "verification": "verified"
+          }
+        },
+        {
+          "id": "supply-relation",
+          "kind": "relationship",
+          "label": "Fictional supply-relation",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "companyId": "seller",
+            "counterpartyId": "approved-producer",
+            "relationship": "supplier"
+          }
+        },
+        {
+          "id": "customer-relation",
+          "kind": "relationship",
+          "label": "Fictional customer-relation",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "companyId": "seller",
+            "counterpartyId": "buyer",
+            "relationship": "customer"
+          }
+        },
+        {
+          "id": "bom",
+          "kind": "bom",
+          "label": "Fictional bom",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "productId": "part",
+            "revision": "R2",
+            "materialIds": [
+              "steel"
+            ],
+            "quantities": {
+              "steel": 1
+            },
+            "quantityUnits": {
+              "steel": "kg"
+            }
+          }
+        },
+        {
+          "id": "order",
+          "kind": "order",
+          "label": "Fictional order",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "customerId": "buyer",
+            "productId": "part",
+            "revision": "R2",
+            "quantity": 100,
+            "dueAt": "2026-10-21T00:00:00.000Z"
+          }
+        },
+        {
+          "id": "operation",
+          "kind": "operation",
+          "label": "Fictional operation",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "processId": "stamping",
+            "resourceId": "press",
+            "predecessorIds": []
+          }
+        },
+        {
+          "id": "routing",
+          "kind": "routing",
+          "label": "Fictional routing",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "productId": "part",
+            "revision": "R2",
+            "operationIds": [
+              "operation"
+            ]
+          }
+        },
+        {
+          "id": "work-order",
+          "kind": "work_order",
+          "label": "Fictional work-order",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "orderId": "order",
+            "routingId": "routing",
+            "quantity": 100
+          }
+        },
+        {
+          "id": "shift",
+          "kind": "shift",
+          "label": "Fictional shift",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "resourceId": "press",
+            "facilityId": "plant",
+            "startsAt": "2026-10-20T12:00:00.000Z",
+            "endsAt": "2026-10-20T20:00:00.000Z",
+            "availableMinutes": 360
+          }
+        },
+        {
+          "id": "lot",
+          "kind": "lot",
+          "label": "Fictional lot",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "materialId": "steel",
+            "producerId": "approved-producer",
+            "quantity": 200,
+            "reserved": 50,
+            "unit": "kg",
+            "quality": "released"
+          }
+        },
+        {
+          "id": "reservation",
+          "kind": "reservation",
+          "label": "Fictional reservation",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "lotId": "lot",
+            "orderId": "order",
+            "quantity": 50,
+            "unit": "kg"
+          }
+        },
+        {
+          "id": "commitment",
+          "kind": "commitment",
+          "label": "Fictional commitment",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "supplierId": "approved-producer",
+            "materialId": "steel",
+            "quantity": 100,
+            "dueAt": "2026-10-21T00:00:00.000Z"
+          }
+        },
+        {
+          "id": "inspection",
+          "kind": "inspection",
+          "label": "Fictional inspection",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "lotId": "lot",
+            "status": "released",
+            "inspectorRef": "SYNTHETIC-inspector"
+          }
+        },
+        {
+          "id": "shipment",
+          "kind": "shipment",
+          "label": "Fictional shipment",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "orderId": "order",
+            "lotIds": [
+              "lot"
+            ],
+            "status": "planned"
+          }
+        },
+        {
+          "id": "invoice",
+          "kind": "invoice",
+          "label": "Fictional invoice",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "orderId": "order",
+            "currency": "INR",
+            "minorUnits": 100000,
+            "status": "draft"
+          }
+        },
+        {
+          "id": "demand",
+          "kind": "demand",
+          "label": "Fictional demand",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "companyId": "buyer",
+            "productId": "part",
+            "quantity": 75,
+            "unit": "kg",
+            "status": "potential"
+          }
+        },
+        {
+          "id": "opportunity",
+          "kind": "opportunity",
+          "label": "Fictional opportunity",
+          "version": 1,
+          "ownerOrganizationId": 1,
+          "basis": "record",
+          "evidenceIds": [
+            "source"
+          ],
+          "validFrom": "2026-10-20T00:00:00.000Z",
+          "validUntil": "2026-10-21T00:00:00.000Z",
+          "attributes": {
+            "sellerId": "seller",
+            "buyerId": "buyer",
+            "productId": "part",
+            "kind": "surplus"
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "id": "part-material",
+          "from": "part",
+          "to": "steel",
+          "type": "requires",
+          "evidenceIds": [
+            "source"
+          ]
+        },
+        {
+          "id": "part-operation",
+          "from": "part",
+          "to": "operation",
+          "type": "requires",
+          "evidenceIds": [
+            "source"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "source",
+          "title": "Invented manufacturing replay — not real company records",
+          "source": "data/industrial-core/synthetic-source.txt",
+          "digest": "ffa784b1657e0c9b4020778fca1c9aa2a42e1cb127a0287357bfc1f755284a47",
+          "observedAt": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "verification": "verified",
+          "origin": "synthetic"
+        }
+      ],
+      "constraints": [
+        {
+          "id": "approved-steel",
+          "ownerOrganizationId": 1,
+          "version": 1,
+          "category": "approved_source",
+          "evidenceIds": [
+            "source"
+          ],
+          "scope": {
+            "customerId": "buyer",
+            "productId": "part",
+            "actionKinds": [
+              "produce"
+            ]
+          },
+          "effectiveFrom": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "condition": {
+            "field": "producer",
+            "op": "in",
+            "value": [
+              "approved-producer"
+            ],
+            "unit": "id"
+          },
+          "effect": "require",
+          "verification": "verified",
+          "authority": "commercial",
+          "exceptionPermitted": false,
+          "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+          "exception": null
+        },
+        {
+          "id": "revision",
+          "ownerOrganizationId": 1,
+          "version": 1,
+          "category": "revision",
+          "evidenceIds": [
+            "source"
+          ],
+          "scope": {
+            "customerId": "buyer",
+            "productId": "part",
+            "actionKinds": [
+              "produce"
+            ]
+          },
+          "effectiveFrom": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "condition": {
+            "field": "revision",
+            "op": "eq",
+            "value": "R2",
+            "unit": "id"
+          },
+          "effect": "require",
+          "verification": "verified",
+          "authority": "quality",
+          "exceptionPermitted": false,
+          "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+          "exception": null
+        },
+        {
+          "id": "material",
+          "ownerOrganizationId": 1,
+          "version": 1,
+          "category": "inventory",
+          "evidenceIds": [
+            "source"
+          ],
+          "scope": {
+            "customerId": "buyer",
+            "productId": "part",
+            "actionKinds": [
+              "produce"
+            ]
+          },
+          "effectiveFrom": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "condition": {
+            "field": "inventoryQuantity",
+            "op": "gte",
+            "value": 100,
+            "unit": "kg"
+          },
+          "effect": "require",
+          "verification": "verified",
+          "authority": "quality",
+          "exceptionPermitted": false,
+          "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+          "exception": null
+        },
+        {
+          "id": "capacity",
+          "ownerOrganizationId": 1,
+          "version": 1,
+          "category": "capacity",
+          "evidenceIds": [
+            "source"
+          ],
+          "scope": {
+            "customerId": "buyer",
+            "productId": "part",
+            "actionKinds": [
+              "produce"
+            ]
+          },
+          "effectiveFrom": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "condition": {
+            "field": "capacityMinutes",
+            "op": "gte",
+            "value": 120,
+            "unit": "minute"
+          },
+          "effect": "require",
+          "verification": "verified",
+          "authority": "quality",
+          "exceptionPermitted": false,
+          "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+          "exception": null
+        },
+        {
+          "id": "dependency",
+          "ownerOrganizationId": 1,
+          "version": 1,
+          "category": "dependency",
+          "evidenceIds": [
+            "source"
+          ],
+          "scope": {
+            "customerId": "buyer",
+            "productId": "part",
+            "actionKinds": [
+              "produce"
+            ]
+          },
+          "effectiveFrom": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "condition": {
+            "field": "processReady",
+            "op": "eq",
+            "value": true,
+            "unit": "boolean"
+          },
+          "effect": "require",
+          "verification": "verified",
+          "authority": "quality",
+          "exceptionPermitted": false,
+          "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+          "exception": null
+        },
+        {
+          "id": "safety",
+          "ownerOrganizationId": 1,
+          "version": 1,
+          "category": "safety",
+          "evidenceIds": [
+            "source"
+          ],
+          "scope": {
+            "customerId": "buyer",
+            "productId": "part",
+            "actionKinds": [
+              "produce"
+            ]
+          },
+          "effectiveFrom": "2026-10-20T00:00:00.000Z",
+          "expiresAt": "2026-10-21T00:00:00.000Z",
+          "condition": {
+            "field": "safetySatisfied",
+            "op": "eq",
+            "value": true,
+            "unit": "boolean"
+          },
+          "effect": "require",
+          "verification": "verified",
+          "authority": "safety",
+          "exceptionPermitted": false,
+          "verifiedBy": "SYNTHETIC-fixture-review-not-professional-approval",
+          "exception": null
+        }
+      ],
+      "actions": [
+        {
+          "id": "produce-approved",
+          "kind": "produce",
+          "label": "Use approved existing material and press",
+          "productId": "part",
+          "customerId": "buyer",
+          "operationIds": [
+            "operation"
+          ],
+          "facts": {
+            "producer": {
+              "value": "approved-producer",
+              "unit": "id",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "revision": {
+              "value": "R2",
+              "unit": "id",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "inventoryQuantity": {
+              "value": 150,
+              "unit": "kg",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "capacityMinutes": {
+              "value": 360,
+              "unit": "minute",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "processReady": {
+              "value": true,
+              "unit": "boolean",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "safetySatisfied": {
+              "value": true,
+              "unit": "boolean",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            }
+          },
+          "requiredRuleIds": [
+            "approved-steel",
+            "revision",
+            "material",
+            "capacity",
+            "dependency",
+            "safety"
+          ],
+          "requiredAuthorities": [
+            "commercial",
+            "safety"
+          ]
+        },
+        {
+          "id": "buy-alternative",
+          "kind": "produce",
+          "label": "Cheaper unapproved producer (invented)",
+          "productId": "part",
+          "customerId": "buyer",
+          "operationIds": [
+            "operation"
+          ],
+          "facts": {
+            "producer": {
+              "value": "alternative-producer",
+              "unit": "id",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "revision": {
+              "value": "R2",
+              "unit": "id",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "inventoryQuantity": {
+              "value": 150,
+              "unit": "kg",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "capacityMinutes": {
+              "value": 360,
+              "unit": "minute",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "processReady": {
+              "value": true,
+              "unit": "boolean",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            },
+            "safetySatisfied": {
+              "value": true,
+              "unit": "boolean",
+              "basis": "record",
+              "evidenceIds": [
+                "source"
+              ]
+            }
+          },
+          "requiredRuleIds": [
+            "approved-steel",
+            "revision",
+            "material",
+            "capacity",
+            "dependency",
+            "safety"
+          ],
+          "requiredAuthorities": [
+            "commercial",
+            "safety"
+          ]
+        }
+      ]
+    },
+    "constraintVersions": [
+      {
+        "id": "approved-steel",
+        "version": 1
+      },
+      {
+        "id": "revision",
+        "version": 1
+      },
+      {
+        "id": "material",
+        "version": 1
+      },
+      {
+        "id": "capacity",
+        "version": 1
+      },
+      {
+        "id": "dependency",
+        "version": 1
+      },
+      {
+        "id": "safety",
+        "version": 1
+      }
+    ],
+    "assumptions": [],
+    "alternatives": [
+      {
+        "actionId": "produce-approved",
+        "label": "Use approved existing material and press",
+        "status": "eligible",
+        "checks": [
+          {
+            "ruleId": "approved-steel",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "revision",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "material",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "capacity",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "dependency",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "safety",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          }
+        ],
+        "requiredAuthorities": [
+          "commercial",
+          "safety"
+        ]
+      },
+      {
+        "actionId": "buy-alternative",
+        "label": "Cheaper unapproved producer (invented)",
+        "status": "prohibited",
+        "checks": [
+          {
+            "ruleId": "approved-steel",
+            "version": 1,
+            "status": "prohibited",
+            "reason": "MANDATORY_REQUIREMENT_FAILED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "revision",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "material",
+            "version": 1,
+            "status": "unknown",
+            "reason": "FACT_MISSING_OR_STALE",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "capacity",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "dependency",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "safety",
+            "version": 1,
+            "status": "eligible",
+            "reason": "CONDITION_SATISFIED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "operating-model",
+            "version": 1,
+            "status": "unknown",
+            "reason": "BOM_MATERIAL_COMPARISON_UNRESOLVED",
+            "evidenceIds": [
+              "source"
+            ]
+          }
+        ],
+        "requiredAuthorities": [
+          "commercial",
+          "safety"
+        ]
+      }
+    ],
+    "excludedAlternatives": [
+      {
+        "actionId": "buy-alternative",
+        "status": "prohibited",
+        "reasons": [
+          {
+            "ruleId": "approved-steel",
+            "version": 1,
+            "status": "prohibited",
+            "reason": "MANDATORY_REQUIREMENT_FAILED",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "material",
+            "version": 1,
+            "status": "unknown",
+            "reason": "FACT_MISSING_OR_STALE",
+            "evidenceIds": [
+              "source"
+            ]
+          },
+          {
+            "ruleId": "operating-model",
+            "version": 1,
+            "status": "unknown",
+            "reason": "BOM_MATERIAL_COMPARISON_UNRESOLVED",
+            "evidenceIds": [
+              "source"
+            ]
+          }
+        ]
+      }
+    ],
+    "recommendation": "produce-approved",
+    "disposition": "review_recommended_action",
+    "disruptionImpacts": [],
+    "optimization": "not_performed",
+    "actualOutcome": null,
+    "verifiedSavings": null,
+    "customerRelease": false
+  }
+}

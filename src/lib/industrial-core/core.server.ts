@@ -3,6 +3,7 @@ import { ZodError, z } from "zod";
 import { readBoundedJsonBody } from "../../../supabase/functions/_shared/request-body";
 import { executeCoreCommand, commandSchema, type CoreStore } from "./service";
 import { runScenario } from "./fixtures";
+import { customerDemo } from "./customer-demo";
 const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
@@ -22,10 +23,15 @@ export async function handleIndustrialCore(request: Request): Promise<Response> 
     return reply({ error: "INVALID_OR_OVERSIZED_BODY" }, parsed.reason === "too_large" ? 413 : 400);
   try {
     const demo = z
-      .object({ action: z.literal("demo"), scenario: z.enum(["A", "B", "C", "D"]) })
+      .object({ action: z.enum(["demo", "customer_demo"]), scenario: z.enum(["A", "B", "C", "D"]) })
       .strict()
       .safeParse(parsed.value);
-    if (demo.success) return reply(runScenario(demo.data.scenario)); // fixed public fiction, no intake/DB/network/provider execution
+    if (demo.success)
+      return reply(
+        demo.data.action === "customer_demo"
+          ? await customerDemo(demo.data.scenario)
+          : runScenario(demo.data.scenario),
+      ); // fixed public fiction, no intake/DB/network/provider execution
     const command = commandSchema.parse(parsed.value);
     if (process.env.GRIDMIND_CORE_ENABLED !== "synthetic-only")
       return reply({ error: "CORE_DISABLED" }, 503);

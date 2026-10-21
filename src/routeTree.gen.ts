@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CustomerDemoRouteImport } from './routes/customer-demo'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DesignPreviewRouteImport } from './routes/design-preview'
 import { Route as ElectricityDemoRouteImport } from './routes/electricity-demo'
@@ -48,6 +49,11 @@ const AlertsRoute = AlertsRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerDemoRoute = CustomerDemoRouteImport.update({
+  id: '/customer-demo',
+  path: '/customer-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
+  '/customer-demo': typeof CustomerDemoRoute
   '/dashboard': typeof DashboardRoute
   '/design-preview': typeof DesignPreviewRoute
   '/electricity-demo': typeof ElectricityDemoRoute
@@ -192,6 +199,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
+  '/customer-demo': typeof CustomerDemoRoute
   '/dashboard': typeof DashboardRoute
   '/design-preview': typeof DesignPreviewRoute
   '/electricity-demo': typeof ElectricityDemoRoute
@@ -220,6 +228,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
   '/auth': typeof AuthRoute
+  '/customer-demo': typeof CustomerDemoRoute
   '/dashboard': typeof DashboardRoute
   '/design-preview': typeof DesignPreviewRoute
   '/electricity-demo': typeof ElectricityDemoRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alerts'
     | '/auth'
+    | '/customer-demo'
     | '/dashboard'
     | '/design-preview'
     | '/electricity-demo'
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alerts'
     | '/auth'
+    | '/customer-demo'
     | '/dashboard'
     | '/design-preview'
     | '/electricity-demo'
@@ -303,6 +314,7 @@ export interface FileRouteTypes {
     | '/'
     | '/alerts'
     | '/auth'
+    | '/customer-demo'
     | '/dashboard'
     | '/design-preview'
     | '/electricity-demo'
@@ -331,6 +343,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
   AuthRoute: typeof AuthRoute
+  CustomerDemoRoute: typeof CustomerDemoRoute
   DashboardRoute: typeof DashboardRoute
   DesignPreviewRoute: typeof DesignPreviewRoute
   ElectricityDemoRoute: typeof ElectricityDemoRoute
@@ -376,6 +389,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-demo': {
+      id: '/customer-demo'
+      path: '/customer-demo'
+      fullPath: '/customer-demo'
+      preLoaderRoute: typeof CustomerDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -539,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
   AuthRoute: AuthRoute,
+  CustomerDemoRoute: CustomerDemoRoute,
   DashboardRoute: DashboardRoute,
   DesignPreviewRoute: DesignPreviewRoute,
   ElectricityDemoRoute: ElectricityDemoRoute,
