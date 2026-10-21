@@ -236,6 +236,11 @@ export async function executeCoreCommand(
         throw new Error("CORE_SCOPE_DENIED");
       const input = structuredClone(cmd.input);
       // Imported document extraction NEVER establishes binding rules, sharing or qualifications.
+      // Imported claims cannot confirm the owner's objectives or authorize preferred actions.
+      for (const intent of input.ownerIntents ?? []) {
+        intent.status = "proposed";
+        intent.confirmedBy = null;
+      }
       for (const e of input.evidence) e.verification = "unverified";
       for (const r of input.constraints) {
         r.verification = "proposed";
