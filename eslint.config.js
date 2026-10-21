@@ -13,6 +13,8 @@ export default tseslint.config(
       ".tanstack/**",
       ".nitro/**",
       "coverage/**",
+      // Optional offline benchmark dependencies; application source remains linted.
+      "benchmarks/secom/.venv/**",
       "src/routeTree.gen.ts",
     ],
   },
