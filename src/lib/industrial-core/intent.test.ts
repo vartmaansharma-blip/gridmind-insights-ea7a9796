@@ -47,6 +47,15 @@ describe("owner intent conflicts remain advisory and verifiable",()=>{
     claimed.ownerIntents![0].confirmedBy="synthetic-owner";
     expect(inputSchema.safeParse(claimed).success).toBe(false);
   });
+  it("does not discard an owner's avoided action merely because it requires an exception", () => {
+    const s = withIntent("owner_stated", "avoid");
+    const approved = s.actions.find((a) => a.id === "produce-approved")!;
+    approved.facts.processReady.basis = "estimate";
+    const assessed = evaluate(s, REPLAY_AT);
+    expect(assessed.alternatives.find((a) => a.actionId === "produce-approved")?.status).toBe("conditional");
+    expect(assessed.ownerIntentAssessment?.conflicts[0].reason).toBe("OWNER_AVOIDED_ELIGIBLE_ACTION");
+    expect(assessed.recommendation).toBeNull();
+  });
   it("remains unknown for unverified owner evidence",()=>{
     const s=withIntent("owner_stated","avoid");
     s.evidence[0].verification="unverified";
