@@ -34,6 +34,10 @@ test("GM-CORE-003 four synthetic scenarios execute the actual server service", a
     }
     if (scenario === "C") {
       expect(body.decision.recommendation).toBeNull();
+      await expect(region.getByText(/Disruption disruption affects:/)).toContainText("order order");
+      await expect(region.getByText(/Disruption disruption affects:/)).toContainText(
+        "operation operation",
+      );
       await expect(region.getByText(/RESOURCE_UNAVAILABLE/).first()).toBeVisible();
     }
     if (scenario === "D") {

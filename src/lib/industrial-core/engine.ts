@@ -377,6 +377,15 @@ export function evaluate(inputValue: unknown, at: string) {
           : alternatives.every((a) => a.status === "prohibited")
             ? "no_permitted_alternative"
             : "insufficient_information_or_review",
+    disruptionImpacts: input.entities
+      .filter(
+        (e) =>
+          e.kind === "event" &&
+          ["downtime", "delay"].includes(String(e.attributes.eventType)) &&
+          Date.parse(String(e.attributes.at)) <= Date.parse(at) &&
+          evidenceReady(input, e.evidenceIds, at),
+      )
+      .map((e) => disruptionImpact(input, e.id)),
     optimization: "not_performed",
     actualOutcome: null,
     verifiedSavings: null,
@@ -384,6 +393,50 @@ export function evaluate(inputValue: unknown, at: string) {
   } as const;
 }
 export type Evaluation = ReturnType<typeof evaluate>;
+// Conservative impact trace over explicit dependencies and typed operating links.
+// It reports affected records, not a predicted delivery delay or optimized schedule.
+export function disruptionImpact(input: CoreInput, eventId: string) {
+  const event = input.entities.find((e) => e.id === eventId && e.kind === "event");
+  if (!event) throw new Error("UNKNOWN_EVENT");
+  const affected = new Set(event.attributes.subjectIds as string[]);
+  for (let i = 0; i < input.entities.length; i++) {
+    for (const edge of input.relationships)
+      if (affected.has(edge.to) && ["requires", "precedes"].includes(edge.type))
+        affected.add(edge.from);
+    for (const entity of input.entities) {
+      const a = entity.attributes;
+      const links =
+        entity.kind === "operation"
+          ? [a.resourceId, a.processId, ...(a.predecessorIds as string[])]
+          : entity.kind === "process"
+            ? (a.inputIds as string[])
+            : entity.kind === "routing"
+              ? (a.operationIds as string[])
+              : entity.kind === "order"
+                ? [a.productId]
+                : entity.kind === "work_order"
+                  ? [a.orderId, a.routingId]
+                  : [];
+      if (links.some((v) => affected.has(String(v)))) affected.add(entity.id);
+      if (["process", "routing", "bom"].includes(entity.kind) && affected.has(entity.id)) {
+        if (typeof a.productId === "string") affected.add(a.productId);
+        if (Array.isArray(a.outputIds)) for (const id of a.outputIds) affected.add(String(id));
+      }
+      if (["commitment", "lot"].includes(entity.kind) && affected.has(entity.id))
+        affected.add(String(a.materialId));
+      if (entity.kind === "bom" && (a.materialIds as string[]).some((id) => affected.has(id))) {
+        affected.add(entity.id);
+        affected.add(String(a.productId));
+      }
+    }
+  }
+  return {
+    eventId,
+    affected: input.entities
+      .filter((e) => affected.has(e.id))
+      .map((e) => ({ id: e.id, kind: e.kind })),
+  };
+}
 export function applyDisruption(input: CoreInput, eventId: string, at: string): CoreInput {
   const next = structuredClone(input),
     event = next.entities.find((e) => e.id === eventId && e.kind === "event");
@@ -393,19 +446,7 @@ export function applyDisruption(input: CoreInput, eventId: string, at: string): 
     Date.parse(String(event.attributes.at)) > Date.parse(at)
   )
     throw new Error("UNVERIFIED_EVENT");
-  const affected = new Set(event.attributes.subjectIds as string[]);
-  for (let i = 0; i < next.entities.length; i++) {
-    for (const edge of next.relationships)
-      if (affected.has(edge.to) && ["requires", "precedes"].includes(edge.type))
-        affected.add(edge.from);
-    for (const op of next.entities.filter((e) => e.kind === "operation"))
-      if (
-        affected.has(String(op.attributes.resourceId)) ||
-        affected.has(String(op.attributes.processId)) ||
-        (op.attributes.predecessorIds as string[]).some((v) => affected.has(v))
-      )
-        affected.add(op.id);
-  }
+  const affected = new Set(disruptionImpact(next, eventId).affected.map((e) => e.id));
   for (const a of next.actions)
     if (affected.has(a.productId) || a.operationIds.some((op) => affected.has(op))) {
       a.facts.processReady = {

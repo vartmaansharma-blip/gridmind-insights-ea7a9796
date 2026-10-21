@@ -178,7 +178,15 @@ describe("GM-CORE-003 evidence-backed synthetic core", () => {
     const s = fixture("C");
     const changed = applyDisruption(s, "disruption", REPLAY_AT);
     expect(changed.actions[0].facts.processReady?.value).toBe(false);
-    expect(evaluate(changed, REPLAY_AT).recommendation).toBeNull();
+    const result = evaluate(changed, REPLAY_AT);
+    expect(result.recommendation).toBeNull();
+    expect(result.disruptionImpacts[0].affected).toEqual(
+      expect.arrayContaining([
+        { id: "operation", kind: "operation" },
+        { id: "order", kind: "order" },
+        { id: "work-order", kind: "work_order" },
+      ]),
+    );
   });
   it.each([
     "customer",

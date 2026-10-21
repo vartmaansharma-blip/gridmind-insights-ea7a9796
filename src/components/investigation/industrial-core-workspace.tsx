@@ -84,6 +84,13 @@ export function IndustrialCoreWorkspace() {
       aria-labelledby="industrial-core-title"
       className="rounded-xl border border-border bg-card p-5 my-6 space-y-4"
     >
+      {evaluation?.disruptionImpacts?.map((impact) => (
+        <p key={impact.eventId} className="text-sm">
+          Disruption {impact.eventId} affects:{" "}
+          {impact.affected.map((e) => `${e.kind} ${e.id}`).join(", ")}. Delivery effects require
+          review.
+        </p>
+      ))}
       <div>
         <p className="text-xs font-semibold uppercase tracking-wide text-primary">
           GM-CORE-003 · Synthetic foundation
