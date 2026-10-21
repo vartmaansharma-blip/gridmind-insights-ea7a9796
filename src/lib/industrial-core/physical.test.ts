@@ -22,6 +22,7 @@ describe("GM-MVP-002 physical asset/production decision bridge (synthetic only)"
     expect(r.impacts[0].resourceId).toBe("press");
     expect(r.impacts[0].orders.map((o) => o.orderId)).toEqual(["order"]);
     expect(r.impacts[0].orders[0].materialIds).toEqual(["steel"]);
+    expect(r.decision.disruptionImpacts[0].affected.some((e) => e.id === "second-order")).toBe(false);
     expect(r.impacts[0].orders[0].workOrderIds).toEqual(["work-order"]);
     expect(r.impacts[0].exposure).toBe("confirmed_machine_unavailable");
     expect(r.decision.alternatives.find((x) => x.actionId === "produce-approved")?.checks)
@@ -38,6 +39,8 @@ describe("GM-MVP-002 physical asset/production decision bridge (synthetic only)"
       .toEqual(["order"]);
     expect(r.impacts.find((i) => i.resourceId === "press-second")?.orders.map((o) => o.orderId))
       .toEqual(["second-order"]);
+    expect(r.impacts.find((i) => i.resourceId === "press-second")?.orders[0].materialIds)
+      .toEqual(["second-material"]);
     expect(r.impacts.every((i) => i.exposure === "potentially_affected")).toBe(true);
     expect(r.decision.alternatives.find((x) => x.actionId === "produce-approved")?.status)
       .toBe("eligible");
