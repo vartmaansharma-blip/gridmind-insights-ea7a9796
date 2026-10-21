@@ -1,5 +1,7 @@
 # GridMind Release Gate
 
+> **Current routing/status correction — 20 October 2026:** #136 merged documentation consolidation; broad-candidate draft/HOLD is historical. Approved public `/` and application `/dashboard` were merged in #149; preserve `/design-preview`, `/website` compatibility and green identity. Current active M1 is #152/#154, still subject to independent review. The [Master Plan](gridmind-master-plan-2026-10-11.md) owns dependencies; all security/data/release gates below remain binding. No production mutation is authorized by a documentation update.
+
 GridMind is an industrial intelligence product. A green deployment is not established by a successful UI preview alone.
 
 ## Required checks
@@ -27,7 +29,7 @@ Run `bun run check` locally for the same core application checks. Run Python and
 
 ## GridMind 3.1 pre-merge release classification (17 October 2026)
 
-For the large [draft PR #136](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/136), use the [pre-merge decision packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) before deciding whether to ship. This is **not** new authorization to merge. Its practical options are: (A) a narrow independently checked public-site/doc release extracted on a new branch from current main; (B) release the mixed PR only after complete tenant/migration/server security review and all exact-head checks; (C) remain draft/no production change (**current default**). No force-push, rewritten Lovable history, bypassed check or fabricated signoff.
+**Historical #136 scope lesson:** the broad draft originally required narrowing or full sensitive-diff review. Its final documentation consolidation merged as `363cbfa`; there is no current instruction to hold that completed PR. The [historical packet](engineering/gridmind-3-1-pre-merge-decision-packet-2026-10-17.md) preserves the rationale. Apply candidate-specific release classes and required checks to current work, including draft #154. No force push, rewritten Lovable history, bypassed check or fabricated signoff.
 
 **Three separate approvals:**
 
@@ -39,7 +41,7 @@ For the large [draft PR #136](https://github.com/vartmaansharma-blip/gridmind-in
 
 **Exact-SHA gate:** Record passing named CI, Quality Gate, Public Site Browser, isolated Migration Replay and required Vercel check on the **final** commit, and inspect deployed preview content/SHA, auth/deep links and a non-confidential contact round trip. Documentation-only commits still move the head and require fresh checks under configured rules. CI and isolated SQL tests may pass while production release remains blocked.
 
-**Reconciliation:** [#132](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/132) proposes root/onboarding changes, [#133](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/133) an analysis bridge, [#125](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/125) earlier CTA and [#120](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/120) a parked scooter catalogue whose migration history intersects live Supabase. These are **not** merged by implication. Classify conflicts and record decisions on original PRs. Keep the public route at /website and old dashboard at / unless a separate fully reviewed route migration is approved.
+**Reconciliation:** [#132](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/132) proposes root/onboarding changes, [#133](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/133) an analysis bridge, [#125](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/125) earlier CTA and [#120](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/pull/120) a parked scooter catalogue whose migration history intersects live Supabase. These are **not** merged by implication. Classify conflicts and record decisions on original PRs. Preserve approved public `/` and application `/dashboard` after #149; reconcile only remaining deltas in old route proposals.
 
 **Hard no-go:** unknown/uncleared data rights; failing required check; unreviewed sensitive diff; preview not matching target SHA; unplanned automated deployment; cross-tenant exposure; unsupervised industrial or financial representation; irreversible migration without authorized backup/forward-only plan; absent rollback owner. Stop, narrow scope or keep draft—never weaken checks to force approval.
 

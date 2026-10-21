@@ -1,0 +1,8 @@
+{
+  "id": "synthetic-action",
+  "ownerId": "synthetic-customer",
+  "description": "Fictional owner compares receipt and acceptance records",
+  "customerAuthorization": "fictionally_authorized",
+  "status": "completed",
+  "completionEvidenceLines": [4, 5]
+}

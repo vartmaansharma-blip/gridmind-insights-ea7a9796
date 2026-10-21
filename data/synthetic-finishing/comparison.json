@@ -1,0 +1,43 @@
+{
+  "origin": "synthetic",
+  "scope": { "organizationId": "SYN-ORG-A", "factoryId": "SYN-FACTORY-A" },
+  "timeBasis": "person_minutes",
+  "batches": [
+    {
+      "id": "SYN-BATCH-1",
+      "phase": "baseline",
+      "part": "SYN-BRACKET",
+      "operation": "edge-finishing",
+      "drawingRevision": "D1",
+      "materialGrade": "SYN-STEEL",
+      "routeRevision": "R1",
+      "shift": "day",
+      "started": 100,
+      "accepted": 95,
+      "rejected": 5,
+      "held": 0,
+      "requiredPersonMinutes": 100,
+      "repeatPersonMinutes": 50,
+      "unclassifiedPersonMinutes": 0,
+      "classificationReference": "SYN-TIME-STUDY-1"
+    },
+    {
+      "id": "SYN-BATCH-2",
+      "phase": "comparison",
+      "part": "SYN-BRACKET",
+      "operation": "edge-finishing",
+      "drawingRevision": "D1",
+      "materialGrade": "SYN-STEEL",
+      "routeRevision": "R1",
+      "shift": "day",
+      "started": 100,
+      "accepted": 95,
+      "rejected": 5,
+      "held": 0,
+      "requiredPersonMinutes": 100,
+      "repeatPersonMinutes": 20,
+      "unclassifiedPersonMinutes": 0,
+      "classificationReference": "SYN-TIME-STUDY-2"
+    }
+  ]
+}
