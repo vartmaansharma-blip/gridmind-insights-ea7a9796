@@ -21,9 +21,17 @@ function SyntheticInvestigations() {
         <PhysicalInfrastructureWorkspace />
         <IndustrialCoreWorkspace />
 
-        <InvoiceExceptionPreview />
-
-        <FinishingComparisonPreview />
+        <section aria-labelledby="record-comparisons-title" className="mt-8">
+          <h2 id="record-comparisons-title" className="text-2xl font-semibold">
+            Compare current records
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Fictional invoice and finishing comparisons. Review the source and unresolved questions
+            before considering an action.
+          </p>
+          <InvoiceExceptionPreview />
+          <FinishingComparisonPreview />
+        </section>
       </div>
       <InvestigationWorkbench />
     </>

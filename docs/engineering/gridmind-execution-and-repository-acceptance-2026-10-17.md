@@ -1,5 +1,14 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Read-only related-branch delivery — 21 October 2026
+
+The founder authorized completing and merging related side branches. This candidate preserves normal merge ancestry for #156 (`299f6ff`), #158 (`7204c6d`), #160 (`53110e6`), #162 (`ad9b4ee`) and #165 (`318f147`) and reconciles them with main `65a0fe9`. It retains unique public manufacturing research, offline shortage chronology, invoice-exception CSV/review/outcome and finishing-comparison code/UI/fixtures. Current strategy, physical-resource and owner-intent work, core/customer walkthrough, public website, electricity and all identities survive. A labeled comparison section groups the two existing read-only adapters without turning their fiction into an authorized transaction.
+
+Local source acceptance: 407 tests across 39 files, TypeScript, semantic lint (zero errors/nine existing warnings), production build and the combined public/synthetic browser suite. Source migrations, DB/security/Auth/API code and permissions are identical to current main; required hosted migration checks must still pass on the final candidate. Independent #150/#154 security work remains separately staged in #177 and is not included or waived. Real-data benchmark #176 remains a separate experimental increment with its explicit workflow-permission gap.
+
+This increment can integrate through normal protected-main checks without declaring the daily operating platform finished. No qualified finding, buyer fact, saving, causal diagnosis, production/customer-data activation, payment, physical actuation or market-validation result is created. Current actual scope overrides older generic no-build wording, with all rights/release/review constraints intact. Exact hosted acceptance and merge receipt belong in the PR; retain older branch/ledger snapshots as dated history. Rollback: revert this normal source integration; no production database change.
+
+
 ## Manufacturing-strategy audit — 20 October 2026
 
 **Scope:** [#164](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/164), founder-directed manufacturing comparison continuation. **Base:** `847ad16d8b43b2bf39f476e8e355ebb4cc21b23c` from refreshed `origin/main`; GitHub API confirmed this head. **Branch:** `strategy/india-manufacturing-intelligence`, separate local worktree in the same repository. Existing `research/metal-finishing-proof` and other worktrees were inspected but not edited. This is documentation implementation, not a manufacturing runtime engine or release.
