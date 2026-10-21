@@ -56,6 +56,43 @@ set local role authenticated;
 select set_config('request.jwt.claim.sub', 'a1111111-1111-4111-8111-111111111111', true);
 select set_config('request.jwt.claims', '{"sub":"a1111111-1111-4111-8111-111111111111","role":"authenticated"}', true);
 
+-- An anonymous Supabase Auth account carries the authenticated DB role.
+-- SECURITY DEFINER bootstrap must reject it before any organization insert.
+do $workspace_bootstrap_guard_test$
+declare
+  v_factory bigint;
+begin
+  perform set_config('request.jwt.claims',
+    '{"sub":"a1111111-1111-4111-8111-111111111111","role":"authenticated","is_anonymous":true}', true);
+  begin
+    perform public.create_factory_workspace('gridmind-ci-anonymous-should-never-exist');
+    raise exception 'ANONYMOUS_WORKSPACE_BOOTSTRAP_WAS_ALLOWED';
+  exception when insufficient_privilege then
+    if sqlerrm <> 'AUTHENTICATION_REQUIRED' then raise; end if;
+  end;
+
+  perform set_config('request.jwt.claims',
+    '{"sub":"a1111111-1111-4111-8111-111111111111","role":"authenticated","is_anonymous":false}', true);
+  begin
+    perform public.create_factory_workspace(repeat('x',181));
+    raise exception 'OVERSIZED_WORKSPACE_BOOTSTRAP_WAS_ALLOWED';
+  exception when invalid_parameter_value then
+    if sqlerrm <> 'INVALID_FACTORY_INPUT' then raise; end if;
+  end;
+
+  -- Valid permanent user can still bootstrap a factory in its own active org.
+  v_factory := public.create_factory_workspace('gridmind-ci-bootstrap-allowed');
+  if not exists (
+    select 1 from public.factory_members m
+    where m.factory_id=v_factory
+      and m.user_id='a1111111-1111-4111-8111-111111111111'
+      and m.role='owner'
+  ) then
+    raise exception 'LEGITIMATE_WORKSPACE_BOOTSTRAP_BROKEN';
+  end if;
+end $workspace_bootstrap_guard_test$;
+
+
 do $$
 declare
   visible_factories integer;
