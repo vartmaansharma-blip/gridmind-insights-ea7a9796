@@ -10,6 +10,10 @@ Preserve the prior plan and all reusable work. Reuse current organization/factor
 
 ## 1. Ambition and current commercial decision
 
+**GM-MVP-005 — 21 October 2026:** the founder explicitly authorizes a separate reproducible offline benchmark using official UCI SECOM measurements, following merged #175's zero-row catalog. This is the next public-measurement experiment under Step 3, not customer-data intake, market research or a paid-product selection. The [benchmark report](engineering/gridmind-gm-mvp-005-secom-benchmark.md) records the locked source/license, chronological separation, genuine held-out errors and uncertainty. Preserve the synthetic industrial-core API boundary, all production/security controls and required PR checks/reviews. No production Supabase data, migrations, credentials or settings changes. Poor classification results must be reported rather than tuned away on the holdout.
+
+
+
 **21 October demonstration authorization:** after #167, the founder authorized a fictional first-customer dataset, readable walkthrough and full-flow correctness fixes on current main. The [sample contract](product/gridmind-customer-demo.md) reuses the engine and records acceptance on #166. Merge verified work through required repository checks. This is a demonstration, not buyer evidence or production/customer-data activation; preserve the earlier strategy and separate review/release gates.
 
 GridMind aims to become a globally relevant **industrial and critical-infrastructure intelligence company**, serving India and eventually international markets. Help organizations investigate consequential operational problems, understand dependencies, make defensible decisions, and improve the reliability and economics of physical systems. Prove one valuable product before expanding; each expansion needs separate demand, capability, safety and economic evidence.

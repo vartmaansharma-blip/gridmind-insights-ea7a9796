@@ -1,5 +1,12 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## GM-MVP-005 — Real public measurement acceptance checkpoint
+
+New feature branch from inspected main `65a0fe91513de3f931ab3a4e25418dbea04c9f8c` (merged #175). Existing synthetic industrial core, physical/owner engines, public routes and brand remain unchanged. [SECOM benchmark report](gridmind-gm-mvp-005-secom-benchmark.md) and [offline runner](../../benchmarks/secom/README.md) own source/version, method and measured results. Raw official archive is ignored local cache, never uploaded to Supabase. No production migration, Auth, secrets or settings changes.
+
+Measured negative classification: held-out 451 rows / 26 failures; balanced logistic detects zero failures and raises seven false alarms. Majority also detects zero. Reproduce from hash-locked public source; do not claim industrial-core accuracy, automotive transfer, savings or adoption. Existing main baseline: 346 unit tests pass. Candidate acceptance includes no-network parser/leakage/math contracts, full real-source offline reproduction, executed notebook, existing app typecheck/lint/build/browser and isolated native migration acceptance. Exact hosted checks/reviews are recorded in the PR, not inferred from this local checkpoint. Missing or failed required checks/reviews block merge. Next dependency: documented pre-outcome feature/group timing and a new blind evaluation contract before any tuned detection claim.
+
+
 ## Conditional main integration follow-up — 20 October 2026
 
 After docs-only #163 `ae6f399`, the founder explicitly requested merging this direction into main if appropriate. Required Public Browser run [39447051320](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/actions/runs/39447051320) reproduced the existing startup failure: generated compatibility date `2026-10-20` exceeds installed runtime support `2026-10-19`; no browser tests executed. CI and Quality passed; isolated migration acceptance was still running at that snapshot.
