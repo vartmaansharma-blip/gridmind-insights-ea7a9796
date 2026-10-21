@@ -68,6 +68,44 @@ describe("GM-MVP-002 physical asset/production decision bridge (synthetic only)"
     expect(e.impacts[0].exposure).toBe("potentially_affected");
     expect(e.recommendedActionId).toBeNull();
   });
+  it("combines verified machine stop and confirmed owner preference without bypassing feasibility", () => {
+    const result = runPhysicalScenario("owner_machine_conflict");
+    expect(result.impacts[0].exposure).toBe("confirmed_machine_unavailable");
+    expect(result.impacts[0].orders.map((o) => o.orderId)).toEqual(["order"]);
+    expect(result.decision.alternatives.find((a) => a.actionId === "produce-approved")?.status)
+      .toBe("prohibited");
+    expect(result.decision.ownerIntentAssessment?.conflicts).toContainEqual({
+      intentId: "fictional-owner-objective",
+      actionId: "produce-approved",
+      reason: "OWNER_FAVORED_ACTION_NOT_ELIGIBLE",
+    });
+    expect(result.decision.disposition).toBe("owner_intent_conflict_requires_review");
+    expect(result.decisionReadiness).toBe("owner_conflict_requires_review");
+    expect(result.recommendedActionId).toBeNull();
+    expect(result.authorizedMachineControl).toBe(false);
+  });
+  it("withholds an otherwise feasible action when the fictional owner explicitly avoids it", () => {
+    const result = runPhysicalScenario("owner_avoid_feasible");
+    expect(result.impacts).toHaveLength(0);
+    expect(result.decision.alternatives.find((a) => a.actionId === "produce-approved")?.status)
+      .toBe("eligible");
+    expect(result.decision.ownerIntentAssessment?.conflicts[0].reason)
+      .toBe("OWNER_AVOIDED_ELIGIBLE_ACTION");
+    expect(result.decisionReadiness).toBe("owner_conflict_requires_review");
+    expect(result.recommendedActionId).toBeNull();
+  });
+  it("marks hypothetical owner preferences as unconfirmed, never business authorization", () => {
+    const result = runPhysicalScenario("owner_inferred");
+    expect(result.impacts).toHaveLength(0);
+    expect(result.decision.ownerIntentAssessment?.inferredGoalsRequireConfirmation)
+      .toEqual(["fictional-owner-objective"]);
+    expect(result.decision.ownerIntentAssessment?.conflicts).toHaveLength(0);
+    expect(result.decision.ownerIntentAssessment?.summaries[0].state)
+      .toBe("needs_confirmation");
+    expect(result.decisionReadiness).toBe("owner_goal_needs_confirmation");
+    expect(result.recommendedActionId).toBe("produce-approved");
+    expect(result.customerValidated).toBe(false);
+  });
   it("refuses foreign factories, nonexistent resources, fake source IDs and invalid power direction", () => {
     const foreign = physicalFixture("machine_stop");
     foreign.snapshot.organizationId = 999;
