@@ -182,5 +182,12 @@ jobs:
           export VITE_SUPABASE_PUBLISHABLE_KEY="$SUPABASE_ANON_KEY"
           (cd e2e && env -u SUPABASE_SERVICE_ROLE_KEY -u SERVICE_ROLE_KEY bun run test)
 
+      - name: Verify synthetic case-to-server-analysis reference isolation
+        shell: bash
+        run: |
+          eval "$(supabase status -o env)"
+          test -n "${DB_URL:-}"
+          psql "$DB_URL" -v ON_ERROR_STOP=1 -f supabase/tests/synthetic-case-analysis-reference-contract.sql
+
       - name: Verify migration history has no pending local migrations
         run: supabase migration list --local
