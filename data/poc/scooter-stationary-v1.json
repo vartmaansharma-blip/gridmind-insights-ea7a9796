@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.0.0",
+  "id": "gridmind-poc-01-generic-scooter",
+  "display_name": "GridMind POC-01 — Generic scooter asset (stationary and non-invasive)",
+  "classification": "POC_REFERENCE_ONLY_NOT_INDUSTRIAL_MACHINE_TYPE",
+  "drivetrain_variant": "unknown_until_owner_confirms_petrol_or_electric",
+  "manufacturer": null,
+  "model": null,
+  "serial_number": null,
+  "validation_status": "candidate_unvalidated",
+  "measurement_execution_status": "not_started",
+  "real_vehicle_attached_sensors": 0,
+  "machine_diagnostics_enabled": false,
+  "purpose": "Exercise GridMind asset identity, component mapping, sensor planning, timestamped sample ingestion, basic data-quality checks and reviewed observations, without claiming scooter health or retrofitting a vehicle.",
+  "protective_rules": [
+    "Do not ride or operate a scooter as part of this software POC.",
+    "Do not attach, wire, probe, modify or access vehicle systems.",
+    "Start with an independent smartphone resting on a stable surface; its samples are NOT scooter measurements.",
+    "Any vehicle-associated stationary test requires an adult/qualified professional's prior review and manufacturer/site safety assessment.",
+    "Never collect raw audio, precise travel routes, private location, personal identifiers or registration numbers.",
+    "No fault prediction, safety claim, service action, verified economic saving or model-specific thresholds."
+  ],
+  "phases": [
+    {
+      "id": 0,
+      "title": "Software-only sensor pipeline",
+      "input": "Phone motion sensors on a stable surface away from the vehicle, or labeled synthetic samples.",
+      "outcome": "Verify units, timestamps, source, null/stale/out-of-order handling and visualization.",
+      "vehicle_data": false
+    },
+    {
+      "id": 1,
+      "title": "Evidence and identity model",
+      "input": "Existing voluntary non-sensitive odometer, maintenance or service observations; petrol/electric identity if known.",
+      "outcome": "Review contextual observations and permissioned machine passport without inference.",
+      "vehicle_data": "manual_records_only"
+    },
+    {
+      "id": 2,
+      "title": "Professionally evaluated physical measurements (future)",
+      "input": "Qualified engineer selects if and what non-invasive external measurements are justified; manufacturer instructions and permissions required.",
+      "outcome": "Optional controlled stationary validation after a separate safety and data gate.",
+      "vehicle_data": "not_authorized_by_this_manifest"
+    }
+  ],
+  "components": [
+    {
+      "key": "frame",
+      "name": "Frame and chassis",
+      "applies_to": "both",
+      "scope": "Structural asset identity. No mounting points selected.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "steering",
+      "name": "Steering assembly",
+      "applies_to": "both",
+      "scope": "Safety-critical handling system; observation only.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "front_wheel",
+      "name": "Front wheel and tyre",
+      "applies_to": "both",
+      "scope": "Safety-critical road-contact assembly; observation only.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "rear_wheel",
+      "name": "Rear wheel and tyre",
+      "applies_to": "both",
+      "scope": "Safety-critical road-contact assembly; observation only.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "front_brake",
+      "name": "Front brake assembly",
+      "applies_to": "both",
+      "scope": "Safety-critical brake component; no testing or adjustment in this POC.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "rear_brake",
+      "name": "Rear brake assembly",
+      "applies_to": "both",
+      "scope": "Safety-critical brake component; no testing or adjustment in this POC.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "front_suspension",
+      "name": "Front suspension",
+      "applies_to": "both",
+      "scope": "Suspension assembly; no loading or physical testing in this POC.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "rear_suspension",
+      "name": "Rear suspension",
+      "applies_to": "both",
+      "scope": "Suspension assembly; no loading or physical testing in this POC.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "transmission",
+      "name": "Final drive and transmission",
+      "applies_to": "both",
+      "scope": "Configuration depends on actual scooter; not assumed to be a CVT.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "instrumentation",
+      "name": "Instruments and displayed odometer",
+      "applies_to": "both",
+      "scope": "Existing vehicle display only; optional manual transcription.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "controls_lighting",
+      "name": "Controls and lighting",
+      "applies_to": "both",
+      "scope": "Existing controls and lighting; no electrical intervention.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "low_voltage",
+      "name": "Low-voltage accessory system",
+      "applies_to": "both",
+      "scope": "Only recorded as a component; no wiring or tests.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "petrol_engine",
+      "name": "Internal-combustion engine",
+      "applies_to": "petrol",
+      "scope": "Applicable only if the scooter is petrol-powered.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "petrol_fuel",
+      "name": "Fuel and exhaust system",
+      "applies_to": "petrol",
+      "scope": "Not accessed or modified during the POC.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "ev_motor",
+      "name": "Electric traction motor",
+      "applies_to": "electric",
+      "scope": "Applicable only if the scooter is electric.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "ev_battery",
+      "name": "Traction battery and battery-management system",
+      "applies_to": "electric",
+      "scope": "Restricted high-energy equipment; do not open, access, or instrument.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "ev_controller",
+      "name": "Motor controller and power electronics",
+      "applies_to": "electric",
+      "scope": "Not accessed, modified, or electrically tested.",
+      "validation": "archetype_candidate"
+    },
+    {
+      "key": "ev_charging",
+      "name": "Charging interface",
+      "applies_to": "electric",
+      "scope": "No modification or connection; manufacturer documentation only.",
+      "validation": "archetype_candidate"
+    }
+  ],
+  "measurements": [
+    {
+      "key": "phone_acceleration",
+      "name": "Independent phone acceleration test",
+      "component_key": "frame",
+      "applies_to": "both",
+      "source_class": "phone",
+      "data_origin": "independent_test_rig",
+      "phase": 0,
+      "unit": "m/s²",
+      "instrument": "Smartphone accelerometer",
+      "can_prove": "Proves collection of time-stamped motion samples from a phone at rest on a stable surface.",
+      "cannot_prove": "Does not measure scooter vibration, faults or road safety.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "phone_rotation",
+      "name": "Independent phone orientation-rate test",
+      "component_key": "frame",
+      "applies_to": "both",
+      "source_class": "phone",
+      "data_origin": "independent_test_rig",
+      "phase": 0,
+      "unit": "rad/s",
+      "instrument": "Smartphone gyroscope",
+      "can_prove": "Proves a separate time-stamped motion channel and source identity.",
+      "cannot_prove": "Does not measure wheel speed or scooter mechanical condition.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "visual_record",
+      "name": "Existing visual/maintenance observation",
+      "component_key": "frame",
+      "applies_to": "both",
+      "source_class": "manual",
+      "data_origin": "existing_record",
+      "phase": 1,
+      "unit": "observation",
+      "instrument": "Existing non-invasive owner records",
+      "can_prove": "Tests provenance, categorical input and observation review.",
+      "cannot_prove": "Does not establish machine health or fault cause.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "odometer_record",
+      "name": "Existing odometer reading",
+      "component_key": "instrumentation",
+      "applies_to": "both",
+      "source_class": "manual",
+      "data_origin": "existing_record",
+      "phase": 1,
+      "unit": "km",
+      "instrument": "Visible odometer or pre-existing trip record",
+      "can_prove": "Provides usage context for a future comparison when independently obtained.",
+      "cannot_prove": "Does not establish engine hours, distance during the POC or battery health.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "existing_fault_note",
+      "name": "Existing service record / OEM diagnosis",
+      "component_key": "instrumentation",
+      "applies_to": "both",
+      "source_class": "existing_record",
+      "data_origin": "existing_record",
+      "phase": 1,
+      "unit": "note",
+      "instrument": "Authorized existing service documentation",
+      "can_prove": "Provides historical context with a clearly identified source.",
+      "cannot_prove": "Cannot be treated as a current or verified fault.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "frame_vibration",
+      "name": "Frame vibration candidate",
+      "component_key": "frame",
+      "applies_to": "both",
+      "source_class": "professional_external",
+      "data_origin": "future_qualified_scooter",
+      "phase": 2,
+      "unit": "m/s²",
+      "instrument": "Professionally selected industrial accelerometer",
+      "can_prove": "Could measure scooter structural motion in an engineer-approved, stationary test.",
+      "cannot_prove": "Does not independently diagnose bearings, alignment or vehicle safety.",
+      "professional_required": true,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "petrol_engine_temp",
+      "name": "Petrol-engine surface temperature candidate",
+      "component_key": "petrol_engine",
+      "applies_to": "petrol",
+      "source_class": "professional_external",
+      "data_origin": "future_qualified_scooter",
+      "phase": 2,
+      "unit": "°C",
+      "instrument": "Qualified non-contact temperature instrument",
+      "can_prove": "Could provide temperature observations with known location and conditions.",
+      "cannot_prove": "Cannot prove overheating without OEM limits, comparable context and calibration.",
+      "professional_required": true,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "ev_motor_temp",
+      "name": "EV motor external temperature candidate",
+      "component_key": "ev_motor",
+      "applies_to": "electric",
+      "source_class": "professional_external",
+      "data_origin": "future_qualified_scooter",
+      "phase": 2,
+      "unit": "°C",
+      "instrument": "Qualified compatible temperature instrument",
+      "can_prove": "Could provide motor thermal observation in an approved stationary setting.",
+      "cannot_prove": "Cannot prove battery safety, motor efficiency or fault cause.",
+      "professional_required": true,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "acoustic_feature",
+      "name": "Stationary sound-pattern candidate",
+      "component_key": "frame",
+      "applies_to": "both",
+      "source_class": "professional_external",
+      "data_origin": "future_qualified_scooter",
+      "phase": 2,
+      "unit": "relative_unit",
+      "instrument": "Calibrated/characterized acoustic instrument",
+      "can_prove": "May support relative sound-pattern comparisons without storing raw audio.",
+      "cannot_prove": "Does not provide calibrated sound-pressure level or component diagnosis by default.",
+      "professional_required": true,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "petrol_fuel_record",
+      "name": "Existing petrol use record",
+      "component_key": "petrol_fuel",
+      "applies_to": "petrol",
+      "source_class": "manual",
+      "data_origin": "existing_record",
+      "phase": 1,
+      "unit": "L",
+      "instrument": "Previously available fuel-use record",
+      "can_prove": "Records operating context if its provenance can be established.",
+      "cannot_prove": "Does not identify fuel inefficiency or mechanical fault.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "ev_energy_record",
+      "name": "Existing documented charging energy",
+      "component_key": "ev_charging",
+      "applies_to": "electric",
+      "source_class": "existing_record",
+      "data_origin": "existing_record",
+      "phase": 1,
+      "unit": "kWh",
+      "instrument": "Authorized existing charging/meter record",
+      "can_prove": "Records energy input where a measured and attributable source exists.",
+      "cannot_prove": "Does not determine traction-battery health, motor demand, or machine-level loss.",
+      "professional_required": false,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    },
+    {
+      "key": "ev_electrical_power",
+      "name": "External EV electrical measurement candidate",
+      "component_key": "ev_controller",
+      "applies_to": "electric",
+      "source_class": "professional_external",
+      "data_origin": "future_qualified_scooter",
+      "phase": 2,
+      "unit": "W",
+      "instrument": "Qualified electrical power instrument selected by a professional",
+      "can_prove": "Possible future study subject to manufacturer and qualified engineer approval.",
+      "cannot_prove": "Not authorized for battery probing, pack access, wiring modifications, or user installation.",
+      "professional_required": true,
+      "installation_status": "not_installed",
+      "validation": "candidate_not_tested"
+    }
+  ],
+  "finding_policy": "Allowed result: data received, insufficient or inconsistent quality, or a non-causal change between comparable measurements. Specific faults and repair advice remain blocked.",
+  "legacy_equipment_transfer": "The physical asset ID, component map, observation provenance and quality gate can later be reused for a conventional factory asset without making the scooter a commercial machine taxonomy entry."
+}
