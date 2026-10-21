@@ -3,7 +3,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useNavigationAccess } from "@/lib/navigation-context";
 import { usePreferences } from "@/lib/preferences";
 import { Button } from "@/components/ui/button";
-import { resolveNavigation, GRIDMIND_AREAS } from "@/lib/navigation";
+import { resolveNavigation, navigationArea } from "@/lib/navigation";
 export function GlobalNavigation({ compact = false }: { compact?: boolean }) {
   const details = useRef<HTMLDetailsElement>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
@@ -21,9 +21,7 @@ export function GlobalNavigation({ compact = false }: { compact?: boolean }) {
       {!compact && (
         <Link to="/" className="font-display font-semibold">
           GridMind{" "}
-          <span className="text-muted-foreground font-normal">
-            / {GRIDMIND_AREAS.find((a) => a.to === pathname)?.label ?? "Workspace"}
-          </span>
+          <span className="text-muted-foreground font-normal">/ {navigationArea(pathname)}</span>
         </Link>
       )}
       <details
@@ -57,11 +55,7 @@ export function GlobalNavigation({ compact = false }: { compact?: boolean }) {
               search={"search" in a ? a.search : undefined}
               params={"params" in a ? a.params : undefined}
               style={{ color: "inherit" }}
-              aria-current={
-                pathname === a.to || (a.label === "Explore" && pathname.startsWith("/explore/"))
-                  ? "page"
-                  : undefined
-              }
+              aria-current={navigationArea(pathname) === a.label ? "page" : undefined}
               className="rounded p-2 hover:bg-accent hover:text-accent-foreground aria-[current=page]:bg-accent aria-[current=page]:text-accent-foreground"
               onClick={(e) => e.currentTarget.closest("details")?.removeAttribute("open")}
             >

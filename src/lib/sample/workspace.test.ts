@@ -321,3 +321,34 @@ it("binds initialization bytes and edited records to replayable source digests",
     source.id,
   );
 });
+
+it("keeps a lot-specific hold separate from orders using a different lot of the same material", async () => {
+  let s = createSampleWorkspace();
+  s = await applySampleCommand(s, {
+    type: "lot",
+    id: "alternate-lot",
+    materialId: "steel",
+    quantity: 100,
+  });
+  s = await applySampleCommand(s, {
+    type: "order",
+    id: "alternate-order",
+    productId: "part",
+    machineId: "press",
+    lotId: "alternate-lot",
+    quantity: 10,
+  });
+  s = await applySampleCommand(s, {
+    type: "incident",
+    kind: "quality_hold",
+    subjectId: "lot",
+    title: "Original lot held",
+  });
+  expect(s.cases[0].orderIds).toEqual(["order"]);
+  const otherWork = records(s, "work_order").find(
+    (w) => w.attributes.orderId === "alternate-order",
+  )!;
+  expect((await samplePlan(s)).jobs.find((j) => j.workOrderId === otherWork.id)?.status).toBe(
+    "candidate",
+  );
+});

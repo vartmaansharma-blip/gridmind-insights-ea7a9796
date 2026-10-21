@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { resolveNavigation, GRIDMIND_AREAS } from "./navigation";
+import { resolveNavigation, GRIDMIND_AREAS, navigationArea } from "./navigation";
 import { routeLayout } from "./route-layout";
 import { sampleLocation, samplePath } from "./sample/navigation";
 import { preferencesSchema, defaultPreferences, formatSampleTime } from "./preferences";
@@ -35,6 +35,8 @@ describe("navigation and non-sensitive preferences", () => {
   it("separates sample, account, portal, operational and unknown shells", () => {
     for (const path of ["/explore", "/explore/machines/press", "/explore/investigations/case-1"])
       expect(routeLayout(path)).toBe("sample");
+    expect(navigationArea("/explore/machines/press")).toBe("Explore");
+    expect(navigationArea("/team/cases/123")).toBe("Investigations");
     expect(routeLayout("/profile")).toBe("account");
     expect(routeLayout("/team/cases/123")).toBe("portal");
     expect(routeLayout("/dashboard")).toBe("operational");

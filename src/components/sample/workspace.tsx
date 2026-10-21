@@ -676,7 +676,14 @@ function SampleWorkspaceContent() {
                           · {(m.attributes.processIds as string[]).join(", ")}
                         </p>
                         <p className="text-sm">
-                          Connected orders: {linkedOrders(s, m.id).join(", ") || "None"}
+                          Connected orders:{" "}
+                          {linkedOrders(s, m.id).length
+                            ? linkedOrders(s, m.id).map((id) => (
+                                <span className="mr-2" key={id}>
+                                  <RecordLink s={s} id={id} />
+                                </span>
+                              ))
+                            : "None"}
                         </p>
                         <p className="text-sm">
                           Incidents: {s.cases.filter((c) => c.subjectId === m.id).length}

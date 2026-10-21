@@ -345,6 +345,9 @@ export function linkedOrders(s: SampleWorkspace, subjectId: string): string[] {
           (id) => entity(s, id).attributes.resourceId === subjectId,
         );
       const material = subject.kind === "lot" ? subject.attributes.materialId : subjectId;
+      // A lot hold/shortage affects its selected allocations, not every order sharing its material type.
+      if (subject.kind === "lot" && orderLot(s, wo.id, String(material)) !== subject.id)
+        return false;
       return records(s, "bom").some(
         (b) =>
           b.attributes.productId === order.attributes.productId &&

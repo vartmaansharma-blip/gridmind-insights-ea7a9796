@@ -1,3 +1,4 @@
+import { routeLayout } from "./route-layout";
 import type { NavigationAccess } from "./navigation-context";
 /** Five shared concepts; destinations are navigation, never authorization grants. */
 export const GRIDMIND_AREAS = [
@@ -41,4 +42,12 @@ export function resolveNavigation(access: NavigationAccess, sample: boolean) {
       };
     return a;
   });
+}
+
+export function navigationArea(path: string): (typeof GRIDMIND_AREAS)[number]["label"] {
+  const layout = routeLayout(path);
+  if (layout === "sample") return "Explore";
+  if (layout === "account") return "Profile";
+  if (layout === "portal" || path.startsWith("/investigations")) return "Investigations";
+  return layout === "operational" ? "Workspace" : "Website";
 }

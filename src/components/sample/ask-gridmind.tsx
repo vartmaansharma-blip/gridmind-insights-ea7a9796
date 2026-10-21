@@ -166,12 +166,13 @@ export function AskGridMind({ s, recordId }: { s: SampleWorkspace; recordId?: st
               </div>
               <Button
                 variant="outline"
-                onClick={() => {
-                  void navigator.clipboard.writeText(JSON.stringify(answer, null, 2)).then(
-                    () => setNotice("Synthetic explanation copied."),
-                    () =>
-                      setNotice("Clipboard unavailable. Select the explanation text to copy it."),
-                  );
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(JSON.stringify(answer, null, 2));
+                    setNotice("Synthetic explanation copied.");
+                  } catch {
+                    setNotice("Clipboard unavailable. Select the explanation text to copy it.");
+                  }
                 }}
               >
                 Copy synthetic explanation
