@@ -8,6 +8,8 @@ These describe the proposed case product and existing implementation boundaries.
 
 - [Manufacturer resolution system and architecture](gridmind-3-1-manufacturer-resolution-system-and-architecture-2026-10-17.md) — user roles, proposed modules, evidence-to-decision objects, methods versus problem tags, UX/technical acceptance and production data boundaries. See its current addendum and engineering ledger for offline #153, draft connected #154 and merged gated electricity source; professional/customer validity remains unproved.
 
+The architecture also preserves §11 requirements for India-first feasibility, bottleneck and delivery-risk intelligence, logical entities, trust/approval levels and falsification cases. Those remain requirements unless corresponding code and acceptance evidence are identified.
+
 ## Electricity screening research method
 
 - [R3 industrial electricity bill screening contract and 12 fictional acceptance cases](gridmind-r3-electricity-screening-method-and-test-fixtures-2026-10-18.md) — official supplier/date/category qualification, demand/PF/category questions, fail-closed results and reviewer prerequisite; **NOT** a working calculator, audit or production data release.
