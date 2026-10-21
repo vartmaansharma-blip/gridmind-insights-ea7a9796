@@ -82,22 +82,47 @@ export function workspaceDestination(principal: Principal, destination: AuthDest
   return "/dashboard" as const;
 }
 
-// Public provider availability only: never request the management API, client
-// secret or Google tokens. Fail closed if settings cannot be confirmed.
+// Public provider availability only: use the exact URL/key that the already
+// initialized Supabase browser client uses. The generated client supports
+// public fallbacks when VITE_* variables are absent (e.g. Lovable previews);
+// checking only import.meta.env caused a false "unavailable" error.
+export type GoogleProviderErrorReason = "provider_disabled" | "configuration_missing" | "provider_check_failed";
+export class GoogleProviderError extends Error {
+  constructor(readonly reason: GoogleProviderErrorReason) {
+    super("Google provider preflight failed");
+    this.name = "GoogleProviderError";
+  }
+}
 export async function requireGoogleProvider(
-  url: string,
-  key: string,
+  client: Pick<SupabaseClient, "supabaseUrl" | "supabaseKey">,
   fetcher: typeof fetch = fetch,
 ) {
-  if (!url || !key || key.startsWith("sb_secret_"))
-    throw new Error("Google sign-in is unavailable.");
-  const response = await fetcher(new URL("/auth/v1/settings", url), {
-    headers: { apikey: key },
-    credentials: "omit",
-    cache: "no-store",
-    signal: AbortSignal.timeout(8000),
-  });
-  if (!response.ok || (await response.json()).external?.google !== true) {
-    throw new Error("Google sign-in is unavailable.");
+  const { supabaseUrl: url, supabaseKey: key } = client;
+  if (!url || !key || key.startsWith("sb_secret_")) {
+    throw new GoogleProviderError("configuration_missing");
+  }
+  let settings: unknown;
+  try {
+    const response = await fetcher(new URL("/auth/v1/settings", url), {
+      headers: { apikey: key },
+      credentials: "omit",
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) throw new Error("unavailable");
+    settings = await response.json();
+  } catch {
+    throw new GoogleProviderError("provider_check_failed");
+  }
+  if (
+    !settings ||
+    typeof settings !== "object" ||
+    !("external" in settings) ||
+    typeof settings.external !== "object" ||
+    settings.external === null ||
+    !("google" in settings.external) ||
+    settings.external.google !== true
+  ) {
+    throw new GoogleProviderError("provider_disabled");
   }
 }
