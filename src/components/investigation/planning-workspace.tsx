@@ -83,8 +83,7 @@ export function OperationsPlanSummary({ result }: { result: PlanningResult }) {
       <div className="max-w-full overflow-x-auto">
         <table className="w-full min-w-[650px] text-sm">
           <caption className="text-left text-muted-foreground">
-            Planned sequence — timestamps retain their supplied offset; quantities use the product's
-            source unit
+            Planned sequence — times are shown in UTC; quantities use the product's source unit
           </caption>
           <thead>
             <tr>
