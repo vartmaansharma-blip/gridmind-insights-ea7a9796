@@ -1,3 +1,5 @@
+import { GlobalNavigation } from "@/components/gm/global-navigation";
+import { area } from "@/lib/navigation";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import mark from "@/assets/gridmind-mark.png";
@@ -161,7 +163,9 @@ function Header() {
           {NAV.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
         </nav>
         <div className="flex items-center gap-4 text-[0.92rem]">
-          <Link to="/auth" className="whitespace-nowrap hover:underline underline-offset-4">Sign in</Link>
+          <Link to={area("/explore").to} className="hidden lg:inline whitespace-nowrap hover:underline underline-offset-4">Explore GridMind</Link>
+          <GlobalNavigation compact />
+          <Link to="/auth" className="hidden sm:inline whitespace-nowrap hover:underline underline-offset-4">Sign in</Link>
           <span className="hidden sm:inline"><a href="#contact" className="gm-btn gm-btn-primary !px-4 !py-2 text-sm">Discuss a review</a></span>
           <button
             type="button"

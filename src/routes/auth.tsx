@@ -1,3 +1,5 @@
+import { useNavigationAccess } from "@/lib/navigation-context";
+import { savedLanding } from "@/lib/preferences";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { Eye, EyeOff, LoaderCircle } from "lucide-react";
@@ -30,7 +32,7 @@ export const Route = createFileRoute("/auth")({
   }),
   validateSearch: (
     search: Record<string, unknown>,
-  ): { destination?: "customer" | "team"; oauth?: "google" } => ({
+  ): { destination?: "customer" | "team" | "profile"; oauth?: "google" } => ({
     destination: authDestination(search.destination),
     oauth: search.oauth === "google" ? ("google" as const) : undefined,
   }),
@@ -39,22 +41,46 @@ export const Route = createFileRoute("/auth")({
 
 function AuthPage() {
   const navigate = useNavigate();
+  const { setAccess } = useNavigationAccess();
   const { destination } = Route.useSearch();
   const [awaitingAccess, setAwaitingAccess] = useState(false);
   const [pendingAccess, setPendingAccess] = useState(false);
   const enterWorkspace = useCallback(async () => {
     setAwaitingAccess(true);
+    if (destination === "profile") {
+      const verified = await supabase.auth.getUser();
+      if (verified.error || !verified.data.user || verified.data.user.is_anonymous)
+        throw new Error("Sign in to verify your personal profile.");
+      await navigate({ to: "/profile" });
+      return;
+    }
     const { portalCall } = await import("@/lib/investigation/portal-client");
     const principal = await portalCall<import("@/lib/investigation/portal-contract").Principal>({
       action: "principal",
     });
-    const target = workspaceDestination(principal, destination);
+    const verified = await supabase.auth.getUser();
+    if (verified.error || !verified.data.user)
+      throw new Error("Your account could not be verified.");
+    setAccess({
+      userId: verified.data.user.id,
+      factories: principal.factories.length > 0,
+      staff: principal.factories.length > 0,
+      customer: principal.isCustomer,
+    });
+    const landing = savedLanding();
+    const target =
+      !destination && landing === "explore"
+        ? "/explore"
+        : !destination &&
+            (landing === "profile" || (!principal.factories.length && !principal.isCustomer))
+          ? "/profile"
+          : workspaceDestination(principal, destination);
     if (!target) {
       setPendingAccess(true);
       return;
     }
     await navigate({ to: target });
-  }, [destination, navigate]);
+  }, [destination, navigate, setAccess]);
   const [mode, setMode] = useState<"sign-in" | "sign-up">("sign-in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -80,7 +106,8 @@ function AuthPage() {
         try {
           const { data, error: sessionError } = await supabase.auth.getSession();
           if (cancelled) return;
-          if (sessionError) throw new Error("Could not restore your saved sign-in. Please try again.");
+          if (sessionError)
+            throw new Error("Could not restore your saved sign-in. Please try again.");
           if (!data.session) return;
 
           const { data: verified, error: userError } = await supabase.auth.getUser();
@@ -282,6 +309,12 @@ function AuthPage() {
                   ? "Access pending. Your account is signed in, but has no assigned workspace access. Ask your GridMind owner to grant access."
                   : "Checking your authorized workspace access. If this is unavailable, retry or sign out."}
               </p>
+              <Link to="/profile" className="text-sm underline">
+                Open my personal profile
+              </Link>
+              <Link to="/explore" className="text-sm underline">
+                Explore the sample organization
+              </Link>
               <Button type="button" disabled={busy} onClick={retryAccess}>
                 Check access again
               </Button>
@@ -305,7 +338,10 @@ function AuthPage() {
                 onClick={googleSignIn}
               >
                 {googleBusy ? (
-                  <LoaderCircle className="size-5 animate-spin motion-reduce:animate-none" aria-hidden="true" />
+                  <LoaderCircle
+                    className="size-5 animate-spin motion-reduce:animate-none"
+                    aria-hidden="true"
+                  />
                 ) : (
                   <img
                     src="https://developers.google.com/static/identity/images/g-logo.png"
@@ -371,9 +407,25 @@ function AuthPage() {
                     </button>
                   </div>
                 </div>
-                <Button type="submit" variant="cta" className="min-h-11" disabled={!hydrated || busy || checkingSession}>
-                  {busy && !googleBusy ? <LoaderCircle className="size-4 animate-spin motion-reduce:animate-none" aria-hidden="true" /> : null}
-                  {busy && !googleBusy ? (mode === "sign-in" ? "Signing in…" : "Creating account…") : mode === "sign-in" ? "Sign in" : "Create account"}
+                <Button
+                  type="submit"
+                  variant="cta"
+                  className="min-h-11"
+                  disabled={!hydrated || busy || checkingSession}
+                >
+                  {busy && !googleBusy ? (
+                    <LoaderCircle
+                      className="size-4 animate-spin motion-reduce:animate-none"
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                  {busy && !googleBusy
+                    ? mode === "sign-in"
+                      ? "Signing in…"
+                      : "Creating account…"
+                    : mode === "sign-in"
+                      ? "Sign in"
+                      : "Create account"}
                 </Button>
               </form>
 
@@ -403,7 +455,10 @@ function AuthPage() {
         </Panel>
 
         <p className="mt-5 text-center text-xs text-muted-foreground">
-          <Link to="/" className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <Link
+            to="/"
+            className="inline-flex min-h-11 items-center justify-center rounded-sm px-2 underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
             Continue with demo mode
           </Link>
         </p>

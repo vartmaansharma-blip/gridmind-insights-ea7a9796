@@ -9,6 +9,7 @@ export default defineConfig({
     "product.pw.ts",
     "industrial-core.pw.ts",
     "planning.pw.ts",
+    "explore.pw.ts",
     "customer-demo.pw.ts",
     "invoice-exception.pw.ts",
     "finishing-comparison.pw.ts",

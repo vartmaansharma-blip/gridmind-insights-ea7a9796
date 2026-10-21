@@ -1,3 +1,4 @@
+import { selectedFactory, rememberFactory } from "@/lib/workspace-selection";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import { analyze, type Analysis } from "./analysis";
@@ -120,6 +121,7 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
   const persistQueues = useRef(new Map<string, Promise<void>>());
   const [factoryLoadError, setFactoryLoadError] = useState<string | null>(null);
   const loadGeneration = useRef(0);
+  const selectionUser = useRef<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -133,6 +135,7 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
         if (sessionError) throw sessionError;
 
         if (!sessionData.session) {
+          selectionUser.current = null;
           setFactoryLoadError(null);
           setState({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID, authenticated: false, loading: false });
           return;
@@ -142,10 +145,14 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
         const snapshots = await getAuthenticatedFactorySnapshots();
         if (cancelled || generation !== loadGeneration.current) return;
         const factories = snapshots.map(snapshotToFactory);
+        selectionUser.current = sessionData.session.user.id;
+        let saved: string | null = null;
+        try { saved = selectedFactory(sessionData.session.user.id, factories.map(f => f.id), sessionStorage); }
+        catch { /* Storage restrictions must not hide freshly authorized records. */ }
         setFactoryLoadError(null);
         setState({
           factories,
-          activeId: factories[0]?.id ?? null,
+          activeId: saved ?? factories[0]?.id ?? null,
           authenticated: true,
           loading: false,
         });
@@ -170,6 +177,7 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     const { data: authSubscription } = supabase.auth.onAuthStateChange((event) => {
       if (event === "SIGNED_IN" || event === "TOKEN_REFRESHED") void loadForSession();
       if (event === "SIGNED_OUT") {
+        selectionUser.current = null;
         ++loadGeneration.current; // discard any pending private factory response
         setFactoryLoadError(null);
         setState({ factories: [createDemoFactory()], activeId: DEMO_FACTORY_ID, authenticated: false, loading: false });
@@ -234,7 +242,14 @@ export function EnergyStoreProvider({ children }: { children: ReactNode }) {
     authenticated: state.authenticated,
     loading: state.loading,
     factoryLoadError,
-    setActive: (id) => setState((s) => ({ ...s, activeId: id })),
+    setActive: (id) => setState((s) => {
+      if (!s.factories.some(f => f.id === id)) return s;
+      if (s.authenticated && selectionUser.current) {
+        try { rememberFactory(selectionUser.current, id, sessionStorage); }
+        catch { /* Keep the current selection in memory if browser storage is blocked. */ }
+      }
+      return { ...s, activeId: id };
+    }),
     addFactory: async (input) => {
       const factoryId = await createFactoryWorkspace(input);
       const snapshots = await getAuthenticatedFactorySnapshots();

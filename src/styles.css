@@ -65,8 +65,8 @@
 }
 
 :root {
-  --brand-green: #9ADD00;
-  --brand-green-foreground: #080D08;
+  --brand-green: #9add00;
+  --brand-green-foreground: #080d08;
   --radius: 0.375rem;
   --background: oklch(0.965 0.006 98);
   --foreground: oklch(0.17 0.012 155);
@@ -128,7 +128,9 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-display);
     letter-spacing: 0;
   }
@@ -160,10 +162,59 @@
 }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Application preferences reuse the approved tokens; public .gm-site colors stay scoped. */
+:root[data-theme="dark"] {
+  --background: #101713;
+  --foreground: #f3f3ee;
+  --card: #18231e;
+  --card-foreground: #f3f3ee;
+  --popover: #18231e;
+  --popover-foreground: #f3f3ee;
+  --primary: #f3f3ee;
+  --primary-foreground: #101713;
+  --secondary: #26362c;
+  --secondary-foreground: #f3f3ee;
+  --muted: #26362c;
+  --muted-foreground: #b9c2c0;
+  --border: #415147;
+  --input: #53645a;
+  --success: #a8dda4;
+  --success-soft: #193224;
+  --steel: #aed8ef;
+  --steel-soft: #1d2d3c;
+  --warning: #f8ce7a;
+  --warning-soft: #342b16;
+  --danger: #ffb4ab;
+  --danger-soft: #341d1a;
+}
+:root[data-density="compact"] .panel {
+  padding: 1rem;
+}
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
 }

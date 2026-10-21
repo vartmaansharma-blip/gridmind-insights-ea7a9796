@@ -17,10 +17,12 @@ import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DesignPreviewRouteImport } from './routes/design-preview'
 import { Route as ElectricityDemoRouteImport } from './routes/electricity-demo'
 import { Route as EnergyRouteImport } from './routes/energy'
+import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as FactoryRouteImport } from './routes/factory'
 import { Route as InvestigationsRouteImport } from './routes/investigations'
 import { Route as InvestigationsConnectedRouteImport } from './routes/investigations-connected'
 import { Route as OpportunitiesRouteImport } from './routes/opportunities'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as SavingsRouteImport } from './routes/savings'
 import { Route as WebsiteRouteImport } from './routes/website'
 import { Route as ApiElectricityRouteImport } from './routes/api.electricity'
@@ -29,6 +31,8 @@ import { Route as ApiInvestigationsRouteImport } from './routes/api.investigatio
 import { Route as ApiPortalRouteImport } from './routes/api.portal'
 import { Route as CasesIndexRouteImport } from './routes/cases.index'
 import { Route as CasesCaseIdRouteImport } from './routes/cases.$caseId'
+import { Route as ExploreIndexRouteImport } from './routes/explore.index'
+import { Route as ExploreSplatRouteImport } from './routes/explore.$'
 import { Route as MachinesIndexRouteImport } from './routes/machines.index'
 import { Route as MachinesIdRouteImport } from './routes/machines.$id'
 import { Route as TeamElectricityRouteImport } from './routes/team.electricity'
@@ -76,6 +80,11 @@ const EnergyRoute = EnergyRouteImport.update({
   path: '/energy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FactoryRoute = FactoryRouteImport.update({
   id: '/factory',
   path: '/factory',
@@ -94,6 +103,11 @@ const InvestigationsConnectedRoute = InvestigationsConnectedRouteImport.update({
 const OpportunitiesRoute = OpportunitiesRouteImport.update({
   id: '/opportunities',
   path: '/opportunities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SavingsRoute = SavingsRouteImport.update({
@@ -136,6 +150,16 @@ const CasesCaseIdRoute = CasesCaseIdRouteImport.update({
   path: '/cases/$caseId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExploreIndexRoute = ExploreIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ExploreRoute,
+} as any)
+const ExploreSplatRoute = ExploreSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => ExploreRoute,
+} as any)
 const MachinesIndexRoute = MachinesIndexRouteImport.update({
   id: '/machines/',
   path: '/machines/',
@@ -176,10 +200,12 @@ export interface FileRoutesByFullPath {
   '/design-preview': typeof DesignPreviewRoute
   '/electricity-demo': typeof ElectricityDemoRoute
   '/energy': typeof EnergyRoute
+  '/explore': typeof ExploreRouteWithChildren
   '/factory': typeof FactoryRoute
   '/investigations': typeof InvestigationsRoute
   '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
+  '/profile': typeof ProfileRoute
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
   '/api/electricity': typeof ApiElectricityRoute
@@ -187,10 +213,12 @@ export interface FileRoutesByFullPath {
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
+  '/explore/$': typeof ExploreSplatRoute
   '/machines/$id': typeof MachinesIdRoute
   '/team/electricity': typeof TeamElectricityRoute
   '/team/intake': typeof TeamIntakeRoute
   '/cases/': typeof CasesIndexRoute
+  '/explore/': typeof ExploreIndexRoute
   '/machines/': typeof MachinesIndexRoute
   '/team/cases/$caseId': typeof TeamCasesCaseIdRoute
   '/team/cases/': typeof TeamCasesIndexRoute
@@ -208,6 +236,7 @@ export interface FileRoutesByTo {
   '/investigations': typeof InvestigationsRoute
   '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
+  '/profile': typeof ProfileRoute
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
   '/api/electricity': typeof ApiElectricityRoute
@@ -215,10 +244,12 @@ export interface FileRoutesByTo {
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
+  '/explore/$': typeof ExploreSplatRoute
   '/machines/$id': typeof MachinesIdRoute
   '/team/electricity': typeof TeamElectricityRoute
   '/team/intake': typeof TeamIntakeRoute
   '/cases': typeof CasesIndexRoute
+  '/explore': typeof ExploreIndexRoute
   '/machines': typeof MachinesIndexRoute
   '/team/cases/$caseId': typeof TeamCasesCaseIdRoute
   '/team/cases': typeof TeamCasesIndexRoute
@@ -233,10 +264,12 @@ export interface FileRoutesById {
   '/design-preview': typeof DesignPreviewRoute
   '/electricity-demo': typeof ElectricityDemoRoute
   '/energy': typeof EnergyRoute
+  '/explore': typeof ExploreRouteWithChildren
   '/factory': typeof FactoryRoute
   '/investigations': typeof InvestigationsRoute
   '/investigations-connected': typeof InvestigationsConnectedRoute
   '/opportunities': typeof OpportunitiesRoute
+  '/profile': typeof ProfileRoute
   '/savings': typeof SavingsRoute
   '/website': typeof WebsiteRoute
   '/api/electricity': typeof ApiElectricityRoute
@@ -244,10 +277,12 @@ export interface FileRoutesById {
   '/api/investigations': typeof ApiInvestigationsRoute
   '/api/portal': typeof ApiPortalRoute
   '/cases/$caseId': typeof CasesCaseIdRoute
+  '/explore/$': typeof ExploreSplatRoute
   '/machines/$id': typeof MachinesIdRoute
   '/team/electricity': typeof TeamElectricityRoute
   '/team/intake': typeof TeamIntakeRoute
   '/cases/': typeof CasesIndexRoute
+  '/explore/': typeof ExploreIndexRoute
   '/machines/': typeof MachinesIndexRoute
   '/team/cases/$caseId': typeof TeamCasesCaseIdRoute
   '/team/cases/': typeof TeamCasesIndexRoute
@@ -263,10 +298,12 @@ export interface FileRouteTypes {
     | '/design-preview'
     | '/electricity-demo'
     | '/energy'
+    | '/explore'
     | '/factory'
     | '/investigations'
     | '/investigations-connected'
     | '/opportunities'
+    | '/profile'
     | '/savings'
     | '/website'
     | '/api/electricity'
@@ -274,10 +311,12 @@ export interface FileRouteTypes {
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
+    | '/explore/$'
     | '/machines/$id'
     | '/team/electricity'
     | '/team/intake'
     | '/cases/'
+    | '/explore/'
     | '/machines/'
     | '/team/cases/$caseId'
     | '/team/cases/'
@@ -295,6 +334,7 @@ export interface FileRouteTypes {
     | '/investigations'
     | '/investigations-connected'
     | '/opportunities'
+    | '/profile'
     | '/savings'
     | '/website'
     | '/api/electricity'
@@ -302,10 +342,12 @@ export interface FileRouteTypes {
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
+    | '/explore/$'
     | '/machines/$id'
     | '/team/electricity'
     | '/team/intake'
     | '/cases'
+    | '/explore'
     | '/machines'
     | '/team/cases/$caseId'
     | '/team/cases'
@@ -319,10 +361,12 @@ export interface FileRouteTypes {
     | '/design-preview'
     | '/electricity-demo'
     | '/energy'
+    | '/explore'
     | '/factory'
     | '/investigations'
     | '/investigations-connected'
     | '/opportunities'
+    | '/profile'
     | '/savings'
     | '/website'
     | '/api/electricity'
@@ -330,10 +374,12 @@ export interface FileRouteTypes {
     | '/api/investigations'
     | '/api/portal'
     | '/cases/$caseId'
+    | '/explore/$'
     | '/machines/$id'
     | '/team/electricity'
     | '/team/intake'
     | '/cases/'
+    | '/explore/'
     | '/machines/'
     | '/team/cases/$caseId'
     | '/team/cases/'
@@ -348,10 +394,12 @@ export interface RootRouteChildren {
   DesignPreviewRoute: typeof DesignPreviewRoute
   ElectricityDemoRoute: typeof ElectricityDemoRoute
   EnergyRoute: typeof EnergyRoute
+  ExploreRoute: typeof ExploreRouteWithChildren
   FactoryRoute: typeof FactoryRoute
   InvestigationsRoute: typeof InvestigationsRoute
   InvestigationsConnectedRoute: typeof InvestigationsConnectedRoute
   OpportunitiesRoute: typeof OpportunitiesRoute
+  ProfileRoute: typeof ProfileRoute
   SavingsRoute: typeof SavingsRoute
   WebsiteRoute: typeof WebsiteRoute
   ApiElectricityRoute: typeof ApiElectricityRoute
@@ -426,6 +474,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnergyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/factory': {
       id: '/factory'
       path: '/factory'
@@ -452,6 +507,13 @@ declare module '@tanstack/react-router' {
       path: '/opportunities'
       fullPath: '/opportunities'
       preLoaderRoute: typeof OpportunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/savings': {
@@ -510,6 +572,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CasesCaseIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/explore/': {
+      id: '/explore/'
+      path: '/'
+      fullPath: '/explore/'
+      preLoaderRoute: typeof ExploreIndexRouteImport
+      parentRoute: typeof ExploreRoute
+    }
+    '/explore/$': {
+      id: '/explore/$'
+      path: '/$'
+      fullPath: '/explore/$'
+      preLoaderRoute: typeof ExploreSplatRouteImport
+      parentRoute: typeof ExploreRoute
+    }
     '/machines/': {
       id: '/machines/'
       path: '/machines'
@@ -555,6 +631,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ExploreRouteChildren {
+  ExploreSplatRoute: typeof ExploreSplatRoute
+  ExploreIndexRoute: typeof ExploreIndexRoute
+}
+
+const ExploreRouteChildren: ExploreRouteChildren = {
+  ExploreSplatRoute: ExploreSplatRoute,
+  ExploreIndexRoute: ExploreIndexRoute,
+}
+
+const ExploreRouteWithChildren =
+  ExploreRoute._addFileChildren(ExploreRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
@@ -564,10 +653,12 @@ const rootRouteChildren: RootRouteChildren = {
   DesignPreviewRoute: DesignPreviewRoute,
   ElectricityDemoRoute: ElectricityDemoRoute,
   EnergyRoute: EnergyRoute,
+  ExploreRoute: ExploreRouteWithChildren,
   FactoryRoute: FactoryRoute,
   InvestigationsRoute: InvestigationsRoute,
   InvestigationsConnectedRoute: InvestigationsConnectedRoute,
   OpportunitiesRoute: OpportunitiesRoute,
+  ProfileRoute: ProfileRoute,
   SavingsRoute: SavingsRoute,
   WebsiteRoute: WebsiteRoute,
   ApiElectricityRoute: ApiElectricityRoute,
