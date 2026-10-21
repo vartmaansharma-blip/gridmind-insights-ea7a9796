@@ -286,7 +286,7 @@ export function physicalFixture(scenario: (typeof physicalScenarioIds)[number]) 
     resourceId: "press-second", facilityId: "plant",
     startsAt: REPLAY_AT, endsAt: "2026-10-20T20:00:00.000Z", availableMinutes: 300,
   });
-  const nodes: PhysicalSnapshot["nodes"] = [
+  const nodeDefinitions: Array<Omit<PhysicalSnapshot["nodes"][number], "evidenceIds" | "verification">> = [
     { id: "grid", kind: "supply", label: "Fictional site supply", coreResourceId: null, model: null },
     { id: "transformer", kind: "transformer", label: "Transformer T1", coreResourceId: null, model: null },
     { id: "panel", kind: "panel", label: "Panel P1", coreResourceId: null, model: null },
@@ -295,7 +295,10 @@ export function physicalFixture(scenario: (typeof physicalScenarioIds)[number]) 
     { id: "machine-two", kind: "machine", label: "Press 02", coreResourceId: "press-second", model: "Fictional press model B" },
     { id: "line-a", kind: "line", label: "Stamping line A", coreResourceId: "line-one", model: null },
     { id: "line-b", kind: "line", label: "Stamping line B", coreResourceId: "line-two", model: null },
-  ].map((n) => ({ ...n, evidenceIds: ["source"], verification: "verified" }));
+  ];
+  const nodes: PhysicalSnapshot["nodes"] = nodeDefinitions.map((n) => ({
+    ...n, evidenceIds: ["source"], verification: "verified",
+  }));
   const links: PhysicalSnapshot["links"] = [
     ["grid", "transformer", "power_feed"],
     ["transformer", "panel", "power_feed"],
