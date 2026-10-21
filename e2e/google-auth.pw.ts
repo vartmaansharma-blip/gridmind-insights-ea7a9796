@@ -140,10 +140,23 @@ test("disabled provider stays on auth with usable email sign-in", async ({ page 
   );
   await page.goto("/auth");
   await page.getByRole("button", { name: "Continue with Google" }).click();
-  await expect(page.getByRole("alert")).toContainText("unavailable");
+  await expect(page.getByRole("alert")).toContainText("not enabled");
   await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeEnabled();
   await expect(page).toHaveURL(/\/auth$/);
 });
+test("Google provider settings outage does not expose details or block email sign-in", async ({ page }) => {
+  await fixture(page);
+  await page.route(`${backend}/auth/v1/settings`, (route) =>
+    route.fulfill({ status: 503, body: "private provider configuration" }),
+  );
+  await page.goto("/auth");
+  await page.getByRole("button", { name: "Continue with Google" }).click();
+  await expect(page.getByRole("alert")).toContainText("could not be checked");
+  await expect(page.getByRole("alert")).not.toContainText("private provider configuration");
+  await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeEnabled();
+  await expect(page).toHaveURL(/\\/auth$/);
+});
+
 test("cancelled/error callback is sanitized and cannot reuse an old session to navigate", async ({
   page,
 }) => {
