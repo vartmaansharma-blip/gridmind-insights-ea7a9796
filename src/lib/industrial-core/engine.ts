@@ -7,6 +7,7 @@ import {
   type Verdict,
 } from "./model";
 
+import { assessOwnerIntents } from "./intent";
 export const ALGORITHM = "gm-core-003/constraints-v1";
 export function stable(value: unknown): string {
   if (Array.isArray(value)) return `[${value.map(stable).join(",")}]`;
@@ -350,6 +351,8 @@ export function evaluate(inputValue: unknown, at: string) {
     };
   });
   const eligible = alternatives.filter((a) => a.status === "eligible");
+  const ownerIntentAssessment = assessOwnerIntents(input, alternatives, at);
+  const unresolvedOwnerConflicts = ownerIntentAssessment.conflicts.length > 0;
   return {
     algorithmVersion: ALGORITHM,
     evaluatedAt: at,
@@ -368,9 +371,12 @@ export function evaluate(inputValue: unknown, at: string) {
         status: a.status,
         reasons: a.checks.filter((c) => c.status !== "eligible"),
       })),
-    recommendation: eligible.length === 1 ? eligible[0].actionId : null,
+    ...(input.ownerIntents?.length ? { ownerIntentAssessment } : {}),
+    recommendation: eligible.length === 1 && !unresolvedOwnerConflicts ? eligible[0].actionId : null,
     disposition:
-      eligible.length === 1
+      unresolvedOwnerConflicts
+        ? "owner_intent_conflict_requires_review"
+        : eligible.length === 1
         ? "review_recommended_action"
         : eligible.length > 1
           ? "compare_eligible_alternatives"

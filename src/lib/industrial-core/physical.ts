@@ -232,9 +232,15 @@ export function evaluatePhysicalSnapshot(rawCore: unknown, rawSnapshot: unknown,
     })),
     impacts,
     decision,
-    decisionReadiness: caution ? "requires_fact_confirmation" as const :
-      incident?.type === "machine_stop" ? "machine_unavailable_review" as const : "sample_evaluation_only" as const,
-    recommendedActionId: caution ? null : decision.recommendation,
+    decisionReadiness: decision.ownerIntentAssessment?.conflicts.length
+      ? "owner_conflict_requires_review" as const
+      : decision.ownerIntentAssessment?.inferredGoalsRequireConfirmation.length
+        ? "owner_goal_needs_confirmation" as const
+        : caution ? "requires_fact_confirmation" as const
+        : incident?.type === "machine_stop" ? "machine_unavailable_review" as const
+        : "sample_evaluation_only" as const,
+    recommendedActionId: caution || !!decision.ownerIntentAssessment?.conflicts.length
+      ? null : decision.recommendation,
     inferredCause: null,
     verifiedSavings: null,
     authorizedMachineControl: false,
@@ -242,7 +248,10 @@ export function evaluatePhysicalSnapshot(rawCore: unknown, rawSnapshot: unknown,
   };
 }
 
-export const physicalScenarioIds = ["normal", "machine_stop", "panel_alarm", "suspected_fault"] as const;
+export const physicalScenarioIds = [
+  "normal", "machine_stop", "panel_alarm", "suspected_fault",
+  "owner_machine_conflict", "owner_avoid_feasible", "owner_inferred",
+] as const;
 export function physicalFixture(scenario: (typeof physicalScenarioIds)[number]) {
   const core = fixture("A");
   const add = (id: string, kind: CoreInput["entities"][number]["kind"], attributes: Record<string, unknown>) => {
@@ -317,10 +326,37 @@ export function physicalFixture(scenario: (typeof physicalScenarioIds)[number]) 
     id: `connection-${index}`, from, to, kind: kind as "power_feed" | "line_membership",
     evidenceIds: ["source"], verification: "verified",
   }));
-  const incident: PhysicalSnapshot["incident"] = scenario === "normal" ? null : {
+  // The owner scenarios use the same equipment and order facts. These are
+  // explicit *fictional* owner statements, never imported or real approvals.
+  const ownerMachineConflict = scenario === "owner_machine_conflict";
+  const confirmedAvoidance = scenario === "owner_avoid_feasible";
+  const inferredAvoidance = scenario === "owner_inferred";
+  if (ownerMachineConflict || confirmedAvoidance || inferredAvoidance) {
+    const stated = !inferredAvoidance;
+    core.ownerIntents = [{
+      id: "fictional-owner-objective",
+      ownerOrganizationId: core.organizationId,
+      statement: ownerMachineConflict
+        ? "Fictional owner wants to deliver the important customer order using Press 01"
+        : "Fictional owner prefers not to allocate Press 01 to this order",
+      goal: "relationship",
+      preference: ownerMachineConflict ? "favor" : "avoid",
+      source: stated ? "owner_stated" : "inferred",
+      status: stated ? "confirmed" : "proposed",
+      confirmedBy: stated ? "SYNTHETIC-owner-confirmation-not-real" : null,
+      counterpartyId: "buyer",
+      relatedActionIds: ["produce-approved"],
+      evidenceIds: ["source"],
+      effectiveFrom: core.asOf,
+      expiresAt: core.validUntil,
+    }];
+  }
+  const machineStop = scenario === "machine_stop" || ownerMachineConflict;
+  const incident: PhysicalSnapshot["incident"] =
+    ["normal", "owner_avoid_feasible", "owner_inferred"].includes(scenario) ? null : {
     id: `fictional-${scenario}`,
-    subjectNodeId: scenario === "machine_stop" ? "machine-one" : "panel",
-    type: scenario === "machine_stop" ? "machine_stop" :
+    subjectNodeId: machineStop ? "machine-one" : "panel",
+    type: machineStop ? "machine_stop" :
       scenario === "panel_alarm" ? "power_interruption" : "suspected_power_fault",
     at: REPLAY_AT,
     evidenceIds: ["source"],

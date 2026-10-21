@@ -8,11 +8,16 @@ const options = {
   machine_stop: "Press 01 stopped",
   panel_alarm: "Panel P1 power interruption",
   suspected_fault: "Suspected electrical fault (not verified)",
+  owner_machine_conflict: "Owner's preferred order but machine stopped",
+  owner_avoid_feasible: "Owner avoids otherwise feasible order",
+  owner_inferred: "Unconfirmed owner preference (cannot bind)",
 } as const;
 const textFor = {
   sample_evaluation_only: "Normal sample: review the existing decision checks before any action.",
   machine_unavailable_review: "Verified sample machine stop: impacted order decisions require review.",
   requires_fact_confirmation: "Potential exposure only: verify individual machine conditions before acting.",
+  owner_conflict_requires_review: "Owner objective conflicts with the supported manufacturing choices; obtain a revised owner decision and fresh approval.",
+  owner_goal_needs_confirmation: "A preference was inferred, not confirmed by the owner. It is not a binding business instruction.",
 };
 export function PhysicalInfrastructureWorkspace() {
   const [hydrated, setHydrated] = useState(false);
@@ -45,16 +50,17 @@ export function PhysicalInfrastructureWorkspace() {
         <p className="text-xs font-semibold uppercase tracking-wide text-primary">GM-MVP-002 · Physical infrastructure intelligence · Synthetic only</p>
         <h2 id="physical-intelligence-title" className="text-2xl font-semibold">From an asset to a manufacturing decision</h2>
         <p className="text-sm text-muted-foreground max-w-4xl">
-          A fictional automotive parts plant with two stamping lines, two presses and a traced electrical supply.
-          Select an event to run the actual industrial constraint engine on the connected records.
+          A fictional automotive parts plant with two stamping lines, two presses, a traced electrical supply,
+          and simulated owner objectives. Select an event or an owner preference to run both operational and
+          strategic checks through the same existing industrial decision engine.
           No live equipment, factory data, confirmed fault diagnosis or external execution.
         </p>
       </div>
       <div className="flex flex-wrap gap-3 items-end">
-        <label className="text-sm">
+        <label className="block min-w-0 w-full max-w-md text-sm">
           Operating situation
           <select aria-label="Infrastructure scenario" disabled={!hydrated || loading}
-            className="mt-2 block rounded border bg-background p-2" value={scenario}
+            className="mt-2 block w-full min-w-0 max-w-full rounded border bg-background p-2" value={scenario}
             onChange={(e) => { setScenario(e.target.value as keyof typeof options); setResult(null); setError(""); }}>
             {Object.entries(options).map(([key, label]) => <option key={key} value={key}>{label}</option>)}
           </select>
@@ -76,6 +82,32 @@ export function PhysicalInfrastructureWorkspace() {
             </p>
             <p className="text-xs text-muted-foreground">Cause not established by power topology. No verified savings. No machine-control authority.</p>
           </div>
+          {result.decision.ownerIntentAssessment && (
+            <section className="rounded-lg border border-primary/40 p-4 space-y-3" aria-label="Owner goals and conflicts">
+              <h3 className="font-semibold">Owner objectives in the same decision</h3>
+              <p className="text-xs text-muted-foreground">
+                All objectives here are invented sample statements. A simulated owner confirmation is not
+                legal or production authorization. Inferred preferences must be confirmed by an actual owner.
+              </p>
+              {result.decision.ownerIntentAssessment.summaries.map((intent) => (
+                <article key={intent.intentId} className="rounded border p-3 space-y-1">
+                  <p className="text-sm font-medium">{intent.statement}</p>
+                  <p className="text-xs">Source: {intent.source.replaceAll("_", " ")} ·
+                    Evidence state: {intent.state.replaceAll("_", " ")} ·
+                    Preference: {intent.preference} · Action: {intent.relatedActionIds.join(", ") || "Not mapped"}</p>
+                </article>
+              ))}
+              {result.decision.ownerIntentAssessment.conflicts.map((conflict) => (
+                <p key={conflict.intentId + String(conflict.actionId)} className="text-sm font-medium">
+                  Unresolved conflict: {conflict.reason.replaceAll("_", " ")}.
+                  No approval or execution is permitted while it remains unresolved.
+                </p>
+              ))}
+              {result.decision.ownerIntentAssessment.inferredGoalsRequireConfirmation.length > 0 && (
+                <p className="text-sm">Owner confirmation is required before inferred intentions may become binding.</p>
+              )}
+            </section>
+          )}
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="rounded-lg border p-4 space-y-3">
               <h3 className="font-semibold">Physical plant and electrical connections</h3>

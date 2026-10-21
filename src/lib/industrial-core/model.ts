@@ -283,6 +283,26 @@ export const actionSchema = z
   })
   .strict();
 export type Action = z.infer<typeof actionSchema>;
+export const ownerIntentSchema = z.object({
+  id,
+  ownerOrganizationId: z.number().int().positive(),
+  statement: z.string().min(1).max(500),
+  goal: z.enum(["delivery","profitability","cash_flow","growth","relationship","quality","resilience","other"]),
+  preference: z.enum(["favor","avoid","explore"]),
+  source: z.enum(["owner_stated","inferred"]),
+  status: z.enum(["proposed","confirmed","rejected"]),
+  confirmedBy: id.nullable(),
+  counterpartyId: id.nullable(),
+  relatedActionIds: z.array(id).max(30),
+  evidenceIds: z.array(id).min(1).max(10),
+  effectiveFrom: instant,
+  expiresAt: instant,
+}).strict().superRefine((v,c) => {
+  if (Date.parse(v.expiresAt)<=Date.parse(v.effectiveFrom)) c.addIssue({code:"custom",message:"Invalid owner intent interval"});
+  if (v.status==="confirmed" && (v.source!=="owner_stated" || !v.confirmedBy)) c.addIssue({code:"custom",message:"Confirmation requires a stated owner objective and owner identity"});
+  if (v.source==="inferred" && v.status==="confirmed") c.addIssue({code:"custom",message:"Inferred intent cannot self-confirm"});
+});
+export type OwnerIntent = z.infer<typeof ownerIntentSchema>;
 export const inputSchema = z
   .object({
     origin: z.literal("synthetic"),
@@ -323,6 +343,7 @@ export const inputSchema = z
     evidence: z.array(evidenceSchema).min(1).max(100),
     constraints: z.array(ruleSchema).min(1).max(100),
     actions: z.array(actionSchema).min(1).max(30),
+    ownerIntents: z.array(ownerIntentSchema).max(30).optional(),
   })
   .strict()
   .superRefine((s, c) => {
@@ -332,6 +353,13 @@ export const inputSchema = z
     const fail = (message: string) => c.addIssue({ code: "custom", message });
     for (const list of [s.entities, s.evidence, s.constraints, s.actions, s.relationships])
       if (new Set(list.map((e) => e.id)).size !== list.length) fail("Duplicate identifier");
+    for (const intent of s.ownerIntents ?? []) {
+      if (intent.ownerOrganizationId !== s.organizationId) fail("Foreign owner intent");
+      if (intent.evidenceIds.some((x) => !ev.has(x))) fail("Unresolved intent evidence");
+      if (intent.relatedActionIds.some((x) => !s.actions.some((a) => a.id === x))) fail("Unresolved intent action");
+      if (intent.counterpartyId && !s.entities.some((e) => e.id === intent.counterpartyId && e.kind === "company")) fail("Unresolved intent counterparty");
+    }
+    if (new Set((s.ownerIntents ?? []).map((i) => i.id)).size !== (s.ownerIntents ?? []).length) fail("Duplicate owner intent");
     if (Date.parse(s.validUntil) <= Date.parse(s.asOf)) fail("Invalid input interval");
     for (const e of s.entities) {
       if (e.ownerOrganizationId !== s.organizationId) fail("Foreign entity ownership");
