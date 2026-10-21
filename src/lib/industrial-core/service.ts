@@ -29,6 +29,15 @@ import {
   type InternalExecutionProvider,
 } from "./workflow";
 
+import { operatingPlanSchema, planOperations, type PlanningResult, type OperatingPlan } from "./planning";
+import { instantiatePlanningFixture, planningScenarioIds } from "./planning-fixtures";
+
+const operationsStateSchema = z.object({
+  specification: operatingPlanSchema,
+  basedOnInputDigest: z.string().regex(/^[a-f0-9]{64}$/),
+  evaluation: z.unknown().nullable(),
+}).strict();
+
 const uuid = z.string().uuid(),
   expected = z.number().int().nonnegative().max(2147483646);
 const common = { workspaceId: uuid, factoryId: z.number().int().positive() };
@@ -37,6 +46,8 @@ export const commandSchema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("load"), ...common }).strict(),
   z.object({ action: z.literal("create"), ...write, scenario: z.enum(scenarioIds) }).strict(),
   z.object({ action: z.literal("replace_input"), ...write, input: inputSchema }).strict(),
+  z.object({ action: z.literal("create_operations"), ...write, scenario: z.enum(planningScenarioIds) }).strict(),
+  z.object({ action: z.literal("plan_operations"), ...write, specification: operatingPlanSchema }).strict(),
   z.object({ action: z.literal("verify_input"), ...write }).strict(),
   z.object({ action: z.literal("evaluate"), ...write }).strict(),
   z
@@ -72,6 +83,7 @@ export type CoreState = {
   evaluation: Evaluation | null;
   decisionDigest: string | null;
   workflow: Workflow | null;
+  operations?: { specification: OperatingPlan; basedOnInputDigest: string; evaluation: PlanningResult | null };
 };
 export interface CoreStore {
   call(args: Record<string, unknown>): Promise<unknown>;
@@ -115,6 +127,7 @@ export async function parseState(raw: unknown): Promise<CoreState> {
       evaluation: z.unknown().nullable(),
       decisionDigest: z.string().length(64).nullable(),
       workflow: workflowSchema.nullable(),
+      operations: operationsStateSchema.optional(),
     })
     .strict()
     .parse(raw);
@@ -133,6 +146,12 @@ export async function parseState(raw: unknown): Promise<CoreState> {
     (s.workflow.inputDigest !== s.inputDigest || s.workflow.decisionDigest !== s.decisionDigest)
   )
     throw new Error("CORE_STALE_APPROVAL");
+  if (s.operations && s.operations.evaluation !== null) {
+    const previous = z.object({ evaluatedAt: instant }).passthrough().parse(s.operations.evaluation);
+    const replay = await planOperations(s.input, s.operations.specification, previous.evaluatedAt);
+    if (s.operations.basedOnInputDigest !== s.inputDigest || stable(replay) !== stable(s.operations.evaluation))
+      throw new Error("CORE_OPERATING_PLAN_INTEGRITY_FAILED");
+  }
   return s as CoreState;
 }
 const authorizable = (
@@ -198,13 +217,12 @@ export async function executeCoreCommand(
   if (replay) return decode(replay);
   if (loaded.revision !== cmd.expectedRevision) throw new Error("CORE_VERSION_CONFLICT");
   let next: CoreState;
-  if (cmd.action === "create") {
+  if (cmd.action === "create" || cmd.action === "create_operations") {
     if (loaded.snapshot || cmd.expectedRevision !== 0) throw new Error("CORE_WORKSPACE_EXISTS");
-    const input = instantiateFixture(
-      cmd.scenario,
-      context.organizationId,
-      context.factoryId,
-      context.at,
+    const operating = cmd.action === "create_operations"
+      ? instantiatePlanningFixture(cmd.scenario, context.organizationId, context.factoryId, context.at) : null;
+    const input = operating?.input ?? instantiateFixture(
+      cmd.action === "create" ? cmd.scenario : "A", context.organizationId, context.factoryId, context.at,
     );
     // Bundled content does not certify user-provided sources or grant authority.
     for (const e of input.evidence) e.verification = "unverified";
@@ -224,6 +242,7 @@ export async function executeCoreCommand(
       evaluation: null,
       decisionDigest: null,
       workflow: null,
+      ...(operating ? { operations: { specification: operating.plan, basedOnInputDigest: await digest(input), evaluation: null } } : {}),
     };
   } else {
     if (!loaded.snapshot) throw new Error("CORE_WORKSPACE_MISSING");
@@ -283,6 +302,9 @@ export async function executeCoreCommand(
         decisionDigest: null,
         workflow: null,
       };
+    } else if (cmd.action === "plan_operations") {
+      next.operations = { specification: cmd.specification, basedOnInputDigest: next.inputDigest,
+        evaluation: await planOperations(next.input, cmd.specification, ctx.now) };
     } else if (cmd.action === "approve_exception") {
       const rule = next.input.constraints.find((r) => r.id === cmd.ruleId);
       if (
@@ -417,6 +439,8 @@ export async function executeCoreCommand(
       }
     }
   }
+  if (next.operations && next.operations.basedOnInputDigest !== next.inputDigest)
+    next.operations = { ...next.operations, evaluation: null };
   const snapshot = z
     .object({ origin: z.literal("synthetic"), input: inputSchema })
     .passthrough()

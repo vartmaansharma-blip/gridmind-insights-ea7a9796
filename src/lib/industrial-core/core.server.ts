@@ -4,6 +4,7 @@ import { readBoundedJsonBody } from "../../../supabase/functions/_shared/request
 import { executeCoreCommand, commandSchema, type CoreStore } from "./service";
 import { runScenario } from "./fixtures";
 import { customerDemo } from "./customer-demo";
+import { runPlanningScenario, planningScenarioIds } from "./planning-fixtures";
 import { runPhysicalScenario, physicalScenarioIds } from "./physical";
 const reply = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -23,6 +24,8 @@ export async function handleIndustrialCore(request: Request): Promise<Response> 
   if (!parsed.ok)
     return reply({ error: "INVALID_OR_OVERSIZED_BODY" }, parsed.reason === "too_large" ? 413 : 400);
   try {
+    const planningDemo = z.object({ action: z.literal("planning_demo"), scenario: z.enum(planningScenarioIds) }).strict().safeParse(parsed.value);
+    if (planningDemo.success) return reply(await runPlanningScenario(planningDemo.data.scenario));
     const physicalDemo = z.object({
       action: z.literal("physical_demo"),
       scenario: z.enum(physicalScenarioIds),

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { PlanningWorkspace } from "@/components/investigation/planning-workspace";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
 
 import { IndustrialCoreWorkspace } from "@/components/investigation/industrial-core-workspace";
@@ -20,6 +21,7 @@ function SyntheticInvestigations() {
         <ResolveTriagePreview />
         <PhysicalInfrastructureWorkspace />
         <IndustrialCoreWorkspace />
+        <PlanningWorkspace />
 
         <section aria-labelledby="record-comparisons-title" className="mt-8">
           <h2 id="record-comparisons-title" className="text-2xl font-semibold">
