@@ -1,3 +1,4 @@
+import { SampleRecordBrowser } from "./record-browser";
 import { AskGridMind } from "./ask-gridmind";
 import { SampleDraftProvider } from "./form-drafts";
 import { useSampleDrafts } from "@/lib/sample/draft-context";
@@ -141,6 +142,7 @@ function SampleWorkspaceContent() {
       params: { _splat: samplePath(viewForSection(value)) },
     });
   };
+  const [browserEpoch, setBrowserEpoch] = useState(0);
   const [s, setState] = useState<SampleWorkspace>(() => createSampleWorkspace());
   const [ready, setReady] = useState(false),
     [entered, setEntered] = useState(() => pathname.replace(/\/$/, "") !== "/explore"),
@@ -247,6 +249,7 @@ function SampleWorkspaceContent() {
             variant="outline"
             onClick={() => {
               drafts?.clear();
+              setBrowserEpoch((value) => value + 1);
               setState(createSampleWorkspace());
               setPlan(null);
               setEntered(false);
@@ -263,6 +266,7 @@ function SampleWorkspaceContent() {
           >
             Reset Sample Workspace
           </Button>
+          <SampleRecordBrowser key={browserEpoch} s={s} recordId={location.recordId} />
           <AskGridMind s={s} recordId={location.recordId} />
         </div>
       }

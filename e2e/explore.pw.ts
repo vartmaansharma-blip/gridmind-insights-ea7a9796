@@ -329,3 +329,50 @@ test("assistant fits mobile and short viewports with a usable composer and conte
   await expect(dialog.getByRole("heading", { name: "What the records support" })).toHaveCount(1);
   expect(await dialog.evaluate((e) => e.scrollWidth <= e.clientWidth)).toBe(true);
 });
+
+test("sample record finder filters, favorites, inspects, remembers and resets without persistence", async ({
+  page,
+  context,
+}) => {
+  const backend: string[] = [];
+  await context.route("**/*", (route) => {
+    const u = new URL(route.request().url());
+    if (/supabase|\/api\/|\/auth\/v1|\/rest\/v1/.test(u.href)) backend.push(u.pathname);
+    return u.protocol.startsWith("http") && u.hostname !== "127.0.0.1"
+      ? route.abort()
+      : route.continue();
+  });
+  await page.goto("/explore/machines/press");
+  await page.getByRole("button", { name: "Find sample records", exact: true }).click();
+  const dialog = page.getByRole("dialog", { name: "Find sample records", exact: true });
+  await dialog.getByRole("textbox", { name: "Search sample records" }).fill("Press 01");
+  await dialog.getByLabel("Record type", { exact: true }).selectOption("resource");
+  await dialog.getByRole("button", { name: "Favorite Press 01", exact: true }).click();
+  await expect(
+    dialog.getByRole("button", { name: "Favorite Press 01", exact: true }),
+  ).toHaveAttribute("aria-pressed", "true");
+  await dialog.getByLabel("Show", { exact: true }).selectOption("favorites");
+  await dialog.getByRole("button", { name: "Inspect Press 01", exact: true }).click();
+  const sheet = page.getByRole("dialog", { name: "Press 01", exact: true });
+  await expect(sheet).toContainText("SYNTHETIC");
+  await expect(sheet).toContainText("Content integrity and assumptions");
+  await page.keyboard.press("Escape");
+  await expect(
+    page.getByRole("button", { name: "Find sample records", exact: true }),
+  ).toBeFocused();
+  await page.keyboard.press("Control+k");
+  await dialog.getByLabel("Show", { exact: true }).selectOption("recent");
+  await expect(dialog.getByRole("link", { name: /Press 01/ })).toBeVisible();
+  await dialog.getByRole("textbox", { name: "Search sample records" }).fill("no such record");
+  await expect(dialog.getByText(/No matching records/)).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "Reset Sample Workspace", exact: true }).click();
+  await page.getByRole("button", { name: "Find sample records", exact: true }).click();
+  await dialog.getByLabel("Show", { exact: true }).selectOption("favorites");
+  await expect(dialog.getByText("0 matching sample records", { exact: true })).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.setViewportSize({ width: 390, height: 700 });
+  await page.getByRole("button", { name: "Find sample records", exact: true }).click();
+  expect(await dialog.evaluate((e) => e.getBoundingClientRect().right)).toBeLessThanOrEqual(390);
+  expect(backend).toEqual([]);
+});
