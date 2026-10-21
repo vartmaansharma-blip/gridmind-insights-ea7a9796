@@ -11,6 +11,7 @@ import {
   authDestination,
   finishGoogleSignIn,
   GoogleProviderError,
+  googlePublicConfig,
   googleRedirect,
   googleReturn,
   workspaceDestination,
@@ -147,9 +148,13 @@ function AuthPage() {
     setError(null);
     try {
       const redirectTo = googleRedirect(window.location.origin, destination);
-      // Use the initialized browser client, including its safe public config
-      // fallback on preview deployments where the VITE_* env is not provided.
-      await requireGoogleProvider(supabase);
+      // Match the generated browser client's public fallback configuration
+      // when VITE_* is omitted on previews. Never use server/secret keys here.
+      const config = googlePublicConfig({
+        url: import.meta.env.VITE_SUPABASE_URL,
+        key: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      });
+      await requireGoogleProvider(config.url, config.key);
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: { redirectTo },
