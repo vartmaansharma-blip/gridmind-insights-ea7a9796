@@ -82,22 +82,57 @@ export function workspaceDestination(principal: Principal, destination: AuthDest
   return "/dashboard" as const;
 }
 
-// Public provider availability only: never request the management API, client
-// secret or Google tokens. Fail closed if settings cannot be confirmed.
+// Public provider availability only: use the exact URL/key that the already
+// initialized Supabase browser client uses. The generated client supports
+// public fallbacks when VITE_* variables are absent (e.g. Lovable previews);
+// checking only import.meta.env caused a false "unavailable" error.
+export type GoogleProviderErrorReason = "provider_disabled" | "configuration_missing" | "provider_check_failed";
+export class GoogleProviderError extends Error {
+  constructor(readonly reason: GoogleProviderErrorReason) {
+    super("Google provider preflight failed");
+    this.name = "GoogleProviderError";
+  }
+}
+// The generated client is not edited: mirror its documented PUBLIC fallback
+// config so both the browser and preflight select the same Supabase project,
+// even when VITE_* variables are missing in a preview build. A regression
+// test checks these fallback literals against the generated client.
+export function googlePublicConfig(env: { url?: string; key?: string }) {
+  return {
+    url: env.url || "https://bvqmvgbfqhgczwbvlqkk.supabase.co",
+    key: env.key || "sb_publishable_iuJmWQyqOOE2KyRFhfLVWw_wOjPF6wV",
+  };
+}
 export async function requireGoogleProvider(
   url: string,
   key: string,
   fetcher: typeof fetch = fetch,
 ) {
-  if (!url || !key || key.startsWith("sb_secret_"))
-    throw new Error("Google sign-in is unavailable.");
-  const response = await fetcher(new URL("/auth/v1/settings", url), {
-    headers: { apikey: key },
-    credentials: "omit",
-    cache: "no-store",
-    signal: AbortSignal.timeout(8000),
-  });
-  if (!response.ok || (await response.json()).external?.google !== true) {
-    throw new Error("Google sign-in is unavailable.");
+  if (!url || !key || key.startsWith("sb_secret_")) {
+    throw new GoogleProviderError("configuration_missing");
+  }
+  let settings: unknown;
+  try {
+    const response = await fetcher(new URL("/auth/v1/settings", url), {
+      headers: { apikey: key },
+      credentials: "omit",
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!response.ok) throw new Error("unavailable");
+    settings = await response.json();
+  } catch {
+    throw new GoogleProviderError("provider_check_failed");
+  }
+  if (
+    !settings ||
+    typeof settings !== "object" ||
+    !("external" in settings) ||
+    typeof settings.external !== "object" ||
+    settings.external === null ||
+    !("google" in settings.external) ||
+    settings.external.google !== true
+  ) {
+    throw new GoogleProviderError("provider_disabled");
   }
 }

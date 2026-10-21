@@ -10,6 +10,8 @@ import { Panel } from "@/components/gm/bits";
 import {
   authDestination,
   finishGoogleSignIn,
+  GoogleProviderError,
+  googlePublicConfig,
   googleRedirect,
   googleReturn,
   workspaceDestination,
@@ -146,18 +148,27 @@ function AuthPage() {
     setError(null);
     try {
       const redirectTo = googleRedirect(window.location.origin, destination);
-      await requireGoogleProvider(
-        import.meta.env.VITE_SUPABASE_URL,
-        import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-      );
+      // Match the generated browser client's public fallback configuration
+      // when VITE_* is omitted on previews. Never use server/secret keys here.
+      const config = googlePublicConfig({
+        url: import.meta.env.VITE_SUPABASE_URL,
+        key: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+      });
+      await requireGoogleProvider(config.url, config.key);
       const { error: authError } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: { redirectTo },
       });
       if (authError) throw authError;
       // Remain disabled until navigation; browser Back restores via pageshow.
-    } catch {
-      setError("Google sign-in is unavailable. Try again or use email and password.");
+    } catch (err) {
+      const message =
+        err instanceof GoogleProviderError && err.reason === "provider_disabled"
+          ? "Google sign-in is unavailable because Google is not enabled in GridMind's authentication settings. Please use email sign-in while the administrator configures Google."
+          : err instanceof GoogleProviderError
+            ? "Google sign-in could not be checked right now. Please try again or use email and password."
+            : "Google sign-in could not start. Please try again or use email and password.";
+      setError(message);
       inFlight.current = false;
       setBusy(false);
       setGoogleBusy(false);
