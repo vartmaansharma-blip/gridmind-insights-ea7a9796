@@ -70,7 +70,7 @@ export function assessOwnerIntents(
     }
     for (const actionId of summary.relatedActionIds) {
       const status = choices.get(actionId);
-      if (summary.preference === "avoid" && status === "eligible")
+      if (summary.preference === "avoid" && (status === "eligible" || status === "conditional"))
         conflicts.push({ intentId: summary.intentId, actionId, reason: "OWNER_AVOIDED_ELIGIBLE_ACTION" });
       if (summary.preference === "favor" && status !== "eligible")
         conflicts.push({ intentId: summary.intentId, actionId, reason: "OWNER_FAVORED_ACTION_NOT_ELIGIBLE" });
