@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { fixture, REPLAY_AT, UNTIL } from "./fixtures";
 import { inputSchema } from "./model";
-import { evaluate } from "./engine";
+import { evaluate, digest } from "./engine";
+import { executeCoreCommand, type CoreStore } from "./service";
 
 function withIntent(source: "owner_stated" | "inferred", preference: "favor" | "avoid", target="produce-approved") {
   const s=fixture("A");
@@ -46,6 +47,59 @@ describe("owner intent conflicts remain advisory and verifiable",()=>{
     claimed.ownerIntents![0].status="confirmed";
     claimed.ownerIntents![0].confirmedBy="synthetic-owner";
     expect(inputSchema.safeParse(claimed).success).toBe(false);
+  });
+  it("rejects approval of a fallback action while an owner-favored prohibited option is unresolved", async () => {
+    const input = withIntent("owner_stated", "favor", "buy-alternative");
+    const evaluation = evaluate(input, REPLAY_AT);
+    const inputDigest = await digest(input);
+    const decisionDigest = await digest(evaluation);
+    const actorId = "10000000-0000-4000-8000-000000000002";
+    const store: CoreStore = {
+      async call(args) {
+        switch (args._op) {
+          case "context":
+            return {
+              organizationId: 1,
+              factoryId: 1,
+              actorId,
+              capabilities: ["read", "edit", "commercial", "safety"],
+              approverCapabilities: ["commercial", "safety"],
+              at: REPLAY_AT,
+            };
+          case "load":
+            return {
+              revision: 1,
+              snapshot: {
+                origin: "synthetic",
+                input,
+                inputEditor: "10000000-0000-4000-8000-000000000003",
+                inputDigest,
+                evaluation,
+                decisionDigest,
+                workflow: null,
+              },
+              snapshotSha256: null,
+              integrityValid: true,
+              audit: [],
+            };
+          case "receipt":
+            return null;
+          default:
+            throw new Error("UNEXPECTED_STORAGE_MUTATION");
+        }
+      },
+    };
+    await expect(
+      executeCoreCommand(store, actorId, "10000000-0000-4000-8000-000000000004", {
+        action: "request_approval",
+        workspaceId: "10000000-0000-4000-8000-000000000005",
+        factoryId: 1,
+        expectedRevision: 1,
+        requestKey: "intent-conflict-protection",
+        actionId: "produce-approved",
+        kind: "order_acceptance",
+      }),
+    ).rejects.toThrow("CORE_OWNER_INTENT_CONFLICT_REQUIRES_REVIEW");
   });
   it("does not discard an owner's avoided action merely because it requires an exception", () => {
     const s = withIntent("owner_stated", "avoid");
