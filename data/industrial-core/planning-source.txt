@@ -1,0 +1,16 @@
+GRIDMIND INVENTED FINITE-PLANNING REPLAY — NOT CUSTOMER OR UCI DATA
+Template clock: 2026-10-20T12:00:00Z. Expiry: 2026-10-21T00:00:00Z.
+Extend the existing invented automotive core fixture only for software acceptance.
+Two work orders each require 100 fictional R2 parts and 100 kg of approved steel.
+The first is due at 17:00; the second at 19:00, on the template day.
+One released lot contains 300 kg, with 50 kg already reserved for the first order.
+Both share one stamping press, one qualified operator and one exclusive tool.
+Each has an explicit usable 12:00–20:00 shift, no unlocated breaks, and no prior workload in the normal fixture.
+Each work order needs a 10-minute setup plus 1.2 minutes per produced part.
+All names, qualifications, provenance checks, sourcing/safety rules and releases are invented, not professional approval.
+Negative variants change one declared fact: stock 150 kg; an observed press stop; a held lot inspection;
+external process availability delayed to 18:00; operator net time 400 minutes with breaks unlocated;
+or a confirmed invented owner request to avoid the first action.
+Only newly created bundled synthetic workspaces may explicitly shift this template clock.
+Imports and saved snapshots retain their clocks. Future availability is a commitment, not proof of completion.
+No task is assigned, no physical inventory is consumed, and no approved plant schedule is created by a draft calculation.

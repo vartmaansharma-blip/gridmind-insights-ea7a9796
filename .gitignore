@@ -46,3 +46,7 @@ playwright-report/
 
 # Supabase CLI local discovery/cache metadata
 supabase/.temp/
+
+# Local public-data benchmark dependencies and downloaded measurements
+benchmarks/secom/.venv/
+benchmarks/secom/cache/

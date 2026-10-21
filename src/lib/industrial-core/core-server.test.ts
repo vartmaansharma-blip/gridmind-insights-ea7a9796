@@ -162,3 +162,14 @@ it("redacts database details from denial, CAS conflict and outages", async () =>
     expect(await r.text()).not.toContain("secret");
   }
 });
+
+it("finite planning demonstration is fixed fiction with no Auth/DB and rejects arbitrary input", async () => {
+  const response = await handleIndustrialCore(req({ action: "planning_demo", scenario: "normal" }));
+  expect(response.status).toBe(200);
+  const data = await response.json();
+  expect(data.status).toBe("candidate_feasible"); expect(data.tasks).toHaveLength(2);
+  expect(data.approval).toBe("required_before_assignment");
+  const forbidden = await handleIndustrialCore(req({ action: "planning_demo", scenario: "normal", input: { origin: "customer" } }));
+  expect(forbidden.status).toBe(400);
+  expect(getUser).not.toHaveBeenCalled(); expect(rpc).not.toHaveBeenCalled();
+});

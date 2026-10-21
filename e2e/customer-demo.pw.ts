@@ -21,6 +21,10 @@ test("customer walkthrough evaluates all scenarios and downloads the exact serve
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/customer-demo");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("factory records");
+  await expect(page.getByRole("button", { name: "Run customer sample", exact: true })).toHaveCSS(
+    "background-color",
+    "rgb(154, 221, 0)",
+  );
   for (const scenario of ["A", "B", "C", "D"]) {
     await page.getByLabel("Customer sample scenario").selectOption(scenario);
     const pending = page.waitForResponse(
