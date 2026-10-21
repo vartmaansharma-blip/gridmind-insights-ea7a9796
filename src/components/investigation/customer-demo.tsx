@@ -93,7 +93,7 @@ export function CustomerDemoWorkspace() {
               ))}
             </select>
           </label>
-          <Button disabled={!ready || busy} onClick={() => void run()}>
+          <Button variant="cta" disabled={!ready || busy} onClick={() => void run()}>
             {busy ? "Checking sample…" : "Run customer sample"}
           </Button>
           <Button variant="outline" disabled={!sample || busy} onClick={download}>

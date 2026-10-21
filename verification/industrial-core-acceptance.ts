@@ -335,6 +335,47 @@ export async function verifyIndustrialCore(db: Client, second: Client) {
   const recovered = await executeCoreCommand(dropped, owner, ownerSession, retry);
   assert.equal(recovered.revision, 9);
   assert.equal((await command(owner, ownerSession, { action: "load" })).revision, 9);
+  // Actual same-store draft planning: source review, save/reload, receipt, revocation and CAS.
+  const operationsBase = { workspaceId: "c0000002-1111-4111-8111-111111111111", factoryId: fa };
+  const operationsCommand = (actor: string, session: string, args: Record<string, unknown>) =>
+    executeCoreCommand(store, actor, session, { ...operationsBase, ...args });
+  let operating = await operationsCommand(owner, ownerSession, { action: "create_operations", scenario: "normal", expectedRevision: 0, requestKey: "ops-create" });
+  assert(operating.snapshot!.operations);
+  assert.equal(operating.snapshot!.operations!.evaluation, null);
+  await assert.rejects(() => operationsCommand(owner, ownerSession, { action: "verify_input", expectedRevision: 1, requestKey: "ops-self-review" }), /CORE_INDEPENDENT_REVIEWER_REQUIRED/);
+  operating = await operationsCommand(reviewer, reviewSession, { action: "verify_input", expectedRevision: 1, requestKey: "ops-review" });
+  const specification = operating.snapshot!.operations!.specification;
+  const planningCommand = { action: "plan_operations", expectedRevision: 2, requestKey: "ops-plan", specification };
+  operating = await operationsCommand(owner, ownerSession, planningCommand);
+  assert.equal(operating.snapshot!.operations!.evaluation!.status, "candidate_feasible");
+  assert.equal(operating.snapshot!.workflow, null); // A feasible draft does not assign/reserve/approve work.
+  assert.equal(operating.snapshot!.input.entities.find(e => e.id === "lot")!.attributes.quantity, 300);
+  assert.equal((await operationsCommand(owner, ownerSession, planningCommand)).revision, 3);
+  const loadedPlan = await operationsCommand(owner, ownerSession, { action: "load" });
+  assert.deepEqual(loadedPlan.snapshot!.operations, operating.snapshot!.operations);
+  await assert.rejects(() => operationsCommand(outsider, otherSession, { action: "load" }), /CORE_ACCESS_DENIED/);
+  const [planA, planB] = await Promise.allSettled([
+    operationsCommand(owner, ownerSession, { ...planningCommand, expectedRevision: 3, requestKey: "ops-race-a" }),
+    executeCoreCommand(storeFor(second), owner, ownerSession, { ...operationsBase, ...planningCommand, expectedRevision: 3, requestKey: "ops-race-b" }),
+  ]);
+  assert.equal([planA, planB].filter(result => result.status === "fulfilled").length, 1);
+  assert([planA, planB].some(result => result.status === "rejected" && /CORE_VERSION_CONFLICT/.test(String(result.reason))));
+  await db.query("delete from private.industrial_core_authorities where user_id=$1 and capability='edit'", [owner]);
+  await assert.rejects(() => operationsCommand(owner, ownerSession, { ...planningCommand, expectedRevision: 4, requestKey: "ops-revoked" }), /CORE_AUTHORITY_DENIED/);
+  await db.query("insert into private.industrial_core_authorities values($1,$2,$3,'edit',now()+interval '1 day',$3,'Restored only for synthetic planning acceptance')", [a, fa, owner]);
+  const changedInput = structuredClone(operating.snapshot!.input);
+  changedInput.sourceId = "ops-new-material-source";
+  changedInput.entities.find(e => e.id === "lot")!.attributes.quantity = 190;
+  operating = await operationsCommand(owner, ownerSession, { action: "replace_input", expectedRevision: 4, requestKey: "ops-change-source", input: changedInput });
+  assert.equal(operating.snapshot!.operations, undefined); // Old draft survives only in immutable history.
+  assert.equal(operating.snapshot!.evaluation, null);
+  operating = await operationsCommand(reviewer, reviewSession, { action: "verify_input", expectedRevision: 5, requestKey: "ops-review-source" });
+  operating = await operationsCommand(owner, ownerSession, { ...planningCommand, expectedRevision: 6, requestKey: "ops-replan" });
+  assert.equal(operating.snapshot!.operations!.evaluation!.status, "blocked_or_requires_review");
+  assert.equal(operating.snapshot!.operations!.evaluation!.tasks.length, 1);
+  const historicalPlan = await db.query("select snapshot#>>'{operations,evaluation,status}' status from public.industrial_core_revisions where workspace_id=$1 and revision=3", [operationsBase.workspaceId]);
+  assert.equal(historicalPlan.rows[0].status, "candidate_feasible");
+  console.log("PASS finite planning draft: independent source review, genuine save/reload, source invalidation, immutable prior plan, current edit revocation, tenant denial, idempotency and two-connection CAS; no operational assignment");
   const disruptionBase = { workspaceId: "c0000001-1111-4111-8111-111111111111", factoryId: fa };
   await executeCoreCommand(store, owner, ownerSession, {
     ...disruptionBase,

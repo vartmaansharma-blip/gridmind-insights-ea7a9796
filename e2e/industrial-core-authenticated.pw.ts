@@ -164,9 +164,24 @@ test("core persists a reviewed decision through real Auth/HTTP, denies foreign t
     expect(retry.body.audit).toHaveLength(6);
     await region.getByRole("button", { name: "Load saved workspace", exact: true }).click();
     await expect(region.getByText(/Saved revision 6;/)).toBeVisible();
+    const operatingBase = { workspaceId: crypto.randomUUID(), factoryId: factory };
+    const operatingCreated = await core(page, { ...operatingBase, action: "create_operations", scenario: "normal", expectedRevision: 0, requestKey: "create-operating" });
+    expect(operatingCreated.status).toBe(200);
+    expect(operatingCreated.body.snapshot.operations.evaluation).toBeNull();
+    expect((await core(reviewPage, { ...operatingBase, action: "verify_input", expectedRevision: 1, requestKey: "review-operating" })).status).toBe(200);
+    const savedPlan = await core(page, { ...operatingBase, action: "plan_operations", specification: operatingCreated.body.snapshot.operations.specification, expectedRevision: 2, requestKey: "save-operating-plan" });
+    expect(savedPlan.status).toBe(200);
+    expect(savedPlan.body.snapshot.operations.evaluation.status).toBe("candidate_feasible");
+    expect(savedPlan.body.snapshot.workflow).toBeNull();
+    await region.getByLabel("Core workspace UUID").fill(operatingBase.workspaceId);
+    await region.getByRole("button", { name: "Load saved workspace", exact: true }).click();
+    await expect(region.getByText("Planning result: Feasible draft within supplied records", { exact: true })).toBeVisible();
+    await expect(region.getByRole("row", { name: /work-order-second operation press/ })).toBeVisible();
+    expect((await core(page, { ...operatingBase, action: "load" })).body.snapshot.operations).toEqual(savedPlan.body.snapshot.operations);
     const other = await foreignContext.newPage();
     await login(other, "gridmind-http-b@example.test");
     expect((await core(other, { ...base, action: "load" })).status).toBe(403);
+    expect((await core(other, { ...operatingBase, action: "load" })).status).toBe(403);
     localSql(
       `delete from private.industrial_core_authorities where factory_id=${factory} and user_id in(select id from auth.users where email='gridmind-http-a@example.test');`,
     );

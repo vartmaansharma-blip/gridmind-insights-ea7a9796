@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import type { runScenario } from "@/lib/industrial-core/fixtures";
+import { OperationsPlanSummary } from "./planning-workspace";
 import type { CoreState } from "@/lib/industrial-core/service";
 type Demo = ReturnType<typeof runScenario>;
 type Stored = { revision: number; snapshot: CoreState | null; audit: unknown[] };
@@ -262,6 +263,12 @@ export function IndustrialCoreWorkspace() {
             >
               Create synthetic workspace
             </Button>
+            <Button disabled={!ready || busy || !!stored} variant="outline" onClick={() => void mutate("create_operations", { scenario: "normal" })}>
+              Create multi-order workspace
+            </Button>
+            <Button disabled={!ready || busy || !stored?.snapshot?.operations} variant="outline" onClick={() => void mutate("plan_operations", { specification: stored?.snapshot?.operations?.specification })}>
+              Plan saved orders
+            </Button>
             <Button
               disabled={!ready || busy || !stored}
               variant="outline"
@@ -309,6 +316,8 @@ export function IndustrialCoreWorkspace() {
               identical request; inputs stay locked to preserve idempotency.
             </p>
           )}
+          {stored?.snapshot?.operations?.evaluation && <OperationsPlanSummary result={stored.snapshot.operations.evaluation} />}
+          {stored?.snapshot?.operations && !stored.snapshot.operations.evaluation && <p className="text-sm">Planning draft has not been evaluated against the current input revision. Verify the source, then plan saved orders. No work is assigned.</p>}
           {stored && (
             <p className="text-sm">
               Saved revision {stored.revision}; retained audit entries: {stored.audit.length}.
