@@ -45,6 +45,10 @@ Acceptance: test the combined source and realistic A–O scenarios, including ca
 
 ## Select one bounded scope
 
+**GM-MVP-005 — 21 October 2026:** the founder explicitly authorizes a separate reproducible offline benchmark using official UCI SECOM measurements, following merged #175's zero-row catalog. This is the next public-measurement experiment under Step 3, not customer-data intake, market research or a paid-product selection. The [benchmark report](docs/engineering/gridmind-gm-mvp-005-secom-benchmark.md) records the locked source/license, chronological separation, genuine held-out errors and uncertainty. Preserve the synthetic industrial-core API boundary, all production/security controls and required PR checks/reviews. No production Supabase data, migrations, credentials or settings changes. Poor classification results must be reported rather than tuned away on the holdout.
+
+
+
 **21 October customer demonstration:** the founder authorizes extending merged GM-CORE-003 with a fictional first-customer sample, full-flow checks and necessary fixes targeting current main. Preserve required checks/history and land through the enforced PR process when needed. The [walkthrough contract](docs/product/gridmind-customer-demo.md) defines this scope. This supersedes the prior task's unmerged-only instruction for this demonstration; customer ingestion and production database activation remain gated.
 
 **Current execution order:** consolidate decisions → reconcile concurrent PRs → prepare one bounded finishing-versus-interruption historical experiment → obtain permissioned real evidence and qualified review → compare against current methods → approve one commercial product only if justified → expand on repeated evidence. The Master Plan §7 owns acceptance/dependency gates. Old M1-only, finishing-first, R3-first and calendar ordering is superseded. Preserve #152/#154 compressed-air review ownership and #150 security work; do not duplicate their implementation. No new engines while inputs/reviews are missing.

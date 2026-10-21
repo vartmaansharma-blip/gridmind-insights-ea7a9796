@@ -1,5 +1,11 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## GM-MVP-005 — Real public measurement acceptance checkpoint
+
+New feature branch from inspected main `65a0fe91513de3f931ab3a4e25418dbea04c9f8c` (merged #175). Existing synthetic industrial core, physical/owner engines, public routes and brand remain unchanged. [SECOM benchmark report](gridmind-gm-mvp-005-secom-benchmark.md) and [offline runner](../../benchmarks/secom/README.md) own source/version, method and measured results. Raw official archive is ignored local cache, never uploaded to Supabase. No production migration, Auth, secrets or settings changes.
+
+Measured negative classification: held-out 451 rows / 26 failures; balanced logistic detects zero failures and raises seven false alarms. Majority also detects zero. Reproduce from hash-locked public source; do not claim industrial-core accuracy, automotive transfer, savings or adoption. Existing main baseline: 346 unit tests pass. Candidate acceptance includes no-network parser/leakage/math contracts, full real-source offline reproduction, executed notebook, existing app typecheck/lint/build/browser and isolated native migration acceptance. Exact hosted checks/reviews are recorded in the PR, not inferred from this local checkpoint. Missing or failed required checks/reviews block merge. Next dependency: documented pre-outcome feature/group timing and a new blind evaluation contract before any tuned detection claim.
+
 ## Read-only related-branch delivery — 21 October 2026
 
 The founder authorized completing and merging related side branches. This candidate preserves normal merge ancestry for #156 (`299f6ff`), #158 (`7204c6d`), #160 (`53110e6`), #162 (`ad9b4ee`) and #165 (`318f147`) and reconciles them with main `65a0fe9`. It retains unique public manufacturing research, offline shortage chronology, invoice-exception CSV/review/outcome and finishing-comparison code/UI/fixtures. Current strategy, physical-resource and owner-intent work, core/customer walkthrough, public website, electricity and all identities survive. A labeled comparison section groups the two existing read-only adapters without turning their fiction into an authorized transaction.
