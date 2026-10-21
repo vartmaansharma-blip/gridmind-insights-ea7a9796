@@ -1,0 +1,57 @@
+import { describe, expect, it } from "vitest";
+import { fixture, REPLAY_AT, UNTIL } from "./fixtures";
+import { inputSchema } from "./model";
+import { evaluate } from "./engine";
+
+function withIntent(source: "owner_stated" | "inferred", preference: "favor" | "avoid", target="produce-approved") {
+  const s=fixture("A");
+  s.ownerIntents=[{
+    id:"owner-goal", ownerOrganizationId:s.organizationId, statement:"Preserve an important commercial relationship",
+    goal:"relationship", preference, source, status:source==="owner_stated"?"confirmed":"proposed",
+    confirmedBy:source==="owner_stated"?"synthetic-owner":null,
+    counterpartyId:"buyer", relatedActionIds:[target],
+    evidenceIds:["source"], effectiveFrom:s.asOf, expiresAt:UNTIL
+  }];
+  return s;
+}
+describe("owner intent conflicts remain advisory and verifiable",()=>{
+  it("preserves original behavior without intentions",()=>{
+    expect(evaluate(fixture("A"),REPLAY_AT).recommendation).toBe("produce-approved");
+  });
+  it("flags an explicitly confirmed avoidance of an otherwise eligible action",()=>{
+    const e=evaluate(withIntent("owner_stated","avoid"),REPLAY_AT);
+    expect(e.ownerIntentAssessment.conflicts[0].reason).toBe("OWNER_AVOIDED_ELIGIBLE_ACTION");
+    expect(e.recommendation).toBeNull();
+    expect(e.disposition).toBe("owner_intent_conflict_requires_review");
+    expect(e.alternatives.find(x=>x.actionId==="produce-approved")?.status).toBe("eligible");
+  });
+  it("does not treat inferred relationships or preferences as confirmed",()=>{
+    const e=evaluate(withIntent("inferred","avoid"),REPLAY_AT);
+    expect(e.ownerIntentAssessment.inferredGoalsRequireConfirmation).toEqual(["owner-goal"]);
+    expect(e.ownerIntentAssessment.conflicts).toHaveLength(0);
+    expect(e.recommendation).toBe("produce-approved");
+  });
+  it("does not permit owner intent to override a contract prohibition",()=>{
+    const s=withIntent("owner_stated","favor","produce-unapproved");
+    const e=evaluate(s,REPLAY_AT);
+    expect(e.alternatives.find(a=>a.actionId==="produce-unapproved")?.status).toBe("prohibited");
+    expect(e.ownerIntentAssessment.conflicts[0].reason).toBe("OWNER_FAVORED_ACTION_NOT_ELIGIBLE");
+    expect(e.recommendation).toBeNull();
+  });
+  it("rejects foreign-owner intents and fabricated inferred confirmation",()=>{
+    const bad=withIntent("owner_stated","avoid");
+    bad.ownerIntents![0].ownerOrganizationId=99;
+    expect(inputSchema.safeParse(bad).success).toBe(false);
+    const claimed=withIntent("inferred","avoid");
+    claimed.ownerIntents![0].status="confirmed";
+    claimed.ownerIntents![0].confirmedBy="synthetic-owner";
+    expect(inputSchema.safeParse(claimed).success).toBe(false);
+  });
+  it("remains unknown for unverified owner evidence",()=>{
+    const s=withIntent("owner_stated","avoid");
+    s.evidence[0].verification="unverified";
+    const e=evaluate(s,REPLAY_AT);
+    expect(e.ownerIntentAssessment.summaries[0].state).toBe("stale");
+    expect(e.ownerIntentAssessment.conflicts).toHaveLength(0);
+  });
+});
