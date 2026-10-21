@@ -1,7 +1,7 @@
 # GridMind Resolve — Domain, UX and Engineering Contract
 **Date:** 2026-10-17 · **Class:** Supporting technical specification, not commercial authorization or a second master plan.  
 **Authority:** [Canonical Master Plan](../gridmind-master-plan-2026-10-11.md) governs sequencing. [Decision Constitution](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md), [Technical Release Gate](../release-gate.md) and the live discovery tracker cannot be bypassed by this document.  
-**Code truth:** current connected engine supports **C1 and C4 synthetic cases** only. The R1/R2/R3 preview is read-only, synthetic commercial discovery. R1 quality, R2 acceptance/payment, and future R3 tariff methods below are **target contracts**, not implemented features.
+**Code truth (20 October source):** main retains **C1 and C4 synthetic cases**, electricity intake and merged #153 offline compressed-air analysis. Draft #154 adds a separate isolated connected compressed-air attachment using existing identities/assignments; no C1/C4 enum or industrial authority is extended. It is not merged main or customer-released persistence. The R1/R2/R3 preview is read-only, synthetic commercial discovery. R1 quality, R2 acceptance/payment, and future R3 tariff methods below are **target contracts**, not implemented features.
 
 ## 1. Build one case resolution product, not six application suites
 A factory exception is an economically relevant event that an authorized user needs to investigate and act on: rejection of a batch, repeat defect, quality-linked stoppage, disputed acceptance, missing invoice basis, or a bill/contract decision. A single record may link out to an existing ERP/CMMS/QMS document reference, but GridMind is **not the system of record** for inventory, general ledger, payments, payroll, plant control, calibration, approved PPAP records or shipping transactions.
@@ -154,7 +154,8 @@ No “pass” without exact commit, environment, logs/test evidence and authoriz
 | Existing route/component | Keep | Next authorized adaptation |
 |---|---|---|
 | /website / public-site | Cinematic site, signature green, fictional bill | Broad mission and honest first-use-case gate; no fake claims |
-| / (dashboard) | Existing factory overview | Eventually feature-gated open cases/action-first top-level summary; do not erase legacy energy demos |
+| /, /website, /design-preview | Approved public homepage, retained alias and study | Preserve current promotion and brand; no new root migration |
+| /dashboard | Existing factory overview | Eventually feature-gated open cases/action-first top-level summary; do not erase legacy energy demos |
 | /factory | Factory selection/profile | Same canonical organization/factory ID |
 | /machines, /energy | Historical technical research/demos | Context-only evidence; no automatic diagnosis |
 | /investigations | Synthetic C1/C4 workbench | Read-only R1/R2/R3 triage beside it, clearly separated |
@@ -163,7 +164,7 @@ No “pass” without exact commit, environment, logs/test evidence and authoriz
 | /auth | Login/session | Server-decided roles and safe redirect |
 | /design-preview | Existing visual experiment | Not a live customer-service promise |
 
-No route migration to root or destructive design refactor in the strategy PR. Future route movement requires SEO/accessibility/mobile smoke and reversible release plan.
+**Historical strategy-PR boundary:** no root migration or destructive design refactor was authorized by that strategy PR. The later approved homepage promotion is already in source; preserve it. Future route movement requires SEO/accessibility/mobile smoke and reversible release plan.
 
 ## 12. Design requirements and Lovable handoff
 - Preserve authentic GridMind green token as signature; it conveys conversation. Do not substitute muted sage for the existing actual brand token.

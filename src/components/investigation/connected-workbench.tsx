@@ -14,6 +14,7 @@ import {
 import { authenticatedCommand } from "@/lib/investigation/command-client";
 import { evaluateCase } from "@/lib/investigation/engine";
 import { decisionBrief, internalEconomics, statementOfWork } from "@/lib/investigation/brief";
+import { CompressedAirWorkbench } from "./compressed-air-workbench";
 
 const call = (command: CaseCommand) => authenticatedCommand("/api/investigations", command);
 function exportText(name: string, text: string) {
@@ -329,6 +330,7 @@ export function ConnectedInvestigationWorkbench({
           )}
           {c && stored && evaluation && (
             <>
+              <CompressedAirWorkbench key={stored.caseId} caseId={stored.caseId} />
               <section className="panel p-4 text-sm">
                 <strong>Revision {stored.revision}</strong> · {stored.role} ·{" "}
                 {evaluation.status.replaceAll("_", " ")}

@@ -10,6 +10,7 @@ export type Field = {
   options?: readonly string[];
   nullable?: boolean;
   hint?: string;
+  maxLength?: number;
 };
 type Value = unknown;
 
@@ -94,7 +95,7 @@ export function RecordForm({
                 aria-label={field.label}
                 name={field.key}
                 defaultValue={String(current ?? "")}
-                maxLength={4000}
+                maxLength={field.maxLength ?? 4000}
               />
             ) : (
               <Input
@@ -103,7 +104,7 @@ export function RecordForm({
                 type={field.kind === "number" ? "number" : field.kind === "date" ? "date" : "text"}
                 step={field.kind === "number" ? "any" : undefined}
                 defaultValue={Array.isArray(current) ? current.join(", ") : String(current ?? "")}
-                maxLength={4000}
+                maxLength={field.maxLength ?? 4000}
               />
             )}
             {field.hint && <span className="text-xs text-muted-foreground">{field.hint}</span>}
