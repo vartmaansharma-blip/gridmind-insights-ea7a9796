@@ -154,7 +154,7 @@ test("Google provider settings outage does not expose details or block email sig
   await expect(page.getByRole("alert")).toContainText("could not be checked");
   await expect(page.getByRole("alert")).not.toContainText("private provider configuration");
   await expect(page.getByRole("button", { name: "Sign in", exact: true })).toBeEnabled();
-  await expect(page).toHaveURL(/\\/auth$/);
+  await expect(page).toHaveURL(/\/auth$/);
 });
 
 test("cancelled/error callback is sanitized and cannot reuse an old session to navigate", async ({
