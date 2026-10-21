@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { InvestigationWorkbench } from "@/components/investigation/workbench";
 
 import { IndustrialCoreWorkspace } from "@/components/investigation/industrial-core-workspace";
+
+import { FinishingComparisonPreview } from "@/components/investigation/finishing-comparison-preview";
 import { ResolveTriagePreview } from "@/components/investigation/resolve-triage-preview";
 import { InvoiceExceptionPreview } from "@/components/investigation/invoice-exception-preview";
 
@@ -19,6 +21,8 @@ function SyntheticInvestigations() {
         <IndustrialCoreWorkspace />
 
         <InvoiceExceptionPreview />
+
+        <FinishingComparisonPreview />
       </div>
       <InvestigationWorkbench />
     </>
