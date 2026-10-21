@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, useRef, type ReactNode } from "react";
 import {
   defaultPreferences,
   preferencesSchema,
@@ -8,12 +8,16 @@ import {
 export function PreferencesProvider({ children }: { children: ReactNode }) {
   const [preferences, setPreferences] = useState(defaultPreferences),
     [loaded, setLoaded] = useState(false);
+  const current = useRef(defaultPreferences);
   useEffect(() => {
     try {
       const result = preferencesSchema.safeParse(
         JSON.parse(localStorage.getItem(preferencesKey) ?? "{}"),
       );
-      if (result.success) setPreferences(result.data);
+      if (result.success) {
+        current.current = result.data;
+        setPreferences(result.data);
+      }
     } catch {
       /* Malformed/non-sensitive preferences never affect authorization. */
     }
@@ -21,11 +25,6 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
   }, []);
   useEffect(() => {
     if (!loaded) return;
-    try {
-      localStorage.setItem(preferencesKey, JSON.stringify(preferences));
-    } catch {
-      /* In-memory preferences remain usable if browser storage is unavailable. */
-    }
     const media = matchMedia("(prefers-color-scheme: dark)");
     const apply = () => {
       document.documentElement.dataset.theme =
@@ -41,8 +40,19 @@ export function PreferencesProvider({ children }: { children: ReactNode }) {
     <PreferencesContext.Provider
       value={{
         preferences,
-        update: (value) =>
-          setPreferences((previous) => preferencesSchema.parse({ ...previous, ...value })),
+        ready: loaded,
+        update: (value) => {
+          if (!loaded) return;
+          const next = preferencesSchema.parse({ ...current.current, ...value });
+          current.current = next;
+          // Persist the actual interaction before a full-page navigation can unload passive effects.
+          try {
+            localStorage.setItem(preferencesKey, JSON.stringify(next));
+          } catch {
+            /* In-memory preference remains available. */
+          }
+          setPreferences(next);
+        },
       }}
     >
       {children}

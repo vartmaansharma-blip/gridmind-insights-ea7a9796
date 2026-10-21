@@ -189,6 +189,7 @@ test("browser preferences affect sample appearance without storing factory recor
   });
   await page.goto("/profile");
   await page.getByLabel("Theme", { exact: true }).selectOption("dark");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
   await page.getByLabel("Simpler motion", { exact: true }).check();
   await page.getByLabel("Display density", { exact: true }).selectOption("compact");
   await page.getByLabel("Start sample in guided mode", { exact: true }).uncheck();
@@ -209,5 +210,32 @@ test("browser preferences affect sample appearance without storing factory recor
     }),
   );
   await page.reload();
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+});
+
+test("preference controls wait for hydration before accepting the first change", async ({
+  page,
+}) => {
+  let release!: () => void;
+  const scriptsReady = new Promise<void>((resolve) => {
+    release = resolve;
+  });
+  await page.route("**/*", async (route) => {
+    const u = new URL(route.request().url());
+    if (u.protocol.startsWith("http") && u.hostname !== "127.0.0.1") return route.abort();
+    if (u.pathname.endsWith(".js")) await scriptsReady;
+    return route.continue();
+  });
+  const navigation = page.goto("/profile");
+  const theme = page.getByLabel("Theme", { exact: true });
+  try {
+    await expect(theme).toBeDisabled();
+  } finally {
+    release();
+  }
+  await navigation;
+  await theme.selectOption("dark");
+  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  await page.goto("/explore/machines/press");
   await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });

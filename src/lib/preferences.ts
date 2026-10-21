@@ -20,8 +20,9 @@ export const defaultPreferences = preferencesSchema.parse({});
 export const preferencesKey = "gridmind.preferences.v1";
 export const PreferencesContext = createContext<{
   preferences: Preferences;
+  ready: boolean;
   update: (value: Partial<Preferences>) => void;
-}>({ preferences: defaultPreferences, update: () => {} });
+}>({ preferences: defaultPreferences, ready: false, update: () => {} });
 export const usePreferences = () => useContext(PreferencesContext);
 export function formatSampleTime(value: string, preferences: Preferences) {
   const date = new Date(value);

@@ -8,7 +8,7 @@ export function GlobalNavigation({ compact = false }: { compact?: boolean }) {
   const details = useRef<HTMLDetailsElement>(null);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const { access } = useNavigationAccess();
-  const { preferences, update } = usePreferences();
+  const { preferences, update, ready } = usePreferences();
   const destinations = resolveNavigation(access, pathname.startsWith("/explore"));
   return (
     <div
@@ -65,6 +65,7 @@ export function GlobalNavigation({ compact = false }: { compact?: boolean }) {
           ))}
           <Button
             size="sm"
+            disabled={!ready}
             variant="outline"
             onClick={() => update({ sidebarCollapsed: !preferences.sidebarCollapsed })}
           >
