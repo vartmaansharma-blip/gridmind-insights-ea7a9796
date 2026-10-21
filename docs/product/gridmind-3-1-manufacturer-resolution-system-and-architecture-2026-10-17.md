@@ -145,7 +145,7 @@ For each additional domain method require: (i) more than an attractive opportuni
 
 ## 11. India-first manufacturing-intelligence requirements — 20 October 2026
 
-**Owner:** founder/product; independent industrial reviewer required for method approval. **Status:** first-principles specification, not implemented capability, measured accuracy, customer validation or schema authorization. [G31-C20-09](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md#manufacturing-intelligence-direction-20-october-2026) governs this amendment; [Master Plan §7](../gridmind-master-plan-2026-10-11.md#7-dependency-based-execution-order) is the sole capability roadmap. Where earlier sections prescribe R3-first priority or root-dashboard behavior, current canonical authority governs. Existing source and experiments remain reusable.
+**Owner:** founder/product; independent industrial reviewer required for method approval. **Status:** first-principles specification, not implemented capability, measured accuracy, customer validation or schema authorization. [G31-C20-09](../gridmind-decision-constitution-and-contradiction-register-2026-10-10.md#c21-customer-completion--explicit-build-and-integration-scope) governs this amendment; [Master Plan §7](../gridmind-master-plan-2026-10-11.md#7-dependency-based-execution-order) is the sole capability roadmap. Where earlier sections prescribe R3-first priority or root-dashboard behavior, current canonical authority governs. Existing source and experiments remain reusable.
 
 ### 11.1 First principles and bounded customer job
 
