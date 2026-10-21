@@ -370,8 +370,14 @@ export async function executeCoreCommand(
         if (!next.workflow) throw new Error("CORE_WORKFLOW_MISSING");
         if (
           !["cancel", "record_outcome"].includes(cmd.action) &&
-          !authorizable(fresh.alternatives.find((a) => a.actionId === next.workflow!.actionId))
-          || fresh.ownerIntentAssessment.conflicts.some((conflict) => conflict.actionId === next.workflow!.actionId || conflict.actionId === null)
+          (
+            !authorizable(fresh.alternatives.find((a) => a.actionId === next.workflow!.actionId)) ||
+            Boolean(
+              fresh.ownerIntentAssessment?.conflicts.some(
+                (conflict) => conflict.actionId === next.workflow!.actionId || conflict.actionId === null,
+              ),
+            )
+          )
         )
           throw new Error("CORE_ACTION_NO_LONGER_ELIGIBLE");
         if (cmd.action === "approve")
