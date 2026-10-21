@@ -29,6 +29,7 @@ try {
   await client.query(`create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;
     create schema auth; create schema extensions; grant usage on schema public,auth to anon,authenticated,service_role;
     create table auth.users(id uuid primary key,aud text,role text,email text,created_at timestamptz,updated_at timestamptz,raw_app_meta_data jsonb,raw_user_meta_data jsonb);
+    create table auth.sessions(id uuid primary key,user_id uuid not null references auth.users(id),not_after timestamptz);
     create function auth.uid() returns uuid language sql stable as $$ select coalesce(nullif(current_setting('request.jwt.claim.sub',true),''),nullif(current_setting('request.jwt.claims',true),'')::jsonb->>'sub')::uuid $$;`);
   // Minimal Storage catalog fixture for native SQL policy tests, not Storage HTTP acceptance.
   await client.query(`create schema storage; grant usage on schema storage to authenticated,anon;
@@ -414,6 +415,14 @@ try {
   );
   const { verifyPortal } = await import("./portal-acceptance");
   await verifyPortal(database, store, owner, reviewer, outsider, fa, a);
+  const coreConnection = db.getPgClient();
+  await coreConnection.connect();
+  try {
+    const { verifyIndustrialCore } = await import("./industrial-core-acceptance");
+    await verifyIndustrialCore(database, coreConnection);
+  } finally {
+    await coreConnection.end();
+  }
   if (process.env.GRIDMIND_CASE_BROWSER === "1") {
     // Restore ONLY this disposable fixture actor for the browser scenario.
     await database.query(

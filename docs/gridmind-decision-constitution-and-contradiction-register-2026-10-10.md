@@ -1,5 +1,11 @@
 # GridMind Decision Constitution and Contradiction Register
 
+## GM-CORE-003-AUTH — bounded shared-core build, 20 October 2026
+
+**Authority:** founder's supplied GM-CORE-003 implementation brief and explicit instruction to commit after completing verification. Refs [#166](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/166). Permit the shared industry-neutral typed model, deterministic constraints/decisions/economics, qualified potential matching, internal transaction states, explicit plant authority and minimal synthetic UI/backend/database tests. The brief's automotive India/cluster specialization is engineering/customer-focus intent, not new interview or purchasing evidence. Preserve the earlier strategy rather than replace it; build scope now supersedes the earlier no-new-engine restriction only for this task. Related unmerged #165 is not authority for unrelated scope.
+
+**Trade-off:** broad conceptual coverage risks an unearned ERP/platform claim. Bound implementation to typed versioned snapshots, limited deterministic operators/calculations, source-supplied alternatives, unknown for unsupported scheduling, explicit qualification and default-disabled isolated storage. Reuse canonical identities and the existing stack. No autonomous engineering conclusions, customer-data authorization, physical changes, external payment/procurement execution, main merge or production settings. Require independent sensitive-boundary review and isolated authenticated acceptance before any subsequent release. The [supporting implementation contract](engineering/gridmind-gm-core-003-foundation.md) owns technical detail; Master Plan/tracker remain canonical.
+
 <a id="canonical-consolidation-decisions-20-october-2026"></a>
 
 ## Canonical consolidation decisions — 20 October 2026
