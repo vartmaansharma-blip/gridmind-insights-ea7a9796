@@ -346,7 +346,7 @@ export async function executeCoreCommand(
           throw new Error("CORE_WORKFLOW_TRANSITION_DENIED");
         const action = fresh.alternatives.find((a) => a.actionId === cmd.actionId);
         if (!authorizable(action)) throw new Error("CORE_ACTION_NOT_ELIGIBLE");
-        if (fresh.ownerIntentAssessment.conflicts.some((conflict) => conflict.actionId === cmd.actionId || conflict.actionId === null))
+        if (fresh.ownerIntentAssessment?.conflicts.some((conflict) => conflict.actionId === cmd.actionId || conflict.actionId === null))
           throw new Error("CORE_OWNER_INTENT_CONFLICT_REQUIRES_REVIEW");
         const requiredAuthorities = Array.from(
           new Set<Capability>([...action.requiredAuthorities, authorityFor(cmd.kind)]),
