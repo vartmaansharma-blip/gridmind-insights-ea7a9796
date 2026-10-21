@@ -33,6 +33,8 @@ The founder authorized the shared typed industrial core and four synthetic backe
 
 ## Select one bounded scope
 
+**21 October customer demonstration:** the founder authorizes extending merged GM-CORE-003 with a fictional first-customer sample, full-flow checks and necessary fixes targeting current main. Preserve required checks/history and land through the enforced PR process when needed. The [walkthrough contract](docs/product/gridmind-customer-demo.md) defines this scope. This supersedes the prior task's unmerged-only instruction for this demonstration; customer ingestion and production database activation remain gated.
+
 **Current execution order:** consolidate decisions → reconcile concurrent PRs → prepare one bounded finishing-versus-interruption historical experiment → obtain permissioned real evidence and qualified review → compare against current methods → approve one commercial product only if justified → expand on repeated evidence. The Master Plan §7 owns acceptance/dependency gates. Old M1-only, finishing-first, R3-first and calendar ordering is superseded. Preserve #152/#154 compressed-air review ownership and #150 security work; do not duplicate their implementation. No new engines while inputs/reviews are missing.
 
 Every task must name a milestone dependency, issue, observed defect or testable need, smallest output, input/permission/reviewer requirements, disconfirming result, acceptance and failure response. When waiting for a person, prepare the existing evidence packet and record the blocker; do not invent approval or start unrelated scope. An urgent security/correctness repair is an explicit dependency, not an implicit strategy pivot.

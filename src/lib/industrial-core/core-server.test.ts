@@ -86,6 +86,28 @@ it("persistent path is disabled by default and refuses remote databases even wit
   ).toBe(503);
   expect(getUser).not.toHaveBeenCalled();
 });
+it("customer samples evaluate on the server without Auth, persistence or caller-supplied data", async () => {
+  for (const scenario of ["A", "B", "C", "D"]) {
+    const response = await handleIndustrialCore(req({ action: "customer_demo", scenario }));
+    expect(response.status).toBe(200);
+    const sample = await response.json();
+    expect(sample.schemaVersion).toBe("gridmind/customer-demo/v1");
+    expect(sample.scenario).toBe(scenario);
+    expect(sample.input.origin).toBe("synthetic");
+  }
+  expect(
+    (
+      await handleIndustrialCore(
+        req({ action: "customer_demo", scenario: "A", input: { origin: "customer" } }),
+      )
+    ).status,
+  ).toBe(400);
+  expect(
+    (await handleIndustrialCore(req({ action: "customer_demo", scenario: "live" }))).status,
+  ).toBe(400);
+  expect(getUser).not.toHaveBeenCalled();
+  expect(rpc).not.toHaveBeenCalled();
+});
 it("verifies the exact JWT and forwards only its bound actor/session to a gated RPC", async () => {
   configure();
   expect(

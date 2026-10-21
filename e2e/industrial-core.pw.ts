@@ -60,6 +60,9 @@ test("mobile core explains missing authority without writing to a database", asy
   await region.getByRole("button", { name: "Run synthetic scenario" }).click();
   await expect(region.getByText(/Decision:/)).toBeVisible();
   await region.getByText("Isolated authenticated workspace", { exact: true }).click();
+  await expect(
+    region.getByRole("button", { name: "Request approval", exact: true }),
+  ).toBeDisabled();
   await expect(region.getByText(/Administrators receive no automatic/)).toBeVisible();
   expect(
     await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1),

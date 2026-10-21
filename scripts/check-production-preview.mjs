@@ -96,6 +96,7 @@ const routes = [
   "/alerts",
   "/savings",
   "/investigations",
+  "/customer-demo",
   "/investigations-connected",
 ];
 
