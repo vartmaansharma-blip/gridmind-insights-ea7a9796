@@ -72,9 +72,13 @@ test("core persists a reviewed decision through real Auth/HTTP, denies foreign t
     await region.getByLabel("Core workspace UUID").fill(workspaceId);
     const createdResponse = page.waitForResponse(
       (r) => r.url().endsWith("/api/industrial-core") && r.request().method() === "POST",
+      { timeout: 15_000 },
     );
     await region.getByRole("button", { name: "Create synthetic workspace", exact: true }).click();
-    const created = await createdResponse;
+    const created = await createdResponse.catch(async () => {
+      console.error("Core creation visible synthetic state:", await region.innerText());
+      throw new Error("No core HTTP response after create; inspect synthetic UI state");
+    });
     // Log only the API's stable error category on failure, never session/request data.
     const category = created.ok() ? "ok" : String((await created.json()).error);
     expect(created.status(), `Workspace create: ${category}`).toBe(200);
@@ -168,8 +172,10 @@ test("core persists a reviewed decision through real Auth/HTTP, denies foreign t
     );
     expect((await core(page, { ...base, action: "load" })).status).toBe(403);
   } finally {
-    await reviewerContext.close();
-    await foreignContext.close();
-    localSql("update private.industrial_core_gate set enabled=false;");
+    try {
+      await Promise.allSettled([reviewerContext.close(), foreignContext.close()]);
+    } finally {
+      localSql("update private.industrial_core_gate set enabled=false;");
+    }
   }
 });

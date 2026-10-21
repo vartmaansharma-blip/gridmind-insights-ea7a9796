@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import type { runScenario } from "@/lib/industrial-core/fixtures";
@@ -12,6 +12,8 @@ const scenarios = {
   D: "Prohibited sourcing",
 } as const;
 export function IndustrialCoreWorkspace() {
+  const [ready, setReady] = useState(false);
+  useEffect(() => setReady(true), []);
   const [scenario, setScenario] = useState<keyof typeof scenarios>("A"),
     [demo, setDemo] = useState<Demo | null>(null),
     [stored, setStored] = useState<Stored | null>(null);
@@ -109,7 +111,7 @@ export function IndustrialCoreWorkspace() {
           aria-label="Industrial core scenario"
           className="mt-2 block w-full max-w-md rounded border bg-background p-2"
           value={scenario}
-          disabled={busy}
+          disabled={!ready || busy}
           onChange={(e) => {
             setScenario(e.target.value as keyof typeof scenarios);
             setDemo(null);
@@ -123,7 +125,7 @@ export function IndustrialCoreWorkspace() {
         </select>
       </label>
       <Button
-        disabled={busy}
+        disabled={!ready || busy}
         onClick={() =>
           void run(async () => {
             setStored(null);
@@ -215,7 +217,7 @@ export function IndustrialCoreWorkspace() {
               inputMode="numeric"
               className="rounded border bg-background p-2"
               value={factory}
-              disabled={busy || !!pending.current}
+              disabled={!ready || busy || !!pending.current}
               onChange={(e) => {
                 setFactory(e.target.value);
                 setStored(null);
@@ -228,7 +230,7 @@ export function IndustrialCoreWorkspace() {
               aria-label="Core workspace UUID"
               className="w-full rounded border bg-background p-2"
               value={workspace}
-              disabled={busy || !!pending.current}
+              disabled={!ready || busy || !!pending.current}
               onChange={(e) => {
                 setWorkspace(e.target.value);
                 setStored(null);
@@ -237,7 +239,7 @@ export function IndustrialCoreWorkspace() {
           </label>
           <div className="flex flex-wrap gap-2">
             <Button
-              disabled={busy || !!pending.current}
+              disabled={!ready || busy || !!pending.current}
               variant="outline"
               onClick={() =>
                 void run(async () => {
@@ -253,28 +255,28 @@ export function IndustrialCoreWorkspace() {
               Load saved workspace
             </Button>
             <Button
-              disabled={busy}
+              disabled={!ready || busy}
               variant="outline"
               onClick={() => void mutate("create", { scenario })}
             >
               Create synthetic workspace
             </Button>
             <Button
-              disabled={busy || !stored}
+              disabled={!ready || busy || !stored}
               variant="outline"
               onClick={() => void mutate("verify_input")}
             >
               Verify synthetic inputs
             </Button>
             <Button
-              disabled={busy || !stored}
+              disabled={!ready || busy || !stored}
               variant="outline"
               onClick={() => void mutate("evaluate")}
             >
               Evaluate saved inputs
             </Button>
             <Button
-              disabled={busy || !evaluation?.recommendation}
+              disabled={!ready || busy || !evaluation?.recommendation}
               variant="outline"
               onClick={() =>
                 void mutate("request_approval", {
@@ -286,14 +288,14 @@ export function IndustrialCoreWorkspace() {
               Request approval
             </Button>
             <Button
-              disabled={busy || !stored?.snapshot?.workflow}
+              disabled={!ready || busy || !stored?.snapshot?.workflow}
               variant="outline"
               onClick={() => void mutate("approve")}
             >
               Approve within my authority
             </Button>
             <Button
-              disabled={busy || !stored?.snapshot?.workflow}
+              disabled={!ready || busy || !stored?.snapshot?.workflow}
               variant="outline"
               onClick={() => void mutate("execute")}
             >
