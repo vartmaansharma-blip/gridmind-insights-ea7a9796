@@ -27,9 +27,21 @@ Read in this order before non-trivial work:
 
 This is a reading order, not permission to override safety. Authorization, data rights and security constrain all documents; the Constitution resolves decision conflicts, the Master Plan owns work order, the tracker owns field facts, and reproducible code/check evidence establishes behavior. Newer prose alone does not supersede a decision.
 
+## Recovered founder conversation decisions
+
+For material GridMind planning or scope reconciliation, also read the [recovered conversation decision register](docs/gridmind-recovered-conversation-decisions-2026-10-21.md) for the latest founder-articulated industry-to-shop-floor infrastructure vision, owner intent, full manufacturing lifecycle and 84 status-tagged recalled requirements. This is a **retrieval index**, not a new competing strategy or permission to bypass source validation, field evidence, security, production release or the Master Plan/Constitution. If a remembered chat conflicts with confirmed repo decisions, record the conflict and seek evidence/explicit authorization before altering product scope. Maintain this register via reviewed, small deltas rather than relying on ChatGPT memory.
+
 ## GM-CORE-003 explicit build exception
 
 The founder authorized the shared typed industrial core and four synthetic backend demonstrations in [#166](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/166), with the [bounded implementation contract](docs/engineering/gridmind-gm-core-003-foundation.md). This supersedes the no-new-engine restriction below only within that task. Keep schemas industry-neutral; automotive/India/cluster is initial specialization intent, not validated paid demand. Reuse canonical identities/Auth/UI, require explicit commercial/quality/safety authority, preserve default-off isolated persistence and all release/data gates. Commit verified work and prepare a PR; **do not merge automatically**. Do not replace earlier strategy or adopt unmerged #165 wholesale.
+
+## Customer-first completion authorization — 21 October 2026
+
+The founder's customer-first completion brief authorizes advancing beyond GM-CORE-003 and the public walkthrough toward one unified industrial operating application, initially specialized for Indian automotive-component manufacturers. It authorizes ordinary reversible implementation, configuration, backward-compatible migrations, staging acceptance, commits, and integration through required checks/review. Related branches must be reviewed individually, completed and integrated using normal merges. This supersedes earlier generic no-new-engine, synthetic-proof-only and unmerged-only scope restrictions for this task; it does not establish customer demand or waive data rights, qualified review, independent security review, #29/#130, recovery or release controls.
+
+The first executable dependency is reconciling #150/#154/#156/#158/#160/#162/#165 on current main, retaining unique code/research and canonical authority, then implementing stateful finite-capacity operations through existing identities, Auth, industrial-core revisions and approval/CAS receipts. Existing source supports only synthetic records and isolated default-off persistence; preserve those runtime gates until real-data contracts, drift reconciliation and authorization are verified. No customer records, live payment activation, binding purchases or industrial control are authorized by source integration. Initial specialization is product direction, not a validated buyer result. The supplied brief is truncated at its final commercial-validation sentence; no missing requirement or approval is inferred.
+
+Acceptance: test the combined source and realistic A–O scenarios, including capacity/inventory conservation, source invalidation, current authority, concurrent writes, tenant isolation and provider-status boundaries. Record verified, blocked and unverified states separately. Independent #150/#154 security review remains required before their protected-main merge; prepare a concrete review candidate and continue unaffected engineering while that review is pending.
 
 ## Select one bounded scope
 

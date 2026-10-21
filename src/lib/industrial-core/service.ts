@@ -236,6 +236,11 @@ export async function executeCoreCommand(
         throw new Error("CORE_SCOPE_DENIED");
       const input = structuredClone(cmd.input);
       // Imported document extraction NEVER establishes binding rules, sharing or qualifications.
+      // Imported claims cannot confirm the owner's objectives or authorize preferred actions.
+      for (const intent of input.ownerIntents ?? []) {
+        intent.status = "proposed";
+        intent.confirmedBy = null;
+      }
       for (const e of input.evidence) e.verification = "unverified";
       for (const r of input.constraints) {
         r.verification = "proposed";
@@ -341,6 +346,10 @@ export async function executeCoreCommand(
           throw new Error("CORE_WORKFLOW_TRANSITION_DENIED");
         const action = fresh.alternatives.find((a) => a.actionId === cmd.actionId);
         if (!authorizable(action)) throw new Error("CORE_ACTION_NOT_ELIGIBLE");
+        // A confirmed unresolved strategic disagreement invalidates the decision as a
+        // whole. Approving a different action must not bypass the owner's review.
+        if (fresh.ownerIntentAssessment?.conflicts.length)
+          throw new Error("CORE_OWNER_INTENT_CONFLICT_REQUIRES_REVIEW");
         const requiredAuthorities = Array.from(
           new Set<Capability>([...action.requiredAuthorities, authorityFor(cmd.kind)]),
         );
@@ -363,7 +372,10 @@ export async function executeCoreCommand(
         if (!next.workflow) throw new Error("CORE_WORKFLOW_MISSING");
         if (
           !["cancel", "record_outcome"].includes(cmd.action) &&
-          !authorizable(fresh.alternatives.find((a) => a.actionId === next.workflow!.actionId))
+          (
+            !authorizable(fresh.alternatives.find((a) => a.actionId === next.workflow!.actionId)) ||
+            Boolean(fresh.ownerIntentAssessment?.conflicts.length)
+          )
         )
           throw new Error("CORE_ACTION_NO_LONGER_ELIGIBLE");
         if (cmd.action === "approve")
