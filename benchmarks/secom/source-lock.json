@@ -1,0 +1,75 @@
+{
+  "dataset": "SECOM",
+  "uci_id": 179,
+  "doi": "10.24432/C54305",
+  "authors": [
+    "Michael McCann",
+    "Adrian Johnston"
+  ],
+  "source_url": "https://archive.ics.uci.edu/dataset/179/secom",
+  "download_url": "https://archive.ics.uci.edu/static/public/179/secom.zip",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "first_acquisition": {
+    "url": "https://archive.ics.uci.edu/static/public/179/secom.zip",
+    "downloaded_at_utc": "2026-10-21T10:47:26.680799+00:00",
+    "archive_sha256": "eea568baf3c2229096d7d294cf0b096b5502bd96d92c0b80a65b84714059be8e",
+    "bytes": 1964989,
+    "response_headers": {
+      "Last-Modified": null,
+      "ETag": null,
+      "Content-Type": null
+    }
+  },
+  "archive_sha256": "eea568baf3c2229096d7d294cf0b096b5502bd96d92c0b80a65b84714059be8e",
+  "release_version": null,
+  "version_basis": "No semantic dataset version or HTTP Last-Modified/ETag supplied. Archive and member SHA-256 identify this snapshot; ZIP dates are packaging metadata, not measurement dates.",
+  "members": {
+    "secom.data": {
+      "sha256": "20f0e7ee434f7dcbae0eea9ffff009a2b57f42d6b0dc9a5bd4f00782c0a3374c",
+      "bytes": 5389983,
+      "zip_timestamp_no_timezone": [
+        2023,
+        5,
+        22,
+        22,
+        20,
+        26
+      ]
+    },
+    "secom.names": {
+      "sha256": "6d91b0b46cdee03064ee3e3112f937c1b3f7fcd9933575794ec07974e6f1ea59",
+      "bytes": 4223,
+      "zip_timestamp_no_timezone": [
+        2023,
+        5,
+        22,
+        22,
+        20,
+        26
+      ]
+    },
+    "secom_labels.data": {
+      "sha256": "126884cf453705c9e61a903fe906f0665a3b45ce3639e621edc5c93c89627e03",
+      "bytes": 40638,
+      "zip_timestamp_no_timezone": [
+        2023,
+        5,
+        22,
+        22,
+        20,
+        26
+      ]
+    }
+  },
+  "documented_instances": 1567,
+  "documented_features": 591,
+  "observed_measurement_columns": 590,
+  "access": "Public HTTPS archive, no login or credentials requested. Retain author/source/license attribution and mark derived processing; no endorsement.",
+  "attribution": "McCann, M. & Johnston, A. (2008). SECOM [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C54305. CC BY 4.0. GridMind derives chronological splits, imputations, models and benchmark summaries; these are not UCI-endorsed.",
+  "source_page_sha256_at_acquisition": "7733f53b6a827ce8f45b6056ebe0c54d77438ef93925871be9fa5e0b9bc33ec3",
+  "metadata_discrepancies": [
+    "UCI page and names document 591 features; each of 1567 actual measurement lines contains 590 columns. No extra column is invented.",
+    "UCI page donation date is 2008-11-18; archive names file says 2008-11-19. Both are metadata, not observation dates."
+  ]
+}

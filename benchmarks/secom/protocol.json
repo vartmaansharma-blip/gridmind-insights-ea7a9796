@@ -1,0 +1,14 @@
+{
+  "benchmark_version": "gm-mvp-005/v1",
+  "positive_label": "fail: source +1 mapped to 1; pass -1 mapped to 0",
+  "split": "sort naive source test timestamps, earliest approximately 70% for training; move boundary to next whole calendar day; all equal timestamps stay together",
+  "train_fraction": 0.7,
+  "features": "all source numeric measurement columns, excluding labels, timestamp and source line ID",
+  "preprocessing": "training-only median imputation, discard training-all-missing and constant columns, training-only standard scaling",
+  "baseline": "training-majority class with constant training failure prevalence as score",
+  "classifier": "L2 logistic regression, C=1.0, class_weight=balanced, solver=liblinear, max_iter=5000, random_state=20261021",
+  "threshold": 0.5,
+  "selection": "no hyperparameter, feature, threshold or split tuning against held-out results; this is an exploratory first benchmark, not a preregistered external evaluation",
+  "uncertainty": "2000 paired test-calendar-day block bootstrap replicates, seed 20261021; fixed fitted model, no training refit; percentile 95% intervals",
+  "claims": "semiconductor test-label classification only; no causal diagnosis, early-warning lead time, automotive transfer, savings or customer validation"
+}

@@ -43,3 +43,5 @@ Start with the [current engineering ledger](gridmind-execution-and-repository-ac
 - [Phase 12.6 — Schema Completeness Audit](phase-12-6-schema-completeness.md)
 - [GridMind Phase 13.2 — Canonical Application/Data-Contract Boundary](phase-13-2-canonical-application-boundary-v1.md)
 - [GridMind public site release — 2026-10-17](public-site-release-checkpoint-2026-10-17.md)
+
+- [GM-MVP-005: genuine SECOM measurements, chronological classifier errors and reproducibility](gridmind-gm-mvp-005-secom-benchmark.md). Separate offline public-data experiment; no customer or production activation.

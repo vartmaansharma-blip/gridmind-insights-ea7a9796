@@ -1,0 +1,2955 @@
+{
+  "benchmark_version": "gm-mvp-005/v1",
+  "origin": "real_public_semiconductor_measurements",
+  "source_archive_sha256": "eea568baf3c2229096d7d294cf0b096b5502bd96d92c0b80a65b84714059be8e",
+  "protocol_sha256": "cfdc17c926398185d013d8ec9f0bbdbdbcfab3403dfba684a9a75a4a1daff98a",
+  "positive_class": "fail",
+  "confusion_matrix_axes": "rows actual [pass, fail]; columns predicted [pass, fail]",
+  "precision_recall_auc_definition": "non-interpolated average precision (AP), not trapezoidal PR integration",
+  "undefined_metrics": "null when denominator is zero; never invent perfect precision for predicting no failures",
+  "data_quality": {
+    "shape": [
+      1567,
+      590
+    ],
+    "labels": {
+      "pass": 1463,
+      "fail": 104,
+      "rows": 1567,
+      "failure_prevalence": 0.06636885768985322
+    },
+    "missing_cells": 41951,
+    "missing_fraction": 0.04537548808583821,
+    "all_missing_columns": [],
+    "nonempty_constant_columns": [
+      "measurement_005",
+      "measurement_013",
+      "measurement_042",
+      "measurement_049",
+      "measurement_052",
+      "measurement_069",
+      "measurement_097",
+      "measurement_141",
+      "measurement_149",
+      "measurement_178",
+      "measurement_179",
+      "measurement_186",
+      "measurement_189",
+      "measurement_190",
+      "measurement_191",
+      "measurement_192",
+      "measurement_193",
+      "measurement_194",
+      "measurement_226",
+      "measurement_229",
+      "measurement_230",
+      "measurement_231",
+      "measurement_232",
+      "measurement_233",
+      "measurement_234",
+      "measurement_235",
+      "measurement_236",
+      "measurement_237",
+      "measurement_240",
+      "measurement_241",
+      "measurement_242",
+      "measurement_243",
+      "measurement_256",
+      "measurement_257",
+      "measurement_258",
+      "measurement_259",
+      "measurement_260",
+      "measurement_261",
+      "measurement_262",
+      "measurement_263",
+      "measurement_264",
+      "measurement_265",
+      "measurement_266",
+      "measurement_276",
+      "measurement_284",
+      "measurement_313",
+      "measurement_314",
+      "measurement_315",
+      "measurement_322",
+      "measurement_325",
+      "measurement_326",
+      "measurement_327",
+      "measurement_328",
+      "measurement_329",
+      "measurement_330",
+      "measurement_364",
+      "measurement_369",
+      "measurement_370",
+      "measurement_371",
+      "measurement_372",
+      "measurement_373",
+      "measurement_374",
+      "measurement_375",
+      "measurement_378",
+      "measurement_379",
+      "measurement_380",
+      "measurement_381",
+      "measurement_394",
+      "measurement_395",
+      "measurement_396",
+      "measurement_397",
+      "measurement_398",
+      "measurement_399",
+      "measurement_400",
+      "measurement_401",
+      "measurement_402",
+      "measurement_403",
+      "measurement_404",
+      "measurement_414",
+      "measurement_422",
+      "measurement_449",
+      "measurement_450",
+      "measurement_451",
+      "measurement_458",
+      "measurement_461",
+      "measurement_462",
+      "measurement_463",
+      "measurement_464",
+      "measurement_465",
+      "measurement_466",
+      "measurement_481",
+      "measurement_498",
+      "measurement_501",
+      "measurement_502",
+      "measurement_503",
+      "measurement_504",
+      "measurement_505",
+      "measurement_506",
+      "measurement_507",
+      "measurement_508",
+      "measurement_509",
+      "measurement_512",
+      "measurement_513",
+      "measurement_514",
+      "measurement_515",
+      "measurement_528",
+      "measurement_529",
+      "measurement_530",
+      "measurement_531",
+      "measurement_532",
+      "measurement_533",
+      "measurement_534",
+      "measurement_535",
+      "measurement_536",
+      "measurement_537",
+      "measurement_538"
+    ],
+    "train_all_missing_columns": [],
+    "exact_duplicate_measurement_rows": 0,
+    "cross_split_duplicate_measurement_vectors": 0,
+    "duplicate_timestamps": 33,
+    "source_timestamp_inversions": 0,
+    "timestamp_min": "2008-07-19T11:55:00",
+    "timestamp_max": "2008-10-17T06:07:00",
+    "timezone": "not supplied; source wall-clock dates retained without inventing UTC",
+    "batch_machine_wafer_groups": "not supplied; hidden group dependence cannot be excluded",
+    "daily": [
+      {
+        "day": "2008-07-19",
+        "pass": 9,
+        "fail": 3,
+        "rows": 12,
+        "failure_prevalence": 0.25,
+        "missing_fraction": 0.0480225988700565
+      },
+      {
+        "day": "2008-07-20",
+        "pass": 1,
+        "fail": 0,
+        "rows": 1,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04745762711864407
+      },
+      {
+        "day": "2008-07-21",
+        "pass": 1,
+        "fail": 1,
+        "rows": 2,
+        "failure_prevalence": 0.5,
+        "missing_fraction": 0.05084745762711865
+      },
+      {
+        "day": "2008-07-22",
+        "pass": 6,
+        "fail": 0,
+        "rows": 6,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.05536723163841808
+      },
+      {
+        "day": "2008-07-23",
+        "pass": 2,
+        "fail": 0,
+        "rows": 2,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04406779661016949
+      },
+      {
+        "day": "2008-07-25",
+        "pass": 0,
+        "fail": 1,
+        "rows": 1,
+        "failure_prevalence": 1.0,
+        "missing_fraction": 0.04745762711864407
+      },
+      {
+        "day": "2008-07-27",
+        "pass": 10,
+        "fail": 0,
+        "rows": 10,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.045932203389830506
+      },
+      {
+        "day": "2008-07-28",
+        "pass": 6,
+        "fail": 2,
+        "rows": 8,
+        "failure_prevalence": 0.25,
+        "missing_fraction": 0.04406779661016949
+      },
+      {
+        "day": "2008-07-29",
+        "pass": 8,
+        "fail": 4,
+        "rows": 12,
+        "failure_prevalence": 0.3333333333333333,
+        "missing_fraction": 0.04844632768361582
+      },
+      {
+        "day": "2008-07-30",
+        "pass": 3,
+        "fail": 2,
+        "rows": 5,
+        "failure_prevalence": 0.4,
+        "missing_fraction": 0.03661016949152542
+      },
+      {
+        "day": "2008-07-31",
+        "pass": 3,
+        "fail": 1,
+        "rows": 4,
+        "failure_prevalence": 0.25,
+        "missing_fraction": 0.04067796610169491
+      },
+      {
+        "day": "2008-08-01",
+        "pass": 7,
+        "fail": 1,
+        "rows": 8,
+        "failure_prevalence": 0.125,
+        "missing_fraction": 0.038135593220338986
+      },
+      {
+        "day": "2008-08-02",
+        "pass": 1,
+        "fail": 0,
+        "rows": 1,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04067796610169491
+      },
+      {
+        "day": "2008-08-03",
+        "pass": 10,
+        "fail": 0,
+        "rows": 10,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04203389830508475
+      },
+      {
+        "day": "2008-08-04",
+        "pass": 16,
+        "fail": 2,
+        "rows": 18,
+        "failure_prevalence": 0.1111111111111111,
+        "missing_fraction": 0.07071563088512241
+      },
+      {
+        "day": "2008-08-05",
+        "pass": 27,
+        "fail": 1,
+        "rows": 28,
+        "failure_prevalence": 0.03571428571428571,
+        "missing_fraction": 0.04745762711864407
+      },
+      {
+        "day": "2008-08-06",
+        "pass": 18,
+        "fail": 1,
+        "rows": 19,
+        "failure_prevalence": 0.05263157894736842,
+        "missing_fraction": 0.054950936663693134
+      },
+      {
+        "day": "2008-08-07",
+        "pass": 7,
+        "fail": 1,
+        "rows": 8,
+        "failure_prevalence": 0.125,
+        "missing_fraction": 0.04915254237288136
+      },
+      {
+        "day": "2008-08-08",
+        "pass": 7,
+        "fail": 2,
+        "rows": 9,
+        "failure_prevalence": 0.2222222222222222,
+        "missing_fraction": 0.04067796610169491
+      },
+      {
+        "day": "2008-08-09",
+        "pass": 12,
+        "fail": 2,
+        "rows": 14,
+        "failure_prevalence": 0.14285714285714285,
+        "missing_fraction": 0.04794188861985472
+      },
+      {
+        "day": "2008-08-10",
+        "pass": 7,
+        "fail": 5,
+        "rows": 12,
+        "failure_prevalence": 0.4166666666666667,
+        "missing_fraction": 0.04788135593220339
+      },
+      {
+        "day": "2008-08-11",
+        "pass": 5,
+        "fail": 0,
+        "rows": 5,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04203389830508475
+      },
+      {
+        "day": "2008-08-12",
+        "pass": 5,
+        "fail": 0,
+        "rows": 5,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.06338983050847458
+      },
+      {
+        "day": "2008-08-13",
+        "pass": 1,
+        "fail": 0,
+        "rows": 1,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.05423728813559322
+      },
+      {
+        "day": "2008-08-15",
+        "pass": 11,
+        "fail": 0,
+        "rows": 11,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.05238828967642527
+      },
+      {
+        "day": "2008-08-16",
+        "pass": 10,
+        "fail": 2,
+        "rows": 12,
+        "failure_prevalence": 0.16666666666666666,
+        "missing_fraction": 0.04632768361581921
+      },
+      {
+        "day": "2008-08-17",
+        "pass": 12,
+        "fail": 5,
+        "rows": 17,
+        "failure_prevalence": 0.29411764705882354,
+        "missing_fraction": 0.045064805583250246
+      },
+      {
+        "day": "2008-08-18",
+        "pass": 35,
+        "fail": 5,
+        "rows": 40,
+        "failure_prevalence": 0.125,
+        "missing_fraction": 0.05050847457627119
+      },
+      {
+        "day": "2008-08-19",
+        "pass": 33,
+        "fail": 3,
+        "rows": 36,
+        "failure_prevalence": 0.08333333333333333,
+        "missing_fraction": 0.05536723163841808
+      },
+      {
+        "day": "2008-08-20",
+        "pass": 22,
+        "fail": 6,
+        "rows": 28,
+        "failure_prevalence": 0.21428571428571427,
+        "missing_fraction": 0.056416464891041164
+      },
+      {
+        "day": "2008-08-21",
+        "pass": 41,
+        "fail": 3,
+        "rows": 44,
+        "failure_prevalence": 0.06818181818181818,
+        "missing_fraction": 0.04992295839753467
+      },
+      {
+        "day": "2008-08-22",
+        "pass": 37,
+        "fail": 3,
+        "rows": 40,
+        "failure_prevalence": 0.075,
+        "missing_fraction": 0.05
+      },
+      {
+        "day": "2008-08-23",
+        "pass": 12,
+        "fail": 1,
+        "rows": 13,
+        "failure_prevalence": 0.07692307692307693,
+        "missing_fraction": 0.05215123859191656
+      },
+      {
+        "day": "2008-08-24",
+        "pass": 6,
+        "fail": 1,
+        "rows": 7,
+        "failure_prevalence": 0.14285714285714285,
+        "missing_fraction": 0.04455205811138015
+      },
+      {
+        "day": "2008-08-25",
+        "pass": 1,
+        "fail": 0,
+        "rows": 1,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.061016949152542375
+      },
+      {
+        "day": "2008-08-27",
+        "pass": 8,
+        "fail": 0,
+        "rows": 8,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.051694915254237285
+      },
+      {
+        "day": "2008-08-28",
+        "pass": 42,
+        "fail": 1,
+        "rows": 43,
+        "failure_prevalence": 0.023255813953488372,
+        "missing_fraction": 0.05841545132045723
+      },
+      {
+        "day": "2008-08-29",
+        "pass": 48,
+        "fail": 2,
+        "rows": 50,
+        "failure_prevalence": 0.04,
+        "missing_fraction": 0.05938983050847458
+      },
+      {
+        "day": "2008-08-30",
+        "pass": 47,
+        "fail": 2,
+        "rows": 49,
+        "failure_prevalence": 0.04081632653061224,
+        "missing_fraction": 0.058007609823590454
+      },
+      {
+        "day": "2008-08-31",
+        "pass": 16,
+        "fail": 2,
+        "rows": 18,
+        "failure_prevalence": 0.1111111111111111,
+        "missing_fraction": 0.060263653483992465
+      },
+      {
+        "day": "2008-09-01",
+        "pass": 25,
+        "fail": 1,
+        "rows": 26,
+        "failure_prevalence": 0.038461538461538464,
+        "missing_fraction": 0.05677966101694915
+      },
+      {
+        "day": "2008-09-02",
+        "pass": 62,
+        "fail": 0,
+        "rows": 62,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.06008747949699289
+      },
+      {
+        "day": "2008-09-03",
+        "pass": 14,
+        "fail": 1,
+        "rows": 15,
+        "failure_prevalence": 0.06666666666666667,
+        "missing_fraction": 0.05310734463276836
+      },
+      {
+        "day": "2008-09-04",
+        "pass": 13,
+        "fail": 0,
+        "rows": 13,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.054758800521512385
+      },
+      {
+        "day": "2008-09-05",
+        "pass": 2,
+        "fail": 0,
+        "rows": 2,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.09830508474576272
+      },
+      {
+        "day": "2008-09-07",
+        "pass": 15,
+        "fail": 0,
+        "rows": 15,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.05016949152542373
+      },
+      {
+        "day": "2008-09-08",
+        "pass": 18,
+        "fail": 0,
+        "rows": 18,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.05536723163841808
+      },
+      {
+        "day": "2008-09-09",
+        "pass": 3,
+        "fail": 0,
+        "rows": 3,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04519774011299435
+      },
+      {
+        "day": "2008-09-10",
+        "pass": 7,
+        "fail": 0,
+        "rows": 7,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03970944309927361
+      },
+      {
+        "day": "2008-09-11",
+        "pass": 17,
+        "fail": 2,
+        "rows": 19,
+        "failure_prevalence": 0.10526315789473684,
+        "missing_fraction": 0.0528099910793934
+      },
+      {
+        "day": "2008-09-12",
+        "pass": 22,
+        "fail": 0,
+        "rows": 22,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.05385208012326657
+      },
+      {
+        "day": "2008-09-13",
+        "pass": 10,
+        "fail": 2,
+        "rows": 12,
+        "failure_prevalence": 0.16666666666666666,
+        "missing_fraction": 0.04124293785310734
+      },
+      {
+        "day": "2008-09-14",
+        "pass": 14,
+        "fail": 0,
+        "rows": 14,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03486682808716707
+      },
+      {
+        "day": "2008-09-15",
+        "pass": 12,
+        "fail": 0,
+        "rows": 12,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04576271186440678
+      },
+      {
+        "day": "2008-09-16",
+        "pass": 12,
+        "fail": 0,
+        "rows": 12,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.04576271186440678
+      },
+      {
+        "day": "2008-09-17",
+        "pass": 4,
+        "fail": 1,
+        "rows": 5,
+        "failure_prevalence": 0.2,
+        "missing_fraction": 0.03525423728813559
+      },
+      {
+        "day": "2008-09-18",
+        "pass": 19,
+        "fail": 0,
+        "rows": 19,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.037644959857270295
+      },
+      {
+        "day": "2008-09-19",
+        "pass": 34,
+        "fail": 4,
+        "rows": 38,
+        "failure_prevalence": 0.10526315789473684,
+        "missing_fraction": 0.03621766280107047
+      },
+      {
+        "day": "2008-09-20",
+        "pass": 37,
+        "fail": 0,
+        "rows": 37,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.0336692624828218
+      },
+      {
+        "day": "2008-09-21",
+        "pass": 31,
+        "fail": 0,
+        "rows": 31,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03712411153635867
+      },
+      {
+        "day": "2008-09-22",
+        "pass": 22,
+        "fail": 0,
+        "rows": 22,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.038751926040061634
+      },
+      {
+        "day": "2008-09-23",
+        "pass": 23,
+        "fail": 1,
+        "rows": 24,
+        "failure_prevalence": 0.041666666666666664,
+        "missing_fraction": 0.036087570621468924
+      },
+      {
+        "day": "2008-09-24",
+        "pass": 22,
+        "fail": 1,
+        "rows": 23,
+        "failure_prevalence": 0.043478260869565216,
+        "missing_fraction": 0.03824613117170229
+      },
+      {
+        "day": "2008-09-25",
+        "pass": 24,
+        "fail": 0,
+        "rows": 24,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.032627118644067796
+      },
+      {
+        "day": "2008-09-26",
+        "pass": 23,
+        "fail": 0,
+        "rows": 23,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.027708179808400884
+      },
+      {
+        "day": "2008-09-27",
+        "pass": 25,
+        "fail": 0,
+        "rows": 25,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03708474576271186
+      },
+      {
+        "day": "2008-09-28",
+        "pass": 23,
+        "fail": 2,
+        "rows": 25,
+        "failure_prevalence": 0.08,
+        "missing_fraction": 0.037152542372881354
+      },
+      {
+        "day": "2008-09-29",
+        "pass": 20,
+        "fail": 1,
+        "rows": 21,
+        "failure_prevalence": 0.047619047619047616,
+        "missing_fraction": 0.026150121065375304
+      },
+      {
+        "day": "2008-09-30",
+        "pass": 20,
+        "fail": 1,
+        "rows": 21,
+        "failure_prevalence": 0.047619047619047616,
+        "missing_fraction": 0.0317998385794996
+      },
+      {
+        "day": "2008-10-01",
+        "pass": 16,
+        "fail": 1,
+        "rows": 17,
+        "failure_prevalence": 0.058823529411764705,
+        "missing_fraction": 0.032701894317048855
+      },
+      {
+        "day": "2008-10-02",
+        "pass": 30,
+        "fail": 5,
+        "rows": 35,
+        "failure_prevalence": 0.14285714285714285,
+        "missing_fraction": 0.029588377723970945
+      },
+      {
+        "day": "2008-10-03",
+        "pass": 25,
+        "fail": 0,
+        "rows": 25,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.033084745762711865
+      },
+      {
+        "day": "2008-10-04",
+        "pass": 17,
+        "fail": 1,
+        "rows": 18,
+        "failure_prevalence": 0.05555555555555555,
+        "missing_fraction": 0.031261770244821095
+      },
+      {
+        "day": "2008-10-05",
+        "pass": 26,
+        "fail": 6,
+        "rows": 32,
+        "failure_prevalence": 0.1875,
+        "missing_fraction": 0.03220338983050847
+      },
+      {
+        "day": "2008-10-06",
+        "pass": 43,
+        "fail": 5,
+        "rows": 48,
+        "failure_prevalence": 0.10416666666666667,
+        "missing_fraction": 0.0346045197740113
+      },
+      {
+        "day": "2008-10-07",
+        "pass": 27,
+        "fail": 1,
+        "rows": 28,
+        "failure_prevalence": 0.03571428571428571,
+        "missing_fraction": 0.028087167070217918
+      },
+      {
+        "day": "2008-10-08",
+        "pass": 26,
+        "fail": 0,
+        "rows": 26,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.02998696219035202
+      },
+      {
+        "day": "2008-10-09",
+        "pass": 6,
+        "fail": 2,
+        "rows": 8,
+        "failure_prevalence": 0.25,
+        "missing_fraction": 0.03305084745762712
+      },
+      {
+        "day": "2008-10-10",
+        "pass": 10,
+        "fail": 0,
+        "rows": 10,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03661016949152542
+      },
+      {
+        "day": "2008-10-11",
+        "pass": 11,
+        "fail": 0,
+        "rows": 11,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03697996918335902
+      },
+      {
+        "day": "2008-10-12",
+        "pass": 7,
+        "fail": 0,
+        "rows": 7,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03486682808716707
+      },
+      {
+        "day": "2008-10-13",
+        "pass": 22,
+        "fail": 0,
+        "rows": 22,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03451463790446841
+      },
+      {
+        "day": "2008-10-14",
+        "pass": 16,
+        "fail": 0,
+        "rows": 16,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.03516949152542373
+      },
+      {
+        "day": "2008-10-15",
+        "pass": 33,
+        "fail": 1,
+        "rows": 34,
+        "failure_prevalence": 0.029411764705882353,
+        "missing_fraction": 0.03629112662013958
+      },
+      {
+        "day": "2008-10-16",
+        "pass": 19,
+        "fail": 0,
+        "rows": 19,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.09634255129348795
+      },
+      {
+        "day": "2008-10-17",
+        "pass": 3,
+        "fail": 0,
+        "rows": 3,
+        "failure_prevalence": 0.0,
+        "missing_fraction": 0.2033898305084746
+      }
+    ]
+  },
+  "split": {
+    "method": "sort naive source test timestamps, earliest approximately 70% for training; move boundary to next whole calendar day; all equal timestamps stay together",
+    "train": {
+      "pass": 1038,
+      "fail": 78,
+      "rows": 1116,
+      "failure_prevalence": 0.06989247311827956
+    },
+    "test": {
+      "pass": 425,
+      "fail": 26,
+      "rows": 451,
+      "failure_prevalence": 0.057649667405764965
+    },
+    "train_start": "2008-07-19T11:55:00",
+    "train_end": "2008-09-26T20:31:00",
+    "test_start": "2008-09-27T00:16:00",
+    "test_end": "2008-10-17T06:07:00",
+    "strict_chronology": true
+  },
+  "preprocessing": {
+    "fit_rows": 1116,
+    "original_features": 590,
+    "after_training_median": 590,
+    "after_training_variance": 468,
+    "fit_warnings": [],
+    "classifier_iterations": [
+      11
+    ]
+  },
+  "methods": {
+    "majority": {
+      "confusion_matrix": [
+        [
+          425,
+          0
+        ],
+        [
+          26,
+          0
+        ]
+      ],
+      "tn": 425,
+      "fp": 0,
+      "fn": 26,
+      "tp": 0,
+      "accuracy": 0.9423503325942351,
+      "precision": null,
+      "recall": 0.0,
+      "specificity": 1.0,
+      "balanced_accuracy": 0.5,
+      "average_precision": 0.057649667405764965,
+      "flagged_for_review": 0,
+      "recall_wilson_95_iid_sensitivity": {
+        "lower": 0.0,
+        "upper": 0.1287289218592153,
+        "successes": 0,
+        "trials": 26,
+        "assumption": "iid binomial sensitivity only; unknown production clustering may invalidate nominal coverage"
+      },
+      "precision_wilson_95_iid_sensitivity": null
+    },
+    "logistic_regression": {
+      "confusion_matrix": [
+        [
+          418,
+          7
+        ],
+        [
+          26,
+          0
+        ]
+      ],
+      "tn": 418,
+      "fp": 7,
+      "fn": 26,
+      "tp": 0,
+      "accuracy": 0.926829268292683,
+      "precision": 0.0,
+      "recall": 0.0,
+      "specificity": 0.9835294117647059,
+      "balanced_accuracy": 0.49176470588235294,
+      "average_precision": 0.0678250685482118,
+      "flagged_for_review": 7,
+      "recall_wilson_95_iid_sensitivity": {
+        "lower": 0.0,
+        "upper": 0.1287289218592153,
+        "successes": 0,
+        "trials": 26,
+        "assumption": "iid binomial sensitivity only; unknown production clustering may invalidate nominal coverage"
+      },
+      "precision_wilson_95_iid_sensitivity": {
+        "lower": 5.551115123125783e-17,
+        "upper": 0.35433043506668743,
+        "successes": 0,
+        "trials": 7,
+        "assumption": "iid binomial sensitivity only; unknown production clustering may invalidate nominal coverage"
+      }
+    }
+  },
+  "uncertainty": {
+    "method": "paired calendar-day cluster percentile bootstrap, fixed fitted models",
+    "test_day_blocks": 21,
+    "seed": 20261021,
+    "intervals": {
+      "majority": {
+        "accuracy": {
+          "lower": 0.9123410061699098,
+          "upper": 0.9714984318130205,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "precision": {
+          "lower": null,
+          "upper": null,
+          "estimable_replicates": 0,
+          "total_replicates": 2000
+        },
+        "recall": {
+          "lower": 0.0,
+          "upper": 0.0,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "specificity": {
+          "lower": 1.0,
+          "upper": 1.0,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "balanced_accuracy": {
+          "lower": 0.5,
+          "upper": 0.5,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "average_precision": {
+          "lower": 0.028501568186979447,
+          "upper": 0.08765899383009017,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        }
+      },
+      "logistic_regression": {
+        "accuracy": {
+          "lower": 0.8992920525105816,
+          "upper": 0.9560723514211886,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "precision": {
+          "lower": 0.0,
+          "upper": 0.0,
+          "estimable_replicates": 1999,
+          "total_replicates": 2000
+        },
+        "recall": {
+          "lower": 0.0,
+          "upper": 0.0,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "specificity": {
+          "lower": 0.9720927281312713,
+          "upper": 0.9938781732205078,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "balanced_accuracy": {
+          "lower": 0.48604636406563567,
+          "upper": 0.4969390866102539,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        },
+        "average_precision": {
+          "lower": 0.03457443380114675,
+          "upper": 0.11884631803820082,
+          "estimable_replicates": 2000,
+          "total_replicates": 2000
+        }
+      }
+    },
+    "logistic_minus_majority": {
+      "accuracy": {
+        "lower": -0.026531483561166493,
+        "upper": -0.005633407184681116,
+        "estimable_replicates": 2000,
+        "total_replicates": 2000
+      },
+      "precision": {
+        "lower": null,
+        "upper": null,
+        "estimable_replicates": 0,
+        "total_replicates": 2000
+      },
+      "recall": {
+        "lower": 0.0,
+        "upper": 0.0,
+        "estimable_replicates": 2000,
+        "total_replicates": 2000
+      },
+      "specificity": {
+        "lower": -0.02790727186872863,
+        "upper": -0.0061218267794922515,
+        "estimable_replicates": 2000,
+        "total_replicates": 2000
+      },
+      "balanced_accuracy": {
+        "lower": -0.013953635934364316,
+        "upper": -0.0030609133897461257,
+        "estimable_replicates": 2000,
+        "total_replicates": 2000
+      },
+      "average_precision": {
+        "lower": -0.0032721449296149977,
+        "upper": 0.042121696897880485,
+        "estimable_replicates": 2000,
+        "total_replicates": 2000
+      }
+    },
+    "limitations": "Conditional on fitted training data. No training-refit uncertainty; day blocks do not identify unknown production batches, and dependence may span multiple days."
+  },
+  "coefficient_interpretation": "Association conditional on correlated anonymized signals, not physical importance or cause. Balanced training scores are not calibrated failure probabilities.",
+  "coefficients": [
+    {
+      "feature": "measurement_000",
+      "coefficient_per_training_standard_deviation": -0.6299251247197118
+    },
+    {
+      "feature": "measurement_001",
+      "coefficient_per_training_standard_deviation": -0.28824331752346816
+    },
+    {
+      "feature": "measurement_002",
+      "coefficient_per_training_standard_deviation": -0.43851268079485245
+    },
+    {
+      "feature": "measurement_003",
+      "coefficient_per_training_standard_deviation": -0.05138628349906097
+    },
+    {
+      "feature": "measurement_004",
+      "coefficient_per_training_standard_deviation": -0.2562764781520299
+    },
+    {
+      "feature": "measurement_006",
+      "coefficient_per_training_standard_deviation": -0.1171021278943945
+    },
+    {
+      "feature": "measurement_007",
+      "coefficient_per_training_standard_deviation": -0.09156447048175011
+    },
+    {
+      "feature": "measurement_008",
+      "coefficient_per_training_standard_deviation": -0.4055774504185944
+    },
+    {
+      "feature": "measurement_009",
+      "coefficient_per_training_standard_deviation": -0.5581032225911263
+    },
+    {
+      "feature": "measurement_010",
+      "coefficient_per_training_standard_deviation": -0.26783046578039615
+    },
+    {
+      "feature": "measurement_011",
+      "coefficient_per_training_standard_deviation": -0.38929867607560226
+    },
+    {
+      "feature": "measurement_012",
+      "coefficient_per_training_standard_deviation": -0.036502786290001414
+    },
+    {
+      "feature": "measurement_014",
+      "coefficient_per_training_standard_deviation": -0.41422477832005467
+    },
+    {
+      "feature": "measurement_015",
+      "coefficient_per_training_standard_deviation": -0.1552792308495583
+    },
+    {
+      "feature": "measurement_016",
+      "coefficient_per_training_standard_deviation": 0.2701814801185474
+    },
+    {
+      "feature": "measurement_017",
+      "coefficient_per_training_standard_deviation": -0.07416622521490733
+    },
+    {
+      "feature": "measurement_018",
+      "coefficient_per_training_standard_deviation": -0.329409414190141
+    },
+    {
+      "feature": "measurement_019",
+      "coefficient_per_training_standard_deviation": 0.4598502492023911
+    },
+    {
+      "feature": "measurement_020",
+      "coefficient_per_training_standard_deviation": 0.4550082151255583
+    },
+    {
+      "feature": "measurement_021",
+      "coefficient_per_training_standard_deviation": 0.4874430776418088
+    },
+    {
+      "feature": "measurement_022",
+      "coefficient_per_training_standard_deviation": -0.31650838309000134
+    },
+    {
+      "feature": "measurement_023",
+      "coefficient_per_training_standard_deviation": 0.15187173867241738
+    },
+    {
+      "feature": "measurement_024",
+      "coefficient_per_training_standard_deviation": -0.22331246113861694
+    },
+    {
+      "feature": "measurement_025",
+      "coefficient_per_training_standard_deviation": 0.42256701586772066
+    },
+    {
+      "feature": "measurement_026",
+      "coefficient_per_training_standard_deviation": -0.1341305329010156
+    },
+    {
+      "feature": "measurement_027",
+      "coefficient_per_training_standard_deviation": 0.5206955207635471
+    },
+    {
+      "feature": "measurement_028",
+      "coefficient_per_training_standard_deviation": -0.231403410242269
+    },
+    {
+      "feature": "measurement_029",
+      "coefficient_per_training_standard_deviation": 0.31678902674405546
+    },
+    {
+      "feature": "measurement_030",
+      "coefficient_per_training_standard_deviation": -0.3520405318726465
+    },
+    {
+      "feature": "measurement_031",
+      "coefficient_per_training_standard_deviation": -0.27845953331128503
+    },
+    {
+      "feature": "measurement_032",
+      "coefficient_per_training_standard_deviation": 0.2728102384714333
+    },
+    {
+      "feature": "measurement_033",
+      "coefficient_per_training_standard_deviation": 0.41281170975823356
+    },
+    {
+      "feature": "measurement_034",
+      "coefficient_per_training_standard_deviation": -0.20795817222777369
+    },
+    {
+      "feature": "measurement_035",
+      "coefficient_per_training_standard_deviation": -0.1881318619928964
+    },
+    {
+      "feature": "measurement_036",
+      "coefficient_per_training_standard_deviation": 0.20798267346899346
+    },
+    {
+      "feature": "measurement_037",
+      "coefficient_per_training_standard_deviation": 0.033426719271081554
+    },
+    {
+      "feature": "measurement_038",
+      "coefficient_per_training_standard_deviation": -0.6203976203848823
+    },
+    {
+      "feature": "measurement_039",
+      "coefficient_per_training_standard_deviation": 0.23300785341418906
+    },
+    {
+      "feature": "measurement_040",
+      "coefficient_per_training_standard_deviation": -0.4049315051449003
+    },
+    {
+      "feature": "measurement_041",
+      "coefficient_per_training_standard_deviation": -0.6857624236758549
+    },
+    {
+      "feature": "measurement_043",
+      "coefficient_per_training_standard_deviation": 0.6130188970776237
+    },
+    {
+      "feature": "measurement_044",
+      "coefficient_per_training_standard_deviation": -0.4147805661130386
+    },
+    {
+      "feature": "measurement_045",
+      "coefficient_per_training_standard_deviation": 0.1921916150368418
+    },
+    {
+      "feature": "measurement_046",
+      "coefficient_per_training_standard_deviation": 0.27172420119474394
+    },
+    {
+      "feature": "measurement_047",
+      "coefficient_per_training_standard_deviation": 0.06937956329296761
+    },
+    {
+      "feature": "measurement_048",
+      "coefficient_per_training_standard_deviation": 0.1783469102718315
+    },
+    {
+      "feature": "measurement_050",
+      "coefficient_per_training_standard_deviation": 0.6751293738453694
+    },
+    {
+      "feature": "measurement_051",
+      "coefficient_per_training_standard_deviation": -0.57308463875755
+    },
+    {
+      "feature": "measurement_053",
+      "coefficient_per_training_standard_deviation": -0.6516070596420268
+    },
+    {
+      "feature": "measurement_054",
+      "coefficient_per_training_standard_deviation": -0.44592726175188235
+    },
+    {
+      "feature": "measurement_055",
+      "coefficient_per_training_standard_deviation": 0.43076494339023674
+    },
+    {
+      "feature": "measurement_056",
+      "coefficient_per_training_standard_deviation": 1.586676005515548
+    },
+    {
+      "feature": "measurement_057",
+      "coefficient_per_training_standard_deviation": -0.08268453870506659
+    },
+    {
+      "feature": "measurement_058",
+      "coefficient_per_training_standard_deviation": -0.13010065771496468
+    },
+    {
+      "feature": "measurement_059",
+      "coefficient_per_training_standard_deviation": 1.630167626104779
+    },
+    {
+      "feature": "measurement_060",
+      "coefficient_per_training_standard_deviation": 0.5703480951848855
+    },
+    {
+      "feature": "measurement_061",
+      "coefficient_per_training_standard_deviation": 0.31671150124785313
+    },
+    {
+      "feature": "measurement_062",
+      "coefficient_per_training_standard_deviation": -0.5833101944455228
+    },
+    {
+      "feature": "measurement_063",
+      "coefficient_per_training_standard_deviation": 0.4393879063418035
+    },
+    {
+      "feature": "measurement_064",
+      "coefficient_per_training_standard_deviation": 0.276353860849188
+    },
+    {
+      "feature": "measurement_065",
+      "coefficient_per_training_standard_deviation": 0.09993567651939049
+    },
+    {
+      "feature": "measurement_066",
+      "coefficient_per_training_standard_deviation": 0.06252252979053333
+    },
+    {
+      "feature": "measurement_067",
+      "coefficient_per_training_standard_deviation": -0.7926066194580309
+    },
+    {
+      "feature": "measurement_068",
+      "coefficient_per_training_standard_deviation": -0.3283092351598981
+    },
+    {
+      "feature": "measurement_070",
+      "coefficient_per_training_standard_deviation": -0.40451541035008826
+    },
+    {
+      "feature": "measurement_071",
+      "coefficient_per_training_standard_deviation": 0.7750163513192199
+    },
+    {
+      "feature": "measurement_072",
+      "coefficient_per_training_standard_deviation": 0.19819296630284283
+    },
+    {
+      "feature": "measurement_073",
+      "coefficient_per_training_standard_deviation": 0.31548037946655505
+    },
+    {
+      "feature": "measurement_075",
+      "coefficient_per_training_standard_deviation": 0.189094380353685
+    },
+    {
+      "feature": "measurement_076",
+      "coefficient_per_training_standard_deviation": -0.2584729338640961
+    },
+    {
+      "feature": "measurement_077",
+      "coefficient_per_training_standard_deviation": 0.28616216711634157
+    },
+    {
+      "feature": "measurement_078",
+      "coefficient_per_training_standard_deviation": -0.522128041542233
+    },
+    {
+      "feature": "measurement_079",
+      "coefficient_per_training_standard_deviation": -0.2408031947350695
+    },
+    {
+      "feature": "measurement_080",
+      "coefficient_per_training_standard_deviation": -0.3478319675290807
+    },
+    {
+      "feature": "measurement_081",
+      "coefficient_per_training_standard_deviation": 0.20004354821262932
+    },
+    {
+      "feature": "measurement_082",
+      "coefficient_per_training_standard_deviation": 0.311900117575197
+    },
+    {
+      "feature": "measurement_083",
+      "coefficient_per_training_standard_deviation": -0.06028055212042782
+    },
+    {
+      "feature": "measurement_084",
+      "coefficient_per_training_standard_deviation": 0.10970743114314191
+    },
+    {
+      "feature": "measurement_085",
+      "coefficient_per_training_standard_deviation": -0.3558052879795819
+    },
+    {
+      "feature": "measurement_086",
+      "coefficient_per_training_standard_deviation": 0.4286048974858826
+    },
+    {
+      "feature": "measurement_087",
+      "coefficient_per_training_standard_deviation": -0.3172647764657762
+    },
+    {
+      "feature": "measurement_088",
+      "coefficient_per_training_standard_deviation": 0.20350377958786142
+    },
+    {
+      "feature": "measurement_089",
+      "coefficient_per_training_standard_deviation": 0.498240657096958
+    },
+    {
+      "feature": "measurement_090",
+      "coefficient_per_training_standard_deviation": -0.21475011391843415
+    },
+    {
+      "feature": "measurement_091",
+      "coefficient_per_training_standard_deviation": -0.26470524874657675
+    },
+    {
+      "feature": "measurement_092",
+      "coefficient_per_training_standard_deviation": -0.39069683428403573
+    },
+    {
+      "feature": "measurement_093",
+      "coefficient_per_training_standard_deviation": 0.3069096822233573
+    },
+    {
+      "feature": "measurement_094",
+      "coefficient_per_training_standard_deviation": -0.2992917811328904
+    },
+    {
+      "feature": "measurement_095",
+      "coefficient_per_training_standard_deviation": -0.2661858851057834
+    },
+    {
+      "feature": "measurement_096",
+      "coefficient_per_training_standard_deviation": 0.24024361153837662
+    },
+    {
+      "feature": "measurement_098",
+      "coefficient_per_training_standard_deviation": 0.20148007928453035
+    },
+    {
+      "feature": "measurement_099",
+      "coefficient_per_training_standard_deviation": 0.5174175850944298
+    },
+    {
+      "feature": "measurement_100",
+      "coefficient_per_training_standard_deviation": -0.7163856825349327
+    },
+    {
+      "feature": "measurement_101",
+      "coefficient_per_training_standard_deviation": -0.34818084133513305
+    },
+    {
+      "feature": "measurement_102",
+      "coefficient_per_training_standard_deviation": -0.42197811260763135
+    },
+    {
+      "feature": "measurement_103",
+      "coefficient_per_training_standard_deviation": 0.3815472366039728
+    },
+    {
+      "feature": "measurement_104",
+      "coefficient_per_training_standard_deviation": 0.0917460874470805
+    },
+    {
+      "feature": "measurement_105",
+      "coefficient_per_training_standard_deviation": -0.43738164790533673
+    },
+    {
+      "feature": "measurement_106",
+      "coefficient_per_training_standard_deviation": 0.03480145345080183
+    },
+    {
+      "feature": "measurement_107",
+      "coefficient_per_training_standard_deviation": -0.05521748559834343
+    },
+    {
+      "feature": "measurement_108",
+      "coefficient_per_training_standard_deviation": -0.5731690670334241
+    },
+    {
+      "feature": "measurement_109",
+      "coefficient_per_training_standard_deviation": -0.36018102731231727
+    },
+    {
+      "feature": "measurement_110",
+      "coefficient_per_training_standard_deviation": -0.30553211481726344
+    },
+    {
+      "feature": "measurement_111",
+      "coefficient_per_training_standard_deviation": -0.12901036848721342
+    },
+    {
+      "feature": "measurement_112",
+      "coefficient_per_training_standard_deviation": 0.2149573131897368
+    },
+    {
+      "feature": "measurement_113",
+      "coefficient_per_training_standard_deviation": 0.300271279581377
+    },
+    {
+      "feature": "measurement_114",
+      "coefficient_per_training_standard_deviation": -0.0052486112277055985
+    },
+    {
+      "feature": "measurement_115",
+      "coefficient_per_training_standard_deviation": -0.31084422641700704
+    },
+    {
+      "feature": "measurement_116",
+      "coefficient_per_training_standard_deviation": 0.18103566737044774
+    },
+    {
+      "feature": "measurement_117",
+      "coefficient_per_training_standard_deviation": -0.4396988429349785
+    },
+    {
+      "feature": "measurement_118",
+      "coefficient_per_training_standard_deviation": -0.19976742952408091
+    },
+    {
+      "feature": "measurement_119",
+      "coefficient_per_training_standard_deviation": -0.007768273786794471
+    },
+    {
+      "feature": "measurement_120",
+      "coefficient_per_training_standard_deviation": 0.37384501595774977
+    },
+    {
+      "feature": "measurement_121",
+      "coefficient_per_training_standard_deviation": 0.1799822544025493
+    },
+    {
+      "feature": "measurement_122",
+      "coefficient_per_training_standard_deviation": -0.5478962032500092
+    },
+    {
+      "feature": "measurement_123",
+      "coefficient_per_training_standard_deviation": 0.11516862409130152
+    },
+    {
+      "feature": "measurement_124",
+      "coefficient_per_training_standard_deviation": -0.48875643681744835
+    },
+    {
+      "feature": "measurement_125",
+      "coefficient_per_training_standard_deviation": 0.08015646276582197
+    },
+    {
+      "feature": "measurement_126",
+      "coefficient_per_training_standard_deviation": 0.03103126008482368
+    },
+    {
+      "feature": "measurement_127",
+      "coefficient_per_training_standard_deviation": -0.37122607615096365
+    },
+    {
+      "feature": "measurement_128",
+      "coefficient_per_training_standard_deviation": -0.20668527332971684
+    },
+    {
+      "feature": "measurement_129",
+      "coefficient_per_training_standard_deviation": 0.37967904052050505
+    },
+    {
+      "feature": "measurement_130",
+      "coefficient_per_training_standard_deviation": -0.006222085573846604
+    },
+    {
+      "feature": "measurement_131",
+      "coefficient_per_training_standard_deviation": 0.6121107377263953
+    },
+    {
+      "feature": "measurement_132",
+      "coefficient_per_training_standard_deviation": -0.6568667922365413
+    },
+    {
+      "feature": "measurement_133",
+      "coefficient_per_training_standard_deviation": 0.3248791149500359
+    },
+    {
+      "feature": "measurement_134",
+      "coefficient_per_training_standard_deviation": 0.24605896035200409
+    },
+    {
+      "feature": "measurement_135",
+      "coefficient_per_training_standard_deviation": -0.14672337854272843
+    },
+    {
+      "feature": "measurement_136",
+      "coefficient_per_training_standard_deviation": -0.15350417777498732
+    },
+    {
+      "feature": "measurement_137",
+      "coefficient_per_training_standard_deviation": 0.3168496410810236
+    },
+    {
+      "feature": "measurement_138",
+      "coefficient_per_training_standard_deviation": 0.3868758938615778
+    },
+    {
+      "feature": "measurement_139",
+      "coefficient_per_training_standard_deviation": 0.2646415980074716
+    },
+    {
+      "feature": "measurement_140",
+      "coefficient_per_training_standard_deviation": -0.3384961220116543
+    },
+    {
+      "feature": "measurement_142",
+      "coefficient_per_training_standard_deviation": -0.2965340946770513
+    },
+    {
+      "feature": "measurement_143",
+      "coefficient_per_training_standard_deviation": -0.27055986978974883
+    },
+    {
+      "feature": "measurement_144",
+      "coefficient_per_training_standard_deviation": -0.008234203584249627
+    },
+    {
+      "feature": "measurement_145",
+      "coefficient_per_training_standard_deviation": -0.5105279867554375
+    },
+    {
+      "feature": "measurement_146",
+      "coefficient_per_training_standard_deviation": 0.20613165973477704
+    },
+    {
+      "feature": "measurement_147",
+      "coefficient_per_training_standard_deviation": 0.11522458240250581
+    },
+    {
+      "feature": "measurement_148",
+      "coefficient_per_training_standard_deviation": -0.09150450667978746
+    },
+    {
+      "feature": "measurement_150",
+      "coefficient_per_training_standard_deviation": 0.30635171865136507
+    },
+    {
+      "feature": "measurement_151",
+      "coefficient_per_training_standard_deviation": -0.12280495311501526
+    },
+    {
+      "feature": "measurement_152",
+      "coefficient_per_training_standard_deviation": -0.11434232117273288
+    },
+    {
+      "feature": "measurement_153",
+      "coefficient_per_training_standard_deviation": -0.17860498312341844
+    },
+    {
+      "feature": "measurement_154",
+      "coefficient_per_training_standard_deviation": -0.0901658997349068
+    },
+    {
+      "feature": "measurement_155",
+      "coefficient_per_training_standard_deviation": -0.5775441707256926
+    },
+    {
+      "feature": "measurement_156",
+      "coefficient_per_training_standard_deviation": -0.13702554734050099
+    },
+    {
+      "feature": "measurement_157",
+      "coefficient_per_training_standard_deviation": -0.34495468529183976
+    },
+    {
+      "feature": "measurement_158",
+      "coefficient_per_training_standard_deviation": 0.41943019634508716
+    },
+    {
+      "feature": "measurement_159",
+      "coefficient_per_training_standard_deviation": 0.1249604164953995
+    },
+    {
+      "feature": "measurement_160",
+      "coefficient_per_training_standard_deviation": 0.2971128449304485
+    },
+    {
+      "feature": "measurement_161",
+      "coefficient_per_training_standard_deviation": -0.47606409870798183
+    },
+    {
+      "feature": "measurement_162",
+      "coefficient_per_training_standard_deviation": -0.11399161182037668
+    },
+    {
+      "feature": "measurement_163",
+      "coefficient_per_training_standard_deviation": -0.024550595627965178
+    },
+    {
+      "feature": "measurement_164",
+      "coefficient_per_training_standard_deviation": -0.28434455198293235
+    },
+    {
+      "feature": "measurement_165",
+      "coefficient_per_training_standard_deviation": -0.027147493676694175
+    },
+    {
+      "feature": "measurement_166",
+      "coefficient_per_training_standard_deviation": 0.1509805090414758
+    },
+    {
+      "feature": "measurement_167",
+      "coefficient_per_training_standard_deviation": -0.29591388588429307
+    },
+    {
+      "feature": "measurement_168",
+      "coefficient_per_training_standard_deviation": 0.323589887656752
+    },
+    {
+      "feature": "measurement_169",
+      "coefficient_per_training_standard_deviation": 0.1932793703049442
+    },
+    {
+      "feature": "measurement_170",
+      "coefficient_per_training_standard_deviation": 0.53966108497761
+    },
+    {
+      "feature": "measurement_171",
+      "coefficient_per_training_standard_deviation": 0.03287729998852059
+    },
+    {
+      "feature": "measurement_172",
+      "coefficient_per_training_standard_deviation": 0.2716120317657592
+    },
+    {
+      "feature": "measurement_173",
+      "coefficient_per_training_standard_deviation": -0.4032636501551314
+    },
+    {
+      "feature": "measurement_174",
+      "coefficient_per_training_standard_deviation": 0.2759603787481918
+    },
+    {
+      "feature": "measurement_175",
+      "coefficient_per_training_standard_deviation": 0.049934797872492866
+    },
+    {
+      "feature": "measurement_176",
+      "coefficient_per_training_standard_deviation": 0.1568864181360551
+    },
+    {
+      "feature": "measurement_177",
+      "coefficient_per_training_standard_deviation": -0.29014791814564
+    },
+    {
+      "feature": "measurement_180",
+      "coefficient_per_training_standard_deviation": 0.2337710511398435
+    },
+    {
+      "feature": "measurement_181",
+      "coefficient_per_training_standard_deviation": -0.25651324285778465
+    },
+    {
+      "feature": "measurement_182",
+      "coefficient_per_training_standard_deviation": -0.2716163139023369
+    },
+    {
+      "feature": "measurement_183",
+      "coefficient_per_training_standard_deviation": 0.32972654417526065
+    },
+    {
+      "feature": "measurement_184",
+      "coefficient_per_training_standard_deviation": 0.0631871045655596
+    },
+    {
+      "feature": "measurement_185",
+      "coefficient_per_training_standard_deviation": 0.21712106227412145
+    },
+    {
+      "feature": "measurement_187",
+      "coefficient_per_training_standard_deviation": 0.16476945721173833
+    },
+    {
+      "feature": "measurement_188",
+      "coefficient_per_training_standard_deviation": -0.08211011391327595
+    },
+    {
+      "feature": "measurement_195",
+      "coefficient_per_training_standard_deviation": 0.22119171926289183
+    },
+    {
+      "feature": "measurement_196",
+      "coefficient_per_training_standard_deviation": -0.21062721484020652
+    },
+    {
+      "feature": "measurement_197",
+      "coefficient_per_training_standard_deviation": 0.47486500069429416
+    },
+    {
+      "feature": "measurement_198",
+      "coefficient_per_training_standard_deviation": 0.15895282514311318
+    },
+    {
+      "feature": "measurement_199",
+      "coefficient_per_training_standard_deviation": -0.18496186882157595
+    },
+    {
+      "feature": "measurement_200",
+      "coefficient_per_training_standard_deviation": -0.17186622641904176
+    },
+    {
+      "feature": "measurement_201",
+      "coefficient_per_training_standard_deviation": 0.05637799092751902
+    },
+    {
+      "feature": "measurement_202",
+      "coefficient_per_training_standard_deviation": -0.27993497965678604
+    },
+    {
+      "feature": "measurement_203",
+      "coefficient_per_training_standard_deviation": 0.18096326685990108
+    },
+    {
+      "feature": "measurement_204",
+      "coefficient_per_training_standard_deviation": -0.6449311530196121
+    },
+    {
+      "feature": "measurement_205",
+      "coefficient_per_training_standard_deviation": 0.8596778079140777
+    },
+    {
+      "feature": "measurement_207",
+      "coefficient_per_training_standard_deviation": -0.1596162850696964
+    },
+    {
+      "feature": "measurement_208",
+      "coefficient_per_training_standard_deviation": -0.10601677686168548
+    },
+    {
+      "feature": "measurement_210",
+      "coefficient_per_training_standard_deviation": -0.09602429443995258
+    },
+    {
+      "feature": "measurement_211",
+      "coefficient_per_training_standard_deviation": 0.18190722376793192
+    },
+    {
+      "feature": "measurement_212",
+      "coefficient_per_training_standard_deviation": 0.0372521870730879
+    },
+    {
+      "feature": "measurement_213",
+      "coefficient_per_training_standard_deviation": 0.4040275768071885
+    },
+    {
+      "feature": "measurement_214",
+      "coefficient_per_training_standard_deviation": -0.5256127968964197
+    },
+    {
+      "feature": "measurement_215",
+      "coefficient_per_training_standard_deviation": 0.3960559060185982
+    },
+    {
+      "feature": "measurement_216",
+      "coefficient_per_training_standard_deviation": 1.0829688116037908
+    },
+    {
+      "feature": "measurement_217",
+      "coefficient_per_training_standard_deviation": 0.19059899588624704
+    },
+    {
+      "feature": "measurement_218",
+      "coefficient_per_training_standard_deviation": -0.5138538096271756
+    },
+    {
+      "feature": "measurement_219",
+      "coefficient_per_training_standard_deviation": 0.0169696952126477
+    },
+    {
+      "feature": "measurement_220",
+      "coefficient_per_training_standard_deviation": -0.15527068574543076
+    },
+    {
+      "feature": "measurement_221",
+      "coefficient_per_training_standard_deviation": -0.26049391468812383
+    },
+    {
+      "feature": "measurement_222",
+      "coefficient_per_training_standard_deviation": -0.14260868658076276
+    },
+    {
+      "feature": "measurement_223",
+      "coefficient_per_training_standard_deviation": -0.2034145780794245
+    },
+    {
+      "feature": "measurement_224",
+      "coefficient_per_training_standard_deviation": -0.3515885959634538
+    },
+    {
+      "feature": "measurement_225",
+      "coefficient_per_training_standard_deviation": -0.4194988722738603
+    },
+    {
+      "feature": "measurement_227",
+      "coefficient_per_training_standard_deviation": -0.3404391263272411
+    },
+    {
+      "feature": "measurement_228",
+      "coefficient_per_training_standard_deviation": 0.41684696566284163
+    },
+    {
+      "feature": "measurement_238",
+      "coefficient_per_training_standard_deviation": -0.05599946286294807
+    },
+    {
+      "feature": "measurement_239",
+      "coefficient_per_training_standard_deviation": 0.44171300449755246
+    },
+    {
+      "feature": "measurement_244",
+      "coefficient_per_training_standard_deviation": -0.08553907250062191
+    },
+    {
+      "feature": "measurement_245",
+      "coefficient_per_training_standard_deviation": -0.06939891282112025
+    },
+    {
+      "feature": "measurement_246",
+      "coefficient_per_training_standard_deviation": 0.010232346326625489
+    },
+    {
+      "feature": "measurement_247",
+      "coefficient_per_training_standard_deviation": 0.24873087953385184
+    },
+    {
+      "feature": "measurement_248",
+      "coefficient_per_training_standard_deviation": -0.3882222801897713
+    },
+    {
+      "feature": "measurement_249",
+      "coefficient_per_training_standard_deviation": 0.7028033686884718
+    },
+    {
+      "feature": "measurement_250",
+      "coefficient_per_training_standard_deviation": -0.06307577304978698
+    },
+    {
+      "feature": "measurement_251",
+      "coefficient_per_training_standard_deviation": -0.43025603011917324
+    },
+    {
+      "feature": "measurement_252",
+      "coefficient_per_training_standard_deviation": 0.3030372937155692
+    },
+    {
+      "feature": "measurement_253",
+      "coefficient_per_training_standard_deviation": 0.17467902903202848
+    },
+    {
+      "feature": "measurement_254",
+      "coefficient_per_training_standard_deviation": 0.09843004358064426
+    },
+    {
+      "feature": "measurement_255",
+      "coefficient_per_training_standard_deviation": -0.2519901616646233
+    },
+    {
+      "feature": "measurement_267",
+      "coefficient_per_training_standard_deviation": -0.1309114953453791
+    },
+    {
+      "feature": "measurement_268",
+      "coefficient_per_training_standard_deviation": -0.5387786348103019
+    },
+    {
+      "feature": "measurement_269",
+      "coefficient_per_training_standard_deviation": 0.512156278409843
+    },
+    {
+      "feature": "measurement_270",
+      "coefficient_per_training_standard_deviation": -0.25632980237779635
+    },
+    {
+      "feature": "measurement_271",
+      "coefficient_per_training_standard_deviation": 0.4088577139567159
+    },
+    {
+      "feature": "measurement_272",
+      "coefficient_per_training_standard_deviation": -0.531147752013597
+    },
+    {
+      "feature": "measurement_273",
+      "coefficient_per_training_standard_deviation": -0.1937073152126625
+    },
+    {
+      "feature": "measurement_274",
+      "coefficient_per_training_standard_deviation": 0.2585741730056624
+    },
+    {
+      "feature": "measurement_275",
+      "coefficient_per_training_standard_deviation": 0.27333423929752326
+    },
+    {
+      "feature": "measurement_277",
+      "coefficient_per_training_standard_deviation": 0.43432322234209325
+    },
+    {
+      "feature": "measurement_278",
+      "coefficient_per_training_standard_deviation": 0.23832784411270372
+    },
+    {
+      "feature": "measurement_279",
+      "coefficient_per_training_standard_deviation": -0.5988270271945848
+    },
+    {
+      "feature": "measurement_280",
+      "coefficient_per_training_standard_deviation": -0.651266384627344
+    },
+    {
+      "feature": "measurement_281",
+      "coefficient_per_training_standard_deviation": -0.21438283226977098
+    },
+    {
+      "feature": "measurement_282",
+      "coefficient_per_training_standard_deviation": 0.2134155185567233
+    },
+    {
+      "feature": "measurement_283",
+      "coefficient_per_training_standard_deviation": -0.08079988798641223
+    },
+    {
+      "feature": "measurement_285",
+      "coefficient_per_training_standard_deviation": -0.11651927356608027
+    },
+    {
+      "feature": "measurement_286",
+      "coefficient_per_training_standard_deviation": 0.0135807891162682
+    },
+    {
+      "feature": "measurement_287",
+      "coefficient_per_training_standard_deviation": -0.1350727711007307
+    },
+    {
+      "feature": "measurement_288",
+      "coefficient_per_training_standard_deviation": -0.040273943471710524
+    },
+    {
+      "feature": "measurement_289",
+      "coefficient_per_training_standard_deviation": -0.1060264286456167
+    },
+    {
+      "feature": "measurement_290",
+      "coefficient_per_training_standard_deviation": 0.09801704048593472
+    },
+    {
+      "feature": "measurement_291",
+      "coefficient_per_training_standard_deviation": 0.14172792190436642
+    },
+    {
+      "feature": "measurement_292",
+      "coefficient_per_training_standard_deviation": -0.41666923542476214
+    },
+    {
+      "feature": "measurement_293",
+      "coefficient_per_training_standard_deviation": -0.1581654021497584
+    },
+    {
+      "feature": "measurement_294",
+      "coefficient_per_training_standard_deviation": 0.029400533296734036
+    },
+    {
+      "feature": "measurement_295",
+      "coefficient_per_training_standard_deviation": 0.50844904926193
+    },
+    {
+      "feature": "measurement_296",
+      "coefficient_per_training_standard_deviation": -0.19202820357889036
+    },
+    {
+      "feature": "measurement_297",
+      "coefficient_per_training_standard_deviation": -0.18592746775323554
+    },
+    {
+      "feature": "measurement_298",
+      "coefficient_per_training_standard_deviation": 0.09116222023681993
+    },
+    {
+      "feature": "measurement_299",
+      "coefficient_per_training_standard_deviation": -0.059078694013752715
+    },
+    {
+      "feature": "measurement_300",
+      "coefficient_per_training_standard_deviation": 0.05275478625934015
+    },
+    {
+      "feature": "measurement_301",
+      "coefficient_per_training_standard_deviation": 0.30481005589296345
+    },
+    {
+      "feature": "measurement_302",
+      "coefficient_per_training_standard_deviation": 0.3563099904983088
+    },
+    {
+      "feature": "measurement_303",
+      "coefficient_per_training_standard_deviation": 0.4089868824459109
+    },
+    {
+      "feature": "measurement_304",
+      "coefficient_per_training_standard_deviation": -0.49107225302104396
+    },
+    {
+      "feature": "measurement_305",
+      "coefficient_per_training_standard_deviation": -1.0651473014543675
+    },
+    {
+      "feature": "measurement_306",
+      "coefficient_per_training_standard_deviation": 0.03832056451500899
+    },
+    {
+      "feature": "measurement_307",
+      "coefficient_per_training_standard_deviation": -0.06721713120852084
+    },
+    {
+      "feature": "measurement_308",
+      "coefficient_per_training_standard_deviation": 0.20365885889530305
+    },
+    {
+      "feature": "measurement_309",
+      "coefficient_per_training_standard_deviation": -0.0627473364379574
+    },
+    {
+      "feature": "measurement_310",
+      "coefficient_per_training_standard_deviation": -0.03600935334593011
+    },
+    {
+      "feature": "measurement_311",
+      "coefficient_per_training_standard_deviation": -0.6389347044319501
+    },
+    {
+      "feature": "measurement_312",
+      "coefficient_per_training_standard_deviation": -0.2764953428258119
+    },
+    {
+      "feature": "measurement_316",
+      "coefficient_per_training_standard_deviation": -0.21987454990920074
+    },
+    {
+      "feature": "measurement_317",
+      "coefficient_per_training_standard_deviation": -0.10640224753179266
+    },
+    {
+      "feature": "measurement_318",
+      "coefficient_per_training_standard_deviation": -0.08598478934946722
+    },
+    {
+      "feature": "measurement_319",
+      "coefficient_per_training_standard_deviation": 0.5002373285568495
+    },
+    {
+      "feature": "measurement_320",
+      "coefficient_per_training_standard_deviation": 0.07533504897540817
+    },
+    {
+      "feature": "measurement_321",
+      "coefficient_per_training_standard_deviation": -0.3474332716507648
+    },
+    {
+      "feature": "measurement_323",
+      "coefficient_per_training_standard_deviation": -0.3101293230289658
+    },
+    {
+      "feature": "measurement_324",
+      "coefficient_per_training_standard_deviation": -0.06282007541856205
+    },
+    {
+      "feature": "measurement_331",
+      "coefficient_per_training_standard_deviation": -0.04444218985992829
+    },
+    {
+      "feature": "measurement_332",
+      "coefficient_per_training_standard_deviation": -0.552166285790931
+    },
+    {
+      "feature": "measurement_333",
+      "coefficient_per_training_standard_deviation": 0.986914102170764
+    },
+    {
+      "feature": "measurement_334",
+      "coefficient_per_training_standard_deviation": -0.28671164878774247
+    },
+    {
+      "feature": "measurement_335",
+      "coefficient_per_training_standard_deviation": -0.6242506157325336
+    },
+    {
+      "feature": "measurement_336",
+      "coefficient_per_training_standard_deviation": 0.035746264540999974
+    },
+    {
+      "feature": "measurement_337",
+      "coefficient_per_training_standard_deviation": 0.16738304091501494
+    },
+    {
+      "feature": "measurement_338",
+      "coefficient_per_training_standard_deviation": -0.48055071948766587
+    },
+    {
+      "feature": "measurement_339",
+      "coefficient_per_training_standard_deviation": -0.3445133271953408
+    },
+    {
+      "feature": "measurement_340",
+      "coefficient_per_training_standard_deviation": -0.6177014858767139
+    },
+    {
+      "feature": "measurement_341",
+      "coefficient_per_training_standard_deviation": 0.5983578933102668
+    },
+    {
+      "feature": "measurement_343",
+      "coefficient_per_training_standard_deviation": 0.07514790182559707
+    },
+    {
+      "feature": "measurement_344",
+      "coefficient_per_training_standard_deviation": -0.7282171699685196
+    },
+    {
+      "feature": "measurement_345",
+      "coefficient_per_training_standard_deviation": -0.28558624083228074
+    },
+    {
+      "feature": "measurement_346",
+      "coefficient_per_training_standard_deviation": 0.37561723260072305
+    },
+    {
+      "feature": "measurement_348",
+      "coefficient_per_training_standard_deviation": 0.32902333359864666
+    },
+    {
+      "feature": "measurement_349",
+      "coefficient_per_training_standard_deviation": 0.30604427637784715
+    },
+    {
+      "feature": "measurement_350",
+      "coefficient_per_training_standard_deviation": -0.4291467560978259
+    },
+    {
+      "feature": "measurement_351",
+      "coefficient_per_training_standard_deviation": -0.060600107165757165
+    },
+    {
+      "feature": "measurement_352",
+      "coefficient_per_training_standard_deviation": -0.08112972270337118
+    },
+    {
+      "feature": "measurement_353",
+      "coefficient_per_training_standard_deviation": -0.3594543916663716
+    },
+    {
+      "feature": "measurement_354",
+      "coefficient_per_training_standard_deviation": -0.7909498088740058
+    },
+    {
+      "feature": "measurement_355",
+      "coefficient_per_training_standard_deviation": -0.3355023412307897
+    },
+    {
+      "feature": "measurement_356",
+      "coefficient_per_training_standard_deviation": 0.4213245695351827
+    },
+    {
+      "feature": "measurement_357",
+      "coefficient_per_training_standard_deviation": -0.29838594694817605
+    },
+    {
+      "feature": "measurement_358",
+      "coefficient_per_training_standard_deviation": 0.724589156020692
+    },
+    {
+      "feature": "measurement_359",
+      "coefficient_per_training_standard_deviation": -0.04344087512044191
+    },
+    {
+      "feature": "measurement_360",
+      "coefficient_per_training_standard_deviation": 0.04638514227076521
+    },
+    {
+      "feature": "measurement_361",
+      "coefficient_per_training_standard_deviation": 0.43395427511604207
+    },
+    {
+      "feature": "measurement_362",
+      "coefficient_per_training_standard_deviation": 0.010626723544534342
+    },
+    {
+      "feature": "measurement_363",
+      "coefficient_per_training_standard_deviation": -0.5139782208640149
+    },
+    {
+      "feature": "measurement_365",
+      "coefficient_per_training_standard_deviation": 0.7635821550107231
+    },
+    {
+      "feature": "measurement_366",
+      "coefficient_per_training_standard_deviation": -0.5002539901389025
+    },
+    {
+      "feature": "measurement_367",
+      "coefficient_per_training_standard_deviation": -0.4716935362050318
+    },
+    {
+      "feature": "measurement_368",
+      "coefficient_per_training_standard_deviation": -0.09760867590928794
+    },
+    {
+      "feature": "measurement_376",
+      "coefficient_per_training_standard_deviation": -0.06626882900124208
+    },
+    {
+      "feature": "measurement_377",
+      "coefficient_per_training_standard_deviation": -0.02425648022573234
+    },
+    {
+      "feature": "measurement_382",
+      "coefficient_per_training_standard_deviation": 0.3108840645923458
+    },
+    {
+      "feature": "measurement_383",
+      "coefficient_per_training_standard_deviation": -0.04078207475865622
+    },
+    {
+      "feature": "measurement_384",
+      "coefficient_per_training_standard_deviation": -0.34060971326883493
+    },
+    {
+      "feature": "measurement_385",
+      "coefficient_per_training_standard_deviation": -0.18714724781644357
+    },
+    {
+      "feature": "measurement_386",
+      "coefficient_per_training_standard_deviation": -0.6368273202045225
+    },
+    {
+      "feature": "measurement_387",
+      "coefficient_per_training_standard_deviation": 0.6775602847420323
+    },
+    {
+      "feature": "measurement_388",
+      "coefficient_per_training_standard_deviation": 0.9716916289953489
+    },
+    {
+      "feature": "measurement_389",
+      "coefficient_per_training_standard_deviation": -0.42009341935454475
+    },
+    {
+      "feature": "measurement_390",
+      "coefficient_per_training_standard_deviation": -0.9715359934584399
+    },
+    {
+      "feature": "measurement_391",
+      "coefficient_per_training_standard_deviation": -0.26153263888192607
+    },
+    {
+      "feature": "measurement_392",
+      "coefficient_per_training_standard_deviation": -0.012153982490763092
+    },
+    {
+      "feature": "measurement_393",
+      "coefficient_per_training_standard_deviation": 0.380620383402618
+    },
+    {
+      "feature": "measurement_405",
+      "coefficient_per_training_standard_deviation": 0.16986350810877576
+    },
+    {
+      "feature": "measurement_406",
+      "coefficient_per_training_standard_deviation": 0.6177127572238618
+    },
+    {
+      "feature": "measurement_407",
+      "coefficient_per_training_standard_deviation": -0.5440845974516736
+    },
+    {
+      "feature": "measurement_408",
+      "coefficient_per_training_standard_deviation": -0.14231269744024963
+    },
+    {
+      "feature": "measurement_409",
+      "coefficient_per_training_standard_deviation": -0.18781440946019348
+    },
+    {
+      "feature": "measurement_410",
+      "coefficient_per_training_standard_deviation": 0.30939922390879315
+    },
+    {
+      "feature": "measurement_411",
+      "coefficient_per_training_standard_deviation": 0.3440730956412176
+    },
+    {
+      "feature": "measurement_412",
+      "coefficient_per_training_standard_deviation": -0.5807919703489147
+    },
+    {
+      "feature": "measurement_413",
+      "coefficient_per_training_standard_deviation": -0.07838301402433481
+    },
+    {
+      "feature": "measurement_415",
+      "coefficient_per_training_standard_deviation": -0.32154976130612756
+    },
+    {
+      "feature": "measurement_416",
+      "coefficient_per_training_standard_deviation": -0.23060904509680358
+    },
+    {
+      "feature": "measurement_417",
+      "coefficient_per_training_standard_deviation": -0.0413185222937746
+    },
+    {
+      "feature": "measurement_418",
+      "coefficient_per_training_standard_deviation": -0.03386009339156014
+    },
+    {
+      "feature": "measurement_419",
+      "coefficient_per_training_standard_deviation": 0.08444195742454469
+    },
+    {
+      "feature": "measurement_420",
+      "coefficient_per_training_standard_deviation": 0.09113738720016551
+    },
+    {
+      "feature": "measurement_421",
+      "coefficient_per_training_standard_deviation": -0.0746532137811829
+    },
+    {
+      "feature": "measurement_423",
+      "coefficient_per_training_standard_deviation": 0.49545595959698646
+    },
+    {
+      "feature": "measurement_424",
+      "coefficient_per_training_standard_deviation": -0.21427444685790054
+    },
+    {
+      "feature": "measurement_425",
+      "coefficient_per_training_standard_deviation": 0.2643040993651301
+    },
+    {
+      "feature": "measurement_426",
+      "coefficient_per_training_standard_deviation": -0.17483876566697862
+    },
+    {
+      "feature": "measurement_427",
+      "coefficient_per_training_standard_deviation": -0.1074792268709674
+    },
+    {
+      "feature": "measurement_428",
+      "coefficient_per_training_standard_deviation": -0.4878222433698036
+    },
+    {
+      "feature": "measurement_429",
+      "coefficient_per_training_standard_deviation": -0.09601813301387799
+    },
+    {
+      "feature": "measurement_430",
+      "coefficient_per_training_standard_deviation": 0.205954025649182
+    },
+    {
+      "feature": "measurement_431",
+      "coefficient_per_training_standard_deviation": 0.09811430660448973
+    },
+    {
+      "feature": "measurement_432",
+      "coefficient_per_training_standard_deviation": 0.010228718826607261
+    },
+    {
+      "feature": "measurement_433",
+      "coefficient_per_training_standard_deviation": -0.4816937851295065
+    },
+    {
+      "feature": "measurement_434",
+      "coefficient_per_training_standard_deviation": -0.1264963095760635
+    },
+    {
+      "feature": "measurement_435",
+      "coefficient_per_training_standard_deviation": -0.1731161365039126
+    },
+    {
+      "feature": "measurement_436",
+      "coefficient_per_training_standard_deviation": -0.1767389955582529
+    },
+    {
+      "feature": "measurement_437",
+      "coefficient_per_training_standard_deviation": 0.31564066835502375
+    },
+    {
+      "feature": "measurement_438",
+      "coefficient_per_training_standard_deviation": -0.38160914513513655
+    },
+    {
+      "feature": "measurement_439",
+      "coefficient_per_training_standard_deviation": -0.7999482207669529
+    },
+    {
+      "feature": "measurement_440",
+      "coefficient_per_training_standard_deviation": 0.17287746983837346
+    },
+    {
+      "feature": "measurement_441",
+      "coefficient_per_training_standard_deviation": 0.6159593626630994
+    },
+    {
+      "feature": "measurement_442",
+      "coefficient_per_training_standard_deviation": 0.2660840993814737
+    },
+    {
+      "feature": "measurement_443",
+      "coefficient_per_training_standard_deviation": 0.2532915598378857
+    },
+    {
+      "feature": "measurement_444",
+      "coefficient_per_training_standard_deviation": -0.42204154046845277
+    },
+    {
+      "feature": "measurement_445",
+      "coefficient_per_training_standard_deviation": 0.2848119834927789
+    },
+    {
+      "feature": "measurement_446",
+      "coefficient_per_training_standard_deviation": 0.05073313740353399
+    },
+    {
+      "feature": "measurement_447",
+      "coefficient_per_training_standard_deviation": 0.18492194740403206
+    },
+    {
+      "feature": "measurement_448",
+      "coefficient_per_training_standard_deviation": -0.3014140286837982
+    },
+    {
+      "feature": "measurement_452",
+      "coefficient_per_training_standard_deviation": 0.19440748703063626
+    },
+    {
+      "feature": "measurement_453",
+      "coefficient_per_training_standard_deviation": -0.18844709163454262
+    },
+    {
+      "feature": "measurement_454",
+      "coefficient_per_training_standard_deviation": -0.18371232793403075
+    },
+    {
+      "feature": "measurement_455",
+      "coefficient_per_training_standard_deviation": 0.4500187029621221
+    },
+    {
+      "feature": "measurement_456",
+      "coefficient_per_training_standard_deviation": -0.32441655987376156
+    },
+    {
+      "feature": "measurement_457",
+      "coefficient_per_training_standard_deviation": 0.2960939923909638
+    },
+    {
+      "feature": "measurement_459",
+      "coefficient_per_training_standard_deviation": 0.20426351952960914
+    },
+    {
+      "feature": "measurement_460",
+      "coefficient_per_training_standard_deviation": 0.8894079286940848
+    },
+    {
+      "feature": "measurement_467",
+      "coefficient_per_training_standard_deviation": 0.25806995096285934
+    },
+    {
+      "feature": "measurement_468",
+      "coefficient_per_training_standard_deviation": 0.28827191207967023
+    },
+    {
+      "feature": "measurement_469",
+      "coefficient_per_training_standard_deviation": 0.35101765568931176
+    },
+    {
+      "feature": "measurement_470",
+      "coefficient_per_training_standard_deviation": 0.16538475808645994
+    },
+    {
+      "feature": "measurement_471",
+      "coefficient_per_training_standard_deviation": 0.46424834654875546
+    },
+    {
+      "feature": "measurement_472",
+      "coefficient_per_training_standard_deviation": 0.18825503107929087
+    },
+    {
+      "feature": "measurement_473",
+      "coefficient_per_training_standard_deviation": 0.5359865159500811
+    },
+    {
+      "feature": "measurement_474",
+      "coefficient_per_training_standard_deviation": 0.560624981687895
+    },
+    {
+      "feature": "measurement_475",
+      "coefficient_per_training_standard_deviation": 0.28734950408103144
+    },
+    {
+      "feature": "measurement_476",
+      "coefficient_per_training_standard_deviation": -0.4576645639647009
+    },
+    {
+      "feature": "measurement_477",
+      "coefficient_per_training_standard_deviation": 0.4788062759457564
+    },
+    {
+      "feature": "measurement_479",
+      "coefficient_per_training_standard_deviation": -0.02136882271330874
+    },
+    {
+      "feature": "measurement_480",
+      "coefficient_per_training_standard_deviation": 0.3873971566202478
+    },
+    {
+      "feature": "measurement_482",
+      "coefficient_per_training_standard_deviation": 0.047339869052819415
+    },
+    {
+      "feature": "measurement_483",
+      "coefficient_per_training_standard_deviation": 0.10486670412716209
+    },
+    {
+      "feature": "measurement_484",
+      "coefficient_per_training_standard_deviation": -0.007082783792669492
+    },
+    {
+      "feature": "measurement_485",
+      "coefficient_per_training_standard_deviation": -0.5792913656572086
+    },
+    {
+      "feature": "measurement_486",
+      "coefficient_per_training_standard_deviation": 0.5926642675163607
+    },
+    {
+      "feature": "measurement_487",
+      "coefficient_per_training_standard_deviation": 0.240940203813113
+    },
+    {
+      "feature": "measurement_488",
+      "coefficient_per_training_standard_deviation": -0.6668442354646156
+    },
+    {
+      "feature": "measurement_489",
+      "coefficient_per_training_standard_deviation": -0.09670509622494386
+    },
+    {
+      "feature": "measurement_490",
+      "coefficient_per_training_standard_deviation": -0.3526441674247131
+    },
+    {
+      "feature": "measurement_491",
+      "coefficient_per_training_standard_deviation": 0.34863593459596365
+    },
+    {
+      "feature": "measurement_492",
+      "coefficient_per_training_standard_deviation": -0.1463288532814197
+    },
+    {
+      "feature": "measurement_493",
+      "coefficient_per_training_standard_deviation": -0.29160325848395613
+    },
+    {
+      "feature": "measurement_494",
+      "coefficient_per_training_standard_deviation": -0.09368411865648599
+    },
+    {
+      "feature": "measurement_495",
+      "coefficient_per_training_standard_deviation": -0.3669819036733073
+    },
+    {
+      "feature": "measurement_496",
+      "coefficient_per_training_standard_deviation": -0.041667579325492456
+    },
+    {
+      "feature": "measurement_497",
+      "coefficient_per_training_standard_deviation": -0.3851560770560641
+    },
+    {
+      "feature": "measurement_499",
+      "coefficient_per_training_standard_deviation": 0.2444784127293528
+    },
+    {
+      "feature": "measurement_500",
+      "coefficient_per_training_standard_deviation": 0.1488109518789517
+    },
+    {
+      "feature": "measurement_510",
+      "coefficient_per_training_standard_deviation": 0.0731836928431549
+    },
+    {
+      "feature": "measurement_511",
+      "coefficient_per_training_standard_deviation": 0.3046917488061098
+    },
+    {
+      "feature": "measurement_516",
+      "coefficient_per_training_standard_deviation": -0.15011387482497868
+    },
+    {
+      "feature": "measurement_517",
+      "coefficient_per_training_standard_deviation": -0.052981491356295235
+    },
+    {
+      "feature": "measurement_518",
+      "coefficient_per_training_standard_deviation": 0.006224511142393144
+    },
+    {
+      "feature": "measurement_519",
+      "coefficient_per_training_standard_deviation": 0.11269349616738146
+    },
+    {
+      "feature": "measurement_520",
+      "coefficient_per_training_standard_deviation": -0.36120244431867465
+    },
+    {
+      "feature": "measurement_521",
+      "coefficient_per_training_standard_deviation": 0.021119750939999272
+    },
+    {
+      "feature": "measurement_522",
+      "coefficient_per_training_standard_deviation": -0.05915192161839388
+    },
+    {
+      "feature": "measurement_523",
+      "coefficient_per_training_standard_deviation": -0.43022994725092595
+    },
+    {
+      "feature": "measurement_524",
+      "coefficient_per_training_standard_deviation": 0.28847375184055474
+    },
+    {
+      "feature": "measurement_525",
+      "coefficient_per_training_standard_deviation": -0.02490281795085083
+    },
+    {
+      "feature": "measurement_526",
+      "coefficient_per_training_standard_deviation": 0.00812294472151814
+    },
+    {
+      "feature": "measurement_527",
+      "coefficient_per_training_standard_deviation": -0.3283817651590048
+    },
+    {
+      "feature": "measurement_539",
+      "coefficient_per_training_standard_deviation": -0.14137543893983492
+    },
+    {
+      "feature": "measurement_540",
+      "coefficient_per_training_standard_deviation": -0.5219548711343293
+    },
+    {
+      "feature": "measurement_541",
+      "coefficient_per_training_standard_deviation": 0.30179969579346344
+    },
+    {
+      "feature": "measurement_542",
+      "coefficient_per_training_standard_deviation": 0.24323462705465673
+    },
+    {
+      "feature": "measurement_543",
+      "coefficient_per_training_standard_deviation": -0.4046310671149378
+    },
+    {
+      "feature": "measurement_544",
+      "coefficient_per_training_standard_deviation": 0.7084238498542277
+    },
+    {
+      "feature": "measurement_545",
+      "coefficient_per_training_standard_deviation": -0.4224629201070627
+    },
+    {
+      "feature": "measurement_546",
+      "coefficient_per_training_standard_deviation": 0.5154440351835752
+    },
+    {
+      "feature": "measurement_547",
+      "coefficient_per_training_standard_deviation": 0.2212981368068959
+    },
+    {
+      "feature": "measurement_548",
+      "coefficient_per_training_standard_deviation": 0.05012372708542564
+    },
+    {
+      "feature": "measurement_549",
+      "coefficient_per_training_standard_deviation": -0.2714284081359907
+    },
+    {
+      "feature": "measurement_550",
+      "coefficient_per_training_standard_deviation": -0.06276130601842905
+    },
+    {
+      "feature": "measurement_551",
+      "coefficient_per_training_standard_deviation": 0.104641288576885
+    },
+    {
+      "feature": "measurement_552",
+      "coefficient_per_training_standard_deviation": -0.28321119121106597
+    },
+    {
+      "feature": "measurement_553",
+      "coefficient_per_training_standard_deviation": -0.03329799801268275
+    },
+    {
+      "feature": "measurement_554",
+      "coefficient_per_training_standard_deviation": 0.29221615556292285
+    },
+    {
+      "feature": "measurement_555",
+      "coefficient_per_training_standard_deviation": 0.22985433212640666
+    },
+    {
+      "feature": "measurement_556",
+      "coefficient_per_training_standard_deviation": -0.09294146073198496
+    },
+    {
+      "feature": "measurement_557",
+      "coefficient_per_training_standard_deviation": 0.10333977909725235
+    },
+    {
+      "feature": "measurement_558",
+      "coefficient_per_training_standard_deviation": 0.3843108434069336
+    },
+    {
+      "feature": "measurement_559",
+      "coefficient_per_training_standard_deviation": 0.04008623308894121
+    },
+    {
+      "feature": "measurement_560",
+      "coefficient_per_training_standard_deviation": -0.95458721093838
+    },
+    {
+      "feature": "measurement_561",
+      "coefficient_per_training_standard_deviation": 0.2740291972101798
+    },
+    {
+      "feature": "measurement_562",
+      "coefficient_per_training_standard_deviation": -0.8262294522059979
+    },
+    {
+      "feature": "measurement_563",
+      "coefficient_per_training_standard_deviation": -0.6476249730779021
+    },
+    {
+      "feature": "measurement_564",
+      "coefficient_per_training_standard_deviation": 0.39840933605796935
+    },
+    {
+      "feature": "measurement_565",
+      "coefficient_per_training_standard_deviation": -0.19069214164627843
+    },
+    {
+      "feature": "measurement_566",
+      "coefficient_per_training_standard_deviation": -0.9121683080536599
+    },
+    {
+      "feature": "measurement_567",
+      "coefficient_per_training_standard_deviation": 0.03360105573394722
+    },
+    {
+      "feature": "measurement_568",
+      "coefficient_per_training_standard_deviation": 0.5356445872739406
+    },
+    {
+      "feature": "measurement_569",
+      "coefficient_per_training_standard_deviation": -0.3822784154698932
+    },
+    {
+      "feature": "measurement_570",
+      "coefficient_per_training_standard_deviation": 0.21493734621749058
+    },
+    {
+      "feature": "measurement_571",
+      "coefficient_per_training_standard_deviation": 0.16291860952605983
+    },
+    {
+      "feature": "measurement_572",
+      "coefficient_per_training_standard_deviation": 0.024869085612385593
+    },
+    {
+      "feature": "measurement_573",
+      "coefficient_per_training_standard_deviation": 0.07920782999081197
+    },
+    {
+      "feature": "measurement_574",
+      "coefficient_per_training_standard_deviation": -0.04601492838671565
+    },
+    {
+      "feature": "measurement_575",
+      "coefficient_per_training_standard_deviation": 0.011072241393190132
+    },
+    {
+      "feature": "measurement_576",
+      "coefficient_per_training_standard_deviation": 0.1270012143461136
+    },
+    {
+      "feature": "measurement_577",
+      "coefficient_per_training_standard_deviation": -0.5671520012853842
+    },
+    {
+      "feature": "measurement_578",
+      "coefficient_per_training_standard_deviation": -0.2917139550293917
+    },
+    {
+      "feature": "measurement_579",
+      "coefficient_per_training_standard_deviation": 0.3588053641070487
+    },
+    {
+      "feature": "measurement_580",
+      "coefficient_per_training_standard_deviation": -0.07356671288881311
+    },
+    {
+      "feature": "measurement_581",
+      "coefficient_per_training_standard_deviation": 0.008348837018865943
+    },
+    {
+      "feature": "measurement_582",
+      "coefficient_per_training_standard_deviation": 0.3771708461372062
+    },
+    {
+      "feature": "measurement_583",
+      "coefficient_per_training_standard_deviation": 0.17332494235286647
+    },
+    {
+      "feature": "measurement_584",
+      "coefficient_per_training_standard_deviation": 0.1070675205970655
+    },
+    {
+      "feature": "measurement_585",
+      "coefficient_per_training_standard_deviation": 0.10921617690561869
+    },
+    {
+      "feature": "measurement_586",
+      "coefficient_per_training_standard_deviation": 0.6837545963626532
+    },
+    {
+      "feature": "measurement_587",
+      "coefficient_per_training_standard_deviation": -0.16046043582832312
+    },
+    {
+      "feature": "measurement_588",
+      "coefficient_per_training_standard_deviation": 0.4683971566858235
+    },
+    {
+      "feature": "measurement_589",
+      "coefficient_per_training_standard_deviation": 0.24957622155134487
+    }
+  ],
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Darwin",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "scikit-learn": "1.7.2",
+    "joblib": "1.5.2",
+    "threadpoolctl": "3.6.0"
+  },
+  "limitations": [
+    "Unknown feature timing relative to the final test prevents early-warning claims.",
+    "No batch, tool, wafer, machine, route, actionable lead time or intervention cost supplied.",
+    "A single historical source and temporal holdout do not establish transfer to another plant or Indian automotive manufacturing.",
+    "No customer adoption, willingness to pay, management outcome or realized savings was measured.",
+    "No raw records enter the GridMind app, production Supabase or public routes."
+  ]
+}

@@ -1,0 +1,5902 @@
+[
+  {
+    "feature": "measurement_000",
+    "source_column_one_based": 1,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 6,
+    "test_missing": 0,
+    "unique_observed": 1520,
+    "train_unique_observed": 1095
+  },
+  {
+    "feature": "measurement_001",
+    "source_column_one_based": 2,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1504,
+    "train_unique_observed": 1083
+  },
+  {
+    "feature": "measurement_002",
+    "source_column_one_based": 3,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 507,
+    "train_unique_observed": 376
+  },
+  {
+    "feature": "measurement_003",
+    "source_column_one_based": 4,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 518,
+    "train_unique_observed": 385
+  },
+  {
+    "feature": "measurement_004",
+    "source_column_one_based": 5,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 503,
+    "train_unique_observed": 374
+  },
+  {
+    "feature": "measurement_005",
+    "source_column_one_based": 6,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_006",
+    "source_column_one_based": 7,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 510,
+    "train_unique_observed": 381
+  },
+  {
+    "feature": "measurement_007",
+    "source_column_one_based": 8,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 89,
+    "train_unique_observed": 83
+  },
+  {
+    "feature": "measurement_008",
+    "source_column_one_based": 9,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1208,
+    "train_unique_observed": 918
+  },
+  {
+    "feature": "measurement_009",
+    "source_column_one_based": 10,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 568,
+    "train_unique_observed": 497
+  },
+  {
+    "feature": "measurement_010",
+    "source_column_one_based": 11,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 392,
+    "train_unique_observed": 361
+  },
+  {
+    "feature": "measurement_011",
+    "source_column_one_based": 12,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 378,
+    "train_unique_observed": 366
+  },
+  {
+    "feature": "measurement_012",
+    "source_column_one_based": 13,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1547,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_013",
+    "source_column_one_based": 14,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_014",
+    "source_column_one_based": 15,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1555,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_015",
+    "source_column_one_based": 16,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1561,
+    "train_unique_observed": 1114
+  },
+  {
+    "feature": "measurement_016",
+    "source_column_one_based": 17,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1477,
+    "train_unique_observed": 1074
+  },
+  {
+    "feature": "measurement_017",
+    "source_column_one_based": 18,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 281,
+    "train_unique_observed": 271
+  },
+  {
+    "feature": "measurement_018",
+    "source_column_one_based": 19,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1548,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_019",
+    "source_column_one_based": 20,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 10,
+    "train_missing": 10,
+    "test_missing": 0,
+    "unique_observed": 361,
+    "train_unique_observed": 255
+  },
+  {
+    "feature": "measurement_020",
+    "source_column_one_based": 21,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 552,
+    "train_unique_observed": 480
+  },
+  {
+    "feature": "measurement_021",
+    "source_column_one_based": 22,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1295,
+    "train_unique_observed": 976
+  },
+  {
+    "feature": "measurement_022",
+    "source_column_one_based": 23,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1176,
+    "train_unique_observed": 916
+  },
+  {
+    "feature": "measurement_023",
+    "source_column_one_based": 24,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1480,
+    "train_unique_observed": 1076
+  },
+  {
+    "feature": "measurement_024",
+    "source_column_one_based": 25,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1494,
+    "train_unique_observed": 1067
+  },
+  {
+    "feature": "measurement_025",
+    "source_column_one_based": 26,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 704,
+    "train_unique_observed": 571
+  },
+  {
+    "feature": "measurement_026",
+    "source_column_one_based": 27,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 624,
+    "train_unique_observed": 529
+  },
+  {
+    "feature": "measurement_027",
+    "source_column_one_based": 28,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1148,
+    "train_unique_observed": 899
+  },
+  {
+    "feature": "measurement_028",
+    "source_column_one_based": 29,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 869,
+    "train_unique_observed": 707
+  },
+  {
+    "feature": "measurement_029",
+    "source_column_one_based": 30,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 188,
+    "train_unique_observed": 182
+  },
+  {
+    "feature": "measurement_030",
+    "source_column_one_based": 31,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 842,
+    "train_unique_observed": 707
+  },
+  {
+    "feature": "measurement_031",
+    "source_column_one_based": 32,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1275,
+    "train_unique_observed": 947
+  },
+  {
+    "feature": "measurement_032",
+    "source_column_one_based": 33,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 338,
+    "train_unique_observed": 250
+  },
+  {
+    "feature": "measurement_033",
+    "source_column_one_based": 34,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 330,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_034",
+    "source_column_one_based": 35,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 329,
+    "train_unique_observed": 247
+  },
+  {
+    "feature": "measurement_035",
+    "source_column_one_based": 36,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 331,
+    "train_unique_observed": 248
+  },
+  {
+    "feature": "measurement_036",
+    "source_column_one_based": 37,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 330,
+    "train_unique_observed": 248
+  },
+  {
+    "feature": "measurement_037",
+    "source_column_one_based": 38,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 325,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_038",
+    "source_column_one_based": 39,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 329,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_039",
+    "source_column_one_based": 40,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 333,
+    "train_unique_observed": 246
+  },
+  {
+    "feature": "measurement_040",
+    "source_column_one_based": 41,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 291,
+    "train_unique_observed": 215
+  },
+  {
+    "feature": "measurement_041",
+    "source_column_one_based": 42,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 315,
+    "train_unique_observed": 231
+  },
+  {
+    "feature": "measurement_042",
+    "source_column_one_based": 43,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_043",
+    "source_column_one_based": 44,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1523,
+    "train_unique_observed": 1087
+  },
+  {
+    "feature": "measurement_044",
+    "source_column_one_based": 45,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1376,
+    "train_unique_observed": 1021
+  },
+  {
+    "feature": "measurement_045",
+    "source_column_one_based": 46,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1520,
+    "train_unique_observed": 1087
+  },
+  {
+    "feature": "measurement_046",
+    "source_column_one_based": 47,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1562,
+    "train_unique_observed": 1112
+  },
+  {
+    "feature": "measurement_047",
+    "source_column_one_based": 48,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1341,
+    "train_unique_observed": 1003
+  },
+  {
+    "feature": "measurement_048",
+    "source_column_one_based": 49,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1486,
+    "train_unique_observed": 1082
+  },
+  {
+    "feature": "measurement_049",
+    "source_column_one_based": 50,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_050",
+    "source_column_one_based": 51,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1520,
+    "train_unique_observed": 1093
+  },
+  {
+    "feature": "measurement_051",
+    "source_column_one_based": 52,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1562,
+    "train_unique_observed": 1113
+  },
+  {
+    "feature": "measurement_052",
+    "source_column_one_based": 53,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_053",
+    "source_column_one_based": 54,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 153,
+    "train_unique_observed": 129
+  },
+  {
+    "feature": "measurement_054",
+    "source_column_one_based": 55,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 169,
+    "train_unique_observed": 143
+  },
+  {
+    "feature": "measurement_055",
+    "source_column_one_based": 56,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 107,
+    "train_unique_observed": 99
+  },
+  {
+    "feature": "measurement_056",
+    "source_column_one_based": 57,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 187,
+    "train_unique_observed": 145
+  },
+  {
+    "feature": "measurement_057",
+    "source_column_one_based": 58,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 159,
+    "train_unique_observed": 139
+  },
+  {
+    "feature": "measurement_058",
+    "source_column_one_based": 59,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 382,
+    "train_unique_observed": 278
+  },
+  {
+    "feature": "measurement_059",
+    "source_column_one_based": 60,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1500,
+    "train_unique_observed": 1081
+  },
+  {
+    "feature": "measurement_060",
+    "source_column_one_based": 61,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1498,
+    "train_unique_observed": 1081
+  },
+  {
+    "feature": "measurement_061",
+    "source_column_one_based": 62,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1418,
+    "train_unique_observed": 1036
+  },
+  {
+    "feature": "measurement_062",
+    "source_column_one_based": 63,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1518,
+    "train_unique_observed": 1087
+  },
+  {
+    "feature": "measurement_063",
+    "source_column_one_based": 64,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1534,
+    "train_unique_observed": 1100
+  },
+  {
+    "feature": "measurement_064",
+    "source_column_one_based": 65,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1496,
+    "train_unique_observed": 1080
+  },
+  {
+    "feature": "measurement_065",
+    "source_column_one_based": 66,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1550,
+    "train_unique_observed": 1106
+  },
+  {
+    "feature": "measurement_066",
+    "source_column_one_based": 67,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1559,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_067",
+    "source_column_one_based": 68,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1306,
+    "train_unique_observed": 975
+  },
+  {
+    "feature": "measurement_068",
+    "source_column_one_based": 69,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1479,
+    "train_unique_observed": 1075
+  },
+  {
+    "feature": "measurement_069",
+    "source_column_one_based": 70,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_070",
+    "source_column_one_based": 71,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1533,
+    "train_unique_observed": 1096
+  },
+  {
+    "feature": "measurement_071",
+    "source_column_one_based": 72,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1557,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_072",
+    "source_column_one_based": 73,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 794,
+    "train_missing": 500,
+    "test_missing": 294,
+    "unique_observed": 773,
+    "train_unique_observed": 616
+  },
+  {
+    "feature": "measurement_073",
+    "source_column_one_based": 74,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 794,
+    "train_missing": 500,
+    "test_missing": 294,
+    "unique_observed": 770,
+    "train_unique_observed": 613
+  },
+  {
+    "feature": "measurement_074",
+    "source_column_one_based": 75,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 2,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_075",
+    "source_column_one_based": 76,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 675,
+    "train_unique_observed": 598
+  },
+  {
+    "feature": "measurement_076",
+    "source_column_one_based": 77,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 891,
+    "train_unique_observed": 762
+  },
+  {
+    "feature": "measurement_077",
+    "source_column_one_based": 78,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 842,
+    "train_unique_observed": 700
+  },
+  {
+    "feature": "measurement_078",
+    "source_column_one_based": 79,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 995,
+    "train_unique_observed": 818
+  },
+  {
+    "feature": "measurement_079",
+    "source_column_one_based": 80,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 691,
+    "train_unique_observed": 606
+  },
+  {
+    "feature": "measurement_080",
+    "source_column_one_based": 81,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 922,
+    "train_unique_observed": 782
+  },
+  {
+    "feature": "measurement_081",
+    "source_column_one_based": 82,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 580,
+    "train_unique_observed": 468
+  },
+  {
+    "feature": "measurement_082",
+    "source_column_one_based": 83,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 888,
+    "train_unique_observed": 734
+  },
+  {
+    "feature": "measurement_083",
+    "source_column_one_based": 84,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 0,
+    "test_missing": 1,
+    "unique_observed": 1506,
+    "train_unique_observed": 1083
+  },
+  {
+    "feature": "measurement_084",
+    "source_column_one_based": 85,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 12,
+    "train_missing": 10,
+    "test_missing": 2,
+    "unique_observed": 180,
+    "train_unique_observed": 166
+  },
+  {
+    "feature": "measurement_085",
+    "source_column_one_based": 86,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1341,
+    "train_missing": 1004,
+    "test_missing": 337,
+    "unique_observed": 97,
+    "train_unique_observed": 73
+  },
+  {
+    "feature": "measurement_086",
+    "source_column_one_based": 87,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 472,
+    "train_unique_observed": 363
+  },
+  {
+    "feature": "measurement_087",
+    "source_column_one_based": 88,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 249,
+    "train_unique_observed": 220
+  },
+  {
+    "feature": "measurement_088",
+    "source_column_one_based": 89,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 973,
+    "train_unique_observed": 713
+  },
+  {
+    "feature": "measurement_089",
+    "source_column_one_based": 90,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 650,
+    "train_unique_observed": 547
+  },
+  {
+    "feature": "measurement_090",
+    "source_column_one_based": 91,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 1513,
+    "train_unique_observed": 1115
+  },
+  {
+    "feature": "measurement_091",
+    "source_column_one_based": 92,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1191,
+    "train_unique_observed": 882
+  },
+  {
+    "feature": "measurement_092",
+    "source_column_one_based": 93,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 180,
+    "train_unique_observed": 178
+  },
+  {
+    "feature": "measurement_093",
+    "source_column_one_based": 94,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 174,
+    "train_unique_observed": 166
+  },
+  {
+    "feature": "measurement_094",
+    "source_column_one_based": 95,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 22,
+    "train_unique_observed": 22
+  },
+  {
+    "feature": "measurement_095",
+    "source_column_one_based": 96,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 14,
+    "train_unique_observed": 13
+  },
+  {
+    "feature": "measurement_096",
+    "source_column_one_based": 97,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1333,
+    "train_unique_observed": 961
+  },
+  {
+    "feature": "measurement_097",
+    "source_column_one_based": 98,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_098",
+    "source_column_one_based": 99,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1420,
+    "train_unique_observed": 1013
+  },
+  {
+    "feature": "measurement_099",
+    "source_column_one_based": 100,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 272,
+    "train_unique_observed": 247
+  },
+  {
+    "feature": "measurement_100",
+    "source_column_one_based": 101,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 35,
+    "train_unique_observed": 33
+  },
+  {
+    "feature": "measurement_101",
+    "source_column_one_based": 102,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 29,
+    "train_unique_observed": 28
+  },
+  {
+    "feature": "measurement_102",
+    "source_column_one_based": 103,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1066,
+    "train_unique_observed": 818
+  },
+  {
+    "feature": "measurement_103",
+    "source_column_one_based": 104,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 153,
+    "train_unique_observed": 147
+  },
+  {
+    "feature": "measurement_104",
+    "source_column_one_based": 105,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 55,
+    "train_unique_observed": 51
+  },
+  {
+    "feature": "measurement_105",
+    "source_column_one_based": 106,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 177,
+    "train_unique_observed": 175
+  },
+  {
+    "feature": "measurement_106",
+    "source_column_one_based": 107,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 180,
+    "train_unique_observed": 170
+  },
+  {
+    "feature": "measurement_107",
+    "source_column_one_based": 108,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1159,
+    "train_unique_observed": 885
+  },
+  {
+    "feature": "measurement_108",
+    "source_column_one_based": 109,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1183,
+    "train_unique_observed": 900
+  },
+  {
+    "feature": "measurement_109",
+    "source_column_one_based": 110,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 96,
+    "train_unique_observed": 66
+  },
+  {
+    "feature": "measurement_110",
+    "source_column_one_based": 111,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 546,
+    "train_unique_observed": 188
+  },
+  {
+    "feature": "measurement_111",
+    "source_column_one_based": 112,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 545,
+    "train_unique_observed": 190
+  },
+  {
+    "feature": "measurement_112",
+    "source_column_one_based": 113,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 715,
+    "train_missing": 344,
+    "test_missing": 371,
+    "unique_observed": 249,
+    "train_unique_observed": 245
+  },
+  {
+    "feature": "measurement_113",
+    "source_column_one_based": 114,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 468,
+    "train_unique_observed": 437
+  },
+  {
+    "feature": "measurement_114",
+    "source_column_one_based": 115,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 20,
+    "train_unique_observed": 15
+  },
+  {
+    "feature": "measurement_115",
+    "source_column_one_based": 116,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1567,
+    "train_unique_observed": 1116
+  },
+  {
+    "feature": "measurement_116",
+    "source_column_one_based": 117,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 136,
+    "train_unique_observed": 116
+  },
+  {
+    "feature": "measurement_117",
+    "source_column_one_based": 118,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1527,
+    "train_unique_observed": 1098
+  },
+  {
+    "feature": "measurement_118",
+    "source_column_one_based": 119,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 328,
+    "train_unique_observed": 295
+  },
+  {
+    "feature": "measurement_119",
+    "source_column_one_based": 120,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 249,
+    "train_unique_observed": 232
+  },
+  {
+    "feature": "measurement_120",
+    "source_column_one_based": 121,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1269,
+    "train_unique_observed": 944
+  },
+  {
+    "feature": "measurement_121",
+    "source_column_one_based": 122,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 54,
+    "train_unique_observed": 42
+  },
+  {
+    "feature": "measurement_122",
+    "source_column_one_based": 123,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 309,
+    "train_unique_observed": 232
+  },
+  {
+    "feature": "measurement_123",
+    "source_column_one_based": 124,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 50,
+    "train_unique_observed": 41
+  },
+  {
+    "feature": "measurement_124",
+    "source_column_one_based": 125,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 59,
+    "train_unique_observed": 52
+  },
+  {
+    "feature": "measurement_125",
+    "source_column_one_based": 126,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 155,
+    "train_unique_observed": 124
+  },
+  {
+    "feature": "measurement_126",
+    "source_column_one_based": 127,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 273,
+    "train_unique_observed": 215
+  },
+  {
+    "feature": "measurement_127",
+    "source_column_one_based": 128,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 324,
+    "train_unique_observed": 235
+  },
+  {
+    "feature": "measurement_128",
+    "source_column_one_based": 129,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 268,
+    "train_unique_observed": 207
+  },
+  {
+    "feature": "measurement_129",
+    "source_column_one_based": 130,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 93,
+    "train_unique_observed": 77
+  },
+  {
+    "feature": "measurement_130",
+    "source_column_one_based": 131,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 310,
+    "train_unique_observed": 227
+  },
+  {
+    "feature": "measurement_131",
+    "source_column_one_based": 132,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 68,
+    "train_unique_observed": 66
+  },
+  {
+    "feature": "measurement_132",
+    "source_column_one_based": 133,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 306,
+    "train_unique_observed": 227
+  },
+  {
+    "feature": "measurement_133",
+    "source_column_one_based": 134,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 336,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_134",
+    "source_column_one_based": 135,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 335,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_135",
+    "source_column_one_based": 136,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 5,
+    "train_missing": 5,
+    "test_missing": 0,
+    "unique_observed": 134,
+    "train_unique_observed": 118
+  },
+  {
+    "feature": "measurement_136",
+    "source_column_one_based": 137,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 6,
+    "test_missing": 0,
+    "unique_observed": 1089,
+    "train_unique_observed": 847
+  },
+  {
+    "feature": "measurement_137",
+    "source_column_one_based": 138,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1059,
+    "train_unique_observed": 822
+  },
+  {
+    "feature": "measurement_138",
+    "source_column_one_based": 139,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 348,
+    "train_unique_observed": 280
+  },
+  {
+    "feature": "measurement_139",
+    "source_column_one_based": 140,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 518,
+    "train_unique_observed": 385
+  },
+  {
+    "feature": "measurement_140",
+    "source_column_one_based": 141,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 498,
+    "train_unique_observed": 372
+  },
+  {
+    "feature": "measurement_141",
+    "source_column_one_based": 142,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_142",
+    "source_column_one_based": 143,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 374,
+    "train_unique_observed": 305
+  },
+  {
+    "feature": "measurement_143",
+    "source_column_one_based": 144,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 63,
+    "train_unique_observed": 53
+  },
+  {
+    "feature": "measurement_144",
+    "source_column_one_based": 145,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 961,
+    "train_unique_observed": 742
+  },
+  {
+    "feature": "measurement_145",
+    "source_column_one_based": 146,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 656,
+    "train_unique_observed": 559
+  },
+  {
+    "feature": "measurement_146",
+    "source_column_one_based": 147,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 579,
+    "train_unique_observed": 505
+  },
+  {
+    "feature": "measurement_147",
+    "source_column_one_based": 148,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 294,
+    "train_unique_observed": 282
+  },
+  {
+    "feature": "measurement_148",
+    "source_column_one_based": 149,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1551,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_149",
+    "source_column_one_based": 150,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_150",
+    "source_column_one_based": 151,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1443,
+    "train_unique_observed": 1050
+  },
+  {
+    "feature": "measurement_151",
+    "source_column_one_based": 152,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1498,
+    "train_unique_observed": 1077
+  },
+  {
+    "feature": "measurement_152",
+    "source_column_one_based": 153,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1394,
+    "train_unique_observed": 1030
+  },
+  {
+    "feature": "measurement_153",
+    "source_column_one_based": 154,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 219,
+    "train_unique_observed": 215
+  },
+  {
+    "feature": "measurement_154",
+    "source_column_one_based": 155,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1551,
+    "train_unique_observed": 1105
+  },
+  {
+    "feature": "measurement_155",
+    "source_column_one_based": 156,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 10,
+    "train_missing": 10,
+    "test_missing": 0,
+    "unique_observed": 65,
+    "train_unique_observed": 59
+  },
+  {
+    "feature": "measurement_156",
+    "source_column_one_based": 157,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 722,
+    "train_unique_observed": 605
+  },
+  {
+    "feature": "measurement_157",
+    "source_column_one_based": 158,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1429,
+    "train_missing": 1015,
+    "test_missing": 414,
+    "unique_observed": 128,
+    "train_unique_observed": 95
+  },
+  {
+    "feature": "measurement_158",
+    "source_column_one_based": 159,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1429,
+    "train_missing": 1015,
+    "test_missing": 414,
+    "unique_observed": 138,
+    "train_unique_observed": 101
+  },
+  {
+    "feature": "measurement_159",
+    "source_column_one_based": 160,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 954,
+    "train_unique_observed": 752
+  },
+  {
+    "feature": "measurement_160",
+    "source_column_one_based": 161,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 744,
+    "train_unique_observed": 634
+  },
+  {
+    "feature": "measurement_161",
+    "source_column_one_based": 162,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1411,
+    "train_unique_observed": 1035
+  },
+  {
+    "feature": "measurement_162",
+    "source_column_one_based": 163,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1325,
+    "train_unique_observed": 933
+  },
+  {
+    "feature": "measurement_163",
+    "source_column_one_based": 164,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 260,
+    "train_unique_observed": 237
+  },
+  {
+    "feature": "measurement_164",
+    "source_column_one_based": 165,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 219,
+    "train_unique_observed": 193
+  },
+  {
+    "feature": "measurement_165",
+    "source_column_one_based": 166,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 404,
+    "train_unique_observed": 348
+  },
+  {
+    "feature": "measurement_166",
+    "source_column_one_based": 167,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 62,
+    "train_unique_observed": 54
+  },
+  {
+    "feature": "measurement_167",
+    "source_column_one_based": 168,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 31,
+    "train_unique_observed": 28
+  },
+  {
+    "feature": "measurement_168",
+    "source_column_one_based": 169,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 207,
+    "train_unique_observed": 194
+  },
+  {
+    "feature": "measurement_169",
+    "source_column_one_based": 170,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 652,
+    "train_unique_observed": 532
+  },
+  {
+    "feature": "measurement_170",
+    "source_column_one_based": 171,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 331,
+    "train_unique_observed": 247
+  },
+  {
+    "feature": "measurement_171",
+    "source_column_one_based": 172,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 306,
+    "train_unique_observed": 234
+  },
+  {
+    "feature": "measurement_172",
+    "source_column_one_based": 173,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 307,
+    "train_unique_observed": 237
+  },
+  {
+    "feature": "measurement_173",
+    "source_column_one_based": 174,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 319,
+    "train_unique_observed": 236
+  },
+  {
+    "feature": "measurement_174",
+    "source_column_one_based": 175,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 308,
+    "train_unique_observed": 236
+  },
+  {
+    "feature": "measurement_175",
+    "source_column_one_based": 176,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 327,
+    "train_unique_observed": 246
+  },
+  {
+    "feature": "measurement_176",
+    "source_column_one_based": 177,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 319,
+    "train_unique_observed": 241
+  },
+  {
+    "feature": "measurement_177",
+    "source_column_one_based": 178,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 250,
+    "train_unique_observed": 204
+  },
+  {
+    "feature": "measurement_178",
+    "source_column_one_based": 179,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_179",
+    "source_column_one_based": 180,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_180",
+    "source_column_one_based": 181,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 890,
+    "train_unique_observed": 697
+  },
+  {
+    "feature": "measurement_181",
+    "source_column_one_based": 182,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 687,
+    "train_unique_observed": 593
+  },
+  {
+    "feature": "measurement_182",
+    "source_column_one_based": 183,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 905,
+    "train_unique_observed": 725
+  },
+  {
+    "feature": "measurement_183",
+    "source_column_one_based": 184,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1508,
+    "train_unique_observed": 1091
+  },
+  {
+    "feature": "measurement_184",
+    "source_column_one_based": 185,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1054,
+    "train_unique_observed": 825
+  },
+  {
+    "feature": "measurement_185",
+    "source_column_one_based": 186,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 739,
+    "train_unique_observed": 652
+  },
+  {
+    "feature": "measurement_186",
+    "source_column_one_based": 187,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_187",
+    "source_column_one_based": 188,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1015,
+    "train_unique_observed": 818
+  },
+  {
+    "feature": "measurement_188",
+    "source_column_one_based": 189,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1550,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_189",
+    "source_column_one_based": 190,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_190",
+    "source_column_one_based": 191,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_191",
+    "source_column_one_based": 192,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_192",
+    "source_column_one_based": 193,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_193",
+    "source_column_one_based": 194,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_194",
+    "source_column_one_based": 195,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_195",
+    "source_column_one_based": 196,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 206,
+    "train_unique_observed": 163
+  },
+  {
+    "feature": "measurement_196",
+    "source_column_one_based": 197,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 867,
+    "train_unique_observed": 664
+  },
+  {
+    "feature": "measurement_197",
+    "source_column_one_based": 198,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 898,
+    "train_unique_observed": 704
+  },
+  {
+    "feature": "measurement_198",
+    "source_column_one_based": 199,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 773,
+    "train_unique_observed": 617
+  },
+  {
+    "feature": "measurement_199",
+    "source_column_one_based": 200,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 920,
+    "train_unique_observed": 729
+  },
+  {
+    "feature": "measurement_200",
+    "source_column_one_based": 201,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1008,
+    "train_unique_observed": 809
+  },
+  {
+    "feature": "measurement_201",
+    "source_column_one_based": 202,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 861,
+    "train_unique_observed": 659
+  },
+  {
+    "feature": "measurement_202",
+    "source_column_one_based": 203,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1470,
+    "train_unique_observed": 1059
+  },
+  {
+    "feature": "measurement_203",
+    "source_column_one_based": 204,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1501,
+    "train_unique_observed": 1079
+  },
+  {
+    "feature": "measurement_204",
+    "source_column_one_based": 205,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1210,
+    "train_unique_observed": 949
+  },
+  {
+    "feature": "measurement_205",
+    "source_column_one_based": 206,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 841,
+    "train_unique_observed": 698
+  },
+  {
+    "feature": "measurement_206",
+    "source_column_one_based": 207,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 2,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_207",
+    "source_column_one_based": 208,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1046,
+    "train_unique_observed": 816
+  },
+  {
+    "feature": "measurement_208",
+    "source_column_one_based": 209,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1549,
+    "train_unique_observed": 1105
+  },
+  {
+    "feature": "measurement_209",
+    "source_column_one_based": 210,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 2,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_210",
+    "source_column_one_based": 211,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 798,
+    "train_unique_observed": 698
+  },
+  {
+    "feature": "measurement_211",
+    "source_column_one_based": 212,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 653,
+    "train_unique_observed": 568
+  },
+  {
+    "feature": "measurement_212",
+    "source_column_one_based": 213,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 681,
+    "train_unique_observed": 586
+  },
+  {
+    "feature": "measurement_213",
+    "source_column_one_based": 214,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 810,
+    "train_unique_observed": 696
+  },
+  {
+    "feature": "measurement_214",
+    "source_column_one_based": 215,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 803,
+    "train_unique_observed": 667
+  },
+  {
+    "feature": "measurement_215",
+    "source_column_one_based": 216,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 823,
+    "train_unique_observed": 691
+  },
+  {
+    "feature": "measurement_216",
+    "source_column_one_based": 217,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 728,
+    "train_unique_observed": 599
+  },
+  {
+    "feature": "measurement_217",
+    "source_column_one_based": 218,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 836,
+    "train_unique_observed": 675
+  },
+  {
+    "feature": "measurement_218",
+    "source_column_one_based": 219,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 0,
+    "test_missing": 1,
+    "unique_observed": 1539,
+    "train_unique_observed": 1108
+  },
+  {
+    "feature": "measurement_219",
+    "source_column_one_based": 220,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 12,
+    "train_missing": 10,
+    "test_missing": 2,
+    "unique_observed": 64,
+    "train_unique_observed": 55
+  },
+  {
+    "feature": "measurement_220",
+    "source_column_one_based": 221,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1341,
+    "train_missing": 1004,
+    "test_missing": 337,
+    "unique_observed": 69,
+    "train_unique_observed": 53
+  },
+  {
+    "feature": "measurement_221",
+    "source_column_one_based": 222,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 408,
+    "train_unique_observed": 335
+  },
+  {
+    "feature": "measurement_222",
+    "source_column_one_based": 223,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 178,
+    "train_unique_observed": 162
+  },
+  {
+    "feature": "measurement_223",
+    "source_column_one_based": 224,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 973,
+    "train_unique_observed": 713
+  },
+  {
+    "feature": "measurement_224",
+    "source_column_one_based": 225,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 720,
+    "train_unique_observed": 585
+  },
+  {
+    "feature": "measurement_225",
+    "source_column_one_based": 226,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 1472,
+    "train_unique_observed": 1092
+  },
+  {
+    "feature": "measurement_226",
+    "source_column_one_based": 227,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_227",
+    "source_column_one_based": 228,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 329,
+    "train_unique_observed": 305
+  },
+  {
+    "feature": "measurement_228",
+    "source_column_one_based": 229,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 292,
+    "train_unique_observed": 275
+  },
+  {
+    "feature": "measurement_229",
+    "source_column_one_based": 230,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_230",
+    "source_column_one_based": 231,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_231",
+    "source_column_one_based": 232,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_232",
+    "source_column_one_based": 233,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_233",
+    "source_column_one_based": 234,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_234",
+    "source_column_one_based": 235,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_235",
+    "source_column_one_based": 236,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_236",
+    "source_column_one_based": 237,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_237",
+    "source_column_one_based": 238,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_238",
+    "source_column_one_based": 239,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 93,
+    "train_unique_observed": 88
+  },
+  {
+    "feature": "measurement_239",
+    "source_column_one_based": 240,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 80,
+    "train_unique_observed": 79
+  },
+  {
+    "feature": "measurement_240",
+    "source_column_one_based": 241,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_241",
+    "source_column_one_based": 242,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_242",
+    "source_column_one_based": 243,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_243",
+    "source_column_one_based": 244,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_244",
+    "source_column_one_based": 245,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 66,
+    "train_unique_observed": 51
+  },
+  {
+    "feature": "measurement_245",
+    "source_column_one_based": 246,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 539,
+    "train_unique_observed": 189
+  },
+  {
+    "feature": "measurement_246",
+    "source_column_one_based": 247,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 547,
+    "train_unique_observed": 190
+  },
+  {
+    "feature": "measurement_247",
+    "source_column_one_based": 248,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 715,
+    "train_missing": 344,
+    "test_missing": 371,
+    "unique_observed": 490,
+    "train_unique_observed": 476
+  },
+  {
+    "feature": "measurement_248",
+    "source_column_one_based": 249,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 426,
+    "train_unique_observed": 396
+  },
+  {
+    "feature": "measurement_249",
+    "source_column_one_based": 250,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 23,
+    "train_unique_observed": 15
+  },
+  {
+    "feature": "measurement_250",
+    "source_column_one_based": 251,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1566,
+    "train_unique_observed": 1115
+  },
+  {
+    "feature": "measurement_251",
+    "source_column_one_based": 252,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 143,
+    "train_unique_observed": 112
+  },
+  {
+    "feature": "measurement_252",
+    "source_column_one_based": 253,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1533,
+    "train_unique_observed": 1100
+  },
+  {
+    "feature": "measurement_253",
+    "source_column_one_based": 254,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 442,
+    "train_unique_observed": 388
+  },
+  {
+    "feature": "measurement_254",
+    "source_column_one_based": 255,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 291,
+    "train_unique_observed": 266
+  },
+  {
+    "feature": "measurement_255",
+    "source_column_one_based": 256,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1317,
+    "train_unique_observed": 993
+  },
+  {
+    "feature": "measurement_256",
+    "source_column_one_based": 257,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_257",
+    "source_column_one_based": 258,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_258",
+    "source_column_one_based": 259,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_259",
+    "source_column_one_based": 260,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_260",
+    "source_column_one_based": 261,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_261",
+    "source_column_one_based": 262,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_262",
+    "source_column_one_based": 263,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_263",
+    "source_column_one_based": 264,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_264",
+    "source_column_one_based": 265,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_265",
+    "source_column_one_based": 266,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_266",
+    "source_column_one_based": 267,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_267",
+    "source_column_one_based": 268,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 291,
+    "train_unique_observed": 213
+  },
+  {
+    "feature": "measurement_268",
+    "source_column_one_based": 269,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 333,
+    "train_unique_observed": 241
+  },
+  {
+    "feature": "measurement_269",
+    "source_column_one_based": 270,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 330,
+    "train_unique_observed": 239
+  },
+  {
+    "feature": "measurement_270",
+    "source_column_one_based": 271,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 5,
+    "train_missing": 5,
+    "test_missing": 0,
+    "unique_observed": 599,
+    "train_unique_observed": 444
+  },
+  {
+    "feature": "measurement_271",
+    "source_column_one_based": 272,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 6,
+    "test_missing": 0,
+    "unique_observed": 1559,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_272",
+    "source_column_one_based": 273,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1557,
+    "train_unique_observed": 1108
+  },
+  {
+    "feature": "measurement_273",
+    "source_column_one_based": 274,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 518,
+    "train_unique_observed": 385
+  },
+  {
+    "feature": "measurement_274",
+    "source_column_one_based": 275,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 518,
+    "train_unique_observed": 385
+  },
+  {
+    "feature": "measurement_275",
+    "source_column_one_based": 276,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 458,
+    "train_unique_observed": 348
+  },
+  {
+    "feature": "measurement_276",
+    "source_column_one_based": 277,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_277",
+    "source_column_one_based": 278,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 512,
+    "train_unique_observed": 383
+  },
+  {
+    "feature": "measurement_278",
+    "source_column_one_based": 279,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 22,
+    "train_unique_observed": 20
+  },
+  {
+    "feature": "measurement_279",
+    "source_column_one_based": 280,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 541,
+    "train_unique_observed": 420
+  },
+  {
+    "feature": "measurement_280",
+    "source_column_one_based": 281,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 246,
+    "train_unique_observed": 231
+  },
+  {
+    "feature": "measurement_281",
+    "source_column_one_based": 282,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 227,
+    "train_unique_observed": 209
+  },
+  {
+    "feature": "measurement_282",
+    "source_column_one_based": 283,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 114,
+    "train_unique_observed": 109
+  },
+  {
+    "feature": "measurement_283",
+    "source_column_one_based": 284,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1515,
+    "train_unique_observed": 1086
+  },
+  {
+    "feature": "measurement_284",
+    "source_column_one_based": 285,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_285",
+    "source_column_one_based": 286,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1527,
+    "train_unique_observed": 1097
+  },
+  {
+    "feature": "measurement_286",
+    "source_column_one_based": 287,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1540,
+    "train_unique_observed": 1104
+  },
+  {
+    "feature": "measurement_287",
+    "source_column_one_based": 288,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1076,
+    "train_unique_observed": 849
+  },
+  {
+    "feature": "measurement_288",
+    "source_column_one_based": 289,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 87,
+    "train_unique_observed": 85
+  },
+  {
+    "feature": "measurement_289",
+    "source_column_one_based": 290,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1522,
+    "train_unique_observed": 1095
+  },
+  {
+    "feature": "measurement_290",
+    "source_column_one_based": 291,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 10,
+    "train_missing": 10,
+    "test_missing": 0,
+    "unique_observed": 324,
+    "train_unique_observed": 238
+  },
+  {
+    "feature": "measurement_291",
+    "source_column_one_based": 292,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 354,
+    "train_unique_observed": 324
+  },
+  {
+    "feature": "measurement_292",
+    "source_column_one_based": 293,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1429,
+    "train_missing": 1015,
+    "test_missing": 414,
+    "unique_observed": 92,
+    "train_unique_observed": 79
+  },
+  {
+    "feature": "measurement_293",
+    "source_column_one_based": 294,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1429,
+    "train_missing": 1015,
+    "test_missing": 414,
+    "unique_observed": 138,
+    "train_unique_observed": 101
+  },
+  {
+    "feature": "measurement_294",
+    "source_column_one_based": 295,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1562,
+    "train_unique_observed": 1113
+  },
+  {
+    "feature": "measurement_295",
+    "source_column_one_based": 296,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1561,
+    "train_unique_observed": 1112
+  },
+  {
+    "feature": "measurement_296",
+    "source_column_one_based": 297,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1565,
+    "train_unique_observed": 1114
+  },
+  {
+    "feature": "measurement_297",
+    "source_column_one_based": 298,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1559,
+    "train_unique_observed": 1112
+  },
+  {
+    "feature": "measurement_298",
+    "source_column_one_based": 299,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 725,
+    "train_unique_observed": 590
+  },
+  {
+    "feature": "measurement_299",
+    "source_column_one_based": 300,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 626,
+    "train_unique_observed": 500
+  },
+  {
+    "feature": "measurement_300",
+    "source_column_one_based": 301,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 967,
+    "train_unique_observed": 762
+  },
+  {
+    "feature": "measurement_301",
+    "source_column_one_based": 302,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1134,
+    "train_unique_observed": 853
+  },
+  {
+    "feature": "measurement_302",
+    "source_column_one_based": 303,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 569,
+    "train_unique_observed": 476
+  },
+  {
+    "feature": "measurement_303",
+    "source_column_one_based": 304,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 509,
+    "train_unique_observed": 454
+  },
+  {
+    "feature": "measurement_304",
+    "source_column_one_based": 305,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1105,
+    "train_unique_observed": 843
+  },
+  {
+    "feature": "measurement_305",
+    "source_column_one_based": 306,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 314,
+    "train_unique_observed": 234
+  },
+  {
+    "feature": "measurement_306",
+    "source_column_one_based": 307,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 262,
+    "train_unique_observed": 199
+  },
+  {
+    "feature": "measurement_307",
+    "source_column_one_based": 308,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 286,
+    "train_unique_observed": 222
+  },
+  {
+    "feature": "measurement_308",
+    "source_column_one_based": 309,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 293,
+    "train_unique_observed": 223
+  },
+  {
+    "feature": "measurement_309",
+    "source_column_one_based": 310,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 290,
+    "train_unique_observed": 223
+  },
+  {
+    "feature": "measurement_310",
+    "source_column_one_based": 311,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 310,
+    "train_unique_observed": 234
+  },
+  {
+    "feature": "measurement_311",
+    "source_column_one_based": 312,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 276,
+    "train_unique_observed": 210
+  },
+  {
+    "feature": "measurement_312",
+    "source_column_one_based": 313,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 307,
+    "train_unique_observed": 233
+  },
+  {
+    "feature": "measurement_313",
+    "source_column_one_based": 314,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_314",
+    "source_column_one_based": 315,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_315",
+    "source_column_one_based": 316,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_316",
+    "source_column_one_based": 317,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1533,
+    "train_unique_observed": 1097
+  },
+  {
+    "feature": "measurement_317",
+    "source_column_one_based": 318,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1160,
+    "train_unique_observed": 893
+  },
+  {
+    "feature": "measurement_318",
+    "source_column_one_based": 319,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1535,
+    "train_unique_observed": 1098
+  },
+  {
+    "feature": "measurement_319",
+    "source_column_one_based": 320,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1550,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_320",
+    "source_column_one_based": 321,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 550,
+    "train_unique_observed": 483
+  },
+  {
+    "feature": "measurement_321",
+    "source_column_one_based": 322,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1511,
+    "train_unique_observed": 1082
+  },
+  {
+    "feature": "measurement_322",
+    "source_column_one_based": 323,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_323",
+    "source_column_one_based": 324,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1536,
+    "train_unique_observed": 1097
+  },
+  {
+    "feature": "measurement_324",
+    "source_column_one_based": 325,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1560,
+    "train_unique_observed": 1112
+  },
+  {
+    "feature": "measurement_325",
+    "source_column_one_based": 326,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_326",
+    "source_column_one_based": 327,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_327",
+    "source_column_one_based": 328,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_328",
+    "source_column_one_based": 329,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_329",
+    "source_column_one_based": 330,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_330",
+    "source_column_one_based": 331,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_331",
+    "source_column_one_based": 332,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 313,
+    "train_unique_observed": 231
+  },
+  {
+    "feature": "measurement_332",
+    "source_column_one_based": 333,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1517,
+    "train_unique_observed": 1086
+  },
+  {
+    "feature": "measurement_333",
+    "source_column_one_based": 334,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1527,
+    "train_unique_observed": 1094
+  },
+  {
+    "feature": "measurement_334",
+    "source_column_one_based": 335,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1145,
+    "train_unique_observed": 855
+  },
+  {
+    "feature": "measurement_335",
+    "source_column_one_based": 336,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1526,
+    "train_unique_observed": 1090
+  },
+  {
+    "feature": "measurement_336",
+    "source_column_one_based": 337,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1532,
+    "train_unique_observed": 1096
+  },
+  {
+    "feature": "measurement_337",
+    "source_column_one_based": 338,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1517,
+    "train_unique_observed": 1086
+  },
+  {
+    "feature": "measurement_338",
+    "source_column_one_based": 339,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1520,
+    "train_unique_observed": 1086
+  },
+  {
+    "feature": "measurement_339",
+    "source_column_one_based": 340,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1543,
+    "train_unique_observed": 1102
+  },
+  {
+    "feature": "measurement_340",
+    "source_column_one_based": 341,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 761,
+    "train_unique_observed": 676
+  },
+  {
+    "feature": "measurement_341",
+    "source_column_one_based": 342,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1517,
+    "train_unique_observed": 1095
+  },
+  {
+    "feature": "measurement_342",
+    "source_column_one_based": 343,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 2,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_343",
+    "source_column_one_based": 344,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1541,
+    "train_unique_observed": 1100
+  },
+  {
+    "feature": "measurement_344",
+    "source_column_one_based": 345,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1551,
+    "train_unique_observed": 1108
+  },
+  {
+    "feature": "measurement_345",
+    "source_column_one_based": 346,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 794,
+    "train_missing": 500,
+    "test_missing": 294,
+    "unique_observed": 767,
+    "train_unique_observed": 611
+  },
+  {
+    "feature": "measurement_346",
+    "source_column_one_based": 347,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 794,
+    "train_missing": 500,
+    "test_missing": 294,
+    "unique_observed": 762,
+    "train_unique_observed": 609
+  },
+  {
+    "feature": "measurement_347",
+    "source_column_one_based": 348,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 2,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_348",
+    "source_column_one_based": 349,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 357,
+    "train_unique_observed": 337
+  },
+  {
+    "feature": "measurement_349",
+    "source_column_one_based": 350,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 373,
+    "train_unique_observed": 350
+  },
+  {
+    "feature": "measurement_350",
+    "source_column_one_based": 351,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 435,
+    "train_unique_observed": 393
+  },
+  {
+    "feature": "measurement_351",
+    "source_column_one_based": 352,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 499,
+    "train_unique_observed": 468
+  },
+  {
+    "feature": "measurement_352",
+    "source_column_one_based": 353,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 354,
+    "train_unique_observed": 323
+  },
+  {
+    "feature": "measurement_353",
+    "source_column_one_based": 354,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 563,
+    "train_unique_observed": 513
+  },
+  {
+    "feature": "measurement_354",
+    "source_column_one_based": 355,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 486,
+    "train_unique_observed": 418
+  },
+  {
+    "feature": "measurement_355",
+    "source_column_one_based": 356,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 572,
+    "train_unique_observed": 482
+  },
+  {
+    "feature": "measurement_356",
+    "source_column_one_based": 357,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 0,
+    "test_missing": 1,
+    "unique_observed": 1473,
+    "train_unique_observed": 1074
+  },
+  {
+    "feature": "measurement_357",
+    "source_column_one_based": 358,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 12,
+    "train_missing": 10,
+    "test_missing": 2,
+    "unique_observed": 28,
+    "train_unique_observed": 23
+  },
+  {
+    "feature": "measurement_358",
+    "source_column_one_based": 359,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1341,
+    "train_missing": 1004,
+    "test_missing": 337,
+    "unique_observed": 20,
+    "train_unique_observed": 17
+  },
+  {
+    "feature": "measurement_359",
+    "source_column_one_based": 360,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 215,
+    "train_unique_observed": 196
+  },
+  {
+    "feature": "measurement_360",
+    "source_column_one_based": 361,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 97,
+    "train_unique_observed": 92
+  },
+  {
+    "feature": "measurement_361",
+    "source_column_one_based": 362,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 972,
+    "train_unique_observed": 713
+  },
+  {
+    "feature": "measurement_362",
+    "source_column_one_based": 363,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 389,
+    "train_unique_observed": 326
+  },
+  {
+    "feature": "measurement_363",
+    "source_column_one_based": 364,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 1516,
+    "train_unique_observed": 1116
+  },
+  {
+    "feature": "measurement_364",
+    "source_column_one_based": 365,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_365",
+    "source_column_one_based": 366,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 120,
+    "train_unique_observed": 117
+  },
+  {
+    "feature": "measurement_366",
+    "source_column_one_based": 367,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 107,
+    "train_unique_observed": 106
+  },
+  {
+    "feature": "measurement_367",
+    "source_column_one_based": 368,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 113,
+    "train_unique_observed": 106
+  },
+  {
+    "feature": "measurement_368",
+    "source_column_one_based": 369,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 97,
+    "train_unique_observed": 94
+  },
+  {
+    "feature": "measurement_369",
+    "source_column_one_based": 370,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_370",
+    "source_column_one_based": 371,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_371",
+    "source_column_one_based": 372,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_372",
+    "source_column_one_based": 373,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_373",
+    "source_column_one_based": 374,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_374",
+    "source_column_one_based": 375,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_375",
+    "source_column_one_based": 376,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_376",
+    "source_column_one_based": 377,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 36,
+    "train_unique_observed": 34
+  },
+  {
+    "feature": "measurement_377",
+    "source_column_one_based": 378,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 31,
+    "train_unique_observed": 30
+  },
+  {
+    "feature": "measurement_378",
+    "source_column_one_based": 379,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_379",
+    "source_column_one_based": 380,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_380",
+    "source_column_one_based": 381,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_381",
+    "source_column_one_based": 382,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_382",
+    "source_column_one_based": 383,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 29,
+    "train_unique_observed": 22
+  },
+  {
+    "feature": "measurement_383",
+    "source_column_one_based": 384,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 525,
+    "train_unique_observed": 183
+  },
+  {
+    "feature": "measurement_384",
+    "source_column_one_based": 385,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 536,
+    "train_unique_observed": 188
+  },
+  {
+    "feature": "measurement_385",
+    "source_column_one_based": 386,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 715,
+    "train_missing": 344,
+    "test_missing": 371,
+    "unique_observed": 232,
+    "train_unique_observed": 226
+  },
+  {
+    "feature": "measurement_386",
+    "source_column_one_based": 387,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 191,
+    "train_unique_observed": 183
+  },
+  {
+    "feature": "measurement_387",
+    "source_column_one_based": 388,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 22,
+    "train_unique_observed": 15
+  },
+  {
+    "feature": "measurement_388",
+    "source_column_one_based": 389,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1564,
+    "train_unique_observed": 1114
+  },
+  {
+    "feature": "measurement_389",
+    "source_column_one_based": 390,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 92,
+    "train_unique_observed": 74
+  },
+  {
+    "feature": "measurement_390",
+    "source_column_one_based": 391,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1458,
+    "train_unique_observed": 1052
+  },
+  {
+    "feature": "measurement_391",
+    "source_column_one_based": 392,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 183,
+    "train_unique_observed": 164
+  },
+  {
+    "feature": "measurement_392",
+    "source_column_one_based": 393,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 109,
+    "train_unique_observed": 106
+  },
+  {
+    "feature": "measurement_393",
+    "source_column_one_based": 394,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 953,
+    "train_unique_observed": 763
+  },
+  {
+    "feature": "measurement_394",
+    "source_column_one_based": 395,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_395",
+    "source_column_one_based": 396,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_396",
+    "source_column_one_based": 397,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_397",
+    "source_column_one_based": 398,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_398",
+    "source_column_one_based": 399,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_399",
+    "source_column_one_based": 400,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_400",
+    "source_column_one_based": 401,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_401",
+    "source_column_one_based": 402,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_402",
+    "source_column_one_based": 403,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_403",
+    "source_column_one_based": 404,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_404",
+    "source_column_one_based": 405,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_405",
+    "source_column_one_based": 406,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 228,
+    "train_unique_observed": 178
+  },
+  {
+    "feature": "measurement_406",
+    "source_column_one_based": 407,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 335,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_407",
+    "source_column_one_based": 408,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 331,
+    "train_unique_observed": 241
+  },
+  {
+    "feature": "measurement_408",
+    "source_column_one_based": 409,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 5,
+    "train_missing": 5,
+    "test_missing": 0,
+    "unique_observed": 593,
+    "train_unique_observed": 441
+  },
+  {
+    "feature": "measurement_409",
+    "source_column_one_based": 410,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 6,
+    "test_missing": 0,
+    "unique_observed": 1548,
+    "train_unique_observed": 1104
+  },
+  {
+    "feature": "measurement_410",
+    "source_column_one_based": 411,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1545,
+    "train_unique_observed": 1103
+  },
+  {
+    "feature": "measurement_411",
+    "source_column_one_based": 412,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 509,
+    "train_unique_observed": 381
+  },
+  {
+    "feature": "measurement_412",
+    "source_column_one_based": 413,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 518,
+    "train_unique_observed": 385
+  },
+  {
+    "feature": "measurement_413",
+    "source_column_one_based": 414,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 518,
+    "train_unique_observed": 385
+  },
+  {
+    "feature": "measurement_414",
+    "source_column_one_based": 415,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_415",
+    "source_column_one_based": 416,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 14,
+    "train_missing": 6,
+    "test_missing": 8,
+    "unique_observed": 513,
+    "train_unique_observed": 381
+  },
+  {
+    "feature": "measurement_416",
+    "source_column_one_based": 417,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 510,
+    "train_unique_observed": 382
+  },
+  {
+    "feature": "measurement_417",
+    "source_column_one_based": 418,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1551,
+    "train_unique_observed": 1105
+  },
+  {
+    "feature": "measurement_418",
+    "source_column_one_based": 419,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1051,
+    "train_unique_observed": 760
+  },
+  {
+    "feature": "measurement_419",
+    "source_column_one_based": 420,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 851,
+    "train_unique_observed": 626
+  },
+  {
+    "feature": "measurement_420",
+    "source_column_one_based": 421,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1514,
+    "train_unique_observed": 1094
+  },
+  {
+    "feature": "measurement_421",
+    "source_column_one_based": 422,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 1534,
+    "train_unique_observed": 1097
+  },
+  {
+    "feature": "measurement_422",
+    "source_column_one_based": 423,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_423",
+    "source_column_one_based": 424,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1563,
+    "train_unique_observed": 1116
+  },
+  {
+    "feature": "measurement_424",
+    "source_column_one_based": 425,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1529,
+    "train_unique_observed": 1100
+  },
+  {
+    "feature": "measurement_425",
+    "source_column_one_based": 426,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1540,
+    "train_unique_observed": 1101
+  },
+  {
+    "feature": "measurement_426",
+    "source_column_one_based": 427,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1481,
+    "train_unique_observed": 1077
+  },
+  {
+    "feature": "measurement_427",
+    "source_column_one_based": 428,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 3,
+    "train_missing": 0,
+    "test_missing": 3,
+    "unique_observed": 1538,
+    "train_unique_observed": 1104
+  },
+  {
+    "feature": "measurement_428",
+    "source_column_one_based": 429,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 10,
+    "train_missing": 10,
+    "test_missing": 0,
+    "unique_observed": 404,
+    "train_unique_observed": 276
+  },
+  {
+    "feature": "measurement_429",
+    "source_column_one_based": 430,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1542,
+    "train_unique_observed": 1104
+  },
+  {
+    "feature": "measurement_430",
+    "source_column_one_based": 431,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1551,
+    "train_unique_observed": 1103
+  },
+  {
+    "feature": "measurement_431",
+    "source_column_one_based": 432,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1553,
+    "train_unique_observed": 1105
+  },
+  {
+    "feature": "measurement_432",
+    "source_column_one_based": 433,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1503,
+    "train_unique_observed": 1059
+  },
+  {
+    "feature": "measurement_433",
+    "source_column_one_based": 434,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1371,
+    "train_unique_observed": 1006
+  },
+  {
+    "feature": "measurement_434",
+    "source_column_one_based": 435,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1537,
+    "train_unique_observed": 1097
+  },
+  {
+    "feature": "measurement_435",
+    "source_column_one_based": 436,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1524,
+    "train_unique_observed": 1086
+  },
+  {
+    "feature": "measurement_436",
+    "source_column_one_based": 437,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1539,
+    "train_unique_observed": 1100
+  },
+  {
+    "feature": "measurement_437",
+    "source_column_one_based": 438,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1495,
+    "train_unique_observed": 1078
+  },
+  {
+    "feature": "measurement_438",
+    "source_column_one_based": 439,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 967,
+    "train_unique_observed": 763
+  },
+  {
+    "feature": "measurement_439",
+    "source_column_one_based": 440,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1550,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_440",
+    "source_column_one_based": 441,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 2,
+    "test_missing": 0,
+    "unique_observed": 1557,
+    "train_unique_observed": 1110
+  },
+  {
+    "feature": "measurement_441",
+    "source_column_one_based": 442,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 325,
+    "train_unique_observed": 241
+  },
+  {
+    "feature": "measurement_442",
+    "source_column_one_based": 443,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 335,
+    "train_unique_observed": 248
+  },
+  {
+    "feature": "measurement_443",
+    "source_column_one_based": 444,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 330,
+    "train_unique_observed": 246
+  },
+  {
+    "feature": "measurement_444",
+    "source_column_one_based": 445,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 325,
+    "train_unique_observed": 247
+  },
+  {
+    "feature": "measurement_445",
+    "source_column_one_based": 446,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 329,
+    "train_unique_observed": 246
+  },
+  {
+    "feature": "measurement_446",
+    "source_column_one_based": 447,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 338,
+    "train_unique_observed": 250
+  },
+  {
+    "feature": "measurement_447",
+    "source_column_one_based": 448,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 317,
+    "train_unique_observed": 237
+  },
+  {
+    "feature": "measurement_448",
+    "source_column_one_based": 449,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 326,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_449",
+    "source_column_one_based": 450,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_450",
+    "source_column_one_based": 451,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 20,
+    "test_missing": 4,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_451",
+    "source_column_one_based": 452,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_452",
+    "source_column_one_based": 453,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1518,
+    "train_unique_observed": 1090
+  },
+  {
+    "feature": "measurement_453",
+    "source_column_one_based": 454,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1550,
+    "train_unique_observed": 1106
+  },
+  {
+    "feature": "measurement_454",
+    "source_column_one_based": 455,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1555,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_455",
+    "source_column_one_based": 456,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1527,
+    "train_unique_observed": 1093
+  },
+  {
+    "feature": "measurement_456",
+    "source_column_one_based": 457,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1551,
+    "train_unique_observed": 1106
+  },
+  {
+    "feature": "measurement_457",
+    "source_column_one_based": 458,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1547,
+    "train_unique_observed": 1110
+  },
+  {
+    "feature": "measurement_458",
+    "source_column_one_based": 459,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_459",
+    "source_column_one_based": 460,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1518,
+    "train_unique_observed": 1096
+  },
+  {
+    "feature": "measurement_460",
+    "source_column_one_based": 461,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1564,
+    "train_unique_observed": 1115
+  },
+  {
+    "feature": "measurement_461",
+    "source_column_one_based": 462,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_462",
+    "source_column_one_based": 463,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_463",
+    "source_column_one_based": 464,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_464",
+    "source_column_one_based": 465,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_465",
+    "source_column_one_based": 466,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_466",
+    "source_column_one_based": 467,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_467",
+    "source_column_one_based": 468,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 4,
+    "train_missing": 4,
+    "test_missing": 0,
+    "unique_observed": 417,
+    "train_unique_observed": 295
+  },
+  {
+    "feature": "measurement_468",
+    "source_column_one_based": 469,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1317,
+    "train_unique_observed": 967
+  },
+  {
+    "feature": "measurement_469",
+    "source_column_one_based": 470,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1514,
+    "train_unique_observed": 1088
+  },
+  {
+    "feature": "measurement_470",
+    "source_column_one_based": 471,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1547,
+    "train_unique_observed": 1103
+  },
+  {
+    "feature": "measurement_471",
+    "source_column_one_based": 472,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1552,
+    "train_unique_observed": 1110
+  },
+  {
+    "feature": "measurement_472",
+    "source_column_one_based": 473,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1560,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_473",
+    "source_column_one_based": 474,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1558,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_474",
+    "source_column_one_based": 475,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 7,
+    "train_missing": 5,
+    "test_missing": 2,
+    "unique_observed": 1559,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_475",
+    "source_column_one_based": 476,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1526,
+    "train_unique_observed": 1094
+  },
+  {
+    "feature": "measurement_476",
+    "source_column_one_based": 477,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1559,
+    "train_unique_observed": 1112
+  },
+  {
+    "feature": "measurement_477",
+    "source_column_one_based": 478,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1537,
+    "train_unique_observed": 1098
+  },
+  {
+    "feature": "measurement_478",
+    "source_column_one_based": 479,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 2,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_479",
+    "source_column_one_based": 480,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1507,
+    "train_unique_observed": 1084
+  },
+  {
+    "feature": "measurement_480",
+    "source_column_one_based": 481,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1560,
+    "train_unique_observed": 1111
+  },
+  {
+    "feature": "measurement_481",
+    "source_column_one_based": 482,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 4,
+    "test_missing": 2,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_482",
+    "source_column_one_based": 483,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1062,
+    "train_unique_observed": 768
+  },
+  {
+    "feature": "measurement_483",
+    "source_column_one_based": 484,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1402,
+    "train_unique_observed": 1033
+  },
+  {
+    "feature": "measurement_484",
+    "source_column_one_based": 485,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1324,
+    "train_unique_observed": 929
+  },
+  {
+    "feature": "measurement_485",
+    "source_column_one_based": 486,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1358,
+    "train_unique_observed": 1031
+  },
+  {
+    "feature": "measurement_486",
+    "source_column_one_based": 487,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1039,
+    "train_unique_observed": 788
+  },
+  {
+    "feature": "measurement_487",
+    "source_column_one_based": 488,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1199,
+    "train_unique_observed": 935
+  },
+  {
+    "feature": "measurement_488",
+    "source_column_one_based": 489,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1314,
+    "train_unique_observed": 964
+  },
+  {
+    "feature": "measurement_489",
+    "source_column_one_based": 490,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1344,
+    "train_unique_observed": 990
+  },
+  {
+    "feature": "measurement_490",
+    "source_column_one_based": 491,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 0,
+    "test_missing": 1,
+    "unique_observed": 1562,
+    "train_unique_observed": 1115
+  },
+  {
+    "feature": "measurement_491",
+    "source_column_one_based": 492,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 12,
+    "train_missing": 10,
+    "test_missing": 2,
+    "unique_observed": 472,
+    "train_unique_observed": 362
+  },
+  {
+    "feature": "measurement_492",
+    "source_column_one_based": 493,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1341,
+    "train_missing": 1004,
+    "test_missing": 337,
+    "unique_observed": 226,
+    "train_unique_observed": 112
+  },
+  {
+    "feature": "measurement_493",
+    "source_column_one_based": 494,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 572,
+    "train_unique_observed": 428
+  },
+  {
+    "feature": "measurement_494",
+    "source_column_one_based": 495,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 894,
+    "train_unique_observed": 673
+  },
+  {
+    "feature": "measurement_495",
+    "source_column_one_based": 496,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 964,
+    "train_unique_observed": 708
+  },
+  {
+    "feature": "measurement_496",
+    "source_column_one_based": 497,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 1510,
+    "train_unique_observed": 1113
+  },
+  {
+    "feature": "measurement_497",
+    "source_column_one_based": 498,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 51,
+    "train_missing": 0,
+    "test_missing": 51,
+    "unique_observed": 1509,
+    "train_unique_observed": 1112
+  },
+  {
+    "feature": "measurement_498",
+    "source_column_one_based": 499,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_499",
+    "source_column_one_based": 500,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 703,
+    "train_unique_observed": 526
+  },
+  {
+    "feature": "measurement_500",
+    "source_column_one_based": 501,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 648,
+    "train_unique_observed": 491
+  },
+  {
+    "feature": "measurement_501",
+    "source_column_one_based": 502,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_502",
+    "source_column_one_based": 503,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_503",
+    "source_column_one_based": 504,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_504",
+    "source_column_one_based": 505,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_505",
+    "source_column_one_based": 506,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_506",
+    "source_column_one_based": 507,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_507",
+    "source_column_one_based": 508,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_508",
+    "source_column_one_based": 509,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_509",
+    "source_column_one_based": 510,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_510",
+    "source_column_one_based": 511,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 1498,
+    "train_unique_observed": 1081
+  },
+  {
+    "feature": "measurement_511",
+    "source_column_one_based": 512,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 1,
+    "test_missing": 1,
+    "unique_observed": 586,
+    "train_unique_observed": 432
+  },
+  {
+    "feature": "measurement_512",
+    "source_column_one_based": 513,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_513",
+    "source_column_one_based": 514,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_514",
+    "source_column_one_based": 515,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_515",
+    "source_column_one_based": 516,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 6,
+    "train_missing": 5,
+    "test_missing": 1,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_516",
+    "source_column_one_based": 517,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 498,
+    "train_unique_observed": 185
+  },
+  {
+    "feature": "measurement_517",
+    "source_column_one_based": 518,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 543,
+    "train_unique_observed": 187
+  },
+  {
+    "feature": "measurement_518",
+    "source_column_one_based": 519,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1018,
+    "train_missing": 926,
+    "test_missing": 92,
+    "unique_observed": 542,
+    "train_unique_observed": 190
+  },
+  {
+    "feature": "measurement_519",
+    "source_column_one_based": 520,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 715,
+    "train_missing": 344,
+    "test_missing": 371,
+    "unique_observed": 836,
+    "train_unique_observed": 765
+  },
+  {
+    "feature": "measurement_520",
+    "source_column_one_based": 521,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1536,
+    "train_unique_observed": 1096
+  },
+  {
+    "feature": "measurement_521",
+    "source_column_one_based": 522,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 9,
+    "train_unique_observed": 8
+  },
+  {
+    "feature": "measurement_522",
+    "source_column_one_based": 523,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1562,
+    "train_unique_observed": 1115
+  },
+  {
+    "feature": "measurement_523",
+    "source_column_one_based": 524,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1040,
+    "train_unique_observed": 803
+  },
+  {
+    "feature": "measurement_524",
+    "source_column_one_based": 525,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1543,
+    "train_unique_observed": 1105
+  },
+  {
+    "feature": "measurement_525",
+    "source_column_one_based": 526,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 24,
+    "train_missing": 0,
+    "test_missing": 24,
+    "unique_observed": 1526,
+    "train_unique_observed": 1106
+  },
+  {
+    "feature": "measurement_526",
+    "source_column_one_based": 527,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1514,
+    "train_unique_observed": 1088
+  },
+  {
+    "feature": "measurement_527",
+    "source_column_one_based": 528,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 1549,
+    "train_unique_observed": 1109
+  },
+  {
+    "feature": "measurement_528",
+    "source_column_one_based": 529,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_529",
+    "source_column_one_based": 530,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_530",
+    "source_column_one_based": 531,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_531",
+    "source_column_one_based": 532,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_532",
+    "source_column_one_based": 533,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_533",
+    "source_column_one_based": 534,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_534",
+    "source_column_one_based": 535,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_535",
+    "source_column_one_based": 536,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_536",
+    "source_column_one_based": 537,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_537",
+    "source_column_one_based": 538,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_538",
+    "source_column_one_based": 539,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 9,
+    "train_missing": 6,
+    "test_missing": 3,
+    "unique_observed": 1,
+    "train_unique_observed": 1
+  },
+  {
+    "feature": "measurement_539",
+    "source_column_one_based": 540,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 333,
+    "train_unique_observed": 241
+  },
+  {
+    "feature": "measurement_540",
+    "source_column_one_based": 541,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 336,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_541",
+    "source_column_one_based": 542,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 8,
+    "train_missing": 5,
+    "test_missing": 3,
+    "unique_observed": 336,
+    "train_unique_observed": 243
+  },
+  {
+    "feature": "measurement_542",
+    "source_column_one_based": 543,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 102,
+    "train_unique_observed": 80
+  },
+  {
+    "feature": "measurement_543",
+    "source_column_one_based": 544,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 71,
+    "train_unique_observed": 59
+  },
+  {
+    "feature": "measurement_544",
+    "source_column_one_based": 545,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 21,
+    "train_unique_observed": 17
+  },
+  {
+    "feature": "measurement_545",
+    "source_column_one_based": 546,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 2,
+    "train_missing": 0,
+    "test_missing": 2,
+    "unique_observed": 273,
+    "train_unique_observed": 144
+  },
+  {
+    "feature": "measurement_546",
+    "source_column_one_based": 547,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1047,
+    "train_unique_observed": 770
+  },
+  {
+    "feature": "measurement_547",
+    "source_column_one_based": 548,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1023,
+    "train_unique_observed": 758
+  },
+  {
+    "feature": "measurement_548",
+    "source_column_one_based": 549,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 964,
+    "train_unique_observed": 727
+  },
+  {
+    "feature": "measurement_549",
+    "source_column_one_based": 550,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1048,
+    "train_unique_observed": 767
+  },
+  {
+    "feature": "measurement_550",
+    "source_column_one_based": 551,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 747,
+    "train_unique_observed": 612
+  },
+  {
+    "feature": "measurement_551",
+    "source_column_one_based": 552,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 213,
+    "train_unique_observed": 204
+  },
+  {
+    "feature": "measurement_552",
+    "source_column_one_based": 553,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 973,
+    "train_unique_observed": 725
+  },
+  {
+    "feature": "measurement_553",
+    "source_column_one_based": 554,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1077,
+    "train_unique_observed": 785
+  },
+  {
+    "feature": "measurement_554",
+    "source_column_one_based": 555,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1000,
+    "train_unique_observed": 747
+  },
+  {
+    "feature": "measurement_555",
+    "source_column_one_based": 556,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1085,
+    "train_unique_observed": 790
+  },
+  {
+    "feature": "measurement_556",
+    "source_column_one_based": 557,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1070,
+    "train_unique_observed": 780
+  },
+  {
+    "feature": "measurement_557",
+    "source_column_one_based": 558,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 260,
+    "train_missing": 254,
+    "test_missing": 6,
+    "unique_observed": 1062,
+    "train_unique_observed": 777
+  },
+  {
+    "feature": "measurement_558",
+    "source_column_one_based": 559,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 365,
+    "train_unique_observed": 287
+  },
+  {
+    "feature": "measurement_559",
+    "source_column_one_based": 560,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 399,
+    "train_unique_observed": 310
+  },
+  {
+    "feature": "measurement_560",
+    "source_column_one_based": 561,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 345,
+    "train_unique_observed": 271
+  },
+  {
+    "feature": "measurement_561",
+    "source_column_one_based": 562,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 414,
+    "train_unique_observed": 319
+  },
+  {
+    "feature": "measurement_562",
+    "source_column_one_based": 563,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 873,
+    "train_unique_observed": 627
+  },
+  {
+    "feature": "measurement_563",
+    "source_column_one_based": 564,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 785,
+    "train_unique_observed": 575
+  },
+  {
+    "feature": "measurement_564",
+    "source_column_one_based": 565,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 581,
+    "train_unique_observed": 452
+  },
+  {
+    "feature": "measurement_565",
+    "source_column_one_based": 566,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 753,
+    "train_unique_observed": 562
+  },
+  {
+    "feature": "measurement_566",
+    "source_column_one_based": 567,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 887,
+    "train_unique_observed": 637
+  },
+  {
+    "feature": "measurement_567",
+    "source_column_one_based": 568,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 619,
+    "train_unique_observed": 467
+  },
+  {
+    "feature": "measurement_568",
+    "source_column_one_based": 569,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 887,
+    "train_unique_observed": 640
+  },
+  {
+    "feature": "measurement_569",
+    "source_column_one_based": 570,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 273,
+    "train_missing": 271,
+    "test_missing": 2,
+    "unique_observed": 897,
+    "train_unique_observed": 643
+  },
+  {
+    "feature": "measurement_570",
+    "source_column_one_based": 571,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 814,
+    "train_unique_observed": 715
+  },
+  {
+    "feature": "measurement_571",
+    "source_column_one_based": 572,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 811,
+    "train_unique_observed": 714
+  },
+  {
+    "feature": "measurement_572",
+    "source_column_one_based": 573,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 518,
+    "train_unique_observed": 478
+  },
+  {
+    "feature": "measurement_573",
+    "source_column_one_based": 574,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 754,
+    "train_unique_observed": 665
+  },
+  {
+    "feature": "measurement_574",
+    "source_column_one_based": 575,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 830,
+    "train_unique_observed": 728
+  },
+  {
+    "feature": "measurement_575",
+    "source_column_one_based": 576,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 599,
+    "train_unique_observed": 540
+  },
+  {
+    "feature": "measurement_576",
+    "source_column_one_based": 577,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 820,
+    "train_unique_observed": 719
+  },
+  {
+    "feature": "measurement_577",
+    "source_column_one_based": 578,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 0,
+    "train_missing": 0,
+    "test_missing": 0,
+    "unique_observed": 851,
+    "train_unique_observed": 743
+  },
+  {
+    "feature": "measurement_578",
+    "source_column_one_based": 579,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 949,
+    "train_missing": 707,
+    "test_missing": 242,
+    "unique_observed": 322,
+    "train_unique_observed": 258
+  },
+  {
+    "feature": "measurement_579",
+    "source_column_one_based": 580,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 949,
+    "train_missing": 707,
+    "test_missing": 242,
+    "unique_observed": 260,
+    "train_unique_observed": 203
+  },
+  {
+    "feature": "measurement_580",
+    "source_column_one_based": 581,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 949,
+    "train_missing": 707,
+    "test_missing": 242,
+    "unique_observed": 120,
+    "train_unique_observed": 101
+  },
+  {
+    "feature": "measurement_581",
+    "source_column_one_based": 582,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 949,
+    "train_missing": 707,
+    "test_missing": 242,
+    "unique_observed": 611,
+    "train_unique_observed": 404
+  },
+  {
+    "feature": "measurement_582",
+    "source_column_one_based": 583,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 171,
+    "train_unique_observed": 168
+  },
+  {
+    "feature": "measurement_583",
+    "source_column_one_based": 584,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 227,
+    "train_unique_observed": 207
+  },
+  {
+    "feature": "measurement_584",
+    "source_column_one_based": 585,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 68,
+    "train_unique_observed": 66
+  },
+  {
+    "feature": "measurement_585",
+    "source_column_one_based": 586,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 1502,
+    "train_unique_observed": 1082
+  },
+  {
+    "feature": "measurement_586",
+    "source_column_one_based": 587,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 322,
+    "train_unique_observed": 258
+  },
+  {
+    "feature": "measurement_587",
+    "source_column_one_based": 588,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 260,
+    "train_unique_observed": 203
+  },
+  {
+    "feature": "measurement_588",
+    "source_column_one_based": 589,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 120,
+    "train_unique_observed": 101
+  },
+  {
+    "feature": "measurement_589",
+    "source_column_one_based": 590,
+    "description": "Anonymized real process measurement; physical meaning and units not supplied",
+    "missing": 1,
+    "train_missing": 1,
+    "test_missing": 0,
+    "unique_observed": 611,
+    "train_unique_observed": 404
+  }
+]
