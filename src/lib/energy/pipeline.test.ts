@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { validateMonths } from "./pipeline";
 import { buildReference, envelopeState } from "./reference";
+import { createDemoFactory } from "./demo-data";
 
 const m = (month: string, o: Partial<{ kwh: number; cost: number; production: number }> = {}) => ({
   month, kwh: o.kwh ?? 100000, cost: o.cost ?? 720000, peakKva: 1200, production: o.production ?? 20000, operatingHours: 600,
@@ -24,6 +25,27 @@ describe("pipeline", () => {
     const r = validateMonths([m("2026-03"), m("2026-01", { cost: -1 })], now);
     expect(r.checks[1].states).toContain("INVALID");
     expect(r.checks[1].states).toContain("OUT_OF_ORDER");
+  });
+  it("excludes energy records physically above max apparent demand for their calendar month", () => {
+    const r = validateMonths([
+      { ...m("2026-09", { kwh: 900000, cost: 4500000 }), peakKva: 1200, powerFactor: 0.95 },
+    ], now);
+    expect(r.checks[0].states).toContain("INVALID");
+    expect(r.checks[0].notes.join(" ")).toContain("meter boundary");
+    expect(r.usable).toHaveLength(0);
+  });
+  it("flags PF-demand mismatches for review, without converting them into guaranteed losses", () => {
+    const r = validateMonths([
+      { ...m("2026-09", { kwh: 863000, cost: 4400000 }), peakKva: 1200, powerFactor: 0.95 },
+    ], now);
+    expect(r.checks[0].states).toContain("SUSPECT");
+    expect(r.checks[0].states).not.toContain("INVALID");
+  });
+  it("keeps the synthetic factory physically plausible under the calendar and PF checks", () => {
+    const r = validateMonths(createDemoFactory().months, now);
+    expect(r.checks).toHaveLength(12);
+    expect(r.checks.every((c) => !c.states.includes("INVALID"))).toBe(true);
+    expect(r.checks.every((c) => !c.states.includes("SUSPECT"))).toBe(true);
   });
   it("marks stale data", () => {
     expect(validateMonths([m("2025-01"), m("2025-02"), m("2025-03")], now).stale).toBe(true);

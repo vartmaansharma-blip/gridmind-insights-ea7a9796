@@ -64,6 +64,26 @@ export function validateMonths(months: MonthRecord[], now: Date = new Date()): P
       else if (!finite(m.powerFactor)) { states.add("INVALID"); notes.push("Power factor is not a finite numeric value"); }
       else if (m.powerFactor <= 0 || m.powerFactor > 1) { states.add("INVALID"); notes.push("Power factor must be greater than 0 and at most 1"); }
     }
+    // Absolute physical check (assumes reported energy and maximum demand share
+    // the same meter boundary and billing period). A site cannot consume more
+    // kWh than its maximum apparent demand (kVA) times calendar hours.
+    // Monthly PF is an approximate cross-check only: it is NOT assumed to be
+    // an exact instantaneous PF profile.
+    if (MONTH_RE.test(m.month) && finite(m.kwh) && finite(m.peakKva) &&
+        m.kwh > 0 && m.peakKva > 0) {
+      const year = Number(m.month.slice(0, 4));
+      const month = Number(m.month.slice(5, 7));
+      const hoursInMonth = new Date(Date.UTC(year, month, 0)).getUTCDate() * 24;
+      const absoluteMaxKwh = m.peakKva * hoursInMonth;
+      if (m.kwh > absoluteMaxKwh * (1 + 1e-9)) {
+        states.add("INVALID");
+        notes.push("Monthly kWh exceeds maximum kVA × calendar hours; reconcile units, period and meter boundary.");
+      } else if (finite(m.powerFactor) && m.powerFactor > 0 &&
+                 m.powerFactor <= 1 && m.kwh > absoluteMaxKwh * m.powerFactor * 1.05) {
+        states.add("SUSPECT");
+        notes.push("kWh is unusually high relative to peak kVA and monthly PF; check time alignment and meter boundary.");
+      }
+    }
     if (finite(m.kwh) && finite(m.cost) && m.kwh > 0 && m.cost > 0) {
       const rate = m.cost / m.kwh;
       if (rate < PIPELINE_RULES.tariffLow || rate > PIPELINE_RULES.tariffHigh) { states.add("SUSPECT"); notes.push(`Effective rate ₹${rate.toFixed(2)}/kWh is outside the expected band`); }

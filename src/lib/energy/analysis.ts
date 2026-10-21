@@ -14,11 +14,14 @@ import { buildReference, type Reference } from "./reference";
 
 // All assumptions in one place so the engine is transparent and auditable.
 export const ASSUMPTIONS = {
-  minBillingDemandPct: 0.85, // billed demand floor as share of contract demand
+  // A billing floor depends on utility, class, effective order and actual bill.
+  // Unknown until evidence-backed tariff mapping is implemented. Never default to 85%.
+  minBillingDemandPct: null as number | null,
   contractHeadroom: 1.1, // recommended contract = max peak x headroom
   excessDemandPenaltyMultiplier: 1, // extra charge on kVA above contract (i.e. billed at 2x)
   pfTarget: 0.95,
-  pfPenaltyPerPoint: 0.01, // 1% of bill per 0.01 PF below target
+  // No generic power-factor penalty; invoices may use kVAh pricing or other terms.
+  pfPenaltyPerPoint: null as number | null,
   secRecoverableShare: 0.4, // share of SEC drift considered recoverable
   apfcCostPerKvar: 1200,
   secAlertThreshold: 1.08,
@@ -137,7 +140,7 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
     utilization: C > 0 && Number.isFinite(m.peakKva) && m.peakKva > 0 ? m.peakKva / C : 0,
     // A missing peak is not a zero peak. Demand claims are gated on complete
     // peak coverage below; this placeholder is never used to infer savings.
-    billedKva: Number.isFinite(m.peakKva) ? Math.max(m.peakKva, ASSUMPTIONS.minBillingDemandPct * C) : Number.NaN,
+    billedKva: Number.NaN, // cannot infer billed demand without a verified tariff and meter/bill record
   }));
   const quality = assessQuality(f, rows);
   // Only rows with known operating hours can be compared on operating context.
@@ -169,7 +172,7 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
   // 1. Contract demand optimisation
   // Demand recommendations require peak measurements for every analyzed
   // month. Partial coverage cannot support a defensible maximum or annualized claim.
-  if (C > 0 && dr > 0 && peakCoverageComplete) {
+  if (C > 0 && dr > 0 && peakCoverageComplete && ASSUMPTIONS.minBillingDemandPct !== null) {
     const rec = Math.ceil((maxPeak * ASSUMPTIONS.contractHeadroom) / 10) * 10;
     if (rec < C) {
       const fl = ASSUMPTIONS.minBillingDemandPct;
@@ -227,7 +230,7 @@ export function analyze(f: Factory, now: Date = new Date()): Analysis {
   const pfRows = rows.filter((r) => Number.isFinite(r.powerFactor) && (r.powerFactor ?? 0) > 0);
   const pfCoverageComplete = pfRows.length === rows.length;
   const hoursCoverageComplete = rows.every((r) => Number.isFinite(r.operatingHours) && r.operatingHours > 0);
-  if (pfRows.length && pfCoverageComplete && hoursCoverageComplete) {
+  if (pfRows.length && pfCoverageComplete && hoursCoverageComplete && ASSUMPTIONS.pfPenaltyPerPoint !== null) {
     const avgPf = pfRows.reduce((s, r) => s + (r.powerFactor ?? 0), 0) / pfRows.length;
     if (avgPf < ASSUMPTIONS.pfTarget) {
       const penaltyShare = ((ASSUMPTIONS.pfTarget - avgPf) / 0.01) * ASSUMPTIONS.pfPenaltyPerPoint;
@@ -365,7 +368,7 @@ function buildAlerts(f: Factory, rows: MonthRow[], baselineSec: number, avgRate:
     }
     if (r.powerFactor && r.powerFactor < 0.92) {
       out.push({ id: `pf-${r.month}`, severity: "warning", month: r.month, title: "Low power factor",
-        detail: `PF ${r.powerFactor.toFixed(2)} in ${ml} — likely attracting PF penalty.` });
+        detail: `PF ${r.powerFactor.toFixed(2)} in ${ml}. Check the applicable bill and tariff before inferring any financial penalty.` });
     }
   });
   const rank = { critical: 0, warning: 1, info: 2 };
@@ -402,6 +405,12 @@ function assessQuality(f: Factory, rows: MonthRow[]): DataQuality {
       }
     }
   } else issues.push("No major equipment listed");
+  // Completeness and plausibility of invented inputs are not independently
+  // verified factory evidence. Do not show Good 100/100 on a fictional demo.
+  if (f.isDemo) {
+    score = Math.min(score, 65);
+    issues.push("Synthetic example: input coverage is not independently verified source quality.");
+  }
   score = Math.round(Math.min(100, score));
   return { score, grade: score >= 80 ? "Good" : score >= 55 ? "Fair" : "Limited", issues };
 }
