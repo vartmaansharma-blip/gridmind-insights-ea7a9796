@@ -371,7 +371,7 @@ export function evaluate(inputValue: unknown, at: string) {
         status: a.status,
         reasons: a.checks.filter((c) => c.status !== "eligible"),
       })),
-    ownerIntentAssessment,
+    ...(input.ownerIntents?.length ? { ownerIntentAssessment } : {}),
     recommendation: eligible.length === 1 && !unresolvedOwnerConflicts ? eligible[0].actionId : null,
     disposition:
       unresolvedOwnerConflicts
