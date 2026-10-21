@@ -1,5 +1,18 @@
 # GridMind 3.1 — Repository Conversion & Engineering Acceptance
 
+## Customer-first related-branch integration — 21 October 2026
+
+The founder requested completing and integrating related side branches. This integration preserves original ancestry with normal merge commits for #156 (`299f6ff`), #158 (`7204c6d`), #160 (`53110e6`), #162 (`ad9b4ee`), #165 (`318f147`), #154 (`123fc2a`) and #150 (`2a49139`). It then merges current main `65a0fe9`, retaining the newer physical-resource/owner-intent model, retrospective acceptance and #175 synthetic/public-metadata benchmark. Older strategy drafts do not roll back current canonical decisions; unique manufacturer research, shortage chronology, invoice/finishing adapters and fixtures survive. The buyer tracker receives no invented field evidence.
+
+Implemented combined source: invoice-exception CSV and review/outcome preview; finishing comparison; connected synthetic compressed-air evidence/review/action persistence; factory-bootstrap bounds and anonymous-user denial; shared investigation navigation with current physical/owner and core workspaces. Existing organization/factory/Auth identities and public green website are preserved. Synthetic schema/origin, explicit authority, isolated-server and default-off gates remain. No production Supabase changes, customer ingestion or machine/payment execution.
+
+Combined local acceptance: **417 unit tests / 41 files**, TypeScript, lint with zero errors (nine existing warnings), production build, **41-migration clean native PostgreSQL replay** and tenant/session/authority/revocation/expiry/idempotency/concurrent-write/immutable-custody tests. The synthetic browser suite also covers invoice/finishing, public/customer and physical workspaces. Exact final hosted acceptance is recorded in the integration PR; do not reuse earlier green branch runs.
+
+**Protected-main merge HOLD:** #150 bootstrap and #154 connected/RPC changes still require the independent security review mandated by the current brief and repository instructions. Prepare this concrete combined source for that review; successful self-tests are not independent authorization. Do not apply the 41 source migrations to a shared database: the earlier read-only live audit found 31 registry entries with historic aliases and missing source objects. #29/#130 reconciliation, rights, recovery and qualified method review remain separate. The real SECOM measurement increment is separately reviewed in #176 and is not bundled into this integration candidate.
+
+Review focus: bootstrap anonymous Auth and bounded inputs; private-definer/service-only RPC boundary; source/revision binding and independent reviewer identity; current organization membership, authority and session revocation on every operation; CAS and altered retry denial; preservation of parent case history and financial redaction. A required reviewer decision is still absent. Rollback before shared-DB activation is reverting the normal integration merge; no production migration has been applied by this task.
+
+
 ## Manufacturing-strategy audit — 20 October 2026
 
 **Scope:** [#164](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/164), founder-directed manufacturing comparison continuation. **Base:** `847ad16d8b43b2bf39f476e8e355ebb4cc21b23c` from refreshed `origin/main`; GitHub API confirmed this head. **Branch:** `strategy/india-manufacturing-intelligence`, separate local worktree in the same repository. Existing `research/metal-finishing-proof` and other worktrees were inspected but not edited. This is documentation implementation, not a manufacturing runtime engine or release.
