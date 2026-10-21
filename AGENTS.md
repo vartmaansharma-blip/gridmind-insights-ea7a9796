@@ -27,6 +27,10 @@ Read in this order before non-trivial work:
 
 This is a reading order, not permission to override safety. Authorization, data rights and security constrain all documents; the Constitution resolves decision conflicts, the Master Plan owns work order, the tracker owns field facts, and reproducible code/check evidence establishes behavior. Newer prose alone does not supersede a decision.
 
+## Recovered founder conversation decisions
+
+For material GridMind planning or scope reconciliation, also read the [recovered conversation decision register](docs/gridmind-recovered-conversation-decisions-2026-10-21.md) for the latest founder-articulated industry-to-shop-floor infrastructure vision, owner intent, full manufacturing lifecycle and 84 status-tagged recalled requirements. This is a **retrieval index**, not a new competing strategy or permission to bypass source validation, field evidence, security, production release or the Master Plan/Constitution. If a remembered chat conflicts with confirmed repo decisions, record the conflict and seek evidence/explicit authorization before altering product scope. Maintain this register via reviewed, small deltas rather than relying on ChatGPT memory.
+
 ## GM-CORE-003 explicit build exception
 
 The founder authorized the shared typed industrial core and four synthetic backend demonstrations in [#166](https://github.com/vartmaansharma-blip/gridmind-insights-ea7a9796/issues/166), with the [bounded implementation contract](docs/engineering/gridmind-gm-core-003-foundation.md). This supersedes the no-new-engine restriction below only within that task. Keep schemas industry-neutral; automotive/India/cluster is initial specialization intent, not validated paid demand. Reuse canonical identities/Auth/UI, require explicit commercial/quality/safety authority, preserve default-off isolated persistence and all release/data gates. Commit verified work and prepare a PR; **do not merge automatically**. Do not replace earlier strategy or adopt unmerged #165 wholesale.

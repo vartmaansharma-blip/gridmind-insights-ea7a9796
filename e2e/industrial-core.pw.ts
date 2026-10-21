@@ -73,3 +73,48 @@ test("mobile core explains missing authority without writing to a database", asy
   expect(response.status()).toBe(503);
   expect(await response.json()).toEqual({ error: "CORE_DISABLED" });
 });
+
+test("physical factory and owner preference use one safe decision kernel on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/investigations");
+  const physical = page.getByRole("region", { name: "From an asset to a manufacturing decision" });
+  const selector = physical.getByLabel("Infrastructure scenario");
+  for (const scenario of ["owner_machine_conflict", "owner_avoid_feasible", "owner_inferred"]) {
+    await selector.selectOption(scenario);
+    const response = page.waitForResponse(
+      (r) => r.url().endsWith("/api/industrial-core") && r.request().method() === "POST",
+    );
+    await physical.getByRole("button", { name: "Evaluate connected factory" }).click();
+    const result = await response;
+    expect(result.status()).toBe(200);
+    expect(JSON.parse(result.request().postData()!)).toEqual({
+      action: "physical_demo",
+      scenario,
+    });
+    const body = await result.json();
+    expect(body.origin).toBe("synthetic");
+    expect(body.customerValidated).toBe(false);
+    expect(body.authorizedMachineControl).toBe(false);
+    expect(body.decision.algorithmVersion).toBe("gm-core-003/constraints-v1");
+    await expect(physical.getByRole("heading", { name: "Owner objectives in the same decision" }))
+      .toBeVisible();
+    if (scenario === "owner_machine_conflict") {
+      expect(body.impacts[0].orders.map((o: { orderId: string }) => o.orderId))
+        .toEqual(["order"]);
+      expect(body.decision.ownerIntentAssessment.conflicts[0].reason)
+        .toBe("OWNER_FAVORED_ACTION_NOT_ELIGIBLE");
+      expect(body.recommendedActionId).toBeNull();
+    } else if (scenario === "owner_avoid_feasible") {
+      expect(body.decision.alternatives.find((a: { actionId: string }) =>
+        a.actionId === "produce-approved").status).toBe("eligible");
+      expect(body.recommendedActionId).toBeNull();
+    } else {
+      expect(body.decision.ownerIntentAssessment.inferredGoalsRequireConfirmation)
+        .toEqual(["fictional-owner-objective"]);
+      expect(body.decision.ownerIntentAssessment.conflicts).toHaveLength(0);
+      await expect(physical.getByText(/Owner confirmation is required/)).toBeVisible();
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1))
+      .toBe(true);
+  }
+});
